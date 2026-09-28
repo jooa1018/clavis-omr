@@ -1,0 +1,713 @@
+{
+  "status": "PASS",
+  "scope": "first smoke acceptance only; synthetic/self-authored; no Dev/sealed",
+  "renderer_version": "6.3.0[undefined]",
+  "jobs": 30,
+  "pages": 30,
+  "songs": 10,
+  "font_counts": {
+    "Leipzig": 10,
+    "Bravura": 10,
+    "Leland": 10
+  },
+  "staff_segments": 180,
+  "fallbacks": 0,
+  "failures": 0,
+  "render_wall_seconds": 17.84399999998277,
+  "max_renderer_peak_rss_bytes": 27193344,
+  "artifact_bytes": 499904,
+  "resource_evidence": {
+    "Leipzig": {
+      "resource_files": 659,
+      "sha256": "3950dbce6507914faae11f1cb008ab04b1effeb580b17db24f5153ce4a198140",
+      "family": "Leipzig"
+    },
+    "Bravura": {
+      "resource_files": 887,
+      "sha256": "75cda44e831d5b01baf0169529f0b78b6a1e9c76fa12454ae8fddb6b3a3e9c7f",
+      "family": "Bravura"
+    },
+    "Leland": {
+      "resource_files": 355,
+      "sha256": "b3804574ccc80ba1deac7361d7c647c769fd6e5535ff8f39a75bab3a44a7a1ee",
+      "family": "Leland"
+    }
+  },
+  "pages_audit": [
+    {
+      "seed": "train-smoke-0",
+      "font": "Leipzig",
+      "page": 1,
+      "source_sha256": "5c78406bf42c72e7bcc086d34d41300e82e996efe99c1a13ee06f98ec5968fff",
+      "artifacts": {
+        "page-1.labels.json": "defd2fcae8c3ba879986c70ece59347d23e8616e2d7236cb9d1a80e1b0dd2550",
+        "page-1.overlay.svg.gz": "6c11a80e48130422e1c076bcc6aacc3da9652dafe1b397bad48a78592bd5b1d1",
+        "page-1.svg.gz": "869d98cd744a4705121ea4139cb81c23e388c71b4081b81403d257b43b896e2f"
+      },
+      "staff_segments": 4,
+      "glyphs": [
+        "E050",
+        "E260",
+        "E083",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-0",
+      "font": "Bravura",
+      "page": 1,
+      "source_sha256": "5c78406bf42c72e7bcc086d34d41300e82e996efe99c1a13ee06f98ec5968fff",
+      "artifacts": {
+        "page-1.labels.json": "e51d8f521a4ac90d362902743f49b14cbae30a0e2963bda1f427130a0c88ac29",
+        "page-1.overlay.svg.gz": "6a91f9df35470c7111a7d959b8af98b1050d762b0a28a5ddcabc6bf1c7111e63",
+        "page-1.svg.gz": "de883fcb24ca471d444121820c85e0de9e9dcfc486abafeb6a18908513c25fb5"
+      },
+      "staff_segments": 4,
+      "glyphs": [
+        "E050",
+        "E260",
+        "E083",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-0",
+      "font": "Leland",
+      "page": 1,
+      "source_sha256": "5c78406bf42c72e7bcc086d34d41300e82e996efe99c1a13ee06f98ec5968fff",
+      "artifacts": {
+        "page-1.labels.json": "888387e8c08c62f2bd4799251c36db232b40480c97aa1ec4bc7b9e31bd01947a",
+        "page-1.overlay.svg.gz": "37368d140cc2f2aaff12bd4e4c92d2ccf477ece454df5433f552a808c7891fd7",
+        "page-1.svg.gz": "189349199e5fbdda29490cc297378d6377beeea7cbaafab7a8c5be08eb547200"
+      },
+      "staff_segments": 4,
+      "glyphs": [
+        "E050",
+        "E260",
+        "E083",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-1",
+      "font": "Leipzig",
+      "page": 1,
+      "source_sha256": "62039bf145f27210b0724d1b3dfe21ebf955e8a3394a539d2c7fa065c650e534",
+      "artifacts": {
+        "page-1.labels.json": "d20ccfabc9dbb56833adac888faac426feb29afbcce9040e0ae7ac0ac01b8c1c",
+        "page-1.overlay.svg.gz": "fa6503e3f0057928f35af5c0178331bf7cf020e42eb9e826b5a599d24fc0cca7",
+        "page-1.svg.gz": "6da2c431a7f3659cc74de18f67fb296fd65e0f92a3d0223fd362a1ff8799ef10"
+      },
+      "staff_segments": 8,
+      "glyphs": [
+        "E050",
+        "E260",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-1",
+      "font": "Bravura",
+      "page": 1,
+      "source_sha256": "62039bf145f27210b0724d1b3dfe21ebf955e8a3394a539d2c7fa065c650e534",
+      "artifacts": {
+        "page-1.labels.json": "dc4312d6665d9b28b704b04705b197c597d919ff4db099ed5fe0111005ca999e",
+        "page-1.overlay.svg.gz": "9e142ad8a51facc503147181ad8bfd00198b5b8d7046e9c4a03b0adedb1bf4e5",
+        "page-1.svg.gz": "d347f6d43a9f7117bdd655bab25963ce79e2fe71e2c92ef155c6e707d0ed6f6e"
+      },
+      "staff_segments": 8,
+      "glyphs": [
+        "E050",
+        "E260",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-1",
+      "font": "Leland",
+      "page": 1,
+      "source_sha256": "62039bf145f27210b0724d1b3dfe21ebf955e8a3394a539d2c7fa065c650e534",
+      "artifacts": {
+        "page-1.labels.json": "14836c1d556bce26e0aecd3ebdccfaa7db9b970f0e20f9d39e895c71a11671ca",
+        "page-1.overlay.svg.gz": "0c54f28ae658d9cc4e78433942ee2d6b991c60d379e8ba5bbf9e531296169740",
+        "page-1.svg.gz": "0bd45f818af3c9c81d8b9900b3750a0f515089ecdc4a2e362faf2b3b0307e5ab"
+      },
+      "staff_segments": 8,
+      "glyphs": [
+        "E050",
+        "E260",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-2",
+      "font": "Leipzig",
+      "page": 1,
+      "source_sha256": "395387d49664b8ed463f65fafc26909f2a524e68781d7364af440548f7017c57",
+      "artifacts": {
+        "page-1.labels.json": "a7552b4e363dea68fca5d3761c894b7d4cec6281066bec8c0dca1a6d20b1c9c1",
+        "page-1.overlay.svg.gz": "e142583ca9082238639a1a5ae96b52bae288bfc613d90c20e96c3ec92dca52e2",
+        "page-1.svg.gz": "9853dc9ed8783c66a6976095b65cb8ccce61cd040714000b3d2efab56c1729a2"
+      },
+      "staff_segments": 4,
+      "glyphs": [
+        "E050",
+        "E260",
+        "E083",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-2",
+      "font": "Bravura",
+      "page": 1,
+      "source_sha256": "395387d49664b8ed463f65fafc26909f2a524e68781d7364af440548f7017c57",
+      "artifacts": {
+        "page-1.labels.json": "b1715f7932f06ac3e3d5906ab2db1091cedc5c72304cf364ed7d12b2acd7ebb6",
+        "page-1.overlay.svg.gz": "06ca91c6705b43ba7a676074ff1fe551cf7d3fd8c98608ed4af3bd12b5472320",
+        "page-1.svg.gz": "86180e22e5526c9f621f6bb4399db1b0de4c55b012945bf573c75aec1647dc2c"
+      },
+      "staff_segments": 4,
+      "glyphs": [
+        "E050",
+        "E260",
+        "E083",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-2",
+      "font": "Leland",
+      "page": 1,
+      "source_sha256": "395387d49664b8ed463f65fafc26909f2a524e68781d7364af440548f7017c57",
+      "artifacts": {
+        "page-1.labels.json": "c4865eb0c3920e7d4930d8b43bcb0c29f8d2dfb554c12acd16c2be895d784bed",
+        "page-1.overlay.svg.gz": "1cabad4e8d412ac051b28715cd901830e8860a6b9e391255fa4af98ab88b4150",
+        "page-1.svg.gz": "2411636f109eb6c2df4d12240e49737c5f4c2b1b9417844e115672fc542be73a"
+      },
+      "staff_segments": 4,
+      "glyphs": [
+        "E050",
+        "E260",
+        "E083",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-3",
+      "font": "Leipzig",
+      "page": 1,
+      "source_sha256": "a980d85f21baca41ebe8b05285ac193ec6f969bbe9f2015e3908db7b5579813f",
+      "artifacts": {
+        "page-1.labels.json": "439d5251fe9bfe7caf3372023f72d6e2ea7f59d93bc6270b8ccbe90e23812871",
+        "page-1.overlay.svg.gz": "f2c3bf571c2f970a0c9daa3d4efbdcc86c66e2f25239119e9fced6cd66014f41",
+        "page-1.svg.gz": "9f3311122a322c04f3499d4d2bb5f031ac9121ebb2b45bc8996fe9b412cdcc46"
+      },
+      "staff_segments": 8,
+      "glyphs": [
+        "E050",
+        "E260",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-3",
+      "font": "Bravura",
+      "page": 1,
+      "source_sha256": "a980d85f21baca41ebe8b05285ac193ec6f969bbe9f2015e3908db7b5579813f",
+      "artifacts": {
+        "page-1.labels.json": "33353d18101b3b0a8e284bb2011f03bf92ed1085aae79e8663080946f6bd8f31",
+        "page-1.overlay.svg.gz": "40f9ee94420437d39ca205e7cf68da9ba86d42ef8fb3d667e4bb020b24757f47",
+        "page-1.svg.gz": "6025fe738c2bccf64ad63efec413008e1c53fe9a16fc4fc2e8f3d9ca7154dfc9"
+      },
+      "staff_segments": 8,
+      "glyphs": [
+        "E050",
+        "E260",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-3",
+      "font": "Leland",
+      "page": 1,
+      "source_sha256": "a980d85f21baca41ebe8b05285ac193ec6f969bbe9f2015e3908db7b5579813f",
+      "artifacts": {
+        "page-1.labels.json": "ccfac9c2540cb0ebe52499d637c05c98491965f0c2c9092927e9b1ff39933f4b",
+        "page-1.overlay.svg.gz": "0679b2e9547d91a21cce8ec2d6bdb4b839029fb941a07fb32376a6e416011a15",
+        "page-1.svg.gz": "32bbd170b9f17db0317cff7c513a67a84a20e8185292b812d651e9e0a7d934cb"
+      },
+      "staff_segments": 8,
+      "glyphs": [
+        "E050",
+        "E260",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-4",
+      "font": "Leipzig",
+      "page": 1,
+      "source_sha256": "d3fc77ea953c7ee26222128040b086a8c9411390f34d6bb69528eaccd6098831",
+      "artifacts": {
+        "page-1.labels.json": "2c52d3e54a95c7384fd0d5bfce14d1a0c09aafddceefedc49acde7f76cbce4ff",
+        "page-1.overlay.svg.gz": "fbc48e63fd9c24e9d6310c4623c5c9bd5c04a733fa233ce8e1decb5155f921cb",
+        "page-1.svg.gz": "69d123093b4fbc6153ed9e46e91db1188c10f22be55cff0fd63d55feebfc444d"
+      },
+      "staff_segments": 4,
+      "glyphs": [
+        "E050",
+        "E260",
+        "E083",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-4",
+      "font": "Bravura",
+      "page": 1,
+      "source_sha256": "d3fc77ea953c7ee26222128040b086a8c9411390f34d6bb69528eaccd6098831",
+      "artifacts": {
+        "page-1.labels.json": "77df4c4a252ab5ee2fc92083c58417bc6995455a086d8d4880fc297ac065e415",
+        "page-1.overlay.svg.gz": "92c647d816bab308fe7ce04c4dacb512475130344a29907cc2635ce9c0da172a",
+        "page-1.svg.gz": "ac72738c177b07d3d08c2f96b4db331941e01adc55bb7cfe121b9e397a1265fc"
+      },
+      "staff_segments": 4,
+      "glyphs": [
+        "E050",
+        "E260",
+        "E083",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-4",
+      "font": "Leland",
+      "page": 1,
+      "source_sha256": "d3fc77ea953c7ee26222128040b086a8c9411390f34d6bb69528eaccd6098831",
+      "artifacts": {
+        "page-1.labels.json": "3f49bf686e9a713e0847c51dbbb470bcb0cc9f7e1f6cf1e17dec897946ab3a44",
+        "page-1.overlay.svg.gz": "8d64348dea5a20e947f98aca6aeed58326c72d4e2b877d76a3cb1a37b0505f80",
+        "page-1.svg.gz": "c78ac178efa2c8d31de7d9dde60a606a329441b861e6d1fa1107a84c5a12636d"
+      },
+      "staff_segments": 4,
+      "glyphs": [
+        "E050",
+        "E260",
+        "E083",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-5",
+      "font": "Leipzig",
+      "page": 1,
+      "source_sha256": "909068033e618222dd8c8e277b49b7fa728f3c251b46c7afd97c562b78d2f2fc",
+      "artifacts": {
+        "page-1.labels.json": "e675a3e735d3b15e6c6e2c40dce2c14c493a887c7fcaea49c5d8bac959a2561f",
+        "page-1.overlay.svg.gz": "5219ebb232de65e65c13b93f416243ac90bbf66efaf4af3a82faa75e4a5867c9",
+        "page-1.svg.gz": "1b9d264b27fccc45f61d05db73e3414d69a8ec66d5f96620eb4f838d678ece08"
+      },
+      "staff_segments": 8,
+      "glyphs": [
+        "E050",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-5",
+      "font": "Bravura",
+      "page": 1,
+      "source_sha256": "909068033e618222dd8c8e277b49b7fa728f3c251b46c7afd97c562b78d2f2fc",
+      "artifacts": {
+        "page-1.labels.json": "19e9cbbedd4d34cda011a097ccceb488d8830a3243b545da145a8812509df78d",
+        "page-1.overlay.svg.gz": "00b9382019b070830b3b7ebcd5b19b595ad02b842035d5f9f7f80184f7941563",
+        "page-1.svg.gz": "5c418dccb4b8e17049bb1958d78e84e8e755c4f506ae665739f47cecb1c308cc"
+      },
+      "staff_segments": 8,
+      "glyphs": [
+        "E050",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-5",
+      "font": "Leland",
+      "page": 1,
+      "source_sha256": "909068033e618222dd8c8e277b49b7fa728f3c251b46c7afd97c562b78d2f2fc",
+      "artifacts": {
+        "page-1.labels.json": "4253cd0f040841fd1e1c28289909100795829079c813cbd34dbfe127e5e97700",
+        "page-1.overlay.svg.gz": "ed8ff4af1c096b31cff53cd73678aedcaa1304d1ed5fadd04cc3be8cb139b1e1",
+        "page-1.svg.gz": "48507a9d99bd4d92fe0202477ef1745ed9db69895f0f7f86ba7951e8dd9a3e1e"
+      },
+      "staff_segments": 8,
+      "glyphs": [
+        "E050",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-6",
+      "font": "Leipzig",
+      "page": 1,
+      "source_sha256": "8e890a3a427abfd26cfc3987ae711bce1805b4c6292ea0c8cf5ae0dfe7cfd15a",
+      "artifacts": {
+        "page-1.labels.json": "6f7c58298e83432f615cf1bc4b4f8baa65498d7f983a61a5a222b902eca326a7",
+        "page-1.overlay.svg.gz": "4b59e6ca68086f2f8e9b0e005b55ba2f69d4406b05a34f042db34c176239cd15",
+        "page-1.svg.gz": "e6e27b3f62d2269e0b492f7992fc17b6fc6f7f0763e06637b54fe8963aa4d7c4"
+      },
+      "staff_segments": 4,
+      "glyphs": [
+        "E050",
+        "E262",
+        "E083",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-6",
+      "font": "Bravura",
+      "page": 1,
+      "source_sha256": "8e890a3a427abfd26cfc3987ae711bce1805b4c6292ea0c8cf5ae0dfe7cfd15a",
+      "artifacts": {
+        "page-1.labels.json": "9d663d92ef44000c6a54a81edc607125f4777635443e309ebbbd55962f9c2be2",
+        "page-1.overlay.svg.gz": "d6d473dedb3c53bd7dcdae8d795c4b788ab7f7db8a17f974735f293e4581a329",
+        "page-1.svg.gz": "f0a68d04ac37418031067dfd40b5a577ee881010a728486137d048424abc41ff"
+      },
+      "staff_segments": 4,
+      "glyphs": [
+        "E050",
+        "E262",
+        "E083",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-6",
+      "font": "Leland",
+      "page": 1,
+      "source_sha256": "8e890a3a427abfd26cfc3987ae711bce1805b4c6292ea0c8cf5ae0dfe7cfd15a",
+      "artifacts": {
+        "page-1.labels.json": "d768e2a9c68e0b41ee0267268f90d38738ececa7b1a3270471ed026c926e2ede",
+        "page-1.overlay.svg.gz": "795c1c3e9c859f652897b2f51b6790d66d53367180511e828fe597a35835e907",
+        "page-1.svg.gz": "ce24963a6fa3a41eeab26d350f68e0fc8557fffe01c38e3b3f0e36e1cbe64c07"
+      },
+      "staff_segments": 4,
+      "glyphs": [
+        "E050",
+        "E262",
+        "E083",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-7",
+      "font": "Leipzig",
+      "page": 1,
+      "source_sha256": "8a55295e039b6a747d053450e346e2e6fd6eac938a2d7d8200c11e9c066d82ed",
+      "artifacts": {
+        "page-1.labels.json": "ed1ff2f4d9d3161499ce05ccdfeb9c672569ec7976b69ecfaba5f9d6ede40792",
+        "page-1.overlay.svg.gz": "3205db68773625943cab6cad45241ba9be36717485eda7ce0f8f7820aad15569",
+        "page-1.svg.gz": "e5ff114969de00f515af87769d8942c0520b20a80aafa973820d0ba6c28ef12f"
+      },
+      "staff_segments": 8,
+      "glyphs": [
+        "E050",
+        "E262",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-7",
+      "font": "Bravura",
+      "page": 1,
+      "source_sha256": "8a55295e039b6a747d053450e346e2e6fd6eac938a2d7d8200c11e9c066d82ed",
+      "artifacts": {
+        "page-1.labels.json": "6e155863e90c86af82590a2450839435221a1917bc1f4863fcccfb62a42d1dcd",
+        "page-1.overlay.svg.gz": "12c9725f8073a84548e56f799db36eaef05ff914589744a1a6059a5c8a2463c6",
+        "page-1.svg.gz": "fb5ba89ea546a5742fe12c0437061a875ed7dcb21fae35254ecc4e300744a0da"
+      },
+      "staff_segments": 8,
+      "glyphs": [
+        "E050",
+        "E262",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-7",
+      "font": "Leland",
+      "page": 1,
+      "source_sha256": "8a55295e039b6a747d053450e346e2e6fd6eac938a2d7d8200c11e9c066d82ed",
+      "artifacts": {
+        "page-1.labels.json": "877fa4321cc8007dc05d86f22f4fe2a8cfab1e9a06df1be40d46ab4eabcd2e42",
+        "page-1.overlay.svg.gz": "4093cd353179d286d3b207a94af579e8221530d20c502a65014a36efc8efc681",
+        "page-1.svg.gz": "c928f333524571ce8b0c5137f2c75b2cc9b99643c4ede65f8ea2a6d2b3e46fda"
+      },
+      "staff_segments": 8,
+      "glyphs": [
+        "E050",
+        "E262",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-8",
+      "font": "Leipzig",
+      "page": 1,
+      "source_sha256": "71491b09134f52fe4a1334477070a93063ee663b15148977e48aef0f145d7fb3",
+      "artifacts": {
+        "page-1.labels.json": "3f81336cd3aa91803dde32c526f06bc8a27b6af7f32cefae9ae5337f9d622bf0",
+        "page-1.overlay.svg.gz": "c3fefa5180da5386e43aa870c5ade061fabaa7ea235f8436bb1eb1e3b292b5b9",
+        "page-1.svg.gz": "6e6f7b5d5235d697177f792559fc9aaca020e8d4f0ef3d20341844edc35640d9"
+      },
+      "staff_segments": 4,
+      "glyphs": [
+        "E050",
+        "E262",
+        "E083",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-8",
+      "font": "Bravura",
+      "page": 1,
+      "source_sha256": "71491b09134f52fe4a1334477070a93063ee663b15148977e48aef0f145d7fb3",
+      "artifacts": {
+        "page-1.labels.json": "4fc409b834ceecbcc7c573e730c8f47715c82e8bb23fbea362f9438a494e8e5d",
+        "page-1.overlay.svg.gz": "b196b0acef9a8614e6597f4ea13ec976dc4a488db5724242bd4521eba766cf36",
+        "page-1.svg.gz": "871a7441cc935b420a6aaaf5f9fac409f67295fc430bcfe80d8bc4e1f1826007"
+      },
+      "staff_segments": 4,
+      "glyphs": [
+        "E050",
+        "E262",
+        "E083",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-8",
+      "font": "Leland",
+      "page": 1,
+      "source_sha256": "71491b09134f52fe4a1334477070a93063ee663b15148977e48aef0f145d7fb3",
+      "artifacts": {
+        "page-1.labels.json": "9a1cf819a44d76e302ea09f22b29c232b4ec853f2ea054696805e22cdeabcda3",
+        "page-1.overlay.svg.gz": "387576ab27dd11d6acb7b2eefba7f0304309fcfa988fd6814b2b689d20edeb0b",
+        "page-1.svg.gz": "220d34c37592efff7f48c027648602953585e0d565aaa32f7755eda0d48f23de"
+      },
+      "staff_segments": 4,
+      "glyphs": [
+        "E050",
+        "E262",
+        "E083",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-9",
+      "font": "Leipzig",
+      "page": 1,
+      "source_sha256": "c61a97bd0a0bea7e52b4908c2a825d5ede5e840e26b2cb003a75c68136c4ea4a",
+      "artifacts": {
+        "page-1.labels.json": "48507eab640e2be5d001580355a451fa23837e16c0031b421616ee6cc6838d45",
+        "page-1.overlay.svg.gz": "34d942e47e6c1d5a7c8818c483d874bb8421e4e29fbca01ebcc9b931ec50ba24",
+        "page-1.svg.gz": "6f6451b0578ec3cbe79bc05f2282374e446d83c1b5dd856d47fc4bbb051f46d5"
+      },
+      "staff_segments": 8,
+      "glyphs": [
+        "E050",
+        "E262",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-9",
+      "font": "Bravura",
+      "page": 1,
+      "source_sha256": "c61a97bd0a0bea7e52b4908c2a825d5ede5e840e26b2cb003a75c68136c4ea4a",
+      "artifacts": {
+        "page-1.labels.json": "a6a30dd637453841e060e09cf6c77916286258e645f8074d2ddf07022d1de295",
+        "page-1.overlay.svg.gz": "823a7abf3e912f4321f70c59c9eb2f675188a0371c69f961c15f41f966ca0ee3",
+        "page-1.svg.gz": "97f0637312967e9f05980ef8674ca3072bf35d2c979f0895a899913fafbe356a"
+      },
+      "staff_segments": 8,
+      "glyphs": [
+        "E050",
+        "E262",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    },
+    {
+      "seed": "train-smoke-9",
+      "font": "Leland",
+      "page": 1,
+      "source_sha256": "c61a97bd0a0bea7e52b4908c2a825d5ede5e840e26b2cb003a75c68136c4ea4a",
+      "artifacts": {
+        "page-1.labels.json": "48644434f76f1f04554bf227b42dd361e9df4602007e2abb4a9c21dbbc463900",
+        "page-1.overlay.svg.gz": "a468e5eb89443b7bb68f0d8d6ff1c2051b9571a98b72aef3b7b550590109adf4",
+        "page-1.svg.gz": "0763a41c89ed1273bb015c92376175abccc3c7fce8387cf87c6a0b065541d10b"
+      },
+      "staff_segments": 8,
+      "glyphs": [
+        "E050",
+        "E262",
+        "E084",
+        "E0A4"
+      ],
+      "fallbacks": 0,
+      "source_staff_membership": "PASS",
+      "visual_review": "PASS",
+      "visual_reviewer": "W2 assistant; full-content overlay inspection, not human sign-off"
+    }
+  ],
+  "w4_scanner": "NOT_RUN / OR-002",
+  "training_admission": "BLOCKED_PENDING_W4",
+  "visual_method": "30 full-page PNGs inspected via 10 triptychs (blank margins trimmed only); inline pink staff overlay; original SVG plus labels retained under work/w2-smoke-real"
+}

@@ -1,0 +1,74 @@
+{
+  "checks": {
+    "ruff": {
+      "exit_code": 0,
+      "command": "ruff check ."
+    },
+    "format": {
+      "exit_code": 0,
+      "command": "ruff format --check ."
+    },
+    "mypy_base": {
+      "exit_code": 0,
+      "command": "mypy"
+    },
+    "mypy_w2": {
+      "exit_code": 0,
+      "command": "mypy --strict training/data"
+    },
+    "pytest": {
+      "exit_code": 0,
+      "command": "pytest --cov=training.data --cov=clavis --cov=scripts --cov-report=json:work/all-coverage.json --junitxml=work/all-tests.xml --cov-fail-under=80"
+    },
+    "imports": {
+      "exit_code": 0,
+      "command": "lint-imports"
+    },
+    "runtime_licenses": {
+      "exit_code": 0,
+      "command": "python scripts/check_licenses.py"
+    },
+    "integrity": {
+      "exit_code": 0,
+      "command": "python scripts/integrity_status.py"
+    },
+    "prepare": {
+      "exit_code": 0,
+      "command": "python -m training.data.smoke work/w2-smoke"
+    }
+  },
+  "tests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "1",
+    "tests": "34",
+    "time": "4.511",
+    "timestamp": "2026-09-29T02:51:58.670813+09:00"
+  },
+  "w2_coverage": {
+    "covered_lines": 215,
+    "num_statements": 231,
+    "percent_covered": 93.07359307359307,
+    "percent_covered_display": "93",
+    "missing_lines": 16,
+    "excluded_lines": 0,
+    "percent_statements_covered": 93.07359307359307,
+    "percent_statements_covered_display": "93"
+  },
+  "prepared_jobs": 30,
+  "actual_render": "NOT_RUN",
+  "manual_visual_audit": "NOT_RUN",
+  "w4_scanner": "NOT_RUN",
+  "w4_fingerprint_filter": "NOT_RUN",
+  "ci": {
+    "status": "PASS",
+    "commit": "1fde30e",
+    "platforms": [
+      "ubuntu-latest",
+      "windows-latest"
+    ],
+    "url": "https://github.com/jooa1018/clavis-omr/actions/runs/36461340190"
+  },
+  "scope": "REF-LAPTOP Windows; automatic tests and synthetic fixtures only; no dev/sealed/real images"
+}

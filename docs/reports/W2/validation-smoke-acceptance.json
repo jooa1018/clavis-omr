@@ -1,0 +1,66 @@
+{
+  "checks": {
+    "ruff": {
+      "exit_code": 0,
+      "command": "ruff check ."
+    },
+    "format": {
+      "exit_code": 0,
+      "command": "ruff format --check ."
+    },
+    "mypy_base": {
+      "exit_code": 0,
+      "command": "mypy"
+    },
+    "mypy_w2": {
+      "exit_code": 0,
+      "command": "mypy --strict training/data"
+    },
+    "pytest": {
+      "exit_code": 0,
+      "command": "pytest --cov=training.data --cov=clavis --cov=scripts --cov-report=json:work/all-coverage.json --junitxml=work/all-tests.xml --cov-fail-under=80"
+    },
+    "imports": {
+      "exit_code": 0,
+      "command": "lint-imports"
+    },
+    "runtime_licenses": {
+      "exit_code": 0,
+      "command": "python scripts/check_licenses.py"
+    },
+    "integrity": {
+      "exit_code": 0,
+      "command": "python scripts/integrity_status.py"
+    },
+    "prepare": {
+      "exit_code": 0,
+      "command": "python -m training.data.smoke work/w2-smoke"
+    }
+  },
+  "tests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "1",
+    "tests": "37",
+    "time": "4.903",
+    "timestamp": "2026-09-29T08:29:09.948522+09:00"
+  },
+  "w2_coverage": {
+    "covered_lines": 241,
+    "num_statements": 261,
+    "percent_covered": 92.33716475095785,
+    "percent_covered_display": "92",
+    "missing_lines": 20,
+    "excluded_lines": 0,
+    "percent_statements_covered": 92.33716475095785,
+    "percent_statements_covered_display": "92"
+  },
+  "prepared_jobs": 30,
+  "actual_render": "PASS",
+  "manual_visual_audit": "PASS (W2 assistant, not human)",
+  "w4_scanner": "NOT_RUN",
+  "w4_fingerprint_filter": "NOT_RUN",
+  "ci": "PENDING",
+  "scope": "REF-LAPTOP Windows; automatic tests and synthetic fixtures only; no dev/sealed/real images"
+}

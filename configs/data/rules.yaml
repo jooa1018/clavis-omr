@@ -1,0 +1,14 @@
+- id: DATA-SVG-001
+  owner: W2
+  statement: "Read only explicit five-line staff paths within renderer-owned staff groups; retain system, measure and staff provenance. Unsupported structures are excluded."
+  units: svg_staff_local
+  params: []
+  source: convention
+  evidence: https://book.verovio.org/toolkit-reference/toolkit-options.html
+  flag: configs/data/smoke.json#staff_path_extraction_enabled
+  ablation:
+    status: NOT_RUN
+    report: docs/reports/W2/2026-09-29-data-smoke.md
+    reason: "Parser toggle tested; recognition metric ablation awaits W1/W4 and actual render audit."
+  introduced_by: w2/start
+  motivated_by_failure: false
