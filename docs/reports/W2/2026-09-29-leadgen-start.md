@@ -7,7 +7,7 @@
 개발 프로필만 허용하며 생산 분포·전체 P0·학습 편입은 아직 승인/검증 대상이다.
 
 ## 2. 변경 (PR 링크, 주요 파일·모듈)
-PR 링크는 생성 후 갱신한다. training/data/leadgen.py, configs/data/leadgen-development.yaml,
+[draft PR #9](https://github.com/jooa1018/clavis-omr/pull/9). training/data/leadgen.py, configs/data/leadgen-development.yaml,
 tests/data/test_leadgen.py, DATA-GEN-001 카탈로그, ADR-010 초안.
 LeadGen 자체 작성물은 tool-test만 허용하도록 원천 등록부 갱신. 원본 worktree 변경 없음.
 
@@ -18,7 +18,8 @@ MusicXML 4.0, LSTL/IR v0.1 계약 변경 없음. ADR-010은 PROPOSED, 채택하�
 
 ## 4. 검증 (테스트 수, CI 결과, 결정성, 스캐너, 라이선스 스캔)
 LeadGen 신규 10 tests passed, 코드 coverage 98.05%. 전체 90 passed / 1 기존 skip.
-ruff·format·base/W2 strict mypy·import 경계·runtime license 통과. CI는 PR 생성 후 확인한다.
+ruff·format·base/W2 strict mypy·import 경계·runtime license 통과. 코드 commit ceb79cb의
+[Windows/Linux CI](https://github.com/jooa1018/clavis-omr/actions/runs/36499453925) 모두 통과.
 ±7 조표 × 6박자=90 표본을 독립 파싱, 각 마디 시간합과 표기음가를 검사했고 반복 바이트 일치.
 높은음자리·낮은음자리·테너 8vb 각각 실제 외부 Verovio 렌더 성공.
 W4 스캐너/지문 필터 NOT_RUN(OR-002); 원천 출처 검사와 학습 출력 차단 유지.

@@ -653,7 +653,15 @@
   "training_admission": "BLOCKED_PENDING_W4_AND_APPROVED_PROFILE",
   "p0_complete": false,
   "benchmark_10000": "NOT_RUN",
-  "ci": "PENDING",
+  "ci": {
+    "status": "PASS",
+    "commit": "ceb79cb",
+    "platforms": [
+      "ubuntu-latest",
+      "windows-latest"
+    ],
+    "url": "https://github.com/jooa1018/clavis-omr/actions/runs/36499453925"
+  },
   "previous_pr": {
     "number": 5,
     "state": "MERGED",
