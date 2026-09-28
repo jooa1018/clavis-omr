@@ -11,7 +11,7 @@ an upstream candidate is not an admitted training source. No corpus was download
 | Mutopia | Pending per-work review; CC-BY-SA requires Orchestrator approval |
 | OpenScore Lieder | Entire corpus forbidden for training; evaluation belongs to W4 |
 | Verovio 6.3.0 | LGPL-3.0-only, separate non-distributed renderer process |
-| Leipzig, Bravura, Leland | Upstream OFL-1.1 checked; bundled resource audit pending |
+| Leipzig, Bravura, Leland | Upstream OFL-1.1 and bundled resources verified; hashes in sources.json |
 | Other music/text fonts, lyrics | Candidates only; no permission inferred |
 
 The JSON records URL, version, license, permitted uses, attribution, check date
@@ -30,6 +30,10 @@ Evidence reviewed 2026-09-29:
 - [PDMX distribution](https://zenodo.org/records/14648209)
 - [Mutopia terms](https://www.mutopiaproject.org/legal.html)
 
-Next: record exact fetched artifact versions/hashes, item-level rights and W4
-exclusion receipts before admitting any shard. Korean author death dates and
+The 30-page smoke audit matched every used glyph to its selected bundled font
+with zero fallback; see `docs/reports/W2/render-audit-v0.json`. This does not
+establish full glyph coverage or license clearance for pending candidates.
+
+Next: record item-level rights and W4 exclusion receipts before admitting any shard.
+Korean author death dates and
 English publication years are screening hints, not blanket rights clearance.
