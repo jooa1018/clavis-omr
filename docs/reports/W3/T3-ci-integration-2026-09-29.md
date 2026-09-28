@@ -1,5 +1,5 @@
 # [W3] T3 CI 통합 보고 — 2026-09-29
-판정: PARTIAL (원격 CI 확인 전)
+판정: PASS (첫 PR CI 연결 작업; G0/G1 판정 아님)
 
 ## 1. 요약 (3줄 이내)
 W1 PR #7과 최신 origin/main을 W3 브랜치에 merge했다.
@@ -18,7 +18,9 @@ Orchestrator OR-002: W4 스캐너 NOT_RUN을 기록하고 B등급 병합 가능.
 ## 4. 검증 (테스트 수, CI 결과, 결정성, 스캐너, 라이선스 스캔)
 로컬 Windows CPU, 자동 합성 테스트 44 PASS, W3 coverage 97.36842105263158%.
 ruff/format/W3 strict mypy PASS. 동일 시드/1·4스레드/replay 시험 포함.
-원격 Linux/Windows CI의 W3 실제 실행 결과는 확인 후 아래에 기록한다.
+원격 CI run 36497679345, 코드 커밋 60fda7b: 두 OS 모두 W3 44개가 실제 실행되어 통과했다.
+각 OS 전체 55 PASS / 계약 fixture 1 SKIP, W3 SKIP 0. Linux 4.27초, Windows 6.03초.
+https://github.com/jooa1018/clavis-omr/actions/runs/36497679345
 W4 무결성 스캐너 NOT_RUN(OR-002), 계약 fixture 미구현 NOT_RUN.
 의존성 버전 변경 없음; W1 승인 그룹 사용. 런타임 license 검사는 CI에서 유지된다.
 
@@ -35,5 +37,5 @@ W4 스캐너와 계약 fixture는 미구현이며 전체 G0/G1 통과 선언이 
 첫 보고서의 W3 CI 부재와 draft 유지 제한은 이 후속 검증 완료 시 해소된다.
 
 ## 8. 다음 단계 / 필요한 결정 / 블로커
-두 OS에서 W3 44개 실제 통과를 확인한 후 draft를 해제하고 B등급 squash 병합한다.
+두 OS의 W3 실제 통과를 확인했다. 이 보고서 커밋의 CI도 확인한 후 draft 해제/B등급 squash 병합한다.
 이후 별도 w3 브랜치/PR에서 8계열 연산과 촬영 경로 프리셋을 구현한다.
