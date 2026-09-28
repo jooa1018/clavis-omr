@@ -1,0 +1,119 @@
+[
+  {
+    "case": "01-identical",
+    "k1Operations": 0,
+    "pitchNumerator": 1,
+    "durationNumerator": 1,
+    "measureNumerator": 1,
+    "eventDenominator": 1,
+    "pitchDenominator": 1
+  },
+  {
+    "case": "02-divisions",
+    "k1Operations": 0,
+    "pitchNumerator": 1,
+    "durationNumerator": 1,
+    "measureNumerator": 1,
+    "eventDenominator": 1,
+    "pitchDenominator": 1
+  },
+  {
+    "case": "03-voice-number",
+    "k1Operations": 0,
+    "pitchNumerator": 1,
+    "durationNumerator": 1,
+    "measureNumerator": 1,
+    "eventDenominator": 1,
+    "pitchDenominator": 1
+  },
+  {
+    "case": "04-pitch",
+    "k1Operations": 1,
+    "pitchNumerator": 0,
+    "durationNumerator": 1,
+    "measureNumerator": 0,
+    "eventDenominator": 1,
+    "pitchDenominator": 1
+  },
+  {
+    "case": "05-duration",
+    "k1Operations": 1,
+    "pitchNumerator": 1,
+    "durationNumerator": 0,
+    "measureNumerator": 0,
+    "eventDenominator": 1,
+    "pitchDenominator": 1
+  },
+  {
+    "case": "06-missing",
+    "k1Operations": 1,
+    "pitchNumerator": 1,
+    "durationNumerator": 1,
+    "measureNumerator": 0,
+    "eventDenominator": 2,
+    "pitchDenominator": 2
+  },
+  {
+    "case": "07-extra",
+    "k1Operations": 1,
+    "pitchNumerator": 1,
+    "durationNumerator": 1,
+    "measureNumerator": 0,
+    "eventDenominator": 1,
+    "pitchDenominator": 1
+  },
+  {
+    "case": "08-kind-duration",
+    "k1Operations": 1,
+    "pitchNumerator": 0,
+    "durationNumerator": 0,
+    "measureNumerator": 0,
+    "eventDenominator": 1,
+    "pitchDenominator": 1
+  },
+  {
+    "case": "09-chord-alias",
+    "k1Operations": 0,
+    "pitchNumerator": 1,
+    "durationNumerator": 1,
+    "measureNumerator": 1,
+    "eventDenominator": 1,
+    "pitchDenominator": 1
+  },
+  {
+    "case": "10-lyric",
+    "k1Operations": 0,
+    "pitchNumerator": 1,
+    "durationNumerator": 1,
+    "measureNumerator": 1,
+    "eventDenominator": 1,
+    "pitchDenominator": 1
+  },
+  {
+    "case": "11-onset-cascade",
+    "k1Operations": 1,
+    "pitchNumerator": 2,
+    "durationNumerator": 2,
+    "measureNumerator": 0,
+    "eventDenominator": 3,
+    "pitchDenominator": 2
+  },
+  {
+    "case": "12-compound",
+    "k1Operations": 1,
+    "pitchNumerator": 0,
+    "durationNumerator": 0,
+    "measureNumerator": 0,
+    "eventDenominator": 1,
+    "pitchDenominator": 1
+  },
+  {
+    "case": "13-no-lyrics",
+    "k1Operations": 0,
+    "pitchNumerator": 1,
+    "durationNumerator": 1,
+    "measureNumerator": 1,
+    "eventDenominator": 1,
+    "pitchDenominator": 1
+  }
+]
