@@ -1,0 +1,255 @@
+{
+  "version": "0",
+  "sources": [
+    {
+      "id": "clavis-smoke",
+      "name": "Clavis self-authored smoke fixtures",
+      "url": "training/data/smoke_inputs.py",
+      "version": "v0",
+      "license": "self-generated",
+      "status": "verified",
+      "allowed_uses": [
+        "tool-test"
+      ],
+      "attribution": "Clavis project contributors",
+      "checked_on": "2026-09-29",
+      "verification_method": "Self-authored enumerated synthetic notation; no external tune, lyrics or private input"
+    },
+    {
+      "id": "leadgen",
+      "name": "Clavis LeadGen",
+      "url": "docs/tasks/W2_DATA_FACTORY.md",
+      "version": "unselected",
+      "license": "self-generated",
+      "status": "pending",
+      "allowed_uses": [],
+      "attribution": "Clavis project contributors",
+      "checked_on": "2026-09-29",
+      "verification_method": "Not implemented; W4 exclusion required before admission"
+    },
+    {
+      "id": "pdmx",
+      "name": "PDMX",
+      "url": "https://zenodo.org/records/14648209",
+      "version": "unselected",
+      "license": "item-level: PDM-1.0 or CC0-1.0 only",
+      "status": "pending",
+      "allowed_uses": [],
+      "attribution": "Record item-level original attribution and source",
+      "checked_on": "2026-09-29",
+      "verification_method": "Distribution landing page reviewed only. Require no_license_conflict AND per-item PDM/CC0; no download"
+    },
+    {
+      "id": "mutopia",
+      "name": "Mutopia",
+      "url": "https://www.mutopiaproject.org/legal.html",
+      "version": "unselected",
+      "license": "item-level",
+      "status": "pending",
+      "allowed_uses": [],
+      "attribution": "Preserve each selected work's attribution",
+      "checked_on": "2026-09-29",
+      "verification_method": "Legal page reviewed; item rights not selected. CC-BY-SA requires Orchestrator approval"
+    },
+    {
+      "id": "openscore-lieder",
+      "name": "OpenScore Lieder",
+      "url": "https://github.com/OpenScore/Lieder",
+      "version": "unselected",
+      "license": "CC0-1.0 (transcriptions)",
+      "status": "eval-only",
+      "allowed_uses": [],
+      "attribution": "OpenScore Lieder; original edition attribution must be verified by W4",
+      "checked_on": "2026-09-29",
+      "verification_method": "Repository landing page reviewed. Entire corpus excluded from training by Charter 7; no data accessed"
+    },
+    {
+      "id": "verovio",
+      "name": "Verovio isolated renderer",
+      "url": "https://pypi.org/project/verovio/6.3.0/",
+      "version": "6.3.0",
+      "license": "LGPL-3.0-only",
+      "status": "verified",
+      "allowed_uses": [
+        "external-render-tool"
+      ],
+      "attribution": "Verovio contributors; preserve COPYING and COPYING.LESSER",
+      "checked_on": "2026-09-29",
+      "verification_method": "PyPI license expression and official licensing reference reviewed; non-distributed subprocess only"
+    },
+    {
+      "id": "leipzig",
+      "name": "Leipzig",
+      "url": "https://raw.githubusercontent.com/rism-digital/leipzig/main/LICENSE.txt",
+      "version": "Verovio 6.3.0 resource candidate",
+      "license": "OFL-1.1",
+      "status": "verified",
+      "allowed_uses": [
+        "render-font"
+      ],
+      "attribution": "Etienne Darbellay, Jean-Francois Marti and Laurent Pugin; retain original copyright and OFL on font redistribution",
+      "checked_on": "2026-09-29",
+      "verification_method": "Upstream LICENSE.txt reviewed; verify bundled resource versions/hashes at first queue run"
+    },
+    {
+      "id": "bravura",
+      "name": "Bravura",
+      "url": "https://raw.githubusercontent.com/steinbergmedia/bravura/master/LICENSE.txt",
+      "version": "Verovio 6.3.0 resource candidate",
+      "license": "OFL-1.1",
+      "status": "verified",
+      "allowed_uses": [
+        "render-font"
+      ],
+      "attribution": "Steinberg Media Technologies GmbH; retain original copyright and OFL on font redistribution",
+      "checked_on": "2026-09-29",
+      "verification_method": "Upstream LICENSE.txt reviewed; verify bundled resource versions/hashes at first queue run"
+    },
+    {
+      "id": "leland",
+      "name": "Leland",
+      "url": "https://raw.githubusercontent.com/MuseScoreFonts/Leland/main/LICENSE.txt",
+      "version": "Verovio 6.3.0 resource candidate",
+      "license": "OFL-1.1",
+      "status": "verified",
+      "allowed_uses": [
+        "render-font"
+      ],
+      "attribution": "MuseScore BV / MuseScore contributors; retain original copyright and OFL on font redistribution",
+      "checked_on": "2026-09-29",
+      "verification_method": "Upstream LICENSE.txt reviewed; verify bundled resource versions/hashes at first queue run"
+    },
+    {
+      "id": "gootville",
+      "name": "Gootville",
+      "url": "https://github.com/MuseScoreFonts/Gootville",
+      "version": "unselected",
+      "license": "UNVERIFIED",
+      "status": "pending",
+      "allowed_uses": [],
+      "attribution": "Pending exact artifact copyright notice",
+      "checked_on": "2026-09-29",
+      "verification_method": "Candidate only; not fetched or authorized for use"
+    },
+    {
+      "id": "petaluma",
+      "name": "Petaluma",
+      "url": "https://github.com/steinbergmedia/petaluma",
+      "version": "unselected",
+      "license": "UNVERIFIED",
+      "status": "pending",
+      "allowed_uses": [],
+      "attribution": "Pending exact artifact copyright notice",
+      "checked_on": "2026-09-29",
+      "verification_method": "Candidate only; not fetched or authorized for use"
+    },
+    {
+      "id": "sebastian",
+      "name": "Sebastian",
+      "url": "https://github.com/fkretlow/sebastian",
+      "version": "unselected",
+      "license": "UNVERIFIED",
+      "status": "pending",
+      "allowed_uses": [],
+      "attribution": "Pending exact artifact copyright notice",
+      "checked_on": "2026-09-29",
+      "verification_method": "Candidate only; not fetched or authorized for use"
+    },
+    {
+      "id": "noto-kr",
+      "name": "Noto Sans/Serif KR",
+      "url": "https://github.com/notofonts/noto-cjk",
+      "version": "unselected",
+      "license": "UNVERIFIED",
+      "status": "pending",
+      "allowed_uses": [],
+      "attribution": "Pending exact artifact copyright notice",
+      "checked_on": "2026-09-29",
+      "verification_method": "Candidate only; not fetched or authorized for use"
+    },
+    {
+      "id": "nanum",
+      "name": "Nanum",
+      "url": "https://hangeul.naver.com/font",
+      "version": "unselected",
+      "license": "UNVERIFIED",
+      "status": "pending",
+      "allowed_uses": [],
+      "attribution": "Pending exact artifact copyright notice",
+      "checked_on": "2026-09-29",
+      "verification_method": "Candidate only; not fetched or authorized for use"
+    },
+    {
+      "id": "gowun",
+      "name": "Gowun",
+      "url": "https://github.com/yangheeryu/Gowun-Dodum",
+      "version": "unselected",
+      "license": "UNVERIFIED",
+      "status": "pending",
+      "allowed_uses": [],
+      "attribution": "Pending exact artifact copyright notice",
+      "checked_on": "2026-09-29",
+      "verification_method": "Candidate only; not fetched or authorized for use"
+    },
+    {
+      "id": "ibm-plex-kr",
+      "name": "IBM Plex Sans KR",
+      "url": "https://github.com/IBM/plex",
+      "version": "unselected",
+      "license": "UNVERIFIED",
+      "status": "pending",
+      "allowed_uses": [],
+      "attribution": "Pending exact artifact copyright notice",
+      "checked_on": "2026-09-29",
+      "verification_method": "Candidate only; not fetched or authorized for use"
+    },
+    {
+      "id": "pretendard",
+      "name": "Pretendard",
+      "url": "https://github.com/orioncactus/pretendard",
+      "version": "unselected",
+      "license": "UNVERIFIED",
+      "status": "pending",
+      "allowed_uses": [],
+      "attribution": "Pending exact artifact copyright notice",
+      "checked_on": "2026-09-29",
+      "verification_method": "Candidate only; not fetched or authorized for use"
+    },
+    {
+      "id": "lyrics-ko-pd",
+      "name": "Korean public-domain lyrics",
+      "url": "docs/tasks/W2_DATA_FACTORY.md#t21",
+      "version": "unselected",
+      "license": "UNVERIFIED",
+      "status": "pending",
+      "allowed_uses": [],
+      "attribution": "Pending author/work provenance",
+      "checked_on": "2026-09-29",
+      "verification_method": "No text collected; per-work rights review required, date heuristic alone is not a rights clearance"
+    },
+    {
+      "id": "lyrics-en-pd",
+      "name": "English public-domain lyrics",
+      "url": "docs/tasks/W2_DATA_FACTORY.md#t21",
+      "version": "unselected",
+      "license": "UNVERIFIED",
+      "status": "pending",
+      "allowed_uses": [],
+      "attribution": "Pending author/work provenance",
+      "checked_on": "2026-09-29",
+      "verification_method": "No text collected; per-work rights review required, date heuristic alone is not a rights clearance"
+    },
+    {
+      "id": "lyrics-own",
+      "name": "Self-authored lyrics",
+      "url": "docs/tasks/W2_DATA_FACTORY.md#t21",
+      "version": "unselected",
+      "license": "UNVERIFIED",
+      "status": "pending",
+      "allowed_uses": [],
+      "attribution": "Pending author/work provenance",
+      "checked_on": "2026-09-29",
+      "verification_method": "No text collected; per-work rights review required, date heuristic alone is not a rights clearance"
+    }
+  ]
+}

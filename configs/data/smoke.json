@@ -1,0 +1,22 @@
+{
+  "renderer_version": "6.3.0",
+  "staff_path_extraction_enabled": true,
+  "fonts": ["Leipzig", "Bravura", "Leland"],
+  "song_count": 10,
+  "max_input_bytes": 1048576,
+  "max_svg_bytes": 8388608,
+  "timeout_seconds": 60,
+  "max_pages": 8,
+  "job_reserve_bytes": 134217728,
+  "data_budget_bytes": 4000000000,
+  "min_free_bytes": 3000000000,
+  "options": {
+    "inputFrom": "xml",
+    "svgAdditionalAttribute": ["staff@n"],
+    "svgViewBox": true,
+    "xmlIdSeed": 1,
+    "header": "none",
+    "footer": "none",
+    "breaks": "encoded"
+  }
+}
