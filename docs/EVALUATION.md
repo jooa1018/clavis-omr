@@ -1,7 +1,10 @@
-# Clavis 평가 프로토콜 v1.0
+# Clavis 평가 프로토콜 v1.1
 
 > 소유: W4(구현·운영), Orchestrator(승인), Custodian(sealed 보관·실행).
 > 이 문서는 "무엇을 잘했다고 말할 수 있는가"의 유일한 기준이다. 평가기를 바꾸면 버전을 올리고 기준선부터 다시 측정한다.
+
+> v1.1: ADR-012 수정 채택(Orchestrator, 2026-09-29). §4.2·5.1·5.2·5.4의
+> 객체 단위 교정·정렬·분모를 확정했다. 기존 평가기·B0 측정은 없어 재측정 대상 없음.
 
 ## 1. 원칙
 
@@ -67,37 +70,43 @@ MusicXML을 다음 정규 구조로 바꾼다(W4 `eval/projection/`).
 
 ### 4.2 정렬
 
-1. **마디 정렬**: 기준과 예측의 마디열을 동적 계획법으로 정렬한다. 연산은 일치, 삽입, 삭제, 분할(1→2), 병합(2→1)이다. 비용은 마디 내용 유사도(이벤트 튜플 다중집합 거리)로 정한다. barline 인식 오류를 분할·병합으로 흡수하기 위해서다.
+1. **마디 정렬**: 기준과 예측의 마디열을 DP로 정렬한다. 연산은 일치, 삽입, 삭제, 분할(1→2), 병합(2→1). 비용은 해당 마디 쌍의 이벤트 DP K1 비용을 그대로 쓴다. 분할·병합은 마디를 이어 붙여 비교하고 구조 연산 +1, 누락·여분 마디는 내부 이벤트 수 +1(빈 마디도 1)이다. 이어 붙일 때 onset은 앞 마디 길이만큼 누적한다. 다중집합 대칭차 근사는 쓰지 않는다.
 2. **성부 대응**: 정렬된 마디 쌍 안에서 성부를 최적 매칭한다(헝가리안, 비용 = 이벤트 편집 거리).
-3. **이벤트 정렬**: 성부 쌍마다 onset 순서의 이벤트열을 편집 거리로 정렬한다. 치환 비용은 필드 불일치 수에 비례한다.
-4. **코드 정렬**: (정렬된 마디, onset) 기준으로 짝짓는다. 위치는 같은 정렬 마디 안의 onset 일치로 판정한다.
+3. **이벤트 정렬**: 성부 쌍마다 onset 순서로 정렬하되 onset은 대응 키에서 제외한다. 목적함수 `(K1 연산 수, 대응 쌍 필드 불일치 총수, |Δonset| 총합)`를 사전식 최소화한다. kind·pitch·duration·tie(start/stop) 중 하나라도 다르면 K1 비용은 1, 누락·여분 각 1이다. 필드 정확도와 pairs.json은 이 정렬로 계산한다.
+4. **코드 정렬**: 정렬된 마디 안에서 코드 객체를 대응한다. 위치는 onset 일치로 판정하되 위치가 다른 코드도 대응해 오류를 기록한다. 값 또는 위치가 틀리면 객체당 1, 누락·여분 각 1이다.
 5. **가사 정렬**: 정렬된 이벤트 쌍을 따라 절별로 비교한다.
 
 모든 쌍과 필드 오류를 `pairs.json`에 기록한다. 평가기 버전과 해시를 모든 보고서에 싣는다.
+완전 동점은 이벤트 대응→삭제→삽입, 마디 1:1→분할→병합→삭제→삽입,
+동일 후보는 입력 문서 순서다(ADR-012). 미지원 투영 요소는 조용히 버리지 않고
+`evaluation-unsupported`로 표시한다.
 
 ## 5. 지표
 
 ### 5.1 K1 교정 부담 (correction ops / 100 기준 이벤트)
 
-정렬 결과를 HarmonyMaker typed patch 기준의 **최소 연산 수**로 환산한다.
+단위는 **교정 대상 객체 수**다. 같은 kind에도 replace-event를 허용하며,
+한 객체의 여러 필드 오류를 중복 과금하지 않는다(ADR-012).
 
 | 오류 | 연산 수 |
 |---|---|
 | 이벤트 누락(삽입 필요), 여분 이벤트(삭제 필요) | 각 1 |
-| pitch 오류(step, alter, octave 중 하나라도) | 1 |
-| duration 오류 | 1 |
-| note↔rest↔rhythm 종류 오류 | 1 (replace-event) |
-| tie 오류 | 1 |
-| 성부 오배정 | 1 |
+| 대응 이벤트의 kind·pitch·duration·tie(start/stop) 중 하나라도 다름 | 객체당 1 (replace-event), 필드 수와 무관 |
 | 마디 분할·병합 필요 | 각 1 (barline 삽입·삭제) |
+| 누락·여분 마디 | 내부 이벤트 수 + 1 (빈 마디는 1), 이벤트 누락·여분을 다시 더하지 않음 |
 | 조표·박자·음자리표 오류 | 발생 지점당 1 |
-| 코드 값 오류, 코드 위치 오류, 코드 누락·여분 | 각 1 |
+| 대응 코드의 값 또는 위치 오류 | 객체당 1 |
+| 코드 누락·여분 | 각 1 |
 
 K1 = 총 연산 수 / 기준 이벤트 수 × 100. 가사는 따로 **K1-L**(가사 음절 연산 / 100 음절)로 보고한다.
+onset만 다른 이벤트는 K1에 더하지 않고 `onsetOnlyMismatch`와 measureExact에만
+반영한다. 앞선 길이·삽입에서 파생되는 onset을 중복 과금하지 않는다.
+진단 수치가 커지면(예: 성부 2 forward 오류) ADR-012 재검토를 요청한다.
+계약 변경이나 새 onset patch는 없다. 분모 0은 null과 denominator 0으로 보고한다.
 
 ### 5.2 K2 무표시 오류율
 
-- **편곡 영향 오류**: pitch, duration·onset, 종류, tie, 마디 구조, 조표, 박자, 코드 값·위치.
+- **편곡 영향 오류**: K1 교정 객체 중 pitch, duration, 종류, tie, 마디 구조, 조표·박자·음자리표, 코드 값·위치 오류. 한 객체에 여러 오류가 있어도 1이다. 가사와 onset만 다른 이벤트는 K2에서 제외한다.
 - 오류 요소(또는 그 요소가 속한 마디)가 `element-confidence.json`에서 `flagged=true`가 아니면 **무표시 오류**다. 누락 오류는 정렬된 예측 마디가 flag됐는지로 판단한다.
 - K2 = 무표시 편곡 영향 오류 수 / 기준 이벤트 수.
 - 함께 보고: **flag 부담**(flag된 예측 요소 비율), **flag 정밀도**(flag된 것 중 실제 오류 비율), **오류 재현율**(오류 중 flag된 비율).
@@ -108,7 +117,27 @@ K1 = 총 연산 수 / 기준 이벤트 수 × 100. 가사는 따로 **K1-L**(가
 
 ### 5.4 HarmonyMaker 지표 (이름 동일)
 
-`pitchExactRate`, `durationExactRate`, `accidentalExactRate`, `restExactRate`, `tieExactRate`, `keySignatureExactRate`, `timeSignatureExactRate`, `chordSymbolExactRate`, `measureExactMatchRate`, `parseableMusicXmlRate`, `measureDurationValidRate`, `voiceTimelineValidRate`, `retakeRate`. 분자는 정렬된 쌍 중 해당 필드가 맞은 수이고, 분모는 기준 요소 수(누락 포함)다. micro와 macro를 모두 낸다.
+분자는 정렬된 쌍 중 해당 필드가 맞은 수다. 누락은 분모에서 빼지 않는다.
+micro와 macro를 모두 내며 분모 0은 null + denominator 0이다.
+
+| 지표 | 분모 |
+|---|---|
+| `pitchExactRate` | 기준 note, grace 제외 |
+| `durationExactRate` | 기준 note·rest·rhythm, grace 제외 |
+| `graceExact` | 기준 grace, 일반 pitch/duration과 분리 |
+| `restExactRate` | 기준 rest |
+| `tieExactRate` | 기준 또는 대응 예측 note 중 tie 표시가 하나라도 있는 note |
+| `accidentalExactRate` | 기준 note 중 alter가 조표 기본값과 다르거나 임시표가 보이는 note |
+| `keySignatureExactRate`, `timeSignatureExactRate` | 기준의 설정·변경 지점 |
+| `chordSymbolExactRate` | 기준 코드 객체, 값+위치 일치 |
+| `measureExactMatchRate` | 기준 마디 |
+
+measureExact는 1:1 대응 마디에서 이벤트(kind·pitch·duration·onset·tie),
+조표·박자·음자리표, 코드 값·위치, 도돌이·볼타 표시가 모두 일치해야 한다.
+가사는 제외하고 참고 지표 `measureExactWithLyrics`를 별도로 낸다.
+분할·병합은 exact가 아니다. ID·표시 번호·성부 번호·divisions 직렬화는 제외한다.
+`parseableMusicXmlRate`, `measureDurationValidRate`, `voiceTimelineValidRate`,
+`retakeRate`도 보고한다. 미지원 투영 요소는 `evaluation-unsupported`로 표시한다.
 
 ### 5.5 텍스트
 
