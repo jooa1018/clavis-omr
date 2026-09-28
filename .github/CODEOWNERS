@@ -46,3 +46,9 @@
 /configs/export/ @jooa1018 # W8; B unless an A-grade condition above applies
 /configs/integrity/ @jooa1018 # W4; B unless an A-grade condition above applies
 /configs/integrity/allowlist.yaml @jooa1018 # W4 implementation, Orchestrator approval; A
+/configs/data/ @jooa1018 # W2; B unless an A-grade condition above applies
+/configs/degrade/ @jooa1018 # W3; B unless an A-grade condition above applies
+/configs/eval/ @jooa1018 # W4; B unless an A-grade condition above applies
+/tests/data/ @jooa1018 # W2; B unless an A-grade condition above applies
+/tests/degrade/ @jooa1018 # W3; B unless an A-grade condition above applies
+/tests/eval/ @jooa1018 # W4; B unless an A-grade condition above applies
