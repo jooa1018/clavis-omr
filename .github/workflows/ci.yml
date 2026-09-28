@@ -29,18 +29,18 @@ jobs:
         with:
           version: '0.12.19'
           enable-cache: false
-      - run: uv sync --locked
-      - run: uv run --locked ruff check .
-      - run: uv run --locked ruff format --check .
-      - run: uv run --locked mypy
-      - run: uv run --locked pytest --cov=clavis --cov=scripts --cov-report=term-missing --cov-report=xml --cov-fail-under=80
-      - run: uv run --locked lint-imports
+      - run: uv sync --locked --all-groups
+      - run: uv run --locked --all-groups ruff check .
+      - run: uv run --locked --all-groups ruff format --check .
+      - run: uv run --locked --all-groups mypy
+      - run: uv run --locked --all-groups pytest tests/ --cov=clavis --cov=scripts --cov-report=term-missing --cov-report=xml --cov-fail-under=80
+      - run: uv run --locked --all-groups lint-imports
       - name: Runtime dependency license allowlist
-        run: uv run --locked python scripts/check_licenses.py
+        run: uv run --locked --all-groups python scripts/check_licenses.py
       - name: Contract schema validation
-        run: uv run --locked pytest tests/contracts
+        run: uv run --locked --all-groups pytest tests/contracts
       - name: W4 integrity integration status
-        run: uv run --locked python scripts/integrity_status.py
+        run: uv run --locked --all-groups python scripts/integrity_status.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
