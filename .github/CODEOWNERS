@@ -1,41 +1,48 @@
-# Worker handles are required placeholders, not GitHub approval identities.
-# Orchestrator must map these to real write-access accounts before enforcing reviews.
-* @astra-w1
-/docs/ @orchestrator
-/docs/reports/W1/ @astra-w1
-/src/clavis/contracts/ @astra-w1 @orchestrator
-/src/clavis/ingest/ @astra-w5
-/src/clavis/geometry/ @astra-w5
-/src/clavis/symbols/ @astra-w6
-/src/clavis/text/ @astra-w7
-/src/clavis/assemble/ @astra-w8
-/src/clavis/calibrate/ @astra-w8
-/src/clavis/export/ @astra-w8
-/src/clavis/pipeline/ @astra-w1 @astra-w8
-/src/clavis/service/ @astra-w9
-/training/data/ @astra-w2
-/training/degrade/ @astra-w3
-/training/jobs/ @astra-w1
-/training/models/staff/ @astra-w5
-/training/models/symbols/ @astra-w6
-/training/models/text/ @astra-w7
-/eval/ @astra-w4
-/deploy/ @astra-w9
-/data/manifests/ @astra-w2 @astra-w4
-/tests/contracts/ @astra-w1 @orchestrator
-/tests/ingest/ @astra-w5
-/tests/geometry/ @astra-w5
-/tests/symbols/ @astra-w6
-/tests/text/ @astra-w7
-/tests/assemble/ @astra-w8
-/tests/calibrate/ @astra-w8
-/tests/export/ @astra-w8
-/tests/service/ @astra-w9
-/configs/ingest/ @astra-w5
-/configs/geometry/ @astra-w5
-/configs/symbols/ @astra-w6
-/configs/text/ @astra-w7
-/configs/assemble/ @astra-w8
-/configs/calibrate/ @astra-w8
-/configs/export/ @astra-w8
-/configs/integrity/ @astra-w4
+# GitHub account: @jooa1018; worker ownership source: docs/PLAN.md section 6.5.
+# Review grades and comment approvals: docs/tasks/00_COMMON.md section 3.
+# A takes precedence over B: metrics/alignment definitions, threshold artifacts,
+# weakening CI checks, adopted ADRs, contracts and non-draft design docs.
+# Conditional grades below depend on the change content, not just its path.
+* @jooa1018 # W1; B unless an A-grade condition above applies
+/docs/ @jooa1018 # Orchestrator (W1-W9 follow approved text); A
+/docs/reports/ @jooa1018 # W1-W9 in their own report directories; B
+/docs/adr/ @jooa1018 # W1-W9 own drafts B; adoption A
+/docs/ccr/ @jooa1018 # W1-W9 own drafts B; approved contract changes A
+/docs/reports/W1/ @jooa1018 # W1; B unless an A-grade condition above applies
+/src/clavis/contracts/ @jooa1018 # W1 implementation, Orchestrator approval; A
+/src/clavis/ingest/ @jooa1018 # W5; B unless an A-grade condition above applies
+/src/clavis/geometry/ @jooa1018 # W5; B unless an A-grade condition above applies
+/src/clavis/symbols/ @jooa1018 # W6; B unless an A-grade condition above applies
+/src/clavis/text/ @jooa1018 # W7; B unless an A-grade condition above applies
+/src/clavis/assemble/ @jooa1018 # W8; B unless an A-grade condition above applies
+/src/clavis/calibrate/ @jooa1018 # W8; B unless an A-grade condition above applies
+/src/clavis/export/ @jooa1018 # W8; B unless an A-grade condition above applies
+/src/clavis/pipeline/ @jooa1018 # W1 scaffold / W8 integration; B unless an A-grade condition above applies
+/src/clavis/service/ @jooa1018 # W9; B unless an A-grade condition above applies
+/training/data/ @jooa1018 # W2; B unless an A-grade condition above applies
+/training/degrade/ @jooa1018 # W3; B unless an A-grade condition above applies
+/training/jobs/ @jooa1018 # W1; B unless an A-grade condition above applies
+/training/models/staff/ @jooa1018 # W5; B unless an A-grade condition above applies
+/training/models/symbols/ @jooa1018 # W6; B unless an A-grade condition above applies
+/training/models/text/ @jooa1018 # W7; B unless an A-grade condition above applies
+/eval/ @jooa1018 # W4; B, metrics/alignment definitions A
+/deploy/ @jooa1018 # W9; B unless an A-grade condition above applies
+/data/manifests/ @jooa1018 # W2, W4; B unless an A-grade condition above applies
+/tests/contracts/ @jooa1018 # W1 implementation, Orchestrator approval; A
+/tests/ingest/ @jooa1018 # W5; B unless an A-grade condition above applies
+/tests/geometry/ @jooa1018 # W5; B unless an A-grade condition above applies
+/tests/symbols/ @jooa1018 # W6; B unless an A-grade condition above applies
+/tests/text/ @jooa1018 # W7; B unless an A-grade condition above applies
+/tests/assemble/ @jooa1018 # W8; B unless an A-grade condition above applies
+/tests/calibrate/ @jooa1018 # W8; B unless an A-grade condition above applies
+/tests/export/ @jooa1018 # W8; B unless an A-grade condition above applies
+/tests/service/ @jooa1018 # W9; B unless an A-grade condition above applies
+/configs/ingest/ @jooa1018 # W5; B unless an A-grade condition above applies
+/configs/geometry/ @jooa1018 # W5; B unless an A-grade condition above applies
+/configs/symbols/ @jooa1018 # W6; B unless an A-grade condition above applies
+/configs/text/ @jooa1018 # W7; B unless an A-grade condition above applies
+/configs/assemble/ @jooa1018 # W8; B unless an A-grade condition above applies
+/configs/calibrate/ @jooa1018 # W8; B unless an A-grade condition above applies
+/configs/export/ @jooa1018 # W8; B unless an A-grade condition above applies
+/configs/integrity/ @jooa1018 # W4; B unless an A-grade condition above applies
+/configs/integrity/allowlist.yaml @jooa1018 # W4 implementation, Orchestrator approval; A

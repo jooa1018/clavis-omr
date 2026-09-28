@@ -1,0 +1,23 @@
+{
+  "task": "T1.1a",
+  "platform": "Windows",
+  "location": "user-laptop",
+  "invocation": "user-requested-manual",
+  "checks": {
+    "orchestratorTextExact": true,
+    "ciOnlyMainPushAndPullRequest": true,
+    "ciJobsUnchanged": true,
+    "codeownersOnlyRealAccountWithGradeComments": true,
+    "codeownersUniqueEntries": 43,
+    "quickEvaluationWording": true
+  },
+  "evaluation": {
+    "dev": "NOT_RUN",
+    "sealed": "NOT_ACCESSED",
+    "synthetic": "NOT_RUN",
+    "real": "NOT_RUN"
+  },
+  "trainingWallSeconds": 0,
+  "heavyBatchWallSeconds": 0,
+  "ci": "PENDING"
+}

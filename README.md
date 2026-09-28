@@ -65,7 +65,10 @@ uv run --locked pre-commit install
   CI에는 이 변수나 사적 파일을 전달하지 않는다.
 - `models/`는 W1 관리이며 바이너리를 추적하지 않는다. MANIFEST.json은 T1.6에서 추가한다.
   `data/`는 manifests만 추적한다. 다른 모듈의 README와 빈 패키지는 골격일 뿐이다.
-- CODEOWNERS 워커 핸들은 자리표시자다. Orchestrator의 실제 리뷰 없이 병합 승인을 주장하지 않는다.
+- CODEOWNERS 계정은 모두 `@jooa1018`이며 줄별 주석이 담당 워커와 A/B 등급을 나타낸다.
+  소유권 정본은 PLAN.md 6.5절이고, 승인은 00_COMMON.md 3절의 PR 코멘트 절차로 운영한다.
+  A등급은 Orchestrator 승인 후, B등급은 명시된 조건 충족 후 자체 squash 병합한다.
+  CI는 main push와 pull_request에서 실행하며 작업 브랜치 push에는 중복 실행하지 않는다.
 - 유료 컴퓨트 금지에 따라 계정의 무료 CI/초과 과금 차단을 확인하기 전에는
   `CLAVIS_FREE_CI_CONFIRMED` 저장소 변수를 설정하지 않는다. `true`일 때만 CI 작업이
   실행된다. 미설정으로 건너뛴 CI는 NOT_RUN이며 수용 기준을 통과한 것이 아니다.
