@@ -9,7 +9,8 @@
     "ciJobsUnchanged": true,
     "codeownersOnlyRealAccountWithGradeComments": true,
     "codeownersUniqueEntries": 43,
-    "quickEvaluationWording": true
+    "quickEvaluationWording": true,
+    "branchPushRunCount": 0
   },
   "evaluation": {
     "dev": "NOT_RUN",
@@ -19,5 +20,36 @@
   },
   "trainingWallSeconds": 0,
   "heavyBatchWallSeconds": 0,
-  "ci": "PENDING"
+  "ci": {
+    "status": "completed",
+    "conclusion": "success",
+    "headSha": "3d4c36b66059100748a031db3797c8e74211ccbf",
+    "url": "https://github.com/jooa1018/clavis-omr/actions/runs/36458713523",
+    "event": "pull_request",
+    "jobs": [
+      {
+        "name": "quality (ubuntu-latest, Python 3.12)",
+        "conclusion": "success",
+        "url": "https://github.com/jooa1018/clavis-omr/actions/runs/36458713523/job/109051560210"
+      },
+      {
+        "name": "quality (windows-latest, Python 3.12)",
+        "conclusion": "success",
+        "url": "https://github.com/jooa1018/clavis-omr/actions/runs/36458713523/job/109051560780"
+      }
+    ],
+    "testResults": {
+      "quality (ubuntu-latest, Python 3.12)": {
+        "passed": 11,
+        "skipped": 1
+      },
+      "quality (windows-latest, Python 3.12)": {
+        "passed": 11,
+        "skipped": 1
+      }
+    }
+  },
+  "githubCodeowners": {
+    "errors": []
+  }
 }
