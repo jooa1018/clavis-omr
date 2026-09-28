@@ -35,5 +35,11 @@
     "systems": 3
   },
   "recognitionEvaluation": "NOT_RUN",
-  "integrityScanner": "NOT_RUN"
+  "integrityScanner": "NOT_RUN",
+  "remoteCi": {
+    "commit": "bdd236f",
+    "runUrl": "https://github.com/jooa1018/clavis-omr/actions/runs/36498844309",
+    "ubuntu": "PASS",
+    "windows": "PASS"
+  }
 }
