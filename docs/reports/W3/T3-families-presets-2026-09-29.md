@@ -7,7 +7,7 @@ PR #6은 두 OS W3 44개 실제 통과와 OR-002에 따라 draft 해제 후 squa
 실사 사실성·지속 성능 PASS를 주장하지 않으며 ADR-011의 분포 해석/휨 근사 채택을 요청한다.
 
 ## 2. 변경 (PR 링크, 주요 파일·모듈)
-확장 PR: 생성 후 기록. 브랜치 `w3/families-presets`, 원본 worktree 변경 없음.
+확장 PR: https://github.com/jooa1018/clavis-omr/pull/10 (draft). 브랜치 `w3/families-presets`, 원본 worktree 변경 없음.
 `training/degrade/{ops,photometric,curve,presets,smoke}.py`, 모듈 README,
 `configs/degrade/presets.yaml`, `tests/degrade/test_effects.py`, ADR-011 초안.
 최신 W1 training 그룹과 W2 PR #5를 main에서 반영했다. 중복 requirements는 없다.
@@ -24,7 +24,10 @@ JUnit 실행 시간 17.444초, W3 라인 커버리지 97.45222929936305%.
 ruff/format/루트 mypy/W3 strict mypy/import 경계/runtime license audit PASS. 새 의존성 없음.
 12개 경로 각각 1·4스레드 × 3회 동일 시드/출력/trace 일치, 기록 replay 일치.
 PCG64·MT19937 RNG 상태 JSON 왕복, 기존 4연산 검사, 곡선 극값/마스크/접선 검사를 포함한다.
-원격 CI는 PR 생성 후 기록. W4 스캐너 NOT_RUN(OR-002), schema fixture NOT_RUN.
+원격 CI run 36499670575: 두 OS 모두 W3 84개 실제 통과, W3 SKIP 0.
+CI 통합 checkout에는 새 W4 PR #8도 포함되어 전체 172 PASS / 계약 fixture 1 SKIP이다.
+https://github.com/jooa1018/clavis-omr/actions/runs/36499670575 (코드 341c4ac).
+W4 스캐너 NOT_RUN(OR-002), schema fixture NOT_RUN.
 
 ## 5. 지표 (평가기 JSON 경로 + 핵심 수치 표: 이전 대비 변화와 95% CI, 슬라이스별)
 자동 근거: `families-presets-validation.json`, `families-presets-smoke.json`,
