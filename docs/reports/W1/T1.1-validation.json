@@ -47,9 +47,12 @@
     "percent_statements_covered_display": "95"
   },
   "ci": {
-    "ubuntu": "PENDING",
-    "windows": "PENDING",
-    "reason": "Free CI and zero paid-spend cap verified in GitHub UI; remote run pending"
+    "ubuntu": "PASS",
+    "windows": "PASS",
+    "runUrl": "https://github.com/jooa1018/clavis-omr/actions/runs/36457439989",
+    "testedCodeCommit": "5bc0a09",
+    "freeExecutionVerified": true,
+    "paidSpendBlocked": true
   },
   "evaluation": {
     "dev": "NOT_RUN",
