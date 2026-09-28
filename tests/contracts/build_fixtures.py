@@ -548,6 +548,18 @@ def author():
                 )
                 add_evidence(f"{mid}-d0", "symbol", [80.0, 150.0, 96.0, 16.0])
                 conf(f"{mid}-d0", "flow")
+            bar_index = 0
+            for side in ("barlineLeft", "barlineRight"):
+                if side in sm:
+                    bar_index += 1
+                    conf(f"{smid}-{side}", "flow", parentId=mid, path=f"barline[{bar_index}]")
+                    if sm[side]["style"] in ("repeatStart", "repeatEnd"):
+                        conf(
+                            f"{smid}-{side}-repeat",
+                            "flow",
+                            parentId=mid,
+                            path=f"barline[{bar_index}]/repeat[1]",
+                        )
             normalized, root, ckind = chord_data[m]
             chord = {
                 "normalized": normalized,

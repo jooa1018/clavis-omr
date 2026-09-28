@@ -6,7 +6,7 @@
     "errors": "0",
     "failures": "0",
     "skipped": "0",
-    "time": "7.622"
+    "time": "7.309"
   },
   "coverage": {
     "covered_lines": 1043,
@@ -20,7 +20,7 @@
   },
   "validDocuments": 16,
   "invalidDocuments": 41,
-  "canonicalFixtureSha256": "b6a3911f63b9f5abecc1b370db02cdbcafc56ae58e98b2723edc9fd5341b7e70",
+  "canonicalFixtureSha256": "fd16015c34dacc84f5dfeabe0977ce41a82d97b799bfb8a1fbde7ad6e2324ccc",
   "fixtureCounts": {
     "events": 20,
     "harmonies": 6,

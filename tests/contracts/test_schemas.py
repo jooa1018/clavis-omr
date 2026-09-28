@@ -104,6 +104,15 @@ def test_three_system_mock_references():
     )
     assert len(data.texts[0].items) > 12
     assert all(item.text.strip() for item in data.texts[0].items)
+    confidence_ids = {element.id for element in data.confidence.elements}
+    for measure in data.score.measures:
+        for sm in measure.staff_measures:
+            for field in ("clef", "key", "time", "barline_left", "barline_right"):
+                if getattr(sm, field) is not None:
+                    alias = {"barline_left": "barlineLeft", "barline_right": "barlineRight"}.get(
+                        field, field
+                    )
+                    assert f"{sm.staff_measure_id}-{alias}" in confidence_ids
 
 
 @pytest.mark.parametrize(
