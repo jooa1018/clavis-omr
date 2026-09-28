@@ -27,3 +27,45 @@ HarmonyMaker는 이 엔진을 OMR provider 가운데 하나로 호출할 뿐이�
 3. W1이 계약 패키지 v0.1을 main에 병합하면 Wave B를 투입한다: W5(기하·레이아웃), W6(기호 인식, CPU), W7(텍스트), W8(조립·출력).
 4. G1 게이트를 통과하면 Wave C로 W9(서비스·통합)를 투입한다.
 5. 게이트(G0–G4)마다 워커 보고서를 오케스트레이터에게 보내 판정을 받는다. 양식은 `HANDOFF_PROMPTS.md`에 있다.
+
+## 개발 환경 (T1.1 골격)
+
+현재 인식 CLI, 계약 구현, 모델 다운로드, 배치 실행기는 아직 제공하지 않는다.
+Python 3.12와 uv가 필요하다. uv가 없으면 [공식 설치 안내](https://docs.astral.sh/uv/getting-started/installation/)를 따른다.
+다음 명령은 PowerShell과 bash에서 동일하게 실행할 수 있다.
+
+```powershell
+uv sync --locked
+uv run --locked ruff check .
+uv run --locked ruff format --check .
+uv run --locked mypy
+uv run --locked pytest --cov=clavis --cov=scripts --cov-fail-under=80
+uv run --locked lint-imports
+uv run --locked python scripts/check_licenses.py
+uv run --locked pre-commit install
+```
+
+```bash
+uv sync --locked
+uv run --locked ruff check .
+uv run --locked ruff format --check .
+uv run --locked mypy
+uv run --locked pytest --cov=clavis --cov=scripts --cov-fail-under=80
+uv run --locked lint-imports
+uv run --locked python scripts/check_licenses.py
+uv run --locked pre-commit install
+```
+
+- runtime/dev는 기본 설치, service/training/eval 그룹은 후속 작업의 자리다.
+- CI는 Ubuntu/Windows Python 3.12에서 같은 검사를 수행한다. 계약 스키마는 T1.2 전까지
+  명시적으로 skip, W4 스캐너·누출 검사는 NOT_RUN으로 보고한다. 이는 G0 통과가 아니다.
+- 학습·렌더·평가 자동 실행은 설치하지 않았다. 후속 로컬 단일 큐의 실행 창은 매일
+  01:00–07:00이며, 그 밖에는 사용자 수동 시작만 허용한다. GPU/유료 컴퓨트는 사용하지 않는다.
+- 사적 데이터는 저장소 밖에 보관하고 `CLAVIS_PRIVATE_ROOT` 환경 변수로만 지정한다.
+  CI에는 이 변수나 사적 파일을 전달하지 않는다.
+- `models/`는 W1 관리이며 바이너리를 추적하지 않는다. MANIFEST.json은 T1.6에서 추가한다.
+  `data/`는 manifests만 추적한다. 다른 모듈의 README와 빈 패키지는 골격일 뿐이다.
+- CODEOWNERS 워커 핸들은 자리표시자다. Orchestrator의 실제 리뷰 없이 병합 승인을 주장하지 않는다.
+- 유료 컴퓨트 금지에 따라 계정의 무료 CI/초과 과금 차단을 확인하기 전에는
+  `CLAVIS_FREE_CI_CONFIRMED` 저장소 변수를 설정하지 않는다. `true`일 때만 CI 작업이
+  실행된다. 미설정으로 건너뛴 CI는 NOT_RUN이며 수용 기준을 통과한 것이 아니다.

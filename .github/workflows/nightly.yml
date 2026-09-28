@@ -1,0 +1,14 @@
+name: Nightly integration placeholder
+# Heavy synthesis/evaluation must use the local single queue (01:00-07:00).
+# No cloud schedule is installed by the scaffold.
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  integration-status:
+    if: vars.CLAVIS_FREE_CI_CONFIRMED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - run: echo 'NOT_RUN - Requires W1 local queue and W2/W3/W4 tools; no evaluation executed.'

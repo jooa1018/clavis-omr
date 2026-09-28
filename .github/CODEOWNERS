@@ -1,0 +1,41 @@
+# Worker handles are required placeholders, not GitHub approval identities.
+# Orchestrator must map these to real write-access accounts before enforcing reviews.
+* @astra-w1
+/docs/ @orchestrator
+/docs/reports/W1/ @astra-w1
+/src/clavis/contracts/ @astra-w1 @orchestrator
+/src/clavis/ingest/ @astra-w5
+/src/clavis/geometry/ @astra-w5
+/src/clavis/symbols/ @astra-w6
+/src/clavis/text/ @astra-w7
+/src/clavis/assemble/ @astra-w8
+/src/clavis/calibrate/ @astra-w8
+/src/clavis/export/ @astra-w8
+/src/clavis/pipeline/ @astra-w1 @astra-w8
+/src/clavis/service/ @astra-w9
+/training/data/ @astra-w2
+/training/degrade/ @astra-w3
+/training/jobs/ @astra-w1
+/training/models/staff/ @astra-w5
+/training/models/symbols/ @astra-w6
+/training/models/text/ @astra-w7
+/eval/ @astra-w4
+/deploy/ @astra-w9
+/data/manifests/ @astra-w2 @astra-w4
+/tests/contracts/ @astra-w1 @orchestrator
+/tests/ingest/ @astra-w5
+/tests/geometry/ @astra-w5
+/tests/symbols/ @astra-w6
+/tests/text/ @astra-w7
+/tests/assemble/ @astra-w8
+/tests/calibrate/ @astra-w8
+/tests/export/ @astra-w8
+/tests/service/ @astra-w9
+/configs/ingest/ @astra-w5
+/configs/geometry/ @astra-w5
+/configs/symbols/ @astra-w6
+/configs/text/ @astra-w7
+/configs/assemble/ @astra-w8
+/configs/calibrate/ @astra-w8
+/configs/export/ @astra-w8
+/configs/integrity/ @astra-w4

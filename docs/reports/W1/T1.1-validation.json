@@ -1,0 +1,98 @@
+{
+  "task": "T1.1",
+  "platform": "Windows",
+  "python": "3.12.14",
+  "location": "user-laptop",
+  "invocation": "user-requested-manual",
+  "checks": {
+    "lint": {
+      "exitCode": 0,
+      "wallSeconds": 1.121
+    },
+    "format": {
+      "exitCode": 0,
+      "wallSeconds": 0.181
+    },
+    "types": {
+      "exitCode": 0,
+      "wallSeconds": 0.809
+    },
+    "tests": {
+      "exitCode": 0,
+      "wallSeconds": 2.242
+    },
+    "imports": {
+      "exitCode": 0,
+      "wallSeconds": 0.592
+    },
+    "runtime_licenses": {
+      "exitCode": 0,
+      "wallSeconds": 0.787
+    }
+  },
+  "pytest": {
+    "tests": 12,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1
+  },
+  "coverage": {
+    "covered_lines": 39,
+    "num_statements": 41,
+    "percent_covered": 95.1219512195122,
+    "percent_covered_display": "95",
+    "missing_lines": 2,
+    "excluded_lines": 0,
+    "percent_statements_covered": 95.1219512195122,
+    "percent_statements_covered_display": "95"
+  },
+  "ci": {
+    "ubuntu": "PENDING",
+    "windows": "PENDING",
+    "reason": "Free CI and zero paid-spend cap verified in GitHub UI; remote run pending"
+  },
+  "evaluation": {
+    "dev": "NOT_RUN",
+    "sealed": "NOT_ACCESSED",
+    "synthetic": "NOT_RUN",
+    "real": "NOT_RUN"
+  },
+  "trainingWallSeconds": 0,
+  "heavyBatchWallSeconds": 0,
+  "integrity": {
+    "hardcoding": "NOT_RUN",
+    "dataLeakage": "NOT_RUN",
+    "reason": "W4 integration pending"
+  },
+  "runtimeLicenses": {
+    "packages": [
+      {
+        "License": "MIT",
+        "Name": "annotated-types",
+        "Version": "0.8.0"
+      },
+      {
+        "License": "MIT",
+        "Name": "pydantic",
+        "Version": "2.13.5"
+      },
+      {
+        "License": "MIT",
+        "Name": "pydantic_core",
+        "Version": "2.46.5"
+      },
+      {
+        "License": "MIT",
+        "Name": "typing-inspection",
+        "Version": "0.4.4"
+      },
+      {
+        "License": "PSF-2.0",
+        "Name": "typing_extensions",
+        "Version": "4.16.0"
+      }
+    ],
+    "scope": "runtime",
+    "violations": []
+  }
+}

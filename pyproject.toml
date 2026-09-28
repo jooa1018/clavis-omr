@@ -1,0 +1,70 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "clavis-omr"
+version = "0.0.1"
+description = "Independent offline CPU optical music recognition engine"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = ["pydantic>=2.11,<3"]
+
+[dependency-groups]
+runtime = ["pydantic>=2.11,<3"]
+# Reserved for the responsible worker; no unused heavy dependencies installed.
+service = []
+training = []
+eval = []
+dev = [
+  "ruff>=0.11,<1", "mypy>=1.15,<2", "pytest>=8.3,<10",
+  "pytest-cov>=6,<8", "hypothesis>=6,<7", "jsonschema>=4.23,<5",
+  "import-linter>=2.3,<3", "pip-licenses>=5,<6", "pre-commit>=4,<5",
+  "packaging>=24,<27",
+]
+
+[tool.uv]
+default-groups = ["runtime", "dev"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/clavis"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.format]
+# Design documents belong to the Orchestrator, including their illustrative code.
+exclude = ["*.md"]
+
+[tool.mypy]
+python_version = "3.12"
+files = ["src/clavis", "scripts"]
+strict = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "."]
+addopts = "-ra --strict-markers"
+
+[tool.importlinter]
+root_packages = ["clavis", "training", "eval"]
+
+[[tool.importlinter.contracts]]
+name = "Engine cannot import training or evaluation"
+type = "forbidden"
+source_modules = ["clavis"]
+forbidden_modules = ["training", "eval"]
+
+[[tool.importlinter.contracts]]
+name = "Evaluation uses contracts only until a public output parser is approved"
+type = "forbidden"
+source_modules = ["eval"]
+forbidden_modules = [
+  "clavis.core", "clavis.ingest", "clavis.geometry", "clavis.symbols",
+  "clavis.text", "clavis.assemble", "clavis.calibrate", "clavis.export",
+  "clavis.pipeline", "clavis.service", "clavis.cli",
+]
