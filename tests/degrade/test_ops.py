@@ -2,15 +2,13 @@
 
 import json
 
+import cv2
+import numpy as np
 import pytest
 from hypothesis import given, settings
 from hypothesis import strategies as st
 
-np = pytest.importorskip("numpy", reason="W3 training dependencies are not installed")
-cv2 = pytest.importorskip("cv2", reason="W3 training dependencies are not installed")
-pytest.importorskip("PIL", reason="W3 training dependencies are not installed")
-
-from training.degrade.ops import Labels, apply, project, run  # noqa: E402
+from training.degrade.ops import Labels, apply, project, run
 
 
 def fixture(color=False):

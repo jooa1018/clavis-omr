@@ -11,21 +11,18 @@ No Dev, sealed, real-image texture, external service or engine code is used.
 From the repository root, Python 3.12:
 
 ```powershell
-uv sync --locked
-uv pip install --python .venv/Scripts/python.exe -r training/degrade/requirements.txt
+uv sync --locked --all-groups
 .venv/Scripts/python.exe -m pytest tests/degrade --cov=training.degrade --cov-fail-under=80
 .venv/Scripts/mypy.exe --strict training/degrade
 .venv/Scripts/ruff.exe check training/degrade tests/degrade
 .venv/Scripts/python.exe -m training.degrade.demo --output work/degrade-demo
 ```
 
-On Linux use `.venv/bin/` instead of `.venv/Scripts/`. Do not run `uv sync` again between
-installing the W3 requirements and these commands: W1's root lock does not yet contain
-the optional training packages. Their absence explicitly skips the W3 test module;
-a base-CI green result therefore does **not** establish W3 acceptance. W1 must integrate
-the requirements and explicit W3 mypy/coverage commands before merge acceptance.
-Requirements contain only already-permitted numerical/image libraries and YAML support;
-the engine's dependency closure is unchanged. No root configuration is modified.
+On Linux use `.venv/bin/` instead of `.venv/Scripts/`. W1 PR #7 manages numerical/image
+and YAML dependencies in the root `training` group and `uv.lock`; no secondary dependency
+list exists. CI installs all groups and executes all tests, including W3. Missing W3
+dependencies now fail collection instead of silently skipping the module. The engine's
+dependency closure is unchanged. W3 strict typing and coverage are also checked locally.
 
 ## Geometry and labels
 
