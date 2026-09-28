@@ -1,0 +1,152 @@
+{
+  "scope": "Windows local CPU; automatic synthetic fixtures; no Dev, SYN-Val, real or sealed data",
+  "checks": {
+    "ruff": "PASS",
+    "format": "PASS",
+    "mypy_root": "PASS",
+    "mypy_w3_strict": "PASS",
+    "pytest": "PASS",
+    "import_boundaries": "PASS",
+    "runtime_licenses": "PASS"
+  },
+  "not_run": [
+    "W4 hardcoding and leakage scanner (placeholder)",
+    "contract schema fixtures (upstream missing)",
+    "W3 Linux/Windows CI dependency integration",
+    "Dev/SYN-Val recognition metrics",
+    "G0 four-family gate",
+    "realism",
+    "throughput benchmark"
+  ],
+  "tests": {
+    "tests": "56",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "1",
+    "time": "5.020"
+  },
+  "w3_test_cases": 44,
+  "measurements": {
+    "grid_centroid_max_error_px": 0.030923823488822055,
+    "grid_points_measured": 156.0
+  },
+  "coverage": {
+    "training\\degrade\\__init__.py": {
+      "covered_lines": 0,
+      "num_statements": 0,
+      "percent_covered": 100.0,
+      "percent_covered_display": "100",
+      "missing_lines": 0,
+      "excluded_lines": 0,
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100"
+    },
+    "training\\degrade\\demo.py": {
+      "covered_lines": 74,
+      "num_statements": 75,
+      "percent_covered": 98.66666666666667,
+      "percent_covered_display": "99",
+      "missing_lines": 1,
+      "excluded_lines": 0,
+      "percent_statements_covered": 98.66666666666667,
+      "percent_statements_covered_display": "99"
+    },
+    "training\\degrade\\ops.py": {
+      "covered_lines": 148,
+      "num_statements": 153,
+      "percent_covered": 96.73202614379085,
+      "percent_covered_display": "97",
+      "missing_lines": 5,
+      "excluded_lines": 0,
+      "percent_statements_covered": 96.73202614379085,
+      "percent_statements_covered_display": "97"
+    }
+  },
+  "w3_line_coverage_percent": 97.36842105263158,
+  "training_license_inventory": [
+    {
+      "License": "MIT License",
+      "Name": "PyYAML",
+      "Version": "6.0.2"
+    },
+    {
+      "License": "BSD License",
+      "Name": "numpy",
+      "Version": "2.2.6"
+    },
+    {
+      "License": "Apache Software License",
+      "Name": "opencv-python-headless",
+      "Version": "4.11.0.86"
+    },
+    {
+      "License": "MIT-CMU",
+      "Name": "pillow",
+      "Version": "11.2.1"
+    },
+    {
+      "License": "Apache-2.0",
+      "Name": "types-PyYAML",
+      "Version": "6.0.12.20250516"
+    }
+  ],
+  "training_license_note": "Inventory only; Pillow is an explicitly permitted dependency in COMMON 4, but reports MIT-CMU. Root runtime allowlist does not audit optional training packages; W1 integration must preserve license review.",
+  "demo": {
+    "wall_seconds": 0.5985839000204578,
+    "seed": 31,
+    "versions": {
+      "numpy": "2.2.6",
+      "opencv": "4.11.0",
+      "pillow": "11.2.1"
+    },
+    "source_pixels": 2048000
+  },
+  "resolution_slices": [
+    {
+      "target_px": 16,
+      "median_actual_px": 16.004016578526066,
+      "min_actual_px": 15.47761742315373,
+      "max_actual_px": 16.555030208368635,
+      "truncated": false
+    },
+    {
+      "target_px": 12,
+      "median_actual_px": 11.99951894186945,
+      "min_actual_px": 11.604868233063579,
+      "max_actual_px": 12.412626765864315,
+      "truncated": false
+    },
+    {
+      "target_px": 10,
+      "median_actual_px": 10.004257010741188,
+      "min_actual_px": 9.675183186421087,
+      "max_actual_px": 10.348716750716978,
+      "truncated": false
+    },
+    {
+      "target_px": 8,
+      "median_actual_px": 7.995020821982148,
+      "min_actual_px": 7.732118443224146,
+      "max_actual_px": 8.27022295055503,
+      "truncated": false
+    },
+    {
+      "target_px": 7,
+      "median_actual_px": 6.997256155400154,
+      "min_actual_px": 6.767109253462821,
+      "max_actual_px": 7.238165193462562,
+      "truncated": false
+    }
+  ],
+  "tested_source_sha256": {
+    "training/degrade/demo.py": "66fe91ad2c5b8e6d58450fe093c322974982112a2aab90a00bf03f47bfd4cab7",
+    "training/degrade/ops.py": "98a897e6ac11e7f806d918895053a6ba91f0ee4572fe1612b8fabe8020a80231",
+    "training/degrade/README.md": "6ab8c3ed4ba3ca63a6d3816f6125fcf0a1b3e6fc5bb717cfdb01578092e71c55",
+    "training/degrade/requirements.txt": "c6f48902fc9cb1beaeb63a4a83473e97fc04f20aeb91162b81a683d1fe1d2037",
+    "training/degrade/__init__.py": "5bdb9c46d8ddd5bad050c145a16bc395fc9f56673dae31dc921850a5ef8f1e1f",
+    "tests/degrade/test_ops.py": "80074defa42de008de3637ab4dbf7cddc2f8a302e5192d0c474bb203a5265650",
+    "configs/degrade/first-pr.yaml": "6e9315b5b0e15460bee87d0d9fcf062891f8f01349427b014b4202a682229fd1"
+  },
+  "baseline_delta_and_95pct_ci": null,
+  "ci_note": "No recognition baseline, no paired bootstrap; mechanical fixture checks only."
+}

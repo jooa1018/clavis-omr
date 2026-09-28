@@ -1,0 +1,24 @@
+# W3 first-PR mechanical demo, not ADR-011 adoption or a fitted real-world preset.
+# Sources: W3_DEGRADATION T3.2 / section 4; units: degrees, pixels, ratios, codec integers.
+max_pixels: 8000000
+# Self-authored test geometry, not fitted constants or a real image imitation.
+demo:
+  seed: 31
+  size: [1280, 1600]
+  interline: 24
+  systems: 5
+  note_steps: [4, 3, 2, 5, 6, 4, 2, 1, 4, 6]
+  targets: [16, 12, 10, 8, 7]
+  normalized_homography: [[1, 0.015, 0], [0.01, 1, 0], [0.04, 0.02, 1]]
+operations:
+  - op: rotation
+    degrees: {uniform: [-8, 8]}
+  - op: perspective
+    matrix: [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+  - op: resize
+    target_interline: {choice: [16, 12, 10, 8, 7]}
+    interpolation: {choice: [area, bilinear, bicubic, nearest]}
+  - op: jpeg
+    quality: {choice: [25, 50, 70, 95]}
+    repeats: {choice: [1, 2, 3]}
+    subsampling: {choice: [0, 1, 2]}
