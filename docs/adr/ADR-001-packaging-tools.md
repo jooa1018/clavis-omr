@@ -1,6 +1,8 @@
 # ADR-001 — 패키징·도구
 
-상태: W1 제안, Orchestrator 리뷰 대기 · 2026-09-29
+상태: 채택 — Orchestrator 승인 · 2026-09-29
+
+승인 기록: [PR #1 승인 코멘트](https://github.com/jooa1018/clavis-omr/pull/1#issuecomment-5875141049).
 
 ## 선택지와 근거
 지시서 T1.1은 Python 3.12, uv, ruff, mypy, pytest, import-linter,
@@ -19,8 +21,9 @@ pip-licenses의 미확인·복합 라이선스는 자동 승인하지 않는다.
 ## 초기 저장소와 리뷰
 기존 문서만 `w1/bootstrap-docs`에 첫 커밋·push하고 GitHub에서 그 브랜치를 `main`으로
 이름 변경했다. main에 직접 push하지 않았으며 골격은 `w1/platform-bootstrap` PR로 제출한다.
-CODEOWNERS는 지시서의 워커 자리표시자를 사용한다. 실제 승인 권한을 제공하지 않으므로
-Orchestrator가 실계정 대응을 지정해야 한다. CI 통과만으로 승인이나 병합을 대신하지 않는다.
+초기 PR은 워커 자리표시자를 사용했다. 2026-09-29 Orchestrator 결정에 따라
+CODEOWNERS는 `@jooa1018`로 통일하고 실제 워커와 등급을 주석으로 구분한다.
+승인·병합은 00_COMMON.md 3절의 A/B 절차를 따르며 GitHub 자기 승인으로 대신하지 않는다.
 
 ## 검증 / 되돌릴 조건
 두 OS의 lint/type/test/import/license 결과는 T1.1 보고서에 기록한다.

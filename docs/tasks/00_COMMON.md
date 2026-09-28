@@ -21,7 +21,10 @@
 - **브랜치**: `w{n}/<짧은-주제>`(예: `w5/staff-unet`). main에 직접 push하지 않는다.
 - **PR**: 한 PR은 한 가지 목적이다. 가능하면 변경 400줄 이하로 유지한다(생성 파일 제외). PR 템플릿의 헌장 체크리스트를 모두 채운다.
 - **커밋**: Conventional Commits(`feat(geometry): …`, `fix(eval): …`, `docs(adr): …`).
-- **리뷰**: CODEOWNERS 소유자 승인 + CI 통과가 필요하다. 계약(`src/clavis/contracts/`)을 건드리면 W1과 Orchestrator 승인이 필요하다.
+- **리뷰와 병합 등급**: 모든 워커가 같은 GitHub 계정을 쓰므로 GitHub 승인 기능 대신 다음 절차를 따른다.
+  - **A등급(Orchestrator 승인 필요)**: `src/clavis/contracts/`, `tests/contracts/`, `docs/`(단 `docs/reports/`, `docs/adr/`·`docs/ccr/`의 초안 제외), 평가기 지표·정렬 정의 변경, `configs/integrity/allowlist.yaml`, 임계값 artifact, CI 검사를 약하게 하는 변경, ADR 채택. 워커가 PR과 보고서를 올리면 사용자가 Orchestrator 판정을 받아 PR 코멘트("Orchestrator 승인, 날짜")로 남긴 뒤 병합한다.
+  - **B등급(워커 자체 병합)**: 자기 소유 경로 안의 변경이고, CI가 통과했고, PR 템플릿을 모두 채웠고, A등급 파일이 없으면 워커가 직접 병합한다. 다른 워커의 소유 경로를 건드리면 그 워커의 확인 코멘트("[Wn 확인]")가 먼저 있어야 한다.
+  - 병합 방식은 squash, main 직접 push 금지는 유지한다.
 - **CCR**: 계약 변경이 필요하면 `docs/ccr/CCR-NNNN-<주제>.md`를 쓰고, 승인 전에는 그 변경에 의존하는 작업을 main에 넣지 않는다.
 - **ADR**: 설계 선택(모델 구조, 형식, 라이브러리)은 `docs/adr/ADR-NNNN-<주제>.md`에 선택지, 실험 근거, 결정, 되돌릴 조건을 적는다. 아래 번호는 예약되어 있다. 새 ADR은 018부터 쓴다.
 

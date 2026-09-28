@@ -1,9 +1,8 @@
 name: CI
 on:
   push:
-    branches: ['w[1-9]/**', main]
+    branches: [main]
   pull_request:
-  workflow_dispatch:
 permissions:
   contents: read
 concurrency:
