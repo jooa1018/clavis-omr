@@ -1,0 +1,974 @@
+{
+  "$defs": {
+    "AccidentalPatch": {
+      "additionalProperties": false,
+      "properties": {
+        "alter": {
+          "maximum": 2,
+          "minimum": -2,
+          "title": "Alter",
+          "type": "integer"
+        },
+        "kind": {
+          "const": "accidental",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "alter"
+      ],
+      "title": "AccidentalPatch",
+      "type": "object"
+    },
+    "Alternative": {
+      "additionalProperties": false,
+      "properties": {
+        "alternativeId": {
+          "minLength": 1,
+          "title": "Alternativeid",
+          "type": "string"
+        },
+        "confidenceBp": {
+          "maximum": 10000,
+          "minimum": 0,
+          "title": "Confidencebp",
+          "type": "integer"
+        },
+        "labelKo": {
+          "title": "Labelko",
+          "type": "string"
+        },
+        "patch": {
+          "discriminator": {
+            "mapping": {
+              "accidental": "#/$defs/AccidentalPatch",
+              "chord": "#/$defs/ChordPatch",
+              "deleteBarline": "#/$defs/DeleteBarlinePatch",
+              "duration": "#/$defs/DurationPatch",
+              "insertBarline": "#/$defs/InsertBarlinePatch",
+              "keySignature": "#/$defs/KeySignaturePatch",
+              "pitch": "#/$defs/PitchPatch",
+              "replaceEvent": "#/$defs/ReplaceEventPatch",
+              "replaceSourceText": "#/$defs/ReplaceSourceTextPatch",
+              "tie": "#/$defs/TiePatch",
+              "timeSignature": "#/$defs/TimeSignaturePatch"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/PitchPatch"
+            },
+            {
+              "$ref": "#/$defs/DurationPatch"
+            },
+            {
+              "$ref": "#/$defs/AccidentalPatch"
+            },
+            {
+              "$ref": "#/$defs/TiePatch"
+            },
+            {
+              "$ref": "#/$defs/ChordPatch"
+            },
+            {
+              "$ref": "#/$defs/TimeSignaturePatch"
+            },
+            {
+              "$ref": "#/$defs/KeySignaturePatch"
+            },
+            {
+              "$ref": "#/$defs/ReplaceEventPatch"
+            },
+            {
+              "$ref": "#/$defs/ReplaceSourceTextPatch"
+            },
+            {
+              "$ref": "#/$defs/InsertBarlinePatch"
+            },
+            {
+              "$ref": "#/$defs/DeleteBarlinePatch"
+            }
+          ],
+          "title": "Patch"
+        }
+      },
+      "required": [
+        "alternativeId",
+        "labelKo",
+        "patch",
+        "confidenceBp"
+      ],
+      "title": "Alternative",
+      "type": "object"
+    },
+    "ChordParseResult": {
+      "additionalProperties": false,
+      "properties": {
+        "bass": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PitchClass"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "degrees": {
+          "items": {
+            "$ref": "#/$defs/Degree"
+          },
+          "title": "Degrees",
+          "type": "array"
+        },
+        "kind": {
+          "enum": [
+            "major",
+            "minor",
+            "augmented",
+            "diminished",
+            "dominant",
+            "major-seventh",
+            "minor-seventh",
+            "diminished-seventh",
+            "half-diminished",
+            "major-minor",
+            "major-sixth",
+            "minor-sixth",
+            "dominant-ninth",
+            "major-ninth",
+            "minor-ninth",
+            "dominant-11th",
+            "dominant-13th",
+            "suspended-second",
+            "suspended-fourth",
+            "power",
+            "none"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "kindText": {
+          "title": "Kindtext",
+          "type": "string"
+        },
+        "normalized": {
+          "title": "Normalized",
+          "type": "string"
+        },
+        "root": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PitchClass"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "kind",
+        "kindText",
+        "degrees",
+        "normalized"
+      ],
+      "title": "ChordParseResult",
+      "type": "object"
+    },
+    "ChordPatch": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "chord",
+          "title": "Kind",
+          "type": "string"
+        },
+        "parseResult": {
+          "$ref": "#/$defs/ChordParseResult"
+        }
+      },
+      "required": [
+        "kind",
+        "parseResult"
+      ],
+      "title": "ChordPatch",
+      "type": "object"
+    },
+    "Degree": {
+      "additionalProperties": false,
+      "properties": {
+        "alter": {
+          "maximum": 2,
+          "minimum": -2,
+          "title": "Alter",
+          "type": "integer"
+        },
+        "type": {
+          "enum": [
+            "add",
+            "alter",
+            "subtract"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "value": {
+          "minimum": 1,
+          "title": "Value",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "value",
+        "alter",
+        "type"
+      ],
+      "title": "Degree",
+      "type": "object"
+    },
+    "DeleteBarlinePatch": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "deleteBarline",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "title": "DeleteBarlinePatch",
+      "type": "object"
+    },
+    "DurationPatch": {
+      "additionalProperties": false,
+      "properties": {
+        "duration": {
+          "$ref": "#/$defs/Fraction"
+        },
+        "kind": {
+          "const": "duration",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "duration"
+      ],
+      "title": "DurationPatch",
+      "type": "object"
+    },
+    "Event": {
+      "additionalProperties": false,
+      "properties": {
+        "accidentalVisible": {
+          "anyOf": [
+            {
+              "enum": [
+                "none",
+                "sharp",
+                "flat",
+                "natural",
+                "doubleSharp",
+                "doubleFlat"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Accidentalvisible"
+        },
+        "chordWithPrev": {
+          "title": "Chordwithprev",
+          "type": "boolean"
+        },
+        "confidenceBp": {
+          "maximum": 10000,
+          "minimum": 0,
+          "title": "Confidencebp",
+          "type": "integer"
+        },
+        "duration": {
+          "$ref": "#/$defs/Fraction"
+        },
+        "eventId": {
+          "minLength": 1,
+          "title": "Eventid",
+          "type": "string"
+        },
+        "evidenceIds": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Evidenceids",
+          "type": "array"
+        },
+        "fermata": {
+          "title": "Fermata",
+          "type": "boolean"
+        },
+        "flags": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Flags",
+          "type": "array"
+        },
+        "grace": {
+          "anyOf": [
+            {
+              "enum": [
+                "none",
+                "acciaccatura",
+                "appoggiatura"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Grace"
+        },
+        "kind": {
+          "enum": [
+            "note",
+            "rest",
+            "rhythm"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "lyrics": {
+          "items": {
+            "$ref": "#/$defs/Lyric"
+          },
+          "title": "Lyrics",
+          "type": "array"
+        },
+        "measureRest": {
+          "title": "Measurerest",
+          "type": "boolean"
+        },
+        "notated": {
+          "$ref": "#/$defs/Notated"
+        },
+        "onset": {
+          "$ref": "#/$defs/Fraction"
+        },
+        "pitch": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Pitch"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "pos": {
+          "anyOf": [
+            {
+              "maximum": 22,
+              "minimum": -14,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pos"
+        },
+        "slur": {
+          "$ref": "#/$defs/JoinMarks"
+        },
+        "tie": {
+          "$ref": "#/$defs/JoinMarks"
+        }
+      },
+      "required": [
+        "eventId",
+        "kind",
+        "onset",
+        "duration",
+        "notated",
+        "chordWithPrev",
+        "tie",
+        "slur",
+        "fermata",
+        "measureRest",
+        "lyrics",
+        "evidenceIds",
+        "confidenceBp",
+        "flags"
+      ],
+      "title": "Event",
+      "type": "object"
+    },
+    "Fraction": {
+      "additionalProperties": false,
+      "properties": {
+        "d": {
+          "minimum": 1,
+          "title": "D",
+          "type": "integer"
+        },
+        "n": {
+          "title": "N",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "n",
+        "d"
+      ],
+      "title": "Fraction",
+      "type": "object"
+    },
+    "InsertBarlinePatch": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "insertBarline",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "title": "InsertBarlinePatch",
+      "type": "object"
+    },
+    "JoinMarks": {
+      "additionalProperties": false,
+      "properties": {
+        "start": {
+          "title": "Start",
+          "type": "boolean"
+        },
+        "stop": {
+          "title": "Stop",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "start",
+        "stop"
+      ],
+      "title": "JoinMarks",
+      "type": "object"
+    },
+    "Key": {
+      "additionalProperties": false,
+      "properties": {
+        "fifths": {
+          "maximum": 7,
+          "minimum": -7,
+          "title": "Fifths",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "fifths"
+      ],
+      "title": "Key",
+      "type": "object"
+    },
+    "KeySignaturePatch": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "keySignature",
+          "title": "Kind",
+          "type": "string"
+        },
+        "value": {
+          "$ref": "#/$defs/Key"
+        }
+      },
+      "required": [
+        "kind",
+        "value"
+      ],
+      "title": "KeySignaturePatch",
+      "type": "object"
+    },
+    "Lyric": {
+      "additionalProperties": false,
+      "properties": {
+        "extend": {
+          "title": "Extend",
+          "type": "boolean"
+        },
+        "syllabic": {
+          "enum": [
+            "single",
+            "begin",
+            "middle",
+            "end"
+          ],
+          "title": "Syllabic",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "textId": {
+          "minLength": 1,
+          "title": "Textid",
+          "type": "string"
+        },
+        "verse": {
+          "minimum": 1,
+          "title": "Verse",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "verse",
+        "text",
+        "syllabic",
+        "extend",
+        "textId"
+      ],
+      "title": "Lyric",
+      "type": "object"
+    },
+    "Notated": {
+      "additionalProperties": false,
+      "properties": {
+        "dots": {
+          "maximum": 2,
+          "minimum": 0,
+          "title": "Dots",
+          "type": "integer"
+        },
+        "tuplet": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Tuplet"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "type": {
+          "enum": [
+            "breve",
+            "whole",
+            "half",
+            "quarter",
+            "eighth",
+            "16th",
+            "32nd",
+            "64th"
+          ],
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "dots"
+      ],
+      "title": "Notated",
+      "type": "object"
+    },
+    "Pitch": {
+      "additionalProperties": false,
+      "properties": {
+        "alter": {
+          "maximum": 2,
+          "minimum": -2,
+          "title": "Alter",
+          "type": "integer"
+        },
+        "octave": {
+          "title": "Octave",
+          "type": "integer"
+        },
+        "step": {
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+          ],
+          "title": "Step",
+          "type": "string"
+        }
+      },
+      "required": [
+        "step",
+        "alter",
+        "octave"
+      ],
+      "title": "Pitch",
+      "type": "object"
+    },
+    "PitchClass": {
+      "additionalProperties": false,
+      "properties": {
+        "alter": {
+          "maximum": 2,
+          "minimum": -2,
+          "title": "Alter",
+          "type": "integer"
+        },
+        "step": {
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+          ],
+          "title": "Step",
+          "type": "string"
+        }
+      },
+      "required": [
+        "step",
+        "alter"
+      ],
+      "title": "PitchClass",
+      "type": "object"
+    },
+    "PitchPatch": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "pitch",
+          "title": "Kind",
+          "type": "string"
+        },
+        "pitch": {
+          "$ref": "#/$defs/Pitch"
+        }
+      },
+      "required": [
+        "kind",
+        "pitch"
+      ],
+      "title": "PitchPatch",
+      "type": "object"
+    },
+    "ReplaceEventPatch": {
+      "additionalProperties": false,
+      "properties": {
+        "event": {
+          "$ref": "#/$defs/Event"
+        },
+        "kind": {
+          "const": "replaceEvent",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "event"
+      ],
+      "title": "ReplaceEventPatch",
+      "type": "object"
+    },
+    "ReplaceSourceTextPatch": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "replaceSourceText",
+          "title": "Kind",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "text"
+      ],
+      "title": "ReplaceSourceTextPatch",
+      "type": "object"
+    },
+    "ReviewHint": {
+      "additionalProperties": false,
+      "properties": {
+        "alternatives": {
+          "items": {
+            "$ref": "#/$defs/Alternative"
+          },
+          "title": "Alternatives",
+          "type": "array"
+        },
+        "confidenceBp": {
+          "maximum": 10000,
+          "minimum": 0,
+          "title": "Confidencebp",
+          "type": "integer"
+        },
+        "evidenceIds": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Evidenceids",
+          "type": "array"
+        },
+        "hintId": {
+          "minLength": 1,
+          "title": "Hintid",
+          "type": "string"
+        },
+        "reasonCode": {
+          "enum": [
+            "DURATION_MISMATCH",
+            "LOW_CONFIDENCE_PITCH",
+            "LOW_CONFIDENCE_DURATION",
+            "ACCIDENTAL_AMBIGUOUS",
+            "TIE_SLUR_AMBIGUOUS",
+            "KEY_SIGNATURE_UNCERTAIN",
+            "TIME_SIGNATURE_UNCERTAIN",
+            "CLEF_UNCERTAIN",
+            "BARLINE_UNCERTAIN",
+            "VOICE_ASSIGNMENT_UNCERTAIN",
+            "CHORD_TEXT_UNCERTAIN",
+            "CHORD_POSITION_UNCERTAIN",
+            "CHORD_OUTSIDE_CONSUMER_VOCAB",
+            "LYRIC_TEXT_UNCERTAIN",
+            "LYRIC_ALIGNMENT_UNCERTAIN",
+            "FLOW_UNRESOLVED",
+            "EVIDENCE_MISSING",
+            "MODEL_DISAGREEMENT",
+            "OOD_REGION",
+            "ILLEGIBLE_REGION"
+          ],
+          "title": "Reasoncode",
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "blocking",
+            "warning",
+            "info"
+          ],
+          "title": "Severity",
+          "type": "string"
+        },
+        "target": {
+          "$ref": "#/$defs/Target"
+        }
+      },
+      "required": [
+        "hintId",
+        "target",
+        "reasonCode",
+        "severity",
+        "confidenceBp",
+        "alternatives",
+        "evidenceIds"
+      ],
+      "title": "ReviewHint",
+      "type": "object"
+    },
+    "Target": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "event",
+            "measure",
+            "measureStart",
+            "measureEnd",
+            "harmony",
+            "lyric",
+            "text",
+            "flow"
+          ],
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "id"
+      ],
+      "title": "Target",
+      "type": "object"
+    },
+    "TiePatch": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "tie",
+          "title": "Kind",
+          "type": "string"
+        },
+        "tieStart": {
+          "title": "Tiestart",
+          "type": "boolean"
+        },
+        "tieStop": {
+          "title": "Tiestop",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "kind",
+        "tieStart",
+        "tieStop"
+      ],
+      "title": "TiePatch",
+      "type": "object"
+    },
+    "Time": {
+      "additionalProperties": false,
+      "properties": {
+        "beatType": {
+          "enum": [
+            1,
+            2,
+            4,
+            8,
+            16,
+            32
+          ],
+          "title": "Beattype",
+          "type": "integer"
+        },
+        "beats": {
+          "maximum": 16,
+          "minimum": 1,
+          "title": "Beats",
+          "type": "integer"
+        },
+        "symbol": {
+          "anyOf": [
+            {
+              "enum": [
+                "common",
+                "cut"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Symbol"
+        }
+      },
+      "required": [
+        "beats",
+        "beatType"
+      ],
+      "title": "Time",
+      "type": "object"
+    },
+    "TimeSignaturePatch": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "timeSignature",
+          "title": "Kind",
+          "type": "string"
+        },
+        "value": {
+          "$ref": "#/$defs/Time"
+        }
+      },
+      "required": [
+        "kind",
+        "value"
+      ],
+      "title": "TimeSignaturePatch",
+      "type": "object"
+    },
+    "Tuplet": {
+      "additionalProperties": false,
+      "properties": {
+        "actual": {
+          "minimum": 1,
+          "title": "Actual",
+          "type": "integer"
+        },
+        "normal": {
+          "minimum": 1,
+          "title": "Normal",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "actual",
+        "normal"
+      ],
+      "title": "Tuplet",
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "hints": {
+      "items": {
+        "$ref": "#/$defs/ReviewHint"
+      },
+      "title": "Hints",
+      "type": "array"
+    },
+    "schema": {
+      "const": "clavis-hints-0.1",
+      "title": "Schema",
+      "type": "string"
+    },
+    "thresholdArtifactDigest": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Thresholdartifactdigest"
+    }
+  },
+  "required": [
+    "schema",
+    "thresholdArtifactDigest",
+    "hints"
+  ],
+  "title": "ReviewHints",
+  "type": "object"
+}

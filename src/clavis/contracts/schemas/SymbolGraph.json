@@ -1,0 +1,662 @@
+{
+  "$defs": {
+    "Producer": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "sha256": {
+          "title": "Sha256",
+          "type": "string"
+        },
+        "version": {
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "version",
+        "sha256"
+      ],
+      "title": "Producer",
+      "type": "object"
+    },
+    "RejectedCandidate": {
+      "additionalProperties": false,
+      "properties": {
+        "attrs": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SymbolAttributes"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "boxStrip": {
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "minimum": 0,
+              "type": "number"
+            }
+          ],
+          "title": "Boxstrip",
+          "type": "array"
+        },
+        "centerStrip": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Centerstrip"
+        },
+        "classTopK": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "enum": [
+                  "noteheadFilled",
+                  "noteheadHollow",
+                  "noteheadWhole",
+                  "noteheadSlash",
+                  "noteheadX",
+                  "stem",
+                  "beam",
+                  "flag",
+                  "accSharp",
+                  "accFlat",
+                  "accNatural",
+                  "accDoubleSharp",
+                  "accDoubleFlat",
+                  "augDot",
+                  "restWhole",
+                  "restHalf",
+                  "restQuarter",
+                  "rest8th",
+                  "rest16th",
+                  "rest32nd",
+                  "clefG",
+                  "clefF",
+                  "clefC",
+                  "timeDigit",
+                  "timeCommon",
+                  "timeCut",
+                  "barline",
+                  "repeatDots",
+                  "curve",
+                  "tupletNumber",
+                  "fermata",
+                  "ledgerLine",
+                  "segno",
+                  "coda",
+                  "voltaBracket",
+                  "reject"
+                ],
+                "type": "string"
+              },
+              {
+                "maximum": 10000,
+                "minimum": 0,
+                "type": "integer"
+              }
+            ],
+            "type": "array"
+          },
+          "minItems": 1,
+          "title": "Classtopk",
+          "type": "array"
+        },
+        "posTopK": {
+          "anyOf": [
+            {
+              "items": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "maximum": 22,
+                    "minimum": -14,
+                    "type": "integer"
+                  },
+                  {
+                    "maximum": 10000,
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                ],
+                "type": "array"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Postopk"
+        },
+        "sources": {
+          "items": {
+            "enum": [
+              "fcn",
+              "template",
+              "cc",
+              "vline",
+              "beam",
+              "curve",
+              "ledger"
+            ],
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Sources",
+          "type": "array"
+        },
+        "symbolId": {
+          "minLength": 1,
+          "title": "Symbolid",
+          "type": "string"
+        }
+      },
+      "required": [
+        "symbolId",
+        "sources",
+        "classTopK",
+        "boxStrip"
+      ],
+      "title": "RejectedCandidate",
+      "type": "object"
+    },
+    "Relation": {
+      "additionalProperties": false,
+      "properties": {
+        "from": {
+          "minLength": 1,
+          "title": "From",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "stemOf",
+            "beamOf",
+            "flagOf",
+            "dotOf",
+            "accidentalOf",
+            "tieFrom",
+            "tieTo",
+            "slurFrom",
+            "slurTo",
+            "ledgerOf",
+            "chordWith",
+            "voiceOf"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "probBp": {
+          "maximum": 10000,
+          "minimum": 0,
+          "title": "Probbp",
+          "type": "integer"
+        },
+        "to": {
+          "minLength": 1,
+          "title": "To",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "from",
+        "to",
+        "probBp"
+      ],
+      "title": "Relation",
+      "type": "object"
+    },
+    "Symbol": {
+      "additionalProperties": false,
+      "properties": {
+        "attrs": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SymbolAttributes"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "boxStrip": {
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "minimum": 0,
+              "type": "number"
+            }
+          ],
+          "title": "Boxstrip",
+          "type": "array"
+        },
+        "centerStrip": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Centerstrip",
+          "type": "array"
+        },
+        "classTopK": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "enum": [
+                  "noteheadFilled",
+                  "noteheadHollow",
+                  "noteheadWhole",
+                  "noteheadSlash",
+                  "noteheadX",
+                  "stem",
+                  "beam",
+                  "flag",
+                  "accSharp",
+                  "accFlat",
+                  "accNatural",
+                  "accDoubleSharp",
+                  "accDoubleFlat",
+                  "augDot",
+                  "restWhole",
+                  "restHalf",
+                  "restQuarter",
+                  "rest8th",
+                  "rest16th",
+                  "rest32nd",
+                  "clefG",
+                  "clefF",
+                  "clefC",
+                  "timeDigit",
+                  "timeCommon",
+                  "timeCut",
+                  "barline",
+                  "repeatDots",
+                  "curve",
+                  "tupletNumber",
+                  "fermata",
+                  "ledgerLine",
+                  "segno",
+                  "coda",
+                  "voltaBracket",
+                  "reject"
+                ],
+                "type": "string"
+              },
+              {
+                "maximum": 10000,
+                "minimum": 0,
+                "type": "integer"
+              }
+            ],
+            "type": "array"
+          },
+          "minItems": 1,
+          "title": "Classtopk",
+          "type": "array"
+        },
+        "posTopK": {
+          "anyOf": [
+            {
+              "items": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "maximum": 22,
+                    "minimum": -14,
+                    "type": "integer"
+                  },
+                  {
+                    "maximum": 10000,
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                ],
+                "type": "array"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Postopk"
+        },
+        "sources": {
+          "items": {
+            "enum": [
+              "fcn",
+              "template",
+              "cc",
+              "vline",
+              "beam",
+              "curve",
+              "ledger"
+            ],
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Sources",
+          "type": "array"
+        },
+        "symbolId": {
+          "minLength": 1,
+          "title": "Symbolid",
+          "type": "string"
+        }
+      },
+      "required": [
+        "symbolId",
+        "sources",
+        "classTopK",
+        "boxStrip",
+        "centerStrip"
+      ],
+      "title": "Symbol",
+      "type": "object"
+    },
+    "SymbolAttributes": {
+      "additionalProperties": false,
+      "properties": {
+        "beamCountTopK": {
+          "anyOf": [
+            {
+              "items": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  {
+                    "maximum": 10000,
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                ],
+                "type": "array"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Beamcounttopk"
+        },
+        "dotsTopK": {
+          "anyOf": [
+            {
+              "items": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "maximum": 2,
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  {
+                    "maximum": 10000,
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                ],
+                "type": "array"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dotstopk"
+        },
+        "flagCountTopK": {
+          "anyOf": [
+            {
+              "items": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  {
+                    "maximum": 10000,
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                ],
+                "type": "array"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Flagcounttopk"
+        },
+        "headType": {
+          "anyOf": [
+            {
+              "items": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "enum": [
+                      "normal",
+                      "slash",
+                      "x",
+                      "diamond"
+                    ],
+                    "type": "string"
+                  },
+                  {
+                    "maximum": 10000,
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                ],
+                "type": "array"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Headtype"
+        },
+        "posTopK": {
+          "anyOf": [
+            {
+              "items": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "maximum": 22,
+                    "minimum": -14,
+                    "type": "integer"
+                  },
+                  {
+                    "maximum": 10000,
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                ],
+                "type": "array"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Postopk"
+        },
+        "stemDir": {
+          "anyOf": [
+            {
+              "items": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "enum": [
+                      "none",
+                      "up",
+                      "down"
+                    ],
+                    "type": "string"
+                  },
+                  {
+                    "maximum": 10000,
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                ],
+                "type": "array"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Stemdir"
+        }
+      },
+      "title": "SymbolAttributes",
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "minLength": 1,
+      "title": "Id",
+      "type": "string"
+    },
+    "producer": {
+      "$ref": "#/$defs/Producer"
+    },
+    "rejectedCandidates": {
+      "items": {
+        "$ref": "#/$defs/RejectedCandidate"
+      },
+      "title": "Rejectedcandidates",
+      "type": "array"
+    },
+    "relations": {
+      "items": {
+        "$ref": "#/$defs/Relation"
+      },
+      "title": "Relations",
+      "type": "array"
+    },
+    "schema": {
+      "const": "clavis-ir-0.1",
+      "title": "Schema",
+      "type": "string"
+    },
+    "stripId": {
+      "minLength": 1,
+      "title": "Stripid",
+      "type": "string"
+    },
+    "symbols": {
+      "items": {
+        "$ref": "#/$defs/Symbol"
+      },
+      "title": "Symbols",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema",
+    "id",
+    "stripId",
+    "producer",
+    "symbols",
+    "relations",
+    "rejectedCandidates"
+  ],
+  "title": "SymbolGraph",
+  "type": "object"
+}

@@ -1,0 +1,131 @@
+{
+  "$defs": {
+    "Platform": {
+      "additionalProperties": false,
+      "properties": {
+        "onnxruntimeVersion": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Onnxruntimeversion"
+        },
+        "os": {
+          "title": "Os",
+          "type": "string"
+        },
+        "pythonVersion": {
+          "title": "Pythonversion",
+          "type": "string"
+        }
+      },
+      "required": [
+        "os",
+        "pythonVersion"
+      ],
+      "title": "Platform",
+      "type": "object"
+    },
+    "StageRuntime": {
+      "additionalProperties": false,
+      "properties": {
+        "cpuMs": {
+          "minimum": 0,
+          "title": "Cpums",
+          "type": "integer"
+        },
+        "elapsedMs": {
+          "minimum": 0,
+          "title": "Elapsedms",
+          "type": "integer"
+        },
+        "peakRssBytes": {
+          "minimum": 0,
+          "title": "Peakrssbytes",
+          "type": "integer"
+        },
+        "stageId": {
+          "minLength": 1,
+          "title": "Stageid",
+          "type": "string"
+        },
+        "threads": {
+          "minimum": 1,
+          "title": "Threads",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "threads",
+        "elapsedMs",
+        "cpuMs",
+        "peakRssBytes",
+        "stageId"
+      ],
+      "title": "StageRuntime",
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "cpuMs": {
+      "minimum": 0,
+      "title": "Cpums",
+      "type": "integer"
+    },
+    "elapsedMs": {
+      "minimum": 0,
+      "title": "Elapsedms",
+      "type": "integer"
+    },
+    "peakRssBytes": {
+      "minimum": 0,
+      "title": "Peakrssbytes",
+      "type": "integer"
+    },
+    "platform": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Platform"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "schema": {
+      "const": "clavis-runtime-0.1",
+      "title": "Schema",
+      "type": "string"
+    },
+    "stages": {
+      "items": {
+        "$ref": "#/$defs/StageRuntime"
+      },
+      "title": "Stages",
+      "type": "array"
+    },
+    "threads": {
+      "minimum": 1,
+      "title": "Threads",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "threads",
+    "elapsedMs",
+    "cpuMs",
+    "peakRssBytes",
+    "schema",
+    "stages"
+  ],
+  "title": "RuntimeReport",
+  "type": "object"
+}

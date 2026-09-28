@@ -1,6 +1,6 @@
 # CCR-0001 — v0.1 최초 구현에 필요한 객체 구조 확정
 
-상태: 초안 / Orchestrator 결정 대기 · 작성: W1 · 2026-09-29
+상태: 승인 · Orchestrator 판정: 2026-09-29 · 작성: W1
 
 ## 1. 동기와 범위
 
@@ -10,8 +10,8 @@ Wave B가 공유할 현실적인 fixture를 제공해야 한다. 현재 문서�
 검증을 통과해도 W5–W8이 같은 인터페이스를 쓸 수 없다.
 
 W1 지시서 6절: "계약의 모호함을 코드로 조용히 결정하지 않는다. 모호하면 CCR 초안을 써서 Orchestrator에게 묻는다."
-따라서 아래는 **승인 요청안**이며 구현·채택된 계약이 아니다.
-`docs/CONTRACTS.md`, 런타임 모델, Schema, 유효 fixture는 아직 변경하지 않았다.
+C1–C7은 Orchestrator가 아래 수정 사항을 포함해 승인했다.
+최종 T1.2 구현 PR 승인은 별도로 받는다.
 
 ## 2. 근거와 결정 요청
 
@@ -35,6 +35,7 @@ W1 지시서 6절: "계약의 모호함을 코드로 조용히 결정하지 않�
 
 | 타입/필드 | 제안 형태 |
 |---|---|
+| Harmony.staffInPart | `int >= 1`, 기본 1; 여러 보표 파트에서 코드가 놓인 보표 |
 | Measure 추가 필드 | `partId: string`, `harmonies: Harmony[]`, `directions: Direction[]`; 비어 있어도 배열을 명시 |
 | Part.staffSlots | `[{staffInPart: int >= 1, staffIds: string[]}]`; 한 슬롯은 여러 시스템의 물리 staffId를 문서 순서로 연결. 슬롯 번호는 파트 안에서 1부터 연속 |
 | StaffMeasure.clef | `{sign: LSTL clef.sign}`; 옥타브 표기도 LSTL 어휘 재사용 |
@@ -42,7 +43,7 @@ W1 지시서 6절: "계약의 모호함을 코드로 조용히 결정하지 않�
 | StaffMeasure.ending | `{numbers: positive int[], mark: start|stop|discontinue}` |
 | Event.grace | `none|acciaccatura|appoggiatura`; Event.accidentalVisible는 LSTL acc 어휘 |
 | Event.tie/slur | `{start: bool, stop: bool}`; fermata/measureRest/chordWithPrev는 bool |
-| TempoValue | `{beatUnit: LSTL dur, dots: 0|1|2, perMinute: positive Fraction}` |
+| TempoValue | `{text?: NFC string, beatUnit?: LSTL dur, dots?: 0/1/2, perMinute?: positive Fraction}`; text 또는 perMinute 필수, perMinute가 있으면 beatUnit 필수 |
 | ScoreIR.meta.tempo | `TempoValue` |
 | Direction.value | kind=tempo면 `TempoValue`, 나머지는 NFC 문자열 |
 | flow.repeats | `[{startMeasureId, endMeasureId, times: int >= 2}]` |
@@ -60,16 +61,16 @@ W1 지시서 6절: "계약의 모호함을 코드로 조용히 결정하지 않�
 |---|---|
 | IR frames | 12.3절 ImageCoordinateFrame 형태를 재사용. original-pixels 또는 processed-pixels |
 | IR homography | `{id, fromFrameId, toFrameId, kind: "homography", matrix: number[9]}`; float row-major, 2절 정규화 적용 |
-| 외부 evidence transforms | `{id, fromFrameId, toFrameId, kind: "homography", matrixNano: int[9]}`; 12.3절에는 transform wire shape가 없으므로 **HarmonyMaker 실제 호환성 확인 전 승인 필요** |
+| 외부 evidence transforms | v0.1에서는 빈 배열 `[]` 고정. 모든 외부 박스는 original 프레임. 확장은 별도 CCR |
 | PageLayout.bbox, glyph/syllable box | `[x, y, width, height]` processed px. polygon/polyline은 `[[x,y], ...]` |
 | interlineProfile | `[{x: number, interlinePx: positive number}]`; processed x 오름차순 |
 | nonStaffMask | `{frameId, width, height, counts: nonnegative int[]}`; 행 우선 RLE, 0-run부터 0/1 교대, 합은 width×height. 경로·바이너리 blob 없음 |
 | extensions.staffPolygons | `[{staffId, frameId, pointsMu: int[2][]}]`; original 프레임 |
 | extensions.measureBoxes | `[{staffMeasureId, box: BoundingBox}]`; 12.3절 fixed-point box 재사용 |
 
-보수적 대안: v0.1 외부 `evidence.transforms`를 빈 배열로 한정하고 모든 박스를 original로
+채택 결정: v0.1 외부 `evidence.transforms`를 빈 배열로 한정하고 모든 박스를 original로
 출력한다(2절에 부합). 이 경우 외부 transform wire 형식을 새로 정하지 않아도 된다.
-**C4 중 외부 transforms는 이 빈 배열 대안을 권장**한다. 비어 있지 않은 전송이 필요해지면
+**C4 중 외부 transforms는 빈 배열 대안을 채택**했다. 비어 있지 않은 전송이 필요해지면
 HarmonyMaker 구조를 확인한 별도 CCR로 추가한다. 내부 IR transforms는 여전히 위 타입으로 구현한다.
 
 이미 충분히 명시된 기본값(sStar 등)은 바꾸지 않는다. 3.5절의 SymbolGraph 좌표는
@@ -108,16 +109,17 @@ HarmonyMaker 구조를 확인한 별도 CCR로 추가한다. 내부 IR transform
   elapsedMs: nonnegative int,
   cpuMs: nonnegative int,
   peakRssBytes: nonnegative int,
-  stages: [{stageId: string, elapsedMs, cpuMs, peakRssBytes, threads}]
+  stages: [{stageId: string, elapsedMs, cpuMs, peakRssBytes, threads}],
+  platform?: {os: string, pythonVersion: string, onnxruntimeVersion?: string}
 }
 ```
 
 값은 관측된 계측 값만 쓴다. 벽시계 날짜, 호스트명, 절대 경로는 필요하지 않다.
 T1.2에서는 타입과 fixture만 제공하고 실제 계측은 T1.5/W8에서 연결한다.
 
-## 7. Wave B용 한 쪽 fixture 구성안 (승인 후 구현)
+## 7. Wave B용 한 쪽 fixture 구성
 
-**계획이며 아직 검증된 fixture가 아니다.** 사적 악보를 바탕으로 하지 않는 자체 작성
+승인 후 T1.2에서 `tests/fixtures/contracts/`에 구현했다. 사적 악보를 바탕으로 하지 않는 자체 작성
 합성 예시 하나를 모든 IR이 함께 참조한다. 빈 배열만 채운 파일은 완료 예시로 인정하지 않는다.
 
 | 묶음 | 구성과 소비 예시 |
@@ -143,9 +145,10 @@ Schema 스냅샷, 객체별 유효·다중 무효 예시, dangling reference·bp
 상류/하류 워커는 같은 버전의 묶음을 사용한다. 모델 코드나 평가 알고리즘은 바꾸지 않는다.
 계약 구조 검증과 fixture 참조 무결성만 측정하며 Dev/sealed/SYN-Val 성능 수치를 만들지 않는다.
 
-## 9. 필요한 판정
+## 9. 판정 기록
 
-Orchestrator가 C1–C7에 대해 채택/수정안을 명시해 주어야 한다.
-C4 외부 transforms는 권장안(빈 배열 한정)과 확장안 중 하나를 지정한다.
+Orchestrator가 2026-09-29 C1–C7을 승인했다. C1/C2/C4/C6 수정은 위 표에 반영했다.
+C3/C5/C7은 제안 그대로 채택했다. 승인된 최초 완성본을 v0.1로 동결하고 이후 0절을 따른다.
+판정 전달: https://github.com/jooa1018/clavis-omr/pull/4#issuecomment-5880412798
 영향 워커 의견은 W4/W5/W6/W7/W8/W9에 요청할 사항이며 아직 받은 것으로 기록하지 않는다.
 이 CCR 승인과 최종 T1.2 A등급 구현 PR 승인은 별개의 단계다.

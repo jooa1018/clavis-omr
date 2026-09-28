@@ -1,0 +1,470 @@
+{
+  "$defs": {
+    "DewarpMesh": {
+      "additionalProperties": false,
+      "properties": {
+        "interline": {
+          "items": {
+            "exclusiveMinimum": 0,
+            "type": "number"
+          },
+          "title": "Interline",
+          "type": "array"
+        },
+        "uStep": {
+          "exclusiveMinimum": 0,
+          "title": "Ustep",
+          "type": "number"
+        },
+        "x": {
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "title": "X",
+          "type": "array"
+        },
+        "yTop": {
+          "items": {
+            "type": "number"
+          },
+          "title": "Ytop",
+          "type": "array"
+        }
+      },
+      "required": [
+        "uStep",
+        "x",
+        "yTop",
+        "interline"
+      ],
+      "title": "DewarpMesh",
+      "type": "object"
+    },
+    "InterlineSample": {
+      "additionalProperties": false,
+      "properties": {
+        "interlinePx": {
+          "exclusiveMinimum": 0,
+          "title": "Interlinepx",
+          "type": "number"
+        },
+        "x": {
+          "title": "X",
+          "type": "number"
+        }
+      },
+      "required": [
+        "x",
+        "interlinePx"
+      ],
+      "title": "InterlineSample",
+      "type": "object"
+    },
+    "LayoutBarline": {
+      "additionalProperties": false,
+      "properties": {
+        "confidenceBp": {
+          "maximum": 10000,
+          "minimum": 0,
+          "title": "Confidencebp",
+          "type": "integer"
+        },
+        "spanStaffIds": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Spanstaffids",
+          "type": "array"
+        },
+        "styleGuess": {
+          "enum": [
+            "regular",
+            "double",
+            "final",
+            "repeatStart",
+            "repeatEnd",
+            "repeatBoth",
+            "dashed",
+            "heavy"
+          ],
+          "title": "Styleguess",
+          "type": "string"
+        },
+        "uByStaff": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "propertyNames": {
+            "minLength": 1
+          },
+          "title": "Ubystaff",
+          "type": "object"
+        },
+        "xProcessed": {
+          "title": "Xprocessed",
+          "type": "number"
+        }
+      },
+      "required": [
+        "xProcessed",
+        "uByStaff",
+        "spanStaffIds",
+        "styleGuess",
+        "confidenceBp"
+      ],
+      "title": "LayoutBarline",
+      "type": "object"
+    },
+    "NonStaffMask": {
+      "additionalProperties": false,
+      "properties": {
+        "counts": {
+          "items": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "minItems": 1,
+          "title": "Counts",
+          "type": "array"
+        },
+        "frameId": {
+          "minLength": 1,
+          "title": "Frameid",
+          "type": "string"
+        },
+        "height": {
+          "minimum": 1,
+          "title": "Height",
+          "type": "integer"
+        },
+        "width": {
+          "minimum": 1,
+          "title": "Width",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "frameId",
+        "width",
+        "height",
+        "counts"
+      ],
+      "title": "NonStaffMask",
+      "type": "object"
+    },
+    "Staff": {
+      "additionalProperties": false,
+      "properties": {
+        "bbox": {
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "minimum": 0,
+              "type": "number"
+            }
+          ],
+          "title": "Bbox",
+          "type": "array"
+        },
+        "confidenceBp": {
+          "maximum": 10000,
+          "minimum": 0,
+          "title": "Confidencebp",
+          "type": "integer"
+        },
+        "interlineProfile": {
+          "items": {
+            "$ref": "#/$defs/InterlineSample"
+          },
+          "title": "Interlineprofile",
+          "type": "array"
+        },
+        "interlinePx": {
+          "exclusiveMinimum": 0,
+          "title": "Interlinepx",
+          "type": "number"
+        },
+        "lineCount": {
+          "minimum": 1,
+          "title": "Linecount",
+          "type": "integer"
+        },
+        "lineThicknessPx": {
+          "exclusiveMinimum": 0,
+          "title": "Linethicknesspx",
+          "type": "number"
+        },
+        "lines": {
+          "items": {
+            "items": {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            "minItems": 2,
+            "type": "array"
+          },
+          "maxItems": 5,
+          "minItems": 5,
+          "title": "Lines",
+          "type": "array"
+        },
+        "ood": {
+          "anyOf": [
+            {
+              "enum": [
+                "tablature",
+                "percussion",
+                "unknown"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ood"
+        },
+        "staffId": {
+          "minLength": 1,
+          "title": "Staffid",
+          "type": "string"
+        },
+        "systemId": {
+          "minLength": 1,
+          "title": "Systemid",
+          "type": "string"
+        }
+      },
+      "required": [
+        "staffId",
+        "systemId",
+        "lines",
+        "interlinePx",
+        "interlineProfile",
+        "lineThicknessPx",
+        "bbox",
+        "lineCount",
+        "confidenceBp"
+      ],
+      "title": "Staff",
+      "type": "object"
+    },
+    "StaffGroup": {
+      "additionalProperties": false,
+      "properties": {
+        "staffIds": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Staffids",
+          "type": "array"
+        },
+        "type": {
+          "enum": [
+            "brace",
+            "bracket",
+            "none"
+          ],
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "staffIds"
+      ],
+      "title": "StaffGroup",
+      "type": "object"
+    },
+    "StripRef": {
+      "additionalProperties": false,
+      "properties": {
+        "height": {
+          "minimum": 1,
+          "title": "Height",
+          "type": "integer"
+        },
+        "marginAboveSpaces": {
+          "minimum": 0,
+          "title": "Marginabovespaces",
+          "type": "number"
+        },
+        "marginBelowSpaces": {
+          "minimum": 0,
+          "title": "Marginbelowspaces",
+          "type": "number"
+        },
+        "mesh": {
+          "$ref": "#/$defs/DewarpMesh"
+        },
+        "pixelsSha256": {
+          "title": "Pixelssha256",
+          "type": "string"
+        },
+        "sStar": {
+          "exclusiveMinimum": 0,
+          "title": "Sstar",
+          "type": "number"
+        },
+        "stripId": {
+          "minLength": 1,
+          "title": "Stripid",
+          "type": "string"
+        },
+        "width": {
+          "minimum": 1,
+          "title": "Width",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "stripId",
+        "sStar",
+        "width",
+        "height",
+        "marginAboveSpaces",
+        "marginBelowSpaces",
+        "mesh",
+        "pixelsSha256"
+      ],
+      "title": "StripRef",
+      "type": "object"
+    },
+    "System": {
+      "additionalProperties": false,
+      "properties": {
+        "barlines": {
+          "items": {
+            "$ref": "#/$defs/LayoutBarline"
+          },
+          "title": "Barlines",
+          "type": "array"
+        },
+        "groups": {
+          "items": {
+            "$ref": "#/$defs/StaffGroup"
+          },
+          "title": "Groups",
+          "type": "array"
+        },
+        "staffIds": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Staffids",
+          "type": "array"
+        },
+        "systemId": {
+          "minLength": 1,
+          "title": "Systemid",
+          "type": "string"
+        }
+      },
+      "required": [
+        "systemId",
+        "staffIds",
+        "groups",
+        "barlines"
+      ],
+      "title": "System",
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "minLength": 1,
+      "title": "Id",
+      "type": "string"
+    },
+    "nonStaffMask": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/NonStaffMask"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "oodFlags": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Oodflags",
+      "type": "array"
+    },
+    "readingOrder": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Readingorder",
+      "type": "array"
+    },
+    "schema": {
+      "const": "clavis-ir-0.1",
+      "title": "Schema",
+      "type": "string"
+    },
+    "staves": {
+      "items": {
+        "$ref": "#/$defs/Staff"
+      },
+      "title": "Staves",
+      "type": "array"
+    },
+    "strips": {
+      "items": {
+        "$ref": "#/$defs/StripRef"
+      },
+      "title": "Strips",
+      "type": "array"
+    },
+    "systems": {
+      "items": {
+        "$ref": "#/$defs/System"
+      },
+      "title": "Systems",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema",
+    "id",
+    "staves",
+    "systems",
+    "strips",
+    "readingOrder",
+    "oodFlags"
+  ],
+  "title": "PageLayout",
+  "type": "object"
+}

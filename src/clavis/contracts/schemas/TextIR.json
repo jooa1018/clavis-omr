@@ -1,0 +1,504 @@
+{
+  "$defs": {
+    "ChordParseResult": {
+      "additionalProperties": false,
+      "properties": {
+        "bass": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PitchClass"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "degrees": {
+          "items": {
+            "$ref": "#/$defs/Degree"
+          },
+          "title": "Degrees",
+          "type": "array"
+        },
+        "kind": {
+          "enum": [
+            "major",
+            "minor",
+            "augmented",
+            "diminished",
+            "dominant",
+            "major-seventh",
+            "minor-seventh",
+            "diminished-seventh",
+            "half-diminished",
+            "major-minor",
+            "major-sixth",
+            "minor-sixth",
+            "dominant-ninth",
+            "major-ninth",
+            "minor-ninth",
+            "dominant-11th",
+            "dominant-13th",
+            "suspended-second",
+            "suspended-fourth",
+            "power",
+            "none"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "kindText": {
+          "title": "Kindtext",
+          "type": "string"
+        },
+        "normalized": {
+          "title": "Normalized",
+          "type": "string"
+        },
+        "root": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PitchClass"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "kind",
+        "kindText",
+        "degrees",
+        "normalized"
+      ],
+      "title": "ChordParseResult",
+      "type": "object"
+    },
+    "Degree": {
+      "additionalProperties": false,
+      "properties": {
+        "alter": {
+          "maximum": 2,
+          "minimum": -2,
+          "title": "Alter",
+          "type": "integer"
+        },
+        "type": {
+          "enum": [
+            "add",
+            "alter",
+            "subtract"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "value": {
+          "minimum": 1,
+          "title": "Value",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "value",
+        "alter",
+        "type"
+      ],
+      "title": "Degree",
+      "type": "object"
+    },
+    "Glyph": {
+      "additionalProperties": false,
+      "properties": {
+        "box": {
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "minimum": 0,
+              "type": "number"
+            }
+          ],
+          "title": "Box",
+          "type": "array"
+        },
+        "char": {
+          "title": "Char",
+          "type": "string"
+        },
+        "probBp": {
+          "maximum": 10000,
+          "minimum": 0,
+          "title": "Probbp",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "char",
+        "box",
+        "probBp"
+      ],
+      "title": "Glyph",
+      "type": "object"
+    },
+    "PitchClass": {
+      "additionalProperties": false,
+      "properties": {
+        "alter": {
+          "maximum": 2,
+          "minimum": -2,
+          "title": "Alter",
+          "type": "integer"
+        },
+        "step": {
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+          ],
+          "title": "Step",
+          "type": "string"
+        }
+      },
+      "required": [
+        "step",
+        "alter"
+      ],
+      "title": "PitchClass",
+      "type": "object"
+    },
+    "StaffLink": {
+      "additionalProperties": false,
+      "properties": {
+        "distanceSpaces": {
+          "minimum": 0,
+          "title": "Distancespaces",
+          "type": "number"
+        },
+        "relation": {
+          "enum": [
+            "above",
+            "below"
+          ],
+          "title": "Relation",
+          "type": "string"
+        },
+        "staffId": {
+          "minLength": 1,
+          "title": "Staffid",
+          "type": "string"
+        }
+      },
+      "required": [
+        "staffId",
+        "relation",
+        "distanceSpaces"
+      ],
+      "title": "StaffLink",
+      "type": "object"
+    },
+    "Syllable": {
+      "additionalProperties": false,
+      "properties": {
+        "box": {
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "minimum": 0,
+              "type": "number"
+            }
+          ],
+          "title": "Box",
+          "type": "array"
+        },
+        "extender": {
+          "title": "Extender",
+          "type": "boolean"
+        },
+        "hyphenAfter": {
+          "title": "Hyphenafter",
+          "type": "boolean"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "text",
+        "box",
+        "hyphenAfter",
+        "extender"
+      ],
+      "title": "Syllable",
+      "type": "object"
+    },
+    "TextAlternative": {
+      "additionalProperties": false,
+      "properties": {
+        "probBp": {
+          "maximum": 10000,
+          "minimum": 0,
+          "title": "Probbp",
+          "type": "integer"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "text",
+        "probBp"
+      ],
+      "title": "TextAlternative",
+      "type": "object"
+    },
+    "TextItem": {
+      "additionalProperties": false,
+      "properties": {
+        "alternatives": {
+          "items": {
+            "$ref": "#/$defs/TextAlternative"
+          },
+          "title": "Alternatives",
+          "type": "array"
+        },
+        "boxProcessed": {
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "minimum": 0,
+              "type": "number"
+            }
+          ],
+          "title": "Boxprocessed",
+          "type": "array"
+        },
+        "chord": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ChordParseResult"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "confidenceBp": {
+          "maximum": 10000,
+          "minimum": 0,
+          "title": "Confidencebp",
+          "type": "integer"
+        },
+        "glyphs": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/Glyph"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Glyphs"
+        },
+        "pageIndex": {
+          "minimum": 0,
+          "title": "Pageindex",
+          "type": "integer"
+        },
+        "polygon": {
+          "anyOf": [
+            {
+              "items": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              "minItems": 3,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Polygon"
+        },
+        "role": {
+          "enum": [
+            "chord",
+            "lyric",
+            "title",
+            "subtitle",
+            "tempo",
+            "section",
+            "navigation",
+            "rehearsal",
+            "credit",
+            "pageNumber",
+            "other"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "roleProbs": {
+          "additionalProperties": {
+            "maximum": 10000,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "propertyNames": {
+            "enum": [
+              "chord",
+              "lyric",
+              "title",
+              "subtitle",
+              "tempo",
+              "section",
+              "navigation",
+              "rehearsal",
+              "credit",
+              "pageNumber",
+              "other"
+            ]
+          },
+          "title": "Roleprobs",
+          "type": "object"
+        },
+        "staffLink": {
+          "$ref": "#/$defs/StaffLink"
+        },
+        "syllables": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/Syllable"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Syllables"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "textId": {
+          "minLength": 1,
+          "title": "Textid",
+          "type": "string"
+        },
+        "verse": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Verse"
+        }
+      },
+      "required": [
+        "textId",
+        "pageIndex",
+        "boxProcessed",
+        "role",
+        "roleProbs",
+        "text",
+        "alternatives",
+        "confidenceBp",
+        "staffLink"
+      ],
+      "title": "TextItem",
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "minLength": 1,
+      "title": "Id",
+      "type": "string"
+    },
+    "items": {
+      "items": {
+        "$ref": "#/$defs/TextItem"
+      },
+      "title": "Items",
+      "type": "array"
+    },
+    "schema": {
+      "const": "clavis-ir-0.1",
+      "title": "Schema",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema",
+    "id",
+    "items"
+  ],
+  "title": "TextIR",
+  "type": "object"
+}

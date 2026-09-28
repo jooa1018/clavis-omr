@@ -1,0 +1,83 @@
+{
+  "$defs": {
+    "ConfidenceElement": {
+      "additionalProperties": false,
+      "properties": {
+        "confidenceBp": {
+          "maximum": 10000,
+          "minimum": 0,
+          "title": "Confidencebp",
+          "type": "integer"
+        },
+        "flagged": {
+          "title": "Flagged",
+          "type": "boolean"
+        },
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "title": "Kind",
+          "type": "string"
+        },
+        "parentId": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parentid"
+        },
+        "path": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Path"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "confidenceBp",
+        "flagged"
+      ],
+      "title": "ConfidenceElement",
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "elements": {
+      "items": {
+        "$ref": "#/$defs/ConfidenceElement"
+      },
+      "title": "Elements",
+      "type": "array"
+    },
+    "schema": {
+      "const": "clavis-confidence-0.1",
+      "title": "Schema",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema",
+    "elements"
+  ],
+  "title": "ElementConfidence",
+  "type": "object"
+}
