@@ -72,3 +72,27 @@ uv run --locked mypy --strict training/data
 References: [SVG metadata](https://book.verovio.org/toolkit-reference/toolkit-options.html),
 [toolkit methods](https://book.verovio.org/toolkit-reference/toolkit-methods.html),
 [font/fallback behavior](https://book.verovio.org/advanced-topics/smufl.html).
+
+## LeadGen development core
+
+```text
+uv run --locked --group training python -m training.data.leadgen --config configs/data/leadgen-development.yaml --seed train-demo --output work/leadgen-demo
+```
+
+This explicit **development-only** profile exercises all key signatures, six
+meters, treble/bass/tenor clefs, 4/8 measures, notes/rests from whole to 32nd,
+one/two dots, quarter-note pickup, title and tempo. SHA-256 maps train-* seed
+strings to a local numpy Generator. Identical seed + profile + pinned versions
+produce identical MusicXML. Positive rhythms are composed with exact division
+arithmetic before pitches are drawn; no missing events are inferred or repaired.
+Pitch alterations encode the selected key explicitly. YAML forbids unknown fields,
+invalid probabilities and training purpose; impossible durations fail closed.
+
+This is not LeadGen G0 acceptance. Mid-score key/meter changes, minor-key profile,
+ties, tuplets, grace, harmony, lyrics, repeats/navigation, multiple voices, slash
+rhythm and remaining P0 coverage are still pending. No 10,000-song benchmark or
+P0 >=1% claim has been made. Configuration weights are tested, not fitted.
+The development profile is not an adopted training distribution; ADR-010 proposes
+the production decisions for Orchestrator. All output stays in work/ and records
+training_admission=BLOCKED_PENDING_W4_AND_APPROVED_PROFILE. Nothing is admitted
+to a training manifest, and unverified lyric/font sources remain forbidden.

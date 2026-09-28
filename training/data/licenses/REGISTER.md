@@ -6,7 +6,7 @@ an upstream candidate is not an admitted training source. No corpus was download
 | Source | v0 decision |
 |---|---|
 | Self-authored smoke notation | Tool tests only, quarantined under `work/` |
-| LeadGen | Pending implementation and W4 melody exclusion |
+| LeadGen | Self-authored development core; tool-test only, training blocked pending W4/profile |
 | PDMX | Pending item review; require `no_license_conflict` plus PDM/CC0 per item |
 | Mutopia | Pending per-work review; CC-BY-SA requires Orchestrator approval |
 | OpenScore Lieder | Entire corpus forbidden for training; evaluation belongs to W4 |

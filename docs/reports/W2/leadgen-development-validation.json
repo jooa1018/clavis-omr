@@ -1,0 +1,712 @@
+{
+  "scope": "development forced key/meter grid; not production distribution or recognition evaluation",
+  "samples": 90,
+  "invalid_measures": [],
+  "all_repeat_bytes_equal": true,
+  "event_counts": {
+    "note": 2191,
+    "duration:half": 201,
+    "dots:1": 486,
+    "rest": 386,
+    "duration:32nd": 720,
+    "dots:0": 1962,
+    "duration:eighth": 594,
+    "duration:quarter": 507,
+    "dots:2": 129,
+    "duration:16th": 520,
+    "duration:whole": 35
+  },
+  "wall_seconds": 0.6559999999881256,
+  "process_peak_rss_bytes": 44376064,
+  "cases": [
+    {
+      "seed": "train-audit-0-4-4",
+      "fifths": -7,
+      "meter": "4/4",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-0-3-4",
+      "fifths": -7,
+      "meter": "3/4",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-0-6-8",
+      "fifths": -7,
+      "meter": "6/8",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-0-2-4",
+      "fifths": -7,
+      "meter": "2/4",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-0-12-8",
+      "fifths": -7,
+      "meter": "12/8",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-0-2-2",
+      "fifths": -7,
+      "meter": "2/2",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-1-4-4",
+      "fifths": -6,
+      "meter": "4/4",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-1-3-4",
+      "fifths": -6,
+      "meter": "3/4",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-1-6-8",
+      "fifths": -6,
+      "meter": "6/8",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-1-2-4",
+      "fifths": -6,
+      "meter": "2/4",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-1-12-8",
+      "fifths": -6,
+      "meter": "12/8",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-1-2-2",
+      "fifths": -6,
+      "meter": "2/2",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-2-4-4",
+      "fifths": -5,
+      "meter": "4/4",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-2-3-4",
+      "fifths": -5,
+      "meter": "3/4",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-2-6-8",
+      "fifths": -5,
+      "meter": "6/8",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-2-2-4",
+      "fifths": -5,
+      "meter": "2/4",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-2-12-8",
+      "fifths": -5,
+      "meter": "12/8",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-2-2-2",
+      "fifths": -5,
+      "meter": "2/2",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-3-4-4",
+      "fifths": -4,
+      "meter": "4/4",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-3-3-4",
+      "fifths": -4,
+      "meter": "3/4",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-3-6-8",
+      "fifths": -4,
+      "meter": "6/8",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-3-2-4",
+      "fifths": -4,
+      "meter": "2/4",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-3-12-8",
+      "fifths": -4,
+      "meter": "12/8",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-3-2-2",
+      "fifths": -4,
+      "meter": "2/2",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-4-4-4",
+      "fifths": -3,
+      "meter": "4/4",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-4-3-4",
+      "fifths": -3,
+      "meter": "3/4",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-4-6-8",
+      "fifths": -3,
+      "meter": "6/8",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-4-2-4",
+      "fifths": -3,
+      "meter": "2/4",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-4-12-8",
+      "fifths": -3,
+      "meter": "12/8",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-4-2-2",
+      "fifths": -3,
+      "meter": "2/2",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-5-4-4",
+      "fifths": -2,
+      "meter": "4/4",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-5-3-4",
+      "fifths": -2,
+      "meter": "3/4",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-5-6-8",
+      "fifths": -2,
+      "meter": "6/8",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-5-2-4",
+      "fifths": -2,
+      "meter": "2/4",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-5-12-8",
+      "fifths": -2,
+      "meter": "12/8",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-5-2-2",
+      "fifths": -2,
+      "meter": "2/2",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-6-4-4",
+      "fifths": -1,
+      "meter": "4/4",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-6-3-4",
+      "fifths": -1,
+      "meter": "3/4",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-6-6-8",
+      "fifths": -1,
+      "meter": "6/8",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-6-2-4",
+      "fifths": -1,
+      "meter": "2/4",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-6-12-8",
+      "fifths": -1,
+      "meter": "12/8",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-6-2-2",
+      "fifths": -1,
+      "meter": "2/2",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-7-4-4",
+      "fifths": 0,
+      "meter": "4/4",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-7-3-4",
+      "fifths": 0,
+      "meter": "3/4",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-7-6-8",
+      "fifths": 0,
+      "meter": "6/8",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-7-2-4",
+      "fifths": 0,
+      "meter": "2/4",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-7-12-8",
+      "fifths": 0,
+      "meter": "12/8",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-7-2-2",
+      "fifths": 0,
+      "meter": "2/2",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-8-4-4",
+      "fifths": 1,
+      "meter": "4/4",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-8-3-4",
+      "fifths": 1,
+      "meter": "3/4",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-8-6-8",
+      "fifths": 1,
+      "meter": "6/8",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-8-2-4",
+      "fifths": 1,
+      "meter": "2/4",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-8-12-8",
+      "fifths": 1,
+      "meter": "12/8",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-8-2-2",
+      "fifths": 1,
+      "meter": "2/2",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-9-4-4",
+      "fifths": 2,
+      "meter": "4/4",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-9-3-4",
+      "fifths": 2,
+      "meter": "3/4",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-9-6-8",
+      "fifths": 2,
+      "meter": "6/8",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-9-2-4",
+      "fifths": 2,
+      "meter": "2/4",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-9-12-8",
+      "fifths": 2,
+      "meter": "12/8",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-9-2-2",
+      "fifths": 2,
+      "meter": "2/2",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-10-4-4",
+      "fifths": 3,
+      "meter": "4/4",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-10-3-4",
+      "fifths": 3,
+      "meter": "3/4",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-10-6-8",
+      "fifths": 3,
+      "meter": "6/8",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-10-2-4",
+      "fifths": 3,
+      "meter": "2/4",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-10-12-8",
+      "fifths": 3,
+      "meter": "12/8",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-10-2-2",
+      "fifths": 3,
+      "meter": "2/2",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-11-4-4",
+      "fifths": 4,
+      "meter": "4/4",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-11-3-4",
+      "fifths": 4,
+      "meter": "3/4",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-11-6-8",
+      "fifths": 4,
+      "meter": "6/8",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-11-2-4",
+      "fifths": 4,
+      "meter": "2/4",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-11-12-8",
+      "fifths": 4,
+      "meter": "12/8",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-11-2-2",
+      "fifths": 4,
+      "meter": "2/2",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-12-4-4",
+      "fifths": 5,
+      "meter": "4/4",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-12-3-4",
+      "fifths": 5,
+      "meter": "3/4",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-12-6-8",
+      "fifths": 5,
+      "meter": "6/8",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-12-2-4",
+      "fifths": 5,
+      "meter": "2/4",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-12-12-8",
+      "fifths": 5,
+      "meter": "12/8",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-12-2-2",
+      "fifths": 5,
+      "meter": "2/2",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-13-4-4",
+      "fifths": 6,
+      "meter": "4/4",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-13-3-4",
+      "fifths": 6,
+      "meter": "3/4",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-13-6-8",
+      "fifths": 6,
+      "meter": "6/8",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-13-2-4",
+      "fifths": 6,
+      "meter": "2/4",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-13-12-8",
+      "fifths": 6,
+      "meter": "12/8",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-13-2-2",
+      "fifths": 6,
+      "meter": "2/2",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-14-4-4",
+      "fifths": 7,
+      "meter": "4/4",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-14-3-4",
+      "fifths": 7,
+      "meter": "3/4",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-14-6-8",
+      "fifths": 7,
+      "meter": "6/8",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-14-2-4",
+      "fifths": 7,
+      "meter": "2/4",
+      "measures": 8,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-14-12-8",
+      "fifths": 7,
+      "meter": "12/8",
+      "measures": 4,
+      "deterministic": true
+    },
+    {
+      "seed": "train-audit-14-2-2",
+      "fifths": 7,
+      "meter": "2/2",
+      "measures": 4,
+      "deterministic": true
+    }
+  ],
+  "training_admission": "BLOCKED_PENDING_W4_AND_APPROVED_PROFILE",
+  "p0_complete": false,
+  "benchmark_10000": "NOT_RUN",
+  "ci": "PENDING",
+  "previous_pr": {
+    "number": 5,
+    "state": "MERGED",
+    "commit": "3c996d8d37c227816554f9ff09d9d38fbdde28b3",
+    "final_ci": "https://github.com/jooa1018/clavis-omr/actions/runs/36498480989"
+  },
+  "checks": {
+    "ruff": {
+      "exit_code": 0,
+      "command": "ruff check ."
+    },
+    "format": {
+      "exit_code": 0,
+      "command": "ruff format --check ."
+    },
+    "types": {
+      "exit_code": 0,
+      "command": "mypy --strict training/data"
+    },
+    "base_types": {
+      "exit_code": 0,
+      "command": "mypy"
+    },
+    "tests": {
+      "exit_code": 0,
+      "command": "pytest tests/ --cov=training.data --cov=clavis --cov=scripts --cov-fail-under=80 --junitxml=work/leadgen-all-tests.xml"
+    },
+    "imports": {
+      "exit_code": 0,
+      "command": "lint-imports"
+    },
+    "licenses": {
+      "exit_code": 0,
+      "command": "python scripts/check_licenses.py"
+    }
+  },
+  "tests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "1",
+    "tests": "91",
+    "time": "15.414",
+    "timestamp": "2026-09-29T08:40:57.485103+09:00"
+  },
+  "leadgen_coverage": {
+    "covered_lines": 151,
+    "num_statements": 154,
+    "percent_covered": 98.05194805194805,
+    "percent_covered_display": "98",
+    "missing_lines": 3,
+    "excluded_lines": 0,
+    "percent_statements_covered": 98.05194805194805,
+    "percent_statements_covered_display": "98"
+  }
+}
