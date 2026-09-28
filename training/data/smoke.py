@@ -111,7 +111,8 @@ def run(output: Path, renderer_python: Path | None = None) -> dict[str, Any]:
                 result = subprocess.run(
                     [
                         str(renderer_python),
-                        str(Path(__file__).with_name("verovio_worker.py")),
+                        "-m",
+                        "training.data.verovio_worker",
                         str(CONFIG),
                         font,
                     ],
@@ -120,6 +121,7 @@ def run(output: Path, renderer_python: Path | None = None) -> dict[str, Any]:
                     timeout=config["timeout_seconds"],
                     check=True,
                     env=env,
+                    cwd=ROOT,
                 )
                 rendered = json.loads(result.stdout)
                 phase = "svg-extraction"
@@ -145,6 +147,7 @@ def run(output: Path, renderer_python: Path | None = None) -> dict[str, Any]:
                     version=rendered["version"],
                     options=rendered["options"],
                     pages=len(rendered["pages"]),
+                    peak_rss_bytes=rendered.get("peak_rss_bytes"),
                 )
                 write_json(checkpoint, record)
             except (ValueError, OSError, subprocess.SubprocessError) as error:

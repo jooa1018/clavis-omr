@@ -15,21 +15,22 @@ encoded system break. Only `train-*` identifiers are used. All artifacts remain
 under `work/`, with training admission blocked pending W4 melody exclusion.
 OpenScore Lieder and private scores are not read. No training manifest is emitted.
 
-## W1 handoff (not yet integrated)
+## Short development runs and W1 handoff
 
-The current base has no W1 queue implementation. Do not launch real rendering
-outside W1's single 01:00–07:00 queue. W1 should run this payload with a separate
-Python environment containing **verovio==6.3.0**, after checking the installed
-font resource provenance. Do not add Verovio to engine dependencies.
+OR-001 explicitly permits this 30-variant smoke run outside the night queue:
+at most 10 minutes, 3 GB RAM, 100 renders/images, user-supervised development.
+Install the W1-pinned **verovio==6.3.0** with `uv sync --locked --group training`.
+The toolkit runs in a separate process, never in the engine. Font resources and
+all 30 rendered pages were verified in `docs/reports/W2/render-audit-v0.json`.
 
 ```text
-python -m training.data.smoke work/w2-smoke --renderer-python <isolated-python>
+uv run --locked --group training python -m training.data.smoke work/w2-smoke --renderer-python .venv/Scripts/python.exe
 ```
 
-Queue requirements: one job, CPU only, one thread, RAM cap 3 GB supplied by W1;
+For larger runs, queue requirements: one job, CPU only, one thread, RAM cap 3 GB supplied by W1;
 per score/font subprocess timeout 60 s. This payload does not implement a second
 scheduler or pretend an environment variable proves admission. W1 must apply its
-actual queue API once available. There is no queued/running job yet.
+actual queue API once available. On Linux pass `.venv/bin/python` instead.
 
 `configs/data/smoke.json` pins renderer/options, fonts, page/input limits, a 4 GB
 data ceiling and 3 GB minimum free disk. Storage is checked conservatively against
@@ -57,14 +58,14 @@ preserving nested viewports and transforms. This is a private audit artifact,
 not StaffGeometry IR. Global coordinate conversion and contract schema validation
 are not claimed. LSTL, symbol relations and text labels are not yet implemented.
 
-Before calling the first goal complete: run all 30 variants through W1, inspect
-every page overlay (inflate to a temporary SVG), record failures and proportions,
-verify font fallback/resource metadata, and attach the audit results.
+For every new smoke acceptance: inspect every page overlay (inflate to a temporary
+SVG), record failures and proportions, verify font fallback/resource metadata,
+and attach the audit results. OR-001 permits the short development run above.
 `RENDERED_PENDING_VISUAL_AUDIT` never means PASS. Mock tests do not establish
 compatibility with the actual pinned renderer.
 
 ```text
-uv run --locked pytest tests/data --cov=training.data --cov-fail-under=80
+uv run --locked --group training pytest tests/data --cov=training.data --cov-fail-under=80
 uv run --locked mypy --strict training/data
 ```
 

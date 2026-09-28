@@ -1,12 +1,18 @@
 """Small deterministic self-authored MusicXML fixtures, not a training corpus."""
 
+import hashlib
 import xml.etree.ElementTree as ET
+
+import numpy as np
 
 
 def score(seed: str, *, fifths: int, beats: int, staves: int) -> str:
     """Enumerate simple variants for renderer tests; no imported tune or lyrics."""
     if not seed.startswith("train-"):
         raise ValueError("Only train-* namespaces are permitted")
+    rng = np.random.default_rng(int.from_bytes(hashlib.sha256(seed.encode()).digest(), "big"))
+    degrees = [int(rng.integers(2, 6)) for _ in range(staves)]
+    altered_steps = ("FCGDAEB" if fifths > 0 else "BEADGCF")[: abs(fifths)]
     root = ET.Element("score-partwise", version="4.0")
     parts = ET.SubElement(root, "part-list")
     part_info = ET.SubElement(parts, "score-part", id="P1")
@@ -31,11 +37,16 @@ def score(seed: str, *, fifths: int, beats: int, staves: int) -> str:
         for staff in range(1, staves + 1):
             if staff > 1:
                 ET.SubElement(ET.SubElement(measure, "backup"), "duration").text = str(beats)
-            for beat in range(beats):
+            for _ in range(beats):
+                degrees[staff - 1] = int(np.clip(degrees[staff - 1] + rng.integers(-2, 3), 0, 13))
+                degree = degrees[staff - 1]
+                step = "CDEFGAB"[degree % 7]
                 note = ET.SubElement(measure, "note")
                 pitch = ET.SubElement(note, "pitch")
-                ET.SubElement(pitch, "step").text = "CDEFGAB"[(beat + measure_index + staff) % 7]
-                ET.SubElement(pitch, "octave").text = "4"
+                ET.SubElement(pitch, "step").text = step
+                if step in altered_steps:
+                    ET.SubElement(pitch, "alter").text = "1" if fifths > 0 else "-1"
+                ET.SubElement(pitch, "octave").text = str(4 + degree // 7)
                 ET.SubElement(note, "duration").text = "1"
                 ET.SubElement(note, "voice").text = str(staff)
                 ET.SubElement(note, "type").text = "quarter"

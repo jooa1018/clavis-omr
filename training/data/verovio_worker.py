@@ -6,6 +6,8 @@ import sys
 from importlib.metadata import version
 from pathlib import Path
 
+from training.data.resources import peak_rss_bytes
+
 
 def main() -> None:
     """Render one MusicXML from stdin using a separately installed pinned toolkit."""
@@ -27,7 +29,16 @@ def main() -> None:
     pages = [toolkit.renderToSVG(page) for page in range(1, toolkit.getPageCount() + 1)]
     if not pages or any(len(page.encode()) > config["max_svg_bytes"] for page in pages):
         raise ValueError("Empty or oversized renderer output")
-    print(json.dumps({"version": toolkit.getVersion(), "options": options, "pages": pages}))
+    print(
+        json.dumps(
+            {
+                "version": toolkit.getVersion(),
+                "options": options,
+                "pages": pages,
+                "peak_rss_bytes": peak_rss_bytes(),
+            }
+        )
+    )
 
 
 if __name__ == "__main__":

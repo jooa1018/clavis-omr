@@ -54,6 +54,15 @@ def test_score_is_deterministic_valid_and_train_only() -> None:
                 )
     with pytest.raises(ValueError):
         score("eval-bad", fifths=0, beats=4, staves=1)
+    contours = set()
+    for index in range(10):
+        root = ET.fromstring(score(f"train-smoke-{index}", fifths=0, beats=4, staves=1))
+        pitches = [
+            "CDEFGAB".index(p.findtext("step")) + 7 * int(p.findtext("octave"))
+            for p in root.findall(".//pitch")
+        ]
+        contours.add(tuple(b - a for a, b in zip(pitches, pitches[1:], strict=False)))
+    assert len(contours) == 10
 
 
 @pytest.fixture

@@ -77,6 +77,8 @@ def extract(svg: str, *, max_bytes: int, enabled: bool = True) -> tuple[list[Sta
                         "points": " ".join(f"{x},{y}" for x, y in points),
                         "fill": "none",
                         "stroke": "#e00078",
+                        # Verovio's stylesheet overrides presentation attributes.
+                        "style": "stroke:#e00078",
                         "stroke-opacity": "0.65",
                         "stroke-width": str(min(gaps) / 8),
                     },

@@ -49,6 +49,7 @@ def test_provenance_and_overlay_under_identical_coordinate_context() -> None:
         staff = next(e for e in root.iter() if e.get("id") == label.staff_id)
         polylines = staff.findall(f"{SVG}g[@class='clavis-staff-audit']/{SVG}polyline")
         assert len(polylines) == 5
+        assert all(line.get("style") == "stroke:#e00078" for line in polylines)
         assert [
             [list(map(float, p.split(","))) for p in line.get("points", "").split()]
             for line in polylines

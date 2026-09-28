@@ -13,7 +13,7 @@
       ],
       "attribution": "Clavis project contributors",
       "checked_on": "2026-09-29",
-      "verification_method": "Self-authored enumerated synthetic notation; no external tune, lyrics or private input"
+      "verification_method": "Self-authored deterministic train-* seeded random walk, explicit key alterations; no external tunes/lyrics; quarantine only."
     },
     {
       "id": "leadgen",
@@ -81,7 +81,7 @@
       "id": "leipzig",
       "name": "Leipzig",
       "url": "https://raw.githubusercontent.com/rism-digital/leipzig/main/LICENSE.txt",
-      "version": "Verovio 6.3.0 resource candidate",
+      "version": "Verovio 6.3.0 bundled resource",
       "license": "OFL-1.1",
       "status": "verified",
       "allowed_uses": [
@@ -89,13 +89,18 @@
       ],
       "attribution": "Etienne Darbellay, Jean-Francois Marti and Laurent Pugin; retain original copyright and OFL on font redistribution",
       "checked_on": "2026-09-29",
-      "verification_method": "Upstream LICENSE.txt reviewed; verify bundled resource versions/hashes at first queue run"
+      "verification_method": "Upstream OFL checked; bundled font-family and resource tree SHA-256 recorded; all used smoke glyph paths match this font, zero fallback. See docs/reports/W2/render-audit-v0.json.",
+      "artifact_evidence": {
+        "resource_files": 659,
+        "sha256": "3950dbce6507914faae11f1cb008ab04b1effeb580b17db24f5153ce4a198140",
+        "family": "Leipzig"
+      }
     },
     {
       "id": "bravura",
       "name": "Bravura",
       "url": "https://raw.githubusercontent.com/steinbergmedia/bravura/master/LICENSE.txt",
-      "version": "Verovio 6.3.0 resource candidate",
+      "version": "Verovio 6.3.0 bundled resource",
       "license": "OFL-1.1",
       "status": "verified",
       "allowed_uses": [
@@ -103,13 +108,18 @@
       ],
       "attribution": "Steinberg Media Technologies GmbH; retain original copyright and OFL on font redistribution",
       "checked_on": "2026-09-29",
-      "verification_method": "Upstream LICENSE.txt reviewed; verify bundled resource versions/hashes at first queue run"
+      "verification_method": "Upstream OFL checked; bundled font-family and resource tree SHA-256 recorded; all used smoke glyph paths match this font, zero fallback. See docs/reports/W2/render-audit-v0.json.",
+      "artifact_evidence": {
+        "resource_files": 887,
+        "sha256": "75cda44e831d5b01baf0169529f0b78b6a1e9c76fa12454ae8fddb6b3a3e9c7f",
+        "family": "Bravura"
+      }
     },
     {
       "id": "leland",
       "name": "Leland",
       "url": "https://raw.githubusercontent.com/MuseScoreFonts/Leland/main/LICENSE.txt",
-      "version": "Verovio 6.3.0 resource candidate",
+      "version": "Verovio 6.3.0 bundled resource",
       "license": "OFL-1.1",
       "status": "verified",
       "allowed_uses": [
@@ -117,7 +127,12 @@
       ],
       "attribution": "MuseScore BV / MuseScore contributors; retain original copyright and OFL on font redistribution",
       "checked_on": "2026-09-29",
-      "verification_method": "Upstream LICENSE.txt reviewed; verify bundled resource versions/hashes at first queue run"
+      "verification_method": "Upstream OFL checked; bundled font-family and resource tree SHA-256 recorded; all used smoke glyph paths match this font, zero fallback. See docs/reports/W2/render-audit-v0.json.",
+      "artifact_evidence": {
+        "resource_files": 355,
+        "sha256": "b3804574ccc80ba1deac7361d7c647c769fd6e5535ff8f39a75bab3a44a7a1ee",
+        "family": "Leland"
+      }
     },
     {
       "id": "gootville",
