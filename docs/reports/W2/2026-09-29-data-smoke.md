@@ -7,7 +7,9 @@
 실제 렌더와 시각 감사는 W1 단일 야간 큐 미구현으로 NOT_RUN이며 첫 목표 완료가 아니다.
 
 ## 2. 변경 (PR 링크, 주요 파일·모듈)
-브랜치 `w2/start`; PR 링크는 생성 후 갱신한다. 원본 저장소 main 변경 없음.
+브랜치 `w2/start`; [draft PR #5](https://github.com/jooa1018/clavis-omr/pull/5).
+W2는 원본 저장소에서 checkout이나 수정을 하지 않았다. 종료 점검 때 원본 브랜치가
+`w1/contract-clarifications`로 바뀐 것을 관찰했고, 다른 작업 상태를 되돌리지 않았다.
 `training/data/`: 등록부·사용 허가 검사, smoke 입력/실행기, 외부 렌더 워커, staff_svg 추출기.
 `configs/data/`: 버전·옵션·자원 제한, DATA-SVG-001 규칙. `tests/data/`: 자동 단위·mock 통합 검사.
 생성 XML·SVG·테스트 중간 파일은 `work/`에만 둔다. 데이터·폰트·렌더러 바이너리는 커밋하지 않는다.
@@ -21,7 +23,8 @@ CONTRACTS clavis-ir-0.1 / LSTL v0.1 기준. 계약 변경·CCR·ADR 없음.
 ## 4. 검증 (테스트 수, CI 결과, 결정성, 스캐너, 라이선스 스캔)
 측정 근거: `validation-v0.json`. W2 22개 테스트 통과, 새 코드 커버리지 93.07%.
 전체 pytest 33 passed / 1 skipped(기존 계약 구현 대기). ruff·format·mypy(base 및 W2 strict)·import 경계 통과.
-런타임 라이선스 스캔 위반 없음. CI는 PR 생성 후 갱신한다.
+런타임 라이선스 스캔 위반 없음. 코드 commit `1fde30e`의 Windows·Linux CI 통과:
+[CI run 36461340190](https://github.com/jooa1018/clavis-omr/actions/runs/36461340190).
 W4 하드코딩/누출 검사 NOT_RUN(기존 placeholder 종료 0은 통과가 아님).
 합성 SVG 다중 시스템·보표/중첩 좌표계/덧줄 제외/실패 거절, checkpoint 재개·손상·timeout·디스크 부족 검증.
 자동 fixture 생성·추출 동일 입력 반복은 일치. 실제 렌더 결정성 및 1·4스레드 엔진 검사는 NOT_RUN/해당 없음.

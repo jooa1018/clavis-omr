@@ -61,6 +61,14 @@
   "manual_visual_audit": "NOT_RUN",
   "w4_scanner": "NOT_RUN",
   "w4_fingerprint_filter": "NOT_RUN",
-  "ci": "PENDING",
+  "ci": {
+    "status": "PASS",
+    "commit": "1fde30e",
+    "platforms": [
+      "ubuntu-latest",
+      "windows-latest"
+    ],
+    "url": "https://github.com/jooa1018/clavis-omr/actions/runs/36461340190"
+  },
   "scope": "REF-LAPTOP Windows; automatic tests and synthetic fixtures only; no dev/sealed/real images"
 }
