@@ -205,6 +205,24 @@ def measure(reference: Score, prediction: Score) -> tuple[dict[str, Any], list[d
                     "prediction": [m.marks for m in group.prediction],
                 },
                 "measureExact": is_exact,
+                "measureErrors": (
+                    ["structure"]
+                    if group.operation != "match"
+                    else [
+                        key
+                        for key, differs in (
+                            ("events", any(p.errors for p in group.events)),
+                            ("harmonies", any(p.errors for p in harmonies)),
+                            ("attributes", any(p.errors for p in attributes)),
+                            ("state", group.reference[0].state != group.prediction[0].state),
+                            (
+                                "repeatOrVolta",
+                                group.reference[0].marks != group.prediction[0].marks,
+                            ),
+                        )
+                        if differs
+                    ]
+                ),
                 "measureExactWithLyrics": is_exact and not any(item["errors"] for item in lyrics),
             }
         )

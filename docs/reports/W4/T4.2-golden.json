@@ -2,9 +2,9 @@
   "cases": [
     {
       "case": "01-identical",
-      "pairsDigest": "d40668e677aeab144b43f3616fb3655bb938a311efc68ff001cf759acbe92f9f",
+      "pairsDigest": "c22b61360053bcd986d77df42bfaa6d3d7f382c77ce3660b0eeddf307928c13c",
       "report": {
-        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorDigest": "92c91f3d647c86fc0d1ac13d0bbad23884a4472a731f3c270bb5da521a026ec8",
         "evaluatorVersion": "0.1.0",
         "inputDigests": {
           "prediction": "257503d7c25504c1922dcc85a1771875c3d0c5694657eff9d1820f798d05ca7a",
@@ -102,9 +102,9 @@
     },
     {
       "case": "02-divisions",
-      "pairsDigest": "3c3b5778ec1bb08745ffc0ed40693bc3a9a4df1236aae2ec6922c73c7780561a",
+      "pairsDigest": "d5d55eae18ede79a715a89dd2904dfc51e7b429c8666114bb0e5b34ea0b877ca",
       "report": {
-        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorDigest": "92c91f3d647c86fc0d1ac13d0bbad23884a4472a731f3c270bb5da521a026ec8",
         "evaluatorVersion": "0.1.0",
         "inputDigests": {
           "prediction": "4525790e1c15b1cbe5b77d44442b4d5d8195c8929554e27877f6405c22f13f76",
@@ -202,9 +202,9 @@
     },
     {
       "case": "03-voice-number",
-      "pairsDigest": "ff380f3c7a0053e2bcc5c5efa29ae7287e70a9639663f016404159c0a2742262",
+      "pairsDigest": "f2e73050249da9535ee058c5e6730fb9aeb694a6734828ab71630ce975af8af8",
       "report": {
-        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorDigest": "92c91f3d647c86fc0d1ac13d0bbad23884a4472a731f3c270bb5da521a026ec8",
         "evaluatorVersion": "0.1.0",
         "inputDigests": {
           "prediction": "70c71e2d3bdc0899117d0946294f772d8ef25b9eae85bcc543afed081b40be77",
@@ -302,9 +302,9 @@
     },
     {
       "case": "04-pitch",
-      "pairsDigest": "a32a999b2907ff20e56999a96da08ddd5a6782d84feb016ddbd9f3136a7c090b",
+      "pairsDigest": "6224e6fbd95e5ea9a5ce7dc426811c869aa3f7b2754bbd7c76034431a34c0073",
       "report": {
-        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorDigest": "92c91f3d647c86fc0d1ac13d0bbad23884a4472a731f3c270bb5da521a026ec8",
         "evaluatorVersion": "0.1.0",
         "inputDigests": {
           "prediction": "dd485de8b1cd0afc449e85aae4d45217554a6ca71d184e8fc41766bb28f0752e",
@@ -402,9 +402,9 @@
     },
     {
       "case": "05-duration",
-      "pairsDigest": "26aa134a360957d89e526ed3a5ef5210e791d61cf03f3eb3040a05fba26bbb59",
+      "pairsDigest": "f10fd1f1d415f18c5c1fd89128c70ebf109344856da4a312dc6793f9fe3b365c",
       "report": {
-        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorDigest": "92c91f3d647c86fc0d1ac13d0bbad23884a4472a731f3c270bb5da521a026ec8",
         "evaluatorVersion": "0.1.0",
         "inputDigests": {
           "prediction": "8ecc2c9f1a2d454146f97f848f95ab8c961a6fd9addb1ffa1020c3f710416882",
@@ -502,9 +502,9 @@
     },
     {
       "case": "06-missing",
-      "pairsDigest": "43bf18f34b139728ef11160f927e73883dee156f13571076c2d34977a17ec4ae",
+      "pairsDigest": "09b8d86bf91a3968212a2852271e155db661ddf002e2f91999da2d2eb8840197",
       "report": {
-        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorDigest": "92c91f3d647c86fc0d1ac13d0bbad23884a4472a731f3c270bb5da521a026ec8",
         "evaluatorVersion": "0.1.0",
         "inputDigests": {
           "prediction": "8ecc2c9f1a2d454146f97f848f95ab8c961a6fd9addb1ffa1020c3f710416882",
@@ -602,9 +602,9 @@
     },
     {
       "case": "07-extra",
-      "pairsDigest": "da0d5115a9319caafea94ea0353b85f050429045b2eadccbada6a3f0679af2cf",
+      "pairsDigest": "219af5dd9264dddaf74e4c6e514e449f593587056665828c995b1b3dd63e8d02",
       "report": {
-        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorDigest": "92c91f3d647c86fc0d1ac13d0bbad23884a4472a731f3c270bb5da521a026ec8",
         "evaluatorVersion": "0.1.0",
         "inputDigests": {
           "prediction": "f9939a06f826dbac7b42c8f3546b17dca876f392d120559b1c0d5a1f2dcbce2b",
@@ -702,9 +702,9 @@
     },
     {
       "case": "08-kind-duration",
-      "pairsDigest": "264088ae2bb7f962964990cc67b45e93b9b2f389d1e3f63dde2de40ca9da3399",
+      "pairsDigest": "f22f7b8a02be94a42d9978b0fd75d7fe301cf8efe5f38fd147e216958c868c36",
       "report": {
-        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorDigest": "92c91f3d647c86fc0d1ac13d0bbad23884a4472a731f3c270bb5da521a026ec8",
         "evaluatorVersion": "0.1.0",
         "inputDigests": {
           "prediction": "012b853281f9c633449157cb4940ee5293fc657588b67b9698d541f41df9ab10",
@@ -802,9 +802,9 @@
     },
     {
       "case": "09-chord-alias",
-      "pairsDigest": "dd103c476501f6dcf279786213a77f779a9619bfa6edb9e2ec1f88ea7e27e506",
+      "pairsDigest": "e5f3761a43c5a56f6083d38ad81a8dbd3e06f9c9bbf74801ef5035fd0ce4b6ba",
       "report": {
-        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorDigest": "92c91f3d647c86fc0d1ac13d0bbad23884a4472a731f3c270bb5da521a026ec8",
         "evaluatorVersion": "0.1.0",
         "inputDigests": {
           "prediction": "2949640faa8db2520dd958cba81141736550316e7e6dfab38ba25cfb0a0dc206",
@@ -902,9 +902,9 @@
     },
     {
       "case": "10-lyric",
-      "pairsDigest": "80adac8984e9a989c2633e5331454584d0512afee55053956d2db8b999dc8fd3",
+      "pairsDigest": "53dbda41c84e6e99aae1ab68376d6ac41a307a2c0820d9738eb85283b48df4cb",
       "report": {
-        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorDigest": "92c91f3d647c86fc0d1ac13d0bbad23884a4472a731f3c270bb5da521a026ec8",
         "evaluatorVersion": "0.1.0",
         "inputDigests": {
           "prediction": "04552f93a8247fe9a5b2e00db84d5111fa1d10ee9cbd09ac54730a2348b863fd",
@@ -1002,9 +1002,9 @@
     },
     {
       "case": "11-onset-cascade",
-      "pairsDigest": "4c6b86495ac5c4f1290f5021daed21db6c18b729e0e9d1cec87e004da69e90f2",
+      "pairsDigest": "c45f27a49ea5d3dd7f55c78b11f56c5efb91b3ff4f69a470e60ad38f27812dd4",
       "report": {
-        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorDigest": "92c91f3d647c86fc0d1ac13d0bbad23884a4472a731f3c270bb5da521a026ec8",
         "evaluatorVersion": "0.1.0",
         "inputDigests": {
           "prediction": "2b7e5addeca171e76f5659f76884a7389db2da7ef825d5b009b2e9ed6189fb66",
@@ -1102,9 +1102,9 @@
     },
     {
       "case": "12-compound",
-      "pairsDigest": "dc48ab32eeb68586ac4e9c9ee2fa6d78b70130fa53f8a36c68d9b6ac284aabe1",
+      "pairsDigest": "8bba482d67a283cd06b2cb6e08e1bbe0dd0976953450a7d8af42cd5ca6b1e348",
       "report": {
-        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorDigest": "92c91f3d647c86fc0d1ac13d0bbad23884a4472a731f3c270bb5da521a026ec8",
         "evaluatorVersion": "0.1.0",
         "inputDigests": {
           "prediction": "ed35b7df4282131c25f799c7705009bc7a3c39ba98b5516419f40e4d0ae9fe74",
@@ -1202,9 +1202,9 @@
     },
     {
       "case": "13-no-lyrics",
-      "pairsDigest": "d40668e677aeab144b43f3616fb3655bb938a311efc68ff001cf759acbe92f9f",
+      "pairsDigest": "c22b61360053bcd986d77df42bfaa6d3d7f382c77ce3660b0eeddf307928c13c",
       "report": {
-        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorDigest": "92c91f3d647c86fc0d1ac13d0bbad23884a4472a731f3c270bb5da521a026ec8",
         "evaluatorVersion": "0.1.0",
         "inputDigests": {
           "prediction": "257503d7c25504c1922dcc85a1771875c3d0c5694657eff9d1820f798d05ca7a",
@@ -1304,7 +1304,7 @@
   "datasetEvaluation": "NOT_RUN",
   "kind": "synthetic-hand-authored-fixtures",
   "runtime": {
-    "wallSeconds": 0.15027109999209642
+    "wallSeconds": 0.17396739998366684
   },
   "schema": "clavis-golden-results-0.1",
   "sealedAccess": false

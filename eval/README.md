@@ -51,7 +51,7 @@ must remain local. This command is not a sealed or dataset runner.
 
 Timewise, multiple parts/staves/voices, transposition, mid-measure attributes,
 navigation/directions, nontraditional keys, composite meters, stacked/free-text
-harmonies, elided lyrics and extension-only lyric objects are unsupported.
+harmonies, harmony inversion, elided lyrics and extension-only lyric objects are unsupported.
 Partial-GT regions are not accepted by this pair-only CLI. Full GT/XML XSD
 validation, dataset aggregation (micro/macro/bootstrap), K2/K3 confidence handling,
 expanded playback, lyric CER, geometry, calibration, operating metrics, baseline

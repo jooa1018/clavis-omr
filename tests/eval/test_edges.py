@@ -179,6 +179,8 @@ def test_native_chord_degree_semantics() -> None:
         note(extra="<voice>1</voice>") + note(extra="<voice>2</voice>"),
         "<note><unpitched/><duration>1</duration></note>",
         "<harmony><root><root-step>C</root-step></root><kind>other</kind></harmony>",
+        "<harmony><root><root-step>C</root-step></root><kind>major</kind>"
+        "<inversion>1</inversion></harmony>",
         note() + "<attributes><clef><sign>F</sign><line>4</line></clef></attributes>",
         "<forward><duration>0</duration></forward>",
         note() + "<backup><duration>1</duration></backup>" + note(),
