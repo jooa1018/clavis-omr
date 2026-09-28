@@ -1,0 +1,82 @@
+# Owner W3. Source: W3_DEGRADATION T3.2/T3.3/T3.6; ADR-011 DRAFT.
+# Unfitted engineering exploration ranges, NOT real-camera or Kakao calibration.
+# All lengths use staff-space or page ratios. Codec integers and output error are explicit.
+status: experimental-unfitted
+max_pixels: 8000000
+illegible_below_px: 6  # W3 section 6; flags, never silently removes a sample.
+limits:
+  max_filter_spaces: 0.5
+  max_grain_spaces: 32
+  min_period_spaces: 0.1
+  max_period_spaces: 4
+  max_wave_spaces: 2
+  max_chord_error_px: 0.5
+  max_curve_points: 100000
+definitions:
+  resolution: &resolution
+    op: resize
+    target_interline:
+      interline_distribution:
+        bands: [[7, 10], [10, 14], [14, 24], [24, null]]
+        weights: [0.4, 0.35, 0.2, 0.05]
+    interpolation: {choice: [area, bilinear, bicubic, nearest]}
+  rotation: &rotation {op: rotation, degrees: {uniform: [-8, 8]}}
+  illumination: &illumination
+    op: illumination
+    x_slope: {uniform: [-0.15, 0.15]}
+    y_slope: {uniform: [-0.15, 0.15]}
+    vignette: {uniform: [0, 0.15]}
+    shadow_strength: 0
+    shadow_radius: 0.5
+    shadow_x: 0
+    shadow_y: 0
+  blur: &blur {op: blur, sigma_spaces: {uniform: [0.02, 0.12]}}
+  noise: &noise {op: noise, sigma: {uniform: [0.002, 0.025]}}
+  jpeg: &jpeg
+    op: jpeg
+    quality: {choice: [25, 40, 55, 70, 85, 95]}
+    repeats: {choice: [1, 2, 3]}
+    subsampling: {choice: [0, 1, 2]}
+  paper: &paper {op: paper, strength: {uniform: [0, 0.15]}, grain_spaces: {uniform: [2, 12]}}
+  angle: &angle
+    op: perspective
+    tilt_x_degrees: {uniform: [-25, 25]}
+    tilt_y_degrees: {uniform: [-35, 35]}
+    focal_ratio: 1.5
+presets:
+  scan-150:
+    rationale: Low-resolution scan stress; name is a route label, not calibrated DPI.
+    operations: [{op: rotation, degrees: {uniform: [-1, 1]}}, *resolution, *blur, *noise]
+  scan-300:
+    rationale: Mild scan artifacts; resolution still follows the mandated training mixture.
+    operations: [*resolution, {op: blur, sigma_spaces: {uniform: [0, 0.04]}}, {op: noise, sigma: {uniform: [0, 0.005]}}]
+  scan-bw:
+    rationale: Low-resolution monochrome scan and threshold variation.
+    operations: [*resolution, *blur, {op: threshold, level: {uniform: [0.4, 0.65]}}]
+  phone-daylight:
+    rationale: Small lighting variation with geometric and codec diversity.
+    operations: [*rotation, *illumination, *resolution, *blur, *noise, *jpeg]
+  phone-indoor:
+    rationale: Broader lighting attenuation and sensor noise than daylight.
+    operations: [*rotation, {<<: *illumination, vignette: {uniform: [0.1, 0.4]}}, *resolution, {op: blur, sigma_spaces: {uniform: [0.05, 0.2]}}, {op: noise, sigma: {uniform: [0.01, 0.05]}}, *jpeg]
+  phone-angle:
+    rationale: Pinhole planar tilt up to 35 degrees, without identity-dependent branches.
+    operations: [*angle, *rotation, *illumination, *resolution, *blur, *jpeg]
+  phone-shadow:
+    rationale: Smooth procedural shadow over the page, no copied image regions.
+    operations: [*rotation, {<<: *illumination, shadow_strength: {uniform: [0.2, 0.65]}, shadow_x: {uniform: [-0.8, 0.8]}, shadow_y: {uniform: [-0.8, 0.8]}, shadow_radius: {uniform: [0.2, 0.8]}}, *resolution, *jpeg]
+  phone-curl:
+    rationale: Smooth vertical paper-wave approximation; not a fitted cylinder or camera model.
+    operations: [{op: paper_wave, amplitude_spaces: {uniform: [-1.5, 1.5]}, phase_radians: 0, chord_error_px: 0.25}, *illumination, *resolution, *blur, *jpeg]
+  messenger-kakao:
+    rationale: Downsampling plus repeated strong JPEG; no claim of matching Kakao internals.
+    operations: [*resolution, {<<: *jpeg, quality: {choice: [25, 40, 55]}, repeats: {choice: [2, 3]}}]
+  screenshot-downscaled:
+    rationale: Interpolation diversity with mild JPEG recompression.
+    operations: [*resolution, {op: jpeg, quality: {choice: [85, 95]}, repeats: 1, subsampling: 0}]
+  photocopy:
+    rationale: Procedural paper variation, blur, thinning/thickening and thresholding.
+    operations: [*paper, *resolution, *blur, {op: photocopy, radius_spaces: {uniform: [0, 0.15]}, mode: {choice: [thicken, thin]}}, {op: threshold, level: {uniform: [0.4, 0.65]}}]
+  screen-photo:
+    rationale: Procedural periodic screen interference, planar tilt and compression.
+    operations: [*angle, *resolution, {op: screen, strength: {uniform: [0.02, 0.15]}, period_spaces: {uniform: [0.15, 0.6]}, phase_radians: 0, angle_degrees: {uniform: [-30, 30]}}, *blur, *noise, *jpeg]

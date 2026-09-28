@@ -1,6 +1,6 @@
 # Synthetic degradation (W3)
 
-First-PR scope: rotation, supplied projective homography, target-interline downsampling,
+First-PR scope (merged #6): rotation, projective homography, interline downsampling,
 and repeated JPEG. Pure `apply(image, labels, rng, params)` returns image, labels and
 resolved parameters; `run` samples YAML scalar `uniform` / `choice` distributions using
 one explicit NumPy generator. Replay the recorded `operations` through `apply`.
@@ -31,7 +31,7 @@ dependency closure is unchanged. W3 strict typing and coverage are also checked 
   Points `(N,2)`, xyxy boxes `(N,4)`, arbitrary polylines, uint8/uint16 categorical masks,
   and sampled adjacent staff-line point pairs `(N,2,2)` are explicit inputs.
 - Coordinates are integer pixel centers, origin at the top left. Homographies are forward
-  input-to-output float64 matrices. Pipeline composition is `H_last @ ... @ H_first`.
+  input-to-output float64 matrices. Homographic composition is `H_last @ ... @ H_first`.
   Rotation/perspective keep the input canvas; white fills uncovered image pixels.
 - Boxes transform all four corners and retain their unclipped axis-aligned envelope.
   Points and polylines are transformed without rounding; mask IDs use nearest sampling
@@ -48,7 +48,7 @@ dependency closure is unchanged. W3 strict typing and coverage are also checked 
   use exact-nearest on resize. JPEG preserves geometry and masks, supporting quality,
   chroma subsampling and 1–3 passes. Encoded JPEG bytes are decoded into the output array.
 - Singular homographies and horizons crossing the input canvas are rejected. The
-  caller supplies known synthetic homographies; camera-angle sampling is deferred.
+  caller can supply a homography or pinhole tilt angles with a positive focal ratio.
 
 ## Evidence and limits
 
@@ -67,8 +67,67 @@ overview rescales thumbnails; native outputs are the pixel-resolution evidence.
 Default YAML is a mechanical test distribution, not an adopted ADR-011 preset.
 Rendering dimensions and note positions are fixture content, not input-dependent rules.
 
-No real aggregate statistics have been supplied by W4. Realism, 8-family presets,
-5 pages/core-second throughput, full G0, W2 integration and low-interline loss routing
-are not claimed. Interline below 6 px must be routed separately by callers as the W3
-instruction's illegible candidate; this first demo stays above that range. Cross-version
-codec byte identity is not promised. Large jobs belong in W1's 01:00–07:00 single queue.
+No real aggregate statistics have been supplied by W4. Realism, sustained
+5 pages/core-second throughput, full G0/G1 and W2 integration are not claimed.
+Cross-version codec byte identity is not promised. Large jobs belong in W1's
+01:00–07:00 single queue.
+
+## Experimental family/route expansion (ADR-011 draft)
+
+`configs/degrade/presets.yaml` adds **nine families** and all twelve route names:
+
+| Family | Implemented operations |
+|---|---|
+| Geometry | Rotation, pinhole planar tilt/homography, vertical paper wave |
+| Illumination | Linear gradient, vignette, smooth shadow |
+| Optics | Gaussian blur in staff-space units |
+| Resolution | Target median interline, four interpolation modes |
+| Compression | JPEG quality, subsampling and repeated encoding |
+| Sensor | Independent Gaussian channel noise |
+| Scan | Global threshold, thinning/thickening morphology |
+| Paper | Procedural low-frequency tone variation |
+| Screen | Periodic interference with orientation/phase |
+
+```python
+from pathlib import Path
+import numpy as np
+import yaml
+from training.degrade.presets import run_preset, replay
+
+catalog = yaml.safe_load(Path("configs/degrade/presets.yaml").read_text())
+output, moved, trace = run_preset(image, labels, np.random.default_rng(42), catalog, "phone-shadow")
+reproduced, moved_again = replay(image, labels, np.random.default_rng(0), trace)
+```
+
+These are **unfitted experimental priors**, not a claim of matching particular cameras,
+scan DPI or Kakao algorithms. Each YAML preset carries its rationale. The 40/35/20/5%
+mixture follows the instruction; within-band sampling is uniform, and the last band's
+upper endpoint is the current source interline. Inputs unable to cover all bands fail
+explicitly; use sufficiently high-resolution renders (the smoke uses 40 px interline).
+This distribution interpretation and paper-wave approximation await ADR-011 adoption.
+
+Noise and paper texture use the caller's **one** NumPy Generator. JSON-safe bit-generator
+state is recorded before consumption. Replay restores it into the supplied compatible
+generator (PCG64 and MT19937 tested); caller RNG state advances normally. No random
+pixels are copied from real data. Photometric operators preserve all label geometry.
+
+Paper wave is `y'=y+A*sin(omega*x+phase)`, a smooth-curl approximation. It uses an inverse
+raster map, exact box edge extrema, bounded-error polyline subdivision and Jacobian
+tangents. A nonlinear trace returns **`matrix: null`**: replay the operation list, never
+treat that output as a homography. This is a W3-private trace, not an engine contract.
+No global mutable map cache is used; a bounded caller-owned mesh cache is future work.
+
+The catalog's 6 px threshold sets `illegible_candidate` from the minimum actual sampled
+interline; callers must separate flagged samples from normal training/evaluation losses.
+Missing threshold configuration returns `None` rather than claiming legibility. The
+flag is only a low-resolution candidate, not a human readability classifier.
+
+```powershell
+uv run --locked --all-groups python -m training.degrade.smoke --output work/preset-smoke
+```
+
+This bounded OR-001 smoke uses 72 synthetic pages, one CPU thread, 2.048/4 MP inputs and
+two measured samples per route/size after one warmup. It outputs native route images,
+traces, a contact sheet, peak process RSS and timings. Its fixture is a schematic, not
+a full W2 score. Thin synthetic staff lines may disappear after reduction; these cases
+remain visible in the results. A small smoke is not a sustained throughput or realism gate.
