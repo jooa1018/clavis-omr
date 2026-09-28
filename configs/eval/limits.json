@@ -1,0 +1,11 @@
+{
+  "schema": "clavis-eval-limits-0.1",
+  "owner": "W4",
+  "source": "resource-policy",
+  "rationale": "Bound first-PR XML memory and quadratic DP work on REF-LAPTOP; no accuracy thresholds.",
+  "maxXmlBytes": 8388608,
+  "maxXmlNodes": 50000,
+  "maxMeasures": 128,
+  "maxEventsPerMeasure": 256,
+  "maxAlignmentCells": 2000000
+}

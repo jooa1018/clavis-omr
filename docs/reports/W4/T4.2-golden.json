@@ -1,0 +1,1311 @@
+{
+  "cases": [
+    {
+      "case": "01-identical",
+      "pairsDigest": "d40668e677aeab144b43f3616fb3655bb938a311efc68ff001cf759acbe92f9f",
+      "report": {
+        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorVersion": "0.1.0",
+        "inputDigests": {
+          "prediction": "257503d7c25504c1922dcc85a1771875c3d0c5694657eff9d1820f798d05ca7a",
+          "reference": "257503d7c25504c1922dcc85a1771875c3d0c5694657eff9d1820f798d05ca7a"
+        },
+        "k1Operations": 0,
+        "metrics": {
+          "K1": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "K1-L": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "accidentalExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "chordSymbolExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "durationExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "graceExact": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "keySignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "lyricExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "measureExactMatchRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "measureExactWithLyrics": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "pitchExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "restExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "tieExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "timeSignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          }
+        },
+        "notImplemented": [
+          "K2",
+          "K3",
+          "bootstrap",
+          "multi-page-aggregation",
+          "expanded-play-order",
+          "regions",
+          "geometry",
+          "calibration"
+        ],
+        "onsetOnlyMismatch": 0,
+        "protocol": "clavis-evaluation-1.1",
+        "schema": "clavis-eval-report-0.1",
+        "scope": "single-part-staff-voice",
+        "status": "evaluated"
+      }
+    },
+    {
+      "case": "02-divisions",
+      "pairsDigest": "3c3b5778ec1bb08745ffc0ed40693bc3a9a4df1236aae2ec6922c73c7780561a",
+      "report": {
+        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorVersion": "0.1.0",
+        "inputDigests": {
+          "prediction": "4525790e1c15b1cbe5b77d44442b4d5d8195c8929554e27877f6405c22f13f76",
+          "reference": "257503d7c25504c1922dcc85a1771875c3d0c5694657eff9d1820f798d05ca7a"
+        },
+        "k1Operations": 0,
+        "metrics": {
+          "K1": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "K1-L": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "accidentalExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "chordSymbolExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "durationExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "graceExact": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "keySignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "lyricExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "measureExactMatchRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "measureExactWithLyrics": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "pitchExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "restExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "tieExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "timeSignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          }
+        },
+        "notImplemented": [
+          "K2",
+          "K3",
+          "bootstrap",
+          "multi-page-aggregation",
+          "expanded-play-order",
+          "regions",
+          "geometry",
+          "calibration"
+        ],
+        "onsetOnlyMismatch": 0,
+        "protocol": "clavis-evaluation-1.1",
+        "schema": "clavis-eval-report-0.1",
+        "scope": "single-part-staff-voice",
+        "status": "evaluated"
+      }
+    },
+    {
+      "case": "03-voice-number",
+      "pairsDigest": "ff380f3c7a0053e2bcc5c5efa29ae7287e70a9639663f016404159c0a2742262",
+      "report": {
+        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorVersion": "0.1.0",
+        "inputDigests": {
+          "prediction": "70c71e2d3bdc0899117d0946294f772d8ef25b9eae85bcc543afed081b40be77",
+          "reference": "257503d7c25504c1922dcc85a1771875c3d0c5694657eff9d1820f798d05ca7a"
+        },
+        "k1Operations": 0,
+        "metrics": {
+          "K1": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "K1-L": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "accidentalExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "chordSymbolExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "durationExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "graceExact": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "keySignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "lyricExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "measureExactMatchRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "measureExactWithLyrics": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "pitchExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "restExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "tieExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "timeSignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          }
+        },
+        "notImplemented": [
+          "K2",
+          "K3",
+          "bootstrap",
+          "multi-page-aggregation",
+          "expanded-play-order",
+          "regions",
+          "geometry",
+          "calibration"
+        ],
+        "onsetOnlyMismatch": 0,
+        "protocol": "clavis-evaluation-1.1",
+        "schema": "clavis-eval-report-0.1",
+        "scope": "single-part-staff-voice",
+        "status": "evaluated"
+      }
+    },
+    {
+      "case": "04-pitch",
+      "pairsDigest": "a32a999b2907ff20e56999a96da08ddd5a6782d84feb016ddbd9f3136a7c090b",
+      "report": {
+        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorVersion": "0.1.0",
+        "inputDigests": {
+          "prediction": "dd485de8b1cd0afc449e85aae4d45217554a6ca71d184e8fc41766bb28f0752e",
+          "reference": "257503d7c25504c1922dcc85a1771875c3d0c5694657eff9d1820f798d05ca7a"
+        },
+        "k1Operations": 1,
+        "metrics": {
+          "K1": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 100.0
+          },
+          "K1-L": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "accidentalExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "chordSymbolExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "durationExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "graceExact": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "keySignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "lyricExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "measureExactMatchRate": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "measureExactWithLyrics": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "pitchExactRate": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "restExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "tieExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "timeSignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          }
+        },
+        "notImplemented": [
+          "K2",
+          "K3",
+          "bootstrap",
+          "multi-page-aggregation",
+          "expanded-play-order",
+          "regions",
+          "geometry",
+          "calibration"
+        ],
+        "onsetOnlyMismatch": 0,
+        "protocol": "clavis-evaluation-1.1",
+        "schema": "clavis-eval-report-0.1",
+        "scope": "single-part-staff-voice",
+        "status": "evaluated"
+      }
+    },
+    {
+      "case": "05-duration",
+      "pairsDigest": "26aa134a360957d89e526ed3a5ef5210e791d61cf03f3eb3040a05fba26bbb59",
+      "report": {
+        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorVersion": "0.1.0",
+        "inputDigests": {
+          "prediction": "8ecc2c9f1a2d454146f97f848f95ab8c961a6fd9addb1ffa1020c3f710416882",
+          "reference": "257503d7c25504c1922dcc85a1771875c3d0c5694657eff9d1820f798d05ca7a"
+        },
+        "k1Operations": 1,
+        "metrics": {
+          "K1": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 100.0
+          },
+          "K1-L": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "accidentalExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "chordSymbolExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "durationExactRate": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "graceExact": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "keySignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "lyricExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "measureExactMatchRate": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "measureExactWithLyrics": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "pitchExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "restExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "tieExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "timeSignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          }
+        },
+        "notImplemented": [
+          "K2",
+          "K3",
+          "bootstrap",
+          "multi-page-aggregation",
+          "expanded-play-order",
+          "regions",
+          "geometry",
+          "calibration"
+        ],
+        "onsetOnlyMismatch": 0,
+        "protocol": "clavis-evaluation-1.1",
+        "schema": "clavis-eval-report-0.1",
+        "scope": "single-part-staff-voice",
+        "status": "evaluated"
+      }
+    },
+    {
+      "case": "06-missing",
+      "pairsDigest": "43bf18f34b139728ef11160f927e73883dee156f13571076c2d34977a17ec4ae",
+      "report": {
+        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorVersion": "0.1.0",
+        "inputDigests": {
+          "prediction": "8ecc2c9f1a2d454146f97f848f95ab8c961a6fd9addb1ffa1020c3f710416882",
+          "reference": "46a4a7c3137fefba8e291e35c657b869224e22b188de226fb5f4148d8e21f291"
+        },
+        "k1Operations": 1,
+        "metrics": {
+          "K1": {
+            "denominator": 2,
+            "numerator": 1,
+            "value": 50.0
+          },
+          "K1-L": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "accidentalExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "chordSymbolExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "durationExactRate": {
+            "denominator": 2,
+            "numerator": 1,
+            "value": 0.5
+          },
+          "graceExact": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "keySignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "lyricExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "measureExactMatchRate": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "measureExactWithLyrics": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "pitchExactRate": {
+            "denominator": 2,
+            "numerator": 1,
+            "value": 0.5
+          },
+          "restExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "tieExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "timeSignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          }
+        },
+        "notImplemented": [
+          "K2",
+          "K3",
+          "bootstrap",
+          "multi-page-aggregation",
+          "expanded-play-order",
+          "regions",
+          "geometry",
+          "calibration"
+        ],
+        "onsetOnlyMismatch": 0,
+        "protocol": "clavis-evaluation-1.1",
+        "schema": "clavis-eval-report-0.1",
+        "scope": "single-part-staff-voice",
+        "status": "evaluated"
+      }
+    },
+    {
+      "case": "07-extra",
+      "pairsDigest": "da0d5115a9319caafea94ea0353b85f050429045b2eadccbada6a3f0679af2cf",
+      "report": {
+        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorVersion": "0.1.0",
+        "inputDigests": {
+          "prediction": "f9939a06f826dbac7b42c8f3546b17dca876f392d120559b1c0d5a1f2dcbce2b",
+          "reference": "257503d7c25504c1922dcc85a1771875c3d0c5694657eff9d1820f798d05ca7a"
+        },
+        "k1Operations": 1,
+        "metrics": {
+          "K1": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 100.0
+          },
+          "K1-L": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "accidentalExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "chordSymbolExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "durationExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "graceExact": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "keySignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "lyricExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "measureExactMatchRate": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "measureExactWithLyrics": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "pitchExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "restExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "tieExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "timeSignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          }
+        },
+        "notImplemented": [
+          "K2",
+          "K3",
+          "bootstrap",
+          "multi-page-aggregation",
+          "expanded-play-order",
+          "regions",
+          "geometry",
+          "calibration"
+        ],
+        "onsetOnlyMismatch": 0,
+        "protocol": "clavis-evaluation-1.1",
+        "schema": "clavis-eval-report-0.1",
+        "scope": "single-part-staff-voice",
+        "status": "evaluated"
+      }
+    },
+    {
+      "case": "08-kind-duration",
+      "pairsDigest": "264088ae2bb7f962964990cc67b45e93b9b2f389d1e3f63dde2de40ca9da3399",
+      "report": {
+        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorVersion": "0.1.0",
+        "inputDigests": {
+          "prediction": "012b853281f9c633449157cb4940ee5293fc657588b67b9698d541f41df9ab10",
+          "reference": "257503d7c25504c1922dcc85a1771875c3d0c5694657eff9d1820f798d05ca7a"
+        },
+        "k1Operations": 1,
+        "metrics": {
+          "K1": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 100.0
+          },
+          "K1-L": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "accidentalExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "chordSymbolExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "durationExactRate": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "graceExact": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "keySignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "lyricExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "measureExactMatchRate": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "measureExactWithLyrics": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "pitchExactRate": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "restExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "tieExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "timeSignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          }
+        },
+        "notImplemented": [
+          "K2",
+          "K3",
+          "bootstrap",
+          "multi-page-aggregation",
+          "expanded-play-order",
+          "regions",
+          "geometry",
+          "calibration"
+        ],
+        "onsetOnlyMismatch": 0,
+        "protocol": "clavis-evaluation-1.1",
+        "schema": "clavis-eval-report-0.1",
+        "scope": "single-part-staff-voice",
+        "status": "evaluated"
+      }
+    },
+    {
+      "case": "09-chord-alias",
+      "pairsDigest": "dd103c476501f6dcf279786213a77f779a9619bfa6edb9e2ec1f88ea7e27e506",
+      "report": {
+        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorVersion": "0.1.0",
+        "inputDigests": {
+          "prediction": "2949640faa8db2520dd958cba81141736550316e7e6dfab38ba25cfb0a0dc206",
+          "reference": "41229a9b8a1e50cf766dfbb6da9c2ea9d0a7589b66badcfd09ad994fcffdad90"
+        },
+        "k1Operations": 0,
+        "metrics": {
+          "K1": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "K1-L": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "accidentalExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "chordSymbolExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "durationExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "graceExact": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "keySignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "lyricExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "measureExactMatchRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "measureExactWithLyrics": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "pitchExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "restExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "tieExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "timeSignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          }
+        },
+        "notImplemented": [
+          "K2",
+          "K3",
+          "bootstrap",
+          "multi-page-aggregation",
+          "expanded-play-order",
+          "regions",
+          "geometry",
+          "calibration"
+        ],
+        "onsetOnlyMismatch": 0,
+        "protocol": "clavis-evaluation-1.1",
+        "schema": "clavis-eval-report-0.1",
+        "scope": "single-part-staff-voice",
+        "status": "evaluated"
+      }
+    },
+    {
+      "case": "10-lyric",
+      "pairsDigest": "80adac8984e9a989c2633e5331454584d0512afee55053956d2db8b999dc8fd3",
+      "report": {
+        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorVersion": "0.1.0",
+        "inputDigests": {
+          "prediction": "04552f93a8247fe9a5b2e00db84d5111fa1d10ee9cbd09ac54730a2348b863fd",
+          "reference": "4c6d9f03d235b76cc5c2537685404bea03ef29418758fc002e714e20bf0a8f53"
+        },
+        "k1Operations": 0,
+        "metrics": {
+          "K1": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "K1-L": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 100.0
+          },
+          "accidentalExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "chordSymbolExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "durationExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "graceExact": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "keySignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "lyricExactRate": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "measureExactMatchRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "measureExactWithLyrics": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "pitchExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "restExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "tieExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "timeSignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          }
+        },
+        "notImplemented": [
+          "K2",
+          "K3",
+          "bootstrap",
+          "multi-page-aggregation",
+          "expanded-play-order",
+          "regions",
+          "geometry",
+          "calibration"
+        ],
+        "onsetOnlyMismatch": 0,
+        "protocol": "clavis-evaluation-1.1",
+        "schema": "clavis-eval-report-0.1",
+        "scope": "single-part-staff-voice",
+        "status": "evaluated"
+      }
+    },
+    {
+      "case": "11-onset-cascade",
+      "pairsDigest": "4c6b86495ac5c4f1290f5021daed21db6c18b729e0e9d1cec87e004da69e90f2",
+      "report": {
+        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorVersion": "0.1.0",
+        "inputDigests": {
+          "prediction": "2b7e5addeca171e76f5659f76884a7389db2da7ef825d5b009b2e9ed6189fb66",
+          "reference": "d0a831ed167833f1c6e2be5bfc605092f6a59fa145a33565631769ce05c1ff62"
+        },
+        "k1Operations": 1,
+        "metrics": {
+          "K1": {
+            "denominator": 3,
+            "numerator": 1,
+            "value": 33.33333333333333
+          },
+          "K1-L": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "accidentalExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "chordSymbolExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "durationExactRate": {
+            "denominator": 3,
+            "numerator": 2,
+            "value": 0.6666666666666666
+          },
+          "graceExact": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "keySignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "lyricExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "measureExactMatchRate": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "measureExactWithLyrics": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "pitchExactRate": {
+            "denominator": 2,
+            "numerator": 2,
+            "value": 1.0
+          },
+          "restExactRate": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "tieExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "timeSignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          }
+        },
+        "notImplemented": [
+          "K2",
+          "K3",
+          "bootstrap",
+          "multi-page-aggregation",
+          "expanded-play-order",
+          "regions",
+          "geometry",
+          "calibration"
+        ],
+        "onsetOnlyMismatch": 2,
+        "protocol": "clavis-evaluation-1.1",
+        "schema": "clavis-eval-report-0.1",
+        "scope": "single-part-staff-voice",
+        "status": "evaluated"
+      }
+    },
+    {
+      "case": "12-compound",
+      "pairsDigest": "dc48ab32eeb68586ac4e9c9ee2fa6d78b70130fa53f8a36c68d9b6ac284aabe1",
+      "report": {
+        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorVersion": "0.1.0",
+        "inputDigests": {
+          "prediction": "ed35b7df4282131c25f799c7705009bc7a3c39ba98b5516419f40e4d0ae9fe74",
+          "reference": "c46278d1fcad11be70d2ea9a05e7383d826d15aa7707fcfd9c75122b5f6dd116"
+        },
+        "k1Operations": 1,
+        "metrics": {
+          "K1": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 100.0
+          },
+          "K1-L": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "accidentalExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "chordSymbolExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "durationExactRate": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "graceExact": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "keySignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "lyricExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "measureExactMatchRate": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "measureExactWithLyrics": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "pitchExactRate": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "restExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "tieExactRate": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "timeSignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          }
+        },
+        "notImplemented": [
+          "K2",
+          "K3",
+          "bootstrap",
+          "multi-page-aggregation",
+          "expanded-play-order",
+          "regions",
+          "geometry",
+          "calibration"
+        ],
+        "onsetOnlyMismatch": 0,
+        "protocol": "clavis-evaluation-1.1",
+        "schema": "clavis-eval-report-0.1",
+        "scope": "single-part-staff-voice",
+        "status": "evaluated"
+      }
+    },
+    {
+      "case": "13-no-lyrics",
+      "pairsDigest": "d40668e677aeab144b43f3616fb3655bb938a311efc68ff001cf759acbe92f9f",
+      "report": {
+        "evaluatorDigest": "a201b2dcaabf1c8fa4b66dec5ec313025341609967227a5f652e9c0f747061ae",
+        "evaluatorVersion": "0.1.0",
+        "inputDigests": {
+          "prediction": "257503d7c25504c1922dcc85a1771875c3d0c5694657eff9d1820f798d05ca7a",
+          "reference": "257503d7c25504c1922dcc85a1771875c3d0c5694657eff9d1820f798d05ca7a"
+        },
+        "k1Operations": 0,
+        "metrics": {
+          "K1": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "K1-L": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "accidentalExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "chordSymbolExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "durationExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "graceExact": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "keySignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "lyricExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "measureExactMatchRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "measureExactWithLyrics": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "pitchExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "restExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "tieExactRate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "timeSignatureExactRate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          }
+        },
+        "notImplemented": [
+          "K2",
+          "K3",
+          "bootstrap",
+          "multi-page-aggregation",
+          "expanded-play-order",
+          "regions",
+          "geometry",
+          "calibration"
+        ],
+        "onsetOnlyMismatch": 0,
+        "protocol": "clavis-evaluation-1.1",
+        "schema": "clavis-eval-report-0.1",
+        "scope": "single-part-staff-voice",
+        "status": "evaluated"
+      }
+    }
+  ],
+  "datasetEvaluation": "NOT_RUN",
+  "kind": "synthetic-hand-authored-fixtures",
+  "runtime": {
+    "wallSeconds": 0.15027109999209642
+  },
+  "schema": "clavis-golden-results-0.1",
+  "sealedAccess": false
+}

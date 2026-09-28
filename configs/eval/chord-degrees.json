@@ -1,0 +1,27 @@
+{
+  "schema": "clavis-eval-chord-degrees-0.1",
+  "source": "MusicXML 4.0 kind and degree-alter; alterations relative to major/perfect degrees",
+  "kinds": {
+    "major": {"1": 0, "3": 0, "5": 0},
+    "minor": {"1": 0, "3": -1, "5": 0},
+    "augmented": {"1": 0, "3": 0, "5": 1},
+    "diminished": {"1": 0, "3": -1, "5": -1},
+    "dominant": {"1": 0, "3": 0, "5": 0, "7": -1},
+    "major-seventh": {"1": 0, "3": 0, "5": 0, "7": 0},
+    "minor-seventh": {"1": 0, "3": -1, "5": 0, "7": -1},
+    "diminished-seventh": {"1": 0, "3": -1, "5": -1, "7": -2},
+    "half-diminished": {"1": 0, "3": -1, "5": -1, "7": -1},
+    "major-minor": {"1": 0, "3": -1, "5": 0, "7": 0},
+    "major-sixth": {"1": 0, "3": 0, "5": 0, "6": 0},
+    "minor-sixth": {"1": 0, "3": -1, "5": 0, "6": 0},
+    "dominant-ninth": {"1": 0, "3": 0, "5": 0, "7": -1, "9": 0},
+    "major-ninth": {"1": 0, "3": 0, "5": 0, "7": 0, "9": 0},
+    "minor-ninth": {"1": 0, "3": -1, "5": 0, "7": -1, "9": 0},
+    "dominant-11th": {"1": 0, "3": 0, "5": 0, "7": -1, "9": 0, "11": 0},
+    "dominant-13th": {"1": 0, "3": 0, "5": 0, "7": -1, "9": 0, "11": 0, "13": 0},
+    "suspended-second": {"1": 0, "2": 0, "5": 0},
+    "suspended-fourth": {"1": 0, "4": 0, "5": 0},
+    "power": {"1": 0, "5": 0},
+    "none": {}
+  }
+}

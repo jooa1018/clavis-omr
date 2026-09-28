@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Clavis first-PR evaluation report",
+  "type": "object",
+  "required": ["schema", "status", "evaluatorVersion", "evaluatorDigest", "protocol", "scope", "inputDigests", "metrics"],
+  "properties": {
+    "schema": {"const": "clavis-eval-report-0.1"},
+    "status": {"enum": ["evaluated", "evaluation-unsupported"]},
+    "evaluatorVersion": {"type": "string"},
+    "evaluatorDigest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "protocol": {"const": "clavis-evaluation-1.1"},
+    "scope": {"const": "single-part-staff-voice"},
+    "inputDigests": {
+      "type": "object", "required": ["reference", "prediction"],
+      "additionalProperties": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object", "required": ["numerator", "denominator", "value"],
+        "additionalProperties": false,
+        "properties": {
+          "numerator": {"type": "integer", "minimum": 0},
+          "denominator": {"type": "integer", "minimum": 0},
+          "value": {"type": ["number", "null"], "minimum": 0}
+        },
+        "if": {"properties": {"denominator": {"const": 0}}},
+        "then": {"properties": {"value": {"type": "null"}}},
+        "else": {"properties": {"value": {"type": "number"}}}
+      }
+    },
+    "k1Operations": {"type": "integer", "minimum": 0},
+    "onsetOnlyMismatch": {"type": "integer", "minimum": 0},
+    "reason": {"type": "string"},
+    "notImplemented": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false,
+  "if": {"properties": {"status": {"const": "evaluated"}}},
+  "then": {
+    "required": ["k1Operations", "onsetOnlyMismatch", "notImplemented"],
+    "properties": {"metrics": {"required": ["K1", "pitchExactRate", "durationExactRate", "measureExactMatchRate"]}}
+  },
+  "else": {"required": ["reason"], "properties": {"metrics": {"maxProperties": 0}}}
+}
