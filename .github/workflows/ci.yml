@@ -1,0 +1,50 @@
+name: CI
+on:
+  push:
+    branches: ['w[1-9]/**', main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  quality:
+    # A false/unset flag means NOT_RUN, never CI acceptance. D1 prohibits paid compute.
+    if: vars.CLAVIS_FREE_CI_CONFIRMED == 'true'
+    name: quality (${{ matrix.os }}, Python 3.12)
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    env:
+      OMP_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.12.19'
+          enable-cache: false
+      - run: uv sync --locked
+      - run: uv run --locked ruff check .
+      - run: uv run --locked ruff format --check .
+      - run: uv run --locked mypy
+      - run: uv run --locked pytest --cov=clavis --cov=scripts --cov-report=term-missing --cov-report=xml --cov-fail-under=80
+      - run: uv run --locked lint-imports
+      - name: Runtime dependency license allowlist
+        run: uv run --locked python scripts/check_licenses.py
+      - name: Contract schema validation
+        run: uv run --locked pytest tests/contracts
+      - name: W4 integrity integration status
+        run: uv run --locked python scripts/integrity_status.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: validation-${{ matrix.os }}
+          path: coverage.xml
+          retention-days: 7

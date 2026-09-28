@@ -1,0 +1,1 @@
+"""Staff geometry and layout."""
