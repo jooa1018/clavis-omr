@@ -166,6 +166,7 @@ def test_root_and_path_restrictions(tmp_path: Path, monkeypatch: pytest.MonkeyPa
     with pytest.raises(ValueError):
         private_root()
     monkeypatch.setenv("CLAVIS_PRIVATE_ROOT", str(tmp_path))
+    monkeypatch.chdir(REPOSITORY)
     assert private_root() == tmp_path.resolve()
     for bad in ("../escape", "C:/escape", "a\\b", "/absolute"):
         with pytest.raises(ValueError):
@@ -179,6 +180,7 @@ def test_cli_and_sealed_refusal(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
 ) -> None:
     monkeypatch.setenv("CLAVIS_PRIVATE_ROOT", str(tmp_path))
+    monkeypatch.chdir(REPOSITORY)
     monkeypatch.setattr(
         sys,
         "argv",
@@ -194,10 +196,12 @@ def test_cli_and_sealed_refusal(
             "--date",
             "2026-09-01",
             "--out",
-            "selection.json",
+            "dev/dev-001/selection.json",
         ],
     )
     assert main() == 0
+    assert (tmp_path / "dev/dev-001/selection.json").is_file()
+    assert not (REPOSITORY / "dev/dev-001/selection.json").exists()
     assert main() == 1
     data = sample(tmp_path)
     (tmp_path / "manifest.json").write_text(
