@@ -62,5 +62,12 @@
     "percent_statements_covered": 90.70080862533693,
     "percent_statements_covered_display": "91"
   },
-  "execution": "manual Windows laptop CPU; small synthetic development tests only"
+  "execution": "manual Windows laptop CPU; small synthetic development tests only",
+  "remoteCi": {
+    "implementationCommit": "4fdb196",
+    "runUrl": "https://github.com/jooa1018/clavis-omr/actions/runs/36509347725",
+    "ubuntu": "PASS",
+    "windows": "PASS",
+    "finalHeadPassRequiredBeforeMerge": true
+  }
 }
