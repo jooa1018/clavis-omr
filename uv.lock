@@ -58,6 +58,7 @@ dev = [
 ]
 eval = [
     { name = "numpy" },
+    { name = "pillow" },
 ]
 runtime = [
     { name = "pydantic" },
@@ -87,7 +88,10 @@ dev = [
     { name = "ruff", specifier = ">=0.11,<1" },
     { name = "types-pyyaml", specifier = "==6.0.12.20250516" },
 ]
-eval = [{ name = "numpy", specifier = "==2.2.6" }]
+eval = [
+    { name = "numpy", specifier = "==2.2.6" },
+    { name = "pillow", specifier = "==11.2.1" },
+]
 runtime = [{ name = "pydantic", specifier = ">=2.11,<3" }]
 service = []
 training = [
