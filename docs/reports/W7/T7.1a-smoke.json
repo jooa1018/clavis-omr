@@ -1,0 +1,16 @@
+{
+  "scope": "synthetic-CTC-tensor-tool-test; SYN-Val 아님; image OCR accuracy 아님",
+  "cases": 12,
+  "exactTextMatches": 12,
+  "exactMatchRate": 1.0,
+  "threeRepeatsIdentical": true,
+  "ruleDisabledAbstentions": 12,
+  "pretrainedModel": "NOT_RUN",
+  "onnxRuntimeThreadDeterminism": "NOT_RUN",
+  "dev": "NOT_RUN",
+  "sealed": "NOT_ACCESSED",
+  "renderedImages": 0,
+  "training": "NOT_RUN",
+  "confidenceInterval": "NOT_APPLICABLE_tool_test",
+  "wallSeconds": 0.004864400019869208
+}
