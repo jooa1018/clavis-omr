@@ -1,7 +1,6 @@
-# Approved values only; not an executable MusicXML production release.
 version: ADR-010-B-2026-09-29
 enabled: true
-training_admission: BLOCKED_PENDING_W4
+training_admission: BLOCKED_PENDING_OR_003_PROTECTED_SET_V1
 mode_weights:
   major: 3
   minor: 1
@@ -82,10 +81,14 @@ block_acceptance:
   p0_min_instances: 500
 rhythm:
   strategy: meter_beat_groups
-  target_source: PDMX train subset by meter
+  target_source: PDMX rights-filtered aggregate (pre-admission statistics authorized
+    2026-09-29)
   target_artifact: null
   min_32nd_note_ratio: 0.005
   min_double_dot_note_ratio: 0.005
   kl_direction: generated || target
   zero_target_with_positive_generated: infinite
   missing_target: BLOCKED
+phrase_bars:
+- 4
+- 8

@@ -40,3 +40,31 @@
     report: docs/reports/W2/2026-09-29-production-profile.md
   introduced_by: w2/production-profile
   motivated_by_failure: false
+- id: DATA-GEN-003
+  owner: W2
+  statement: "Allocate mode-first keys, meters and song feature quotas by largest remainder; choose feasible within-song integer counts without exceeding approved bounds."
+  units: songs_and_measures
+  params: [mode_weights, key_weights, meter_weights, features, phrase_bars]
+  source: convention
+  evidence: docs/adr/ADR-010-leadgen-distribution.md
+  flag: configs/data/leadgen-production.yaml#enabled
+  ablation:
+    status: NOT_RUN
+    reason: "Planning only; no full production or recognition acceptance claimed."
+    report: docs/reports/W2/2026-09-29-production-preparation.md
+  introduced_by: w2/production-profile
+  motivated_by_failure: false
+- id: DATA-GEN-004
+  owner: W2
+  statement: "Fit mixtures of complete meter-group patterns to empirical written-note marginals; report actual KL against unchanged raw target, including zero-support infinity."
+  units: written_noteheads
+  params: [groupings, mixed_patterns_per_grouping, fit_iterations, fit_learning_rate, rare_note_floor_for_fit]
+  source: convention
+  evidence: docs/adr/ADR-010-leadgen-distribution.md
+  flag: configs/data/leadgen-production.yaml#enabled
+  ablation:
+    status: NOT_RUN
+    reason: "Synthetic calibration test only until PDMX aggregate is complete."
+    report: docs/reports/W2/2026-09-29-production-preparation.md
+  introduced_by: w2/production-profile
+  motivated_by_failure: false
