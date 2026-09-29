@@ -7,7 +7,7 @@ PR #10은 ADR-011 G1 잠정 채택과 두 OS CI PASS 후 77b6149로 squash 병�
 4 MP 전단 처리의 4개 슬라이스가 3쪽/초 미달이므로 후속 PR은 draft로 제출하며 기본 v0를 대체하지 않는다.
 
 ## 2. 변경 (PR 링크, 주요 파일·모듈)
-후속 PR: 생성 후 기록. 브랜치 `w3/phone-stage-order`, W3 전용 worktree.
+후속 PR: https://github.com/jooa1018/clavis-omr/pull/13 (draft). 브랜치 `w3/phone-stage-order`, W3 전용 worktree.
 `training/degrade/presets.py`, README, `configs/degrade/presets.yaml`, `tests/degrade/test_stage_order.py`.
 `vary_resolution_stage=True`로 선택한다. 원래 호출은 기본 순서를 유지한다.
 
@@ -22,7 +22,8 @@ PR #10은 ADR-011 G1 잠정 채택과 두 OS CI PASS 후 77b6149로 squash 병�
 W3 로컬 자동 시험 117 PASS. 19개 추가 시험은 전 경로·전/후 배치, 강도 보존,
 전/후 픽셀 차이와 동일 기하 라벨, JSON replay, 1·4스레드 각 3회 결정성, 거부 집계를 검증한다.
 ruff/format/루트 mypy/W3 strict mypy/import 경계/runtime license audit PASS.
-전체 로컬 시험 399 PASS / SKIP 0 (계약 구현이 반영된 최신 main 기준). 원격 CI는 제출 후 확인한다. W4 스캐너 NOT_RUN(OR-002).
+전체 로컬 시험 399 PASS / SKIP 0 (계약 구현이 반영된 최신 main 기준). 원격 CI run 36508460118 (코드 c139dd0): Linux/Windows 전체399 PASS, W3 117 PASS, SKIP0.
+https://github.com/jooa1018/clavis-omr/actions/runs/36508460118 W4 스캐너 NOT_RUN(OR-002).
 
 ## 5. 지표 (평가기 JSON 경로 + 핵심 수치 표: 이전 대비 변화와 95% CI, 슬라이스별)
 근거: `phone-stage-validation.json`. 자체 도식 합성/로컬 수동 CPU 실행의 자동 측정이다.

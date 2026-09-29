@@ -2199,5 +2199,17 @@
     "skipped": 0,
     "w3_passed": 117,
     "w3_coverage_percent": 97.26775956284153
+  },
+  "ci": {
+    "run": 36508460118,
+    "head": "c139dd0",
+    "platforms": [
+      "ubuntu-latest",
+      "windows-latest"
+    ],
+    "status": "PASS",
+    "passed": 399,
+    "skipped": 0,
+    "w3_passed": 117
   }
 }
