@@ -7,5 +7,6 @@
   "maxXmlNodes": 50000,
   "maxMeasures": 128,
   "maxEventsPerMeasure": 256,
-  "maxAlignmentCells": 2000000
+  "maxAlignmentCells": 2000000,
+  "maxVoices": 8
 }

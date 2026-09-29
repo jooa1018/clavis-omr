@@ -1,4 +1,4 @@
-"""Bounded, offline MusicXML projection for one part/staff/voice."""
+"""Bounded, offline MusicXML projection for one part/staff and multiple voices."""
 
 import re
 import unicodedata
@@ -120,6 +120,7 @@ def note_event(
         node.find("chord") is not None,
         tuple(sorted(lyrics)),
         accidental,
+        node.findtext("voice", "1"),
     )
 
 
@@ -167,7 +168,6 @@ def _project(root: ET.Element) -> Score:
         raise EvaluationUnsupported("semantic-element-outside-v0")
     state: dict[str, Value] = {}
     divisions: Fraction | None = None
-    voices: set[str] = set()
     result = []
     for mi, measure in enumerate(measures):
         ref = f"m{mi}"
@@ -202,10 +202,6 @@ def _project(root: ET.Element) -> Score:
                 if node.findtext("staff", "1") != "1":
                     raise EvaluationUnsupported("multiple-staves")
                 if node.tag in {"forward", "backup"}:
-                    if node.find("voice") is not None:
-                        voices.add(required(node, "voice"))
-                        if len(voices) > 1:
-                            raise EvaluationUnsupported("multiple-voices")
                     amount = Fraction(required(node, "duration")) / divisions
                     if amount <= 0:
                         raise EvaluationUnsupported("cursor-duration")
@@ -222,12 +218,10 @@ def _project(root: ET.Element) -> Score:
                         Harmony(f"{ref}/h{len(harmonies)}", onset, harmony_value(node))
                     )
                 else:
-                    voices.add(node.findtext("voice", "1"))
-                    if len(voices) != 1:
-                        raise EvaluationUnsupported("multiple-voices")
+                    voice = node.findtext("voice", "1")
                     onset = cursor
                     if node.find("chord") is not None:
-                        if previous is None:
+                        if previous is None or previous.voice != voice:
                             raise EvaluationUnsupported("orphan-chord")
                         onset = previous.onset
                     event = note_event(node, f"{ref}/e{len(events)}", onset, divisions, state)
@@ -235,7 +229,11 @@ def _project(root: ET.Element) -> Score:
                         if previous is None or event.duration > previous.duration:
                             raise EvaluationUnsupported("chord-duration")
                     else:
-                        if any(e.onset + e.duration > onset for e in events if not e.grace):
+                        if any(
+                            e.onset + e.duration > onset
+                            for e in events
+                            if not e.grace and e.voice == voice
+                        ):
                             raise EvaluationUnsupported("overlapping-single-voice")
                         cursor += event.duration
                     events.append(event)
