@@ -1,0 +1,38 @@
+{
+  "scope": "authored symbolic unit tests; not SYN-Val; no real/sealed data",
+  "platform": "Windows Python 3.12.14",
+  "tests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "251",
+    "time": "5.099",
+    "timestamp": "2026-09-29T16:13:43.583085+09:00",
+    "hostname": "BOOK-QIG23EH5HI"
+  },
+  "coverage": {
+    "covered_lines": 236,
+    "num_statements": 239,
+    "percent_covered": 98.74476987447699,
+    "percent_covered_display": "99",
+    "missing_lines": 3,
+    "excluded_lines": 0,
+    "percent_statements_covered": 98.74476987447699,
+    "percent_statements_covered_display": "99"
+  },
+  "hardcodeScan": {
+    "schema": "clavis-hardcode-scan-1",
+    "status": "PASS",
+    "pythonFiles": 100,
+    "manifestIdentifiers": 0,
+    "findings": [],
+    "suppressed": [],
+    "byOwner": {}
+  },
+  "xsd": "NOT_RUN: awaiting W1 lxml declaration",
+  "oracleMetrics": "NOT_RUN",
+  "fullWindowsSuite": "NOT_RUN",
+  "linuxCI": "NOT_RUN (draft)",
+  "schemaBlobHashes": "PASS: three staged blobs and built wheel matched manifest"
+}

@@ -1,0 +1,135 @@
+[
+  {
+    "id": "ASM-PITCH",
+    "owner": "W8",
+    "statement": "Map staff pos to sounding diatonic pitch using the eleven clef anchors.",
+    "units": "musical_units",
+    "params": [],
+    "source": "convention",
+    "reference": "CONTRACTS 5.1",
+    "status": "provisional",
+    "flag": "assemble.rules.ASM-PITCH.enabled",
+    "enabled": true,
+    "ablation": {
+      "status": "unit-only",
+      "report": "docs/reports/W8/T8.1-T8.2.md",
+      "note": "Disable fails closed; no fabricated substitute for a disabled theory axiom. Corpus contributions NOT_RUN."
+    },
+    "introduced_by": "PR #25",
+    "motivated_by_failure": false
+  },
+  {
+    "id": "ASM-ACCIDENTAL",
+    "owner": "W8",
+    "statement": "Apply visible accidental, adjacent tied pitch, staff/pos measure state, then key signature; voices and grace share state.",
+    "units": "musical_units",
+    "params": [],
+    "source": "convention",
+    "reference": "CONTRACTS 5.2",
+    "status": "provisional",
+    "flag": "assemble.rules.ASM-ACCIDENTAL.enabled",
+    "enabled": true,
+    "ablation": {
+      "status": "unit-only",
+      "report": "docs/reports/W8/T8.1-T8.2.md",
+      "note": "Disable fails closed; no fabricated substitute for a disabled theory axiom. Corpus contributions NOT_RUN."
+    },
+    "introduced_by": "PR #25",
+    "motivated_by_failure": false
+  },
+  {
+    "id": "ASM-DURATION",
+    "owner": "W8",
+    "statement": "Compute exact quarter-note fractions, dots and 3:2 triplets; grace is zero; measure rest uses capacity.",
+    "units": "musical_units",
+    "params": [],
+    "source": "convention",
+    "reference": "CONTRACTS 5.3",
+    "status": "provisional",
+    "flag": "assemble.rules.ASM-DURATION.enabled",
+    "enabled": true,
+    "ablation": {
+      "status": "unit-only",
+      "report": "docs/reports/W8/T8.1-T8.2.md",
+      "note": "Disable fails closed; no fabricated substitute for a disabled theory axiom. Corpus contributions NOT_RUN."
+    },
+    "introduced_by": "PR #25",
+    "motivated_by_failure": false
+  },
+  {
+    "id": "ASM-BOUNDARY",
+    "owner": "W8",
+    "statement": "Collapse eventless bar boundaries; initial repeatStart is left barline; boundary clef precedes bar and key/time follow it; ignore courtesy.",
+    "units": "musical_units",
+    "params": [],
+    "source": "convention",
+    "reference": "CONTRACTS 4.2, 5.4",
+    "status": "provisional",
+    "flag": "assemble.rules.ASM-BOUNDARY.enabled",
+    "enabled": true,
+    "ablation": {
+      "status": "unit-only",
+      "report": "docs/reports/W8/T8.1-T8.2.md",
+      "note": "Disable fails closed; no fabricated substitute for a disabled theory axiom. Corpus contributions NOT_RUN."
+    },
+    "introduced_by": "PR #25",
+    "motivated_by_failure": false
+  },
+  {
+    "id": "ASM-TIMELINE",
+    "owner": "W8",
+    "statement": "Advance each voice independently; chord members share onset; flag mismatched lengths without inserting or deleting events; first short measure is a pickup.",
+    "units": "musical_units",
+    "params": [],
+    "source": "convention",
+    "reference": "CONTRACTS 5.4, 5.5",
+    "status": "provisional",
+    "flag": "assemble.rules.ASM-TIMELINE.enabled",
+    "enabled": true,
+    "ablation": {
+      "status": "unit-only",
+      "report": "docs/reports/W8/T8.1-T8.2.md",
+      "note": "Disable fails closed; no fabricated substitute for a disabled theory axiom. Corpus contributions NOT_RUN."
+    },
+    "introduced_by": "PR #25",
+    "motivated_by_failure": false
+  },
+  {
+    "id": "ASM-TIE",
+    "owner": "W8",
+    "statement": "A tie requires matching pitch and adjacent time in its voice; an unambiguous observed curve between unequal pitches becomes a flagged slur.",
+    "units": "musical_units",
+    "params": [],
+    "source": "convention",
+    "reference": "CONTRACTS 5.4",
+    "status": "provisional",
+    "flag": "assemble.rules.ASM-TIE.enabled",
+    "enabled": true,
+    "ablation": {
+      "status": "unit-only",
+      "report": "docs/reports/W8/T8.1-T8.2.md",
+      "note": "Disable fails closed; no fabricated substitute for a disabled theory axiom. Corpus contributions NOT_RUN."
+    },
+    "introduced_by": "PR #25",
+    "motivated_by_failure": false
+  },
+  {
+    "id": "ASM-MREST",
+    "owner": "W8",
+    "statement": "Expand a visible multi-rest into exactly its declared count of measure rests, each retaining the same source symbols. This is notation expansion, not gap filling.",
+    "units": "musical_units",
+    "params": [],
+    "source": "convention",
+    "reference": "CONTRACTS 4.1, T8.1",
+    "status": "provisional",
+    "flag": "assemble.rules.ASM-MREST.enabled",
+    "enabled": true,
+    "ablation": {
+      "status": "unit-only",
+      "report": "docs/reports/W8/T8.1-T8.2.md",
+      "note": "Disable fails closed; no fabricated substitute for a disabled theory axiom. Corpus contributions NOT_RUN."
+    },
+    "introduced_by": "PR #25",
+    "motivated_by_failure": false
+  }
+]
