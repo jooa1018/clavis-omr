@@ -55,5 +55,17 @@
     "w3_skipped": 0,
     "w3_coverage_percent": 97.16446124763705
   },
-  "ci": "PENDING on updated PR head"
+  "ci": {
+    "run": 36507632409,
+    "head": "978a365",
+    "platforms": [
+      "ubuntu-latest",
+      "windows-latest"
+    ],
+    "status": "PASS",
+    "passed": 196,
+    "skipped": 1,
+    "w3_passed": 98,
+    "w3_skipped": 0
+  }
 }
