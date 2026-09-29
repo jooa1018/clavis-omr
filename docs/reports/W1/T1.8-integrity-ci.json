@@ -1,0 +1,73 @@
+{
+  "baseMainCommit": "ece70f43bfe94a415cb0150129931f219f2b20b9",
+  "mainRetrospective": {
+    "schema": "clavis-hardcode-scan-1",
+    "status": "PASS",
+    "pythonFiles": 69,
+    "manifestIdentifiers": 0,
+    "findings": [],
+    "suppressed": [],
+    "byOwner": {}
+  },
+  "integrationScan": {
+    "schema": "clavis-hardcode-scan-1",
+    "status": "PASS",
+    "pythonFiles": 70,
+    "manifestIdentifiers": 0,
+    "findings": [],
+    "suppressed": [],
+    "byOwner": {}
+  },
+  "ciSummary": {
+    "dataLeakage": {
+      "reason": "No real train/reserved inventories are supplied to CI; unit fixtures are separate.",
+      "status": "NOT_RUN",
+      "trainingAdmissionAllowed": false
+    },
+    "hardcoding": {
+      "byOwner": {},
+      "findings": [],
+      "manifestIdentifiers": 0,
+      "pythonFiles": 70,
+      "schema": "clavis-hardcode-scan-1",
+      "status": "PASS",
+      "suppressed": []
+    },
+    "status": "PARTIAL"
+  },
+  "tests": {
+    "tests": "414",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "time": "32.253"
+  },
+  "platformCoverage": {
+    "covered_lines": 1144,
+    "num_statements": 1169,
+    "percent_covered": 97.86142001710864,
+    "percent_covered_display": "98",
+    "missing_lines": 25,
+    "excluded_lines": 0,
+    "percent_statements_covered": 97.86142001710864,
+    "percent_statements_covered_display": "98"
+  },
+  "evalCoverage": {
+    "covered_lines": 673,
+    "num_statements": 742,
+    "percent_covered": 90.70080862533693,
+    "percent_covered_display": "91",
+    "missing_lines": 69,
+    "excluded_lines": 4,
+    "percent_statements_covered": 90.70080862533693,
+    "percent_statements_covered_display": "91"
+  },
+  "execution": "manual Windows laptop CPU; small synthetic development tests only",
+  "remoteCi": {
+    "implementationCommit": "4fdb196",
+    "runUrl": "https://github.com/jooa1018/clavis-omr/actions/runs/36509347725",
+    "ubuntu": "PASS",
+    "windows": "PASS",
+    "finalHeadPassRequiredBeforeMerge": true
+  }
+}

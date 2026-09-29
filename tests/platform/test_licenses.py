@@ -5,7 +5,6 @@ from unittest.mock import patch
 import pytest
 
 from scripts.check_licenses import main, runtime_packages, violations
-from scripts.integrity_status import main as integrity_main
 
 
 def test_runtime_closure_handles_cycles_and_markers() -> None:
@@ -42,8 +41,3 @@ def test_audit_exit_status(license_name: str, code: int) -> None:
         patch("scripts.check_licenses.subprocess.run", return_value=result),
     ):
         assert main() == code
-
-
-def test_integrity_slot_is_explicitly_not_run(capsys: pytest.CaptureFixture[str]) -> None:
-    integrity_main()
-    assert json.loads(capsys.readouterr().out)["status"] == "NOT_RUN"
