@@ -1,0 +1,42 @@
+{
+  "coverage": {
+    "covered_lines": 101,
+    "num_statements": 116,
+    "percent_covered": 87.06896551724138,
+    "percent_covered_display": "87",
+    "missing_lines": 15,
+    "excluded_lines": 0,
+    "percent_statements_covered": 87.06896551724138,
+    "percent_statements_covered_display": "87"
+  },
+  "scan": {
+    "schema": "clavis-hardcode-scan-1",
+    "status": "FAIL",
+    "pythonFiles": 81,
+    "manifestIdentifiers": 0,
+    "findings": [
+      {
+        "file": "eval/baselines/__init__.py",
+        "line": 118,
+        "rule": "H9",
+        "owner": "W4",
+        "evidence_digest": "5c1b0c12bb96c9762c18292c1e2b1e2f47b6524c62feaf02fd4281bf2d6321d9"
+      },
+      {
+        "file": "eval/baselines/__init__.py",
+        "line": 123,
+        "rule": "H9",
+        "owner": "W4",
+        "evidence_digest": "cab1ed8e21536a96855306e3a7906a579957acf5adb875da81b2a83501099f62"
+      }
+    ],
+    "suppressed": [],
+    "byOwner": {
+      "W4": 2
+    }
+  },
+  "B0": {
+    "status": "NOT_RUN",
+    "reason": "No Docker executable, installed baseline environment, Dev v0 or W1 queue"
+  }
+}

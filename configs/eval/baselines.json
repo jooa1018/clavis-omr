@@ -1,0 +1,13 @@
+{
+  "schema": "clavis-baselines-1",
+  "timeoutSeconds": 480,
+  "memory": "2560m",
+  "cpus": 2,
+  "maxOutputBytes": 8388608,
+  "maxMovements": 128,
+  "engines": {
+    "audiveris": {"version": "5.10.2", "license": "AGPL-3.0", "command": ["audiveris", "-batch", "-transcribe", "-export", "-output", "/work/out", "--", "{input}"], "source": "https://github.com/Audiveris/audiveris/releases/tag/5.10.2"},
+    "homr": {"version": "457e7c6518a10ba755db2e60883419e56c4d7369", "license": "AGPL-3.0", "command": ["/opt/homr-venv/bin/homr", "{input}"], "source": "https://github.com/liebharc/homr/commit/457e7c6518a10ba755db2e60883419e56c4d7369"},
+    "oemer": {"version": "0.1.8", "license": "MIT", "command": ["/opt/oemer-venv/bin/oemer", "{input}", "-o", "/work/out"], "source": "https://pypi.org/project/oemer/0.1.8/", "wheelSha256": "713b9c06e1ade3fa0c5f9fa2c396cbb1492ce6be30d0bd25d57601af1eb32917"}
+  }
+}
