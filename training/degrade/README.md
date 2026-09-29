@@ -140,3 +140,27 @@ two measured samples per route/size after one warmup. It outputs native route im
 traces, a contact sheet, peak process RSS and timings. Its fixture is a schematic, not
 a full W2 score. Thin synthetic staff lines may disappear after reduction; these cases
 remain visible in the results. A small smoke is not a sustained throughput or realism gate.
+
+## Optional phone resolution-stage variant
+
+The Orchestrator's 2026-09-29 follow-up is available with
+`run_preset(..., vary_resolution_stage=True)`. It is configured for the five phone
+routes, without inspecting image content or matching route names in Python.
+The default call retains the G1 v0 operation order.
+
+The caller's RNG chooses uniformly from YAML `placements`: blur then noise as one
+block immediately **before** or **after** resize. Camera blur/noise before messenger
+reduction and processing after reduction therefore produce different pixel statistics.
+Existing per-route blur/noise strengths are preserved. For an omitted effect, only
+this optional variant supplies the common YAML default (noise for angle/curl,
+blur and noise for shadow). Other operations keep their relative order.
+`resolution_stage_placement` and the resolved operation trace record the choice;
+replay executes that exact trace without choosing again. Rejected attempts retain
+the placement and use the same batch counters. Unsupported routes reject an explicit
+variant request rather than silently ignoring it.
+
+Synthetic replay, labels and 1/4-thread determinism pass. The 4 MP before-resize variant
+currently has four slices below 3 pages/second (minimum 2.43145). The follow-up is
+PARTIAL and not a replacement for the accepted v0 performance result. Full-resolution
+filtering and noise process more pixels; lower resolution is not substituted to hide
+this cost. See `docs/reports/W3/T3-phone-stage-2026-09-29.md` for all slices.

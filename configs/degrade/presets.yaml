@@ -35,6 +35,11 @@ definitions:
     shadow_y: 0
   blur: &blur {op: blur, sigma_spaces: {uniform: [0.02, 0.12]}}
   noise: &noise {op: noise, sigma: {uniform: [0.002, 0.025]}}
+  # Orchestrator 2026-09-29: optional capture-vs-post-messenger processing.
+  # Uniform 1/2 per stage is an unfitted prior; preserve route-specific strengths.
+  phone_stage: &phone_stage
+    placements: [before_resize, after_resize]
+    operators: [*blur, *noise]  # Defaults only when a base route omits the effect.
   jpeg: &jpeg
     op: jpeg
     quality: {choice: [25, 40, 55, 70, 85, 95]}
@@ -57,18 +62,23 @@ presets:
     rationale: Low-resolution monochrome scan and threshold variation.
     operations: [*resolution, *blur, {op: threshold, level: {uniform: [0.4, 0.65]}}]
   phone-daylight:
+    resolution_stage_variant: *phone_stage
     rationale: Small lighting variation with geometric and codec diversity.
     operations: [*rotation, *illumination, *resolution, *blur, *noise, *jpeg]
   phone-indoor:
+    resolution_stage_variant: *phone_stage
     rationale: Broader lighting attenuation and sensor noise than daylight.
     operations: [*rotation, {<<: *illumination, vignette: {uniform: [0.1, 0.4]}}, *resolution, {op: blur, sigma_spaces: {uniform: [0.05, 0.2]}}, {op: noise, sigma: {uniform: [0.01, 0.05]}}, *jpeg]
   phone-angle:
+    resolution_stage_variant: *phone_stage
     rationale: Pinhole planar tilt up to 35 degrees, without identity-dependent branches.
     operations: [*angle, *rotation, *illumination, *resolution, *blur, *jpeg]
   phone-shadow:
+    resolution_stage_variant: *phone_stage
     rationale: Smooth procedural shadow over the page, no copied image regions.
     operations: [*rotation, {<<: *illumination, shadow_strength: {uniform: [0.2, 0.65]}, shadow_x: {uniform: [-0.8, 0.8]}, shadow_y: {uniform: [-0.8, 0.8]}, shadow_radius: {uniform: [0.2, 0.8]}}, *resolution, *jpeg]
   phone-curl:
+    resolution_stage_variant: *phone_stage
     rationale: Smooth vertical paper-wave approximation; not a fitted cylinder or camera model.
     operations: [{op: paper_wave, amplitude_spaces: {uniform: [-1.5, 1.5]}, phase_radians: 0, chord_error_px: 0.25}, *illumination, *resolution, *blur, *jpeg]
   messenger-kakao:
