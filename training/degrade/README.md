@@ -141,26 +141,41 @@ traces, a contact sheet, peak process RSS and timings. Its fixture is a schemati
 a full W2 score. Thin synthetic staff lines may disappear after reduction; these cases
 remain visible in the results. A small smoke is not a sustained throughput or realism gate.
 
-## Optional phone resolution-stage variant
+## Phone resolution-stage variant (Orchestrator 2026-09-29)
 
-The Orchestrator's 2026-09-29 follow-up is available with
-`run_preset(..., vary_resolution_stage=True)`. It is configured for the five phone
-routes, without inspecting image content or matching route names in Python.
-The default call retains the G1 v0 operation order.
+For the five configured phone routes the default (`vary_resolution_stage=None`)
+selects the variant with YAML `default_use_probability: 0.3`. The probability applies
+to the entire variant, not only its pre-resize half; finite batches may fluctuate.
+Pass `False` to use the original v0 route, or `True` to explicitly measure/use the
+variant. Explicit overrides are not the default training mixture.
 
-The caller's RNG chooses uniformly from YAML `placements`: blur then noise as one
-block immediately **before** or **after** resize. Camera blur/noise before messenger
-reduction and processing after reduction therefore produce different pixel statistics.
-Existing per-route blur/noise strengths are preserved. For an omitted effect, only
-this optional variant supplies the common YAML default (noise for angle/curl,
-blur and noise for shadow). Other operations keep their relative order.
-`resolution_stage_placement` and the resolved operation trace record the choice;
-replay executes that exact trace without choosing again. Rejected attempts retain
-the placement and use the same batch counters. Unsupported routes reject an explicit
-variant request rather than silently ignoring it.
+Within the variant, the caller RNG chooses uniformly between before/after resize.
+The before branch draws the final target once, determines the exact final integer
+width/height, then processes blur followed by noise at
+`min(original dimension, 2 * final dimension)` on each axis. It skips an unnecessary
+identity intermediate resize. The final resize uses the recorded dimensions instead
+of resampling a target or rounding a second independently inferred scale.
+All geometric labels and masks follow both maps. Two nearest-neighbor mask resizes
+may differ at pixel boundaries from one direct resize; continuous point/box geometry
+composes to the same final map. There is no enlargement or second sampling attempt.
 
-Synthetic replay, labels and 1/4-thread determinism pass. The 4 MP before-resize variant
-currently has four slices below 3 pages/second (minimum 2.43145). The follow-up is
-PARTIAL and not a replacement for the accepted v0 performance result. Full-resolution
-filtering and noise process more pixels; lower resolution is not substituted to hide
-this cost. See `docs/reports/W3/T3-phone-stage-2026-09-29.md` for all slices.
+Existing per-route strengths remain; omitted effects use the common YAML values only
+in the variant (noise for angle/curl, blur and noise for shadow). Other operations
+retain their relative order. `resolution_stage_placement`, intermediate/final sizes,
+resolved parameters and RNG state are in the trace. Replay makes no new decisions.
+H3 input format/budget validation is unchanged.
+
+`python -m training.degrade.compare_stages --output work/intermediate-comparison`
+runs 90 synthetic page operations on one CPU thread: five routes, two source sizes,
+both stages, one warmup and two timed samples, plus matched original-resolution
+references for the before branch. The reference removes only the intermediate
+resize and holds target size, effect strengths, initial noise RNG state and JPEG
+parameters fixed. Different noise array sizes do not represent identical noise
+realizations. MAE/RMSE/p95/max are uint8 intensity errors at the final output, not
+label errors or proof of calibrated realism.
+
+The latest measurement is PARTIAL: mean 4.42899 and minimum 1.45490 pages/second.
+Merge is authorized under the <=30% default-use condition. W6 T6.0 CPU training
+throughput will determine the actual generation-rate need; performance targets
+are not silently changed. See `T3-intermediate-stage-2026-09-29.md` and its JSON in
+`docs/reports/W3/`. Real KS/quantiles/domain AUC remain NOT_RUN.

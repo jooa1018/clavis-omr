@@ -38,6 +38,8 @@ definitions:
   # Orchestrator 2026-09-29: optional capture-vs-post-messenger processing.
   # Uniform 1/2 per stage is an unfitted prior; preserve route-specific strengths.
   phone_stage: &phone_stage
+    intermediate_factor: 2  # Orchestrator 2026-09-29: min(source size, 2 * final size).
+    default_use_probability: 0.3  # Conservative cap pending W6 T6.0 throughput evidence.
     placements: [before_resize, after_resize]
     operators: [*blur, *noise]  # Defaults only when a base route omits the effect.
   jpeg: &jpeg

@@ -32,6 +32,16 @@ def resolution_stage_variant(preset: Params, rng: np.random.Generator) -> tuple[
     ]
     ordered = [step for step in operations if step["op"] not in ("blur", "noise")]
     position = next(i for i, step in enumerate(ordered) if step["op"] == "resize")
+    if placement == "before_resize":
+        resize = {**ordered[position], "capture_factor": variant["intermediate_factor"]}
+        return (
+            ordered[:position]
+            + [resize]
+            + effects
+            + [{"op": "resize", "finish_capture": True}]
+            + ordered[position + 1 :],
+            placement,
+        )
     position += int(placement == "after_resize")
     return ordered[:position] + effects + ordered[position:], placement
 
@@ -44,10 +54,16 @@ def run_preset(
     name: str,
     stats: SamplingStats | None = None,
     *,
-    vary_resolution_stage: bool = False,
+    vary_resolution_stage: bool | None = None,
 ) -> tuple[Array, Labels, Params]:
     """Use configured route operations and shared safety/scale settings."""
     preset = catalog["presets"][name]
+    if vary_resolution_stage is None:
+        variant = preset.get("resolution_stage_variant")
+        probability = float(variant["default_use_probability"]) if variant else 0.0
+        if not np.isfinite(probability) or not 0 <= probability <= 1:
+            raise ValueError("Invalid default variant probability")
+        vary_resolution_stage = bool(rng.random() < probability) if probability else False
     operations, placement = (
         resolution_stage_variant(preset, rng)
         if vary_resolution_stage
