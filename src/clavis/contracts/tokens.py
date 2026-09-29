@@ -24,19 +24,39 @@ from .common import (
     WireModel,
 )
 
+LSTL_DEFAULTS = (
+    ("acc", "none"),
+    ("acc_paren", False),
+    ("tie", "none"),
+    ("slur", "none"),
+    ("chord", 0),
+    ("grace", "none"),
+    ("tup3", "none"),
+    ("fermata", False),
+    ("stem", "none"),
+    ("beam", "none"),
+    ("measure_rest", False),
+    ("courtesy", False),
+    ("cancel", 0),
+)
 
-class ClefItem(Clef):
+
+class TokenDefaults(WireModel):
+    omitted_defaults = LSTL_DEFAULTS
+
+
+class ClefItem(Clef, TokenDefaults):
     type: Literal["clef"]
     courtesy: StrictBool | None = None
 
 
-class KeyItem(Key):
+class KeyItem(Key, TokenDefaults):
     type: Literal["key"]
     cancel: Annotated[StrictInt, Field(ge=0, le=7)] | None = None
     courtesy: StrictBool | None = None
 
 
-class TimeItem(Time):
+class TimeItem(Time, TokenDefaults):
     type: Literal["time"]
     courtesy: StrictBool | None = None
 
@@ -45,7 +65,7 @@ class BarItem(Barline):
     type: Literal["bar"]
 
 
-class NoteItem(WireModel):
+class NoteItem(TokenDefaults):
     type: Literal["note"]
     dur: Dur
     dots: Dots
@@ -64,7 +84,7 @@ class NoteItem(WireModel):
     beam: Beam | None = None
 
 
-class RestItem(WireModel):
+class RestItem(TokenDefaults):
     type: Literal["rest"]
     dur: Dur
     dots: Dots

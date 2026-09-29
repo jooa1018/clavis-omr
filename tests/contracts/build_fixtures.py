@@ -243,8 +243,8 @@ def author():
                 "groups": [{"type": "none", "staffIds": [staff]}],
                 "barlines": [
                     {
-                        "xProcessed": 80 + u * 0.625,
-                        "uByStaff": {staff: float(u)},
+                        "xProcessed": 80 + (100 if s == 0 and u == 0 else u) * 0.625,
+                        "uByStaff": {staff: float(100 if s == 0 and u == 0 else u)},
                         "spanStaffIds": [staff],
                         "styleGuess": "final" if s == 2 and u == 1215 else "regular",
                         "confidenceBp": 9800,
@@ -305,6 +305,11 @@ def author():
                     "attrs": attrs or {},
                 }
             )
+            observed = graph["symbols"][-1]
+            if "posTopK" in observed["attrs"]:
+                observed["posTopK"] = observed["attrs"].pop("posTopK")
+            if not observed["attrs"]:
+                observed.pop("attrs")
             return sid
 
         clef = symbol("clefG", 16.0, 80.0, 24.0, 90.0)
@@ -352,12 +357,13 @@ def author():
                 "directions": [],
             }
             events, onset = [], Fraction(0)
-            bar = symbol("barline", float(local * 608), 96.0, 2.0, 64.0)
+            bar_u = 100.0 if m == 0 else float(local * 608)
+            bar = symbol("barline", bar_u, 96.0, 2.0, 64.0)
             items.append(
                 {
                     "item": {"type": "bar", "style": "repeatStart" if m == 0 else "regular"},
                     "attrTopK": {},
-                    "spanU": [float(local * 608), float(local * 608 + 2)],
+                    "spanU": [bar_u, bar_u + 2.0],
                     "itemProbBp": 9800,
                     "symbolIds": [bar],
                 }
@@ -384,7 +390,11 @@ def author():
                     cls,
                     u,
                     v,
-                    attrs={"dotsTopK": [[dots, 9700]], "posTopK": [[pos, 9600], [pos + 1, 400]]},
+                    attrs={
+                        "dotsTopK": [[dots, 9700]],
+                        "posTopK": [[pos, 9600], [pos + 1, 400]],
+                        "voiceTopK": [[1, 9700], [2, 300]],
+                    },
                 )
                 ids = [head]
                 if dur != "whole" and kind != "rest":

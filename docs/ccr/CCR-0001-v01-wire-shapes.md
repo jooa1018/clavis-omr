@@ -152,3 +152,33 @@ C3/C5/C7은 제안 그대로 채택했다. 승인된 최초 완성본을 v0.1로
 판정 전달: https://github.com/jooa1018/clavis-omr/pull/4#issuecomment-5880412798
 영향 워커 의견은 W4/W5/W6/W7/W8/W9에 요청할 사항이며 아직 받은 것으로 기록하지 않는다.
 이 CCR 승인과 최종 T1.2 A등급 구현 PR 승인은 별개의 단계다.
+
+## 10. 승인 조건 보완 — PR #4 조건부 승인 (2026-09-29)
+
+Orchestrator는 아래 1–8을 같은 PR에 반영하고 두 OS CI가 통과하면 추가 확인 없이
+squash 병합하도록 승인했다. C7 동결 전 v0.1의 일부이며 별도 버전 증가는 없다.
+변경 범위는 이 목록과 해당 Schema·fixture·시험·보고서 갱신으로 한정한다.
+
+1. CONTRACTS 4.2의 인쇄 x 순서/겹침 관례를 Orchestrator 문안으로 정정하고 5.4에
+   연속 bar는 하나의 마디 경계, 첫 repeatStart는 왼쪽 barline이라는 해석 문안을 추가한다.
+   lattice-0 첫 순서는 clef → time → bar(repeatStart)다. 같은 근거를 가리키는 graph/layout의
+   repeatStart x도 첫 clef/time 뒤로 옮겼다. 비시간의 서로 겹치지 않는 열 역순을 거부한다.
+2. 지정된 LSTL 선택 속성의 none/0/false, Event.grace/accidentalVisible의 none,
+   빈 SymbolGraph.attrs를 생략한다. 명시적 기본값은 검증 오류이며 작성기도 생략한다.
+   필수 필드·필수 목록은 유지하고 attrTopK 안의 기본값 후보는 허용한다.
+3. posTopK는 기호 최상위만, 성부는 attrs.voiceTopK(1–4,bp)만 허용한다. voiceOf는 제거한다.
+   CONTRACTS 3.5에 지정된 모든 관계 방향을 명시하고 chordWith의 from id < to id를 검사한다.
+4. 모든 top-k는 값 중복 금지, bp 내림차순/동률 값 정규 순서, 합 ≤10000,
+   길이 1–3(classTopK 1–5)을 검사한다. 숫자는 오름차순, 문자열은 NFC 사전순,
+   정수 목록은 사전순으로 비교하며 enum 선언 순서나 locale에 의존하지 않는다.
+5. attrTopK에 현재 항목 값(생략 시 기본값)을 반드시 포함한다. rank는 0부터 연속이며
+   logProbMicro는 rank가 커져도 증가하지 않는다.
+6. Event의 duration=0은 acciaccatura/appoggiatura에서만 허용한다.
+   grace가 아닌 Event 및 모든 DurationPatch의 duration은 양수다.
+7. Measure.index는 파트별 목록 순서대로 0부터 연속이다.
+8. EvidenceBundle.vendorTargetId 중복 거부를 시험하고 모든 외부 box의
+   widthMu/heightMu ≥1을 검사한다(extensions.measureBoxes 포함).
+
+각 번호에 대응하는 `condition-N-*.json` 무효 fixture 46개를 추가했다.
+전체 검증 근거는 `docs/reports/W1/T1.2-conditions.md`에 기록한다.
+이 조건 충족 후 병합되는 최초 완성본을 v0.1로 동결한다.

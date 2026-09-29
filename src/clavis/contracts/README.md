@@ -45,3 +45,13 @@ uv run --all-groups pytest tests/contracts
 LSTL의 항목 타입은 lattice payload 때문에 제공하지만 정규화기·텍스트 파서·문법
 오토마톤·정수 어휘는 T1.4다. MusicXML 생성/XSD/재파싱은 W8 범위다.
 구조 검증은 음악을 선택하는 조립·판정 규칙이 아니며 카탈로그 ablation 대상이 아니다.
+
+
+## PR #4 승인 조건 보완
+
+선택 기본값 생략은 WireModel의 선언된 필드 목록에만 적용한다. 검증은 명시적
+기본값을 거부하고 정규 작성기는 중첩 객체까지 생략한다. 필수 0/false와 tie/slur는 유지한다.
+attrTopK 후보의 기본값은 허용한다. top-k는 중복/정렬/합/길이를 검사하며 현재 값 포함,
+rank/logProb 순서, 파트별 index, duration, 양수 외부 box 크기도 검사한다.
+관계 방향은 CONTRACTS 3.5, 인쇄 순서와 bar 경계 해석은 4.2·5.4를 따른다.
+겹치는 음악 열의 voice/pos 정규화와 bar 해석 실행은 후속 T1.4/W8 범위다.

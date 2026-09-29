@@ -125,6 +125,8 @@ class Lyric(WireModel):
 
 
 class Event(WireModel):
+    omitted_defaults = (("grace", "none"), ("accidental_visible", "none"))
+
     event_id: Id
     kind: Literal["note", "rest", "rhythm"]
     onset: NonnegativeFraction
@@ -146,6 +148,8 @@ class Event(WireModel):
 
     @model_validator(mode="after")
     def shape(self) -> Self:
+        if self.duration.n == 0 and self.grace not in ("acciaccatura", "appoggiatura"):
+            raise ValueError("zero duration requires a grace event")
         if (self.kind == "note") != (self.pitch is not None):
             raise ValueError("pitch is required only for note events")
         unique([lyric.verse for lyric in self.lyrics], "lyric verse")
@@ -288,7 +292,11 @@ class ScoreIR(IR):
         parts = {p.part_id: p for p in self.parts}
         references([m.part_id for m in self.measures], set(parts), "measure part")
         ids: list[str] = [p.part_id for p in self.parts]
+        next_index = dict.fromkeys(parts, 0)
         for m in self.measures:
+            if m.index != next_index[m.part_id]:
+                raise ValueError("measure index must be consecutive per part in list order")
+            next_index[m.part_id] += 1
             part = parts[m.part_id]
             ids += (
                 [m.measure_id]

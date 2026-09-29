@@ -136,8 +136,9 @@ HarmonyMaker `ImageQualityReport` 필드 `blurBp`, `perspectiveBp`, `glareBp`, `
 
 - 좌표는 strip px(소수 둘째 자리). 모든 확률은 bp 정수다.
 - `sources`: 후보를 낸 생성기(`fcn`, `template`, `cc`, `vline`, `beam`, `curve`, `ledger`). 생성기 간 일치는 신뢰도 신호다.
-- `attrs`: 클래스별 속성 분포. `posTopK`(음표 머리, 쉼표), `stemDir`, `beamCountTopK`·`flagCountTopK`(stem), `dotsTopK`, `headType` 등.
-- `relations.kind`: `stemOf`, `beamOf`, `flagOf`, `dotOf`, `accidentalOf`, `tieFrom`, `tieTo`, `slurFrom`, `slurTo`, `ledgerOf`, `chordWith`, `voiceOf`. 한 기호에 경쟁 관계가 있으면 모두 남긴다(상위 2개).
+- `posTopK`는 기호 최상위에만 둔다. `attrs`: 클래스별 속성 분포인 `stemDir`, `beamCountTopK`·`flagCountTopK`(stem), `dotsTopK`, `headType`, 성부 `voiceTopK`(1–4, bp). 빈 attrs는 생략한다.
+- `relations.kind`: `stemOf`, `beamOf`, `flagOf`, `dotOf`, `accidentalOf`, `tieFrom`, `tieTo`, `slurFrom`, `slurTo`, `ledgerOf`, `chordWith`. 한 기호에 경쟁 관계가 있으면 모두 남긴다(상위 2개).
+- 관계 방향: stemOf stem→머리, beamOf beam→stem, flagOf flag→stem, dotOf 점→머리, accidentalOf 임시표→머리, ledgerOf 덧줄→머리, tieFrom/slurFrom 곡선→시작 머리, tieTo/slurTo 곡선→끝 머리, chordWith 머리→머리(from id < to id).
 - `rejectedCandidates`: 거절됐지만 점수가 기준 이상인 후보. W8의 누락 의심 신호로 쓴다.
 
 클래스(v0.1): `noteheadFilled`, `noteheadHollow`, `noteheadWhole`, `noteheadSlash`, `noteheadX`, `stem`, `beam`, `flag`, `accSharp`, `accFlat`, `accNatural`, `accDoubleSharp`, `accDoubleFlat`, `augDot`, `restWhole`, `restHalf`, `restQuarter`, `rest8th`, `rest16th`, `rest32nd`, `clefG`, `clefF`, `clefC`, `timeDigit`, `timeCommon`, `timeCut`, `barline`, `repeatDots`, `curve`(tie·slur), `tupletNumber`, `fermata`, `ledgerLine`, `segno`, `coda`, `voltaBracket`, `reject`(배경·글자·기타).
@@ -226,9 +227,9 @@ v0.1 범위 밖(OOD로 표시하거나 무시): 퍼커션·타브 보표, 트레
 ### 4.2 정규 순서 (같은 시각 표현 → 하나의 토큰열)
 
 1. 보표 내용을 **열(column)**로 나눈다. 같은 마디에서 같은 음악 시점을 공유하는 음표와 쉼표가 한 열이다. 꾸밈음은 본음 앞에 자기 열을 가진다. 비시간 항목(`clef`, `key`, `time`, `bar`, `ending`, `segno`, `coda`)은 인쇄 위치마다 각자 열이다.
-2. 열은 인쇄된 왼쪽→오른쪽 순서를 따른다.
-3. 한 열 안에서는 성부 오름차순이다. 같은 성부의 화음은 `pos` 오름차순이고, 첫 음이 `chord=0`, 나머지가 `chord=1`이다.
-4. barline 위치의 항목 순서: `bar` → `ending(stop)` → `ending(start)` → `segno`/`coda` → `clef` → `key` → `time`. 시스템 첫머리는 `clef` → `key` → `time`.
+2) 열은 인쇄된 x 순서(기호 박스 왼쪽 모서리)를 따른다. 라벨 생성(W2)은 렌더 좌표에서, 읽기 구성(W6)은 기호 박스에서 순서를 얻는다.
+3) 아래 관례 순서는 x가 같거나 겹칠 때만 쓴다. 시스템 첫머리는 clef → key → time → bar(repeatStart). 마디 경계에서 clef 변경은 barline 앞, key·time 변경은 barline 뒤에 인쇄된다. repeatStart가 key·time 변경과 같은 경계에 있으면 key·time 뒤에 별도 bar 항목으로 온다. ending 표시는 해당 barline 바로 뒤, segno·coda는 해당 barline 위치다.
+4. 한 열 안에서는 성부 오름차순이다. 같은 성부의 화음은 `pos` 오름차순이고, 첫 음이 `chord=0`, 나머지가 `chord=1`이다.
 5. 시스템 끝의 예고(courtesy) 기호는 마지막 `bar` 뒤에 `courtesy=1`로 온다. 의미 해석에서는 무시한다.
 6. 속성 직렬화 순서는 4.1절 표의 순서를 따른다. 기본값(0, none)은 텍스트 표기에서 생략한다.
 
@@ -289,6 +290,8 @@ bar style=final
 - 마디 용량 = beats × 4 / beatType. 온마디 쉼표(`measureRest=1`)의 길이는 용량과 같다
 
 ### 5.4 성부와 마디 유효성
+
+- 이벤트 없이 연속한 bar 항목은 하나의 마디 경계로 해석한다. 시스템 첫머리의 bar(repeatStart)는 첫 마디의 왼쪽 barline이며 빈 마디를 만들지 않는다.
 
 - 각 성부는 0에서 시작하는 시간축을 가진다. 성부가 늦게 시작하거나 일찍 끝나면 export에서 `<forward>`로 표현한다. 보이지 않는 구간은 사건이 아니다.
 - **overfull**(어떤 성부의 합 > 용량)은 `complete` 출력에서 허용하지 않는다.
@@ -550,3 +553,20 @@ clavis version            # 엔진·모델·계약 버전 출력(JSON)
  stages: [{stageId, elapsedMs, cpuMs, peakRssBytes, threads}],
  platform?: {os: string, pythonVersion: string, onnxruntimeVersion?: string}}`다.
 계측 값만 기록하며 플랫폼 정보는 선택 사항이다. 날짜·호스트명·절대 경로는 넣지 않는다.
+
+### 13.5 승인 조건 보완 — C7 동결 전 v0.1 (2026-09-29)
+
+- 선택 기본값은 JSON에서 생략하며 명시하면 검증 오류다. LSTL의 acc/accParen/tie/slur/
+  chord/grace/tup3/fermata/stem/beam/measureRest/courtesy/cancel, Event.grace/accidentalVisible,
+  SymbolGraph의 빈 attrs에 적용한다. 기본값은 none/0/false/빈 객체이며 해당 선택 필드의
+  명시적 null도 생략한다. 필수 값·필수 목록·Event.tie/slur의 start/stop은 유지한다.
+  정규 작성기도 이 생략을 강제한다. attrTopK 안의 기본값 후보는 허용한다.
+- 모든 top-k(classTopK, posTopK, attrs 분포, attrTopK)는 값이 중복되면 안 된다.
+  bp 내림차순, 동률은 값의 정규 순서다(숫자 오름차순, NFC 문자열 사전순, 정수 목록 사전순).
+  합은 10000 이하, 길이는 1–3(classTopK만 1–5)이다.
+- attrTopK의 키 k마다 항목의 k 값(생략 시 기본값)이 후보에 포함돼야 한다.
+  Hypothesis rank는 0부터 연속, logProbMicro는 rank가 커질수록 증가하지 않는다.
+- Event.duration=0은 grace가 acciaccatura/appoggiatura인 경우에만 허용한다.
+  grace가 아니면 duration은 양수다. DurationPatch.duration은 항상 양수다.
+- Measure.index는 파트마다 measures 목록 순서대로 0부터 연속이다.
+- EvidenceBundle.vendorTargetId는 번들 안에서 고유하며 모든 box의 widthMu/heightMu는 1 이상이다.

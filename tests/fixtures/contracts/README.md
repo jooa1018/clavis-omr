@@ -45,3 +45,10 @@ assert score.measures[3].staff_measures[0].voices[0].events[0].event_id == "P1-m
 NFC/분수/bp/유한 좌표, 1·4스레드 환경별 3회 동일 바이트를 자동 검증한다.
 invalid 파일의 payload는 **의도적으로 무효**이며 model 필드는 시험 메타데이터다.
 JSON Schema가 표현하지 못하는 의미 제약은 pydantic과 ContractBundle이 검사한다.
+
+
+PR #4 승인 조건 보완: lattice-0은 clef → time → bar(repeatStart)로 시작하며
+repeatStart의 graph/layout x도 일치한다. posTopK는 기호 최상위, 성부 분포는 attrs.voiceTopK다.
+빈 attrs는 생략한다. `invalid/condition-1-*`부터 `condition-8-*`까지 46개 무효 사례를
+`tests/contracts/build_condition_fixtures.py`로 재생성한다. 조건 번호와 예상 오류를
+함께 저장하므로 의도한 제약 때문에 거부되는지도 검사한다.

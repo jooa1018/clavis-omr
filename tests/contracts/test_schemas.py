@@ -85,7 +85,7 @@ def test_schema_snapshots_and_generation(tmp_path, monkeypatch):
 @pytest.mark.parametrize("path", sorted((ROOT / "invalid").glob("*.json")), ids=lambda p: p.stem)
 def test_committed_invalid(path):
     case = json.loads(path.read_bytes())
-    with pytest.raises(ValidationError):
+    with pytest.raises(ValidationError, match=case.get("expectedError")):
         MODELS[case["model"]].model_validate(case["payload"])
 
 

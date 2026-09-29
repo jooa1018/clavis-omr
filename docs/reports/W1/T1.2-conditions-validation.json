@@ -1,0 +1,26 @@
+{
+  "scope": "PR #4 approval conditions 1-8 only",
+  "tests": {
+    "tests": "195",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "time": "8.808"
+  },
+  "coverage": {
+    "covered_lines": 1122,
+    "num_statements": 1147,
+    "percent_covered": 97.8204010462075,
+    "percent_covered_display": "98",
+    "missing_lines": 25,
+    "excluded_lines": 0,
+    "percent_statements_covered": 97.8204010462075,
+    "percent_statements_covered_display": "98"
+  },
+  "validDocuments": 16,
+  "invalidDocuments": 87,
+  "conditionInvalidDocuments": 46,
+  "canonicalFixtureSha256": "afc476d62f9473d6d3de2ac920407204302853aee1fa47ab54a9a329fbf7ee3f",
+  "integrity": "NOT_RUN",
+  "recognitionEvaluation": "NOT_RUN"
+}

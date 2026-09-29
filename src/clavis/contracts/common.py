@@ -1,7 +1,7 @@
 """Shared wire types from CONTRACTS 1, 4 and CCR-0001; no recognition logic."""
 
 from math import gcd
-from typing import Annotated, Literal, Self
+from typing import Annotated, ClassVar, Literal, Self, cast
 from unicodedata import is_normalized
 
 from pydantic import (
@@ -9,8 +9,11 @@ from pydantic import (
     BaseModel,
     ConfigDict,
     Field,
+    SerializationInfo,
+    SerializerFunctionWrapHandler,
     StrictBool,
     StrictInt,
+    model_serializer,
     model_validator,
 )
 from pydantic.alias_generators import to_camel
@@ -63,6 +66,34 @@ class WireModel(BaseModel):
         validate_default=True,
         allow_inf_nan=False,
     )
+
+    # CCR-0001 approval condition 2: only the enumerated optional fields participate.
+    omitted_defaults: ClassVar[tuple[tuple[str, object], ...]] = ()
+
+    def is_omitted_default(self, name: str, default: object) -> bool:
+        value = getattr(self, name, None)
+        if isinstance(value, WireModel):
+            value = value.model_dump(exclude_none=True)
+        return value is None or value == default
+
+    @model_validator(mode="after")
+    def reject_explicit_defaults(self) -> Self:
+        for name, default in self.omitted_defaults:
+            if name in self.model_fields_set and self.is_omitted_default(name, default):
+                raise ValueError(f"optional default must be omitted: {name}")
+        return self
+
+    @model_serializer(mode="wrap")
+    def omit_optional_defaults(
+        self, handler: SerializerFunctionWrapHandler, info: SerializationInfo
+    ) -> dict[str, object]:
+        data = cast(dict[str, object], handler(self))
+        for name, default in self.omitted_defaults:
+            field = type(self).model_fields.get(name)
+            if field is not None and self.is_omitted_default(name, default):
+                key = (field.serialization_alias or name) if info.by_alias else name
+                data.pop(key, None)
+        return data
 
 
 class IR(WireModel):
@@ -184,3 +215,34 @@ def references(values: list[str], available: set[str], label: str) -> None:
 class JoinMarks(WireModel):
     start: StrictBool
     stop: StrictBool
+
+
+# CCR-0001 approval condition 4. Numeric order, NFC lexical string order and
+# lexicographic integer-list order are independent of locale or enum declaration.
+def top_k_value_key(value: object) -> tuple[int, int | str | tuple[int, ...]]:
+    if isinstance(value, bool):
+        return (0, int(value))
+    if isinstance(value, int):
+        return (1, value)
+    if isinstance(value, str):
+        return (2, value)
+    if isinstance(value, list) and all(type(v) is int for v in value):
+        return (3, tuple(value))
+    raise ValueError("unsupported top-k value")
+
+
+def validate_top_k[T](values: list[tuple[T, int]]) -> list[tuple[T, int]]:
+    keys = [top_k_value_key(value) for value, _ in values]
+    if len(keys) != len(set(keys)):
+        raise ValueError("duplicate top-k value")
+    order = [(-bp, top_k_value_key(value)) for value, bp in values]
+    if order != sorted(order):
+        raise ValueError("top-k must sort by descending bp then canonical value")
+    if sum(bp for _, bp in values) > 10000:
+        raise ValueError("top-k probability sum exceeds 10000")
+    return values
+
+
+type TopK[T] = Annotated[
+    list[tuple[T, Bp]], Field(min_length=1, max_length=3), AfterValidator(validate_top_k)
+]

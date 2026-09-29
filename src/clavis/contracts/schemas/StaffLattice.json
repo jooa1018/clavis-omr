@@ -206,40 +206,7 @@
       "properties": {
         "attrTopK": {
           "additionalProperties": {
-            "items": {
-              "maxItems": 2,
-              "minItems": 2,
-              "prefixItems": [
-                {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "boolean"
-                    },
-                    {
-                      "items": {
-                        "type": "integer"
-                      },
-                      "type": "array"
-                    }
-                  ]
-                },
-                {
-                  "maximum": 10000,
-                  "minimum": 0,
-                  "type": "integer"
-                }
-              ],
-              "type": "array"
-            },
-            "maxItems": 3,
-            "minItems": 1,
-            "type": "array"
+            "$ref": "#/$defs/TopK_Union_Annotated_str__FieldInfo_annotation_NoneType__required_True__metadata__Strict_strict_True_____AfterValidator___Annotated_int__Strict_strict_True____Annotated_bool__Strict_strict_True____list_Annotated_int__Strict_strict_True_____"
           },
           "title": "Attrtopk",
           "type": "object"
@@ -784,6 +751,42 @@
       ],
       "title": "TimeItem",
       "type": "object"
+    },
+    "TopK_Union_Annotated_str__FieldInfo_annotation_NoneType__required_True__metadata__Strict_strict_True_____AfterValidator___Annotated_int__Strict_strict_True____Annotated_bool__Strict_strict_True____list_Annotated_int__Strict_strict_True_____": {
+      "items": {
+        "maxItems": 2,
+        "minItems": 2,
+        "prefixItems": [
+          {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "items": {
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            ]
+          },
+          {
+            "maximum": 10000,
+            "minimum": 0,
+            "type": "integer"
+          }
+        ],
+        "type": "array"
+      },
+      "maxItems": 3,
+      "minItems": 1,
+      "type": "array"
     }
   },
   "$schema": "https://json-schema.org/draft/2020-12/schema",

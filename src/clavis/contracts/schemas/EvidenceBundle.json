@@ -9,12 +9,12 @@
           "type": "string"
         },
         "heightMu": {
-          "minimum": 0,
+          "minimum": 1,
           "title": "Heightmu",
           "type": "integer"
         },
         "widthMu": {
-          "minimum": 0,
+          "minimum": 1,
           "title": "Widthmu",
           "type": "integer"
         },

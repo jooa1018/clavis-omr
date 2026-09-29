@@ -11,8 +11,8 @@ from .common import (
     Digest,
     Id,
     Key,
-    NonnegativeFraction,
     Pitch,
+    PositiveFraction,
     PositiveInt,
     Severity,
     Status,
@@ -72,7 +72,7 @@ class PitchPatch(WireModel):
 
 class DurationPatch(WireModel):
     kind: Literal["duration"]
-    duration: NonnegativeFraction
+    duration: PositiveFraction
 
 
 class AccidentalPatch(WireModel):
@@ -172,8 +172,8 @@ class BoundingBox(WireModel):
     frame_id: Id
     x_mu: UInt
     y_mu: UInt
-    width_mu: UInt
-    height_mu: UInt
+    width_mu: PositiveInt
+    height_mu: PositiveInt
 
 
 class OmrEvidence(WireModel):
