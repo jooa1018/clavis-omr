@@ -39,11 +39,23 @@ jobs:
         run: uv run --locked --all-groups python scripts/check_licenses.py
       - name: Contract schema validation
         run: uv run --locked --all-groups pytest tests/contracts
-      - name: W4 integrity integration status
-        run: uv run --locked --all-groups python scripts/integrity_status.py
+      - name: Required H1-H9 AST scan
+        run: uv run --locked --all-groups python -m eval.integrity.hardcode_scan --root . --out work/hardcode.json
+      - name: Required integrity positive and negative tests
+        run: uv run --locked --all-groups pytest tests/eval/test_integrity.py
+      - name: Evaluation coverage (independent 80 percent gate)
+        env:
+          COVERAGE_FILE: .coverage.eval
+        run: uv run --locked --all-groups pytest tests/eval --cov=eval --cov-report=term-missing --cov-report=xml:work/eval-coverage.xml --cov-fail-under=80
+      - name: Integrity evidence and real-data NOT_RUN status
+        run: uv run --locked --all-groups python scripts/integrity_status.py --ast-report work/hardcode.json --out work/integrity-status.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: validation-${{ matrix.os }}
-          path: coverage.xml
+          path: |
+            coverage.xml
+            work/eval-coverage.xml
+            work/hardcode.json
+            work/integrity-status.json
           retention-days: 7

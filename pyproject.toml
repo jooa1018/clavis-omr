@@ -45,7 +45,7 @@ exclude = ["*.md"]
 
 [tool.mypy]
 python_version = "3.12"
-files = ["src/clavis", "scripts"]
+files = ["src/clavis", "scripts", "eval"]
 strict = true
 
 [tool.pytest.ini_options]
