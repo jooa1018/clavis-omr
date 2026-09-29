@@ -49,7 +49,9 @@ melodyAlgorithm=`interval-rhythm-ngram4-minhash64-sha256-v1`, samples 배열.
 
 pHash 생산 규약은 회색조 32×32의 DCT-II 정규 직교 변환, 좌상단 8×8(DC 제외 63개)의
 중앙값을 기준으로 `>` 비트화하고 DC=0, 행 우선 big-endian 64비트다. 리사이즈는
-Lanczos이며 동일 생산기 버전을 써야 한다. 현재 도구는 생산기가 아닌 해시 검사기다.
+Pillow 11.2.1 Lanczos다. DC만 제거하는 평균 중심화와 DCT 소수 8자리 반올림으로
+퇴화 영상의 부동소수 잡음을 고정한다. 동일 생산기 버전을 써야 한다.
+생산기는 eval/integrity/hashes.py이며 eval/sealed README의 로컬 hashes 명령을 쓴다.
 호환 확인되지 않은 외부 pHash를 이 이름으로 바꾸어 입력하지 않는다.
 
 누출: SHA256 동일 또는 pHash Hamming ≤6 또는 전체 멜로디 MinHash 동일이면 제외한다.

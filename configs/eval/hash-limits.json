@@ -1,0 +1,7 @@
+{
+  "owner": "W4",
+  "source": "resource-policy",
+  "rationale": "Bound local hash image decoding before allocation; no recognition threshold.",
+  "maxImageBytes": 33554432,
+  "maxImagePixels": 40000000
+}
