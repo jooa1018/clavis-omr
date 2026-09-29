@@ -19,13 +19,15 @@
       "id": "leadgen",
       "name": "Clavis LeadGen",
       "url": "docs/tasks/W2_DATA_FACTORY.md",
-      "version": "unselected",
+      "version": "development-v0",
       "license": "self-generated",
-      "status": "pending",
-      "allowed_uses": [],
+      "status": "verified",
+      "allowed_uses": [
+        "tool-test"
+      ],
       "attribution": "Clavis project contributors",
       "checked_on": "2026-09-29",
-      "verification_method": "Not implemented; W4 exclusion required before admission"
+      "verification_method": "Self-authored development generator implemented; tool tests only. Training remains blocked pending W4 melody exclusion and approved profile."
     },
     {
       "id": "pdmx",

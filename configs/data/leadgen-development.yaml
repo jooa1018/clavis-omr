@@ -1,0 +1,48 @@
+# A test profile, not the adopted ADR-010 training distribution.
+purpose: development
+enabled: true
+divisions: 96
+bars: [4, 8]
+keys:
+  - {fifths: -7, weight: 1}
+  - {fifths: -6, weight: 1}
+  - {fifths: -5, weight: 1}
+  - {fifths: -4, weight: 1}
+  - {fifths: -3, weight: 1}
+  - {fifths: -2, weight: 1}
+  - {fifths: -1, weight: 1}
+  - {fifths: 0, weight: 1}
+  - {fifths: 1, weight: 1}
+  - {fifths: 2, weight: 1}
+  - {fifths: 3, weight: 1}
+  - {fifths: 4, weight: 1}
+  - {fifths: 5, weight: 1}
+  - {fifths: 6, weight: 1}
+  - {fifths: 7, weight: 1}
+meters:
+  - {beats: 4, beat_type: 4, weight: 1}
+  - {beats: 3, beat_type: 4, weight: 1}
+  - {beats: 6, beat_type: 8, weight: 1}
+  - {beats: 2, beat_type: 4, weight: 1}
+  - {beats: 12, beat_type: 8, weight: 1}
+  - {beats: 2, beat_type: 2, weight: 1}
+clefs:
+  - {name: G2, low: 28, high: 41, weight: 1}
+  - {name: F4, low: 14, high: 27, weight: 1}
+  - {name: G2_8vb, low: 21, high: 34, weight: 1}
+rhythms:
+  - {kind: whole, dots: 0, weight: 1}
+  - {kind: half, dots: 0, weight: 1}
+  - {kind: half, dots: 1, weight: 1}
+  - {kind: quarter, dots: 0, weight: 1}
+  - {kind: quarter, dots: 1, weight: 1}
+  - {kind: quarter, dots: 2, weight: 1}
+  - {kind: eighth, dots: 0, weight: 1}
+  - {kind: eighth, dots: 1, weight: 1}
+  - {kind: 16th, dots: 0, weight: 1}
+  - {kind: 32nd, dots: 0, weight: 1}
+steps: [-3, -2, -1, 0, 1, 2, 3]
+step_weights: [1, 2, 4, 2, 4, 2, 1]
+rest_probability: 0.15
+pickup_probability: 0.30
+tempo: 76

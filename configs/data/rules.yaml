@@ -12,3 +12,17 @@
     reason: "Parser toggle tested; recognition metric ablation awaits W1/W4 and actual render audit."
   introduced_by: w2/start
   motivated_by_failure: false
+- id: DATA-GEN-001
+  owner: W2
+  statement: "Compose a synthetic measure from configured positive durations whose remaining sum is reachable; reject impossible profiles before serializing any notes."
+  units: quarter_note_divisions
+  params: [divisions, rhythms, meters]
+  source: convention
+  evidence: https://www.w3.org/2021/06/musicxml40/musicxml-reference/elements/duration/
+  flag: configs/data/leadgen-development.yaml#enabled
+  ablation:
+    status: NOT_RUN
+    reason: "Development generator only; off rejects output. No recognition metric is claimed."
+    report: docs/reports/W2/2026-09-29-leadgen-start.md
+  introduced_by: w2/leadgen-v0
+  motivated_by_failure: false
