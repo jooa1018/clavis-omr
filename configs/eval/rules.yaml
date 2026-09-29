@@ -1,0 +1,33 @@
+# Evaluation definitions, not recognition/assembly heuristics. Disabling these
+# would change the approved ruler; there are no recognition ablation flags here.
+- id: EVAL-OBJECT-001
+  owner: W4
+  statement: "One incorrect event or chord object requires one correction."
+  source: ADR-012
+  implementation: eval/align/__init__.py
+  evidence: tests/eval/test_golden.py
+- id: EVAL-ONSET-002
+  owner: W4
+  statement: "Event onset alone is diagnostic; it does not create K1/K2 cost."
+  source: ADR-012
+  implementation: eval/metrics/__init__.py
+  evidence: tests/eval/test_golden.py
+- id: EVAL-XML-003
+  owner: W4
+  statement: "Native MusicXML duration/divisions and harmony degree semantics are exact."
+  source: https://www.w3.org/2021/06/musicxml40/
+  implementation: eval/projection/__init__.py
+  params: [configs/eval/chord-degrees.json, configs/eval/limits.json]
+  evidence: tests/eval/test_edges.py
+- id: EVAL-ALIGN-004
+  owner: W4
+  statement: "Lexicographic event DP supplies measure DP costs; ties use the approved stable order."
+  source: ADR-012
+  implementation: eval/align/__init__.py
+  evidence: tests/eval/test_edges.py
+- id: EVAL-EXACT-005
+  owner: W4
+  statement: "Reference denominators include missing objects; lyrics have separate correction and exactness."
+  source: EVALUATION-v1.1
+  implementation: eval/metrics/__init__.py
+  evidence: tests/eval/test_golden.py
