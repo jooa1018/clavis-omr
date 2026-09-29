@@ -113,11 +113,15 @@ def scan_source(source: str, path: str, identifiers: frozenset[str] = frozenset(
                 and not isinstance(node.value, (ast.Dict, ast.List, ast.Tuple, ast.Set))
             ):
                 if any(
-                    clock_call(n) or isinstance(n, ast.Name) and n.id in clock_names
+                    clock_call(n) or ast.dump(n, include_attributes=False) in clock_names
                     for n in ast.walk(node.value)
                 ):
                     targets = node.targets if isinstance(node, ast.Assign) else [node.target]
-                    clock_names.update(dotted(t) for t in targets)
+                    for target in targets:
+                        # Match expression identity with Load context, preserving
+                        # individual mapping keys instead of tainting the container.
+                        loaded = ast.parse(ast.unparse(target), mode="eval").body
+                        clock_names.add(ast.dump(loaded, include_attributes=False))
         if previous == clock_names:
             break
 
@@ -229,7 +233,7 @@ def scan_source(source: str, path: str, identifiers: frozenset[str] = frozenset(
             predicates = list(node.ifs)
         for predicate in predicates:
             if any(
-                clock_call(n) or isinstance(n, ast.Name) and n.id in clock_names
+                clock_call(n) or ast.dump(n, include_attributes=False) in clock_names
                 for n in ast.walk(predicate)
             ):
                 add(node, "H9")

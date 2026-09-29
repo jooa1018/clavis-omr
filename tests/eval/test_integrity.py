@@ -42,6 +42,17 @@ def test_rules(rule: str, positive: str, negative: str) -> None:
 
 def test_scope_aliases_and_literals() -> None:
     assert not scan_source(
+        "import time\nresult['elapsed'] = time.time()\nif result['status'] == 'PASS': pass",
+        "eval/example.py",
+    )
+    assert (
+        scan_source(
+            "import time\nresult['elapsed'] = time.time()\nif result['elapsed'] > 1: pass",
+            "eval/example.py",
+        )[0].rule
+        == "H9"
+    )
+    assert not scan_source(
         "if not 0 < image.shape[0] * image.shape[1] <= budget:\n raise ValueError()",
         "training/degrade/x.py",
     )
