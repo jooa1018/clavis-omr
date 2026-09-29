@@ -7,10 +7,11 @@ from pathlib import Path
 from typing import Any
 
 from eval.metrics import measure
+from eval.metrics.confidence import confidence_metrics
 from eval.projection import project
 from eval.projection.model import EvaluationUnsupported
 
-VERSION = "0.1.0"
+VERSION = "0.2.0"
 
 
 def canonical(value: object) -> str:
@@ -34,13 +35,15 @@ def evaluator_digest() -> str:
     return digest.hexdigest()
 
 
-def evaluate(reference: bytes, prediction: bytes) -> tuple[dict[str, Any], dict[str, Any]]:
+def evaluate(
+    reference: bytes, prediction: bytes, confidence: bytes | None = None
+) -> tuple[dict[str, Any], dict[str, Any]]:
     """Evaluate public XML bytes only. Unsupported input has no numeric score."""
     meta = {
         "evaluatorVersion": VERSION,
         "evaluatorDigest": evaluator_digest(),
         "protocol": "clavis-evaluation-1.1",
-        "scope": "single-part-staff-voice",
+        "scope": "single-part-staff-multivoice",
         "inputDigests": {
             "reference": hashlib.sha256(reference).hexdigest(),
             "prediction": hashlib.sha256(prediction).hexdigest(),
@@ -48,16 +51,20 @@ def evaluate(reference: bytes, prediction: bytes) -> tuple[dict[str, Any], dict[
     }
     try:
         result, pairs = measure(project(reference), project(prediction))
+        if confidence is not None:
+            meta["inputDigests"]["confidence"] = hashlib.sha256(confidence).hexdigest()  # type: ignore[index]
+            result["metrics"].update(
+                confidence_metrics(
+                    prediction, confidence, pairs, result["metrics"]["K1"]["denominator"]
+                )
+            )
         report = {
             "schema": "clavis-eval-report-0.1",
             **meta,
             "status": "evaluated",
             **result,
             "notImplemented": [
-                "K2",
-                "K3",
-                "bootstrap",
-                "multi-page-aggregation",
+                *(["K2", "K3"] if confidence is None else []),
                 "expanded-play-order",
                 "regions",
                 "geometry",
