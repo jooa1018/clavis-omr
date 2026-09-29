@@ -11,8 +11,8 @@ import time
 from pathlib import Path
 from typing import Any
 
+from tests.data.smoke_inputs import score
 from training.data.licenses import require_use
-from training.data.smoke_inputs import score
 from training.data.staff_svg import extract, label_document
 
 ROOT = Path(__file__).resolve().parents[2]

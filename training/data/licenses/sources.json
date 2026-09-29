@@ -4,7 +4,7 @@
     {
       "id": "clavis-smoke",
       "name": "Clavis self-authored smoke fixtures",
-      "url": "training/data/smoke_inputs.py",
+      "url": "tests/data/smoke_inputs.py",
       "version": "v0",
       "license": "self-generated",
       "status": "verified",

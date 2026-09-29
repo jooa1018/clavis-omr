@@ -4,8 +4,8 @@ import sys
 
 import pytest
 
+from tests.data.smoke_inputs import score
 from training.data.smoke import CONFIG, ROOT
-from training.data.smoke_inputs import score
 from training.data.staff_svg import extract
 
 
