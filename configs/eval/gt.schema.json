@@ -1,0 +1,557 @@
+{
+  "$defs": {
+    "Illegible": {
+      "additionalProperties": false,
+      "properties": {
+        "systemIndex": {
+          "exclusiveMinimum": 0,
+          "title": "Systemindex",
+          "type": "integer"
+        },
+        "sourceMeasureLabel": {
+          "title": "Sourcemeasurelabel",
+          "type": "string"
+        },
+        "bbox": {
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Bbox",
+          "type": "array"
+        },
+        "reason": {
+          "enum": [
+            "unreadable",
+            "edition-mismatch",
+            "boundary-context-unknown"
+          ],
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "systemIndex",
+        "sourceMeasureLabel",
+        "bbox",
+        "reason"
+      ],
+      "title": "Illegible",
+      "type": "object"
+    },
+    "LeadStaff": {
+      "additionalProperties": false,
+      "properties": {
+        "part": {
+          "title": "Part",
+          "type": "string"
+        },
+        "staff": {
+          "exclusiveMinimum": 0,
+          "title": "Staff",
+          "type": "integer"
+        },
+        "voices": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Voices",
+          "type": "array"
+        }
+      },
+      "required": [
+        "part",
+        "staff",
+        "voices"
+      ],
+      "title": "LeadStaff",
+      "type": "object"
+    },
+    "Region": {
+      "additionalProperties": false,
+      "properties": {
+        "systemIndex": {
+          "exclusiveMinimum": 0,
+          "title": "Systemindex",
+          "type": "integer"
+        },
+        "sourceMeasureLabels": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Sourcemeasurelabels",
+          "type": "array"
+        },
+        "xmlMeasureStart": {
+          "exclusiveMinimum": 0,
+          "title": "Xmlmeasurestart",
+          "type": "integer"
+        },
+        "xmlMeasureEnd": {
+          "exclusiveMinimum": 0,
+          "title": "Xmlmeasureend",
+          "type": "integer"
+        },
+        "bbox": {
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Bbox",
+          "type": "array"
+        }
+      },
+      "required": [
+        "systemIndex",
+        "sourceMeasureLabels",
+        "xmlMeasureStart",
+        "xmlMeasureEnd",
+        "bbox"
+      ],
+      "title": "Region",
+      "type": "object"
+    },
+    "Review": {
+      "additionalProperties": false,
+      "properties": {
+        "transcribedOn": {
+          "format": "date",
+          "title": "Transcribedon",
+          "type": "string"
+        },
+        "renderedComparedOn": {
+          "format": "date",
+          "title": "Renderedcomparedon",
+          "type": "string"
+        },
+        "reviewedOn": {
+          "format": "date",
+          "title": "Reviewedon",
+          "type": "string"
+        },
+        "reviewer": {
+          "pattern": "^[A-Za-z0-9_-]{1,80}$",
+          "title": "Reviewer",
+          "type": "string"
+        },
+        "independentReviewer": {
+          "title": "Independentreviewer",
+          "type": "boolean"
+        },
+        "allSelectedMeasuresChecked": {
+          "const": true,
+          "title": "Allselectedmeasureschecked",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "transcribedOn",
+        "renderedComparedOn",
+        "reviewedOn",
+        "reviewer",
+        "independentReviewer",
+        "allSelectedMeasuresChecked"
+      ],
+      "title": "Review",
+      "type": "object"
+    },
+    "Rights": {
+      "additionalProperties": false,
+      "properties": {
+        "basis": {
+          "enum": [
+            "self-authored",
+            "public-domain",
+            "licensed",
+            "user-confirmed-rights"
+          ],
+          "title": "Basis",
+          "type": "string"
+        },
+        "allowedUses": {
+          "items": {
+            "enum": [
+              "evaluation",
+              "training",
+              "redistribution"
+            ],
+            "type": "string"
+          },
+          "title": "Alloweduses",
+          "type": "array"
+        },
+        "reference": {
+          "minLength": 1,
+          "title": "Reference",
+          "type": "string"
+        }
+      },
+      "required": [
+        "basis",
+        "allowedUses",
+        "reference"
+      ],
+      "title": "Rights",
+      "type": "object"
+    },
+    "Selection": {
+      "additionalProperties": false,
+      "properties": {
+        "method": {
+          "enum": [
+            "sha256-rank-v1",
+            "whole-page",
+            "legacy-existing"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "seed": {
+          "title": "Seed",
+          "type": "string"
+        },
+        "totalSystems": {
+          "exclusiveMinimum": 0,
+          "title": "Totalsystems",
+          "type": "integer"
+        },
+        "selectedSystems": {
+          "items": {
+            "exclusiveMinimum": 0,
+            "type": "integer"
+          },
+          "minItems": 1,
+          "title": "Selectedsystems",
+          "type": "array"
+        },
+        "recordedOn": {
+          "format": "date",
+          "title": "Recordedon",
+          "type": "string"
+        }
+      },
+      "required": [
+        "method",
+        "seed",
+        "totalSystems",
+        "selectedSystems",
+        "recordedOn"
+      ],
+      "title": "Selection",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "clavis-gt-1",
+      "title": "Schemaversion",
+      "type": "string"
+    },
+    "pageId": {
+      "pattern": "^[A-Za-z0-9_-]{1,80}$",
+      "title": "Pageid",
+      "type": "string"
+    },
+    "songId": {
+      "pattern": "^[A-Za-z0-9_-]{1,80}$",
+      "title": "Songid",
+      "type": "string"
+    },
+    "captureId": {
+      "pattern": "^[A-Za-z0-9_-]{1,80}$",
+      "title": "Captureid",
+      "type": "string"
+    },
+    "printId": {
+      "anyOf": [
+        {
+          "pattern": "^[A-Za-z0-9_-]{1,80}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Printid"
+    },
+    "tier": {
+      "enum": [
+        "SYN",
+        "R-PC",
+        "R-LIED",
+        "R-TGT",
+        "R-LEGACY"
+      ],
+      "title": "Tier",
+      "type": "string"
+    },
+    "split": {
+      "enum": [
+        "dev",
+        "sealed"
+      ],
+      "title": "Split",
+      "type": "string"
+    },
+    "devPartition": {
+      "anyOf": [
+        {
+          "enum": [
+            "Dev-Tune",
+            "Dev-Check"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Devpartition"
+    },
+    "sourceKind": {
+      "enum": [
+        "digital-pdf",
+        "scanned-pdf",
+        "camera-photo"
+      ],
+      "title": "Sourcekind",
+      "type": "string"
+    },
+    "captureChannel": {
+      "title": "Capturechannel",
+      "type": "string"
+    },
+    "captureDevice": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Capturedevice"
+    },
+    "engravingTool": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Engravingtool"
+    },
+    "musicFont": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Musicfont"
+    },
+    "publicationFont": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Publicationfont"
+    },
+    "editingProgram": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Editingprogram"
+    },
+    "measuredInterlinePx": {
+      "exclusiveMinimum": 0,
+      "title": "Measuredinterlinepx",
+      "type": "number"
+    },
+    "meter": {
+      "enum": [
+        "4/4",
+        "6/8",
+        "other"
+      ],
+      "title": "Meter",
+      "type": "string"
+    },
+    "keyMode": {
+      "enum": [
+        "major",
+        "minor"
+      ],
+      "title": "Keymode",
+      "type": "string"
+    },
+    "features": {
+      "items": {
+        "enum": [
+          "accidentals",
+          "dotted-notes",
+          "ties"
+        ],
+        "type": "string"
+      },
+      "title": "Features",
+      "type": "array"
+    },
+    "notationFeatures": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Notationfeatures",
+      "type": "array"
+    },
+    "leadStaff": {
+      "$ref": "#/$defs/LeadStaff"
+    },
+    "imagePath": {
+      "title": "Imagepath",
+      "type": "string"
+    },
+    "imageDigest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Imagedigest",
+      "type": "string"
+    },
+    "musicXmlPath": {
+      "title": "Musicxmlpath",
+      "type": "string"
+    },
+    "groundTruthDigest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Groundtruthdigest",
+      "type": "string"
+    },
+    "renderPath": {
+      "title": "Renderpath",
+      "type": "string"
+    },
+    "renderDigest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Renderdigest",
+      "type": "string"
+    },
+    "evalRegions": {
+      "items": {
+        "$ref": "#/$defs/Region"
+      },
+      "title": "Evalregions",
+      "type": "array"
+    },
+    "illegibleRegions": {
+      "items": {
+        "$ref": "#/$defs/Illegible"
+      },
+      "title": "Illegibleregions",
+      "type": "array"
+    },
+    "selection": {
+      "$ref": "#/$defs/Selection"
+    },
+    "rights": {
+      "$ref": "#/$defs/Rights"
+    },
+    "review": {
+      "$ref": "#/$defs/Review"
+    },
+    "legacy": {
+      "title": "Legacy",
+      "type": "boolean"
+    },
+    "contaminated": {
+      "title": "Contaminated",
+      "type": "boolean"
+    },
+    "assisted": {
+      "title": "Assisted",
+      "type": "boolean"
+    },
+    "notes": {
+      "title": "Notes",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "pageId",
+    "songId",
+    "captureId",
+    "printId",
+    "tier",
+    "split",
+    "devPartition",
+    "sourceKind",
+    "captureChannel",
+    "captureDevice",
+    "engravingTool",
+    "musicFont",
+    "measuredInterlinePx",
+    "meter",
+    "keyMode",
+    "features",
+    "notationFeatures",
+    "leadStaff",
+    "imagePath",
+    "imageDigest",
+    "musicXmlPath",
+    "groundTruthDigest",
+    "renderPath",
+    "renderDigest",
+    "evalRegions",
+    "illegibleRegions",
+    "selection",
+    "rights",
+    "review",
+    "legacy",
+    "contaminated",
+    "assisted",
+    "notes"
+  ],
+  "title": "Sidecar",
+  "type": "object"
+}
