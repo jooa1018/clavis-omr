@@ -13,10 +13,14 @@
     "status": "provisional",
     "flag": "template_responses.enabled / detect.disabled",
     "ablation": {
-      "status": "NOT_RUN",
-      "report": "docs/reports/W6/2026-09-29-start.md"
+      "status": "PARTIAL",
+      "report": "docs/reports/W6/t6-1-component-smoke.json",
+      "scope": "component on/off counts only",
+      "dev_tune_k1_delta": null,
+      "syn_val_ier_delta": null,
+      "metric_status": "NOT_RUN"
     },
-    "introduced_by": "w6/start",
+    "introduced_by": "PR #33",
     "motivated_by_failure": false
   },
   {
@@ -36,10 +40,14 @@
     "status": "provisional",
     "flag": "detect.disabled",
     "ablation": {
-      "status": "NOT_RUN",
-      "report": "docs/reports/W6/2026-09-29-start.md"
+      "status": "PARTIAL",
+      "report": "docs/reports/W6/t6-1-component-smoke.json",
+      "scope": "component on/off counts only",
+      "dev_tune_k1_delta": null,
+      "syn_val_ier_delta": null,
+      "metric_status": "NOT_RUN"
     },
-    "introduced_by": "w6/start",
+    "introduced_by": "PR #33",
     "motivated_by_failure": false
   },
   {
@@ -54,10 +62,14 @@
     "status": "provisional",
     "flag": "detect.disabled",
     "ablation": {
-      "status": "NOT_RUN",
-      "report": "docs/reports/W6/2026-09-29-start.md"
+      "status": "PARTIAL",
+      "report": "docs/reports/W6/t6-1-component-smoke.json",
+      "scope": "component on/off counts only",
+      "dev_tune_k1_delta": null,
+      "syn_val_ier_delta": null,
+      "metric_status": "NOT_RUN"
     },
-    "introduced_by": "w6/start",
+    "introduced_by": "PR #33",
     "motivated_by_failure": false
   },
   {
@@ -74,10 +86,14 @@
     "status": "provisional",
     "flag": "detect.disabled",
     "ablation": {
-      "status": "NOT_RUN",
-      "report": "docs/reports/W6/2026-09-29-start.md"
+      "status": "PARTIAL",
+      "report": "docs/reports/W6/t6-1-component-smoke.json",
+      "scope": "component on/off counts only",
+      "dev_tune_k1_delta": null,
+      "syn_val_ier_delta": null,
+      "metric_status": "NOT_RUN"
     },
-    "introduced_by": "w6/start",
+    "introduced_by": "PR #33",
     "motivated_by_failure": false
   },
   {
@@ -90,10 +106,14 @@
     "status": "provisional",
     "flag": "draft_reading.durations_enabled",
     "ablation": {
-      "status": "NOT_RUN",
-      "report": "docs/reports/W6/2026-09-29-start.md"
+      "status": "PARTIAL",
+      "report": "docs/reports/W6/t6-1-component-smoke.json",
+      "scope": "component on/off counts only",
+      "dev_tune_k1_delta": null,
+      "syn_val_ier_delta": null,
+      "metric_status": "NOT_RUN"
     },
-    "introduced_by": "w6/start",
+    "introduced_by": "PR #33",
     "motivated_by_failure": false
   },
   {
@@ -106,10 +126,14 @@
     "status": "provisional",
     "flag": "draft_reading.enabled",
     "ablation": {
-      "status": "NOT_RUN",
-      "report": "docs/reports/W6/2026-09-29-start.md"
+      "status": "PARTIAL",
+      "report": "docs/reports/W6/t6-1-component-smoke.json",
+      "scope": "component on/off counts only",
+      "dev_tune_k1_delta": null,
+      "syn_val_ier_delta": null,
+      "metric_status": "NOT_RUN"
     },
-    "introduced_by": "w6/start",
+    "introduced_by": "PR #33",
     "motivated_by_failure": false
   }
 ]
