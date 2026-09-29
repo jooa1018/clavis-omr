@@ -1,0 +1,108 @@
+{
+  "status": "PASS",
+  "platform": "Windows / Python 3.12.14",
+  "git_sha": "7f58820d92b39d95cc624e9d93302081f457f390",
+  "commands": [
+    {
+      "command": "uv sync --locked --all-groups",
+      "exit_code": 0,
+      "wall_seconds": 0.3017978
+    },
+    {
+      "command": "uv run --locked --all-groups ruff check .",
+      "exit_code": 0,
+      "wall_seconds": 0.737501
+    },
+    {
+      "command": "uv run --locked --all-groups ruff format --check .",
+      "exit_code": 0,
+      "wall_seconds": 0.3851774
+    },
+    {
+      "command": "uv run --locked --all-groups mypy",
+      "exit_code": 0,
+      "wall_seconds": 2.801288
+    },
+    {
+      "command": "uv run --locked --all-groups pytest tests/ --cov=clavis --cov=scripts --cov=eval --cov-report=term-missing --cov-report=xml --cov-report=json:work/coverage.json --junitxml=work/tests.xml",
+      "exit_code": 0,
+      "wall_seconds": 63.3318128
+    },
+    {
+      "command": "uv run --locked --all-groups python scripts/ci_results.py coverage work/coverage.json",
+      "exit_code": 0,
+      "wall_seconds": 0.3321968
+    },
+    {
+      "command": "uv run --locked --all-groups python scripts/ci_results.py required work/tests.xml",
+      "exit_code": 0,
+      "wall_seconds": 0.2630531
+    },
+    {
+      "command": "uv run --locked --all-groups lint-imports",
+      "exit_code": 0,
+      "wall_seconds": 0.7594507
+    },
+    {
+      "command": "uv run --locked --all-groups python scripts/check_licenses.py",
+      "exit_code": 0,
+      "wall_seconds": 1.162831
+    },
+    {
+      "command": "uv run --locked --all-groups python -m eval.integrity.hardcode_scan --root . --out work/hardcode.json",
+      "exit_code": 0,
+      "wall_seconds": 1.5745124
+    },
+    {
+      "command": "uv run --locked --all-groups python scripts/integrity_status.py --ast-report work/hardcode.json --out work/integrity-status.json",
+      "exit_code": 0,
+      "wall_seconds": 0.204722
+    }
+  ],
+  "tests": {
+    "tests": "558",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "60.944"
+  },
+  "symbols_coverage_percent": 97.5,
+  "overall_coverage": {
+    "covered_lines": 3037,
+    "num_statements": 3235,
+    "percent_covered": 93.87944358578052,
+    "percent_covered_display": "94",
+    "missing_lines": 198,
+    "excluded_lines": 4,
+    "percent_statements_covered": 93.87944358578052,
+    "percent_statements_covered_display": "94"
+  },
+  "hardcoding": {
+    "schema": "clavis-hardcode-scan-1",
+    "status": "PASS",
+    "pythonFiles": 99,
+    "manifestIdentifiers": 0,
+    "findings": [],
+    "suppressed": [],
+    "byOwner": {}
+  },
+  "integrity": {
+    "dataLeakage": {
+      "reason": "No real train/reserved inventories are supplied to CI; unit fixtures are separate.",
+      "status": "NOT_RUN",
+      "trainingAdmissionAllowed": false
+    },
+    "hardcoding": {
+      "byOwner": {},
+      "findings": [],
+      "manifestIdentifiers": 0,
+      "pythonFiles": 99,
+      "schema": "clavis-hardcode-scan-1",
+      "status": "PASS",
+      "suppressed": []
+    },
+    "status": "PARTIAL"
+  },
+  "ci_linux": "PENDING",
+  "cross_os_byte_comparison": "NOT_RUN"
+}
