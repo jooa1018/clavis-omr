@@ -6,7 +6,7 @@
 개발 시험은 자체 합성 XML/임시 PNG와 가상 receipt만 사용했다.
 
 아래 명령은 향후 Custodian 로컬 PC에서만 실행한다. CLAVIS_PRIVATE_ROOT는 Git/클라우드
-밖의 폴더다. 원본 이미지·GT·페이지별 결과·상세 pairs는 그 폴더 밖으로 보내지 않는다.
+밖의 폴더다. 원본 이미지·GT·페이지별 결과·상세 pairs·sealed 해시/선율 지문은 그 폴더 밖으로 보내지 않는다.
 명령의 모든 경로는 private root 기준 상대 경로다. 출력은 새 파일이어야 한다.
 
 ## 1. SHA256 / pHash / 멜로디 MinHash 목록
@@ -17,16 +17,30 @@
 training inventory 생성 시 role=train으로 동일 생산기를 사용한다.
 
 ```powershell
-.venv\Scripts\python.exe -m eval.sealed hashes --manifest local/hash-input.json --out share/hashes.json
+.venv\Scripts\python.exe -m eval.sealed hashes --manifest local/hash-input.json --out local/hashes.json
 ```
 
-공유 출력은 opaque ID와 해시만 담은 clavis-hash-inventory-1이다. 이미지·음열·가사·경로는
+로컬 출력은 opaque ID와 해시만 담은 clavis-hash-inventory-1이다. sealed 지문은
+4음 조각을 역산할 수 있어 **공유 금지**다. 이미지·음열·가사·경로는
 없다. 회색조 32×32 Lanczos → 직교 DCT-II 저주파 8×8, AC 중앙값, DC=0의 64bit pHash다.
 평균 중심화 후 계수 소수 8자리 정규화. Pillow 11.2.1/NumPy 2.2.6을 고정한다.
 멜로디는 명시한 단선율 성부의 음정/길이 비율 n-gram MinHash다. 한 성부 안 화음,
 미세음정, 여러 파트/보표 등 현재 투영 미지원은 거부하며 일부 샘플을 조용히 빼지 않는다.
 자료 없음도 허용 목록이 아니다. role의 의미/전체 보호 집합 포함 여부는 별도 감사한다.
 한 번에 100쪽 이하, 이미지 32 MiB/40 MP/단일 프레임 제한. 실제 sealed 해시 생산 미실행.
+
+### OR-003 역방향 선별 (보관자만 실행)
+
+```powershell
+.venv\Scripts\python.exe -m eval.sealed reverse-screen --candidates local/hashes.json --frozen-train frozen/train-inventory.json --frozen-dev frozen/dev-inventory.json --local-accepted local/accepted.json --out share/screen-counts.json
+```
+
+동결 학습 inventory(role=train)와 Dev inventory(role=reserved)의 버전/digest를
+보관자가 로컬에서 고정한 뒤 실행한다. 로컬 accepted 파일만 후보 지문을 포함한다.
+공유 screen-counts.json은 candidateCount/excludedCount 두 정수뿐이다. 후보 ID,
+해시, 충돌 이유를 공유하지 않는다. 선별 결과로 학습 데이터를 다시 거르지 않는다.
+동결 inventory가 없거나 잘못되면 실패한다. 빈 목록은 보관자가 해당 집합 부재를
+확인한 경우에만 명시적으로 제공한다. 이 명령은 평가 실행/공식 원장 회차를 늘리지 않는다.
 
 ## 2. 동결 artifact 사전 대조
 

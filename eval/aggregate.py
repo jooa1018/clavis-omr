@@ -53,6 +53,12 @@ def validate(records: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
 def slices(record: dict[str, Any]) -> dict[str, str]:
     meta = record["metadata"]
     labels = {field: str(meta[field]) if meta[field] is not None else "unknown" for field in FIELDS}
+    contaminated = meta.get("contaminated")
+    if contaminated is not None and type(contaminated) is not bool:
+        raise ValueError("contaminated must be boolean or absent")
+    labels["contamination"] = (
+        "unknown" if contaminated is None else "contaminated" if contaminated else "clean"
+    )
     interline = meta["measuredInterlinePx"]
     labels["interline"] = (
         "unknown"
