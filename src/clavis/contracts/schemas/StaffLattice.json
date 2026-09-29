@@ -1,0 +1,831 @@
+{
+  "$defs": {
+    "BarItem": {
+      "additionalProperties": false,
+      "properties": {
+        "style": {
+          "enum": [
+            "regular",
+            "double",
+            "final",
+            "repeatStart",
+            "repeatEnd",
+            "repeatBoth",
+            "dashed",
+            "heavy"
+          ],
+          "title": "Style",
+          "type": "string"
+        },
+        "type": {
+          "const": "bar",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "style",
+        "type"
+      ],
+      "title": "BarItem",
+      "type": "object"
+    },
+    "ClefItem": {
+      "additionalProperties": false,
+      "properties": {
+        "courtesy": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Courtesy"
+        },
+        "sign": {
+          "enum": [
+            "G2",
+            "G2_8vb",
+            "G2_8va",
+            "F4",
+            "F4_8vb",
+            "F3",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "title": "Sign",
+          "type": "string"
+        },
+        "type": {
+          "const": "clef",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "sign",
+        "type"
+      ],
+      "title": "ClefItem",
+      "type": "object"
+    },
+    "CodaItem": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "coda",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "title": "CodaItem",
+      "type": "object"
+    },
+    "EndingItem": {
+      "additionalProperties": false,
+      "properties": {
+        "mark": {
+          "enum": [
+            "start",
+            "stop",
+            "discontinue"
+          ],
+          "title": "Mark",
+          "type": "string"
+        },
+        "numbers": {
+          "items": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "minItems": 1,
+          "title": "Numbers",
+          "type": "array"
+        },
+        "type": {
+          "const": "ending",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "numbers",
+        "mark",
+        "type"
+      ],
+      "title": "EndingItem",
+      "type": "object"
+    },
+    "Hypothesis": {
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/$defs/LatticeItem"
+          },
+          "title": "Items",
+          "type": "array"
+        },
+        "logProbMicro": {
+          "title": "Logprobmicro",
+          "type": "integer"
+        },
+        "rank": {
+          "minimum": 0,
+          "title": "Rank",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "rank",
+        "logProbMicro",
+        "items"
+      ],
+      "title": "Hypothesis",
+      "type": "object"
+    },
+    "KeyItem": {
+      "additionalProperties": false,
+      "properties": {
+        "cancel": {
+          "anyOf": [
+            {
+              "maximum": 7,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cancel"
+        },
+        "courtesy": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Courtesy"
+        },
+        "fifths": {
+          "maximum": 7,
+          "minimum": -7,
+          "title": "Fifths",
+          "type": "integer"
+        },
+        "type": {
+          "const": "key",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "fifths",
+        "type"
+      ],
+      "title": "KeyItem",
+      "type": "object"
+    },
+    "LatticeItem": {
+      "additionalProperties": false,
+      "properties": {
+        "attrTopK": {
+          "additionalProperties": {
+            "$ref": "#/$defs/TopK_Union_Annotated_str__FieldInfo_annotation_NoneType__required_True__metadata__Strict_strict_True_____AfterValidator___Annotated_int__Strict_strict_True____Annotated_bool__Strict_strict_True____list_Annotated_int__Strict_strict_True_____"
+          },
+          "title": "Attrtopk",
+          "type": "object"
+        },
+        "item": {
+          "discriminator": {
+            "mapping": {
+              "bar": "#/$defs/BarItem",
+              "clef": "#/$defs/ClefItem",
+              "coda": "#/$defs/CodaItem",
+              "ending": "#/$defs/EndingItem",
+              "key": "#/$defs/KeyItem",
+              "mrest": "#/$defs/MultiRestItem",
+              "note": "#/$defs/NoteItem",
+              "rest": "#/$defs/RestItem",
+              "segno": "#/$defs/SegnoItem",
+              "time": "#/$defs/TimeItem"
+            },
+            "propertyName": "type"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ClefItem"
+            },
+            {
+              "$ref": "#/$defs/KeyItem"
+            },
+            {
+              "$ref": "#/$defs/TimeItem"
+            },
+            {
+              "$ref": "#/$defs/BarItem"
+            },
+            {
+              "$ref": "#/$defs/NoteItem"
+            },
+            {
+              "$ref": "#/$defs/RestItem"
+            },
+            {
+              "$ref": "#/$defs/MultiRestItem"
+            },
+            {
+              "$ref": "#/$defs/EndingItem"
+            },
+            {
+              "$ref": "#/$defs/SegnoItem"
+            },
+            {
+              "$ref": "#/$defs/CodaItem"
+            }
+          ],
+          "title": "Item"
+        },
+        "itemProbBp": {
+          "maximum": 10000,
+          "minimum": 0,
+          "title": "Itemprobbp",
+          "type": "integer"
+        },
+        "spanU": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Spanu",
+          "type": "array"
+        },
+        "symbolIds": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Symbolids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "item",
+        "attrTopK",
+        "spanU",
+        "itemProbBp",
+        "symbolIds"
+      ],
+      "title": "LatticeItem",
+      "type": "object"
+    },
+    "MultiRestItem": {
+      "additionalProperties": false,
+      "properties": {
+        "count": {
+          "maximum": 64,
+          "minimum": 2,
+          "title": "Count",
+          "type": "integer"
+        },
+        "type": {
+          "const": "mrest",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "count"
+      ],
+      "title": "MultiRestItem",
+      "type": "object"
+    },
+    "NoteItem": {
+      "additionalProperties": false,
+      "properties": {
+        "acc": {
+          "anyOf": [
+            {
+              "enum": [
+                "none",
+                "sharp",
+                "flat",
+                "natural",
+                "doubleSharp",
+                "doubleFlat"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Acc"
+        },
+        "accParen": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Accparen"
+        },
+        "beam": {
+          "anyOf": [
+            {
+              "enum": [
+                "none",
+                "begin",
+                "continue",
+                "end"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Beam"
+        },
+        "chord": {
+          "anyOf": [
+            {
+              "enum": [
+                0,
+                1
+              ],
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Chord"
+        },
+        "dots": {
+          "maximum": 2,
+          "minimum": 0,
+          "title": "Dots",
+          "type": "integer"
+        },
+        "dur": {
+          "enum": [
+            "breve",
+            "whole",
+            "half",
+            "quarter",
+            "eighth",
+            "16th",
+            "32nd",
+            "64th"
+          ],
+          "title": "Dur",
+          "type": "string"
+        },
+        "fermata": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fermata"
+        },
+        "grace": {
+          "anyOf": [
+            {
+              "enum": [
+                "none",
+                "acciaccatura",
+                "appoggiatura"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Grace"
+        },
+        "head": {
+          "enum": [
+            "normal",
+            "slash",
+            "x",
+            "diamond"
+          ],
+          "title": "Head",
+          "type": "string"
+        },
+        "pos": {
+          "maximum": 22,
+          "minimum": -14,
+          "title": "Pos",
+          "type": "integer"
+        },
+        "slur": {
+          "anyOf": [
+            {
+              "enum": [
+                "none",
+                "start",
+                "stop",
+                "both"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Slur"
+        },
+        "stem": {
+          "anyOf": [
+            {
+              "enum": [
+                "none",
+                "up",
+                "down"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Stem"
+        },
+        "tie": {
+          "anyOf": [
+            {
+              "enum": [
+                "none",
+                "start",
+                "stop",
+                "both"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tie"
+        },
+        "tup3": {
+          "anyOf": [
+            {
+              "enum": [
+                "none",
+                "start",
+                "continue",
+                "stop"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tup3"
+        },
+        "type": {
+          "const": "note",
+          "title": "Type",
+          "type": "string"
+        },
+        "v": {
+          "maximum": 4,
+          "minimum": 1,
+          "title": "V",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "type",
+        "dur",
+        "dots",
+        "pos",
+        "head",
+        "v"
+      ],
+      "title": "NoteItem",
+      "type": "object"
+    },
+    "Producer": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "sha256": {
+          "title": "Sha256",
+          "type": "string"
+        },
+        "version": {
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "version",
+        "sha256"
+      ],
+      "title": "Producer",
+      "type": "object"
+    },
+    "RestItem": {
+      "additionalProperties": false,
+      "properties": {
+        "dots": {
+          "maximum": 2,
+          "minimum": 0,
+          "title": "Dots",
+          "type": "integer"
+        },
+        "dur": {
+          "enum": [
+            "breve",
+            "whole",
+            "half",
+            "quarter",
+            "eighth",
+            "16th",
+            "32nd",
+            "64th"
+          ],
+          "title": "Dur",
+          "type": "string"
+        },
+        "fermata": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fermata"
+        },
+        "measureRest": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Measurerest"
+        },
+        "pos": {
+          "anyOf": [
+            {
+              "maximum": 22,
+              "minimum": -14,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pos"
+        },
+        "tup3": {
+          "anyOf": [
+            {
+              "enum": [
+                "none",
+                "start",
+                "continue",
+                "stop"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tup3"
+        },
+        "type": {
+          "const": "rest",
+          "title": "Type",
+          "type": "string"
+        },
+        "v": {
+          "maximum": 4,
+          "minimum": 1,
+          "title": "V",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "type",
+        "dur",
+        "dots",
+        "v"
+      ],
+      "title": "RestItem",
+      "type": "object"
+    },
+    "SegnoItem": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "segno",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "title": "SegnoItem",
+      "type": "object"
+    },
+    "TimeItem": {
+      "additionalProperties": false,
+      "properties": {
+        "beatType": {
+          "enum": [
+            1,
+            2,
+            4,
+            8,
+            16,
+            32
+          ],
+          "title": "Beattype",
+          "type": "integer"
+        },
+        "beats": {
+          "maximum": 16,
+          "minimum": 1,
+          "title": "Beats",
+          "type": "integer"
+        },
+        "courtesy": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Courtesy"
+        },
+        "symbol": {
+          "anyOf": [
+            {
+              "enum": [
+                "common",
+                "cut"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Symbol"
+        },
+        "type": {
+          "const": "time",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "beats",
+        "beatType",
+        "type"
+      ],
+      "title": "TimeItem",
+      "type": "object"
+    },
+    "TopK_Union_Annotated_str__FieldInfo_annotation_NoneType__required_True__metadata__Strict_strict_True_____AfterValidator___Annotated_int__Strict_strict_True____Annotated_bool__Strict_strict_True____list_Annotated_int__Strict_strict_True_____": {
+      "items": {
+        "maxItems": 2,
+        "minItems": 2,
+        "prefixItems": [
+          {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "items": {
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            ]
+          },
+          {
+            "maximum": 10000,
+            "minimum": 0,
+            "type": "integer"
+          }
+        ],
+        "type": "array"
+      },
+      "maxItems": 3,
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "hypotheses": {
+      "items": {
+        "$ref": "#/$defs/Hypothesis"
+      },
+      "maxItems": 8,
+      "title": "Hypotheses",
+      "type": "array"
+    },
+    "id": {
+      "minLength": 1,
+      "title": "Id",
+      "type": "string"
+    },
+    "producer": {
+      "$ref": "#/$defs/Producer"
+    },
+    "schema": {
+      "const": "clavis-ir-0.1",
+      "title": "Schema",
+      "type": "string"
+    },
+    "stripId": {
+      "minLength": 1,
+      "title": "Stripid",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema",
+    "id",
+    "stripId",
+    "producer",
+    "hypotheses"
+  ],
+  "title": "StaffLattice",
+  "type": "object"
+}

@@ -1,0 +1,299 @@
+{
+  "$defs": {
+    "BoundingBox": {
+      "additionalProperties": false,
+      "properties": {
+        "frameId": {
+          "minLength": 1,
+          "title": "Frameid",
+          "type": "string"
+        },
+        "heightMu": {
+          "minimum": 1,
+          "title": "Heightmu",
+          "type": "integer"
+        },
+        "widthMu": {
+          "minimum": 1,
+          "title": "Widthmu",
+          "type": "integer"
+        },
+        "xMu": {
+          "minimum": 0,
+          "title": "Xmu",
+          "type": "integer"
+        },
+        "yMu": {
+          "minimum": 0,
+          "title": "Ymu",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "frameId",
+        "xMu",
+        "yMu",
+        "widthMu",
+        "heightMu"
+      ],
+      "title": "BoundingBox",
+      "type": "object"
+    },
+    "EvidenceExtensions": {
+      "additionalProperties": false,
+      "properties": {
+        "measureBoxes": {
+          "items": {
+            "$ref": "#/$defs/MeasureBox"
+          },
+          "title": "Measureboxes",
+          "type": "array"
+        },
+        "staffPolygons": {
+          "items": {
+            "$ref": "#/$defs/StaffPolygon"
+          },
+          "title": "Staffpolygons",
+          "type": "array"
+        }
+      },
+      "required": [
+        "staffPolygons",
+        "measureBoxes"
+      ],
+      "title": "EvidenceExtensions",
+      "type": "object"
+    },
+    "ImageCoordinateFrame": {
+      "additionalProperties": false,
+      "properties": {
+        "coordinateSpace": {
+          "enum": [
+            "original-pixels",
+            "processed-pixels"
+          ],
+          "title": "Coordinatespace",
+          "type": "string"
+        },
+        "heightPixels": {
+          "minimum": 1,
+          "title": "Heightpixels",
+          "type": "integer"
+        },
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "imageDigest": {
+          "title": "Imagedigest",
+          "type": "string"
+        },
+        "pageIndex": {
+          "minimum": 0,
+          "title": "Pageindex",
+          "type": "integer"
+        },
+        "widthPixels": {
+          "minimum": 1,
+          "title": "Widthpixels",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "pageIndex",
+        "coordinateSpace",
+        "widthPixels",
+        "heightPixels",
+        "imageDigest"
+      ],
+      "title": "ImageCoordinateFrame",
+      "type": "object"
+    },
+    "MeasureBox": {
+      "additionalProperties": false,
+      "properties": {
+        "box": {
+          "$ref": "#/$defs/BoundingBox"
+        },
+        "staffMeasureId": {
+          "minLength": 1,
+          "title": "Staffmeasureid",
+          "type": "string"
+        }
+      },
+      "required": [
+        "staffMeasureId",
+        "box"
+      ],
+      "title": "MeasureBox",
+      "type": "object"
+    },
+    "OmrEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "box": {
+          "$ref": "#/$defs/BoundingBox"
+        },
+        "confidenceBp": {
+          "anyOf": [
+            {
+              "maximum": 10000,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Confidencebp"
+        },
+        "granularity": {
+          "enum": [
+            "none",
+            "page",
+            "staff",
+            "measure",
+            "symbol"
+          ],
+          "title": "Granularity",
+          "type": "string"
+        },
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "transformId": {
+          "default": null,
+          "title": "Transformid",
+          "type": "null"
+        },
+        "vendorId": {
+          "title": "Vendorid",
+          "type": "string"
+        },
+        "vendorTargetId": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Vendortargetid"
+        }
+      },
+      "required": [
+        "id",
+        "granularity",
+        "box",
+        "vendorId"
+      ],
+      "title": "OmrEvidence",
+      "type": "object"
+    },
+    "StaffPolygon": {
+      "additionalProperties": false,
+      "properties": {
+        "frameId": {
+          "minLength": 1,
+          "title": "Frameid",
+          "type": "string"
+        },
+        "pointsMu": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "minimum": 0,
+                "type": "integer"
+              }
+            ],
+            "type": "array"
+          },
+          "minItems": 3,
+          "title": "Pointsmu",
+          "type": "array"
+        },
+        "staffId": {
+          "minLength": 1,
+          "title": "Staffid",
+          "type": "string"
+        }
+      },
+      "required": [
+        "staffId",
+        "frameId",
+        "pointsMu"
+      ],
+      "title": "StaffPolygon",
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "evidence": {
+      "items": {
+        "$ref": "#/$defs/OmrEvidence"
+      },
+      "title": "Evidence",
+      "type": "array"
+    },
+    "extensions": {
+      "$ref": "#/$defs/EvidenceExtensions"
+    },
+    "frames": {
+      "items": {
+        "$ref": "#/$defs/ImageCoordinateFrame"
+      },
+      "title": "Frames",
+      "type": "array"
+    },
+    "granularity": {
+      "enum": [
+        "none",
+        "page",
+        "staff",
+        "measure",
+        "symbol"
+      ],
+      "title": "Granularity",
+      "type": "string"
+    },
+    "schema": {
+      "const": "clavis-evidence-0.1",
+      "title": "Schema",
+      "type": "string"
+    },
+    "transforms": {
+      "items": {
+        "type": "null"
+      },
+      "maxItems": 0,
+      "title": "Transforms",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema",
+    "granularity",
+    "frames",
+    "transforms",
+    "evidence",
+    "extensions"
+  ],
+  "title": "EvidenceBundle",
+  "type": "object"
+}

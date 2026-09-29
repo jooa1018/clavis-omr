@@ -1,0 +1,45 @@
+{
+  "kind": "contract-validation-only",
+  "execution": "manual Windows laptop CPU",
+  "tests": {
+    "tests": "117",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "time": "7.309"
+  },
+  "coverage": {
+    "covered_lines": 1043,
+    "num_statements": 1067,
+    "percent_covered": 97.75070290534208,
+    "percent_covered_display": "98",
+    "missing_lines": 24,
+    "excluded_lines": 0,
+    "percent_statements_covered": 97.75070290534208,
+    "percent_statements_covered_display": "98"
+  },
+  "validDocuments": 16,
+  "invalidDocuments": 41,
+  "canonicalFixtureSha256": "fd16015c34dacc84f5dfeabe0977ce41a82d97b799bfb8a1fbde7ad6e2324ccc",
+  "fixtureCounts": {
+    "events": 20,
+    "harmonies": 6,
+    "hintsBySeverity": {
+      "blocking": 0,
+      "info": 0,
+      "warning": 1
+    },
+    "lyrics": 11,
+    "measures": 6,
+    "staves": 3,
+    "systems": 3
+  },
+  "recognitionEvaluation": "NOT_RUN",
+  "integrityScanner": "NOT_RUN",
+  "remoteCi": {
+    "commit": "bdd236f",
+    "runUrl": "https://github.com/jooa1018/clavis-omr/actions/runs/36498844309",
+    "ubuntu": "PASS",
+    "windows": "PASS"
+  }
+}

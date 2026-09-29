@@ -1,0 +1,66 @@
+[
+  {
+    "model": "PageInput",
+    "path": "valid/page-input.json"
+  },
+  {
+    "model": "QualityReport",
+    "path": "valid/quality.json"
+  },
+  {
+    "model": "PageLayout",
+    "path": "valid/layout.json"
+  },
+  {
+    "model": "SymbolGraph",
+    "path": "valid/symbols-0.json"
+  },
+  {
+    "model": "SymbolGraph",
+    "path": "valid/symbols-1.json"
+  },
+  {
+    "model": "SymbolGraph",
+    "path": "valid/symbols-2.json"
+  },
+  {
+    "model": "StaffLattice",
+    "path": "valid/lattice-0.json"
+  },
+  {
+    "model": "StaffLattice",
+    "path": "valid/lattice-1.json"
+  },
+  {
+    "model": "StaffLattice",
+    "path": "valid/lattice-2.json"
+  },
+  {
+    "model": "TextIR",
+    "path": "valid/text.json"
+  },
+  {
+    "model": "ScoreIR",
+    "path": "valid/score.json"
+  },
+  {
+    "model": "EvidenceBundle",
+    "path": "valid/evidence.json"
+  },
+  {
+    "model": "ReviewHints",
+    "path": "valid/hints.json"
+  },
+  {
+    "model": "ElementConfidence",
+    "path": "valid/confidence.json"
+  },
+  {
+    "model": "Report",
+    "path": "valid/report.json"
+  },
+  {
+    "model": "RuntimeReport",
+    "path": "valid/runtime.json"
+  }
+]

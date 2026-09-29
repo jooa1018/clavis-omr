@@ -1,0 +1,1 @@
+{"model": "RuntimeReport", "payload": {"cpuMs": 0, "elapsedMs": 0, "peakRssBytes": 0, "platform": {"os": "mock", "pythonVersion": "3.12"}, "schema": "clavis-invalid", "stages": [{"cpuMs": 0, "elapsedMs": 0, "peakRssBytes": 0, "stageId": "mock", "threads": 1}], "threads": 1}}

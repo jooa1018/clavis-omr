@@ -6,7 +6,8 @@
 
 ## 0. 버전과 변경 규칙
 
-- 버전 식별자: IR `clavis-ir-0.1` · 토큰 언어 `lstl-0.1` · 출력 `clavis-evidence-0.1`, `clavis-hints-0.1`, `clavis-confidence-0.1`, `clavis-report-0.1`.
+- 버전 식별자: IR `clavis-ir-0.1` · 토큰 언어 `lstl-0.1` · 출력 `clavis-evidence-0.1`, `clavis-hints-0.1`, `clavis-confidence-0.1`, `clavis-report-0.1`, `clavis-runtime-0.1`.
+- CCR-0001 승인(2026-09-29): 승인된 최초 완성본을 v0.1로 동결한다. 그 이후부터 다음 버전 규칙을 적용한다.
 - 하위 호환이 깨지는 변경은 minor를 올린다(0.1 → 0.2). 필드 추가처럼 호환되는 변경은 patch를 올린다(0.1.1).
 - 변경 절차: `docs/ccr/CCR-NNNN.md`(동기, 변경안, 영향 모듈, 마이그레이션, 평가 영향) → 영향 모듈 소유자 의견 → Orchestrator 승인 → W1이 구현하고 fixture와 JSON Schema를 갱신 → 영향 모듈이 따라온다.
 - 모든 JSON 산출물에는 `schema` 필드로 버전을 적는다.
@@ -69,7 +70,7 @@
 
 ## 3. 파이프라인 IR (`clavis-ir-0.1`)
 
-필드는 요약이다. 정본은 `src/clavis/contracts/`의 pydantic 모델과 자동 생성된 JSON Schema다. 모든 객체에 `schema`와 `id`가 있다.
+필드는 요약이다. 정본은 `src/clavis/contracts/`의 pydantic 모델과 자동 생성된 JSON Schema다. 독립 PageInput, QualityReport, PageLayout, SymbolGraph, StaffLattice, TextIR, ScoreIR에만 `schema`와 `id`가 있다. 페이지 IR id는 `pg{p}`, 보표 IR id는 staffId, ScoreIR id는 `score0`이다. 고유성은 해당 타입·문서 범위다. ReviewHint 등 중첩 객체에는 별도 schema/id를 추가하지 않는다.
 
 ### 3.1 `PageInput` (S0)
 
@@ -135,8 +136,9 @@ HarmonyMaker `ImageQualityReport` 필드 `blurBp`, `perspectiveBp`, `glareBp`, `
 
 - 좌표는 strip px(소수 둘째 자리). 모든 확률은 bp 정수다.
 - `sources`: 후보를 낸 생성기(`fcn`, `template`, `cc`, `vline`, `beam`, `curve`, `ledger`). 생성기 간 일치는 신뢰도 신호다.
-- `attrs`: 클래스별 속성 분포. `posTopK`(음표 머리, 쉼표), `stemDir`, `beamCountTopK`·`flagCountTopK`(stem), `dotsTopK`, `headType` 등.
-- `relations.kind`: `stemOf`, `beamOf`, `flagOf`, `dotOf`, `accidentalOf`, `tieFrom`, `tieTo`, `slurFrom`, `slurTo`, `ledgerOf`, `chordWith`, `voiceOf`. 한 기호에 경쟁 관계가 있으면 모두 남긴다(상위 2개).
+- `posTopK`는 기호 최상위에만 둔다. `attrs`: 클래스별 속성 분포인 `stemDir`, `beamCountTopK`·`flagCountTopK`(stem), `dotsTopK`, `headType`, 성부 `voiceTopK`(1–4, bp). 빈 attrs는 생략한다.
+- `relations.kind`: `stemOf`, `beamOf`, `flagOf`, `dotOf`, `accidentalOf`, `tieFrom`, `tieTo`, `slurFrom`, `slurTo`, `ledgerOf`, `chordWith`. 한 기호에 경쟁 관계가 있으면 모두 남긴다(상위 2개).
+- 관계 방향: stemOf stem→머리, beamOf beam→stem, flagOf flag→stem, dotOf 점→머리, accidentalOf 임시표→머리, ledgerOf 덧줄→머리, tieFrom/slurFrom 곡선→시작 머리, tieTo/slurTo 곡선→끝 머리, chordWith 머리→머리(from id < to id).
 - `rejectedCandidates`: 거절됐지만 점수가 기준 이상인 후보. W8의 누락 의심 신호로 쓴다.
 
 클래스(v0.1): `noteheadFilled`, `noteheadHollow`, `noteheadWhole`, `noteheadSlash`, `noteheadX`, `stem`, `beam`, `flag`, `accSharp`, `accFlat`, `accNatural`, `accDoubleSharp`, `accDoubleFlat`, `augDot`, `restWhole`, `restHalf`, `restQuarter`, `rest8th`, `rest16th`, `rest32nd`, `clefG`, `clefF`, `clefC`, `timeDigit`, `timeCommon`, `timeCut`, `barline`, `repeatDots`, `curve`(tie·slur), `tupletNumber`, `fermata`, `ledgerLine`, `segno`, `coda`, `voltaBracket`, `reject`(배경·글자·기타).
@@ -156,10 +158,10 @@ HarmonyMaker `ImageQualityReport` 필드 `blurBp`, `perspectiveBp`, `glareBp`, `
 
 - `meta{title?, subtitle?, tempo?}`, `engine{version, buildDigest}`
 - `parts[]{partId, name?, staffCount, staffSlots[]}`: brace로 묶인 보표 무리는 한 파트의 여러 보표, 나머지는 보표 하나가 한 파트다.
-- `measures[]`(파트별): `measureId`, `index`, `number`(표시용 문자열. 못갖춘마디는 `"0"`), `implicit`, `pageIndex`, `systemId`, `capacity`(Fraction), `staffMeasures[]`
+- `measures[]`(파트별): `measureId`, `partId`, `harmonies[]`, `directions[]`, `index`, `number`(표시용 문자열. 못갖춘마디는 `"0"`), `implicit`, `pageIndex`, `systemId`, `capacity`(Fraction), `staffMeasures[]`
   - `staffMeasures[]`: `staffMeasureId`, `staffId`, `clef?`, `key?{fifths}`, `time?{beats, beatType, symbol?}`, `barlineLeft?`, `barlineRight?`, `ending?`, `voices[]{voice, events[]}`, `evidenceIds[]`, `confidenceBp`, `status: ok|flagged|blocked`
 - `Event`: `eventId`, `kind: note|rest|rhythm`, `onset`, `duration`, `notated{type, dots, tuplet?{actual, normal}}`, `chordWithPrev`, `grace?`, `pitch?`, `pos?`, `accidentalVisible?`, `tie{start, stop}`, `slur{start, stop}`, `fermata`, `measureRest`, `lyrics[]{verse, text, syllabic, extend, textId}`, `evidenceIds[]`, `confidenceBp`, `flags[]`
-- `Harmony`: `harmonyId`, `onset`, `root{step, alter}`, `kind`(MusicXML kind), `kindText`, `degrees[]{value, alter, type: add|alter|subtract}`, `bass?`, `sourceText`, `textId`, `confidenceBp`, `evidenceIds[]`
+- `Harmony`: `harmonyId`, `staffInPart`(int ≥ 1, 기본 1), `onset`, `root?{step, alter}`, `kind`(MusicXML kind), `kindText`, `degrees[]{value, alter, type: add|alter|subtract}`, `bass?`, `sourceText`, `textId`, `confidenceBp`, `evidenceIds[]`
 - `Direction`: `directionId`, `onset`, `kind: tempo|section|navigation|rehearsal|words`, `value`, `textId?`, `symbolId?`, `confidenceBp`
 - `flow{repeats[], endings[], navigation[]{kind: segno|coda|toCoda|dalSegno|daCapo|fine|dsAlCoda|dsAlFine|dcAlCoda|dcAlFine, measureId}}`
 - `status: complete|partial|blocked`, `diagnostics[]`
@@ -225,9 +227,9 @@ v0.1 범위 밖(OOD로 표시하거나 무시): 퍼커션·타브 보표, 트레
 ### 4.2 정규 순서 (같은 시각 표현 → 하나의 토큰열)
 
 1. 보표 내용을 **열(column)**로 나눈다. 같은 마디에서 같은 음악 시점을 공유하는 음표와 쉼표가 한 열이다. 꾸밈음은 본음 앞에 자기 열을 가진다. 비시간 항목(`clef`, `key`, `time`, `bar`, `ending`, `segno`, `coda`)은 인쇄 위치마다 각자 열이다.
-2. 열은 인쇄된 왼쪽→오른쪽 순서를 따른다.
-3. 한 열 안에서는 성부 오름차순이다. 같은 성부의 화음은 `pos` 오름차순이고, 첫 음이 `chord=0`, 나머지가 `chord=1`이다.
-4. barline 위치의 항목 순서: `bar` → `ending(stop)` → `ending(start)` → `segno`/`coda` → `clef` → `key` → `time`. 시스템 첫머리는 `clef` → `key` → `time`.
+2) 열은 인쇄된 x 순서(기호 박스 왼쪽 모서리)를 따른다. 라벨 생성(W2)은 렌더 좌표에서, 읽기 구성(W6)은 기호 박스에서 순서를 얻는다.
+3) 아래 관례 순서는 x가 같거나 겹칠 때만 쓴다. 시스템 첫머리는 clef → key → time → bar(repeatStart). 마디 경계에서 clef 변경은 barline 앞, key·time 변경은 barline 뒤에 인쇄된다. repeatStart가 key·time 변경과 같은 경계에 있으면 key·time 뒤에 별도 bar 항목으로 온다. ending 표시는 해당 barline 바로 뒤, segno·coda는 해당 barline 위치다.
+4. 한 열 안에서는 성부 오름차순이다. 같은 성부의 화음은 `pos` 오름차순이고, 첫 음이 `chord=0`, 나머지가 `chord=1`이다.
 5. 시스템 끝의 예고(courtesy) 기호는 마지막 `bar` 뒤에 `courtesy=1`로 온다. 의미 해석에서는 무시한다.
 6. 속성 직렬화 순서는 4.1절 표의 순서를 따른다. 기본값(0, none)은 텍스트 표기에서 생략한다.
 
@@ -288,6 +290,8 @@ bar style=final
 - 마디 용량 = beats × 4 / beatType. 온마디 쉼표(`measureRest=1`)의 길이는 용량과 같다
 
 ### 5.4 성부와 마디 유효성
+
+- 이벤트 없이 연속한 bar 항목은 하나의 마디 경계로 해석한다. 시스템 첫머리의 bar(repeatStart)는 첫 마디의 왼쪽 barline이며 빈 마디를 만들지 않는다.
 
 - 각 성부는 0에서 시작하는 시간축을 가진다. 성부가 늦게 시작하거나 일찍 끝나면 export에서 `<forward>`로 표현한다. 보이지 않는 구간은 사건이 아니다.
 - **overfull**(어떤 성부의 합 > 용량)은 `complete` 출력에서 허용하지 않는다.
@@ -489,3 +493,80 @@ clavis version            # 엔진·모델·계약 버전 출력(JSON)
 ### 12.7 HarmonyMaker typed patch 어휘
 
 `pitch{pitch}`, `duration{duration}`, `accidental{alter}`, `chord{parseResult}`, `time-signature{value}`, `key-signature{value}`, `tie{tieStart, tieStop}`, `replace-event{event}`, `replace-source-text{text}`, `insert-barline`, `delete-barline`. 대상은 `voice-event`, `chord-event`, `measure`, `measure-start`, `measure-end`, `section-text`.
+
+## 13. CCR-0001 승인 보완 (2026-09-29)
+
+이 절은 3·8절의 생략된 wire 형태를 완성한다. `?`는 생략 가능을 뜻한다.
+추가 필드는 거부하며 bp는 0–10000 정수, Fraction은 d > 0 기약분수,
+좌표는 유한 값, 텍스트는 NFC다. 문서 안 ID는 고유하며 참조는 존재해야 한다.
+
+### 13.1 ScoreIR·코드 하위 타입 (C1–C3)
+
+- Measure의 partId는 parts를 참조한다. harmonies/directions는 빈 경우에도 배열로 둔다.
+  모든 onset은 해당 마디 기준이다. Harmony.staffInPart는 1부터 시작하며 기본 1이다.
+- Part.staffSlots: `[{staffInPart: int >= 1, staffIds: string[]}]`.
+  슬롯 번호는 파트 안에서 1부터 연속, staffIds는 시스템별 물리 보표를 문서 순서로 연결한다.
+- StaffMeasure: clef `{sign: LSTL clef.sign}`, barlineLeft/Right `{style: LSTL bar.style}`,
+  ending `{numbers: positive int[], mark: start|stop|discontinue}`.
+- Event: grace는 `none|acciaccatura|appoggiatura`, accidentalVisible은 LSTL acc,
+  tie/slur는 `{start: bool, stop: bool}`; fermata/measureRest/chordWithPrev는 bool.
+- TempoValue: `{text?: NFC string, beatUnit?: LSTL dur, dots?: 0|1|2, perMinute?: positive Fraction}`.
+  text와 perMinute 중 하나 이상 필수. perMinute가 있으면 beatUnit 필수.
+  meta.tempo와 kind=tempo인 Direction.value가 이 타입을 쓴다. 다른 Direction.value는 NFC 문자열이다.
+- flow.repeats: `[{startMeasureId, endMeasureId, times: int >= 2}]`.
+  flow.endings: `[{startMeasureId, endMeasureId, numbers: positive int[]}]`.
+- ChordParseResult: `{normalized, root?: {step, alter}, kind, kindText, degrees[], bass?: {step, alter}}`.
+  kind와 degrees는 6절 어휘. N.C.는 normalized="N.C.", kind="none", root/bass 없음,
+  degrees=[]다. Harmony도 kind=none일 때만 root를 생략하며 bass 없음/degrees=[] 규칙을 따른다.
+- Diagnostic: `{code: string, severity: blocking|warning|info, target?: ReviewHint.target}`.
+
+### 13.2 기하·근거 (C4)
+
+- IR frames는 12.3절 ImageCoordinateFrame을 재사용하되 original-pixels/processed-pixels만 허용한다.
+- IR homography: `{id, fromFrameId, toFrameId, kind: "homography", matrix: number[9]}`.
+  행 우선, m[8]=1인 정규화 행렬이다.
+- 외부 evidence.transforms는 v0.1에서 **빈 배열만** 허용한다. 모든 외부 박스는 original 프레임.
+  비어 있지 않은 외부 transforms 지원은 별도 CCR로만 추가한다.
+- PageLayout bbox, glyph/syllable box는 `[x,y,width,height]` processed px.
+  polygon/polyline은 `[[x,y], ...]`다. interlineProfile은 `[{x, interlinePx > 0}]`, x 오름차순.
+- nonStaffMask: `{frameId, width, height, counts: nonnegative int[]}`.
+  행 우선 RLE, 0-run부터 0/1 교대, 합은 width×height. 사적 경로나 blob 없음.
+- extensions.staffPolygons: `[{staffId, frameId, pointsMu: int[2][]}]`.
+  extensions.measureBoxes: `[{staffMeasureId, box: BoundingBox}]`. 모두 original 프레임.
+- SymbolGraph 좌표는 소수 2자리, 다른 IR px는 소수 3자리 round-half-even으로 덤프한다.
+
+### 13.3 confidence·patch·정렬 (C5)
+
+- ElementConfidence 항목에 parentId/path를 함께 생략하거나 함께 지정한다.
+  MusicXML id를 못 갖는 요소는 부모 id와 `attributes[1]/key[1]` 같은 1-based 상대 요소 경로로 참조한다.
+  path는 임의 XPath가 아니다. id는 항목의 결정적 ID다.
+- ReviewHint 위치는 대상 IR의 page/system/measure에서 resolve한다. 문맥 없는 단독 작성기는 목록 순서를 보존한다.
+- patch.kind는 3.8절 camelCase. payload는 pitch{pitch}, duration{duration}, accidental{alter},
+  tie{tieStart,tieStop}, chord{parseResult}, timeSignature{value: Time}, keySignature{value: Key},
+  replaceEvent{event: Event}, replaceSourceText{text}, insertBarline/deleteBarline(추가 payload 없음).
+  HarmonyMaker의 kebab-case 및 대상 이름으로 바꾸는 작업은 어댑터 책임이다.
+
+### 13.4 RuntimeReport (C6)
+
+`runtime.json`은 `{schema: "clavis-runtime-0.1", threads: int >= 1,
+ elapsedMs: nonnegative int, cpuMs: nonnegative int, peakRssBytes: nonnegative int,
+ stages: [{stageId, elapsedMs, cpuMs, peakRssBytes, threads}],
+ platform?: {os: string, pythonVersion: string, onnxruntimeVersion?: string}}`다.
+계측 값만 기록하며 플랫폼 정보는 선택 사항이다. 날짜·호스트명·절대 경로는 넣지 않는다.
+
+### 13.5 승인 조건 보완 — C7 동결 전 v0.1 (2026-09-29)
+
+- 선택 기본값은 JSON에서 생략하며 명시하면 검증 오류다. LSTL의 acc/accParen/tie/slur/
+  chord/grace/tup3/fermata/stem/beam/measureRest/courtesy/cancel, Event.grace/accidentalVisible,
+  SymbolGraph의 빈 attrs에 적용한다. 기본값은 none/0/false/빈 객체이며 해당 선택 필드의
+  명시적 null도 생략한다. 필수 값·필수 목록·Event.tie/slur의 start/stop은 유지한다.
+  정규 작성기도 이 생략을 강제한다. attrTopK 안의 기본값 후보는 허용한다.
+- 모든 top-k(classTopK, posTopK, attrs 분포, attrTopK)는 값이 중복되면 안 된다.
+  bp 내림차순, 동률은 값의 정규 순서다(숫자 오름차순, NFC 문자열 사전순, 정수 목록 사전순).
+  합은 10000 이하, 길이는 1–3(classTopK만 1–5)이다.
+- attrTopK의 키 k마다 항목의 k 값(생략 시 기본값)이 후보에 포함돼야 한다.
+  Hypothesis rank는 0부터 연속, logProbMicro는 rank가 커질수록 증가하지 않는다.
+- Event.duration=0은 grace가 acciaccatura/appoggiatura인 경우에만 허용한다.
+  grace가 아니면 duration은 양수다. DurationPatch.duration은 항상 양수다.
+- Measure.index는 파트마다 measures 목록 순서대로 0부터 연속이다.
+- EvidenceBundle.vendorTargetId는 번들 안에서 고유하며 모든 box의 widthMu/heightMu는 1 이상이다.
