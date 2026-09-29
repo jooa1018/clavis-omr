@@ -49,6 +49,15 @@ W4 worktree의 PowerShell에서 다음을 실행합니다(6은 해당 쪽의 총
 .venv\Scripts\python.exe -m eval.gt select --page-id dev-001 --systems 6 --count 3 --seed dev-intake-session1 --date 2026-09-29 --out dev/dev-001/selection.json
 ```
 
+`--out`은 현재 작업 폴더가 아니라 **CLAVIS_PRIVATE_ROOT 기준 상대 경로**입니다.
+위 예시는 `$env:CLAVIS_PRIVATE_ROOT\dev\dev-001\selection.json`을 만듭니다.
+도구는 환경 변수 미설정, Git 저장소 내부 root, 경로 탈출을 거부하며 worktree에 쓰지 않습니다.
+저장 위치는 다음 읽기 전용 명령으로 확인할 수 있습니다.
+
+```powershell
+Get-Item -LiteralPath (Join-Path $env:CLAVIS_PRIVATE_ROOT 'dev/dev-001/selection.json')
+```
+
 날짜는 실제 선택한 날짜로 바꿉니다. seed는 이 작업 묶음에서 미리 고른 문자열을
 모든 쪽에 유지해도 됩니다. 생성된 `selectedSystems` 번호만 전사합니다.
 쉽거나 선명한 시스템이 나오도록 재추첨하지 않습니다. 기존 기록은 도구가 덮어쓰지
