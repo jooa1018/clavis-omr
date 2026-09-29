@@ -22,3 +22,8 @@ are separate from real admission: the summary explicitly records real leakage as
 NOT_RUN and trainingAdmissionAllowed=false. For actual admission, use W4's CLI
 and inventory rules in `eval/integrity/README.md`; NOT_RUN must block admission.
 No private or sealed inputs are read by the CI summary.
+
+## CI 실행 비용 제어
+`ci_plan.py`는 PR 변경 경로와 예약 main SHA로 작업을 선택한다.
+`ci_results.py`는 한 번의 pytest coverage JSON/JUnit에서 독립 커버리지 기준과 필수 시험 결과를 판정한다.
+문서 전용 PR은 UTF-8/NUL/JSON 및 git diff whitespace 검사만 수행한다.
