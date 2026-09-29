@@ -1,0 +1,859 @@
+{
+  "scope": "synthetic local manual CPU; no real/Dev/sealed data",
+  "pages_executed": 90,
+  "threads": 1,
+  "warmups_per_slice": 1,
+  "timed_per_slice": 2,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "source_interline_px": 40,
+  "mean_pages_per_core_second": 4.428985142705977,
+  "slowest_pages_per_second": 1.4548985451746648,
+  "performance_status": "PARTIAL",
+  "merge_condition": "default variant probability <= 0.3 if slowest < 3; Orchestrator 2026-09-29",
+  "default_use_probability": 0.3,
+  "sampling": {
+    "attempted": 60,
+    "accepted": 60,
+    "rejected": 0,
+    "rejection_rate": 0.0,
+    "rate_limit": 0.01,
+    "w2_report_required": false,
+    "by_band": {
+      "2": {
+        "attempted": 16,
+        "rejected": 0
+      },
+      "0": {
+        "attempted": 20,
+        "rejected": 0
+      },
+      "1": {
+        "attempted": 24,
+        "rejected": 0
+      }
+    }
+  },
+  "wall_seconds": 33.0914344000048,
+  "peak_rss_bytes": 144195584,
+  "catalog_sha256": "8af7b730911f3bea16370be16aa0333ae277213ace77456ef9c5b428dcd467e3",
+  "pixel_units": "uint8 levels 0..255; independent noise field sizes with same recorded initial RNG state; geometry/effect strengths/JPEG parameters fixed",
+  "slices": [
+    {
+      "preset": "phone-daylight",
+      "placement": "before_resize",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.09968970000045374,
+        0.19217590003972873
+      ],
+      "pages_per_second": 6.852469080716093,
+      "original_timed_seconds": [
+        0.14864870003657416,
+        0.18348969996441156
+      ],
+      "original_pages_per_second": 6.021586182127885,
+      "differences": [
+        {
+          "seed": 0,
+          "final_size": [
+            740,
+            925
+          ],
+          "mae": 0.0,
+          "rmse": 0.0,
+          "max_abs": 0.0,
+          "p95_abs": 0.0,
+          "changed_pixel_fraction": 0.0,
+          "label_point_max_error_px": 0.0
+        },
+        {
+          "seed": 1,
+          "final_size": [
+            265,
+            331
+          ],
+          "mae": 1.8699880294134412,
+          "rmse": 4.52076854418176,
+          "max_abs": 63.0,
+          "p95_abs": 9.0,
+          "changed_pixel_fraction": 0.3296927549449923,
+          "label_point_max_error_px": 2.842170943040401e-14
+        },
+        {
+          "seed": 2,
+          "final_size": [
+            413,
+            517
+          ],
+          "mae": 3.1911053245348233,
+          "rmse": 9.752140174886875,
+          "max_abs": 153.0,
+          "p95_abs": 17.0,
+          "changed_pixel_fraction": 0.33037968162382153,
+          "label_point_max_error_px": 0.0
+        }
+      ]
+    },
+    {
+      "preset": "phone-daylight",
+      "placement": "after_resize",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.08879910001996905,
+        0.11358000000473112
+      ],
+      "pages_per_second": 9.882443393393398,
+      "original_timed_seconds": [],
+      "original_pages_per_second": null,
+      "differences": []
+    },
+    {
+      "preset": "phone-indoor",
+      "placement": "before_resize",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.13636140001472086,
+        0.1625777999870479
+      ],
+      "pages_per_second": 6.69032365105736,
+      "original_timed_seconds": [
+        0.1996503000264056,
+        0.2005944999982603
+      ],
+      "original_pages_per_second": 4.99694187126665,
+      "differences": [
+        {
+          "seed": 0,
+          "final_size": [
+            740,
+            925
+          ],
+          "mae": 0.0,
+          "rmse": 0.0,
+          "max_abs": 0.0,
+          "p95_abs": 0.0,
+          "changed_pixel_fraction": 0.0,
+          "label_point_max_error_px": 0.0
+        },
+        {
+          "seed": 1,
+          "final_size": [
+            265,
+            331
+          ],
+          "mae": 2.600307815082939,
+          "rmse": 4.244053886047631,
+          "max_abs": 41.0,
+          "p95_abs": 9.0,
+          "changed_pixel_fraction": 0.6042980106025195,
+          "label_point_max_error_px": 2.842170943040401e-14
+        },
+        {
+          "seed": 2,
+          "final_size": [
+            413,
+            517
+          ],
+          "mae": 2.614773254152987,
+          "rmse": 5.854624942019904,
+          "max_abs": 98.0,
+          "p95_abs": 12.0,
+          "changed_pixel_fraction": 0.4437596302003082,
+          "label_point_max_error_px": 0.0
+        }
+      ]
+    },
+    {
+      "preset": "phone-indoor",
+      "placement": "after_resize",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.14484110003104433,
+        0.14240090001840144
+      ],
+      "pages_per_second": 6.96277006724546,
+      "original_timed_seconds": [],
+      "original_pages_per_second": null,
+      "differences": []
+    },
+    {
+      "preset": "phone-angle",
+      "placement": "before_resize",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.317742699990049,
+        0.23942530003841966
+      ],
+      "pages_per_second": 3.5895815981854833,
+      "original_timed_seconds": [
+        0.2631913999794051,
+        0.30769769998732954
+      ],
+      "original_pages_per_second": 3.5033073851235534,
+      "differences": [
+        {
+          "seed": 0,
+          "final_size": [
+            411,
+            513
+          ],
+          "mae": 1.490706354965543,
+          "rmse": 2.4864978315789052,
+          "max_abs": 27.0,
+          "p95_abs": 5.0,
+          "changed_pixel_fraction": 0.5274208771455537,
+          "label_point_max_error_px": 0.0
+        },
+        {
+          "seed": 1,
+          "final_size": [
+            583,
+            728
+          ],
+          "mae": 0.8516860497992573,
+          "rmse": 2.7986759769749443,
+          "max_abs": 61.0,
+          "p95_abs": 4.0,
+          "changed_pixel_fraction": 0.16853665202721807,
+          "label_point_max_error_px": 0.0
+        },
+        {
+          "seed": 2,
+          "final_size": [
+            240,
+            300
+          ],
+          "mae": 2.0943472222222224,
+          "rmse": 3.546526078040626,
+          "max_abs": 43.0,
+          "p95_abs": 8.0,
+          "changed_pixel_fraction": 0.7192916666666667,
+          "label_point_max_error_px": 0.0
+        }
+      ]
+    },
+    {
+      "preset": "phone-angle",
+      "placement": "after_resize",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.18456439999863505,
+        0.15333770000142977
+      ],
+      "pages_per_second": 5.918874135436318,
+      "original_timed_seconds": [],
+      "original_pages_per_second": null,
+      "differences": []
+    },
+    {
+      "preset": "phone-shadow",
+      "placement": "before_resize",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.1451865999842994,
+        0.20203630003379658
+      ],
+      "pages_per_second": 5.759988756201758,
+      "original_timed_seconds": [
+        0.19796449999557808,
+        0.2118102999520488
+      ],
+      "original_pages_per_second": 4.8807296111318195,
+      "differences": [
+        {
+          "seed": 0,
+          "final_size": [
+            440,
+            550
+          ],
+          "mae": 3.0038595041322314,
+          "rmse": 4.367421653656359,
+          "max_abs": 65.0,
+          "p95_abs": 8.0,
+          "changed_pixel_fraction": 0.8758264462809917,
+          "label_point_max_error_px": 0.0
+        },
+        {
+          "seed": 1,
+          "final_size": [
+            324,
+            404
+          ],
+          "mae": 2.3497433076640997,
+          "rmse": 5.470093486205728,
+          "max_abs": 65.0,
+          "p95_abs": 12.0,
+          "changed_pixel_fraction": 0.37642097543087644,
+          "label_point_max_error_px": 0.0
+        },
+        {
+          "seed": 2,
+          "final_size": [
+            287,
+            359
+          ],
+          "mae": 2.0363864004736345,
+          "rmse": 4.28907386624082,
+          "max_abs": 65.0,
+          "p95_abs": 9.0,
+          "changed_pixel_fraction": 0.6568672172993119,
+          "label_point_max_error_px": 0.0
+        }
+      ]
+    },
+    {
+      "preset": "phone-shadow",
+      "placement": "after_resize",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.169506200007163,
+        0.26021169999148697
+      ],
+      "pages_per_second": 4.654216172996944,
+      "original_timed_seconds": [],
+      "original_pages_per_second": null,
+      "differences": []
+    },
+    {
+      "preset": "phone-curl",
+      "placement": "before_resize",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.2652036999934353,
+        0.1835037000128068
+      ],
+      "pages_per_second": 4.457247640605386,
+      "original_timed_seconds": [
+        0.300274699984584,
+        0.23736329999519512
+      ],
+      "original_pages_per_second": 3.7199751507059045,
+      "differences": [
+        {
+          "seed": 0,
+          "final_size": [
+            741,
+            927
+          ],
+          "mae": 0.0,
+          "rmse": 0.0,
+          "max_abs": 0.0,
+          "p95_abs": 0.0,
+          "changed_pixel_fraction": 0.0,
+          "label_point_max_error_px": 0.0
+        },
+        {
+          "seed": 1,
+          "final_size": [
+            265,
+            331
+          ],
+          "mae": 1.850743886450436,
+          "rmse": 4.419123816336209,
+          "max_abs": 60.0,
+          "p95_abs": 9.0,
+          "changed_pixel_fraction": 0.3339109616371202,
+          "label_point_max_error_px": 2.842170943040401e-14
+        },
+        {
+          "seed": 2,
+          "final_size": [
+            415,
+            519
+          ],
+          "mae": 2.7602200710355875,
+          "rmse": 10.26828273324931,
+          "max_abs": 160.0,
+          "p95_abs": 13.0,
+          "changed_pixel_fraction": 0.3453350976158971,
+          "label_point_max_error_px": 0.0
+        }
+      ]
+    },
+    {
+      "preset": "phone-curl",
+      "placement": "after_resize",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.14975120004964992,
+        0.15289369999663904
+      ],
+      "pages_per_second": 6.608404766424624,
+      "original_timed_seconds": [],
+      "original_pages_per_second": null,
+      "differences": []
+    },
+    {
+      "preset": "phone-daylight",
+      "placement": "before_resize",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.42656309995800257,
+        0.44007569999666885
+      ],
+      "pages_per_second": 2.307766511382375,
+      "original_timed_seconds": [
+        0.5705164999817498,
+        0.6073528000270016
+      ],
+      "original_pages_per_second": 1.6979812615755756,
+      "differences": [
+        {
+          "seed": 0,
+          "final_size": [
+            925,
+            1445
+          ],
+          "mae": 0.0,
+          "rmse": 0.0,
+          "max_abs": 0.0,
+          "p95_abs": 0.0,
+          "changed_pixel_fraction": 0.0,
+          "label_point_max_error_px": 0.0
+        },
+        {
+          "seed": 1,
+          "final_size": [
+            331,
+            517
+          ],
+          "mae": 1.356951270109334,
+          "rmse": 3.9504097584253546,
+          "max_abs": 76.0,
+          "p95_abs": 7.0,
+          "changed_pixel_fraction": 0.23622806453686443,
+          "label_point_max_error_px": 2.842170943040401e-14
+        },
+        {
+          "seed": 2,
+          "final_size": [
+            517,
+            807
+          ],
+          "mae": 1.8471450245554493,
+          "rmse": 7.570775829014918,
+          "max_abs": 160.0,
+          "p95_abs": 9.0,
+          "changed_pixel_fraction": 0.2663133749901131,
+          "label_point_max_error_px": 0.0
+        }
+      ]
+    },
+    {
+      "preset": "phone-daylight",
+      "placement": "after_resize",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.46699159999843687,
+        0.4092776000034064
+      ],
+      "pages_per_second": 2.2824036266432652,
+      "original_timed_seconds": [],
+      "original_pages_per_second": null,
+      "differences": []
+    },
+    {
+      "preset": "phone-indoor",
+      "placement": "before_resize",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.31934769998770207,
+        0.3558971000020392
+      ],
+      "pages_per_second": 2.9618887846754025,
+      "original_timed_seconds": [
+        0.45782780001172796,
+        0.544797100010328
+      ],
+      "original_pages_per_second": 1.9947639440791902,
+      "differences": [
+        {
+          "seed": 0,
+          "final_size": [
+            925,
+            1445
+          ],
+          "mae": 0.0,
+          "rmse": 0.0,
+          "max_abs": 0.0,
+          "p95_abs": 0.0,
+          "changed_pixel_fraction": 0.0,
+          "label_point_max_error_px": 0.0
+        },
+        {
+          "seed": 1,
+          "final_size": [
+            331,
+            517
+          ],
+          "mae": 2.226182893406651,
+          "rmse": 3.8768839305816476,
+          "max_abs": 41.0,
+          "p95_abs": 8.0,
+          "changed_pixel_fraction": 0.5434326552794123,
+          "label_point_max_error_px": 2.842170943040401e-14
+        },
+        {
+          "seed": 2,
+          "final_size": [
+            517,
+            807
+          ],
+          "mae": 3.3631569990820167,
+          "rmse": 5.365096642402282,
+          "max_abs": 82.0,
+          "p95_abs": 10.0,
+          "changed_pixel_fraction": 0.8502393227537576,
+          "label_point_max_error_px": 0.0
+        }
+      ]
+    },
+    {
+      "preset": "phone-indoor",
+      "placement": "after_resize",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.2553766999626532,
+        0.3110675999778323
+      ],
+      "pages_per_second": 3.530797291472672,
+      "original_timed_seconds": [],
+      "original_pages_per_second": null,
+      "differences": []
+    },
+    {
+      "preset": "phone-angle",
+      "placement": "before_resize",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.5839125000056811,
+        0.3192734000040218
+      ],
+      "pages_per_second": 2.2143835504722937,
+      "original_timed_seconds": [
+        0.48389750003116205,
+        0.5147072999970987
+      ],
+      "original_pages_per_second": 2.002794298548735,
+      "differences": [
+        {
+          "seed": 0,
+          "final_size": [
+            502,
+            784
+          ],
+          "mae": 1.7661014106837953,
+          "rmse": 2.60947543418776,
+          "max_abs": 23.0,
+          "p95_abs": 6.0,
+          "changed_pixel_fraction": 0.6778904789007236,
+          "label_point_max_error_px": 0.0
+        },
+        {
+          "seed": 1,
+          "final_size": [
+            725,
+            1133
+          ],
+          "mae": 0.9450284566454636,
+          "rmse": 2.2115793403408603,
+          "max_abs": 58.0,
+          "p95_abs": 4.0,
+          "changed_pixel_fraction": 0.3233758407645251,
+          "label_point_max_error_px": 0.0
+        },
+        {
+          "seed": 2,
+          "final_size": [
+            313,
+            488
+          ],
+          "mae": 3.082143979468915,
+          "rmse": 4.318811220916324,
+          "max_abs": 35.0,
+          "p95_abs": 9.0,
+          "changed_pixel_fraction": 0.8682435971298381,
+          "label_point_max_error_px": 0.0
+        }
+      ]
+    },
+    {
+      "preset": "phone-angle",
+      "placement": "after_resize",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.6802234000060707,
+        0.5374982000212185
+      ],
+      "pages_per_second": 1.6424115331083722,
+      "original_timed_seconds": [],
+      "original_pages_per_second": null,
+      "differences": []
+    },
+    {
+      "preset": "phone-shadow",
+      "placement": "before_resize",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.9686883999966085,
+        0.40597790002357215
+      ],
+      "pages_per_second": 1.4548985451746648,
+      "original_timed_seconds": [
+        0.9249134000274353,
+        0.8478750999784097
+      ],
+      "original_pages_per_second": 1.128166163077776,
+      "differences": [
+        {
+          "seed": 0,
+          "final_size": [
+            550,
+            859
+          ],
+          "mae": 2.1456302254206796,
+          "rmse": 3.6783880547519643,
+          "max_abs": 81.0,
+          "p95_abs": 6.0,
+          "changed_pixel_fraction": 0.749884643877659,
+          "label_point_max_error_px": 0.0
+        },
+        {
+          "seed": 1,
+          "final_size": [
+            404,
+            632
+          ],
+          "mae": 2.51189450432385,
+          "rmse": 4.454240278032036,
+          "max_abs": 53.0,
+          "p95_abs": 7.0,
+          "changed_pixel_fraction": 0.8314560095250031,
+          "label_point_max_error_px": 0.0
+        },
+        {
+          "seed": 2,
+          "final_size": [
+            359,
+            561
+          ],
+          "mae": 1.425429123282638,
+          "rmse": 3.4180472620541655,
+          "max_abs": 64.0,
+          "p95_abs": 7.0,
+          "changed_pixel_fraction": 0.41724636169990914,
+          "label_point_max_error_px": 0.0
+        }
+      ]
+    },
+    {
+      "preset": "phone-shadow",
+      "placement": "after_resize",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.3283217999851331,
+        0.363886300008744
+      ],
+      "pages_per_second": 2.8893045314229795,
+      "original_timed_seconds": [],
+      "original_pages_per_second": null,
+      "differences": []
+    },
+    {
+      "preset": "phone-curl",
+      "placement": "before_resize",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.275750600034371,
+        0.28373630001442507
+      ],
+      "pages_per_second": 3.5747038935595605,
+      "original_timed_seconds": [
+        0.3814966999925673,
+        0.41775259998394176
+      ],
+      "original_pages_per_second": 2.5023481410102986,
+      "differences": [
+        {
+          "seed": 0,
+          "final_size": [
+            926,
+            1447
+          ],
+          "mae": 0.0,
+          "rmse": 0.0,
+          "max_abs": 0.0,
+          "p95_abs": 0.0,
+          "changed_pixel_fraction": 0.0,
+          "label_point_max_error_px": 0.0
+        },
+        {
+          "seed": 1,
+          "final_size": [
+            331,
+            517
+          ],
+          "mae": 1.4769440240289375,
+          "rmse": 4.221783817407296,
+          "max_abs": 70.0,
+          "p95_abs": 8.0,
+          "changed_pixel_fraction": 0.2437780128208874,
+          "label_point_max_error_px": 2.842170943040401e-14
+        },
+        {
+          "seed": 2,
+          "final_size": [
+            519,
+            810
+          ],
+          "mae": 2.3425723732724375,
+          "rmse": 8.342198096633172,
+          "max_abs": 190.0,
+          "p95_abs": 11.0,
+          "changed_pixel_fraction": 0.2828801826875045,
+          "label_point_max_error_px": 0.0
+        }
+      ]
+    },
+    {
+      "preset": "phone-curl",
+      "placement": "after_resize",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.22849259997019544,
+        0.2318251000251621
+      ],
+      "pages_per_second": 4.344825323945116,
+      "original_timed_seconds": [],
+      "original_pages_per_second": null,
+      "differences": []
+    }
+  ],
+  "manifest": [
+    {
+      "path": "phone-daylight-intermediate.png",
+      "sha256": "099d99f8e8d987b7ae5b0ad6dd346a16355ce87c19e53112f1de3ce38c82ff17",
+      "bytes": 9455,
+      "source": "self-authored synthetic schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-comparison"
+    },
+    {
+      "path": "phone-daylight-original.png",
+      "sha256": "e67693fd218e6b0cd4ad949fa0a56897d5fd3648b395f8e20ca01c48ee06a84c",
+      "bytes": 9077,
+      "source": "self-authored synthetic schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-comparison"
+    },
+    {
+      "path": "phone-indoor-intermediate.png",
+      "sha256": "a1305c078bf83a1b494a496dbf24d57566c64e7e55f5f9312dc1ccd2ac049a0e",
+      "bytes": 12887,
+      "source": "self-authored synthetic schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-comparison"
+    },
+    {
+      "path": "phone-indoor-original.png",
+      "sha256": "711d1902f0417c22f3b3153b87f110f89c39f1903c06ef3e6802577df8c0f65b",
+      "bytes": 16132,
+      "source": "self-authored synthetic schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-comparison"
+    },
+    {
+      "path": "phone-angle-intermediate.png",
+      "sha256": "a8f78002b8216b982e9c5525870dcdfe8b20dead34eb60af190af6cfcc6fc0b7",
+      "bytes": 40629,
+      "source": "self-authored synthetic schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-comparison"
+    },
+    {
+      "path": "phone-angle-original.png",
+      "sha256": "bc3a56c402aeb719d27f6c927895085a2699f333201077fdfd0acab3352a3c45",
+      "bytes": 42948,
+      "source": "self-authored synthetic schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-comparison"
+    },
+    {
+      "path": "phone-shadow-intermediate.png",
+      "sha256": "be6036ea3ce474e615262c1a2726165e033a9c55bbf40d9590b6ec03519aadc1",
+      "bytes": 13670,
+      "source": "self-authored synthetic schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-comparison"
+    },
+    {
+      "path": "phone-shadow-original.png",
+      "sha256": "421c4b93bad1cdfd7b14fce797a6b350dc1426b4eff403da9cd76a1f40f8dcbb",
+      "bytes": 13381,
+      "source": "self-authored synthetic schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-comparison"
+    },
+    {
+      "path": "phone-curl-intermediate.png",
+      "sha256": "11315c9a05200c3edb4982c835c0a55e257c060bd22f2fbdf5036ad7126949b7",
+      "bytes": 9691,
+      "source": "self-authored synthetic schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-comparison"
+    },
+    {
+      "path": "phone-curl-original.png",
+      "sha256": "65e5bf3e8a0f92fc25acb43df73ba16bdf65e3f0ffd8d7350e68ecb7f60498f4",
+      "bytes": 9431,
+      "source": "self-authored synthetic schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-comparison"
+    }
+  ],
+  "realism_ks_quantiles_auc": "NOT_RUN",
+  "delta_95pct_ci": null,
+  "difference_summary": {
+    "mae": {
+      "min": 0.0,
+      "max": 3.3631569990820167,
+      "mean_over_samples": 1.7067682501402457
+    },
+    "rmse": {
+      "min": 0.0,
+      "max": 10.26828273324931,
+      "mean_over_samples": 3.8678324218055615
+    },
+    "max_abs": {
+      "min": 0.0,
+      "max": 190.0,
+      "mean_over_samples": 61.13333333333333
+    },
+    "p95_abs": {
+      "min": 0.0,
+      "max": 17.0,
+      "mean_over_samples": 6.9
+    },
+    "label_point_max_error_px": {
+      "min": 0.0,
+      "max": 2.842170943040401e-14,
+      "mean_over_samples": 5.684341886080802e-15
+    }
+  },
+  "validation": {
+    "local_platform": "Windows Python 3.12",
+    "passed": 524,
+    "skipped": 0,
+    "w3_passed": 126,
+    "w3_coverage_percent": 96.90402476780186,
+    "ast_status": "PASS",
+    "findings": 0,
+    "suppressed": 0,
+    "real_data_leakage": "NOT_RUN",
+    "ci": "PENDING: ready after local Windows full tests"
+  }
+}
