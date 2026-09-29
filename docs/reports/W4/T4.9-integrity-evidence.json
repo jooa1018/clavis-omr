@@ -1,29 +1,12 @@
 {
   "scan": {
     "schema": "clavis-hardcode-scan-1",
-    "status": "FAIL",
+    "status": "PASS",
     "pythonFiles": 69,
     "manifestIdentifiers": 0,
-    "findings": [
-      {
-        "file": "training/data/smoke_inputs.py",
-        "line": 23,
-        "rule": "H4",
-        "owner": "W2",
-        "evidence_digest": "ebb87231f5d5152d210f60db0752161cc5d8121ee671f4058cbe564b5aa991af"
-      },
-      {
-        "file": "training/data/smoke_inputs.py",
-        "line": 25,
-        "rule": "H4",
-        "owner": "W2",
-        "evidence_digest": "4777582c4d3e7ae679ed64dd7e7948e97ec3e1ced34bc533fc3701df2e8e9424"
-      }
-    ],
+    "findings": [],
     "suppressed": [],
-    "byOwner": {
-      "W2": 2
-    }
+    "byOwner": {}
   },
   "coverage": {
     "covered_lines": 231,
