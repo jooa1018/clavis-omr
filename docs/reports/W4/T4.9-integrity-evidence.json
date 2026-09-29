@@ -2,7 +2,7 @@
   "scan": {
     "schema": "clavis-hardcode-scan-1",
     "status": "FAIL",
-    "pythonFiles": 49,
+    "pythonFiles": 69,
     "manifestIdentifiers": 0,
     "findings": [
       {
@@ -25,7 +25,16 @@
       "W2": 2
     }
   },
-  "coverage": null,
+  "coverage": {
+    "covered_lines": 231,
+    "num_statements": 249,
+    "percent_covered": 92.7710843373494,
+    "percent_covered_display": "93",
+    "missing_lines": 18,
+    "excluded_lines": 0,
+    "percent_statements_covered": 92.7710843373494,
+    "percent_statements_covered_display": "93"
+  },
   "leakage": {
     "admittedCount": 0,
     "status": "NOT_RUN",
