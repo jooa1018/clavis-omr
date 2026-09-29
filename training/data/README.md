@@ -97,3 +97,25 @@ was adopted by Orchestrator on 2026-09-29; production implementation is separate
 The development remaining-duration sampler must not be reused in production. All output stays in work/ and records
 training_admission=BLOCKED_PENDING_W4_AND_APPROVED_PROFILE. Nothing is admitted
 to a training manifest, and unverified lyric/font sources remain forbidden.
+
+## Adopted production profile (implementation in progress)
+
+`configs/data/leadgen-production.yaml` records ADR-010 option B exactly, including
+mode-first key weights, meter weights, two-level feature rates, block acceptance,
+and rare-duration floors. It cannot be passed to the development CLI.
+`rhythm_groups.py` samples complete caller-supplied beat-group patterns with exact
+rational sums. It never fills a remaining duration. Groups may span multiple beats
+for cross-beat rhythms; notation, ties and XML serialization are not implemented
+here. Pattern weights are not automatically fitted to the marginal note target.
+
+The independent KL helper uses natural-log D_KL(generated || target), per meter,
+with no smoothing. Missing target support yields infinity, not a finite score.
+The conditional-count helper rejects impossible integer ranges: for example, one
+grace note among 19 notes exceeds the approved 5% upper bound. It does not silently
+round or alter the denominator. Production reporting must include numerator and
+denominator for every selected song, plus the overall song occurrence rate.
+
+Actual PDMX training-subset aggregates and provenance are absent. No invented
+reference distribution, production XML, or 10,000-song acceptance is emitted.
+W4 admission remains blocked. PR #4 was OPEN on 2026-09-29: T2.5 LSTL ordering is
+on hold until its merge (recheck when starting T2.5).

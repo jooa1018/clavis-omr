@@ -1,0 +1,91 @@
+# Approved values only; not an executable MusicXML production release.
+version: ADR-010-B-2026-09-29
+enabled: true
+training_admission: BLOCKED_PENDING_W4
+mode_weights:
+  major: 3
+  minor: 1
+key_weights:
+  major:
+    -7: 1
+    -6: 1
+    -5: 2
+    -4: 2
+    -3: 2
+    -2: 2
+    -1: 2
+    0: 2
+    1: 2
+    2: 2
+    3: 2
+    4: 2
+    5: 1
+    6: 1
+    7: 1
+  minor:
+    -7: 1
+    -6: 1
+    -5: 1
+    -4: 1
+    -3: 2
+    -2: 2
+    -1: 2
+    0: 2
+    1: 2
+    2: 2
+    3: 2
+    4: 1
+    5: 1
+    6: 1
+    7: 1
+meter_weights:
+  4/4: 4
+  3/4: 2
+  6/8: 3
+  2/4: 1
+  12/8: 1
+  2/2: 1
+features:
+  pickup:
+    song_probability: 0.3
+  key_meter_change:
+    song_probability: 0.05
+  repeat_volta_navigation:
+    song_probability: 0.2
+  slash:
+    song_probability: 0.1
+    within_denominator: measures
+    within_range:
+    - 0.1
+    - 0.4
+  two_voice:
+    song_probability: 0.1
+    within_denominator: measures
+    within_range:
+    - 0.2
+    - 0.5
+  triplet:
+    song_probability: 0.15
+    within_denominator: measures
+    within_range:
+    - 0.1
+    - 0.3
+  grace:
+    song_probability: 0.1
+    within_denominator: notes
+    within_range:
+    - 0.02
+    - 0.05
+block_acceptance:
+  songs: 10000
+  p0_min_song_ratio: 0.01
+  p0_min_instances: 500
+rhythm:
+  strategy: meter_beat_groups
+  target_source: PDMX train subset by meter
+  target_artifact: null
+  min_32nd_note_ratio: 0.005
+  min_double_dot_note_ratio: 0.005
+  kl_direction: generated || target
+  zero_target_with_positive_generated: infinite
+  missing_target: BLOCKED

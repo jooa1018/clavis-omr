@@ -26,3 +26,17 @@
     report: docs/reports/W2/2026-09-29-leadgen-start.md
   introduced_by: w2/leadgen-v0
   motivated_by_failure: false
+- id: DATA-GEN-002
+  owner: W2
+  statement: "Sample complete beat-group patterns only; reject missing or invalid groups. Never fill remaining duration greedily."
+  units: quarter_notes
+  params: [groups, patterns]
+  source: convention
+  evidence: docs/adr/ADR-010-leadgen-distribution.md
+  flag: configs/data/leadgen-production.yaml#enabled
+  ablation:
+    status: NOT_RUN
+    reason: "Primitive off-path rejection tested; production awaits PDMX target."
+    report: docs/reports/W2/2026-09-29-production-profile.md
+  introduced_by: w2/production-profile
+  motivated_by_failure: false
