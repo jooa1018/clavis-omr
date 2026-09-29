@@ -20,5 +20,7 @@
     "status": "MERGED",
     "sha": "6fd2162f01671c3193b72358cb9968e2ad4a62b6",
     "ci": "https://github.com/jooa1018/clavis-omr/actions/runs/36507058980"
-  }
+  },
+  "runtime_license_violations": [],
+  "pull_request": "https://github.com/jooa1018/clavis-omr/pull/11"
 }

@@ -8,7 +8,7 @@ PDMX 학습 집계 미제공으로 실제 생산·KL·1만 곡 검증은 보류,
 
 ## 2. 변경 (PR 링크, 주요 파일·모듈)
 [개발 코어 PR #9](https://github.com/jooa1018/clavis-omr/pull/9), merge 6fd2162.
-후속 w2/production-profile: leadgen-production.yaml, rhythm_groups.py, 단위 테스트,
+[후속 draft PR #11](https://github.com/jooa1018/clavis-omr/pull/11): leadgen-production.yaml, rhythm_groups.py, 단위 테스트,
 DATA-GEN-002, README. 원본 폴더 브랜치 변경 없음. 상류 main을 먼저 병합했다.
 
 ## 3. 계약·결정 (사용한 계약 버전, CCR·ADR 번호)
@@ -24,7 +24,7 @@ PR #9 최종 7071657의 [Windows/Linux CI](https://github.com/jooa1018/clavis-om
 후속 신규 14개 테스트 통과, rhythm_groups 라인 커버리지 100%.
 전체 156 passed / 1 기존 skip. ruff·format·W2 strict mypy 통과.
 고정 RNG 반복 결과, 유효 시간합, 무효·누락·disabled 입력 거절, KL 영점/무한대 검사.
-후속 CI는 PR에서 확인. W4 스캐너 NOT_RUN(OR-002). 새 의존성·코퍼스 다운로드 없음.
+후속 CI는 PR에서 확인. runtime license 검사 위반 0건. W4 스캐너 NOT_RUN(OR-002). 새 의존성·코퍼스 다운로드 없음.
 
 ## 5. 지표 (평가기 JSON 경로 + 핵심 수치 표: 이전 대비 변화와 95% CI, 슬라이스별)
 production-profile-validation.json: 자동 단위 검사 결과, 새 함수 커버리지.
