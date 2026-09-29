@@ -119,7 +119,7 @@
   {
     "id": "SYM-READ-002",
     "owner": "W6",
-    "statement": "국소 속성·머리 종류·경쟁 stem 연결을 확률 곱 순서로 최대 8개 열거하며 소비하지 못한 근거를 검토 대상으로 남긴다.",
+    "statement": "Competing stem connections and head classes use at most eight probability-ranked hypotheses; attributes remain in attrTopK so they cannot crowd out relationship alternatives.",
     "units": "staff_space / probability",
     "params": [],
     "source": "convention",

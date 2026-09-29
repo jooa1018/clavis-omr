@@ -9,32 +9,32 @@
     {
       "threads": 1,
       "repeat": 0,
-      "seconds": 0.09012090001488104
+      "seconds": 0.015472099999897182
     },
     {
       "threads": 1,
       "repeat": 1,
-      "seconds": 0.016241000033915043
+      "seconds": 0.002516400010790676
     },
     {
       "threads": 1,
       "repeat": 2,
-      "seconds": 0.01589899999089539
+      "seconds": 0.002337200043257326
     },
     {
       "threads": 4,
       "repeat": 0,
-      "seconds": 0.0189377999631688
+      "seconds": 0.0025996000040322542
     },
     {
       "threads": 4,
       "repeat": 1,
-      "seconds": 0.0197510999860242
+      "seconds": 0.0027081999578513205
     },
     {
       "threads": 4,
       "repeat": 2,
-      "seconds": 0.015218699991237372
+      "seconds": 0.0026883999817073345
     }
   ],
   "scaled_mock_counts": [
@@ -117,7 +117,7 @@
     }
   },
   "reading": {
-    "hypotheses": 8,
+    "hypotheses": 2,
     "stem_evidence_variants": 2,
     "pos_alternatives": [
       [
@@ -163,82 +163,6 @@
           "16th",
           3000
         ]
-      ],
-      [
-        [
-          "quarter",
-          6000
-        ],
-        [
-          "eighth",
-          3000
-        ],
-        [
-          "16th",
-          1000
-        ]
-      ],
-      [
-        [
-          "eighth",
-          7000
-        ],
-        [
-          "16th",
-          3000
-        ]
-      ],
-      [
-        [
-          "quarter",
-          6000
-        ],
-        [
-          "eighth",
-          3000
-        ],
-        [
-          "16th",
-          1000
-        ]
-      ],
-      [
-        [
-          "quarter",
-          6000
-        ],
-        [
-          "eighth",
-          3000
-        ],
-        [
-          "16th",
-          1000
-        ]
-      ],
-      [
-        [
-          "eighth",
-          7000
-        ],
-        [
-          "16th",
-          3000
-        ]
-      ],
-      [
-        [
-          "quarter",
-          6000
-        ],
-        [
-          "eighth",
-          3000
-        ],
-        [
-          "16th",
-          1000
-        ]
       ]
     ],
     "disabled_reading_items": 0,
@@ -246,5 +170,5 @@
   },
   "oracle_at_k": "NOT_RUN: no labeled evaluation set / W4 symbol metric",
   "reading_IER": "NOT_RUN: no W2 LSTL / W4 reading metric",
-  "peak_rss_bytes": 68456448
+  "peak_rss_bytes": 68321280
 }

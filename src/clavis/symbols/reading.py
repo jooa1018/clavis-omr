@@ -106,26 +106,28 @@ def _choices(head: Symbol, graph: SymbolGraph) -> list[tuple[float, LatticeItem]
             "dots": [(v, p) for v, p in attrs.dots_top_k],
             "v": [(v, p) for v, p in attrs.voice_top_k],
         }
-        for combination in product(*distributions.values()):
-            probabilities = [class_bp, link_bp]
-            probabilities.extend(p for _, p in combination)
-            if not all(probabilities):
-                continue
-            score = sum(log(p / BP) for p in probabilities)
-            token = dict(zip(distributions, (v for v, _ in combination), strict=True))
-            item = LatticeItem.model_validate(
-                {
-                    "item": {"type": "note", "head": "normal", **token},
-                    "attrTopK": distributions,
-                    "spanU": [
-                        min(s.box_strip[0] for s in evidence),
-                        max(s.box_strip[0] + s.box_strip[2] for s in evidence),
-                    ],
-                    "itemProbBp": min(probabilities),
-                    "symbolIds": sorted({s.symbol_id for s in evidence}),
-                }
-            )
-            alternatives.append((score, item))
+        # Attributes already live in attrTopK. Spending N-best slots on their
+        # Cartesian product would crowd out lower-probability stem connections.
+        combination = [values[0] for values in distributions.values()]
+        probabilities = [class_bp, link_bp]
+        probabilities.extend(p for _, p in combination)
+        if not all(probabilities):
+            continue
+        score = sum(log(p / BP) for p in probabilities)
+        token = dict(zip(distributions, (v for v, _ in combination), strict=True))
+        item = LatticeItem.model_validate(
+            {
+                "item": {"type": "note", "head": "normal", **token},
+                "attrTopK": distributions,
+                "spanU": [
+                    min(s.box_strip[0] for s in evidence),
+                    max(s.box_strip[0] + s.box_strip[2] for s in evidence),
+                ],
+                "itemProbBp": min(probabilities),
+                "symbolIds": sorted({s.symbol_id for s in evidence}),
+            }
+        )
+        alternatives.append((score, item))
     return alternatives
 
 
@@ -139,7 +141,6 @@ def draft_reading(
     exposed and prevents production finalization. Probabilities are uncalibrated.
     """
     paths: list[tuple[float, list[LatticeItem]]] = [(0.0, [])]
-    consumed: set[str] = set()
     if enabled and durations_enabled:
         for head in sorted(graph.symbols, key=lambda s: (*s.center_strip, s.symbol_id)):
             if not any(
@@ -150,8 +151,6 @@ def draft_reading(
             choices = _choices(head, graph)
             if not choices:
                 continue
-            for _, item in choices:
-                consumed.update(item.symbol_ids)
             expanded = [(p + q, items + [item]) for p, items in paths for q, item in choices]
             expanded.sort(
                 key=lambda path: (
@@ -172,6 +171,7 @@ def draft_reading(
             ],
         }
     )
+    consumed = {symbol_id for _, items in paths for item in items for symbol_id in item.symbol_ids}
     unresolved = {s.symbol_id for s in graph.symbols} - consumed
     unresolved.update(s.symbol_id for s in graph.rejected_candidates)
     # Relations outside the supported stem path must also remain reviewable.

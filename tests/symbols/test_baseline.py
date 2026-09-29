@@ -225,7 +225,7 @@ def test_invalid_config(change):
 
 def test_reading_preserves_attribute_and_relation_alternatives():
     result = draft_reading(graph(), PRODUCER)
-    assert len(result.lattice.hypotheses) == 8
+    assert len(result.lattice.hypotheses) == 2
     items = [h.items[0] for h in result.lattice.hypotheses]
     assert {tuple(i.symbol_ids) for i in items} == {
         ("pg0-sy0-st0-s0", "pg0-sy0-st0-s1"),
@@ -290,3 +290,36 @@ def test_unsupported_counts_fail_closed_and_geometry_rejected():
     image, bank = scene()
     with pytest.raises(ValueError):
         run_detection(image, bank, staff_space=0)
+
+
+def test_weak_connection_is_not_crowded_out_by_attribute_combinations():
+    source = graph()
+    source.relations[0].prob_bp = 9999
+    source.relations[1].prob_bp = 1
+    result = draft_reading(source, PRODUCER)
+    assert len(result.lattice.hypotheses) == 2
+    assert any("pg0-sy0-st0-s2" in h.items[0].symbol_ids for h in result.lattice.hypotheses)
+    assert all(len(h.items[0].attr_top_k["dots"]) == 2 for h in result.lattice.hypotheses)
+
+
+@pytest.mark.parametrize("notes", [3, 4])
+def test_eight_hypothesis_cap_applies_to_relationship_paths(notes):
+    source = graph()
+    symbols, relations = [], []
+    for note in range(notes):
+        part = graph()
+        rename = {s.symbol_id: f"pg0-sy0-st0-s{note * 3 + i}" for i, s in enumerate(part.symbols)}
+        for symbol in part.symbols:
+            symbol.symbol_id = rename[symbol.symbol_id]
+            x, y, w, h = symbol.box_strip
+            symbol.box_strip = (x + note * 100, y, w, h)
+            u, v = symbol.center_strip
+            symbol.center_strip = (u + note * 100, v)
+        for relation in part.relations:
+            relation.from_id, relation.to = rename[relation.from_id], rename[relation.to]
+        symbols.extend(part.symbols)
+        relations.extend(part.relations)
+    source.symbols, source.relations = symbols, relations
+    result = draft_reading(source, PRODUCER)
+    assert len(result.lattice.hypotheses) == 8
+    assert all(len(h.items) == notes for h in result.lattice.hypotheses)

@@ -18,6 +18,8 @@ observed duration/pos/dots/voice distributions and competing stem evidence in up
 to eight hypotheses. Missing attributes remain unknown. Unsupported evidence is
 returned in `ReadingDraft.unresolved_symbol_ids`. Both reading rules have separate
 on/off arguments (`enabled`, `durations_enabled`).
+N-best slots represent relationship/head-class combinations; attribute choices
+stay in `attrTopK` so they cannot crowd a weak competing connection out of N-best.
 
 This is **not yet a complete strip-to-lattice recognizer**: the detector does not
 estimate beam/flag or dots/voice attributes, and the reader does not recognize
