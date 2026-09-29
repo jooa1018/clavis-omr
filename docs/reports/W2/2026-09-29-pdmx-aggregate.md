@@ -1,10 +1,10 @@
 # [W2] PDMX 집계 실행 준비·착수 — 2026-09-29
-판정: PARTIAL
+판정: PARTIAL — PAUSED (Orchestrator 전체 중지)
 
 ## 1. 요약 (3줄 이내)
 Orchestrator 판정으로 T2.2 PDMX 집계를 시작했다. 학습 편입은 아니다.
 v9 CSV/MXL 스트리밍, 항목별 권리 필터, 식별자 없는 집계/재개 경로를 구현했다.
-OR-004 승인 자원 제한으로 실제 집계 실행 중이며 결과를 아직 주장하지 않는다.
+OR-004 실행은 중지 점검 시 이미 종료되어 있었다. 원인 미확인, 최종 집계 없음.
 
 ## 2. 변경 (PR 링크, 주요 파일·모듈)
 w2/pdmx-aggregate: pdmx_aggregate.py, pdmx_stream.py, pdmx_windows.py,
@@ -27,7 +27,11 @@ Draft CI 미실행. GitHub Actions에서 데이터 처리하지 않는다.
 
 ## 5. 지표 (평가기 JSON 경로 + 핵심 수치 표: 이전 대비 변화와 95% CI, 슬라이스별)
 pdmx-preflight.json에 배포 파일 크기, 전송 실측, 예상 벽시계, 자원 상한 기록.
-8 MiB 전송 48.615171초. 실제 완료 후 wall/peak RSS/평균 CPU/전송량을 보고한다.
+8 MiB 전송 48.615171초. 마지막 계측은 pdmx-interrupted-metrics.json에 보존했다.
+확인된 누적 wall 934.3834915초, peak RSS 47,484,928 bytes, CPU 8.90625초,
+평균 CPU 1코어 기준 0.9531686%, 전송 184,549,376 bytes. 종료 말미 누락 가능.
+원본 상태 문자열 RUNNING은 오래된 기록이다. 현재 생존/완료 증거가 아니다.
+CSV 및 MXL 전체 크기·MD5 검증 NOT_COMPLETE, 최종 aggregate.json 없음.
 공개 PDMX 권리필터 집계, 로컬 Windows CPU. Dev/sealed/실사/학습 미실행.
 인식 지표·95% CI 해당 없음. KL/1만 곡 블록은 아직 NOT_RUN.
 
@@ -45,5 +49,8 @@ venv redirector가 별도 Python을 남겨 CSV 단계에서 중단하고 base Py
 샘플링 허용을 쓰지 않고 전수 집계한다. 지원 밖 박자·알 수 없는 음가를 목표로 추정하지 않는다.
 
 ## 8. 다음 단계 / 필요한 결정 / 블로커
-집계 중 합성 입력으로 생산 프로필/KL 코드를 준비한다. 완료 후 실제 분포·1만 곡 검증.
+전체 중지 지시에 따라 새 실행 없이 draft PR #28에 현재 상태를 저장한다.
+재개 첫 단계는 Orchestrator 재개 판정 확인 후 자원·체크포인트 점검이다.
+집계 재개, 생산 프로필 확정, KL 및 1만 곡 검증은 그 이후 수행한다.
+상세 인계: 2026-09-29-pause.md. 기다리는 판정은 RAM 증설 후 재개 승인이다.
 완료 전 W4에 eval-* 준비 완료를 통지하지 않는다. 학습 편입 차단 유지.
