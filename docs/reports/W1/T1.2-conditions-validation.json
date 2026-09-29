@@ -22,5 +22,11 @@
   "conditionInvalidDocuments": 46,
   "canonicalFixtureSha256": "afc476d62f9473d6d3de2ac920407204302853aee1fa47ab54a9a329fbf7ee3f",
   "integrity": "NOT_RUN",
-  "recognitionEvaluation": "NOT_RUN"
+  "recognitionEvaluation": "NOT_RUN",
+  "remoteCi": {
+    "commit": "71ece8ada4ec5f583f5f2d0b0b10c81925e4e1cf",
+    "url": "https://github.com/jooa1018/clavis-omr/actions/runs/36507598079",
+    "ubuntu": "PASS",
+    "windows": "PASS"
+  }
 }
