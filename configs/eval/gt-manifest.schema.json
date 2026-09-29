@@ -1,0 +1,29 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "clavis-gt-manifest-1",
+      "title": "Schemaversion",
+      "type": "string"
+    },
+    "datasetVersion": {
+      "title": "Datasetversion",
+      "type": "string"
+    },
+    "sidecars": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Sidecars",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "datasetVersion",
+    "sidecars"
+  ],
+  "title": "Manifest",
+  "type": "object"
+}

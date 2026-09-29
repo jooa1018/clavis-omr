@@ -1,0 +1,224 @@
+{
+  "$defs": {
+    "Homography": {
+      "additionalProperties": false,
+      "properties": {
+        "fromFrameId": {
+          "minLength": 1,
+          "title": "Fromframeid",
+          "type": "string"
+        },
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "homography",
+          "title": "Kind",
+          "type": "string"
+        },
+        "matrix": {
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 9,
+          "minItems": 9,
+          "title": "Matrix",
+          "type": "array"
+        },
+        "toFrameId": {
+          "minLength": 1,
+          "title": "Toframeid",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "fromFrameId",
+        "toFrameId",
+        "kind",
+        "matrix"
+      ],
+      "title": "Homography",
+      "type": "object"
+    },
+    "ImageCoordinateFrame": {
+      "additionalProperties": false,
+      "properties": {
+        "coordinateSpace": {
+          "enum": [
+            "original-pixels",
+            "processed-pixels"
+          ],
+          "title": "Coordinatespace",
+          "type": "string"
+        },
+        "heightPixels": {
+          "minimum": 1,
+          "title": "Heightpixels",
+          "type": "integer"
+        },
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "imageDigest": {
+          "title": "Imagedigest",
+          "type": "string"
+        },
+        "pageIndex": {
+          "minimum": 0,
+          "title": "Pageindex",
+          "type": "integer"
+        },
+        "widthPixels": {
+          "minimum": 1,
+          "title": "Widthpixels",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "pageIndex",
+        "coordinateSpace",
+        "widthPixels",
+        "heightPixels",
+        "imageDigest"
+      ],
+      "title": "ImageCoordinateFrame",
+      "type": "object"
+    },
+    "Original": {
+      "additionalProperties": false,
+      "properties": {
+        "height": {
+          "minimum": 1,
+          "title": "Height",
+          "type": "integer"
+        },
+        "pixelsSha256": {
+          "title": "Pixelssha256",
+          "type": "string"
+        },
+        "width": {
+          "minimum": 1,
+          "title": "Width",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "width",
+        "height",
+        "pixelsSha256"
+      ],
+      "title": "Original",
+      "type": "object"
+    },
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "bytesSha256": {
+          "title": "Bytessha256",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "image",
+            "pdf"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "mime": {
+          "title": "Mime",
+          "type": "string"
+        },
+        "pdfPageIndex": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pdfpageindex"
+        },
+        "rasterDpi": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rasterdpi"
+        }
+      },
+      "required": [
+        "kind",
+        "mime",
+        "bytesSha256"
+      ],
+      "title": "Source",
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "frames": {
+      "items": {
+        "$ref": "#/$defs/ImageCoordinateFrame"
+      },
+      "title": "Frames",
+      "type": "array"
+    },
+    "id": {
+      "minLength": 1,
+      "title": "Id",
+      "type": "string"
+    },
+    "original": {
+      "$ref": "#/$defs/Original"
+    },
+    "pageIndex": {
+      "minimum": 0,
+      "title": "Pageindex",
+      "type": "integer"
+    },
+    "schema": {
+      "const": "clavis-ir-0.1",
+      "title": "Schema",
+      "type": "string"
+    },
+    "source": {
+      "$ref": "#/$defs/Source"
+    },
+    "transforms": {
+      "items": {
+        "$ref": "#/$defs/Homography"
+      },
+      "title": "Transforms",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema",
+    "id",
+    "pageIndex",
+    "source",
+    "original",
+    "frames",
+    "transforms"
+  ],
+  "title": "PageInput",
+  "type": "object"
+}

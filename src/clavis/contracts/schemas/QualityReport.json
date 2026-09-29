@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "blurBp": {
+      "maximum": 10000,
+      "minimum": 0,
+      "title": "Blurbp",
+      "type": "integer"
+    },
+    "contrastBp": {
+      "maximum": 10000,
+      "minimum": 0,
+      "title": "Contrastbp",
+      "type": "integer"
+    },
+    "cropRiskBp": {
+      "maximum": 10000,
+      "minimum": 0,
+      "title": "Cropriskbp",
+      "type": "integer"
+    },
+    "estimatedStaffSpacePixels": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Estimatedstaffspacepixels"
+    },
+    "expectedBurdenBucket": {
+      "anyOf": [
+        {
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Expectedburdenbucket"
+    },
+    "glareBp": {
+      "maximum": 10000,
+      "minimum": 0,
+      "title": "Glarebp",
+      "type": "integer"
+    },
+    "id": {
+      "minLength": 1,
+      "title": "Id",
+      "type": "string"
+    },
+    "interlineSpreadBp": {
+      "maximum": 10000,
+      "minimum": 0,
+      "title": "Interlinespreadbp",
+      "type": "integer"
+    },
+    "jpegQualityEstimate": {
+      "anyOf": [
+        {
+          "maximum": 100,
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Jpegqualityestimate"
+    },
+    "noiseBp": {
+      "maximum": 10000,
+      "minimum": 0,
+      "title": "Noisebp",
+      "type": "integer"
+    },
+    "perspectiveBp": {
+      "maximum": 10000,
+      "minimum": 0,
+      "title": "Perspectivebp",
+      "type": "integer"
+    },
+    "reasons": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Reasons",
+      "type": "array"
+    },
+    "schema": {
+      "const": "clavis-ir-0.1",
+      "title": "Schema",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "pass",
+        "warn",
+        "retake"
+      ],
+      "title": "Status",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema",
+    "id",
+    "blurBp",
+    "perspectiveBp",
+    "glareBp",
+    "cropRiskBp",
+    "status",
+    "reasons",
+    "contrastBp",
+    "noiseBp",
+    "interlineSpreadBp"
+  ],
+  "title": "QualityReport",
+  "type": "object"
+}

@@ -1,0 +1,169 @@
+{
+  "status": "PARTIAL",
+  "scope": "synthetic local CPU; automatic tests and manual smoke; no Dev/SYN-Val/real/sealed evaluation",
+  "prior_pr": {
+    "number": 6,
+    "status": "MERGED",
+    "merge_commit": "49e8dd91fc0ae137e42d64469d34da1eacc529cb",
+    "ci_run": 36497846584,
+    "w3_tests_per_os": 44,
+    "w3_skipped_per_os": 0
+  },
+  "tests": {
+    "tests": "121",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "1",
+    "time": "17.444"
+  },
+  "w3_tests": 84,
+  "coverage": {
+    "training\\degrade\\__init__.py": {
+      "covered_lines": 0,
+      "num_statements": 0,
+      "percent_covered": 100.0,
+      "percent_covered_display": "100",
+      "missing_lines": 0,
+      "excluded_lines": 0,
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100"
+    },
+    "training\\degrade\\curve.py": {
+      "covered_lines": 55,
+      "num_statements": 55,
+      "percent_covered": 100.0,
+      "percent_covered_display": "100",
+      "missing_lines": 0,
+      "excluded_lines": 0,
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100"
+    },
+    "training\\degrade\\demo.py": {
+      "covered_lines": 74,
+      "num_statements": 75,
+      "percent_covered": 98.66666666666667,
+      "percent_covered_display": "99",
+      "missing_lines": 1,
+      "excluded_lines": 0,
+      "percent_statements_covered": 98.66666666666667,
+      "percent_statements_covered_display": "99"
+    },
+    "training\\degrade\\ops.py": {
+      "covered_lines": 179,
+      "num_statements": 185,
+      "percent_covered": 96.75675675675676,
+      "percent_covered_display": "97",
+      "missing_lines": 6,
+      "excluded_lines": 0,
+      "percent_statements_covered": 96.75675675675676,
+      "percent_statements_covered_display": "97"
+    },
+    "training\\degrade\\photometric.py": {
+      "covered_lines": 73,
+      "num_statements": 74,
+      "percent_covered": 98.64864864864865,
+      "percent_covered_display": "99",
+      "missing_lines": 1,
+      "excluded_lines": 0,
+      "percent_statements_covered": 98.64864864864865,
+      "percent_statements_covered_display": "99"
+    },
+    "training\\degrade\\presets.py": {
+      "covered_lines": 13,
+      "num_statements": 13,
+      "percent_covered": 100.0,
+      "percent_covered_display": "100",
+      "missing_lines": 0,
+      "excluded_lines": 0,
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100"
+    },
+    "training\\degrade\\smoke.py": {
+      "covered_lines": 65,
+      "num_statements": 69,
+      "percent_covered": 94.20289855072464,
+      "percent_covered_display": "94",
+      "missing_lines": 4,
+      "excluded_lines": 0,
+      "percent_statements_covered": 94.20289855072464,
+      "percent_statements_covered_display": "94"
+    }
+  },
+  "w3_line_coverage_percent": 97.45222929936305,
+  "geometry_measurements": {
+    "wave_centroid_max_error_px": 0.0447976235569325,
+    "wave_chord_max_error_px": 0.24011257668263752,
+    "grid_centroid_max_error_px": 0.030923823488822055,
+    "grid_points_measured": 156.0
+  },
+  "checks": {
+    "ruff": "PASS",
+    "format": "PASS",
+    "mypy_root": "PASS",
+    "mypy_w3_strict": "PASS",
+    "import_boundaries": "PASS",
+    "runtime_license_audit": "PASS"
+  },
+  "families": [
+    "geometry",
+    "illumination",
+    "optics",
+    "resolution",
+    "compression",
+    "sensor",
+    "scan",
+    "paper",
+    "screen"
+  ],
+  "preset_count": 12,
+  "smoke": {
+    "pages_executed": 72,
+    "wall_seconds": 6.127605500019854,
+    "peak_rss_bytes": 130215936,
+    "threads": 1,
+    "seeds": [
+      0,
+      1,
+      2
+    ]
+  },
+  "smoke_min_pages_per_second": 4.816130956647241,
+  "smoke_below_target_slices": [
+    {
+      "preset": "phone-angle",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.2186904999834951,
+        0.19658059999346733
+      ],
+      "pages_per_second": 4.816130956647241,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 7.160550799602592
+    }
+  ],
+  "prior_smoke_min_pages_per_second": 4.683850621817792,
+  "resize_optimization_all_demo_hashes_equal": true,
+  "not_run": [
+    "W4 integrity scanners (OR-002 permits B merge)",
+    "contract fixture schemas",
+    "realism KS/quantiles/AUC",
+    "sustained throughput gate",
+    "Dev/SYN-Val recognition metrics and 95pct CI"
+  ],
+  "decision_needed": "ADR-011 draft: within-band uniform, source-bounded 24+ and paper-wave approximation. Not adopted as training defaults.",
+  "tested_source_sha256": {
+    "training/degrade/curve.py": "88785a1b85e7ac5052a75597955b0c3d6801d59327b1eae4c2cb04f882d31700",
+    "training/degrade/demo.py": "66fe91ad2c5b8e6d58450fe093c322974982112a2aab90a00bf03f47bfd4cab7",
+    "training/degrade/ops.py": "a9f2c19a9694cb1dcd53c1ef6933d0c0dadc7f756b5dd0ce2a8121b86d1aa39a",
+    "training/degrade/photometric.py": "20a8701b09de8ac8e399add8b33105faf244c3161b5bed85396a463717f22364",
+    "training/degrade/presets.py": "5eaa7fe7ec5a0f34a3a537897bb131e77a8a3cd5479fefd03d5cacdf8883e228",
+    "training/degrade/README.md": "5b0bd693d3e7f7eebe2139ef47c5423911a5f19493d37a1b51647eef10341ba3",
+    "training/degrade/smoke.py": "fe369ebf6f153b9041dfa24dfb590294b2e6348932d3ad1a659d24de94554cfe",
+    "training/degrade/__init__.py": "5bdb9c46d8ddd5bad050c145a16bc395fc9f56673dae31dc921850a5ef8f1e1f",
+    "tests/degrade/test_effects.py": "aef2056f054c60d4dd8296c054f648bee320b75ed352f0cd6a76cbc15b80278b",
+    "tests/degrade/test_ops.py": "4a792d7bde8a7eb7349274a18a9495f5c3ffdfbcb429cefa2a5d0e4894a56933",
+    "configs/degrade/first-pr.yaml": "6e9315b5b0e15460bee87d0d9fcf062891f8f01349427b014b4202a682229fd1",
+    "configs/degrade/presets.yaml": "2db905cf6caba1ba17f8d298e5eba42ee49ba29baee7d020b04ac517a8de885d"
+  }
+}

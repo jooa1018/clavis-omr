@@ -1,0 +1,1 @@
+{"model": "QualityReport", "payload": {"blurBp": 2300, "contrastBp": 7800, "cropRiskBp": 200, "estimatedStaffSpacePixels": 10.0, "expectedBurdenBucket": "medium", "glareBp": 0, "id": "pg0", "interlineSpreadBp": 0, "jpegQualityEstimate": 75, "noiseBp": 800, "perspectiveBp": 0, "reasons": ["RESOLUTION_TOO_LOW"], "schema": "clavis-invalid", "status": "warn"}}

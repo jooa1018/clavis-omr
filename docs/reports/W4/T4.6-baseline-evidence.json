@@ -1,0 +1,25 @@
+{
+  "coverage": {
+    "covered_lines": 101,
+    "num_statements": 116,
+    "percent_covered": 87.06896551724138,
+    "percent_covered_display": "87",
+    "missing_lines": 15,
+    "excluded_lines": 0,
+    "percent_statements_covered": 87.06896551724138,
+    "percent_statements_covered_display": "87"
+  },
+  "scan": {
+    "schema": "clavis-hardcode-scan-1",
+    "status": "PASS",
+    "pythonFiles": 81,
+    "manifestIdentifiers": 0,
+    "findings": [],
+    "suppressed": [],
+    "byOwner": {}
+  },
+  "B0": {
+    "status": "NOT_RUN",
+    "reason": "No Docker executable, installed baseline environment, Dev v0 or W1 queue"
+  }
+}

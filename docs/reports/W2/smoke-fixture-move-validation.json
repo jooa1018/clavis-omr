@@ -1,0 +1,20 @@
+{
+  "status": "PASS_BYTE_PRESERVATION",
+  "samples": 10,
+  "changed_inputs": 0,
+  "input_sha256": [
+    "5c78406bf42c72e7bcc086d34d41300e82e996efe99c1a13ee06f98ec5968fff",
+    "62039bf145f27210b0724d1b3dfe21ebf955e8a3394a539d2c7fa065c650e534",
+    "395387d49664b8ed463f65fafc26909f2a524e68781d7364af440548f7017c57",
+    "a980d85f21baca41ebe8b05285ac193ec6f969bbe9f2015e3908db7b5579813f",
+    "d3fc77ea953c7ee26222128040b086a8c9411390f34d6bb69528eaccd6098831",
+    "909068033e618222dd8c8e277b49b7fa728f3c251b46c7afd97c562b78d2f2fc",
+    "8e890a3a427abfd26cfc3987ae711bce1805b4c6292ea0c8cf5ae0dfe7cfd15a",
+    "8a55295e039b6a747d053450e346e2e6fd6eac938a2d7d8200c11e9c066d82ed",
+    "71491b09134f52fe4a1334477070a93063ee663b15148977e48aef0f145d7fb3",
+    "c61a97bd0a0bea7e52b4908c2a825d5ede5e840e26b2cb003a75c68136c4ea4a"
+  ],
+  "seconds": 0.027301999973133206,
+  "h4_scanner": "NOT_RUN; W4 retrospective rescan requested",
+  "training_admission": "BLOCKED"
+}

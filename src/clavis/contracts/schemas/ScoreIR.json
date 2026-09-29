@@ -1,0 +1,1399 @@
+{
+  "$defs": {
+    "Barline": {
+      "additionalProperties": false,
+      "properties": {
+        "style": {
+          "enum": [
+            "regular",
+            "double",
+            "final",
+            "repeatStart",
+            "repeatEnd",
+            "repeatBoth",
+            "dashed",
+            "heavy"
+          ],
+          "title": "Style",
+          "type": "string"
+        }
+      },
+      "required": [
+        "style"
+      ],
+      "title": "Barline",
+      "type": "object"
+    },
+    "Clef": {
+      "additionalProperties": false,
+      "properties": {
+        "sign": {
+          "enum": [
+            "G2",
+            "G2_8vb",
+            "G2_8va",
+            "F4",
+            "F4_8vb",
+            "F3",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "title": "Sign",
+          "type": "string"
+        }
+      },
+      "required": [
+        "sign"
+      ],
+      "title": "Clef",
+      "type": "object"
+    },
+    "Degree": {
+      "additionalProperties": false,
+      "properties": {
+        "alter": {
+          "maximum": 2,
+          "minimum": -2,
+          "title": "Alter",
+          "type": "integer"
+        },
+        "type": {
+          "enum": [
+            "add",
+            "alter",
+            "subtract"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "value": {
+          "minimum": 1,
+          "title": "Value",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "value",
+        "alter",
+        "type"
+      ],
+      "title": "Degree",
+      "type": "object"
+    },
+    "Diagnostic": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "blocking",
+            "warning",
+            "info"
+          ],
+          "title": "Severity",
+          "type": "string"
+        },
+        "target": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Target"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "code",
+        "severity"
+      ],
+      "title": "Diagnostic",
+      "type": "object"
+    },
+    "Direction": {
+      "additionalProperties": false,
+      "properties": {
+        "confidenceBp": {
+          "maximum": 10000,
+          "minimum": 0,
+          "title": "Confidencebp",
+          "type": "integer"
+        },
+        "directionId": {
+          "minLength": 1,
+          "title": "Directionid",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "tempo",
+            "section",
+            "navigation",
+            "rehearsal",
+            "words"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "onset": {
+          "$ref": "#/$defs/Fraction"
+        },
+        "symbolId": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Symbolid"
+        },
+        "textId": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Textid"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TempoValue"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "directionId",
+        "onset",
+        "kind",
+        "value",
+        "confidenceBp"
+      ],
+      "title": "Direction",
+      "type": "object"
+    },
+    "Ending": {
+      "additionalProperties": false,
+      "properties": {
+        "mark": {
+          "enum": [
+            "start",
+            "stop",
+            "discontinue"
+          ],
+          "title": "Mark",
+          "type": "string"
+        },
+        "numbers": {
+          "items": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "minItems": 1,
+          "title": "Numbers",
+          "type": "array"
+        }
+      },
+      "required": [
+        "numbers",
+        "mark"
+      ],
+      "title": "Ending",
+      "type": "object"
+    },
+    "Event": {
+      "additionalProperties": false,
+      "properties": {
+        "accidentalVisible": {
+          "anyOf": [
+            {
+              "enum": [
+                "none",
+                "sharp",
+                "flat",
+                "natural",
+                "doubleSharp",
+                "doubleFlat"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Accidentalvisible"
+        },
+        "chordWithPrev": {
+          "title": "Chordwithprev",
+          "type": "boolean"
+        },
+        "confidenceBp": {
+          "maximum": 10000,
+          "minimum": 0,
+          "title": "Confidencebp",
+          "type": "integer"
+        },
+        "duration": {
+          "$ref": "#/$defs/Fraction"
+        },
+        "eventId": {
+          "minLength": 1,
+          "title": "Eventid",
+          "type": "string"
+        },
+        "evidenceIds": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Evidenceids",
+          "type": "array"
+        },
+        "fermata": {
+          "title": "Fermata",
+          "type": "boolean"
+        },
+        "flags": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Flags",
+          "type": "array"
+        },
+        "grace": {
+          "anyOf": [
+            {
+              "enum": [
+                "none",
+                "acciaccatura",
+                "appoggiatura"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Grace"
+        },
+        "kind": {
+          "enum": [
+            "note",
+            "rest",
+            "rhythm"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "lyrics": {
+          "items": {
+            "$ref": "#/$defs/Lyric"
+          },
+          "title": "Lyrics",
+          "type": "array"
+        },
+        "measureRest": {
+          "title": "Measurerest",
+          "type": "boolean"
+        },
+        "notated": {
+          "$ref": "#/$defs/Notated"
+        },
+        "onset": {
+          "$ref": "#/$defs/Fraction"
+        },
+        "pitch": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Pitch"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "pos": {
+          "anyOf": [
+            {
+              "maximum": 22,
+              "minimum": -14,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pos"
+        },
+        "slur": {
+          "$ref": "#/$defs/JoinMarks"
+        },
+        "tie": {
+          "$ref": "#/$defs/JoinMarks"
+        }
+      },
+      "required": [
+        "eventId",
+        "kind",
+        "onset",
+        "duration",
+        "notated",
+        "chordWithPrev",
+        "tie",
+        "slur",
+        "fermata",
+        "measureRest",
+        "lyrics",
+        "evidenceIds",
+        "confidenceBp",
+        "flags"
+      ],
+      "title": "Event",
+      "type": "object"
+    },
+    "Flow": {
+      "additionalProperties": false,
+      "properties": {
+        "endings": {
+          "items": {
+            "$ref": "#/$defs/FlowEnding"
+          },
+          "title": "Endings",
+          "type": "array"
+        },
+        "navigation": {
+          "items": {
+            "$ref": "#/$defs/Navigation"
+          },
+          "title": "Navigation",
+          "type": "array"
+        },
+        "repeats": {
+          "items": {
+            "$ref": "#/$defs/Repeat"
+          },
+          "title": "Repeats",
+          "type": "array"
+        }
+      },
+      "required": [
+        "repeats",
+        "endings",
+        "navigation"
+      ],
+      "title": "Flow",
+      "type": "object"
+    },
+    "FlowEnding": {
+      "additionalProperties": false,
+      "properties": {
+        "endMeasureId": {
+          "minLength": 1,
+          "title": "Endmeasureid",
+          "type": "string"
+        },
+        "numbers": {
+          "items": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "minItems": 1,
+          "title": "Numbers",
+          "type": "array"
+        },
+        "startMeasureId": {
+          "minLength": 1,
+          "title": "Startmeasureid",
+          "type": "string"
+        }
+      },
+      "required": [
+        "startMeasureId",
+        "endMeasureId",
+        "numbers"
+      ],
+      "title": "FlowEnding",
+      "type": "object"
+    },
+    "Fraction": {
+      "additionalProperties": false,
+      "properties": {
+        "d": {
+          "minimum": 1,
+          "title": "D",
+          "type": "integer"
+        },
+        "n": {
+          "title": "N",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "n",
+        "d"
+      ],
+      "title": "Fraction",
+      "type": "object"
+    },
+    "Harmony": {
+      "additionalProperties": false,
+      "properties": {
+        "bass": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PitchClass"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "confidenceBp": {
+          "maximum": 10000,
+          "minimum": 0,
+          "title": "Confidencebp",
+          "type": "integer"
+        },
+        "degrees": {
+          "items": {
+            "$ref": "#/$defs/Degree"
+          },
+          "title": "Degrees",
+          "type": "array"
+        },
+        "evidenceIds": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Evidenceids",
+          "type": "array"
+        },
+        "harmonyId": {
+          "minLength": 1,
+          "title": "Harmonyid",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "major",
+            "minor",
+            "augmented",
+            "diminished",
+            "dominant",
+            "major-seventh",
+            "minor-seventh",
+            "diminished-seventh",
+            "half-diminished",
+            "major-minor",
+            "major-sixth",
+            "minor-sixth",
+            "dominant-ninth",
+            "major-ninth",
+            "minor-ninth",
+            "dominant-11th",
+            "dominant-13th",
+            "suspended-second",
+            "suspended-fourth",
+            "power",
+            "none"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "kindText": {
+          "title": "Kindtext",
+          "type": "string"
+        },
+        "onset": {
+          "$ref": "#/$defs/Fraction"
+        },
+        "root": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PitchClass"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "sourceText": {
+          "title": "Sourcetext",
+          "type": "string"
+        },
+        "staffInPart": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Staffinpart",
+          "type": "integer"
+        },
+        "textId": {
+          "minLength": 1,
+          "title": "Textid",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "kindText",
+        "degrees",
+        "harmonyId",
+        "onset",
+        "sourceText",
+        "textId",
+        "confidenceBp",
+        "evidenceIds"
+      ],
+      "title": "Harmony",
+      "type": "object"
+    },
+    "JoinMarks": {
+      "additionalProperties": false,
+      "properties": {
+        "start": {
+          "title": "Start",
+          "type": "boolean"
+        },
+        "stop": {
+          "title": "Stop",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "start",
+        "stop"
+      ],
+      "title": "JoinMarks",
+      "type": "object"
+    },
+    "Key": {
+      "additionalProperties": false,
+      "properties": {
+        "fifths": {
+          "maximum": 7,
+          "minimum": -7,
+          "title": "Fifths",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "fifths"
+      ],
+      "title": "Key",
+      "type": "object"
+    },
+    "Lyric": {
+      "additionalProperties": false,
+      "properties": {
+        "extend": {
+          "title": "Extend",
+          "type": "boolean"
+        },
+        "syllabic": {
+          "enum": [
+            "single",
+            "begin",
+            "middle",
+            "end"
+          ],
+          "title": "Syllabic",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "textId": {
+          "minLength": 1,
+          "title": "Textid",
+          "type": "string"
+        },
+        "verse": {
+          "minimum": 1,
+          "title": "Verse",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "verse",
+        "text",
+        "syllabic",
+        "extend",
+        "textId"
+      ],
+      "title": "Lyric",
+      "type": "object"
+    },
+    "Measure": {
+      "additionalProperties": false,
+      "properties": {
+        "capacity": {
+          "$ref": "#/$defs/Fraction"
+        },
+        "directions": {
+          "items": {
+            "$ref": "#/$defs/Direction"
+          },
+          "title": "Directions",
+          "type": "array"
+        },
+        "harmonies": {
+          "items": {
+            "$ref": "#/$defs/Harmony"
+          },
+          "title": "Harmonies",
+          "type": "array"
+        },
+        "implicit": {
+          "title": "Implicit",
+          "type": "boolean"
+        },
+        "index": {
+          "minimum": 0,
+          "title": "Index",
+          "type": "integer"
+        },
+        "measureId": {
+          "minLength": 1,
+          "title": "Measureid",
+          "type": "string"
+        },
+        "number": {
+          "title": "Number",
+          "type": "string"
+        },
+        "pageIndex": {
+          "minimum": 0,
+          "title": "Pageindex",
+          "type": "integer"
+        },
+        "partId": {
+          "minLength": 1,
+          "title": "Partid",
+          "type": "string"
+        },
+        "staffMeasures": {
+          "items": {
+            "$ref": "#/$defs/StaffMeasure"
+          },
+          "title": "Staffmeasures",
+          "type": "array"
+        },
+        "systemId": {
+          "minLength": 1,
+          "title": "Systemid",
+          "type": "string"
+        }
+      },
+      "required": [
+        "measureId",
+        "partId",
+        "index",
+        "number",
+        "implicit",
+        "pageIndex",
+        "systemId",
+        "capacity",
+        "staffMeasures",
+        "harmonies",
+        "directions"
+      ],
+      "title": "Measure",
+      "type": "object"
+    },
+    "Navigation": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "segno",
+            "coda",
+            "toCoda",
+            "dalSegno",
+            "daCapo",
+            "fine",
+            "dsAlCoda",
+            "dsAlFine",
+            "dcAlCoda",
+            "dcAlFine"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "measureId": {
+          "minLength": 1,
+          "title": "Measureid",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "measureId"
+      ],
+      "title": "Navigation",
+      "type": "object"
+    },
+    "Notated": {
+      "additionalProperties": false,
+      "properties": {
+        "dots": {
+          "maximum": 2,
+          "minimum": 0,
+          "title": "Dots",
+          "type": "integer"
+        },
+        "tuplet": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Tuplet"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "type": {
+          "enum": [
+            "breve",
+            "whole",
+            "half",
+            "quarter",
+            "eighth",
+            "16th",
+            "32nd",
+            "64th"
+          ],
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "dots"
+      ],
+      "title": "Notated",
+      "type": "object"
+    },
+    "Part": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Name"
+        },
+        "partId": {
+          "minLength": 1,
+          "title": "Partid",
+          "type": "string"
+        },
+        "staffCount": {
+          "minimum": 1,
+          "title": "Staffcount",
+          "type": "integer"
+        },
+        "staffSlots": {
+          "items": {
+            "$ref": "#/$defs/StaffSlot"
+          },
+          "title": "Staffslots",
+          "type": "array"
+        }
+      },
+      "required": [
+        "partId",
+        "staffCount",
+        "staffSlots"
+      ],
+      "title": "Part",
+      "type": "object"
+    },
+    "Pitch": {
+      "additionalProperties": false,
+      "properties": {
+        "alter": {
+          "maximum": 2,
+          "minimum": -2,
+          "title": "Alter",
+          "type": "integer"
+        },
+        "octave": {
+          "title": "Octave",
+          "type": "integer"
+        },
+        "step": {
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+          ],
+          "title": "Step",
+          "type": "string"
+        }
+      },
+      "required": [
+        "step",
+        "alter",
+        "octave"
+      ],
+      "title": "Pitch",
+      "type": "object"
+    },
+    "PitchClass": {
+      "additionalProperties": false,
+      "properties": {
+        "alter": {
+          "maximum": 2,
+          "minimum": -2,
+          "title": "Alter",
+          "type": "integer"
+        },
+        "step": {
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+          ],
+          "title": "Step",
+          "type": "string"
+        }
+      },
+      "required": [
+        "step",
+        "alter"
+      ],
+      "title": "PitchClass",
+      "type": "object"
+    },
+    "Repeat": {
+      "additionalProperties": false,
+      "properties": {
+        "endMeasureId": {
+          "minLength": 1,
+          "title": "Endmeasureid",
+          "type": "string"
+        },
+        "startMeasureId": {
+          "minLength": 1,
+          "title": "Startmeasureid",
+          "type": "string"
+        },
+        "times": {
+          "minimum": 2,
+          "title": "Times",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "startMeasureId",
+        "endMeasureId",
+        "times"
+      ],
+      "title": "Repeat",
+      "type": "object"
+    },
+    "ScoreEngine": {
+      "additionalProperties": false,
+      "properties": {
+        "buildDigest": {
+          "title": "Builddigest",
+          "type": "string"
+        },
+        "version": {
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "buildDigest"
+      ],
+      "title": "ScoreEngine",
+      "type": "object"
+    },
+    "ScoreMeta": {
+      "additionalProperties": false,
+      "properties": {
+        "subtitle": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Subtitle"
+        },
+        "tempo": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TempoValue"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Title"
+        }
+      },
+      "title": "ScoreMeta",
+      "type": "object"
+    },
+    "StaffMeasure": {
+      "additionalProperties": false,
+      "properties": {
+        "barlineLeft": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Barline"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "barlineRight": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Barline"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "clef": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Clef"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "confidenceBp": {
+          "maximum": 10000,
+          "minimum": 0,
+          "title": "Confidencebp",
+          "type": "integer"
+        },
+        "ending": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Ending"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "evidenceIds": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Evidenceids",
+          "type": "array"
+        },
+        "key": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Key"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "staffId": {
+          "minLength": 1,
+          "title": "Staffid",
+          "type": "string"
+        },
+        "staffMeasureId": {
+          "minLength": 1,
+          "title": "Staffmeasureid",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "ok",
+            "flagged",
+            "blocked"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "time": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Time"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "voices": {
+          "items": {
+            "$ref": "#/$defs/Voice"
+          },
+          "title": "Voices",
+          "type": "array"
+        }
+      },
+      "required": [
+        "staffMeasureId",
+        "staffId",
+        "voices",
+        "evidenceIds",
+        "confidenceBp",
+        "status"
+      ],
+      "title": "StaffMeasure",
+      "type": "object"
+    },
+    "StaffSlot": {
+      "additionalProperties": false,
+      "properties": {
+        "staffIds": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Staffids",
+          "type": "array"
+        },
+        "staffInPart": {
+          "minimum": 1,
+          "title": "Staffinpart",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "staffInPart",
+        "staffIds"
+      ],
+      "title": "StaffSlot",
+      "type": "object"
+    },
+    "Target": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "event",
+            "measure",
+            "measureStart",
+            "measureEnd",
+            "harmony",
+            "lyric",
+            "text",
+            "flow"
+          ],
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "id"
+      ],
+      "title": "Target",
+      "type": "object"
+    },
+    "TempoValue": {
+      "additionalProperties": false,
+      "properties": {
+        "beatUnit": {
+          "anyOf": [
+            {
+              "enum": [
+                "breve",
+                "whole",
+                "half",
+                "quarter",
+                "eighth",
+                "16th",
+                "32nd",
+                "64th"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Beatunit"
+        },
+        "dots": {
+          "anyOf": [
+            {
+              "maximum": 2,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dots"
+        },
+        "perMinute": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Fraction"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Text"
+        }
+      },
+      "title": "TempoValue",
+      "type": "object"
+    },
+    "Time": {
+      "additionalProperties": false,
+      "properties": {
+        "beatType": {
+          "enum": [
+            1,
+            2,
+            4,
+            8,
+            16,
+            32
+          ],
+          "title": "Beattype",
+          "type": "integer"
+        },
+        "beats": {
+          "maximum": 16,
+          "minimum": 1,
+          "title": "Beats",
+          "type": "integer"
+        },
+        "symbol": {
+          "anyOf": [
+            {
+              "enum": [
+                "common",
+                "cut"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Symbol"
+        }
+      },
+      "required": [
+        "beats",
+        "beatType"
+      ],
+      "title": "Time",
+      "type": "object"
+    },
+    "Tuplet": {
+      "additionalProperties": false,
+      "properties": {
+        "actual": {
+          "minimum": 1,
+          "title": "Actual",
+          "type": "integer"
+        },
+        "normal": {
+          "minimum": 1,
+          "title": "Normal",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "actual",
+        "normal"
+      ],
+      "title": "Tuplet",
+      "type": "object"
+    },
+    "Voice": {
+      "additionalProperties": false,
+      "properties": {
+        "events": {
+          "items": {
+            "$ref": "#/$defs/Event"
+          },
+          "title": "Events",
+          "type": "array"
+        },
+        "voice": {
+          "maximum": 4,
+          "minimum": 1,
+          "title": "Voice",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "voice",
+        "events"
+      ],
+      "title": "Voice",
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "diagnostics": {
+      "items": {
+        "$ref": "#/$defs/Diagnostic"
+      },
+      "title": "Diagnostics",
+      "type": "array"
+    },
+    "engine": {
+      "$ref": "#/$defs/ScoreEngine"
+    },
+    "flow": {
+      "$ref": "#/$defs/Flow"
+    },
+    "id": {
+      "minLength": 1,
+      "title": "Id",
+      "type": "string"
+    },
+    "measures": {
+      "items": {
+        "$ref": "#/$defs/Measure"
+      },
+      "title": "Measures",
+      "type": "array"
+    },
+    "meta": {
+      "$ref": "#/$defs/ScoreMeta"
+    },
+    "parts": {
+      "items": {
+        "$ref": "#/$defs/Part"
+      },
+      "title": "Parts",
+      "type": "array"
+    },
+    "schema": {
+      "const": "clavis-ir-0.1",
+      "title": "Schema",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "complete",
+        "partial",
+        "blocked"
+      ],
+      "title": "Status",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema",
+    "id",
+    "meta",
+    "engine",
+    "parts",
+    "measures",
+    "flow",
+    "status",
+    "diagnostics"
+  ],
+  "title": "ScoreIR",
+  "type": "object"
+}

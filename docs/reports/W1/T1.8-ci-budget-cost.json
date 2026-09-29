@@ -1,0 +1,162 @@
+{
+  "snapshotDateKST": "2026-09-29",
+  "todayPrCount": 21,
+  "documentationPrCount": 1,
+  "windowsSensitivePrCount": 7,
+  "beforeRecentSuccessfulRuns": [
+    {
+      "id": 36513128563,
+      "jobs": [
+        {
+          "name": "quality (ubuntu-latest, Python 3.12)",
+          "seconds": 52.0,
+          "weightedMinutes": 1
+        },
+        {
+          "name": "quality (windows-latest, Python 3.12)",
+          "seconds": 100.0,
+          "weightedMinutes": 4
+        }
+      ],
+      "weightedMinutes": 5
+    },
+    {
+      "id": 36512953151,
+      "jobs": [
+        {
+          "name": "quality (windows-latest, Python 3.12)",
+          "seconds": 99.0,
+          "weightedMinutes": 4
+        },
+        {
+          "name": "quality (ubuntu-latest, Python 3.12)",
+          "seconds": 56.0,
+          "weightedMinutes": 1
+        }
+      ],
+      "weightedMinutes": 5
+    },
+    {
+      "id": 36512332529,
+      "jobs": [
+        {
+          "name": "quality (ubuntu-latest, Python 3.12)",
+          "seconds": 40.0,
+          "weightedMinutes": 1
+        },
+        {
+          "name": "quality (windows-latest, Python 3.12)",
+          "seconds": 92.0,
+          "weightedMinutes": 4
+        }
+      ],
+      "weightedMinutes": 5
+    },
+    {
+      "id": 36511810339,
+      "jobs": [
+        {
+          "name": "quality (ubuntu-latest, Python 3.12)",
+          "seconds": 56.0,
+          "weightedMinutes": 1
+        },
+        {
+          "name": "quality (windows-latest, Python 3.12)",
+          "seconds": 91.0,
+          "weightedMinutes": 4
+        }
+      ],
+      "weightedMinutes": 5
+    },
+    {
+      "id": 36511631590,
+      "jobs": [
+        {
+          "name": "quality (ubuntu-latest, Python 3.12)",
+          "seconds": 37.0,
+          "weightedMinutes": 1
+        },
+        {
+          "name": "quality (windows-latest, Python 3.12)",
+          "seconds": 90.0,
+          "weightedMinutes": 4
+        }
+      ],
+      "weightedMinutes": 5
+    },
+    {
+      "id": 36511508489,
+      "jobs": [
+        {
+          "name": "quality (windows-latest, Python 3.12)",
+          "seconds": 76.0,
+          "weightedMinutes": 4
+        },
+        {
+          "name": "quality (ubuntu-latest, Python 3.12)",
+          "seconds": 47.0,
+          "weightedMinutes": 1
+        }
+      ],
+      "weightedMinutes": 5
+    },
+    {
+      "id": 36511349434,
+      "jobs": [
+        {
+          "name": "quality (windows-latest, Python 3.12)",
+          "seconds": 83.0,
+          "weightedMinutes": 4
+        },
+        {
+          "name": "quality (ubuntu-latest, Python 3.12)",
+          "seconds": 48.0,
+          "weightedMinutes": 1
+        }
+      ],
+      "weightedMinutes": 5
+    },
+    {
+      "id": 36511207934,
+      "jobs": [
+        {
+          "name": "quality (ubuntu-latest, Python 3.12)",
+          "seconds": 49.0,
+          "weightedMinutes": 1
+        },
+        {
+          "name": "quality (windows-latest, Python 3.12)",
+          "seconds": 110.0,
+          "weightedMinutes": 4
+        }
+      ],
+      "weightedMinutes": 5
+    }
+  ],
+  "beforeUserSnapshot": {
+    "runs": 75,
+    "weightedMinutes": 273
+  },
+  "model": {
+    "days": 30,
+    "readyRunsPerPR": 1,
+    "mainPushesPerPR": 1,
+    "linuxJobMinutes": 1,
+    "windowsJobWeightedMinutes": 4,
+    "routeJobMinutes": 1,
+    "changedMainDays": 30
+  },
+  "afterPerRunEstimate": {
+    "draft": 0,
+    "docsOnlyPR": 1,
+    "normalPR": 2,
+    "windowsSensitivePR": 6,
+    "mainPush": 1,
+    "changedDailyWindows": 5,
+    "unchangedDailyRouteOnly": 1
+  },
+  "monthlyBeforeOnePRPlusMerge": 6300,
+  "monthlyAfter": 2850,
+  "monthlyBeforeObservedChurn": 8190.0,
+  "forecastStatus": "ESTIMATE; assumes every observed PR type repeats daily and merges once; no extra revisions/dispatches"
+}

@@ -117,5 +117,9 @@ denominator for every selected song, plus the overall song occurrence rate.
 
 Actual PDMX training-subset aggregates and provenance are absent. No invented
 reference distribution, production XML, or 10,000-song acceptance is emitted.
-W4 admission remains blocked. PR #4 was OPEN on 2026-09-29: T2.5 LSTL ordering is
-on hold until its merge (recheck when starting T2.5).
+W4 admission remains blocked pending OR-003 protected set v1. PR #4 is merged;
+its corrected LSTL ordering contract is available for T2.5.
+The smoke command is a repository-only test harness: its fixed four-measure
+fixture author lives in `tests/data/smoke_inputs.py`, excluded from H4 by the
+charter. It requires the repository's tests tree and is not a production data
+generator. The move preserves input XML bytes and existing audit provenance.

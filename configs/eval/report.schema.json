@@ -9,7 +9,7 @@
     "evaluatorVersion": {"type": "string"},
     "evaluatorDigest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
     "protocol": {"const": "clavis-evaluation-1.1"},
-    "scope": {"const": "single-part-staff-voice"},
+    "scope": {"const": "single-part-staff-multivoice"},
     "inputDigests": {
       "type": "object", "required": ["reference", "prediction"],
       "additionalProperties": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
