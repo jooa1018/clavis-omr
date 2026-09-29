@@ -1,7 +1,9 @@
-# Owner W3. Source: W3_DEGRADATION T3.2/T3.3/T3.6; ADR-011 DRAFT.
+# Owner W3. Source: W3_DEGRADATION and ADR-011 provisional adoption, 2026-09-29.
 # Unfitted engineering exploration ranges, NOT real-camera or Kakao calibration.
 # All lengths use staff-space or page ratios. Codec integers and output error are explicit.
 status: experimental-unfitted
+adoption: G1-training-v0
+rejection_rate_limit: 0.01
 max_pixels: 8000000
 illegible_below_px: 6  # W3 section 6; flags, never silently removes a sample.
 limits:
@@ -19,6 +21,7 @@ definitions:
       interline_distribution:
         bands: [[7, 10], [10, 14], [14, 24], [24, null]]
         weights: [0.4, 0.35, 0.2, 0.05]
+        upper_cap_px: 40
     interpolation: {choice: [area, bilinear, bicubic, nearest]}
   rotation: &rotation {op: rotation, degrees: {uniform: [-8, 8]}}
   illumination: &illumination

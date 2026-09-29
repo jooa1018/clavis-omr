@@ -6,18 +6,36 @@ import json
 import numpy as np
 
 from training.degrade.ops import Array, Labels, Params, apply, run
+from training.degrade.sampling import SampleRejected, SamplingStats
 
 
 def run_preset(
-    image: Array, labels: Labels, rng: np.random.Generator, catalog: Params, name: str
+    image: Array,
+    labels: Labels,
+    rng: np.random.Generator,
+    catalog: Params,
+    name: str,
+    stats: SamplingStats | None = None,
 ) -> tuple[Array, Labels, Params]:
     """Use configured route operations and shared safety/scale settings."""
     preset = catalog["presets"][name]
-    output, moved, record = run(image, labels, rng, {**catalog, "operations": preset["operations"]})
+    stats = stats if stats is not None else SamplingStats(catalog["rejection_rate_limit"])
+    try:
+        output, moved, record = run(
+            image, labels, rng, {**catalog, "operations": preset["operations"]}, stats
+        )
+    except SampleRejected as error:
+        error.record.update(
+            preset=name,
+            render_interline_px=float(np.median(labels.interlines)),
+            sampling_stats=stats.summary(),
+        )
+        raise
     record.update(
         preset=name,
         status=catalog["status"],
         catalog_sha256=hashlib.sha256(json.dumps(catalog, sort_keys=True).encode()).hexdigest(),
+        adoption=catalog["adoption"],
     )
     return output, moved, record
 

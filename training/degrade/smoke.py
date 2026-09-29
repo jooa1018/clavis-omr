@@ -16,6 +16,7 @@ from PIL import Image, ImageDraw
 
 from training.degrade.demo import render
 from training.degrade.presets import run_preset
+from training.degrade.sampling import SampleRejected, SamplingStats
 
 
 def peak_rss_bytes() -> int:
@@ -64,23 +65,42 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, default=Path("configs/degrade/presets.yaml"))
     parser.add_argument("--output", type=Path, default=Path("work/preset-smoke"))
+    parser.add_argument("--interline", type=int, default=40)
     args = parser.parse_args()
     catalog = yaml.safe_load(args.config.read_text(encoding="utf-8"))
     args.output.mkdir(parents=True, exist_ok=True)
     cv2.setNumThreads(1)
     started = time.perf_counter()
     timings, previews, manifests = [], [], []
+    rejections = []
+    total_stats = SamplingStats(catalog["rejection_rate_limit"])
     for size in ([1280, 1600], [1600, 2500]):
         image, labels = render(
-            {"size": size, "interline": 40, "systems": 3, "note_steps": [4, 3, 2, 5, 6]}
+            {"size": size, "interline": args.interline, "systems": 3, "note_steps": [4, 3, 2, 5, 6]}
         )
         for name in catalog["presets"]:
             samples = []
+            stats = SamplingStats(catalog["rejection_rate_limit"])
+            accepted_timed = 0
+            last_success = None
             for index in range(3):
                 start = time.perf_counter()
-                output, _, record = run_preset(
-                    image, labels, np.random.default_rng(index), catalog, name
-                )
+                try:
+                    output, _, record = run_preset(
+                        image, labels, np.random.default_rng(index), catalog, name, stats
+                    )
+                    last_success = (output, record)
+                    total_stats.add(
+                        next(
+                            step["sampling"] for step in record["operations"] if "sampling" in step
+                        )
+                    )
+                    accepted_timed += int(index > 0)
+                except SampleRejected as error:
+                    total_stats.add(error.record)
+                    rejections.append(
+                        {"seed": index, "source_pixels": size[0] * size[1], **error.record}
+                    )
                 elapsed = time.perf_counter() - start
                 if index:
                     samples.append(elapsed)
@@ -89,13 +109,21 @@ def main() -> None:
                     "preset": name,
                     "source_pixels": size[0] * size[1],
                     "timed_seconds": samples,
-                    "pages_per_second": len(samples) / sum(samples),
-                    "truncated": record["truncated"],
-                    "illegible_candidate": record["illegible_candidate"],
-                    "actual_interline_median": float(np.median(record["actual_interlines"])),
+                    "pages_per_second": accepted_timed / sum(samples),
+                    "sampling": stats.summary(),
+                    "truncated": last_success[1]["truncated"] if last_success else None,
+                    "illegible_candidate": last_success[1]["illegible_candidate"]
+                    if last_success
+                    else None,
+                    "actual_interline_median": float(
+                        np.median(last_success[1]["actual_interlines"])
+                    )
+                    if last_success
+                    else None,
                 }
             )
-            if size[0] == 1280:
+            if size[0] == 1280 and last_success is not None:
+                output, record = last_success
                 path = args.output / f"{name}.png"
                 Image.fromarray(output).save(path)
                 (args.output / f"{name}.json").write_text(
@@ -130,6 +158,9 @@ def main() -> None:
         "warmups_per_slice": 1,
         "timed_per_slice": 2,
         "pages_executed": len(timings) * 3,
+        "render_interline_px": args.interline,
+        "sampling": total_stats.summary(),
+        "rejections": rejections,
         "wall_seconds": time.perf_counter() - started,
         "peak_rss_bytes": peak_rss_bytes(),
         "catalog_sha256": hashlib.sha256(args.config.read_bytes()).hexdigest(),

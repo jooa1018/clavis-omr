@@ -64,15 +64,16 @@ It emits source + five 16/12/10/8/7 px images, NPZ labels, an overview and JSON 
 hashes, provenance, dependency versions, wall time and sampled parameters. This is
 not a W2 MusicXML-backed renderer or a generalization/recognition benchmark. The
 overview rescales thumbnails; native outputs are the pixel-resolution evidence.
-Default YAML is a mechanical test distribution, not an adopted ADR-011 preset.
+The demo YAML remains a mechanical fixture; the separate preset catalog is adopted for G1 v0.
 Rendering dimensions and note positions are fixture content, not input-dependent rules.
 
 No real aggregate statistics have been supplied by W4. Realism, sustained
-5 pages/core-second throughput, full G0/G1 and W2 integration are not claimed.
+throughput, full G0/G1 gates and W2 integration are not claimed. Existing CPU smoke performance
+is PASS under the Orchestrator's revised mean ≥5 pages/core-second and heaviest ≥3 targets.
 Cross-version codec byte identity is not promised. Large jobs belong in W1's
 01:00–07:00 single queue.
 
-## Experimental family/route expansion (ADR-011 draft)
+## G1 training v0 presets (ADR-011 provisionally adopted, 2026-09-29)
 
 `configs/degrade/presets.yaml` adds **nine families** and all twelve route names:
 
@@ -102,9 +103,17 @@ reproduced, moved_again = replay(image, labels, np.random.default_rng(0), trace)
 These are **unfitted experimental priors**, not a claim of matching particular cameras,
 scan DPI or Kakao algorithms. Each YAML preset carries its rationale. The 40/35/20/5%
 mixture follows the instruction; within-band sampling is uniform, and the last band's
-upper endpoint is the current source interline. Inputs unable to cover all bands fail
-explicitly; use sufficiently high-resolution renders (the smoke uses 40 px interline).
-This distribution interpretation and paper-wave approximation await ADR-011 adoption.
+upper endpoint is min(render interline, 40 px), additionally limited by the spacing before
+resize to forbid enlargement after geometry. Select the band first; reject only if its
+lower bound exceeds that available spacing. Never silently redraw or reweight.
+Pass one caller-owned `SamplingStats(catalog["rejection_rate_limit"])` across the batch,
+catch `SampleRejected` and retain its `.record`. Save `stats.summary()` including attempts,
+rejections and per-band counts; report to W2 when `w2_report_required` is true (≥1%).
+W2 renders start at ≥28 px. Rejected attempts remain in the denominator.
+
+G1 training connection is authorized now. G2 adoption still requires all-operation label
+error ≤0.5 px, W4 R-Dev-Tune KS/quantiles for interline, blur, JPEG quality and noise,
+and domain-classifier AUC. Phone-curl stays experimental-unfitted until aggregate calibration.
 
 Noise and paper texture use the caller's **one** NumPy Generator. JSON-safe bit-generator
 state is recorded before consumption. Replay restores it into the supplied compatible

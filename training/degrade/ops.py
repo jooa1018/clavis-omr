@@ -10,6 +10,7 @@ from numpy.typing import NDArray
 from PIL import Image
 
 from training.degrade.photometric import OPERATIONS, apply_effect
+from training.degrade.sampling import SamplingStats, draw_interline
 
 Array = NDArray[Any]
 Params = dict[str, Any]
@@ -240,33 +241,20 @@ def apply(
 
 
 def sample_interline(rng: np.random.Generator, source: float, distribution: Params) -> float:
-    """Keep all prescribed band weights; reject sources unable to support a band."""
-    bands = np.asarray(
-        [[lo, source if hi is None else hi] for lo, hi in distribution["bands"]], dtype=float
-    )
-    weights = np.asarray(distribution["weights"], dtype=float)
-    if (
-        bands.ndim != 2
-        or bands.shape[1] != 2
-        or len(bands) != len(weights)
-        or not np.isfinite(bands).all()
-        or np.any(bands[:, 0] <= 0)
-        or np.any(bands[:, 0] > bands[:, 1])
-        or np.any(bands[:, 1] > source)
-        or not np.isfinite(weights).all()
-        or np.any(weights < 0)
-        or not np.isclose(weights.sum(), 1)
-    ):
-        raise ValueError("Source interline or distribution cannot support every prescribed band")
-    index = int(rng.choice(len(bands), p=weights))
-    return float(rng.uniform(*bands[index]))
+    """Return a capped draw, raising SampleRejected for an unsupported selected band."""
+    return float(draw_interline(rng, source, distribution)["target_interline_px"])
 
 
 def run(
-    image: Array, labels: Labels, rng: np.random.Generator, config: Params
+    image: Array,
+    labels: Labels,
+    rng: np.random.Generator,
+    config: Params,
+    stats: SamplingStats | None = None,
 ) -> tuple[Array, Labels, Params]:
     """Sample scalar uniform/choice distributions and record every resolved parameter."""
     validate(image, labels, int(config["max_pixels"]))
+    render_interline = float(np.median(labels.interlines))
     records = []
     total: Array | None = np.eye(3)
     for spec in config["operations"]:
@@ -279,9 +267,14 @@ def run(
                     options = value["choice"]
                     value = options[int(rng.integers(len(options)))]
                 elif set(value) == {"interline_distribution"}:
-                    value = sample_interline(
-                        rng, float(np.median(labels.interlines)), value["interline_distribution"]
+                    decision = draw_interline(
+                        rng,
+                        min(render_interline, float(np.median(labels.interlines))),
+                        value["interline_distribution"],
+                        stats,
                     )
+                    params["sampling"] = decision
+                    value = decision["target_interline_px"]
                 else:
                     raise ValueError("Unknown parameter distribution")
             params[key] = value

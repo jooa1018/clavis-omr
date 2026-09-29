@@ -227,8 +227,8 @@ def test_prescribed_distribution_and_illegible_flag(catalog):
     targets = np.array([sample_interline(rng, 40, distribution) for _ in range(10000)])
     counts, _ = np.histogram(targets, bins=[7, 10, 14, 24, 40])
     np.testing.assert_allclose(counts / len(targets), distribution["weights"], atol=0.02)
-    with pytest.raises(ValueError, match="support"):
-        sample_interline(rng, 20, distribution)
+    with pytest.raises(ValueError, match="Sampled"):
+        sample_interline(rng, 4, distribution)
     image, labels = fixture()
     _, _, record = run(
         image,

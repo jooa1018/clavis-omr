@@ -1,0 +1,59 @@
+{
+  "decision": "ADR-011 provisional G1-training-v0; Orchestrator 2026-09-29",
+  "historical_performance": {
+    "mean_pages_per_core_second": 41.27477612463422,
+    "slowest_pages_per_second": 4.816130956647241,
+    "mean_target": 5,
+    "slowest_target": 3,
+    "status": "PASS",
+    "scope": "Arithmetic mean of all 12 presets at both sizes, including the heaviest; one thread; 2 timings/slice"
+  },
+  "minimum_render_performance": {
+    "mean_pages_per_core_second": 28.165346271177924,
+    "slowest_pages_per_second": 3.088019518794552,
+    "mean_target": 5,
+    "slowest_target": 3,
+    "status": "PASS",
+    "scope": "Arithmetic mean of all 12 presets at both sizes, including the heaviest; one thread; 2 timings/slice"
+  },
+  "sampling": {
+    "attempted": 72,
+    "accepted": 72,
+    "rejected": 0,
+    "rejection_rate": 0.0,
+    "rate_limit": 0.01,
+    "w2_report_required": false,
+    "by_band": {
+      "0": {
+        "attempted": 28,
+        "rejected": 0
+      },
+      "3": {
+        "attempted": 2,
+        "rejected": 0
+      },
+      "1": {
+        "attempted": 30,
+        "rejected": 0
+      },
+      "2": {
+        "attempted": 12,
+        "rejected": 0
+      }
+    }
+  },
+  "render_interline_px": 28,
+  "wall_seconds": 8.421918900014134,
+  "peak_rss_bytes": 133971968,
+  "realism_ks_quantiles_auc": "NOT_RUN",
+  "w4_scanner": "NOT_RUN (OR-002)",
+  "delta_95pct_ci": null,
+  "local_tests": {
+    "passed": 186,
+    "skipped": 1,
+    "w3_passed": 98,
+    "w3_skipped": 0,
+    "w3_coverage_percent": 97.16446124763705
+  },
+  "ci": "PENDING on updated PR head"
+}
