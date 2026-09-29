@@ -1,0 +1,20 @@
+[
+  {
+    "file": "training/jobs/runner.py",
+    "line": 151,
+    "rule": "H9",
+    "owner": "W1",
+    "evidence_digest": "f55bb63062ca7fa6483196ef2dc20d9cad1d0ef028c76a8a6030e30a59111f85",
+    "reason": "Approved batch resource control only: wall limit or mean CPU usage warning; not recognition logic.",
+    "approvedBy": []
+  },
+  {
+    "file": "training/jobs/runner.py",
+    "line": 212,
+    "rule": "H9",
+    "owner": "W1",
+    "evidence_digest": "62cb15b5b7c52f6c1e2f78736d6d34381fd3e3274c27556e936ec20069317c08",
+    "reason": "Approved batch resource control only: wall limit or mean CPU usage warning; not recognition logic.",
+    "approvedBy": []
+  }
+]
