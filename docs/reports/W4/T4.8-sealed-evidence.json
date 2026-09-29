@@ -1,13 +1,13 @@
 {
   "coverage": {
-    "covered_lines": 185,
-    "num_statements": 209,
-    "percent_covered": 88.51674641148325,
-    "percent_covered_display": "89",
-    "missing_lines": 24,
+    "covered_lines": 208,
+    "num_statements": 237,
+    "percent_covered": 87.76371308016877,
+    "percent_covered_display": "88",
+    "missing_lines": 29,
     "excluded_lines": 0,
-    "percent_statements_covered": 88.51674641148325,
-    "percent_statements_covered_display": "89"
+    "percent_statements_covered": 87.76371308016877,
+    "percent_statements_covered_display": "88"
   },
   "scan": {
     "schema": "clavis-hardcode-scan-1",

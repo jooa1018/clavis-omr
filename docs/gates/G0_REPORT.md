@@ -11,7 +11,7 @@
 | Dev v0≥20쪽·권리·분리 | NOT_RUN | W4 #16 GT 형식/검증/안내 완료. 사용자에게 legacy·Dev11쪽 로컬 접수 요청. 실제 자료 접근/등록 없음 |
 | B0 3기준선 × Dev v0·SYN-Val | NOT_RUN | W4 #19 고정 버전 외부 실행 준비. 실제 Docker/환경/weights·Dev v0·SYN-Val·W1 큐 미준비 |
 | 하드코딩·누출·import CI | PARTIAL | W4 #14, W1 #15 필수 CI. main 소급 후보0/예외0 PASS; W2 H4 두 곳 #12 수정. 실제 누출 목록이 없어 데이터 검사는 NOT_RUN/admission 차단 |
-| Sealed 집계 실행기·해시·원장 | PARTIAL | 해시 producer, receipt 대조, 숫자 집계 공개/표본<5 억제, 최대2회 원장과 한국어 설명 준비. W9 동결 오프라인 실행/오류 히스토그램 통합 미완료; 실제 sealed 없음 |
+| Sealed 집계 실행기·해시·원장 | PARTIAL | #21 해시 producer, receipt 대조, 숫자 집계·오류 유형별 건수 공개/표본<5 억제, 최대2회 원장과 한국어 설명 준비. W9 동결 오프라인 실행 통합 미완료; 실제 sealed 없음 |
 
 ## 근거
 
@@ -20,7 +20,7 @@
 - [평가기 확장](../reports/W4/T4.3-evaluator-extension.md), [27종 실측 JSON](../reports/W4/T4.3-extension-evidence.json).
 - [기준선 준비](../reports/W4/T4.6-baseline-tools.md), [sealed 준비](../reports/W4/T4.8-sealed-preparation.md), [원장 양식](sealed-ledger.md).
 
-PR: [#14](https://github.com/jooa1018/clavis-omr/pull/14), [#16](https://github.com/jooa1018/clavis-omr/pull/16), [#18](https://github.com/jooa1018/clavis-omr/pull/18), [#19](https://github.com/jooa1018/clavis-omr/pull/19).
+PR: [#14](https://github.com/jooa1018/clavis-omr/pull/14), [#16](https://github.com/jooa1018/clavis-omr/pull/16), [#18](https://github.com/jooa1018/clavis-omr/pull/18), [#19](https://github.com/jooa1018/clavis-omr/pull/19), [#21](https://github.com/jooa1018/clavis-omr/pull/21).
 각 최종 head의 Linux/Windows CI 통과 후 B등급 squash 병합. 지표 정의 변경 없음.
 
 ## 소급 무결성 소유자별 처리

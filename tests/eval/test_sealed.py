@@ -10,6 +10,7 @@ from PIL import Image
 from eval.aggregate import aggregate
 from eval.integrity.hashes import image_phash, phash_pixels, produce
 from eval.integrity.leakage import check
+from eval.report import evaluate
 from eval.sealed import append_ledger, preflight, release
 from eval.sealed.__main__ import main
 from tests.eval.test_edges import note, score
@@ -97,6 +98,15 @@ def test_release_suppresses_small_groups_and_arbitrary_payload() -> None:
     assert release(report, {})["status"] == "SUPPRESSED"
     with pytest.raises(ValueError):
         release({**report, "paired": True}, {})
+
+
+def test_error_histogram_only_releases_counts() -> None:
+    result, pairs = evaluate(score(note()), score(note("D")))
+    pages = [{**page(i, 1), "report": result} for i in range(5)]
+    public = release(aggregate(pages), {}, [pairs] * 5)
+    assert public["errorHistogram"] == {"events.pitch": 5}
+    with pytest.raises(ValueError):
+        release(aggregate(pages), {}, [pairs] * 4)
 
 
 def test_ledger_two_runs_and_chain(tmp_path: Path) -> None:

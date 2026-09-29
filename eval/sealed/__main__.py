@@ -20,6 +20,7 @@ def main() -> int:
     share = subs.add_parser("release")
     share.add_argument("--aggregate", required=True)
     share.add_argument("--public-vocabulary", required=True)
+    share.add_argument("--pairs-manifest")
     ledger = subs.add_parser("ledger")
     ledger.add_argument("--receipt", required=True)
     ledger.add_argument("--ledger", required=True)
@@ -43,7 +44,12 @@ def main() -> int:
         elif args.command == "preflight":
             result = preflight(read(args.artifact), read(args.observed_digests))
         elif args.command == "release":
-            result = release(read(args.aggregate), read(args.public_vocabulary))
+            pairs = (
+                [read(path) for path in read(args.pairs_manifest)["pairs"]]
+                if args.pairs_manifest
+                else None
+            )
+            result = release(read(args.aggregate), read(args.public_vocabulary), pairs)
         else:
             result = append_ledger(contained(root, args.ledger), read(args.receipt))
         target.parent.mkdir(parents=True, exist_ok=True)

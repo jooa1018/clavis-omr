@@ -43,7 +43,7 @@ evaluatorVersion이다. 이 도구는 두 receipt를 비교할 뿐, 문자열을
 ## 3. 공유 가능한 집계 파일 추출
 
 ```powershell
-.venv\Scripts\python.exe -m eval.sealed release --aggregate local/aggregate.json --public-vocabulary frozen/public-slices.json --out share/aggregate.json
+.venv\Scripts\python.exe -m eval.sealed release --aggregate local/aggregate.json --public-vocabulary frozen/public-slices.json --pairs-manifest local/pairs-manifest.json --out share/aggregate.json
 ```
 
 입력은 eval.aggregate의 단일 실행 결과다. public-slices.json 예:
@@ -52,7 +52,11 @@ evaluatorVersion이다. 이 도구는 두 receipt를 비교할 뿐, 문자열을
 넣지 않는다. 도구는 여기에 있는 슬라이스만 내보낸다. pageCount<5는 숨기며 전체<5도
 SUPPRESSED 처리한다. 미지원 페이지를 빠뜨린 incomplete 집계는 공개 성공으로 만들지 않는다.
 알려진 지표의 숫자 필드만 복사해 페이지 목록·임의 메시지·경로·원문을 제거한다.
-공식 오류 유형 히스토그램·W9 엔진 실행 통합은 미완료다. 이는 차등 개인정보보호나
+선택 입력 pairs-manifest.json은 `{"pairs":["local/page-001/pairs.json"]}` 형식으로
+전체 페이지의 로컬 pairs 경로를 열거한다. 페이지 수·평가기 digest·K1 합계를 대조한 뒤
+고정 오류 유형별 건수만 공개한다. 필드 오류 히스토그램은 K1 연산 수와 합산하지 않는다.
+pairs 입력이 없으면 히스토그램은 null/NOT_RUN이다. W9 엔진 실행 통합은 미완료다.
+이 도구는 차등 개인정보보호나
 반복 질의에 대한 익명성을 보장하지 않으며 최대 2회 실행 규칙을 계속 지켜야 한다.
 
 ## 4. 공식 실행 원장 (집계 검토 후에만)

@@ -3,6 +3,7 @@
 import hashlib
 import json
 import re
+from collections import Counter
 from datetime import date
 from math import isfinite
 from pathlib import Path
@@ -109,7 +110,51 @@ def preflight(artifact: dict[str, Any], observed: dict[str, Any]) -> dict[str, A
     }
 
 
-def release(aggregate: dict[str, Any], vocabulary: dict[str, list[str]]) -> dict[str, Any]:
+def error_histogram(pairs: list[dict[str, Any]], aggregate: dict[str, Any]) -> dict[str, int]:
+    """Field diagnostics only, not additive K1 operations or page details."""
+    if len(pairs) != aggregate["overall"]["pageCount"] or any(
+        p.get("status") != "evaluated" for p in pairs
+    ):
+        raise ValueError("complete evaluated pair set required")
+    total = sum(g["k1Operations"] for p in pairs for g in p["measures"])
+    if total != aggregate["overall"]["metrics"]["K1"]["numerator"]:
+        raise ValueError("pair/aggregate operation mismatch")
+    counts: Counter[str] = Counter()
+    allowed = {
+        "kind",
+        "pitch",
+        "duration",
+        "tie_start",
+        "tie_stop",
+        "onset",
+        "missing",
+        "extra",
+        "value",
+    }
+    for page in pairs:
+        for key in ("evaluatorVersion", "evaluatorDigest", "protocol"):
+            if page[key] != aggregate["evaluator"][key]:
+                raise ValueError("pair evaluator mismatch")
+        for group in page["measures"]:
+            for category in ("events", "harmonies", "attributes"):
+                for pair in group[category]:
+                    for error in pair["errors"]:
+                        if error not in allowed:
+                            raise ValueError("unknown diagnostic")
+                        counts[f"{category}.{error}"] += 1
+                    if category == "events":
+                        counts["lyrics"] += sum(bool(lyric["errors"]) for lyric in pair["lyrics"])
+            if group["operation"] in {"split", "merge", "delete", "insert"}:
+                counts["structure." + group["operation"]] += 1
+            counts["repeatOrVolta"] += "repeatOrVolta" in group["measureErrors"]
+    return {key: value for key, value in sorted(counts.items()) if value}
+
+
+def release(
+    aggregate: dict[str, Any],
+    vocabulary: dict[str, list[str]],
+    pairs: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
     """Allowlist only numeric aggregate fields; never copy arbitrary payloads."""
     if aggregate.get("schema") != "clavis-page-aggregate-1" or aggregate.get("paired") is not False:
         raise ValueError("expected a single-run page aggregate")
@@ -155,6 +200,8 @@ def release(aggregate: dict[str, Any], vocabulary: dict[str, list[str]]) -> dict
         "status": "AGGREGATE_ONLY",
         "overall": overall,
         "slices": retained,
+        "errorHistogram": error_histogram(pairs, aggregate) if pairs is not None else None,
+        "errorHistogramStatus": "evaluated" if pairs is not None else "NOT_RUN",
     }
 
 
