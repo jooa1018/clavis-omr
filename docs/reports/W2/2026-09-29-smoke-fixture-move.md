@@ -7,7 +7,7 @@ allowlist나 비교식 우회 없이 헌장의 테스트 코드 제외 범위에
 입력 10곡의 XML 바이트를 보존했고 데이터 테스트 35개가 통과했다.
 
 ## 2. 변경 (PR 링크, 주요 파일·모듈)
-w2/smoke-fixtures: training/data/smoke_inputs.py → tests/data/smoke_inputs.py.
+[PR #12](https://github.com/jooa1018/clavis-omr/pull/12): training/data/smoke_inputs.py → tests/data/smoke_inputs.py.
 smoke 및 테스트 import, 원천 등록 URL, README 갱신. 테스트 코드 내용 변경 없음.
 원본 저장소 브랜치는 변경하지 않았다. CI 확인 후 B등급 squash 병합 대상.
 
