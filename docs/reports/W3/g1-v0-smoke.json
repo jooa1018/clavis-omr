@@ -1,0 +1,912 @@
+{
+  "scope": "synthetic local CPU manual smoke; automatic measurements; no real/sealed data",
+  "status": "PARTIAL",
+  "reason": "Two timings per slice are not a sustained throughput or realism gate",
+  "threads": 1,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "warmups_per_slice": 1,
+  "timed_per_slice": 2,
+  "pages_executed": 72,
+  "render_interline_px": 28,
+  "sampling": {
+    "attempted": 72,
+    "accepted": 72,
+    "rejected": 0,
+    "rejection_rate": 0.0,
+    "rate_limit": 0.01,
+    "w2_report_required": false,
+    "by_band": {
+      "0": {
+        "attempted": 28,
+        "rejected": 0
+      },
+      "3": {
+        "attempted": 2,
+        "rejected": 0
+      },
+      "1": {
+        "attempted": 30,
+        "rejected": 0
+      },
+      "2": {
+        "attempted": 12,
+        "rejected": 0
+      }
+    }
+  },
+  "rejections": [],
+  "wall_seconds": 8.421918900014134,
+  "peak_rss_bytes": 133971968,
+  "catalog_sha256": "1b160428d435162eeaeb4a04e3a0cc424dd51063533ca5302f36e1c896f504b4",
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.2.6",
+    "opencv": "4.11.0"
+  },
+  "slices": [
+    {
+      "preset": "scan-150",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.0787214000010863,
+        0.03416720000677742
+      ],
+      "pages_per_second": 17.71658076954344,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "0": {
+            "attempted": 2,
+            "rejected": 0
+          },
+          "3": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 9.449999999999994
+    },
+    {
+      "preset": "scan-300",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.01894069998525083,
+        0.006447599997045472
+      ],
+      "pages_per_second": 78.77644432256726,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "1": {
+            "attempted": 2,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 7.892499999999998
+    },
+    {
+      "preset": "scan-bw",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.015192699996987358,
+        0.0056788999936543405
+      ],
+      "pages_per_second": 95.82399053722521,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "1": {
+            "attempted": 2,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 7.892499999999998
+    },
+    {
+      "preset": "phone-daylight",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.09516789999906905,
+        0.10075479999068193
+      ],
+      "pages_per_second": 10.208107585821464,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "1": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 12.91496124131964
+    },
+    {
+      "preset": "phone-indoor",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.0840969999844674,
+        0.09912920001079328
+      ],
+      "pages_per_second": 10.915469512830217,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "1": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 12.91496124131964
+    },
+    {
+      "preset": "phone-angle",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.12296800001058728,
+        0.10611019999487326
+      ],
+      "pages_per_second": 8.730643072768714,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "1": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 7.157853072181135
+    },
+    {
+      "preset": "phone-shadow",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.08299729999271221,
+        0.07826770000974648
+      ],
+      "pages_per_second": 12.40194710550651,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "1": {
+            "attempted": 2,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 8.97746122409995
+    },
+    {
+      "preset": "phone-curl",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.0846935999870766,
+        0.08476009999867529
+      ],
+      "pages_per_second": 11.8026339948208,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "1": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 12.921754588495395
+    },
+    {
+      "preset": "messenger-kakao",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.014624200004618615,
+        0.007734300015727058
+      ],
+      "pages_per_second": 89.45143896862716,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "1": {
+            "attempted": 2,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 7.892499999999998
+    },
+    {
+      "preset": "screenshot-downscaled",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.011122900003101677,
+        0.0050131999887526035
+      ],
+      "pages_per_second": 123.94568706252606,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "1": {
+            "attempted": 2,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 7.892499999999998
+    },
+    {
+      "preset": "photocopy",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.042759999982081354,
+        0.04208790001575835
+      ],
+      "pages_per_second": 23.57159104763844,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "1": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 10.447499999999991
+    },
+    {
+      "preset": "screen-photo",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.04943230000208132,
+        0.08250180000322871
+      ],
+      "pages_per_second": 15.159083208355572,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "0": {
+            "attempted": 2,
+            "rejected": 0
+          },
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 14.913484857547806
+    },
+    {
+      "preset": "scan-150",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.20959439998841844,
+        0.10987909999676049
+      ],
+      "pages_per_second": 6.260300150381125,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "0": {
+            "attempted": 2,
+            "rejected": 0
+          },
+          "3": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 9.441600580862108
+    },
+    {
+      "preset": "scan-300",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.05753769999137148,
+        0.02333970001200214
+      ],
+      "pages_per_second": 24.72878702723597,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "1": {
+            "attempted": 2,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 7.896000000000001
+    },
+    {
+      "preset": "scan-bw",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.053734099987195805,
+        0.02053079998586327
+      ],
+      "pages_per_second": 26.93062268616178,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "1": {
+            "attempted": 2,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 7.896000000000001
+    },
+    {
+      "preset": "phone-daylight",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.2484241999918595,
+        0.26292139998986386
+      ],
+      "pages_per_second": 3.9112490653512704,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "1": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 12.913606194112395
+    },
+    {
+      "preset": "phone-indoor",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.26262320001842454,
+        0.26020179997431114
+      ],
+      "pages_per_second": 3.8253717783728565,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "1": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 12.913606194112395
+    },
+    {
+      "preset": "phone-angle",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.35010509999119677,
+        0.2975592000002507
+      ],
+      "pages_per_second": 3.088019518794552,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "1": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "truncated": true,
+      "illegible_candidate": false,
+      "actual_interline_median": 7.167471241705116
+    },
+    {
+      "preset": "phone-shadow",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.23876890001702122,
+        0.2163208999845665
+      ],
+      "pages_per_second": 4.394737038696587,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "1": {
+            "attempted": 2,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 8.971227848809797
+    },
+    {
+      "preset": "phone-curl",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.2097844000090845,
+        0.23810730001423508
+      ],
+      "pages_per_second": 4.465365176215299,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "1": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 12.914412125712767
+    },
+    {
+      "preset": "messenger-kakao",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.03780320001533255,
+        0.015943100006552413
+      ],
+      "pages_per_second": 37.211863871291975,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "1": {
+            "attempted": 2,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 7.896000000000001
+    },
+    {
+      "preset": "screenshot-downscaled",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.028199699998367578,
+        0.012837299989769235
+      ],
+      "pages_per_second": 48.73650609396813,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "1": {
+            "attempted": 2,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 7.896000000000001
+    },
+    {
+      "preset": "photocopy",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.1285755999851972,
+        0.10131960001308471
+      ],
+      "pages_per_second": 8.699616172999466,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "1": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 7.559999999999999
+    },
+    {
+      "preset": "screen-photo",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.12169410000205971,
+        0.26201700000092387
+      ],
+      "pages_per_second": 5.2122547405703115,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "0": {
+            "attempted": 2,
+            "rejected": 0
+          },
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 14.918014872805296
+    }
+  ],
+  "manifest": [
+    {
+      "path": "scan-150.png",
+      "sha256": "2e77bd1456a4d8793cdfabb5ee33ca8cdddf5b59a3038f736e506b8f826745e3",
+      "bytes": 124843,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "scan-300.png",
+      "sha256": "986eac5895cdfa6dcc97286b571e488f18e5f1451c62f528e8880eb969b0b51f",
+      "bytes": 40344,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "scan-bw.png",
+      "sha256": "88e71ad4ff90038b361c0c89fc7a9a0d75307038c3f17953381c879eb26471be",
+      "bytes": 1481,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "phone-daylight.png",
+      "sha256": "bef5627d038bfebcdda2761eb9d7616b25a525b8021b53fdef399140bd9d9697",
+      "bytes": 81470,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "phone-indoor.png",
+      "sha256": "934f5196e655986fecb4d2d253378189e2ca9921fa9f51586d4a21747baef959",
+      "bytes": 202735,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "phone-angle.png",
+      "sha256": "4c893ef6d16b06448a026aa6bc50745fc0b4b4415cdb792bcafd36320c7f6e04",
+      "bytes": 22573,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "phone-shadow.png",
+      "sha256": "5590406b44c0922b4902432c242da4fd202d02833aa81aedfe5e265bb3eff59b",
+      "bytes": 37513,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "phone-curl.png",
+      "sha256": "ee9b4f0ae502e6701f5fa43399db728defa16f9bc2eee5b6e043c9bdbe666b11",
+      "bytes": 43105,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "messenger-kakao.png",
+      "sha256": "461173f6aa03ccbfc520283b75066790cfde07165335828844ffe221252a9ef3",
+      "bytes": 7393,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "screenshot-downscaled.png",
+      "sha256": "0e76b14384bea04cd79c84a7c62c736c2570504b251d1a7398765e33217d52e8",
+      "bytes": 5813,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "photocopy.png",
+      "sha256": "f9b9c7feea8e33f32d2e0fe53bb90220da85d08121cbe78c57ede05fca7021e4",
+      "bytes": 1875,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "screen-photo.png",
+      "sha256": "6d7f907afd414152e92f38a98b5810fec6e6f3a02f27a432b1a0efd5ce38893f",
+      "bytes": 416302,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    }
+  ],
+  "realism_ks_auc": "NOT_RUN: W4 aggregate statistics/domain-classifier results unavailable",
+  "baseline_delta_95pct_ci": null
+}

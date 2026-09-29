@@ -1,6 +1,6 @@
 """Pixel-center homographies, with explicit labels and replayable parameters."""
 
-from dataclasses import dataclass, replace
+from dataclasses import dataclass
 from io import BytesIO
 from typing import Any
 
@@ -8,6 +8,9 @@ import cv2
 import numpy as np
 from numpy.typing import NDArray
 from PIL import Image
+
+from training.degrade.photometric import OPERATIONS, apply_effect
+from training.degrade.sampling import SamplingStats, draw_interline
 
 Array = NDArray[Any]
 Params = dict[str, Any]
@@ -91,7 +94,11 @@ def validate(image: Array, labels: Labels, max_pixels: int) -> None:
 
 
 def warp(
-    image: Array, labels: Labels, matrix: Array, size: tuple[int, int]
+    image: Array,
+    labels: Labels,
+    matrix: Array,
+    size: tuple[int, int],
+    resize_filter: int | None = None,
 ) -> tuple[Array, Labels]:
     """Use the same forward map for image and labels; mask background ID is zero."""
     matrix = np.asarray(matrix, dtype=np.float64)
@@ -129,10 +136,16 @@ def warp(
                 matrix,
             )
             outside = outside or bool(np.any((extent < 0) | (extent > np.array(size) - 1)))
-    masks = tuple(
-        cv2.warpPerspective(m, matrix, size, flags=cv2.INTER_NEAREST) for m in labels.masks
-    )
-    result = cv2.warpPerspective(image, matrix, size, borderValue=(255, 255, 255))
+    if resize_filter is None:
+        masks = tuple(
+            cv2.warpPerspective(m, matrix, size, flags=cv2.INTER_NEAREST) for m in labels.masks
+        )
+        result = cv2.warpPerspective(image, matrix, size, borderValue=(255, 255, 255))
+    else:
+        masks = tuple(
+            cv2.resize(m, size, interpolation=cv2.INTER_NEAREST_EXACT) for m in labels.masks
+        )
+        result = cv2.resize(image, size, interpolation=resize_filter)
     return result, Labels(
         points, moved_boxes, lines, masks, pairs, labels.truncated or outside, tangents
     )
@@ -142,19 +155,41 @@ def apply(
     image: Array, labels: Labels, rng: np.random.Generator, params: Params
 ) -> tuple[Array, Labels, Params]:
     """Apply one fixed operation; rng belongs to the caller and is never global."""
-    del rng  # Sampling is centralized in run(); replay consumes no random state.
     validate(image, labels, int(params["max_pixels"]))
     name = params["op"]
     h, w = image.shape[:2]
     matrix = np.eye(3, dtype=np.float64)
     size = (w, h)
+    if name in OPERATIONS:
+        result, params = apply_effect(image, rng, params, float(np.median(labels.interlines)))
+        return result, labels, {**params, "matrix": matrix.tolist(), "size": list(size)}
+    if name == "paper_wave":
+        from training.degrade.curve import warp_wave
+
+        return warp_wave(image, labels, params)
     if name == "rotation":
         angle = float(params["degrees"])
         if not np.isfinite(angle):
             raise ValueError("Rotation must be finite")
         matrix[:2] = cv2.getRotationMatrix2D(((w - 1) / 2, (h - 1) / 2), angle, 1)
     elif name == "perspective":
-        matrix = np.asarray(params["matrix"], dtype=np.float64)
+        if "matrix" in params:
+            matrix = np.asarray(params["matrix"], dtype=np.float64)
+        else:
+            angles = np.deg2rad([float(params["tilt_x_degrees"]), float(params["tilt_y_degrees"])])
+            focal = float(params["focal_ratio"]) * max(w, h)
+            if not np.isfinite(angles).all() or not np.isfinite(focal) or focal <= 0:
+                raise ValueError(
+                    "Camera angles/focal ratio must be finite with positive focal length"
+                )
+            a, b = angles
+            rx = np.array([[1, 0, 0], [0, np.cos(a), -np.sin(a)], [0, np.sin(a), np.cos(a)]])
+            ry = np.array([[np.cos(b), 0, np.sin(b)], [0, 1, 0], [-np.sin(b), 0, np.cos(b)]])
+            rotation = ry @ rx
+            plane = np.column_stack((rotation[:, :2], [0, 0, focal]))
+            center = np.array([[1, 0, (w - 1) / 2], [0, 1, (h - 1) / 2], [0, 0, 1]])
+            matrix = center @ np.diag([focal, focal, 1]) @ plane @ np.linalg.inv(center)
+            matrix /= matrix[2, 2]
     elif name == "resize":
         target = float(params["target_interline"])
         source = float(np.median(labels.interlines))
@@ -183,7 +218,7 @@ def apply(
         return result, labels, {**params, "matrix": matrix.tolist(), "size": list(size)}
     else:
         raise ValueError(f"Unknown operation: {name}")
-    result, transformed = warp(image, labels, matrix, size)
+    resize_filter = None
     if name == "resize":
         interpolation = {
             "area": cv2.INTER_AREA,
@@ -191,13 +226,8 @@ def apply(
             "bicubic": cv2.INTER_CUBIC,
             "nearest": cv2.INTER_NEAREST_EXACT,
         }
-        result = cv2.resize(image, size, interpolation=interpolation[params["interpolation"]])
-        transformed = replace(
-            transformed,
-            masks=tuple(
-                cv2.resize(m, size, interpolation=cv2.INTER_NEAREST_EXACT) for m in labels.masks
-            ),
-        )
+        resize_filter = interpolation[params["interpolation"]]
+    result, transformed = warp(image, labels, matrix, size, resize_filter)
     return (
         result,
         transformed,
@@ -210,14 +240,25 @@ def apply(
     )
 
 
+def sample_interline(rng: np.random.Generator, source: float, distribution: Params) -> float:
+    """Return a capped draw, raising SampleRejected for an unsupported selected band."""
+    return float(draw_interline(rng, source, distribution)["target_interline_px"])
+
+
 def run(
-    image: Array, labels: Labels, rng: np.random.Generator, config: Params
+    image: Array,
+    labels: Labels,
+    rng: np.random.Generator,
+    config: Params,
+    stats: SamplingStats | None = None,
 ) -> tuple[Array, Labels, Params]:
     """Sample scalar uniform/choice distributions and record every resolved parameter."""
+    validate(image, labels, int(config["max_pixels"]))
+    render_interline = float(np.median(labels.interlines))
     records = []
-    total = np.eye(3)
+    total: Array | None = np.eye(3)
     for spec in config["operations"]:
-        params = {"max_pixels": config["max_pixels"]}
+        params = {**config.get("limits", {}), "max_pixels": config["max_pixels"]}
         for key, value in spec.items():
             if isinstance(value, dict):
                 if set(value) == {"uniform"}:
@@ -225,19 +266,35 @@ def run(
                 elif set(value) == {"choice"}:
                     options = value["choice"]
                     value = options[int(rng.integers(len(options)))]
+                elif set(value) == {"interline_distribution"}:
+                    decision = draw_interline(
+                        rng,
+                        min(render_interline, float(np.median(labels.interlines))),
+                        value["interline_distribution"],
+                        stats,
+                    )
+                    params["sampling"] = decision
+                    value = decision["target_interline_px"]
                 else:
                     raise ValueError("Unknown parameter distribution")
             params[key] = value
         image, labels, record = apply(image, labels, rng, params)
-        total = np.asarray(record["matrix"]) @ total
+        total = (
+            np.asarray(record["matrix"]) @ total
+            if total is not None and record["matrix"] is not None
+            else None
+        )
         records.append(record)
     return (
         image,
         labels,
         {
             "operations": records,
-            "matrix": total.tolist(),
+            "matrix": total.tolist() if total is not None else None,
             "actual_interlines": labels.interlines.tolist(),
             "truncated": bool(labels.truncated),
+            "illegible_candidate": bool(np.min(labels.interlines) < config["illegible_below_px"])
+            if "illegible_below_px" in config
+            else None,
         },
     )

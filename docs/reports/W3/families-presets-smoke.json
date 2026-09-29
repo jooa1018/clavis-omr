@@ -1,0 +1,412 @@
+{
+  "scope": "synthetic local CPU manual smoke; automatic measurements; no real/sealed data",
+  "status": "PARTIAL",
+  "reason": "Two timings per slice are not a sustained throughput or realism gate",
+  "threads": 1,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "warmups_per_slice": 1,
+  "timed_per_slice": 2,
+  "pages_executed": 72,
+  "wall_seconds": 6.127605500019854,
+  "peak_rss_bytes": 130215936,
+  "catalog_sha256": "2db905cf6caba1ba17f8d298e5eba42ee49ba29baee7d020b04ac517a8de885d",
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.2.6",
+    "opencv": "4.11.0"
+  },
+  "slices": [
+    {
+      "preset": "scan-150",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.06937049998668954,
+        0.03898569999728352
+      ],
+      "pages_per_second": 18.457642481886772,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 9.449999132748006
+    },
+    {
+      "preset": "scan-300",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.0145390999969095,
+        0.008573700004490092
+      ],
+      "pages_per_second": 86.53213803082666,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 7.900000000000006
+    },
+    {
+      "preset": "scan-bw",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.013621699996292591,
+        0.005386300006648526
+      ],
+      "pages_per_second": 105.21885520257466,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 7.900000000000006
+    },
+    {
+      "preset": "phone-daylight",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.14311929998802952,
+        0.11406069999793544
+      ],
+      "pages_per_second": 7.776654483665704,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 12.924916849614618
+    },
+    {
+      "preset": "phone-indoor",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.09117109997896478,
+        0.10577789999661036
+      ],
+      "pages_per_second": 10.15491320213879,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 12.924916849614618
+    },
+    {
+      "preset": "phone-angle",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.13170110000646673,
+        0.13774479998392053
+      ],
+      "pages_per_second": 7.4226403150738305,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 7.1631404831341605
+    },
+    {
+      "preset": "phone-shadow",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.08906880000722595,
+        0.08365290000801906
+      ],
+      "pages_per_second": 11.579320952859272,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 8.974972314447443
+    },
+    {
+      "preset": "phone-curl",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.07676560000982136,
+        0.08367650001309812
+      ],
+      "pages_per_second": 12.465556108492073,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 12.910805098786312
+    },
+    {
+      "preset": "messenger-kakao",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.010552899999311194,
+        0.0046452999813482165
+      ],
+      "pages_per_second": 131.59453109875616,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 7.900000000000006
+    },
+    {
+      "preset": "screenshot-downscaled",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.008141800004523247,
+        0.004308100003981963
+      ],
+      "pages_per_second": 160.64386048351312,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 7.900000000000006
+    },
+    {
+      "preset": "photocopy",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.03526169998804107,
+        0.03617629999644123
+      ],
+      "pages_per_second": 27.996304493888942,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 11.625000000000007
+    },
+    {
+      "preset": "screen-photo",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.04815099999541417,
+        0.08593870000913739
+      ],
+      "pages_per_second": 14.915388728083602,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 14.923209339862844
+    },
+    {
+      "preset": "scan-150",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.11072269998840056,
+        0.06281770000350662
+      ],
+      "pages_per_second": 11.524693962289284,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 9.440000691326786
+    },
+    {
+      "preset": "scan-300",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.02282430001650937,
+        0.009912299981806427
+      ],
+      "pages_per_second": 61.093699409923275,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 7.888000000000005
+    },
+    {
+      "preset": "scan-bw",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.020481400017160922,
+        0.007506099995225668
+      ],
+      "pages_per_second": 71.46047339400977,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 7.888000000000005
+    },
+    {
+      "preset": "phone-daylight",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.20147309999447316,
+        0.19214119997923262
+      ],
+      "pages_per_second": 5.081116209786088,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 12.912057439692589
+    },
+    {
+      "preset": "phone-indoor",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.16003589998581447,
+        0.17076020000968128
+      ],
+      "pages_per_second": 6.046020494277994,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 12.912057439692589
+    },
+    {
+      "preset": "phone-angle",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.2186904999834951,
+        0.19658059999346733
+      ],
+      "pages_per_second": 4.816130956647241,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 7.160550799602592
+    },
+    {
+      "preset": "phone-shadow",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.15645090001635253,
+        0.1497793000016827
+      ],
+      "pages_per_second": 6.531034495886464,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 8.97599557418137
+    },
+    {
+      "preset": "phone-curl",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.14932430000044405,
+        0.1511406000063289
+      ],
+      "pages_per_second": 6.656351540412597,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 12.90659135579414
+    },
+    {
+      "preset": "messenger-kakao",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.015491800004383549,
+        0.006074399978388101
+      ],
+      "pages_per_second": 92.7377100090752,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 7.888000000000005
+    },
+    {
+      "preset": "screenshot-downscaled",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.012404299981426448,
+        0.007222100015496835
+      ],
+      "pages_per_second": 101.90355848823668,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 7.888000000000005
+    },
+    {
+      "preset": "photocopy",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.06240560000878759,
+        0.06356340000638738
+      ],
+      "pages_per_second": 15.87692209796909,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 8.816000000000003
+    },
+    {
+      "preset": "screen-photo",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.07086009997874498,
+        0.0943048000044655
+      ],
+      "pages_per_second": 12.10911035094809,
+      "truncated": false,
+      "illegible_candidate": false,
+      "actual_interline_median": 14.922631203588482
+    }
+  ],
+  "manifest": [
+    {
+      "path": "scan-150.png",
+      "sha256": "aa732d610bdc3606b506341df3e1194e4ea693deb597eb5b32e6ad68f4a2fa9c",
+      "bytes": 62632,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "scan-300.png",
+      "sha256": "bcdd88eeb5dd181ef9f4aee5a32dd7ab5504d5b94a6e3085a75eab546b25f681",
+      "bytes": 20375,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "scan-bw.png",
+      "sha256": "914c621e2c3280d5a4bdd17455414d12e6a6bee38fea99777d7511a795999638",
+      "bytes": 933,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "phone-daylight.png",
+      "sha256": "7e81f48a9a79ff86ce85a98ec728e208904865ef94ac37f9924793de9eac25cb",
+      "bytes": 34838,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "phone-indoor.png",
+      "sha256": "9a4ddfd9e4db98aee41dcae8f0d6d25776660d2146812cab79e6d9520158d1a9",
+      "bytes": 65795,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "phone-angle.png",
+      "sha256": "2ac9e2e6d17fd74ec00e9926e675963e4dcc718820104c35c173c4db2203f0eb",
+      "bytes": 15548,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "phone-shadow.png",
+      "sha256": "622f42ec7c54f0d0e63c61d755d2e192555f539570a40d26dd0bb54727bc6d68",
+      "bytes": 25417,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "phone-curl.png",
+      "sha256": "b883ad9400dc044ccaa79e050af899bc6f1e2a27bbea2821f49e63ad3290e21b",
+      "bytes": 31636,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "messenger-kakao.png",
+      "sha256": "3ac8102f2fb5863530ee37551c22eebfdd8a16b1f002d34c6026b462de1f9197",
+      "bytes": 5490,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "screenshot-downscaled.png",
+      "sha256": "c0a6784892088f53f8cbf239971f174e1d685506d57112e54ad141f6621a0a65",
+      "bytes": 4090,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "photocopy.png",
+      "sha256": "2b9b103fb5e6fd4a75ad5e68c048be1c8e3eba1da0e95930e087eb2f1375a40c",
+      "bytes": 1786,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "screen-photo.png",
+      "sha256": "d288b24fb30f8d57e99100bd4bde0c47bc748739e60ac5110a479be73be1d6a9",
+      "bytes": 182509,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    }
+  ],
+  "realism_ks_auc": "NOT_RUN: W4 aggregate statistics/domain-classifier results unavailable",
+  "baseline_delta_95pct_ci": null
+}
