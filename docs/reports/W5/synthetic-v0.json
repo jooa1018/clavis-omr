@@ -1,0 +1,2590 @@
+{
+  "scope": "synthetic smoke, NOT SYN-Val; no real/Dev/sealed data; no improvement claim",
+  "match_definition": "one-to-one nearest top-line centre <=0.5 staff-space and horizontal IoU>=0.5; diagnostic only",
+  "slices": [
+    {
+      "interline": 16,
+      "pages": 12,
+      "gt_staves": 36,
+      "detected_staves": 36,
+      "matched_staves": 36,
+      "recall": 1.0,
+      "precision": 1.0,
+      "interline_relative_error_median": 0.0,
+      "interline_relative_error_p95": 0.0,
+      "strip_ms_p95": 392.78455001476686,
+      "dewarp_rms_spaces_p95": 0.010416666666666633
+    },
+    {
+      "interline": 10,
+      "pages": 12,
+      "gt_staves": 36,
+      "detected_staves": 36,
+      "matched_staves": 36,
+      "recall": 1.0,
+      "precision": 1.0,
+      "interline_relative_error_median": 0.0,
+      "interline_relative_error_p95": 0.0,
+      "strip_ms_p95": 300.3189750161255,
+      "dewarp_rms_spaces_p95": 0.04166666666666856
+    },
+    {
+      "interline": 8,
+      "pages": 12,
+      "gt_staves": 36,
+      "detected_staves": 35,
+      "matched_staves": 35,
+      "recall": 0.9722222222222222,
+      "precision": 1.0,
+      "interline_relative_error_median": 0.0,
+      "interline_relative_error_p95": 0.0,
+      "strip_ms_p95": 184.06888000317846,
+      "dewarp_rms_spaces_p95": 0.0208333333333357
+    }
+  ],
+  "records": [
+    {
+      "sample": "train-smoke-0-Leipzig",
+      "target_interline": 16,
+      "gt_staves": 2,
+      "detected_staves": 2,
+      "matched_staves": 2,
+      "diagnostics": [
+        "OOD_REGION"
+      ],
+      "detect_ms": 3093.8260999973863,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666666607,
+          "strip_ms": 131.6448000143282
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666665008,
+          "strip_ms": 27.46889996342361
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 16,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.44452380952380954,
+            0.0,
+            -0.27773809523809523
+          ],
+          [
+            0.0,
+            0.4444444444444444,
+            -0.2777777777777778
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          1867,
+          2640
+        ],
+        "actual_interlines": [
+          16.0,
+          16.0,
+          15.999999999999986,
+          16.0,
+          15.999999999999943,
+          16.0,
+          16.0,
+          16.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-0-Leipzig",
+      "target_interline": 10,
+      "gt_staves": 2,
+      "detected_staves": 2,
+      "matched_staves": 2,
+      "diagnostics": [
+        "OOD_REGION"
+      ],
+      "detect_ms": 830.9579999768175,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.041666666666666886,
+          "strip_ms": 107.2277000057511
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666859,
+          "strip_ms": 28.94029999151826
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 10,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.27785714285714286,
+            0.0,
+            -0.3610714285714286
+          ],
+          [
+            0.0,
+            0.2777777777777778,
+            -0.3611111111111111
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          1167,
+          1650
+        ],
+        "actual_interlines": [
+          10.000000000000007,
+          10.0,
+          10.0,
+          10.0,
+          10.000000000000028,
+          10.0,
+          10.0,
+          10.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-0-Leipzig",
+      "target_interline": 8,
+      "gt_staves": 2,
+      "detected_staves": 1,
+      "matched_staves": 1,
+      "diagnostics": [
+        "OOD_REGION"
+      ],
+      "detect_ms": 415.78959999606013,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.020833333333333395,
+          "strip_ms": 90.14489996479824
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 8,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.22214285714285714,
+            0.0,
+            -0.3889285714285714
+          ],
+          [
+            0.0,
+            0.2222222222222222,
+            -0.3888888888888889
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          933,
+          1320
+        ],
+        "actual_interlines": [
+          8.0,
+          8.0,
+          7.999999999999993,
+          8.0,
+          7.999999999999972,
+          8.0,
+          8.0,
+          8.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-0-Bravura",
+      "target_interline": 16,
+      "gt_staves": 2,
+      "detected_staves": 2,
+      "matched_staves": 2,
+      "diagnostics": [
+        "OOD_REGION"
+      ],
+      "detect_ms": 2750.02019997919,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666666628,
+          "strip_ms": 103.87210000772029
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666665008,
+          "strip_ms": 34.053999988827854
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 16,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.44452380952380954,
+            0.0,
+            -0.27773809523809523
+          ],
+          [
+            0.0,
+            0.4444444444444444,
+            -0.2777777777777778
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          1867,
+          2640
+        ],
+        "actual_interlines": [
+          16.0,
+          16.0,
+          15.999999999999986,
+          16.0,
+          15.999999999999943,
+          16.0,
+          16.0,
+          16.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-0-Bravura",
+      "target_interline": 10,
+      "gt_staves": 2,
+      "detected_staves": 2,
+      "matched_staves": 2,
+      "diagnostics": [
+        "OOD_REGION"
+      ],
+      "detect_ms": 1053.8106000167318,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.041666666666666886,
+          "strip_ms": 134.18799999635667
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666799,
+          "strip_ms": 42.82390000298619
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 10,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.27785714285714286,
+            0.0,
+            -0.3610714285714286
+          ],
+          [
+            0.0,
+            0.2777777777777778,
+            -0.3611111111111111
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          1167,
+          1650
+        ],
+        "actual_interlines": [
+          10.000000000000007,
+          10.0,
+          10.0,
+          10.0,
+          10.000000000000028,
+          10.0,
+          10.0,
+          10.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-0-Bravura",
+      "target_interline": 8,
+      "gt_staves": 2,
+      "detected_staves": 2,
+      "matched_staves": 2,
+      "diagnostics": [
+        "OOD_REGION"
+      ],
+      "detect_ms": 705.5915999808349,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.020833333333333395,
+          "strip_ms": 171.07260000193492
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.020833333333334658,
+          "strip_ms": 54.3271999922581
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 8,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.22214285714285714,
+            0.0,
+            -0.3889285714285714
+          ],
+          [
+            0.0,
+            0.2222222222222222,
+            -0.3888888888888889
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          933,
+          1320
+        ],
+        "actual_interlines": [
+          8.0,
+          8.0,
+          7.999999999999993,
+          8.0,
+          7.999999999999972,
+          8.0,
+          8.0,
+          8.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-0-Leland",
+      "target_interline": 16,
+      "gt_staves": 2,
+      "detected_staves": 2,
+      "matched_staves": 2,
+      "diagnostics": [
+        "OOD_REGION"
+      ],
+      "detect_ms": 4569.3353999522515,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666666628,
+          "strip_ms": 201.96360000409186
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666665008,
+          "strip_ms": 86.08729997649789
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 16,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.44452380952380954,
+            0.0,
+            -0.27773809523809523
+          ],
+          [
+            0.0,
+            0.4444444444444444,
+            -0.2777777777777778
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          1867,
+          2640
+        ],
+        "actual_interlines": [
+          16.0,
+          16.0,
+          15.999999999999986,
+          16.0,
+          15.999999999999943,
+          16.0,
+          16.0,
+          16.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-0-Leland",
+      "target_interline": 10,
+      "gt_staves": 2,
+      "detected_staves": 2,
+      "matched_staves": 2,
+      "diagnostics": [
+        "OOD_REGION"
+      ],
+      "detect_ms": 1221.66089998791,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666685,
+          "strip_ms": 160.81279999343678
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666772,
+          "strip_ms": 43.954099994152784
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 10,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.27785714285714286,
+            0.0,
+            -0.3610714285714286
+          ],
+          [
+            0.0,
+            0.2777777777777778,
+            -0.3611111111111111
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          1167,
+          1650
+        ],
+        "actual_interlines": [
+          10.000000000000007,
+          10.0,
+          10.0,
+          10.0,
+          10.000000000000028,
+          10.0,
+          10.0,
+          10.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-0-Leland",
+      "target_interline": 8,
+      "gt_staves": 2,
+      "detected_staves": 2,
+      "matched_staves": 2,
+      "diagnostics": [
+        "OOD_REGION"
+      ],
+      "detect_ms": 376.30070000886917,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.020833333333333395,
+          "strip_ms": 113.5260000010021
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.02083333333333499,
+          "strip_ms": 43.18389995023608
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 8,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.22214285714285714,
+            0.0,
+            -0.3889285714285714
+          ],
+          [
+            0.0,
+            0.2222222222222222,
+            -0.3888888888888889
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          933,
+          1320
+        ],
+        "actual_interlines": [
+          8.0,
+          8.0,
+          7.999999999999993,
+          8.0,
+          7.999999999999972,
+          8.0,
+          8.0,
+          8.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-1-Leipzig",
+      "target_interline": 16,
+      "gt_staves": 4,
+      "detected_staves": 4,
+      "matched_staves": 4,
+      "diagnostics": [],
+      "detect_ms": 3474.516800022684,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666666649,
+          "strip_ms": 175.15600001206622
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666666075,
+          "strip_ms": 195.63079997897148
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.01041666666666434,
+          "strip_ms": 74.38020000699908
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666664633,
+          "strip_ms": 64.51950001064688
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 16,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.44452380952380954,
+            0.0,
+            -0.27773809523809523
+          ],
+          [
+            0.0,
+            0.4444444444444444,
+            -0.2777777777777778
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          1867,
+          2640
+        ],
+        "actual_interlines": [
+          16.0,
+          16.0,
+          15.999999999999986,
+          16.0,
+          16.00000000000003,
+          16.0,
+          15.999999999999943,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-1-Leipzig",
+      "target_interline": 10,
+      "gt_staves": 4,
+      "detected_staves": 4,
+      "matched_staves": 4,
+      "diagnostics": [],
+      "detect_ms": 1358.3112999913283,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.0416666666666669,
+          "strip_ms": 111.15249997237697
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666686,
+          "strip_ms": 124.16440004017204
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666855,
+          "strip_ms": 61.36190000688657
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666855,
+          "strip_ms": 69.40899998880923
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 10,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.27785714285714286,
+            0.0,
+            -0.3610714285714286
+          ],
+          [
+            0.0,
+            0.2777777777777778,
+            -0.3611111111111111
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          1167,
+          1650
+        ],
+        "actual_interlines": [
+          10.000000000000007,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.000000000000028,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-1-Leipzig",
+      "target_interline": 8,
+      "gt_staves": 4,
+      "detected_staves": 4,
+      "matched_staves": 4,
+      "diagnostics": [],
+      "detect_ms": 784.6062000025995,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.020833333333333395,
+          "strip_ms": 182.49460001243278
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.020833333333334047,
+          "strip_ms": 195.96519996412098
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.020833333333335157,
+          "strip_ms": 83.41879997169599
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.0208333333333357,
+          "strip_ms": 72.65889999689534
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 8,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.22214285714285714,
+            0.0,
+            -0.3889285714285714
+          ],
+          [
+            0.0,
+            0.2222222222222222,
+            -0.3888888888888889
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          933,
+          1320
+        ],
+        "actual_interlines": [
+          8.0,
+          8.0,
+          7.999999999999993,
+          8.0,
+          8.000000000000014,
+          8.0,
+          7.999999999999972,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-1-Bravura",
+      "target_interline": 16,
+      "gt_staves": 4,
+      "detected_staves": 4,
+      "matched_staves": 4,
+      "diagnostics": [
+        "OOD_REGION"
+      ],
+      "detect_ms": 4871.635600051377,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666666628,
+          "strip_ms": 221.10929997870699
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666666054,
+          "strip_ms": 178.072799986694
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666663755,
+          "strip_ms": 60.648899991065264
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666665719,
+          "strip_ms": 62.53250001464039
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 16,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.44452380952380954,
+            0.0,
+            -0.27773809523809523
+          ],
+          [
+            0.0,
+            0.4444444444444444,
+            -0.2777777777777778
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          1867,
+          2640
+        ],
+        "actual_interlines": [
+          16.0,
+          16.0,
+          15.999999999999986,
+          16.0,
+          16.00000000000003,
+          16.0,
+          15.999999999999943,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-1-Bravura",
+      "target_interline": 10,
+      "gt_staves": 4,
+      "detected_staves": 4,
+      "matched_staves": 4,
+      "diagnostics": [
+        "OOD_REGION"
+      ],
+      "detect_ms": 1650.3646000055596,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.0416666666666669,
+          "strip_ms": 188.50910000037402
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666686,
+          "strip_ms": 212.8546999883838
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666855,
+          "strip_ms": 66.109899955336
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666855,
+          "strip_ms": 56.81470001582056
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 10,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.27785714285714286,
+            0.0,
+            -0.3610714285714286
+          ],
+          [
+            0.0,
+            0.2777777777777778,
+            -0.3611111111111111
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          1167,
+          1650
+        ],
+        "actual_interlines": [
+          10.000000000000007,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.000000000000028,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-1-Bravura",
+      "target_interline": 8,
+      "gt_staves": 4,
+      "detected_staves": 4,
+      "matched_staves": 4,
+      "diagnostics": [
+        "OOD_REGION"
+      ],
+      "detect_ms": 762.3461000039242,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.020833333333333395,
+          "strip_ms": 167.6974999718368
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.020833333333333818,
+          "strip_ms": 187.74219998158514
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.02083333333333357,
+          "strip_ms": 70.62920002499595
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.0208333333333357,
+          "strip_ms": 69.6557000046596
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 8,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.22214285714285714,
+            0.0,
+            -0.3889285714285714
+          ],
+          [
+            0.0,
+            0.2222222222222222,
+            -0.3888888888888889
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          933,
+          1320
+        ],
+        "actual_interlines": [
+          8.0,
+          8.0,
+          7.999999999999993,
+          8.0,
+          8.000000000000014,
+          8.0,
+          7.999999999999972,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-1-Leland",
+      "target_interline": 16,
+      "gt_staves": 4,
+      "detected_staves": 4,
+      "matched_staves": 4,
+      "diagnostics": [],
+      "detect_ms": 6240.93339999672,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666666711,
+          "strip_ms": 166.9537000125274
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666666137,
+          "strip_ms": 254.54510003328323
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666664298,
+          "strip_ms": 70.79250004608184
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666664298,
+          "strip_ms": 93.35430001374334
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 16,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.44452380952380954,
+            0.0,
+            -0.27773809523809523
+          ],
+          [
+            0.0,
+            0.4444444444444444,
+            -0.2777777777777778
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          1867,
+          2640
+        ],
+        "actual_interlines": [
+          16.0,
+          16.0,
+          15.999999999999986,
+          16.0,
+          16.00000000000003,
+          16.0,
+          15.999999999999943,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-1-Leland",
+      "target_interline": 10,
+      "gt_staves": 4,
+      "detected_staves": 4,
+      "matched_staves": 4,
+      "diagnostics": [],
+      "detect_ms": 1918.7605999759398,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666691,
+          "strip_ms": 166.11940000439063
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666686,
+          "strip_ms": 153.32939999643713
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666855,
+          "strip_ms": 53.00160002661869
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666889,
+          "strip_ms": 117.87459999322891
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 10,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.27785714285714286,
+            0.0,
+            -0.3610714285714286
+          ],
+          [
+            0.0,
+            0.2777777777777778,
+            -0.3611111111111111
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          1167,
+          1650
+        ],
+        "actual_interlines": [
+          10.000000000000007,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.000000000000028,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-1-Leland",
+      "target_interline": 8,
+      "gt_staves": 4,
+      "detected_staves": 4,
+      "matched_staves": 4,
+      "diagnostics": [
+        "OOD_REGION"
+      ],
+      "detect_ms": 768.1563000078313,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.020833333333333395,
+          "strip_ms": 147.53469999413937
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.020833333333333943,
+          "strip_ms": 122.62169999303296
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.020833333333334366,
+          "strip_ms": 44.52709999168292
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.0208333333333357,
+          "strip_ms": 46.48499999893829
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 8,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.22214285714285714,
+            0.0,
+            -0.3889285714285714
+          ],
+          [
+            0.0,
+            0.2222222222222222,
+            -0.3888888888888889
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          933,
+          1320
+        ],
+        "actual_interlines": [
+          8.0,
+          8.0,
+          7.999999999999993,
+          8.0,
+          8.000000000000014,
+          8.0,
+          7.999999999999972,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-2-Leipzig",
+      "target_interline": 16,
+      "gt_staves": 2,
+      "detected_staves": 2,
+      "matched_staves": 2,
+      "diagnostics": [],
+      "detect_ms": 2845.277599990368,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666666607,
+          "strip_ms": 114.96750003425404
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666665008,
+          "strip_ms": 32.79189998283982
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 16,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.44452380952380954,
+            0.0,
+            -0.27773809523809523
+          ],
+          [
+            0.0,
+            0.4444444444444444,
+            -0.2777777777777778
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          1867,
+          2640
+        ],
+        "actual_interlines": [
+          16.0,
+          16.0,
+          15.999999999999986,
+          16.0,
+          15.999999999999943,
+          16.0,
+          16.0,
+          16.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-2-Leipzig",
+      "target_interline": 10,
+      "gt_staves": 2,
+      "detected_staves": 2,
+      "matched_staves": 2,
+      "diagnostics": [],
+      "detect_ms": 1129.232699982822,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.041666666666666886,
+          "strip_ms": 131.8201000103727
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666799,
+          "strip_ms": 34.55229999963194
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 10,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.27785714285714286,
+            0.0,
+            -0.3610714285714286
+          ],
+          [
+            0.0,
+            0.2777777777777778,
+            -0.3611111111111111
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          1167,
+          1650
+        ],
+        "actual_interlines": [
+          10.000000000000007,
+          10.0,
+          10.0,
+          10.0,
+          10.000000000000028,
+          10.0,
+          10.0,
+          10.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-2-Leipzig",
+      "target_interline": 8,
+      "gt_staves": 2,
+      "detected_staves": 2,
+      "matched_staves": 2,
+      "diagnostics": [
+        "OOD_REGION"
+      ],
+      "detect_ms": 514.867999998387,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.020833333333333395,
+          "strip_ms": 127.85879999864846
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.02083333333333499,
+          "strip_ms": 39.62380002485588
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 8,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.22214285714285714,
+            0.0,
+            -0.3889285714285714
+          ],
+          [
+            0.0,
+            0.2222222222222222,
+            -0.3888888888888889
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          933,
+          1320
+        ],
+        "actual_interlines": [
+          8.0,
+          8.0,
+          7.999999999999993,
+          8.0,
+          7.999999999999972,
+          8.0,
+          8.0,
+          8.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-2-Bravura",
+      "target_interline": 16,
+      "gt_staves": 2,
+      "detected_staves": 2,
+      "matched_staves": 2,
+      "diagnostics": [],
+      "detect_ms": 2237.6404999522492,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666666628,
+          "strip_ms": 251.263799960725
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666665134,
+          "strip_ms": 43.73220005072653
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 16,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.44452380952380954,
+            0.0,
+            -0.27773809523809523
+          ],
+          [
+            0.0,
+            0.4444444444444444,
+            -0.2777777777777778
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          1867,
+          2640
+        ],
+        "actual_interlines": [
+          16.0,
+          16.0,
+          15.999999999999986,
+          16.0,
+          15.999999999999943,
+          16.0,
+          16.0,
+          16.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-2-Bravura",
+      "target_interline": 10,
+      "gt_staves": 2,
+      "detected_staves": 2,
+      "matched_staves": 2,
+      "diagnostics": [],
+      "detect_ms": 2041.9863000279292,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666691,
+          "strip_ms": 141.69969997601584
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.041666666666668024,
+          "strip_ms": 27.072800032328814
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 10,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.27785714285714286,
+            0.0,
+            -0.3610714285714286
+          ],
+          [
+            0.0,
+            0.2777777777777778,
+            -0.3611111111111111
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          1167,
+          1650
+        ],
+        "actual_interlines": [
+          10.000000000000007,
+          10.0,
+          10.0,
+          10.0,
+          10.000000000000028,
+          10.0,
+          10.0,
+          10.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-2-Bravura",
+      "target_interline": 8,
+      "gt_staves": 2,
+      "detected_staves": 2,
+      "matched_staves": 2,
+      "diagnostics": [
+        "OOD_REGION"
+      ],
+      "detect_ms": 382.1763999876566,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.020833333333333395,
+          "strip_ms": 104.03430002043024
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.02083333333333499,
+          "strip_ms": 21.334499993827194
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 8,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.22214285714285714,
+            0.0,
+            -0.3889285714285714
+          ],
+          [
+            0.0,
+            0.2222222222222222,
+            -0.3888888888888889
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          933,
+          1320
+        ],
+        "actual_interlines": [
+          8.0,
+          8.0,
+          7.999999999999993,
+          8.0,
+          7.999999999999972,
+          8.0,
+          8.0,
+          8.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-2-Leland",
+      "target_interline": 16,
+      "gt_staves": 2,
+      "detected_staves": 2,
+      "matched_staves": 2,
+      "diagnostics": [],
+      "detect_ms": 1653.8227999699302,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666666628,
+          "strip_ms": 57.19859997043386
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666665008,
+          "strip_ms": 20.380600006319582
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 16,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.44452380952380954,
+            0.0,
+            -0.27773809523809523
+          ],
+          [
+            0.0,
+            0.4444444444444444,
+            -0.2777777777777778
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          1867,
+          2640
+        ],
+        "actual_interlines": [
+          16.0,
+          16.0,
+          15.999999999999986,
+          16.0,
+          15.999999999999943,
+          16.0,
+          16.0,
+          16.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-2-Leland",
+      "target_interline": 10,
+      "gt_staves": 2,
+      "detected_staves": 2,
+      "matched_staves": 2,
+      "diagnostics": [],
+      "detect_ms": 476.06010001618415,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666685,
+          "strip_ms": 49.38149999361485
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666778,
+          "strip_ms": 24.82450002571568
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 10,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.27785714285714286,
+            0.0,
+            -0.3610714285714286
+          ],
+          [
+            0.0,
+            0.2777777777777778,
+            -0.3611111111111111
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          1167,
+          1650
+        ],
+        "actual_interlines": [
+          10.000000000000007,
+          10.0,
+          10.0,
+          10.0,
+          10.000000000000028,
+          10.0,
+          10.0,
+          10.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-2-Leland",
+      "target_interline": 8,
+      "gt_staves": 2,
+      "detected_staves": 2,
+      "matched_staves": 2,
+      "diagnostics": [
+        "OOD_REGION"
+      ],
+      "detect_ms": 185.14519999735057,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.020833333333333395,
+          "strip_ms": 43.83509996114299
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.02083333333333499,
+          "strip_ms": 20.417200052179396
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 8,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.22214285714285714,
+            0.0,
+            -0.3889285714285714
+          ],
+          [
+            0.0,
+            0.2222222222222222,
+            -0.3888888888888889
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          933,
+          1320
+        ],
+        "actual_interlines": [
+          8.0,
+          8.0,
+          7.999999999999993,
+          8.0,
+          7.999999999999972,
+          8.0,
+          8.0,
+          8.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-3-Leipzig",
+      "target_interline": 16,
+      "gt_staves": 4,
+      "detected_staves": 4,
+      "matched_staves": 4,
+      "diagnostics": [],
+      "detect_ms": 1498.5898999730125,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666666628,
+          "strip_ms": 59.80550003005192
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666666075,
+          "strip_ms": 85.69159999024123
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666664466,
+          "strip_ms": 33.178200013935566
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.01041666666666413,
+          "strip_ms": 32.37800003262237
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 16,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.44452380952380954,
+            0.0,
+            -0.27773809523809523
+          ],
+          [
+            0.0,
+            0.4444444444444444,
+            -0.2777777777777778
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          1867,
+          2640
+        ],
+        "actual_interlines": [
+          16.0,
+          16.0,
+          15.999999999999986,
+          16.0,
+          16.00000000000003,
+          16.0,
+          15.999999999999943,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-3-Leipzig",
+      "target_interline": 10,
+      "gt_staves": 4,
+      "detected_staves": 4,
+      "matched_staves": 4,
+      "diagnostics": [],
+      "detect_ms": 827.6361000025645,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666692,
+          "strip_ms": 87.02789997914806
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666686,
+          "strip_ms": 39.47619994869456
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666855,
+          "strip_ms": 13.403000019025058
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666855,
+          "strip_ms": 14.729299989994615
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 10,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.27785714285714286,
+            0.0,
+            -0.3610714285714286
+          ],
+          [
+            0.0,
+            0.2777777777777778,
+            -0.3611111111111111
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          1167,
+          1650
+        ],
+        "actual_interlines": [
+          10.000000000000007,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.000000000000028,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-3-Leipzig",
+      "target_interline": 8,
+      "gt_staves": 4,
+      "detected_staves": 4,
+      "matched_staves": 4,
+      "diagnostics": [],
+      "detect_ms": 251.959299959708,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.020833333333333395,
+          "strip_ms": 35.405100032221526
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.020833333333333943,
+          "strip_ms": 51.42230005003512
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.020833333333335282,
+          "strip_ms": 22.63740001944825
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.0208333333333357,
+          "strip_ms": 19.46549996500835
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 8,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.22214285714285714,
+            0.0,
+            -0.3889285714285714
+          ],
+          [
+            0.0,
+            0.2222222222222222,
+            -0.3888888888888889
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          933,
+          1320
+        ],
+        "actual_interlines": [
+          8.0,
+          8.0,
+          7.999999999999993,
+          8.0,
+          8.000000000000014,
+          8.0,
+          7.999999999999972,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-3-Bravura",
+      "target_interline": 16,
+      "gt_staves": 4,
+      "detected_staves": 4,
+      "matched_staves": 4,
+      "diagnostics": [
+        "OOD_REGION"
+      ],
+      "detect_ms": 4365.68270000862,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666666628,
+          "strip_ms": 326.7571000033058
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666666054,
+          "strip_ms": 235.88489997200668
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666664298,
+          "strip_ms": 48.07680001249537
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666664298,
+          "strip_ms": 68.5012000030838
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 16,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.44452380952380954,
+            0.0,
+            -0.27773809523809523
+          ],
+          [
+            0.0,
+            0.4444444444444444,
+            -0.2777777777777778
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          1867,
+          2640
+        ],
+        "actual_interlines": [
+          16.0,
+          16.0,
+          15.999999999999986,
+          16.0,
+          16.00000000000003,
+          16.0,
+          15.999999999999943,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-3-Bravura",
+      "target_interline": 10,
+      "gt_staves": 4,
+      "detected_staves": 4,
+      "matched_staves": 4,
+      "diagnostics": [
+        "OOD_REGION"
+      ],
+      "detect_ms": 3435.038199997507,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.041666666666666956,
+          "strip_ms": 167.20470000291243
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666686,
+          "strip_ms": 337.68330002203584
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666855,
+          "strip_ms": 497.92590003926307
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666855,
+          "strip_ms": 287.86420001415536
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 10,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.27785714285714286,
+            0.0,
+            -0.3610714285714286
+          ],
+          [
+            0.0,
+            0.2777777777777778,
+            -0.3611111111111111
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          1167,
+          1650
+        ],
+        "actual_interlines": [
+          10.000000000000007,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.000000000000028,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-3-Bravura",
+      "target_interline": 8,
+      "gt_staves": 4,
+      "detected_staves": 4,
+      "matched_staves": 4,
+      "diagnostics": [
+        "OOD_REGION"
+      ],
+      "detect_ms": 569.0749000059441,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.020833333333333395,
+          "strip_ms": 52.11240000789985
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.020833333333333943,
+          "strip_ms": 74.54890001099557
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.020833333333335743,
+          "strip_ms": 71.27169996965677
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.0208333333333357,
+          "strip_ms": 24.651499988976866
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 8,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.22214285714285714,
+            0.0,
+            -0.3889285714285714
+          ],
+          [
+            0.0,
+            0.2222222222222222,
+            -0.3888888888888889
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          933,
+          1320
+        ],
+        "actual_interlines": [
+          8.0,
+          8.0,
+          7.999999999999993,
+          8.0,
+          8.000000000000014,
+          8.0,
+          7.999999999999972,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-3-Leland",
+      "target_interline": 16,
+      "gt_staves": 4,
+      "detected_staves": 4,
+      "matched_staves": 4,
+      "diagnostics": [],
+      "detect_ms": 3507.715300016571,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666666628,
+          "strip_ms": 441.0819999757223
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666666054,
+          "strip_ms": 542.7602999843657
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.01041666666666434,
+          "strip_ms": 311.2068999907933
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.010416666666664298,
+          "strip_ms": 376.6854000277817
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 16,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.44452380952380954,
+            0.0,
+            -0.27773809523809523
+          ],
+          [
+            0.0,
+            0.4444444444444444,
+            -0.2777777777777778
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          1867,
+          2640
+        ],
+        "actual_interlines": [
+          16.0,
+          16.0,
+          15.999999999999986,
+          16.0,
+          16.00000000000003,
+          16.0,
+          15.999999999999943,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0,
+          16.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-3-Leland",
+      "target_interline": 10,
+      "gt_staves": 4,
+      "detected_staves": 4,
+      "matched_staves": 4,
+      "diagnostics": [],
+      "detect_ms": 1640.7107000122778,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.041666666666666914,
+          "strip_ms": 74.00520000373945
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666686,
+          "strip_ms": 42.38470003474504
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666855,
+          "strip_ms": 14.962299959734082
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.04166666666666855,
+          "strip_ms": 54.61500003002584
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 10,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.27785714285714286,
+            0.0,
+            -0.3610714285714286
+          ],
+          [
+            0.0,
+            0.2777777777777778,
+            -0.3611111111111111
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          1167,
+          1650
+        ],
+        "actual_interlines": [
+          10.000000000000007,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.000000000000028,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0,
+          10.0
+        ]
+      }
+    },
+    {
+      "sample": "train-smoke-3-Leland",
+      "target_interline": 8,
+      "gt_staves": 4,
+      "detected_staves": 4,
+      "matched_staves": 4,
+      "diagnostics": [
+        "OOD_REGION"
+      ],
+      "detect_ms": 484.3949000351131,
+      "matches": [
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.020833333333333395,
+          "strip_ms": 46.31949996110052
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.02083333333333384,
+          "strip_ms": 47.55390004720539
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.020833333333335657,
+          "strip_ms": 17.981300014071167
+        },
+        {
+          "interline_relative_error": 0.0,
+          "dewarp_rms_spaces": 0.0208333333333357,
+          "strip_ms": 11.099299998022616
+        }
+      ],
+      "trace": {
+        "op": "resize",
+        "target_interline": 8,
+        "interpolation": "area",
+        "max_pixels": 30000000,
+        "matrix": [
+          [
+            0.22214285714285714,
+            0.0,
+            -0.3889285714285714
+          ],
+          [
+            0.0,
+            0.2222222222222222,
+            -0.3888888888888889
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "size": [
+          933,
+          1320
+        ],
+        "actual_interlines": [
+          8.0,
+          8.0,
+          7.999999999999993,
+          8.0,
+          8.000000000000014,
+          8.0,
+          7.999999999999972,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0,
+          8.0
+        ]
+      }
+    }
+  ],
+  "provenance": [
+    {
+      "sample": "train-smoke-0-Leipzig",
+      "raster_sha256": "9bc298fbbdc2ce5ba72ffe4890acd78ca1727c22154d7610b405f6c39f75c43e",
+      "w2_input_sha256": "5c78406bf42c72e7bcc086d34d41300e82e996efe99c1a13ee06f98ec5968fff"
+    },
+    {
+      "sample": "train-smoke-0-Bravura",
+      "raster_sha256": "4a38bbf0aff80dd0eb05ee4c525680196b1f08bdda918747e46e23db14165e6f",
+      "w2_input_sha256": "5c78406bf42c72e7bcc086d34d41300e82e996efe99c1a13ee06f98ec5968fff"
+    },
+    {
+      "sample": "train-smoke-0-Leland",
+      "raster_sha256": "08099a7b7a50b639398fb4715b92b9f62606d0d70e2d4dad914cfbae968fa837",
+      "w2_input_sha256": "5c78406bf42c72e7bcc086d34d41300e82e996efe99c1a13ee06f98ec5968fff"
+    },
+    {
+      "sample": "train-smoke-1-Leipzig",
+      "raster_sha256": "0ab866650b2dd773f507a56aa7ae0368665a605cd539f278f3b68f899d904f9d",
+      "w2_input_sha256": "62039bf145f27210b0724d1b3dfe21ebf955e8a3394a539d2c7fa065c650e534"
+    },
+    {
+      "sample": "train-smoke-1-Bravura",
+      "raster_sha256": "784196760f1d8e2a1596c2237a1165074a3cec8c09f3d89ca9da3a2df3f950a1",
+      "w2_input_sha256": "62039bf145f27210b0724d1b3dfe21ebf955e8a3394a539d2c7fa065c650e534"
+    },
+    {
+      "sample": "train-smoke-1-Leland",
+      "raster_sha256": "173d08091b576b276eca63af0850fafa885a992dc1c57b0fcdd1e4b99f3116a7",
+      "w2_input_sha256": "62039bf145f27210b0724d1b3dfe21ebf955e8a3394a539d2c7fa065c650e534"
+    },
+    {
+      "sample": "train-smoke-2-Leipzig",
+      "raster_sha256": "49c689d9498a28958ee0431ad6d062238c658077db2af30ea2b6ee3d54b9889f",
+      "w2_input_sha256": "395387d49664b8ed463f65fafc26909f2a524e68781d7364af440548f7017c57"
+    },
+    {
+      "sample": "train-smoke-2-Bravura",
+      "raster_sha256": "f9d9394d43e2d9e04326d35884eed6b213b11120b3296d7da813862da75922f9",
+      "w2_input_sha256": "395387d49664b8ed463f65fafc26909f2a524e68781d7364af440548f7017c57"
+    },
+    {
+      "sample": "train-smoke-2-Leland",
+      "raster_sha256": "0621bda44b3991611da7ade1f6ae50a97fea0944171d6d894be82b1b780041fa",
+      "w2_input_sha256": "395387d49664b8ed463f65fafc26909f2a524e68781d7364af440548f7017c57"
+    },
+    {
+      "sample": "train-smoke-3-Leipzig",
+      "raster_sha256": "7cd7642463585179b2661c0ce4929f95217ccec298e5633e659745f795b95101",
+      "w2_input_sha256": "a980d85f21baca41ebe8b05285ac193ec6f969bbe9f2015e3908db7b5579813f"
+    },
+    {
+      "sample": "train-smoke-3-Bravura",
+      "raster_sha256": "438154fcaf337daba5818dcd02673d868e45f4e762ff27551ef55e915e4cbd95",
+      "w2_input_sha256": "a980d85f21baca41ebe8b05285ac193ec6f969bbe9f2015e3908db7b5579813f"
+    },
+    {
+      "sample": "train-smoke-3-Leland",
+      "raster_sha256": "136046b987066e94c15d2c1ca505f795d3054a338a853674388850fe11bc4bc9",
+      "w2_input_sha256": "a980d85f21baca41ebe8b05285ac193ec6f969bbe9f2015e3908db7b5579813f"
+    }
+  ],
+  "rasterizer": {
+    "aom": "3.14.1",
+    "archive": "3.8.9",
+    "cairo": "1.18.4",
+    "cgif": "0.5.3",
+    "exif": "0.6.26",
+    "expat": "2.8.3",
+    "ffi": "3.8.0",
+    "fontconfig": "2.18.3",
+    "freetype": "2.14.3",
+    "fribidi": "1.0.16",
+    "glib": "2.89.4",
+    "harfbuzz": "14.3.1",
+    "heif": "1.23.2",
+    "highway": "1.4.0",
+    "imagequant": "2.4.1",
+    "lcms": "2.19.1",
+    "mozjpeg": "0826579",
+    "pango": "1.58.2",
+    "pixman": "0.46.4",
+    "png": "1.6.58",
+    "proxy-libintl": "0.5",
+    "rsvg": "2.62.91",
+    "tiff": "4.7.2",
+    "uhdr": "2.0.2",
+    "vips": "8.18.6",
+    "webp": "1.6.0",
+    "xml2": "2.15.3",
+    "zlib-ng": "2.3.3",
+    "sharp": "0.35.4"
+  },
+  "wall_seconds": 113.9969856000389,
+  "peak_rss_bytes": 184074240,
+  "config_sha256": "b15554d863e71a58264b1a492ef039d5deca5ee75cd89ddd3fb6738923d98d82"
+}

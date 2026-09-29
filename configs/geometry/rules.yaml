@@ -1,0 +1,85 @@
+[
+  {
+    "id": "GEO-RUN",
+    "owner": "W5",
+    "statement": "Short vertical ink runs alternating with gaps support staff spacing",
+    "units": "staff_space or ratio",
+    "params": [
+      "run.max_thickness",
+      "run.min_support"
+    ],
+    "source": "convention",
+    "enabled": true,
+    "flag": "GEO-RUN",
+    "ablation": {
+      "status": "DEFERRED_G2",
+      "authorization": "Orchestrator 2026-09-29"
+    },
+    "introduced_by": "W5 initial component PR",
+    "motivated_by_failure": false
+  },
+  {
+    "id": "GEO-GROUP",
+    "owner": "W5",
+    "statement": "Pitched staves are five equidistant projected lines; larger groups are ambiguous",
+    "units": "staff_space or ratio",
+    "params": [
+      "group.tolerance",
+      "projection.band_width",
+      "projection.max_slope",
+      "projection.slope_step",
+      "projection.min_ink",
+      "staff.lines"
+    ],
+    "source": "convention",
+    "enabled": true,
+    "flag": "GEO-GROUP",
+    "ablation": {
+      "status": "DEFERRED_G2",
+      "authorization": "Orchestrator 2026-09-29"
+    },
+    "introduced_by": "W5 initial component PR",
+    "motivated_by_failure": false
+  },
+  {
+    "id": "GEO-TRACK",
+    "owner": "W5",
+    "statement": "Staff line groups continue across adjacent column bands",
+    "units": "staff_space or ratio",
+    "params": [
+      "track.max_gap",
+      "track.tolerance",
+      "track.min_width",
+      "endpoint.min_support",
+      "confidence.bp_scale"
+    ],
+    "source": "convention",
+    "enabled": true,
+    "flag": "GEO-TRACK",
+    "ablation": {
+      "status": "DEFERRED_G2",
+      "authorization": "Orchestrator 2026-09-29"
+    },
+    "introduced_by": "W5 initial component PR",
+    "motivated_by_failure": false
+  },
+  {
+    "id": "GEO-REMOVE",
+    "owner": "W5",
+    "statement": "Longer vertical ink runs crossing staff rows retain symbol evidence",
+    "units": "staff_space or ratio",
+    "params": [
+      "remove.position_tolerance",
+      "remove.run_allowance"
+    ],
+    "source": "convention",
+    "enabled": true,
+    "flag": "GEO-REMOVE",
+    "ablation": {
+      "status": "DEFERRED_G2",
+      "authorization": "Orchestrator 2026-09-29"
+    },
+    "introduced_by": "W5 initial component PR",
+    "motivated_by_failure": false
+  }
+]

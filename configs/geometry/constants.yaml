@@ -1,0 +1,211 @@
+[
+  {
+    "name": "staff.lines",
+    "value": 5,
+    "unit": "count",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Pitched staff has five lines; CONTRACTS 3.3",
+    "evidence": "docs/reports/W5/T5.3-7-synthetic-v0.md",
+    "updated": "2026-09-29"
+  },
+  {
+    "name": "run.max_thickness",
+    "value": 0.25,
+    "unit": "staff_space",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Staff line thinner than quarter-space; provisional convention",
+    "evidence": "docs/reports/W5/T5.3-7-synthetic-v0.md",
+    "updated": "2026-09-29"
+  },
+  {
+    "name": "run.min_support",
+    "value": 0.2,
+    "unit": "ratio",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Keep supported secondary run-length modes; provisional",
+    "evidence": "docs/reports/W5/T5.3-7-synthetic-v0.md",
+    "updated": "2026-09-29"
+  },
+  {
+    "name": "group.tolerance",
+    "value": 0.2,
+    "unit": "staff_space",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Allow raster error around equidistant staff lines; provisional",
+    "evidence": "docs/reports/W5/T5.3-7-synthetic-v0.md",
+    "updated": "2026-09-29"
+  },
+  {
+    "name": "projection.band_width",
+    "value": 8,
+    "unit": "staff_space",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Local bands reduce slope/curvature displacement; provisional",
+    "evidence": "docs/reports/W5/T5.3-7-synthetic-v0.md",
+    "updated": "2026-09-29"
+  },
+  {
+    "name": "projection.max_slope",
+    "value": 0.08,
+    "unit": "ratio",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Bound local vertical displacement per horizontal staff-space; provisional",
+    "evidence": "docs/reports/W5/T5.3-7-synthetic-v0.md",
+    "updated": "2026-09-29"
+  },
+  {
+    "name": "projection.slope_step",
+    "value": 0.02,
+    "unit": "ratio",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Local slope search increment; provisional",
+    "evidence": "docs/reports/W5/T5.3-7-synthetic-v0.md",
+    "updated": "2026-09-29"
+  },
+  {
+    "name": "projection.min_ink",
+    "value": 0.35,
+    "unit": "ratio",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Staff lines cover a substantial fraction of a band; provisional",
+    "evidence": "docs/reports/W5/T5.3-7-synthetic-v0.md",
+    "updated": "2026-09-29"
+  },
+  {
+    "name": "track.max_gap",
+    "value": 2,
+    "unit": "band_width",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Bridge at most one missing band; provisional",
+    "evidence": "docs/reports/W5/T5.3-7-synthetic-v0.md",
+    "updated": "2026-09-29"
+  },
+  {
+    "name": "track.tolerance",
+    "value": 0.5,
+    "unit": "staff_space",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Continuation within half-space; provisional",
+    "evidence": "docs/reports/W5/T5.3-7-synthetic-v0.md",
+    "updated": "2026-09-29"
+  },
+  {
+    "name": "track.min_width",
+    "value": 12,
+    "unit": "staff_space",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Reject short ledger/beam groups; provisional",
+    "evidence": "docs/reports/W5/T5.3-7-synthetic-v0.md",
+    "updated": "2026-09-29"
+  },
+  {
+    "name": "confidence.bp_scale",
+    "value": 10000,
+    "unit": "basis_points",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "CONTRACTS confidence conversion",
+    "evidence": "docs/reports/W5/T5.3-7-synthetic-v0.md",
+    "updated": "2026-09-29"
+  },
+  {
+    "name": "strip.s_star",
+    "value": 16,
+    "unit": "px_at_s_star",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "CONTRACTS 2.1 frozen default",
+    "evidence": "docs/reports/W5/T5.3-7-synthetic-v0.md",
+    "updated": "2026-09-29"
+  },
+  {
+    "name": "strip.above",
+    "value": 6,
+    "unit": "staff_space",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "CONTRACTS 2.1 frozen default",
+    "evidence": "docs/reports/W5/T5.3-7-synthetic-v0.md",
+    "updated": "2026-09-29"
+  },
+  {
+    "name": "strip.below",
+    "value": 5,
+    "unit": "staff_space",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "CONTRACTS 2.1 frozen default",
+    "evidence": "docs/reports/W5/T5.3-7-synthetic-v0.md",
+    "updated": "2026-09-29"
+  },
+  {
+    "name": "strip.mesh_step",
+    "value": 0.5,
+    "unit": "staff_space",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "CONTRACTS 2: default 8 normalized pixels",
+    "evidence": "docs/reports/W5/T5.3-7-synthetic-v0.md",
+    "updated": "2026-09-29"
+  },
+  {
+    "name": "remove.position_tolerance",
+    "value": 0.06,
+    "unit": "staff_space",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Allow rasterized line centre displacement; provisional",
+    "evidence": "docs/reports/W5/T5.3-7-synthetic-v0.md",
+    "updated": "2026-09-29"
+  },
+  {
+    "name": "remove.run_allowance",
+    "value": 0.06,
+    "unit": "staff_space",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Preserve vertical runs exceeding line thickness plus raster tolerance; provisional",
+    "evidence": "docs/reports/W5/T5.3-7-synthetic-v0.md",
+    "updated": "2026-09-29"
+  },
+  {
+    "name": "endpoint.min_support",
+    "value": 0.6,
+    "unit": "ratio",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Endpoint needs visible majority of five staff lines",
+    "evidence": "docs/reports/W5/T5.3-7-synthetic-v0.md",
+    "updated": "2026-09-29"
+  }
+]
