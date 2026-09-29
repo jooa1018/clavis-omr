@@ -92,7 +92,8 @@ This is not LeadGen G0 acceptance. Mid-score key/meter changes, minor-key profil
 ties, tuplets, grace, harmony, lyrics, repeats/navigation, multiple voices, slash
 rhythm and remaining P0 coverage are still pending. No 10,000-song benchmark or
 P0 >=1% claim has been made. Configuration weights are tested, not fitted.
-The development profile is not an adopted training distribution; ADR-010 proposes
-the production decisions for Orchestrator. All output stays in work/ and records
+The development profile is not the adopted training distribution. ADR-010 option B
+was adopted by Orchestrator on 2026-09-29; production implementation is separate.
+The development remaining-duration sampler must not be reused in production. All output stays in work/ and records
 training_admission=BLOCKED_PENDING_W4_AND_APPROVED_PROFILE. Nothing is admitted
 to a training manifest, and unverified lyric/font sources remain forbidden.
