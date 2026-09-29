@@ -7,7 +7,7 @@ an upstream candidate is not an admitted training source. No corpus was download
 |---|---|
 | Self-authored smoke notation | Tool tests only, quarantined under `work/` |
 | LeadGen | Self-authored development core; tool-test only, training blocked pending W4/profile |
-| PDMX | Pending item review; require `no_license_conflict` plus PDM/CC0 per item |
+| PDMX | v9 aggregate-statistics only (Orchestrator 2026-09-29); exact no-conflict + PDM/CC0 URL filter per item; train/weights blocked |
 | Mutopia | Pending per-work review; CC-BY-SA requires Orchestrator approval |
 | OpenScore Lieder | Entire corpus forbidden for training; evaluation belongs to W4 |
 | Verovio 6.3.0 | LGPL-3.0-only, separate non-distributed renderer process |
@@ -37,3 +37,9 @@ establish full glyph coverage or license clearance for pending candidates.
 Next: record item-level rights and W4 exclusion receipts before admitting any shard.
 Korean author death dates and
 English publication years are screening hints, not blanket rights clearance.
+
+PDMX v9 record 15571083 is authorized only for aggregate statistics before W4
+filtering (Orchestrator 2026-09-29, A5). Source CSV/MXL sizes and publisher MD5
+are pinned in configs/data/pdmx-aggregate.json. Final aggregate publication requires
+complete source checksum verification. No song-level output or retained source
+archive; training requires the separate OR-003 protected-set-v1 admission receipt.

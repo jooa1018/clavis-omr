@@ -1,0 +1,178 @@
+import csv
+import hashlib
+import io
+import json
+import tarfile
+import zipfile
+from pathlib import Path
+from unittest.mock import MagicMock, patch
+
+import pytest
+
+from training.data import pdmx_stream as worker
+from training.data.pdmx_aggregate import eligible, notation_counts, unpack_mxl
+
+
+def mxl(xml: bytes) -> bytes:
+    data = io.BytesIO()
+    with zipfile.ZipFile(data, "w", zipfile.ZIP_DEFLATED) as archive:
+        archive.writestr(
+            "META-INF/container.xml",
+            '<container><rootfiles><rootfile full-path="score.xml" '
+            'media-type="application/vnd.recordare.musicxml+xml"/></rootfiles></container>',
+        )
+        archive.writestr("score.xml", xml)
+    return data.getvalue()
+
+
+def xml() -> bytes:
+    return (
+        b"<score-partwise><part><measure><attributes><time><beats>4</beats>"
+        b"<beat-type>4</beat-type></time></attributes><note><pitch/><type>quarter</type>"
+        b"<dot/></note><note><rest/><type>half</type></note><note><grace/><pitch/>"
+        b"<type>eighth</type></note></measure><measure><attributes><time><beats>6</beats>"
+        b"<beat-type>8</beat-type></time></attributes><note><pitch/><type>eighth</type>"
+        b"</note></measure></part></score-partwise>"
+    )
+
+
+def row(name: str) -> dict[str, str]:
+    return {
+        "mxl": f"./mxl/{name}.mxl",
+        "subset:no_license_conflict": "True",
+        "license_conflict": "False",
+        "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+    }
+
+
+def test_license_filter_and_notation() -> None:
+    assert eligible(row("a"))
+    for key, value in [
+        ("license_conflict", "True"),
+        ("subset:no_license_conflict", "False"),
+        ("license_url", "https://example.org/"),
+        ("mxl", "../mxl/a.mxl"),
+    ]:
+        assert not eligible(dict(row("a"), **{key: value}))
+    result = notation_counts(
+        unpack_mxl(mxl(xml()), max_xml_bytes=10000, max_ratio=1000), {"4/4", "6/8"}
+    )
+    assert result["4/4"] == {"note:quarter:dots=1": 1, "rest": 1, "grace": 1}
+    assert result["6/8"] == {"note:eighth:dots=0": 1}
+    with pytest.raises(ValueError):
+        unpack_mxl(mxl(xml()), max_xml_bytes=10, max_ratio=1000)
+    with pytest.raises(ValueError):
+        notation_counts(b'<!DOCTYPE a [<!ENTITY x "x">]><score-partwise/>', {"4/4"})
+
+
+def test_stream_resume_has_identical_aggregate_without_song_ids(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    csv_text = io.StringIO(newline="")
+    writer = csv.DictWriter(csv_text, fieldnames=list(row("a")))
+    writer.writeheader()
+    for name in ["alpha-secret-id", "beta-secret-id"]:
+        writer.writerow(row(name))
+    manifest = csv_text.getvalue().encode()
+    buf = io.BytesIO()
+    with tarfile.open(fileobj=buf, mode="w:gz") as archive:
+        for name in ["alpha-secret-id", "beta-secret-id"]:
+            payload = mxl(xml())
+            info = tarfile.TarInfo(f"mxl/{name}.mxl")
+            info.size = len(payload)
+            archive.addfile(info, io.BytesIO(payload))
+    archive_bytes = buf.getvalue()
+    inputs = {"manifest": manifest, "archive": archive_bytes}
+    config = json.loads(Path("configs/data/pdmx-aggregate.json").read_text())
+    config["checkpoint_every"] = 1
+    for key, url in [("PDMX.csv", "manifest"), ("mxl.tar.gz", "archive")]:
+        config["files"][key] = {
+            "url": url,
+            "size": len(inputs[url]),
+            "checksum": "md5:" + hashlib.md5(inputs[url], usedforsecurity=False).hexdigest(),
+        }
+    monkeypatch.setattr(worker, "ROOT", tmp_path)
+    monkeypatch.setattr(worker.shutil, "disk_usage", lambda _: MagicMock(free=10**10))
+    monkeypatch.setattr(
+        worker.urllib.request, "urlopen", lambda url, timeout: io.BytesIO(inputs[url])
+    )
+    complete, resumed = tmp_path / "work/full", tmp_path / "work/resume"
+    worker.run(config, complete)
+    original = worker.write_json
+
+    def interrupt(path: Path, data: object) -> None:
+        original(path, data)
+        raise RuntimeError("simulated interruption")
+
+    with patch.object(worker, "write_json", interrupt), pytest.raises(RuntimeError):
+        worker.run(config, resumed)
+    worker.run(config, resumed)
+    assert (complete / "aggregate.json").read_bytes() == (resumed / "aggregate.json").read_bytes()
+    for output in (complete, resumed):
+        for artifact in output.glob("*.json"):
+            assert "secret-id" not in artifact.read_text()
+    result = json.loads((resumed / "aggregate.json").read_text())
+    assert result["counts"]["4/4"]["songs"] == 2
+    assert result["counts"]["6/8"]["note:eighth:dots=0"] == 2
+
+
+def test_hash_stream_bounds_and_authentication() -> None:
+    wrapped = worker.HashStream(io.BytesIO(b"abc"), 2)
+    with pytest.raises(ValueError):
+        io.BufferedReader(wrapped).read()
+    wrapped = worker.HashStream(io.BytesIO(b"abc"), 3)
+    assert io.BufferedReader(wrapped).read() == b"abc"
+    with pytest.raises(ValueError):
+        wrapped.verify({"size": 3, "checksum": "md5:wrong"})
+
+
+def test_numbered_meter_and_unknown_type() -> None:
+    payload = (
+        b"<score-partwise><part><measure><attributes><time><beats>4</beats><beat-type>"
+        b'4</beat-type></time><time number="2"><beats>3</beats><beat-type>4</beat-type'
+        b"></time></attributes><note><pitch/><type>invalid-label</type></note><note><p"
+        b"itch/><type>half</type><staff>2</staff></note><note><unpitched/></note></mea"
+        b"sure></part></score-partwise>"
+    )
+    result = notation_counts(payload, {"4/4", "3/4"})
+    assert result["4/4"] == {"note:unknown:dots=0": 1, "unpitched_or_missing_pitch": 1}
+    assert result["3/4"] == {"note:half:dots=0": 1}
+    assert notation_counts(payload, {"6/8"}) == {}
+    with pytest.raises(ValueError):
+        notation_counts(b"<score-timewise/>", {"4/4"})
+
+
+def test_windows_limits_are_fail_closed(monkeypatch: pytest.MonkeyPatch) -> None:
+    import ctypes
+    import sys
+
+    from training.data import pdmx_windows
+
+    if sys.platform != "win32":
+        pytest.skip("Actual Windows limit API validation")
+    fake = MagicMock()
+    fake.CreateJobObjectW.return_value = 123
+    fake.GetCurrentProcess.return_value = 456
+
+    def affinity(process, allowed, system):
+        allowed._obj.value = 15
+        system._obj.value = 15
+        return 1
+
+    fake.GetProcessAffinityMask.side_effect = affinity
+    monkeypatch.setattr(ctypes, "WinDLL", lambda *args, **kwargs: fake)
+    assert pdmx_windows.constrain(1500000000, 2) == 123
+    assert fake.SetPriorityClass.call_args.args == (456, 0x4000)
+    assert fake.SetProcessAffinityMask.call_args.args == (456, 3)
+    limit = fake.SetInformationJobObject.call_args.args[2]._obj
+    assert limit.process_memory == 1500000000
+    assert limit.basic.active == 1
+    fake.AssignProcessToJobObject.return_value = 0
+    with pytest.raises(OSError):
+        pdmx_windows.constrain(1500000000, 2)
+    fake.GetProcessAffinityMask.return_value = 0
+    fake.GetProcessAffinityMask.side_effect = None
+    with pytest.raises(OSError):
+        pdmx_windows.constrain(1500000000, 2)
+    with pytest.raises(ValueError):
+        pdmx_windows.constrain(1500000000, 3)

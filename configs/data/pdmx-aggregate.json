@@ -1,0 +1,39 @@
+{
+  "record": "https://zenodo.org/records/15571083",
+  "version": "v9",
+  "files": {
+    "mxl.tar.gz": {
+      "key": "mxl.tar.gz",
+      "size": 1894335797,
+      "checksum": "md5:49ffd75ecf5489c0be6d41182eb11ff7",
+      "url": "https://zenodo.org/api/records/15571083/files/mxl.tar.gz/content"
+    },
+    "PDMX.csv": {
+      "key": "PDMX.csv",
+      "size": 225399738,
+      "checksum": "md5:30392ccf38bb63ce70e7afae70f9c88c",
+      "url": "https://zenodo.org/api/records/15571083/files/PDMX.csv/content"
+    }
+  },
+  "meters": [
+    "4/4",
+    "3/4",
+    "6/8",
+    "2/4",
+    "12/8",
+    "2/2"
+  ],
+  "max_mxl_bytes": 8388608,
+  "max_xml_bytes": 67108864,
+  "max_ratio": 1000,
+  "max_archive_bytes": 4000000000,
+  "max_csv_bytes": 300000000,
+  "max_tar_members": 1000000,
+  "max_tar_member_bytes": 8388608,
+  "http_timeout_seconds": 60,
+  "min_free_disk_bytes": 3000000000,
+  "data_budget_bytes": 4000000000,
+  "checkpoint_every": 1000,
+  "process_memory_bytes": 1500000000,
+  "max_compute_threads": 2
+}

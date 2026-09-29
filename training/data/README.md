@@ -102,3 +102,41 @@ The smoke command is a repository-only test harness: its fixed four-measure
 fixture author lives in `tests/data/smoke_inputs.py`, excluded from H4 by the
 charter. It requires the repository's tests tree and is not a production data
 generator. The move preserves input XML bytes and existing audit provenance.
+
+## PDMX aggregate-only streaming (OR-004, one execution)
+
+The approved v9 source is `https://zenodo.org/records/15571083`. The per-row gate
+requires no-license-conflict membership, false license_conflict, and the exact
+PDM or CC0 license URL. Only CSV and MXL streams are fetched. Archives, source XML,
+song IDs and per-song values never persist. The complete CSV SHA-256 is the source
+manifest digest. Both source streams must match publisher sizes and MD5 before
+`aggregate.json` is written; that file contains aggregate tables and manifest digest.
+
+```text
+python -m training.data.pdmx_stream --config configs/data/pdmx-aggregate.json --output work/pdmx-v9-aggregate
+```
+
+This is a local Windows queue payload; never run real data in GitHub Actions.
+OR-004 authorizes one long execution: one process, <=2 compute threads, 1.5 GB
+process memory cap, Below Normal priority, >=3 GB disk free, <=4 GB repository data.
+The launcher must also set OMP_NUM_THREADS, OPENBLAS_NUM_THREADS and MKL_NUM_THREADS
+to 2 before Python imports. Windows Job Object enforces one process/memory; affinity
+limits execution to two available logical CPUs. Allocation/limit failures stop work.
+
+Checkpoints retain aggregate counts and the processed TAR ordinal, not member names.
+Resume rereads the immutable CSV and compressed stream, skips already counted members,
+and continues accumulation. This saves parsing work but retransmits the prefix because
+storing decompressor/source buffers would retain song content. An interrupted result is
+not a target. Mock interrupted/uninterrupted final aggregate bytes must match.
+
+The denominator is written pitched noteheads with a notated type, across all parts,
+counting each tied segment and each chord member; no repeat unfolding. Grace and rests
+are separate counters. Time changes update the applicable staff; unsupported/missing
+meter is excluded. Unknown note types remain an explicit counter, never inferred.
+Per-meter `songs` counts a source once if it contributes notation to that meter.
+This full-population aggregate does not use a sampled 1,000-song shortcut.
+
+`run-metrics.json` records cumulative active wall/CPU time, peak RSS, transfer bytes,
+and mean CPU percent (one-core and whole-machine denominators). Operational checkpoint
+and telemetry files have no song identifiers. Aggregate statistics do not authorize
+training. OR-003 protected-set v1 and the admitted receipt remain mandatory.

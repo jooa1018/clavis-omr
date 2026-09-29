@@ -32,14 +32,16 @@
     {
       "id": "pdmx",
       "name": "PDMX",
-      "url": "https://zenodo.org/records/14648209",
-      "version": "unselected",
+      "url": "https://zenodo.org/records/15571083",
+      "version": "v9",
       "license": "item-level: PDM-1.0 or CC0-1.0 only",
-      "status": "pending",
-      "allowed_uses": [],
+      "status": "verified",
+      "allowed_uses": [
+        "aggregate-statistics"
+      ],
       "attribution": "Record item-level original attribution and source",
       "checked_on": "2026-09-29",
-      "verification_method": "Distribution landing page reviewed only. Require no_license_conflict AND per-item PDM/CC0; no download"
+      "verification_method": "Orchestrator 2026-09-29 authorizes aggregate-only processing before W4. Require subset:no_license_conflict=True, license_conflict=False and exact PDM/CC0 license URL per item. v9 publisher sizes and MD5 recorded in configs/data/pdmx-aggregate.json; verify full CSV and MXL streams before final aggregate. No train/weights admission."
     },
     {
       "id": "mutopia",
