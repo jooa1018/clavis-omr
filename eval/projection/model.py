@@ -25,6 +25,7 @@ class Event:
     chord_member: bool
     lyrics: Lyrics
     accidental: bool
+    voice: str = "1"
 
 
 @dataclass(frozen=True)

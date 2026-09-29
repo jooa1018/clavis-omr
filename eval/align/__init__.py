@@ -117,6 +117,87 @@ def joined_events(measures: Sequence[Measure]) -> tuple[Event, ...]:
     return tuple(events)
 
 
+def subtract(a: Cost, b: Cost) -> Cost:
+    return a[0] - b[0], a[1] - b[1], a[2] - b[2]
+
+
+def assignment(costs: Sequence[Sequence[Cost]]) -> list[int]:
+    """Hungarian shortest augmenting paths over ordered lexicographic costs.
+
+    Rows/columns are traversed in document order; equal reduced costs retain
+    their first predecessor. Tuple addition/subtraction preserve the objective.
+    """
+    size = len(costs)
+    zero: Cost = (0, 0, Fraction(0))
+    u, v = [zero] * (size + 1), [zero] * (size + 1)
+    matched, previous = [0] * (size + 1), [0] * (size + 1)
+    for row in range(1, size + 1):
+        matched[0], column = row, 0
+        best: list[Cost | None] = [None] * (size + 1)
+        used = [False] * (size + 1)
+        while True:
+            used[column] = True
+            active, next_column = matched[column], 0
+            delta: Cost | None = None
+            for candidate in range(1, size + 1):
+                if used[candidate]:
+                    continue
+                reduced = subtract(
+                    subtract(costs[active - 1][candidate - 1], u[active]), v[candidate]
+                )
+                old = best[candidate]
+                if old is None or reduced < old:
+                    best[candidate], previous[candidate] = reduced, column
+                current = best[candidate]
+                assert current is not None
+                if delta is None or current < delta:
+                    delta, next_column = current, candidate
+            assert delta is not None
+            for candidate in range(size + 1):
+                if used[candidate]:
+                    u[matched[candidate]] = add(u[matched[candidate]], delta)
+                    v[candidate] = subtract(v[candidate], delta)
+                elif best[candidate] is not None:
+                    current = best[candidate]
+                    assert current is not None
+                    best[candidate] = subtract(current, delta)
+            column = next_column
+            if matched[column] == 0:
+                break
+        while column:
+            prior = previous[column]
+            matched[column] = matched[prior]
+            column = prior
+    result = [0] * size
+    for column in range(1, size + 1):
+        result[matched[column] - 1] = column - 1
+    return result
+
+
+def align_voices(
+    a: Sequence[Event], b: Sequence[Event], budget: Budget
+) -> tuple[Cost, tuple[Pair[Event], ...]]:
+    voices_a, voices_b = (
+        list(dict.fromkeys(e.voice for e in a)),
+        list(dict.fromkeys(e.voice for e in b)),
+    )
+    if max(len(voices_a), len(voices_b)) > limit("maxVoices"):
+        raise EvaluationUnsupported("voice-limit")
+    # Dummy rows and columns allow entire unmatched voices on either side.
+    left = [tuple(e for e in a if e.voice == voice) for voice in voices_a] + [()] * len(voices_b)
+    right = [tuple(e for e in b if e.voice == voice) for voice in voices_b] + [()] * len(voices_a)
+    if not left:
+        return (0, 0, Fraction(0)), ()
+    cells = [[align_items(x, y, event_errors, budget) for y in right] for x in left]
+    selected = assignment([[c[0] for c in row] for row in cells])
+    cost: Cost = (0, 0, Fraction(0))
+    pairs: list[Pair[Event]] = []
+    for i, j in enumerate(selected):
+        cost = add(cost, cells[i][j][0])
+        pairs.extend(cells[i][j][1])
+    return cost, tuple(pairs)
+
+
 def align_measures(
     reference: Sequence[Measure], prediction: Sequence[Measure], budget: Budget
 ) -> tuple[AlignedMeasure, ...]:
@@ -139,7 +220,7 @@ def align_measures(
                 if i < di or j < dj:
                     continue
                 a, b = tuple(reference[i - di : i]), tuple(prediction[j - dj : j])
-                cost, pairs = align_items(joined_events(a), joined_events(b), event_errors, budget)
+                cost, pairs = align_voices(joined_events(a), joined_events(b), budget)
                 if name != "match":
                     cost = add(cost, (1, 0, Fraction(0)))
                 group = AlignedMeasure(a, b, name, pairs, cost)

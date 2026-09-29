@@ -1,0 +1,8 @@
+{
+  "replicates": 10000,
+  "seed": 1729,
+  "unit": "page",
+  "interval": "percentile-95",
+  "source": "EVALUATION 5.11",
+  "owner": "W4"
+}
