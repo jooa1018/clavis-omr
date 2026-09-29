@@ -97,3 +97,8 @@ was adopted by Orchestrator on 2026-09-29; production implementation is separate
 The development remaining-duration sampler must not be reused in production. All output stays in work/ and records
 training_admission=BLOCKED_PENDING_W4_AND_APPROVED_PROFILE. Nothing is admitted
 to a training manifest, and unverified lyric/font sources remain forbidden.
+
+The smoke command is a repository-only test harness: its fixed four-measure
+fixture author lives in `tests/data/smoke_inputs.py`, excluded from H4 by the
+charter. It requires the repository's tests tree and is not a production data
+generator. The move preserves input XML bytes and existing audit provenance.

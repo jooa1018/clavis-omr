@@ -8,9 +8,9 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
+from tests.data.smoke_inputs import score
 from training.data import smoke, verovio_worker
 from training.data.licenses import require_use
-from training.data.smoke_inputs import score
 
 
 def test_registry_required_fields_and_denied_uses() -> None:
