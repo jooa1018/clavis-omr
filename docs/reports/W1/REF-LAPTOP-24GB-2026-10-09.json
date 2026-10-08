@@ -1,5 +1,5 @@
 {
-  "status": "PARTIAL",
+  "status": "PASS",
   "windowsTests": {
     "errors": "0",
     "failures": "0",
@@ -21,6 +21,10 @@
   "memoryConfiguration": "24 GB (16+8), DDR4-3200 dual channel",
   "engineRssBudget": "1.5 GiB unchanged",
   "jobRamBudgetBytes": 3000000000,
-  "remoteCi": "NOT_RUN",
+  "remoteCi": {
+    "status": "PASS",
+    "run": "https://github.com/jooa1018/clavis-omr/actions/runs/37820196665",
+    "quality": "SKIPPED docs-only by approved policy"
+  },
   "recognitionEvaluation": "NOT_RUN"
 }

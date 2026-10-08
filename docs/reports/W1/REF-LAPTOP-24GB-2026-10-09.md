@@ -1,5 +1,5 @@
 # [W1] REF-LAPTOP 24 GB와 G0 병행 원칙 반영 — 2026-10-09
-판정: PARTIAL — 로컬 문서 검증 PASS, 경량 CI 대기
+판정: PASS — 로컬 문서 검증 및 경량 CI 완료
 
 ## 1. 요약 (3줄 이내)
 PLAN 5절 원칙 1을 Orchestrator 문안 그대로 교체했다.
@@ -7,7 +7,7 @@ PLAN 6.4·6.6, COMMON10과 현재 환경 요약을 RAM 24 GB(16 + 8 GB, DDR4-320
 RSS ≤ 1.5 GiB와 작업당 RAM ≤ 3 GB를 유지하고 증설 전 측정값과 분리 보고하도록 명시했다.
 
 ## 2. 변경 (PR 링크, 주요 파일·모듈)
-브랜치 w1/ref-laptop-24gb. docs/PLAN.md, docs/tasks/00_COMMON.md, AGENTS.md.
+[PR #40](https://github.com/jooa1018/clavis-omr/pull/40), 브랜치 w1/ref-laptop-24gb. docs/PLAN.md, docs/tasks/00_COMMON.md, AGENTS.md.
 PLAN 위험 표 RK9의 현재 RAM 표기도 맞췄다. 과거 측정 보고서의 8 GB 기록은 보존한다.
 OR-005 최종 두 OS CI PASS와 PR39 병합 결과를 해당 보고서에 반영했다.
 
@@ -20,6 +20,7 @@ Orchestrator 2026-10-06 문서 A등급 승인, 2026-10-09 우선순위 확인. �
 로컬 Windows 전체 636 passed, 실패/skip 0, 47.576초. 슬롯 threads=2, 최대 600초/RAM 3 GB.
 문안 일치·기존 예산 유지·현재 문서 RAM 재검색·git diff --check·개인정보 검사로 검증했다.
 문서 전용 PR이므로 원격 전체 품질 작업은 건너뛰며 경량 문서 검사를 수행한다. 라이선스/IR/결정성 코드 변경 없음.
+[경량 CI 37820196665 PASS](https://github.com/jooa1018/clavis-omr/actions/runs/37820196665), 무거운 품질 작업은 정책대로 skip.
 
 ## 5. 지표 (평가기 JSON 경로 + 핵심 수치 표: 이전 대비 변화와 95% CI, 슬라이스별)
 [REF-LAPTOP-24GB-2026-10-09.json](REF-LAPTOP-24GB-2026-10-09.json): 원본 결과에서 개인정보를 제외한 집계.
