@@ -44,7 +44,7 @@
 ## 4. 코딩 표준
 
 - Python 3.12, 환경 관리는 uv, 린트·포맷은 ruff, 타입 검사는 mypy(`contracts`, `core`는 strict), 테스트는 pytest. 속성 기반 테스트에는 hypothesis를 권장한다.
-- **엔진 런타임 의존성**(`src/clavis`)은 numpy, opencv-python-headless, pillow, pypdfium2, onnxruntime, lxml, pydantic, (서비스) fastapi/uvicorn으로 제한한다. 새 런타임 의존성은 W1 승인과 라이선스 확인을 거친다.
+- **엔진 런타임 의존성**(`src/clavis`)은 numpy, opencv-python-headless, pillow, pypdfium2, onnxruntime, xmlschema, elementpath, pydantic, (서비스) fastapi/uvicorn으로 제한한다. 새 런타임 의존성은 W1 승인과 라이선스 확인을 거친다.
 - **학습 도구**(PyTorch CPU 휠, LightGBM, scikit-learn)는 `training/`에서만 쓴다. **GPU와 CUDA는 쓰지 않는다**(PLAN v1.1). 학습한 모델은 ONNX로 내보내 런타임에서 쓴다. LightGBM 모델도 ONNX로 변환하거나, 불가능하면 런타임 의존성 추가를 ADR로 제안한다.
 - 로깅은 표준 `logging` 구조화 로그를 쓴다. `print`는 CLI 출력에만 쓴다. 로그에 이미지 내용이나 사적 경로를 쓰지 않는다.
 - 경로는 `pathlib`로 다룬다. Windows와 Linux에서 모두 돌아야 한다. 심볼릭 링크에 의존하지 않는다. 줄바꿈은 LF다.
