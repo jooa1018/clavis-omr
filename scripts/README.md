@@ -25,6 +25,9 @@ No private or sealed inputs are read by the CI summary.
 
 ## CI 실행 비용 제어
 `ci_plan.py`는 PR 변경 경로와 예약 main SHA로 작업을 선택한다.
+공개 전환 후 일반 PR은 Linux·Windows 모두 실행한다. draft는 제외하며,
+문서 전용 PR은 경량 검사만 수행한다. main push는 Linux,
+변경된 main의 일일 예약과 수동 workflow_dispatch는 Windows로 유지한다.
 `ci_results.py`는 한 번의 pytest coverage JSON/JUnit에서 독립 커버리지 기준과 필수 시험 결과를 판정한다.
 문서 전용 PR은 UTF-8/NUL/JSON, git diff whitespace 및 추적 파일 개인정보 검사를 수행한다.
 
