@@ -21,7 +21,7 @@
 저장소·OneDrive 등 자동 동기화 폴더 밖의 예시 위치:
 
 ```text
-C:\Users\eccto\ClavisPrivate\
+%USERPROFILE%\ClavisPrivate\
   legacy\legacy-001\original.jpg
   legacy\legacy-001\transcription.musicxml   (있으면)
   legacy\legacy-001\source.mscz              (있으면)

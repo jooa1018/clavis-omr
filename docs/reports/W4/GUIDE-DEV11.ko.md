@@ -7,14 +7,14 @@
 
 ## 1. 비공개 위치 지정 (약 10분)
 
-예시 폴더는 `C:\Users\eccto\ClavisPrivate`입니다. Git 저장소나 자동 클라우드
+예시 폴더는 `%USERPROFILE%\ClavisPrivate`입니다. Git 저장소나 자동 클라우드
 동기화 폴더 안에 만들지 않습니다. 이미 밖에 있는 omr_DEV후보는 원본을 보존하고
 복사본을 아래 `dev` 구조에 정리하면 됩니다. 보류/봉인 자료는 이 폴더에 넣지 않습니다.
 
 PowerShell에서 다음처럼 지정합니다. 경로는 실제로 만든 로컬 폴더로 바꾸세요.
 
 ```powershell
-$env:CLAVIS_PRIVATE_ROOT = 'C:\Users\eccto\ClavisPrivate'
+$env:CLAVIS_PRIVATE_ROOT = Join-Path $env:USERPROFILE 'ClavisPrivate'
 ```
 
 이 설정은 현재 PowerShell 창에만 적용됩니다. 창을 새로 열면 다시 지정합니다.

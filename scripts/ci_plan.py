@@ -12,13 +12,8 @@ def plan(
     event: str, files: list[str], *, draft: bool = False, changed: bool = True
 ) -> dict[str, Any]:
     docs = bool(files) and all(p.startswith("docs/") or p.endswith(".md") for p in files)
-    windows = any(
-        p in {"pyproject.toml", "uv.lock"} or p.startswith((".github/", "scripts/")) for p in files
-    )
     if event == "pull_request":
-        runners = (
-            [] if draft or docs else ["ubuntu-latest"] + (["windows-latest"] if windows else [])
-        )
+        runners = [] if draft or docs else ["ubuntu-latest", "windows-latest"]
     elif event == "push":
         runners = ["ubuntu-latest"]
     else:
