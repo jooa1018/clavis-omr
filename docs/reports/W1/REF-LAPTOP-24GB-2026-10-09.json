@@ -1,0 +1,26 @@
+{
+  "status": "PARTIAL",
+  "windowsTests": {
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "636",
+    "time": "47.576"
+  },
+  "resources": {
+    "status": "succeeded",
+    "reason": "completed",
+    "slot": 0,
+    "runId": "dc3b5bcd81e14b989cc4e21dc26ade6d",
+    "jobId": "7692959c9bfd4ac0825e5a992d8b39b1",
+    "wallSeconds": 49.29699999999957,
+    "cpuSecondsSampled": 41.515625,
+    "peakRssBytesSampled": 298004480,
+    "cpuLimit": 2
+  },
+  "memoryConfiguration": "24 GB (16+8), DDR4-3200 dual channel",
+  "engineRssBudget": "1.5 GiB unchanged",
+  "jobRamBudgetBytes": 3000000000,
+  "remoteCi": "NOT_RUN",
+  "recognitionEvaluation": "NOT_RUN"
+}

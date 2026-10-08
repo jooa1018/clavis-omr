@@ -1,5 +1,5 @@
 # [W1] OR-005 짧은 실행 슬롯 — 2026-10-09
-판정: PARTIAL — 로컬 Windows PASS, 두 OS CI 대기
+판정: PASS — 두 OS CI 완료, PR39 병합(85c831c)
 
 ## 1. 요약 (3줄 이내)
 기본 3개의 머신 공통 짧은 실행 슬롯을 구현했다. 스레드 요청 2, RAM 최대 3 GB, 벽시계 최대 600초다.
@@ -7,7 +7,7 @@
 워커 전달 명령: uv run --locked --all-groups python -m training.jobs.short run pytest tests/
 
 ## 2. 변경 (PR 링크, 주요 파일·모듈)
-브랜치 w1/short-run-slots. training/jobs/{short,slots}.py, tests/platform/test_short_slots.py.
+[PR #39](https://github.com/jooa1018/clavis-omr/pull/39), 브랜치 w1/short-run-slots. training/jobs/{short,slots}.py, tests/platform/test_short_slots.py.
 COMMON10과 training/jobs/README.md, 규칙 PLATFORM-SHORT-001. PR38 최종 CI·병합 기록도 갱신했다.
 
 ## 3. 계약·결정 (사용한 계약 버전, CCR·ADR 번호)
@@ -23,7 +23,7 @@ ADR-002의 머신 공통 잠금을 그대로 재사용하며, Windows 공유 잠
 3슬롯·설정 1/4개·초과 요청·무거운 큐 상호 배제·다른 프로세스 crash 후 재사용·예외 후 해제·CLI 상태를 검증했다.
 실제 작은 합성 작업으로 기존 큐의 스레드/RAM/시간 요청과 실행 성공을 확인했다.
 커버리지: short.py 98.18%, slots.py 93.33%, 독립 4개 게이트 PASS. ruff/format/mypy68/H1–H9/개인정보 PASS.
-기존 runner.py를 수정하지 않았고 H9 예외 추가 0. 원격 CI는 대기 중.
+기존 runner.py를 수정하지 않았고 H9 예외 추가 0. [원격 두 OS CI PASS](https://github.com/jooa1018/clavis-omr/actions/runs/37819415870).
 
 ## 5. 지표 (평가기 JSON 경로 + 핵심 수치 표: 이전 대비 변화와 95% CI, 슬라이스별)
 [OR-005-SHORT-SLOTS-2026-10-09.json](OR-005-SHORT-SLOTS-2026-10-09.json)에 측정 집계를 기록했다.
@@ -42,4 +42,4 @@ status는 설정 수만 표시한다. Ctrl+C로 현재 작업을 중단할 수 �
 기존 CPU 선택 정책을 재사용하므로 슬롯 간 CPU 집합이 겹칠 수 있다.
 
 ## 8. 다음 단계 / 필요한 결정 / 블로커
-두 OS CI 후 승인된 범위를 squash 병합한다. 다음은 RAM 문서/PLAN 원칙 갱신 후 T1.4다.
+두 OS CI 후 승인된 범위를 squash 병합했다. 다음은 RAM 문서/PLAN 원칙 갱신 후 T1.4다.

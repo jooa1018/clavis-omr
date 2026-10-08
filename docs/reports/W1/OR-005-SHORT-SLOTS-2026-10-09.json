@@ -1,5 +1,5 @@
 {
-  "status": "PARTIAL",
+  "status": "PASS",
   "windowsTests": {
     "errors": "0",
     "failures": "0",
@@ -44,7 +44,11 @@
   "hardcodeScan": "PASS",
   "newH9Exceptions": 0,
   "memoryConfiguration": "24 GB (16+8), DDR4-3200 dual channel",
-  "remoteCi": "NOT_RUN",
+  "remoteCi": {
+    "status": "PASS",
+    "run": "https://github.com/jooa1018/clavis-omr/actions/runs/37819415870"
+  },
   "recognitionEvaluation": "NOT_RUN",
-  "approval": "Orchestrator 2026-10-06 OR-005; 2026-10-09 priority confirmation"
+  "approval": "Orchestrator 2026-10-06 OR-005; 2026-10-09 priority confirmation",
+  "mergeCommit": "85c831c198c990f6eaeb4dba3cc569bd35d0979c"
 }
