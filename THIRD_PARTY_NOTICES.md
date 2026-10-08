@@ -3,7 +3,6 @@
 ## Runtime packages
 Runtime packages are installed as separate wheels; retain their complete bundled license and notice files when distributing an environment.
 - Pillow 11.2.1: MIT-CMU (Orchestrator approved 2026-10-06). Retain copyright/permission notices and the restriction on use of names. https://github.com/python-pillow/Pillow/blob/11.2.1/LICENSE
-- lxml 6.1.3: BSD-3-Clause; bundled libxml2 2.11.9/libxslt 1.1.45 (Windows) are MIT. **BLOCKED for distribution:** the official binary-wheel notice also identifies iconv as LGPL 2.1, conflicting with the current static-inclusion policy. This dependency addition remains draft pending Orchestrator direction. https://github.com/lxml/lxml/blob/lxml-6.1.3/LICENSES.txt
 - ONNX Runtime 1.30.0: CPU package `onnxruntime`, MIT. Retain its LICENSE and ThirdPartyNotices.txt. https://github.com/microsoft/onnxruntime/blob/v1.30.0/LICENSE
 - The complete Python runtime dependency closure and wheel metadata are recorded in docs/reports/W1/T1.3-runtime-license-evidence.json and uv.lock.
 
