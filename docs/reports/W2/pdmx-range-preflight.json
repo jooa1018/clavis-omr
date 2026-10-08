@@ -15,7 +15,7 @@
   "scanner": {
     "schema": "clavis-hardcode-scan-1",
     "status": "FAIL",
-    "pythonFiles": 98,
+    "pythonFiles": 117,
     "manifestIdentifiers": 0,
     "findings": [
       {
@@ -34,29 +34,44 @@
       },
       {
         "file": "training/data/pdmx_stream.py",
-        "line": 259,
+        "line": 266,
         "rule": "H9",
         "owner": "W2",
         "evidence_digest": "8e4b5b2d7825ddd83711afba5bc5a6e39c98cf28038feb27a6176376f142a6eb"
       }
     ],
-    "suppressed": [],
+    "suppressed": [
+      {
+        "file": "training/jobs/runner.py",
+        "line": 161,
+        "rule": "H9",
+        "owner": "W1",
+        "evidence_digest": "f55bb63062ca7fa6483196ef2dc20d9cad1d0ef028c76a8a6030e30a59111f85"
+      },
+      {
+        "file": "training/jobs/runner.py",
+        "line": 223,
+        "rule": "H9",
+        "owner": "W1",
+        "evidence_digest": "62cb15b5b7c52f6c1e2f78736d6d34381fd3e3274c27556e936ec20069317c08"
+      }
+    ],
     "byOwner": {
       "W2": 3
     }
   },
   "coverage": {
-    "covered_lines": 415,
-    "num_statements": 450,
-    "percent_covered": 92.22222222222223,
-    "percent_covered_display": "92",
-    "missing_lines": 35,
+    "covered_lines": 423,
+    "num_statements": 457,
+    "percent_covered": 92.5601750547046,
+    "percent_covered_display": "93",
+    "missing_lines": 34,
     "excluded_lines": 0,
-    "percent_statements_covered": 92.22222222222223,
-    "percent_statements_covered_display": "92"
+    "percent_statements_covered": 92.5601750547046,
+    "percent_statements_covered_display": "93"
   },
-  "focused_tests": 18,
+  "focused_tests": 41,
   "focused_errors": 0,
   "focused_failures": 0,
-  "focused_seconds": 1.172
+  "focused_seconds": 1.158
 }

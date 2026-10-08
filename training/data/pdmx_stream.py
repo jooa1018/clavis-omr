@@ -10,6 +10,7 @@ import shutil
 import tarfile
 import threading
 import time
+import xml.etree.ElementTree as ET
 from collections import Counter
 from collections.abc import Callable
 from pathlib import Path
@@ -172,18 +173,24 @@ def run(
                     source = bundle.extractfile(member)
                     if source is None:
                         raise ValueError("Missing member body")
-                    xml = unpack_mxl(
-                        source.read(),
-                        max_xml_bytes=config["max_xml_bytes"],
-                        max_ratio=config["max_ratio"],
-                    )
-                    per_song = notation_counts(xml, set(config["meters"]))
-                    statistics["parsed_songs"] += 1
-                    for meter, values in per_song.items():
-                        merged = Counter(counts.get(meter, {}))
-                        merged.update(values)
-                        merged["songs"] += 1
-                        counts[meter] = dict(merged)
+                    try:
+                        xml = unpack_mxl(
+                            source.read(),
+                            max_xml_bytes=config["max_xml_bytes"],
+                            max_ratio=config["max_ratio"],
+                        )
+                        per_song = notation_counts(xml, set(config["meters"]))
+                    except ET.ParseError:
+                        # T2.2 excludes unreadable notation; never repair or infer its contents.
+                        # Resource, integrity and unsupported-format errors remain fatal.
+                        statistics["rejected_invalid_xml"] += 1
+                    else:
+                        statistics["parsed_songs"] += 1
+                        for meter, values in per_song.items():
+                            merged = Counter(counts.get(meter, {}))
+                            merged.update(values)
+                            merged["songs"] += 1
+                            counts[meter] = dict(merged)
                 state["members_processed"] = ordinal
                 if ordinal % config["checkpoint_every"] == 0:
                     write_json(checkpoint, state)

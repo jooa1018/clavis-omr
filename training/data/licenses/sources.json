@@ -40,8 +40,8 @@
         "aggregate-statistics"
       ],
       "attribution": "Record item-level original attribution and source",
-      "checked_on": "2026-09-29",
-      "verification_method": "Orchestrator 2026-09-29 authorizes aggregate-only processing before W4. Require subset:no_license_conflict=True, license_conflict=False and exact PDM/CC0 license URL per item. v9 publisher sizes and MD5 recorded in configs/data/pdmx-aggregate.json; verify full CSV and MXL streams before final aggregate. No train/weights admission."
+      "checked_on": "2026-10-09",
+      "verification_method": "Orchestrator 2026-09-29 authorizes aggregate-only processing before W4; 2026-10-06 OR-004 amendment permits an external resumable range cache. Require subset:no_license_conflict=True, license_conflict=False and exact PDM/CC0 license URL per item. On 2026-10-09 both complete v9 CSV/MXL files matched publisher sizes and MD5 pinned in configs/data/pdmx-aggregate.json. Malformed XML is excluded and counted without repair. Source cache is removed only after successful aggregation. No train/weights admission."
     },
     {
       "id": "mutopia",

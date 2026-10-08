@@ -103,11 +103,13 @@ def unpack_mxl(payload: bytes, *, max_xml_bytes: int, max_ratio: int) -> bytes:
         if b"<!ENTITY" in container.upper():
             raise ValueError("Container entities are not supported")
         roots = ET.fromstring(container).findall(".//{*}rootfile")
-        selected = [
-            r.get("full-path")
-            for r in roots
-            if r.get("media-type") == "application/vnd.recordare.musicxml+xml"
-        ]
-        if len(selected) != 1 or selected[0] is None:
-            raise ValueError("Exactly one MusicXML rootfile is required")
-        return archive.read(selected[0])
+        # MusicXML container spec: the first rootfile is MusicXML; absent media-type
+        # means MusicXML, not an unidentified format. Alternate renditions follow.
+        # https://www.w3.org/2021/06/musicxml40/tutorial/compressed-mxl-files/
+        musicxml = "application/vnd.recordare.musicxml+xml"
+        if not roots or roots[0].get("media-type", musicxml) != musicxml:
+            raise ValueError("First rootfile must be MusicXML")
+        selected = roots[0].get("full-path")
+        if not selected:
+            raise ValueError("MusicXML rootfile path is required")
+        return archive.read(selected)

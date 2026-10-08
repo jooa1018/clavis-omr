@@ -114,7 +114,7 @@ complete CSV SHA-256 is the source manifest digest. Both files must match publis
 `aggregate.json` is written; that file contains aggregate tables and manifest digest.
 
 ```text
-python -m training.data.pdmx_stream --config configs/data/pdmx-aggregate.json --output work/pdmx-v9-range-aggregate --cache C:/Users/YOU/AppData/Local/Temp/clavis-w2-pdmx-v9
+python -m training.data.pdmx_stream --config configs/data/pdmx-aggregate.json --output work/pdmx-v9-range-aggregate --cache "$env:LOCALAPPDATA/Temp/clavis-w2-pdmx-v9"
 ```
 
 This is a local Windows queue payload; never run real data in GitHub Actions.
@@ -147,6 +147,17 @@ are separate counters. Time changes update the applicable staff; unsupported/mis
 meter is excluded. Unknown note types remain an explicit counter, never inferred.
 Per-meter `songs` counts a source once if it contributes notation to that meter.
 This full-population aggregate does not use a sampled 1,000-song shortcut.
+
+MXL root selection follows the MusicXML compressed-container standard: the first
+rootfile identifies MusicXML and an omitted media-type defaults to MusicXML.
+Additional renditions are not aggregated. A missing path or explicit non-MusicXML
+first root is rejected. This applies to all containers, independent of source or
+song identity; tests cover namespaces, paths and alternate renditions.
+Reference: https://www.w3.org/2021/06/musicxml40/tutorial/compressed-mxl-files/
+XML syntax errors are excluded under T2.2 and counted as `rejected_invalid_xml`.
+No error recovery or inferred repair is applied. Size/ratio, container format,
+source integrity, and resource guard failures still stop the job. The excluded
+count is checkpointed with parsed counts, so resuming does not duplicate exclusions.
 
 `run-metrics.json` records cumulative active wall/CPU time, peak RSS, transfer bytes,
 and mean CPU percent (one-core and whole-machine denominators). Operational checkpoint

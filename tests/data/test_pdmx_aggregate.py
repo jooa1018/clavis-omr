@@ -71,13 +71,19 @@ def test_stream_resume_has_identical_aggregate_without_song_ids(
     csv_text = io.StringIO(newline="")
     writer = csv.DictWriter(csv_text, fieldnames=list(row("a")))
     writer.writeheader()
-    for name in ["alpha-secret-id", "beta-secret-id"]:
+    valid_names = ["alpha-secret-id", "beta-secret-id"]
+    names = valid_names + [f"bad-secret-id-{i}" for i in range(20)]
+    for name in names:
         writer.writerow(row(name))
     manifest = csv_text.getvalue().encode()
     buf = io.BytesIO()
     with tarfile.open(fileobj=buf, mode="w:gz") as archive:
-        for name in ["alpha-secret-id", "beta-secret-id"]:
-            payload = mxl(xml())
+        for index, name in enumerate(names):
+            payload = mxl(
+                xml()
+                if name in valid_names
+                else b"<score-partwise>" + b"\n" * index + b"&broken;</score-partwise>"
+            )
             info = tarfile.TarInfo(f"mxl/{name}.mxl")
             info.size = len(payload)
             archive.addfile(info, io.BytesIO(payload))
@@ -115,6 +121,8 @@ def test_stream_resume_has_identical_aggregate_without_song_ids(
     result = json.loads((resumed / "aggregate.json").read_text())
     assert result["counts"]["4/4"]["songs"] == 2
     assert result["counts"]["6/8"]["note:eighth:dots=0"] == 2
+    assert result["statistics"] == {"parsed_songs": 2, "rejected_invalid_xml": 20}
+    assert result["licensing"]["eligible"] == 22
     (cache / "mxl.tar.gz").write_bytes(b"corrupt")
     unpublished = tmp_path / "work/unpublished"
     with pytest.raises(ValueError, match="verification failed"):
@@ -190,6 +198,36 @@ def test_numbered_meter_and_unknown_type() -> None:
     assert notation_counts(payload, {"6/8"}) == {}
     with pytest.raises(ValueError):
         notation_counts(b"<score-timewise/>", {"4/4"})
+
+
+@pytest.mark.parametrize("variant", range(20))
+def test_standard_container_default_media_type(variant: int) -> None:
+    payload = io.BytesIO()
+    name = f"folder/score-{variant}.xml"
+    namespace = ' xmlns="urn:test:container"' if variant % 2 else ""
+    media = ' media-type="application/vnd.recordare.musicxml+xml"' if variant % 3 else ""
+    other = '<rootfile full-path="alternate.pdf" media-type="application/pdf"/>'
+    with zipfile.ZipFile(payload, "w") as bundle:
+        bundle.writestr(
+            "META-INF/container.xml",
+            f'<container{namespace}><rootfiles><rootfile full-path="{name}"{media}/>'
+            f"{other if variant % 4 else ''}</rootfiles></container>",
+        )
+        bundle.writestr(name, xml())
+    assert unpack_mxl(payload.getvalue(), max_xml_bytes=10000, max_ratio=1000) == xml()
+
+
+@pytest.mark.parametrize(
+    "root", ["", "<rootfile/>", '<rootfile full-path="x" media-type="application/pdf"/>']
+)
+def test_container_missing_or_non_musicxml_root_is_rejected(root: str) -> None:
+    payload = io.BytesIO()
+    with zipfile.ZipFile(payload, "w") as bundle:
+        bundle.writestr(
+            "META-INF/container.xml", f"<container><rootfiles>{root}</rootfiles></container>"
+        )
+    with pytest.raises(ValueError, match="rootfile"):
+        unpack_mxl(payload.getvalue(), max_xml_bytes=10000, max_ratio=1000)
 
 
 def test_windows_limits_are_fail_closed(monkeypatch: pytest.MonkeyPatch) -> None:

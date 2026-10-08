@@ -28,7 +28,7 @@
   motivated_by_failure: false
 - id: DATA-PDMX-001
   owner: W2
-  statement: "Aggregate written type+dots per active staff meter only after exact no-conflict and PDM/CC0 item filtering; publish no song-level values."
+  statement: "Aggregate written type+dots per active staff meter only after exact no-conflict and PDM/CC0 item filtering; use the container's first rootfile with MusicXML's default media type; reject malformed XML without repair, count exclusions, and publish no song-level values."
   units: written_noteheads
   params: [meters, max_mxl_bytes, max_xml_bytes, max_ratio, download]
   source: convention
