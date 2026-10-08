@@ -2,6 +2,7 @@
 
 import ctypes
 import os
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -27,6 +28,8 @@ def snapshot() -> dict[str, int]:
 
 
 def windows_snapshot() -> dict[str, int]:
+    if sys.platform != "win32":
+        raise OSError("Windows memory counters require Windows")
     # GetPerformanceInfo reports system commit; EnumPageFiles reports actual pagefile sizes.
     from ctypes import wintypes
 

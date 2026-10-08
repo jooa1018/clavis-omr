@@ -5,6 +5,7 @@ import importlib
 import importlib.util
 import inspect
 import os
+import sys
 from typing import Any
 
 import psutil
@@ -98,7 +99,7 @@ def configure() -> dict[str, str | int]:
 
 def constrain(process: psutil.Process, cpus: list[int]) -> None:
     process.cpu_affinity(cpus)
-    if os.name == "nt":
+    if sys.platform == "win32":
         process.nice(psutil.BELOW_NORMAL_PRIORITY_CLASS)
     else:
         process.nice(10)

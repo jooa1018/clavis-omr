@@ -114,13 +114,16 @@ def execute(queue: Queue, row: dict[str, Any], manual: bool) -> dict[str, Any]:
         elif row["wall"] >= spec.wall_seconds:
             reason = "wall-limit"
         else:
+            flags = 0
+            if sys.platform == "win32":
+                flags = subprocess.CREATE_NO_WINDOW
             child = subprocess.Popen(
                 [sys.executable, "-m", "training.jobs.launcher"],
                 env=env,
                 stdin=subprocess.DEVNULL,
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.DEVNULL,
-                creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0,
+                creationflags=flags,
                 start_new_session=os.name != "nt",
             )
             process = psutil.Process(child.pid)
