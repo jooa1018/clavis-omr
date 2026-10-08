@@ -72,6 +72,8 @@ def literal_integers(node: ast.AST) -> set[int]:
         return {node.value}
     if isinstance(node, ast.UnaryOp) and isinstance(node.op, ast.USub):
         return {-v for v in literal_integers(node.operand)}
+    if isinstance(node, ast.UnaryOp) and isinstance(node.op, ast.UAdd):
+        return literal_integers(node.operand)
     if isinstance(node, (ast.Tuple, ast.List, ast.Set)):
         return {v for item in node.elts for v in literal_integers(item)}
     return set()

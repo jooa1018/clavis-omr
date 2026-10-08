@@ -16,6 +16,11 @@ from eval.integrity.hardcode_scan import scan_source
         "image.height == -2",
         "pixel_count > 42",
         "image.shape[1] == 4",
+        "image.width == +1170",
+        "image.ndim == 4",
+        "len(image.shape) == 4",
+        "image.channels == 2",
+        "image.shape[2] == 2",
     ],
 )
 def test_spatial_literals_positive(condition: str) -> None:
@@ -28,6 +33,7 @@ def test_spatial_literals_positive(condition: str) -> None:
     [
         "image.width == 0",
         "image.height <= 1",
+        "image.width == +1",
         "1 >= image.shape[0]",
         "0 < image.shape[0] * image.shape[1] <= budget",
         "image.ndim in {2, 3}",
