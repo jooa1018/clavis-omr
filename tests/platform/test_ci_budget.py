@@ -51,7 +51,12 @@ def test_independent_coverage() -> None:
             "eval/a.py": item(7, 10),
         }
     }
-    assert ci_results.coverage_gates(data) == {"overall": True, "platform": True, "eval": False}
+    assert ci_results.coverage_gates(data) == {
+        "overall": True,
+        "platform": True,
+        "eval": False,
+        "jobs": False,
+    }
     assert not any(ci_results.coverage_gates({"files": {}}).values())
 
 

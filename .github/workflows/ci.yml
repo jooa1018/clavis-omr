@@ -59,8 +59,8 @@ jobs:
       - run: uv run --locked --all-groups ruff format --check .
       - run: uv run --locked --all-groups mypy
       - name: All tests (once, including contracts and integrity)
-        run: uv run --locked --all-groups pytest tests/ --cov=clavis --cov=scripts --cov=eval --cov-report=term-missing --cov-report=xml --cov-report=json:work/coverage.json --junitxml=work/tests.xml
-      - name: Independent coverage gates (overall, platform, eval >=80%)
+        run: uv run --locked --all-groups pytest tests/ --cov=clavis --cov=scripts --cov=eval --cov=training.jobs --cov-report=term-missing --cov-report=xml --cov-report=json:work/coverage.json --junitxml=work/tests.xml
+      - name: Independent coverage gates (overall, platform, eval, jobs >=80%)
         if: ${{ !cancelled() }}
         run: uv run --locked --all-groups python scripts/ci_results.py coverage work/coverage.json
       - name: Required contract and integrity positive/negative results
