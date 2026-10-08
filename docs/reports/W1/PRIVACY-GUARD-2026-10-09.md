@@ -1,5 +1,5 @@
 # [W1] 개인정보 재발 방지 — 2026-10-09
-판정: PARTIAL — 로컬 PASS, 원격 두 OS 검증 대기
+판정: PASS — 로컬 및 원격 두 OS 검증 완료
 
 ## 1. 요약 (3줄 이내)
 공개 전환 준비 완료. Orchestrator가 과거 프로필 경로와 호스트명 1건을 수용했으며 히스토리는 재작성하지 않는다.
@@ -7,7 +7,7 @@ COMMON11에 승인 문안을 그대로 추가하고, 추적 파일 개인정보 
 문서 전용 PR도 경량 검사에서 검사하며, 위반 값 자체는 출력하지 않는다.
 
 ## 2. 변경 (PR 링크, 주요 파일·모듈)
-브랜치 w1/privacy-guard. scripts/check_privacy.py, tests/platform/test_privacy.py, CI, COMMON11.
+[PR #36](https://github.com/jooa1018/clavis-omr/pull/36), 브랜치 w1/privacy-guard. scripts/check_privacy.py, tests/platform/test_privacy.py, CI, COMMON11.
 scripts/README.md와 configs/platform/rules.yaml에 사용법·정책 규칙을 등록했다.
 PUBLICATION-AUDIT-2026-10-09.md/json은 원래 PARTIAL 검사 사실을 보존하고 공개 준비 승인만 별도로 기록했다.
 
@@ -24,7 +24,8 @@ ruff, mypy(65개 파일), H1–H9 AST PASS. 전체 Windows 시험은 머신 단�
 작업 명령: pytest tests/ --cov=clavis --cov=scripts --cov=eval --cov=training.jobs
 --cov-report=json:work/privacy-coverage.json --junitxml=work/privacy-tests.xml.
 Windows 전체 618 passed, 실패/skip 0, 93.897초. 전체/platform/eval/jobs 커버리지 80% 게이트 모두 PASS.
-import-linter 2개 경계 및 runtime 전이 의존성 5개 라이선스 PASS. 원격 Linux/Windows CI는 대기 중.
+import-linter 2개 경계 및 runtime 전이 의존성 5개 라이선스 PASS. 원격 Linux 618 passed(26.45초), Windows 618 passed(40.11초).
+[CI 실행 37811209736](https://github.com/jooa1018/clavis-omr/actions/runs/37811209736): 두 OS 및 경량 개인정보 검사 PASS, 추적 파일 456개/발견 0. 검사 스크립트 커버리지 98%.
 
 ## 5. 지표 (평가기 JSON 경로 + 핵심 수치 표: 이전 대비 변화와 95% CI, 슬라이스별)
 PRIVACY-GUARD-2026-10-09.json에 비식별 검증 집계를 기록한다.
@@ -44,6 +45,6 @@ PRIVACY-GUARD-2026-10-09.json에 비식별 검증 집계를 기록한다.
 과거 감사의 알려진 잔존과 범위 한계는 원 감사 보고서에 그대로 남긴다.
 
 ## 8. 다음 단계 / 필요한 결정 / 블로커
-승인된 변경이므로 두 OS CI 확인 후 squash 병합한다.
+코드 커밋 79e712c의 두 OS CI가 통과했다. 이 검증 기록 추가 후 최종 CI를 확인하고 squash 병합한다.
 사용자의 공개 전환 완료 통보 후 일반 PR에도 두 OS 작업을 복구한다(draft·문서 전용 제외 유지).
 그 뒤 기존 우선순위를 따른다. PR #29의 lxml 동봉 LGPL 정적 의존성 검토는 별도 미해결 사항이다.
