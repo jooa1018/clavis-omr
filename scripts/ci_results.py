@@ -10,13 +10,20 @@ from pathlib import Path
 def coverage_gates(report: dict[str, object]) -> dict[str, bool]:
     files = report["files"]
     assert isinstance(files, dict)
-    groups: dict[str, list[dict[str, int]]] = {"overall": [], "platform": [], "eval": []}
+    groups: dict[str, list[dict[str, int]]] = {
+        "overall": [],
+        "platform": [],
+        "eval": [],
+        "jobs": [],
+    }
     for name, entry in files.items():
         name = name.replace("\\", "/")
         summary = entry["summary"]
         groups["overall"].append(summary)
         if name.startswith(("src/clavis/", "scripts/")):
             groups["platform"].append(summary)
+        if name.startswith("training/jobs/"):
+            groups["jobs"].append(summary)
         if name.startswith("eval/"):
             groups["eval"].append(summary)
     return {

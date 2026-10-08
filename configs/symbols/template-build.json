@@ -1,0 +1,9 @@
+{
+  "status": "provisional",
+  "source": "SMuFL em conversion / Orchestrator 2026-09-29 initial component authorization",
+  "staff_space": 16,
+  "blur_sigma_spaces": [0.0, 0.0625],
+  "fonts": ["Bravura", "Leland"],
+  "glyphs": {"E0A4": "noteheadFilled", "E0A3": "noteheadHollow", "E0A2": "noteheadWhole"},
+  "metric": "NOT_RUN: SYN-Val; template construction smoke only"
+}

@@ -1,0 +1,139 @@
+[
+  {
+    "id": "SYM-TEMPLATE-001",
+    "owner": "W6",
+    "statement": "원본·오선 제거 NCC 봉우리를 staff-space 이웃에서 묶고 경쟁 머리 모양과 거절 후보를 남긴다.",
+    "units": "staff_space / probability",
+    "params": [
+      "candidate_bp",
+      "accept_bp",
+      "nms_spaces"
+    ],
+    "source": "convention",
+    "status": "provisional",
+    "flag": "template_responses.enabled / detect.disabled",
+    "ablation": {
+      "status": "PARTIAL",
+      "report": "docs/reports/W6/t6-1-component-smoke.json",
+      "scope": "component on/off counts only",
+      "dev_tune_k1_delta": null,
+      "syn_val_ier_delta": null,
+      "metric_status": "NOT_RUN"
+    },
+    "introduced_by": "PR #33",
+    "motivated_by_failure": false
+  },
+  {
+    "id": "SYM-VLINE-001",
+    "owner": "W6",
+    "statement": "stem·barline은 가늘고 연속된 세로선이며 barline 양 끝은 바깥 오선에 가깝다. 경쟁 분류를 보존한다.",
+    "units": "staff_space / probability",
+    "params": [
+      "ink_ratio",
+      "line_height_spaces",
+      "line_width_spaces",
+      "bar_end_tolerance_spaces",
+      "line_class_bp",
+      "line_alternative_bp"
+    ],
+    "source": "convention",
+    "status": "provisional",
+    "flag": "detect.disabled",
+    "ablation": {
+      "status": "PARTIAL",
+      "report": "docs/reports/W6/t6-1-component-smoke.json",
+      "scope": "component on/off counts only",
+      "dev_tune_k1_delta": null,
+      "syn_val_ier_delta": null,
+      "metric_status": "NOT_RUN"
+    },
+    "introduced_by": "PR #33",
+    "motivated_by_failure": false
+  },
+  {
+    "id": "SYM-POS-001",
+    "owner": "W6",
+    "statement": "맨 아래 오선 pos=0에서 반 staff-space마다 한 단계이며 관측 중심의 인접 세 위치를 확률로 남긴다.",
+    "units": "staff_space / probability",
+    "params": [
+      "pos_sigma_steps"
+    ],
+    "source": "convention",
+    "status": "provisional",
+    "flag": "detect.disabled",
+    "ablation": {
+      "status": "PARTIAL",
+      "report": "docs/reports/W6/t6-1-component-smoke.json",
+      "scope": "component on/off counts only",
+      "dev_tune_k1_delta": null,
+      "syn_val_ier_delta": null,
+      "metric_status": "NOT_RUN"
+    },
+    "introduced_by": "PR #33",
+    "motivated_by_failure": false
+  },
+  {
+    "id": "SYM-REL-001",
+    "owner": "W6",
+    "statement": "stem 끝은 머리의 왼쪽 또는 오른쪽 가장자리에 붙으며 가능한 경쟁 연결 두 개를 보존한다.",
+    "units": "staff_space / probability",
+    "params": [
+      "stem_dx_spaces",
+      "stem_dy_spaces",
+      "line_class_bp"
+    ],
+    "source": "convention",
+    "status": "provisional",
+    "flag": "detect.disabled",
+    "ablation": {
+      "status": "PARTIAL",
+      "report": "docs/reports/W6/t6-1-component-smoke.json",
+      "scope": "component on/off counts only",
+      "dev_tune_k1_delta": null,
+      "syn_val_ier_delta": null,
+      "metric_status": "NOT_RUN"
+    },
+    "introduced_by": "PR #33",
+    "motivated_by_failure": false
+  },
+  {
+    "id": "SYM-READ-001",
+    "owner": "W6",
+    "statement": "온머리는 whole, stem이 붙은 빈 머리는 half, 채운 머리는 관측 beam·flag 수에서 음길이 분포를 만든다. 누락된 분포는 0이 아니다.",
+    "units": "staff_space / probability",
+    "params": [],
+    "source": "convention",
+    "status": "provisional",
+    "flag": "draft_reading.durations_enabled",
+    "ablation": {
+      "status": "PARTIAL",
+      "report": "docs/reports/W6/t6-1-component-smoke.json",
+      "scope": "component on/off counts only",
+      "dev_tune_k1_delta": null,
+      "syn_val_ier_delta": null,
+      "metric_status": "NOT_RUN"
+    },
+    "introduced_by": "PR #33",
+    "motivated_by_failure": false
+  },
+  {
+    "id": "SYM-READ-002",
+    "owner": "W6",
+    "statement": "Competing stem connections and head classes use at most eight probability-ranked hypotheses; attributes remain in attrTopK so they cannot crowd out relationship alternatives.",
+    "units": "staff_space / probability",
+    "params": [],
+    "source": "convention",
+    "status": "provisional",
+    "flag": "draft_reading.enabled",
+    "ablation": {
+      "status": "PARTIAL",
+      "report": "docs/reports/W6/t6-1-component-smoke.json",
+      "scope": "component on/off counts only",
+      "dev_tune_k1_delta": null,
+      "syn_val_ier_delta": null,
+      "metric_status": "NOT_RUN"
+    },
+    "introduced_by": "PR #33",
+    "motivated_by_failure": false
+  }
+]

@@ -1,0 +1,5 @@
+# Optional manual training tools; W1 owns root dependency declarations.
+lightgbm==4.6.0
+scipy==1.18.1
+resvg-py==0.2.6
+# torch==2.5.1+cpu must come from the official PyTorch CPU wheel index.
