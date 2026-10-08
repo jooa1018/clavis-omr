@@ -1,0 +1,192 @@
+{
+  "officialDistributions": [
+    {
+      "package": "xmlschema",
+      "version": "4.3.2",
+      "requiresDist": [
+        "elementpath<6.0.0,>=5.1.3",
+        "jinja2; extra == \"codegen\"",
+        "coverage; extra == \"dev\"",
+        "flake8; extra == \"dev\"",
+        "lxml; extra == \"dev\"",
+        "lxml-stubs; extra == \"dev\"",
+        "mypy; extra == \"dev\"",
+        "psutil; extra == \"dev\"",
+        "tox; extra == \"dev\"",
+        "xmlschema[docs]; extra == \"dev\"",
+        "jinja2; extra == \"docs\"",
+        "sphinx; extra == \"docs\"",
+        "sphinx_rtd_theme; extra == \"docs\""
+      ],
+      "metadataLicense": "MIT",
+      "wheel": {
+        "url": "https://files.pythonhosted.org/packages/5c/fb/8be39dc47b0ed9bbc80f384906eed87fa974c9b377a7a430118c3b405550/xmlschema-4.3.2-py3-none-any.whl",
+        "sha256": "cf5c970a30f6ebcb3da35260e694704cc0b6794d8ace46125bb2a95e38ed9307",
+        "bytes": 504613
+      },
+      "licenseFiles": [
+        {
+          "path": "xmlschema-4.3.2.dist-info/licenses/LICENSE",
+          "sha256": "de71695b2db6819ee4478ef39f5f202aab9f0c8750168c2986467ea8e5fa2997",
+          "bytes": 1131
+        }
+      ]
+    },
+    {
+      "package": "elementpath",
+      "version": "5.1.4",
+      "requiresDist": [
+        "coverage; extra == \"dev\"",
+        "flake8; extra == \"dev\"",
+        "lxml; extra == \"dev\"",
+        "lxml-stubs; extra == \"dev\"",
+        "memray; platform_python_implementation != \"PyPy\" and extra == \"dev\"",
+        "mypy; extra == \"dev\"",
+        "psutil; extra == \"dev\"",
+        "sphinx; extra == \"dev\"",
+        "tox>=4.0; extra == \"dev\"",
+        "xmlschema>=4.0.1; extra == \"dev\"",
+        "sphinx; extra == \"docs\"",
+        "readthedocs-sphinx-search; extra == \"docs\""
+      ],
+      "metadataLicense": "MIT",
+      "wheel": {
+        "url": "https://files.pythonhosted.org/packages/42/b0/b709cc33ccb0288f41f2d92dfd754d2ccf925cb9277a66effbc132cd004c/elementpath-5.1.4-py3-none-any.whl",
+        "sha256": "5ec8d7bb44b16c98414a6a95e20cb150f3cbfc3cac65edc14773288c7a937376",
+        "bytes": 261881
+      },
+      "licenseFiles": [
+        {
+          "path": "elementpath-5.1.4.dist-info/licenses/LICENSE",
+          "sha256": "01a603b5de335fa4db21d918bfb868981e894b768d9b4e6a201488ae2ef3b9ea",
+          "bytes": 1131
+        }
+      ]
+    }
+  ],
+  "runtimeClosure": {
+    "packages": [
+      {
+        "License": "MIT",
+        "Name": "annotated-types",
+        "Version": "0.8.0"
+      },
+      {
+        "License": "MIT",
+        "Name": "elementpath",
+        "Version": "5.1.4"
+      },
+      {
+        "License": "Apache Software License",
+        "Name": "flatbuffers",
+        "Version": "25.12.19"
+      },
+      {
+        "License": "BSD License",
+        "Name": "numpy",
+        "Version": "2.2.6"
+      },
+      {
+        "License": "MIT License",
+        "Name": "onnxruntime",
+        "Version": "1.30.0"
+      },
+      {
+        "License": "Apache Software License",
+        "Name": "opencv-python-headless",
+        "Version": "4.11.0.86"
+      },
+      {
+        "License": "Apache-2.0 OR BSD-2-Clause",
+        "Name": "packaging",
+        "Version": "26.3"
+      },
+      {
+        "License": "MIT-CMU",
+        "Name": "pillow",
+        "Version": "11.2.1"
+      },
+      {
+        "License": "3-Clause BSD License",
+        "Name": "protobuf",
+        "Version": "7.36.2"
+      },
+      {
+        "License": "MIT",
+        "Name": "pydantic",
+        "Version": "2.13.5"
+      },
+      {
+        "License": "MIT",
+        "Name": "pydantic_core",
+        "Version": "2.46.5"
+      },
+      {
+        "License": "MIT",
+        "Name": "typing-inspection",
+        "Version": "0.4.4"
+      },
+      {
+        "License": "PSF-2.0",
+        "Name": "typing_extensions",
+        "Version": "4.16.0"
+      },
+      {
+        "License": "MIT",
+        "Name": "xmlschema",
+        "Version": "4.3.2"
+      }
+    ],
+    "scope": "runtime",
+    "violations": []
+  },
+  "status": "PARTIAL",
+  "licenseReview": "PASS",
+  "offlineSchemaSmoke": "PASS",
+  "optionalExtrasInstalled": false,
+  "privateData": "NOT_RUN",
+  "approval": "Orchestrator 2026-10-09",
+  "windowsTests": {
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "624",
+    "time": "39.955"
+  },
+  "resources": {
+    "status": "succeeded",
+    "wallSeconds": 41.20300000000043,
+    "cpuSecondsSampled": 34.359375,
+    "peakRssBytesSampled": 280756224,
+    "cpuLimit": 2
+  },
+  "wheelVerification": {
+    "specification": {
+      "commit": "799e2defb2ece0ae7bafe08dcbcac25b2c631d53",
+      "files": [
+        {
+          "bytes": 379505,
+          "file": "musicxml.xsd",
+          "sha256": "bfe37ed25a9ec00e6f2591d53df260b84efe12aed209ba3ac0a76f9287665a99",
+          "url": "https://raw.githubusercontent.com/w3c/musicxml/v4.0/schema/musicxml.xsd"
+        },
+        {
+          "bytes": 2280,
+          "file": "xlink.xsd",
+          "sha256": "6e601f8eeb41618b50e4c7f944dff754e57ea43b602755470dda24c9c2f6df92",
+          "url": "https://raw.githubusercontent.com/w3c/musicxml/v4.0/schema/xlink.xsd"
+        },
+        {
+          "bytes": 5695,
+          "file": "xml.xsd",
+          "sha256": "616a3077df5cfc954ac74a75abe9697b95eef7a85dbe09367d995a483e840eb5",
+          "url": "https://raw.githubusercontent.com/w3c/musicxml/v4.0/schema/xml.xsd"
+        }
+      ],
+      "specification": "MusicXML 4.0",
+      "tag": "v4.0"
+    },
+    "status": "PASS",
+    "wheel": "clavis_omr-0.0.1-py3-none-any.whl"
+  }
+}

@@ -6,6 +6,8 @@ Runtime packages are installed as separate wheels; retain their complete bundled
 - ONNX Runtime 1.30.0: CPU package `onnxruntime`, MIT. Retain its LICENSE and ThirdPartyNotices.txt. https://github.com/microsoft/onnxruntime/blob/v1.30.0/LICENSE
 - The complete Python runtime dependency closure and wheel metadata are recorded in docs/reports/W1/T1.3-runtime-license-evidence.json and uv.lock.
 
+- xmlschema 4.3.2 and elementpath 5.1.4: MIT, copyright SISSA. Retain the LICENSE from each official distribution. Official wheel/license SHA-256 evidence: docs/reports/W1/XMLSCHEMA-LICENSE-2026-10-09.json. https://pypi.org/project/xmlschema/4.3.2/ and https://pypi.org/project/elementpath/5.1.4/
+
 ## Bundled specification: MusicXML 4.0
 MusicXML 4.0 XSD: musicxml.xsd, xlink.xsd, xml.xsd, copied unmodified from W3C release v4.0 (commit 799e2defb2ece0ae7bafe08dcbcac25b2c631d53).
 Copyright © 2004-2021 the Contributors to the MusicXML Specification, published by the W3C Music Notation Community Group.

@@ -173,7 +173,11 @@
   "lxmlInstalled": false,
   "lxmlInLock": false,
   "runtimePackageCount": 12,
-  "remoteCi": "NOT_RUN",
+  "remoteCi": {
+    "status": "PASS",
+    "run": "https://github.com/jooa1018/clavis-omr/actions/runs/37817339323",
+    "head": "42813abfb556b3ed809c866a1be658eade1de8f0"
+  },
   "previousValidation": {
     "syntheticWindowsValidation": {
       "config": {
@@ -273,5 +277,6 @@
     "excluded_lines": 4,
     "percent_statements_covered": 92.26175019475461,
     "percent_statements_covered_display": "92"
-  }
+  },
+  "mergeCommit": "a25e8f91d370eb56fd652630d42b231c52f78862"
 }
