@@ -15,7 +15,7 @@
   "scanner": {
     "schema": "clavis-hardcode-scan-1",
     "status": "FAIL",
-    "pythonFiles": 117,
+    "pythonFiles": 119,
     "manifestIdentifiers": 0,
     "findings": [
       {
@@ -73,5 +73,11 @@
   "focused_tests": 41,
   "focused_errors": 0,
   "focused_failures": 0,
-  "focused_seconds": 1.158
+  "focused_seconds": 1.158,
+  "privacy": {
+    "status": "PASS",
+    "trackedFiles": 473,
+    "findings": []
+  },
+  "ci_policy": "main PR #37 restores Linux and Windows; short execution slot is not in main"
 }

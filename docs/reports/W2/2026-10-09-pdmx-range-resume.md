@@ -26,6 +26,7 @@ pdmx_stream.py: 검증된 로컬 파일 집계·TAR ordinal 재개·성공 후 �
 전체 Windows 시험 NOT_RUN(W1 짧은 슬롯 대기). 실제 연속 실행과의 이중 비교 NOT_RUN.
 스캐너 FAIL 3건: H3 byte width, H9 backoff 취소 대기·계측 주기. W4 문맥 판정/필요한 A승인 대기.
 스캐너/allowlist 변경 없음. 새 의존성 없음. 실제 데이터는 CI에서 처리하지 않았다.
+W1 PR #37의 Linux·Windows CI 복원을 반영했다. 개인정보 검사 473파일/0건 PASS.
 
 ## 5. 지표 (평가기 JSON 경로 + 핵심 수치 표: 이전 대비 변화와 95% CI, 슬라이스별)
 근거: [최종 운영 계측](pdmx-range-final.json), [원본 집계](pdmx-v9-aggregate.json), [시험·스캐너](pdmx-range-preflight.json).
@@ -64,6 +65,7 @@ no_license_conflict + PDM/CC0 필터 유지. 곡 ID·곡별 값·악보 원문�
 [MusicXML 표준](https://www.w3.org/2021/06/musicxml40/tutorial/compressed-mxl-files/)의 첫 rootfile/생략 시 MusicXML 기본값을 구현하고 시험했다.
 디스크가 5.49 GB로 회복된 뒤 재개했다. 문법 오류는 추정 복구 없이 제외 개수만 기록했다.
 모든 재개에서 HTTP 전송량은 늘지 않았다. 과거 2026-09-29 중단 계측은 이번 수치에 섞지 않았다.
+로컬 운영 traceback의 프로필 경로는 새 개인정보 규칙에 맞춰 상대 경로/%USERPROFILE%로 정리했다.
 W7의 PP-OCR/한·영 폰트 등록 요청은 접수만 기록했으며 artifact 라이선스·해시 확인은 아직 미수행.
 
 ## 8. 다음 단계 / 필요한 결정 / 블로커
