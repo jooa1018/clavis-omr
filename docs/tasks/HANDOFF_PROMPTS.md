@@ -1,6 +1,6 @@
 # 워커 시작 메시지 · 게이트 리뷰 요청 양식
 
-사용자가 각 Astra 워커에게 **그대로 붙여넣는** 메시지다. `<REPO>`는 저장소 경로로 바꾼다(현재: `C:\Users\eccto\Documents\Codex\2026-09-07\files-pasted-by-the-user-harmonymaker\work\clavis-omr`). 원격 저장소를 만들었다면 그 URL을 쓴다.
+사용자가 각 Astra 워커에게 **그대로 붙여넣는** 메시지다. `<REPO>`는 저장소 경로로 바꾼다(현재: `%USERPROFILE%\Documents\Codex\2026-09-07\files-pasted-by-the-user-harmonymaker\work\clavis-omr`). 원격 저장소를 만들었다면 그 URL을 쓴다.
 
 ---
 
