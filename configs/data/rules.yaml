@@ -30,7 +30,7 @@
   owner: W2
   statement: "Aggregate written type+dots per active staff meter only after exact no-conflict and PDM/CC0 item filtering; publish no song-level values."
   units: written_noteheads
-  params: [meters, max_mxl_bytes, max_xml_bytes, max_ratio]
+  params: [meters, max_mxl_bytes, max_xml_bytes, max_ratio, download]
   source: convention
   evidence: https://zenodo.org/records/15571083
   flag: aggregate-statistics source permission in training/data/licenses/sources.json

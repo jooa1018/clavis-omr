@@ -1,4 +1,4 @@
-"""Single-process streaming job; only aggregate checkpoints persist, never source files."""
+"""Aggregate verified local sources; OR-004 range cache survives network interruption."""
 
 import argparse
 import csv
@@ -8,8 +8,8 @@ import json
 import os
 import shutil
 import tarfile
+import threading
 import time
-import urllib.request
 from collections import Counter
 from collections.abc import Callable
 from pathlib import Path
@@ -66,10 +66,15 @@ class HashStream(io.RawIOBase):
 def run(
     config: dict[str, Any],
     output: Path,
+    cache: Path,
     telemetry: dict[str, Any] | None = None,
     progress_hook: Callable[[], None] | None = None,
 ) -> dict[str, Any]:
-    """Queue payload: reread immutable archives to resume without persisting song IDs."""
+    """Reread local immutable archives to resume without persisting song IDs."""
+    from training.data.pdmx_download import verify
+
+    for name, expected in config["files"].items():
+        verify(cache / name, expected)
     require_use("pdmx", "aggregate-statistics")
     output = output.resolve()
     if not output.is_relative_to(ROOT / "work"):
@@ -98,10 +103,8 @@ def run(
     manifest = config["files"]["PDMX.csv"]
     paths: set[str] = set()
     licensing: Counter[str] = Counter()
-    with urllib.request.urlopen(
-        manifest["url"], timeout=config["http_timeout_seconds"]
-    ) as response:
-        raw = HashStream(response, config["max_csv_bytes"], telemetry, progress)
+    with (cache / "PDMX.csv").open("rb") as response:
+        raw = HashStream(response, config["max_csv_bytes"], None, progress)
         with io.TextIOWrapper(io.BufferedReader(raw), encoding="utf-8-sig", newline="") as text:
             rows = csv.DictReader(text)
             required = {"mxl", "license_url", "license_conflict", "subset:no_license_conflict"}
@@ -144,8 +147,8 @@ def run(
     }
     archive = config["files"]["mxl.tar.gz"]
     seen: set[str] = set()
-    with urllib.request.urlopen(archive["url"], timeout=config["http_timeout_seconds"]) as response:
-        raw = HashStream(response, config["max_archive_bytes"], telemetry, progress)
+    with (cache / "mxl.tar.gz").open("rb") as response:
+        raw = HashStream(response, config["max_archive_bytes"], None, progress)
         stream = io.BufferedReader(raw)
         with tarfile.open(fileobj=stream, mode="r|gz") as bundle:
             for ordinal, member in enumerate(bundle, start=1):
@@ -218,8 +221,10 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--cache", type=Path, required=True)
     args = parser.parse_args()
     config = json.loads(args.config.read_text(encoding="utf-8"))
+    from training.data.pdmx_download import cache_lock, prepare
     from training.data.pdmx_windows import constrain
 
     job = constrain(config["process_memory_bytes"], config["max_compute_threads"])
@@ -230,6 +235,8 @@ def main() -> None:
         "transfer_bytes": prior.get("transfer_bytes", 0),
         "status": "RUNNING",
     }
+    metric_lock = threading.Lock()
+    last_report = time.monotonic()
 
     def report_metrics() -> None:
         wall = prior.get("wall_seconds", 0) + time.perf_counter() - started
@@ -245,8 +252,29 @@ def main() -> None:
         args.output.mkdir(parents=True, exist_ok=True)
         write_json(metrics_path, telemetry)
 
+    def transferred(size: int) -> None:
+        nonlocal last_report
+        with metric_lock:
+            telemetry["transfer_bytes"] += size
+            if time.monotonic() - last_report >= config["download"]["metrics_seconds"]:
+                report_metrics()
+                last_report = time.monotonic()
+
     try:
-        run(config, args.output, telemetry, report_metrics)
+        with cache_lock(args.cache):
+            telemetry["phase"] = "DOWNLOAD"
+            report_metrics()
+            evidence = prepare(config, args.cache, transferred)
+            write_json(args.output / "source-verification.json", evidence)
+            telemetry["phase"] = "AGGREGATE"
+            report_metrics()
+            run(config, args.output, args.cache, telemetry, report_metrics)
+            # Explicitly authorized cleanup: only this job's two source files and journals.
+            for name in ("PDMX.csv", "mxl.tar.gz"):
+                path = args.cache / name
+                path.unlink()
+                path.with_suffix(path.suffix + ".ranges.json").unlink()
+            telemetry["source_cache_removed"] = True
         telemetry["status"] = "COMPLETE"
     except Exception:
         telemetry["status"] = "INTERRUPTED"

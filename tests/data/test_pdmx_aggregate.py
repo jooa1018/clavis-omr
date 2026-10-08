@@ -93,11 +93,12 @@ def test_stream_resume_has_identical_aggregate_without_song_ids(
         }
     monkeypatch.setattr(worker, "ROOT", tmp_path)
     monkeypatch.setattr(worker.shutil, "disk_usage", lambda _: MagicMock(free=10**10))
-    monkeypatch.setattr(
-        worker.urllib.request, "urlopen", lambda url, timeout: io.BytesIO(inputs[url])
-    )
+    cache = tmp_path / "sources"
+    cache.mkdir()
+    (cache / "PDMX.csv").write_bytes(manifest)
+    (cache / "mxl.tar.gz").write_bytes(archive_bytes)
     complete, resumed = tmp_path / "work/full", tmp_path / "work/resume"
-    worker.run(config, complete)
+    worker.run(config, complete, cache)
     original = worker.write_json
 
     def interrupt(path: Path, data: object) -> None:
@@ -105,8 +106,8 @@ def test_stream_resume_has_identical_aggregate_without_song_ids(
         raise RuntimeError("simulated interruption")
 
     with patch.object(worker, "write_json", interrupt), pytest.raises(RuntimeError):
-        worker.run(config, resumed)
-    worker.run(config, resumed)
+        worker.run(config, resumed, cache)
+    worker.run(config, resumed, cache)
     assert (complete / "aggregate.json").read_bytes() == (resumed / "aggregate.json").read_bytes()
     for output in (complete, resumed):
         for artifact in output.glob("*.json"):
@@ -114,6 +115,11 @@ def test_stream_resume_has_identical_aggregate_without_song_ids(
     result = json.loads((resumed / "aggregate.json").read_text())
     assert result["counts"]["4/4"]["songs"] == 2
     assert result["counts"]["6/8"]["note:eighth:dots=0"] == 2
+    (cache / "mxl.tar.gz").write_bytes(b"corrupt")
+    unpublished = tmp_path / "work/unpublished"
+    with pytest.raises(ValueError, match="verification failed"):
+        worker.run(config, unpublished, cache)
+    assert not (unpublished / "aggregate.json").exists()
 
 
 def test_hash_stream_bounds_and_authentication() -> None:
@@ -124,6 +130,50 @@ def test_hash_stream_bounds_and_authentication() -> None:
     assert io.BufferedReader(wrapped).read() == b"abc"
     with pytest.raises(ValueError):
         wrapped.verify({"size": 3, "checksum": "md5:wrong"})
+
+
+@pytest.mark.parametrize("interrupt", [False, True])
+def test_cli_cleans_sources_only_after_success(tmp_path, monkeypatch, interrupt):
+    from training.data import pdmx_download, pdmx_windows
+
+    cache, output = tmp_path / "cache", tmp_path / "work"
+    cache.mkdir()
+    output.mkdir()
+    for name in ("PDMX.csv", "mxl.tar.gz"):
+        (cache / name).write_bytes(b"source")
+        (cache / (name + ".ranges.json")).write_text("{}")
+    (cache / "unrelated").write_bytes(b"keep")
+    config = tmp_path / "config.json"
+    config.write_bytes(Path("configs/data/pdmx-aggregate.json").read_bytes())
+    monkeypatch.setattr(
+        "sys.argv", ["job", "--config", str(config), "--cache", str(cache), "--output", str(output)]
+    )
+    monkeypatch.setattr(pdmx_windows, "constrain", lambda *args: 1)
+
+    def prepare(config, cache, transferred):
+        transferred(17)
+        return {"verified": True}
+
+    def run(config, output, cache, telemetry, report):
+        report()
+        if interrupt:
+            raise RuntimeError("synthetic processing interruption")
+        return {}
+
+    monkeypatch.setattr(pdmx_download, "prepare", prepare)
+    monkeypatch.setattr(worker, "run", run)
+    if interrupt:
+        with pytest.raises(RuntimeError, match="interruption"):
+            worker.main()
+    else:
+        worker.main()
+    metrics = json.loads((output / "run-metrics.json").read_text())
+    assert metrics["status"] == ("INTERRUPTED" if interrupt else "COMPLETE")
+    assert metrics["transfer_bytes"] == 17
+    assert metrics["peak_rss_bytes"] > 0
+    assert (cache / "mxl.tar.gz").exists() == interrupt
+    assert (cache / "PDMX.csv").exists() == interrupt
+    assert (cache / "unrelated").read_bytes() == b"keep"
 
 
 def test_numbered_meter_and_unknown_type() -> None:

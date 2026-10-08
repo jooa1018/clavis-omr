@@ -35,5 +35,14 @@
   "data_budget_bytes": 4000000000,
   "checkpoint_every": 1000,
   "process_memory_bytes": 1500000000,
-  "max_compute_threads": 2
+  "max_compute_threads": 2,
+  "download": {
+    "connections": 4,
+    "segment_bytes": 4194304,
+    "attempts": 8,
+    "timeout_seconds": 90,
+    "backoff_seconds": 5,
+    "backoff_max_seconds": 120,
+    "metrics_seconds": 5
+  }
 }

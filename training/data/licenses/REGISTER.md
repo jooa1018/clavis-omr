@@ -27,7 +27,7 @@ Evidence reviewed 2026-09-29:
 - [Leipzig license](https://github.com/rism-digital/leipzig/blob/main/LICENSE.txt)
 - [Bravura license](https://github.com/steinbergmedia/bravura/blob/master/LICENSE.txt)
 - [Leland license](https://github.com/MuseScoreFonts/Leland/blob/main/LICENSE.txt)
-- [PDMX distribution](https://zenodo.org/records/14648209)
+- [PDMX v9 distribution](https://zenodo.org/records/15571083)
 - [Mutopia terms](https://www.mutopiaproject.org/legal.html)
 
 The 30-page smoke audit matched every used glyph to its selected bundled font

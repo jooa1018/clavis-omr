@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-09",
+  "authorization": "Orchestrator 2026-10-06 OR-004 amendment",
+  "source": "https://zenodo.org/records/15571083",
+  "inputs_bytes": 2119735535,
+  "required_initial_free_bytes": 5119735535,
+  "observed_initial_free_bytes": 8320798720,
+  "memory_limit_bytes": 1500000000,
+  "cpu_affinity": 3,
+  "priority": "BelowNormal",
+  "connections": 4,
+  "training_admission": "BLOCKED_OR003",
+  "whole_suite": "NOT_RUN_PENDING_W1_SLOT",
+  "ci_workflow_state": "active (W1 readiness not yet confirmed)",
+  "scanner": {
+    "schema": "clavis-hardcode-scan-1",
+    "status": "FAIL",
+    "pythonFiles": 98,
+    "manifestIdentifiers": 0,
+    "findings": [
+      {
+        "file": "training/data/pdmx_download.py",
+        "line": 88,
+        "rule": "H3",
+        "owner": "W2",
+        "evidence_digest": "5c6d6a55011fc93aeea649f99e4a29b56d4f13e7efd1793d65480ceb507c9ee8"
+      },
+      {
+        "file": "training/data/pdmx_download.py",
+        "line": 128,
+        "rule": "H9",
+        "owner": "W2",
+        "evidence_digest": "3ee285c8d06b4a8f725d0470af2d62bb5734d1454b714b68f8c8c253050ed90c"
+      },
+      {
+        "file": "training/data/pdmx_stream.py",
+        "line": 259,
+        "rule": "H9",
+        "owner": "W2",
+        "evidence_digest": "8e4b5b2d7825ddd83711afba5bc5a6e39c98cf28038feb27a6176376f142a6eb"
+      }
+    ],
+    "suppressed": [],
+    "byOwner": {
+      "W2": 3
+    }
+  },
+  "coverage": {
+    "covered_lines": 415,
+    "num_statements": 450,
+    "percent_covered": 92.22222222222223,
+    "percent_covered_display": "92",
+    "missing_lines": 35,
+    "excluded_lines": 0,
+    "percent_statements_covered": 92.22222222222223,
+    "percent_statements_covered_display": "92"
+  },
+  "focused_tests": 18,
+  "focused_errors": 0,
+  "focused_failures": 0,
+  "focused_seconds": 1.172
+}

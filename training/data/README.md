@@ -103,17 +103,18 @@ fixture author lives in `tests/data/smoke_inputs.py`, excluded from H4 by the
 charter. It requires the repository's tests tree and is not a production data
 generator. The move preserves input XML bytes and existing audit provenance.
 
-## PDMX aggregate-only streaming (OR-004, one execution)
+## PDMX aggregate-only local streaming (OR-004, amended 2026-10-06)
 
 The approved v9 source is `https://zenodo.org/records/15571083`. The per-row gate
 requires no-license-conflict membership, false license_conflict, and the exact
-PDM or CC0 license URL. Only CSV and MXL streams are fetched. Archives, source XML,
-song IDs and per-song values never persist. The complete CSV SHA-256 is the source
-manifest digest. Both source streams must match publisher sizes and MD5 before
+PDM or CC0 license URL. Only CSV and the MXL archive are fetched into an external
+temporary cache. They are removed after successful aggregation; extracted source
+XML never persists. No song IDs or per-song values enter output artifacts. The
+complete CSV SHA-256 is the source manifest digest. Both files must match publisher sizes and MD5 before
 `aggregate.json` is written; that file contains aggregate tables and manifest digest.
 
 ```text
-python -m training.data.pdmx_stream --config configs/data/pdmx-aggregate.json --output work/pdmx-v9-aggregate
+python -m training.data.pdmx_stream --config configs/data/pdmx-aggregate.json --output work/pdmx-v9-range-aggregate --cache C:/Users/YOU/AppData/Local/Temp/clavis-w2-pdmx-v9
 ```
 
 This is a local Windows queue payload; never run real data in GitHub Actions.
@@ -123,11 +124,22 @@ The launcher must also set OMP_NUM_THREADS, OPENBLAS_NUM_THREADS and MKL_NUM_THR
 to 2 before Python imports. Windows Job Object enforces one process/memory; affinity
 limits execution to two available logical CPUs. Allocation/limit failures stop work.
 
-Checkpoints retain aggregate counts and the processed TAR ordinal, not member names.
-Resume rereads the immutable CSV and compressed stream, skips already counted members,
-and continues accumulation. This saves parsing work but retransmits the prefix because
-storing decompressor/source buffers would retain song content. An interrupted result is
-not a target. Mock interrupted/uninterrupted final aggregate bytes must match.
+The downloader requests 4 MiB ranges through at most four I/O connections in the
+same process. Exact HTTP 206 Content-Range and identity encoding are mandatory.
+429/503 honor Retry-After with shared exponential backoff. An OS cache lock prevents
+concurrent writers and is released on process death. Segment data is fsynced before
+an atomic journal records its SHA-256. Resume rehashes completed segments and fetches
+only missing/corrupt ranges. It never falls back to a full network stream. File size
+and MD5 are checked against Zenodo, including when all segments were already cached.
+Disk preflight reserves both sources plus 3 GB free; runtime checks preserve that
+margin. Cache must be outside Git repositories. No source bytes enter Git or CI.
+
+Aggregate checkpoints retain counts and the processed TAR ordinal, not member names.
+Resume rereads local compressed bytes and skips already counted members, without
+retransmitting the network prefix. An interrupted result is not a target. Synthetic
+interrupted/uninterrupted final aggregate bytes must match. After success only the
+two explicitly named source files and their range journals are deleted; no recursive
+cleanup is used. Keep the external cache on interruption to permit resumption.
 
 The denominator is written pitched noteheads with a notated type, across all parts,
 counting each tied segment and each chord member; no repeat unfolding. Grace and rests
