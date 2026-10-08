@@ -1,6 +1,7 @@
 # CCR-0002 — 코드 문법 시작 규칙과 인쇄 별칭의 수용 범위
 
-상태: DRAFT / Orchestrator 판정 대기. 승인 또는 계약 변경이 아니다.
+상태: APPROVED — Orchestrator 2026-10-06 판정, 2026-10-09 사용자 메시지로 수신.
+**v0.1 정오표, 버전 불변.** 1–4절은 승인 전 제안의 이력이며 현재 판정은 5절이다.
 작성: W7, 2026-09-29. 기준: 6d529726ca176e5bd60b7b9b531412602048d09f.
 영향: W1(계약), W7(인식·정규화), W8(harmony·힌트), W4(평가), W9(소비자).
 
@@ -58,3 +59,30 @@
 측정 변경 없음. 인식·학습·렌더·평가 실행 없음. Dev/sealed 데이터 접근 없음.
 승인 전에 이 제안에 의존하는 파서·합성 코드 생성기·CTC 디코더를 구현/병합하지 않는다.
 별개의 W2 텍스트 폰트 등록과 PP-OCR artifact 확인은 W7 보고서의 재개 의존성으로 남긴다.
+
+## 5. 승인 기록 — 2026-10-06 (수신·반영 2026-10-09)
+
+승인 주체: Orchestrator. 사용자 전달 메시지: "CCR-0002 승인(A등급, 이 메시지가 승인이다)."
+범위: 이 PR #24에서 W7이 CONTRACTS 6절을 승인 문안으로 수정하고 [W1 확인] 후 병합한다.
+CI는 W1 재활성화 이후만 병합 가능하다. 아래 승인 내용이 2절의 미승인 제안을 대체한다.
+
+1. `body := composite {modifier} | [quality] [primary] [sus] {modifier}`.
+   composite는 m7b5/min7b5/ø/ø7/dim7/°7/mMaj7/minMaj7/mMaj9/minMaj9 전체다.
+   composite 뒤 modifier는 허용하고 modifier 자체 문법은 변경하지 않는다.
+2. primary의 maj7은 maj7/MAJ7/Maj7/M7/Δ7, maj9는 maj9/MAJ9/Maj9/M9/Δ9를 수용한다.
+   나머지 root/bass/quality/primary/sus는 승인 문안대로 CONTRACTS 6절에 반영했다.
+3. 최장 일치 토큰화: M7·Δ7 → maj7, M9·Δ9 → maj9, m7b5 → composite.
+   복수 도출의 정규형은 모두 같아야 하며 W7 구현 PR에서 시험한다.
+   M·Δ·maj 단독은 HarmonyMaker와 같은 장3화음이다.
+4. 정규형: ø·ø7·min7b5 → m7b5, °7 → dim7, minMaj7 → mMaj7,
+   minMaj9 → mMaj9, maj7/maj9 별칭 → maj7/maj9, min·- → m,
+   ° 단독 → dim, + → aug, maj·M·Δ 단독 → 접미사 없음. 변화음 순서와 /bass는 유지한다.
+5. TextItem.text와 kind@text는 관측 인쇄형을 보존한다. chord.normalized와 정규화 뒤 후보를
+   문법 검증한다. △/♭/♯/전각/위첨자/Ø의 결정적 표기 대응은 W7 규칙 등록부에 일반 관례 근거와
+   함께 기록하고, A↔△ 및 0↔o↔°는 치환 규칙이 아닌 인식 확률 대안으로 다룬다.
+6. **정오표·버전 불변 사유:** 문법 내부 모순이 있었으며 해당 문법을 구현한 코드와 산출물이
+   아직 없다. 따라서 v0.1을 유지한다. 구현 이후 변경은 CONTRACTS 0절의 버전 규칙을 적용한다.
+7. 12.6 전 어휘·거부 예시·복수 도출 정규형 동일성 시험은 W7 구현 PR에 둔다.
+   이 문서 PR은 인식 코드·JSON Schema·fixture·평가기·모델을 변경하지 않는다.
+
+[W1 확인]: 요청 예정/미수신. Orchestrator 승인과 W1 확인 및 CI 결과를 혼동하지 않는다.

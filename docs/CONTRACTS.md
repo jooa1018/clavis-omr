@@ -308,19 +308,35 @@ bar style=final
 ```text
 chord      := "N.C." | root body ["/" bass]
 root, bass := step [acc]            ; step ∈ A..G, acc ∈ {#, b}
-body       := [quality] [primary] [sus] {modifier}
+body       := composite {modifier} | [quality] [primary] [sus] {modifier}
 quality    := "m" | "min" | "-" | "dim" | "°" | "aug" | "+" | "maj" | "M" | "Δ"
-primary    := "2" | "5" | "6" | "6/9" | "7" | "maj7" | "M7" | "Δ7" | "9" | "maj9" | "11" | "13"
+primary    := "2" | "5" | "6" | "6/9" | "7" | maj7 | "9" | maj9 | "11" | "13"
+maj7       := "maj7" | "MAJ7" | "Maj7" | "M7" | "Δ7"
+maj9       := "maj9" | "MAJ9" | "Maj9" | "M9" | "Δ9"
 sus        := "sus" | "sus2" | "sus4"
 modifier   := "add" ("2"|"4"|"6"|"9"|"11"|"13") | ("b"|"#") ("5"|"9"|"11"|"13") | "no3" | "no5"
             | "(" modifier {"," modifier} ")"
-composite  := "m7b5" | "ø" | "ø7" | "dim7" | "°7" | "mMaj7" | "minMaj7" | "mMaj9"
+composite  := "m7b5" | "min7b5" | "ø" | "ø7" | "dim7" | "°7" | "mMaj7" | "minMaj7" | "mMaj9" | "minMaj9"
 ```
 
-- **인식 결과는 이 문법을 통과한 문자열만** 출력한다(W7 문법 제약 디코딩).
+- **정규화 뒤 후보와 `chord.normalized`는 이 문법을 통과해야 한다**(W7 문법 제약 디코딩).
+- 해석은 HarmonyMaker 소비자와 같은 **최장 일치 토큰화**다. M7·Δ7은 maj7,
+  M9·Δ9는 maj9, m7b5는 composite다. 도출이 여럿인 문자열은 모든 도출의 정규형이
+  같아야 하며 시험으로 확인한다. M·Δ·maj 단독은 장3화음이다.
+- 정규 접미사 대응: ø·ø7·min7b5 → m7b5, °7 → dim7, minMaj7 → mMaj7,
+  minMaj9 → mMaj9, maj7 별칭 → maj7, maj9 별칭 → maj9, min·- → m,
+  ° 단독 → dim, + → aug, maj·M·Δ 단독 → 접미사 없음.
+- `TextItem.text`와 `kind@text`는 관측한 인쇄 표기를 그대로 보존한다.
+  글리프 표기 정규화(△→Δ, ♭→b, ♯→#, 전각·위첨자 → ASCII, Ø→ø)는
+  결정적 대응표로 `configs/text/rules.yaml`에 등록하고 항목마다 일반 조판 관례를 근거로 적는다.
+  시각 혼동(A↔△, 0↔o↔°)은 대응표가 아니라 인식기의 확률 대안으로 다룬다.
 - 정규형은 root + 정규 접미사 + 변화음(b5, #5, b9, #9, #11, b13 순서) + `/bass`다. 예: `Bbmaj7`, `F#m7b5`, `Dsus4`, `G7(b9)` → `G7b9`, `C/E`.
 - MusicXML `<harmony>` 대응: `root`, `kind`(major, minor, augmented, diminished, dominant, major-seventh, minor-seventh, diminished-seventh, half-diminished, major-minor, major-sixth, minor-sixth, dominant-ninth, major-ninth, minor-ninth, dominant-11th, dominant-13th, suspended-second, suspended-fourth, power, none), `kind@text`(인쇄된 접미사 그대로, 예: "M7", "△7", "-7"), `degree`(add, alter, subtract), `bass`.
 - HarmonyMaker 파서 어휘(12.6절) 밖의 코드(예: `C5` power, `C11`)도 정확히 출력하되 `CHORD_OUTSIDE_CONSUMER_VOCAB`(info) 힌트를 단다.
+
+CCR-0002: Orchestrator 2026-10-06 승인 **v0.1 정오표, 버전 불변**.
+문법 내부 모순을 정정하며 이 문법을 구현한 코드·산출물이 아직 없기 때문이다.
+구현 이후의 문법 변경은 0절 규칙에 따라 버전을 올린다.
 
 ## 7. 가사 표현
 
