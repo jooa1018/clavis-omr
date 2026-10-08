@@ -1,0 +1,7 @@
+{
+  "newConflictSongPercentEscalation": 1,
+  "unit": "percent of distinct songs in previous admitted training inventory",
+  "source": "Orchestrator OR-003, 2026-09-29",
+  "comparison": "strictly greater",
+  "owner": "W4"
+}

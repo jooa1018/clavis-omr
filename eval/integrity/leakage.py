@@ -108,6 +108,8 @@ def check(train: Any, reserved: Any) -> tuple[dict[str, Any], dict[str, Any]]:
 
 
 def main() -> int:
+    from eval.integrity.protection import admit
+
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--train", type=Path, required=True)
     parser.add_argument("--reserved", type=Path, required=True)
@@ -119,7 +121,7 @@ def main() -> int:
     report: dict[str, Any]
     admitted: dict[str, Any]
     try:
-        report, admitted = check(
+        report, admitted = admit(
             json.loads(args.train.read_text(encoding="utf-8")),
             json.loads(args.reserved.read_text(encoding="utf-8")),
         )
