@@ -72,14 +72,14 @@
 ### T4.8 Sealed 도구 (Custodian용)
 
 - `clavis-eval sealed`: 동결 빌드 패키지, sealed manifest, 임계값 artifact를 받아 네트워크 없이 실행한다. **집계 보고서만** 만든다(표본 부족 슬라이스 숨김, 오류 유형 히스토그램). 페이지별 상세는 Custodian 로컬에만 남긴다.
-- Sealed 이미지의 SHA-256과 pHash, 곡 지문 목록을 만드는 도구. Custodian이 실행하고 목록만 공유한다.
+- Sealed 이미지의 SHA-256과 pHash, 곡 지문 목록을 만드는 로컬 도구. OR-003에 따라 Custodian이 동결 학습·Dev inventory와 역방향 선별하고 건수만 공유한다. sealed 지문은 공유하지 않는다.
 - 원장 양식(`docs/gates/sealed-ledger.md`)과 artifact digest 검증.
 - Custodian용 한국어 사용 설명서(EVALUATION.md 10절을 실행 명령 수준으로 구체화).
 
 ### T4.9 무결성 장치 (`eval/integrity/`, `eval/metamorphic/`, `eval/fresh_seed/`)
 
 - **하드코딩 스캐너**: 헌장 6절 H1–H9. AST 기반으로 만들고, 규칙별 양성·음성 시험을 둔다. 허용 목록 형식(`configs/integrity/allowlist.yaml`: 파일, 줄, 규칙, 사유, 승인자)
-- **누출 검사**: 학습 shard pHash ↔ Dev·sealed 해시 목록(해밍 거리 ≤ 6), 학습 곡 지문 ↔ 평가 곡 풀·sealed 지문
+- **누출 검사**: OR-003 보호 집합(평가 곡 풀 전체·Lieder 전체 성악 선율·접수된 Dev 선율/이미지)과 학습 inventory 대조. sealed 부재로 편입을 차단하지 않는다.
 - **변환 불변성 시험**: W3의 변환 8종을 적용하고, 출력 음악 내용 차이를 K1 방식 연산 수로 잰다. 통과 기준은 헌장 6절.
 - **새 시드 합성 시험**: nightly마다 새 시드 LeadGen 50곡 → W2 렌더 → W3 열화 → 엔진 → 지표. SYN-Val 관리 한계(평균 ±2σ)와 비교한다.
 - **규칙 ablation 실행기**: 설정 플래그로 규칙 모듈을 하나씩 끈 실행을 비교한다.
