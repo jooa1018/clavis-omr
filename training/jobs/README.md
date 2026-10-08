@@ -61,3 +61,34 @@ ADR-002는 Orchestrator가 2026-10-06 채택했다.
 시작 시 시스템 commit 여유가 작업 RAM 상한 + 1 GB 미만이면 memory-low로 기록하고 paused 상태로 남긴다.
 실행 중 hostMemorySamples에 물리 RAM 총량/여유와 페이지파일 크기, commit 여유를 기록한다. Windows는 GetPerformanceInfo와 EnumPageFiles, Linux는 /proc/meminfo를 사용한다.
 메모리 구성(증설 전 8 GB / 증설 후 24 GB)을 실행 예산 보고에 명시하며 서로 섞어 비교하지 않는다.
+
+## OR-005 짧은 실행 슬롯
+전체 시험과 OR-001 렌더·학습·OCR smoke는 다음 래퍼로 실행한다.
+몇 개의 단위 시험만 실행하는 경우에는 래퍼를 생략할 수 있다.
+
+```powershell
+uv run --locked --all-groups python -m training.jobs.short run pytest tests/ --junitxml=work/short-tests.xml
+uv run --locked --all-groups python -m training.jobs.short status
+uv run --locked --all-groups python -m training.jobs.short configure --slots 3
+```
+
+기본 3슬롯, 설정 정본은 머신 공통 `~/.clavis/short-slots.json`이다. 변경은 큐와 슬롯이 모두 비었을 때만 가능하다.
+각 실행은 `worker.lock`의 공유 잠금과 별도 슬롯 잠금을 잡는다. 무거운 큐의 독점 잠금과 상호 배제되며,
+프로세스 종료 시 OS가 잠금을 해제한다. Windows LockFileEx와 Linux flock을 사용한다.
+슬롯이 꽉 찼거나 무거운 큐가 돌면 새 작업을 시작하지 않고 종료 코드 75를 반환한다. 여유가 생긴 뒤 다시 실행한다.
+실행 성공은 0, 실패·중단은 1, 잘못된 요청·설정은 2다. `status`는 설정 수를 표시하며 현재 점유 수는 표시하지 않는다.
+
+연산 스레드 요청은 항상 2이며 실제 CPU affinity는 기존 예약 정책을 따른다.
+RAM 최대 3 GB, 기본/최대 벽시계 600초, 시작 commit 여유 +1 GB와 디스크 여유 3 GB 검사는 큐 실행기를 재사용한다.
+Windows Job Object, 자손 프로세스 제한, Below Normal, CPU/RAM 표본, Ctrl+C 중단도 그대로 적용된다.
+사용자가 지켜보는 수동 실행이므로 01:00–07:00 창 밖에서도 실행할 수 있다. 자동 야간 실행에는 단일 큐를 쓴다.
+
+래퍼 옵션은 module 앞에 둔다: `run --wall-seconds 120 --items 30 --seed 7 --data-digest <sha256> <module> <args>`.
+렌더·이미지 수는 호출자가 `--items`로 선언한다(기본 0: 데이터 없는 시험). 100 초과는 거부하며 실제 처리량은 호출 모듈이 제한한다.
+seed 기본 0, data digest 기본 영 해시는 데이터 없는 시험용이다. 데이터를 쓰는 smoke는 실제 manifest digest를 제공한다.
+사적 경로는 인자로 넣지 않고 CLAVIS_PRIVATE_ROOT만 사용한다.
+
+출력 JSON은 상태·이유·슬롯·runId·jobId와 자원 집계만 담는다.
+큐와 동일하게 원문 stdout/stderr는 저장하지 않는다. pytest 결과가 필요하면 위처럼 저장소의 무시된 work/에 JUnit을 지정한다.
+실험 기록과 체크포인트는 `~/.clavis/short-runs/<runId>/<jobId>` 및 실행별 experiments.jsonl에 남는다.
+원본 로그/JUnit을 커밋하지 않고 개인정보를 제거한 집계만 보고한다.
