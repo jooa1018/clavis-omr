@@ -1,0 +1,70 @@
+{
+  "status": "PARTIAL",
+  "scope": "OFL glyph construction; NOT SYN-Val",
+  "fonts": [
+    {
+      "font": "Bravura",
+      "license": "OFL-1.1",
+      "staff_space": 16,
+      "metadata_sha256": "09c820ec106d4009e99cacd0bcfddef1a8cd19b4052a8e52a74b3a6f06677188",
+      "glyphs": [
+        {
+          "glyph": "E0A4",
+          "class": "noteheadFilled",
+          "outline_sha256": "ea94174216e5c3021b975d04c615529e7f50cf311e2a9083ff57e8e961b1c5ae"
+        },
+        {
+          "glyph": "E0A3",
+          "class": "noteheadHollow",
+          "outline_sha256": "ae57229e482b6d779f5ae6ee1bc9445cf6ab9297ae4b2f273999b0bbd868ab8c"
+        },
+        {
+          "glyph": "E0A2",
+          "class": "noteheadWhole",
+          "outline_sha256": "07cca28fcd4126491b16a7be87b0f59a47f7898149fd404b076e184d3cfd5899"
+        }
+      ],
+      "variants": 6
+    },
+    {
+      "font": "Leland",
+      "license": "OFL-1.1",
+      "staff_space": 16,
+      "metadata_sha256": "4ff2d18c33e69d6073d19da66071ced9a3f55198c996b9752b6d7a21825c37e9",
+      "glyphs": [
+        {
+          "glyph": "E0A4",
+          "class": "noteheadFilled",
+          "outline_sha256": "db83e17d9f095b1969616b2bbb26640d5c4faf1aeddd28b1d81f90ff03f858c4"
+        },
+        {
+          "glyph": "E0A3",
+          "class": "noteheadHollow",
+          "outline_sha256": "480c48db36b53d5ff8b4d41374c71d77b7b155fd6928c8efb606cc31411eed17"
+        },
+        {
+          "glyph": "E0A2",
+          "class": "noteheadWhole",
+          "outline_sha256": "f878dd20457659122f648b784c6d0976be680d2e8b47881453a27b141e20ed90"
+        }
+      ],
+      "variants": 6
+    }
+  ],
+  "classes": [
+    "noteheadFilled",
+    "noteheadFilled",
+    "noteheadHollow",
+    "noteheadHollow",
+    "noteheadWhole",
+    "noteheadWhole",
+    "noteheadFilled",
+    "noteheadFilled",
+    "noteheadHollow",
+    "noteheadHollow",
+    "noteheadWhole",
+    "noteheadWhole"
+  ],
+  "template_sha256": "685011716af5d4706925e7c3e6ba2bcc056f42ab739eb927e1982bb73746f58e",
+  "recognition_accuracy": "NOT_RUN; no symbol box labels available"
+}
