@@ -71,6 +71,10 @@ jobs:
       - run: uv run --locked --all-groups lint-imports
       - name: Runtime dependency license allowlist
         run: uv run --locked --all-groups python scripts/check_licenses.py
+      - name: Wheel includes original approved specification assets
+        run: |
+          uv build --wheel
+          uv run --locked --all-groups python scripts/check_wheel.py dist
       - name: Required H1-H9 AST scan
         run: uv run --locked --all-groups python -m eval.integrity.hardcode_scan --root . --out work/hardcode.json
       - name: Required tracked-file privacy scan
