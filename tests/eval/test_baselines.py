@@ -2,6 +2,7 @@ import json
 import subprocess
 import sys
 from pathlib import Path
+from types import SimpleNamespace
 from typing import Any
 
 import pytest
@@ -11,11 +12,23 @@ from eval.baselines.__main__ import main
 from eval.policy import config
 
 
+@pytest.fixture(autouse=True)
+def resource_state(monkeypatch: pytest.MonkeyPatch) -> None:
+    # Only the execution guard consumes this host reading. Unit fixtures need a
+    # controlled budget; Docker's RAM limit is asserted in command tests below.
+    monkeypatch.setattr(
+        "eval.baselines.shutil.disk_usage",
+        lambda _path: SimpleNamespace(total=16 * 1024**3, used=8 * 1024**3, free=8 * 1024**3),
+    )
+
+
 @pytest.mark.parametrize("engine", ["audiveris", "homr", "oemer"])
 def test_fixed_offline_commands(engine: str, tmp_path: Path) -> None:
     args = command(engine, "sha256:" + "a" * 64, tmp_path, ".png")
     assert "--network=none" in args and "--pull=never" in args
     assert "--read-only" in args and "--cap-drop=ALL" in args
+    assert "--memory=" + config("baselines.json")["memory"] in args
+    assert "--memory-swap=" + config("baselines.json")["memory"] in args
     assert not any("gpu" in arg for arg in args)
     assert "/work/input.png" in args
     with pytest.raises(ValueError):
@@ -129,3 +142,30 @@ def test_cli_missing_environment(monkeypatch: pytest.MonkeyPatch) -> None:
         ],
     )
     assert main() == 2
+
+
+@pytest.mark.parametrize("free_bytes", [3 * 1024**3 - 1, 3 * 1024**3])
+def test_disk_guard_at_execution_boundary(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, free_bytes: int
+) -> None:
+    monkeypatch.setattr(
+        "eval.baselines.shutil.disk_usage", lambda _path: SimpleNamespace(free=free_bytes)
+    )
+    monkeypatch.setattr("eval.baselines.inspect", lambda *_args: {})
+    invocations: list[list[str]] = []
+
+    def process(args: list[str], **_kwargs: Any) -> subprocess.CompletedProcess[bytes]:
+        invocations.append(args)
+        return subprocess.CompletedProcess(args, 1)
+
+    monkeypatch.setattr(subprocess, "run", process)
+    source = tmp_path / "page.png"
+    source.write_bytes(b"synthetic")
+    args = ("oemer", "sha256:" + "a" * 64, source, tmp_path / "cache", "e" * 64)
+    if free_bytes < 3 * 1024**3:
+        with pytest.raises(ValueError, match="free disk"):
+            run(*args)
+        assert invocations == []
+    else:
+        assert run(*args)["status"] == "FAIL"
+        assert len(invocations) == 1
