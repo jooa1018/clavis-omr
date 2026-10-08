@@ -140,7 +140,7 @@
     "scope": "runtime",
     "violations": []
   },
-  "status": "PARTIAL",
+  "status": "PASS",
   "licenseReview": "PASS",
   "offlineSchemaSmoke": "PASS",
   "optionalExtrasInstalled": false,
@@ -188,5 +188,10 @@
     },
     "status": "PASS",
     "wheel": "clavis_omr-0.0.1-py3-none-any.whl"
-  }
+  },
+  "remoteCi": {
+    "status": "PASS",
+    "run": "https://github.com/jooa1018/clavis-omr/actions/runs/37818068581"
+  },
+  "mergeCommit": "0cd31139a9538ca6e0ca390dfc5fa8e6231a9379"
 }

@@ -26,3 +26,17 @@
     report: docs/reports/W1/PUBLIC-PR-CI-2026-10-09.md
   introduced_by: w1/public-pr-ci
   motivated_by_failure: false
+- id: PLATFORM-SHORT-001
+  owner: W1
+  statement: OR-005 defaults to three machine-wide short slots, each requesting two compute threads, at most 600 seconds and 3 GB; declared rendered items/images are at most 100. Shared queue lock excludes heavy jobs; full slots fail before execution.
+  units: slots_threads_seconds_bytes_items
+  params: [training.jobs.slots.DEFAULT_SLOTS, training.jobs.short.THREADS, training.jobs.short.WALL_SECONDS, training.jobs.short.MAX_ITEMS, training.jobs.model.JobSpec.ram_bytes]
+  source: convention
+  evidence: docs/tasks/00_COMMON.md#10-자원-사용-규칙
+  flag: training.jobs.short
+  ablation:
+    status: NOT_RUN
+    reason: Orchestrator-approved resource policy; no recognition behavior.
+    report: docs/reports/W1/OR-005-SHORT-SLOTS-2026-10-09.md
+  introduced_by: w1/short-run-slots
+  motivated_by_failure: true
