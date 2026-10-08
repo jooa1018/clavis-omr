@@ -15,7 +15,14 @@ def strip_to_processed(
 ) -> Floats:
     """Map (...,2) strip points; reject extrapolation beyond the sampled mesh."""
     points = np.asarray(points, dtype=np.float64)
-    if points.shape[-1:] != (2,) or not np.isfinite(points).all() or s_star <= 0:
+    if (
+        points.shape[-1:] != (2,)
+        or not np.isfinite(points).all()
+        or not np.isfinite(s_star)
+        or not np.isfinite(margin_above)
+        or s_star <= 0
+        or margin_above < 0
+    ):
         raise ValueError("Expected finite points and positive s_star")
     u, v = points[..., 0], points[..., 1]
     knots = np.arange(len(mesh.x)) * mesh.u_step
@@ -34,7 +41,14 @@ def processed_to_strip(
 ) -> Floats:
     """Invert the same piecewise linear mesh, without a separate geometric fit."""
     points = np.asarray(points, dtype=np.float64)
-    if points.shape[-1:] != (2,) or not np.isfinite(points).all() or s_star <= 0:
+    if (
+        points.shape[-1:] != (2,)
+        or not np.isfinite(points).all()
+        or not np.isfinite(s_star)
+        or not np.isfinite(margin_above)
+        or s_star <= 0
+        or margin_above < 0
+    ):
         raise ValueError("Expected finite points and positive s_star")
     x, y = points[..., 0], points[..., 1]
     if np.any(x < mesh.x[0]) or np.any(x > mesh.x[-1]):

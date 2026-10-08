@@ -1,6 +1,7 @@
 """Bounded W2/W3 component measurements: synthetic smoke, NOT SYN-Val or W4 evaluation."""
 
 import argparse
+import dataclasses
 import gzip
 import hashlib
 import json
@@ -13,7 +14,13 @@ import cv2
 import numpy as np
 from PIL import Image, ImageDraw
 
-from clavis.geometry import detect_staves, extract_strip, load_config, strip_to_processed
+from clavis.geometry import (
+    detect_staves,
+    extract_strip,
+    load_config,
+    processed_to_strip,
+    strip_to_processed,
+)
 from training.data.resources import peak_rss_bytes
 from training.degrade.ops import Labels, apply
 
@@ -93,11 +100,16 @@ def run(root: Path, rasters: Path, output: Path) -> dict:
         name = record["name"]
         raw = (rasters / (name + ".png")).read_bytes()
         image = cv2.imdecode(np.frombuffer(raw, np.uint8), cv2.IMREAD_GRAYSCALE)
+        symbol_raw = (rasters / (name + "-symbols.png")).read_bytes()
+        symbols = cv2.imdecode(np.frombuffer(symbol_raw, np.uint8), cv2.IMREAD_GRAYSCALE)
+        if symbols.shape != image.shape:
+            raise ValueError("Symbol-only raster must share the complete page viewport")
         lines = ground_truth(root / name, image.shape[1], image.shape[0])
         provenance.append(
             {
                 "sample": name,
                 "raster_sha256": hashlib.sha256(raw).hexdigest(),
+                "symbol_raster_sha256": hashlib.sha256(symbol_raw).hexdigest(),
                 "w2_input_sha256": hashlib.sha256(
                     (root / name / "input.musicxml").read_bytes()
                 ).hexdigest(),
@@ -128,6 +140,7 @@ def run(root: Path, rasters: Path, output: Path) -> dict:
             truth = [
                 np.stack(moved.polylines[k : k + 5]) for k in range(0, len(moved.polylines), 5)
             ]
+            symbol_page, _, _ = apply(symbols, labels, np.random.default_rng(0), trace)
             then = time.perf_counter()
             detection = detect_staves(page, cfg)
             detect_ms = (time.perf_counter() - then) * 1000
@@ -161,6 +174,40 @@ def run(root: Path, rasters: Path, output: Path) -> dict:
                 then = time.perf_counter()
                 strip, mesh = extract_strip(page, staff, config=cfg)
                 strip_ms = (time.perf_counter() - then) * 1000
+                times = [strip_ms]
+                for _ in range(4):
+                    then = time.perf_counter()
+                    repeated, repeated_mesh = extract_strip(page, staff, config=cfg)
+                    times.append((time.perf_counter() - then) * 1000)
+                    if repeated.tobytes() != strip.tobytes() or repeated_mesh != mesh:
+                        raise ValueError("Repeated strip extraction changed bytes or mesh")
+                symbol_strip, _ = extract_strip(
+                    symbol_page,
+                    staff,
+                    config=dataclasses.replace(cfg, enabled=cfg.enabled - {"GEO-REMOVE"}),
+                )
+                # The paired SVG removes all staves. Only this GT staff belongs in
+                # the residue denominator; adjacent-staff ink can enter strip margins.
+                u_grid = np.arange(strip.shape[1], dtype=float)
+                x_grid = strip_to_processed(
+                    np.column_stack((u_grid, np.zeros_like(u_grid))), mesh, 16, 6
+                )[:, 0]
+                top_gt = np.interp(x_grid, gt[0, :, 0], gt[0, :, 1]) - space / 2
+                bottom_gt = np.interp(x_grid, gt[-1, :, 0], gt[-1, :, 1]) + space / 2
+                top_v = processed_to_strip(np.column_stack((x_grid, top_gt)), mesh, 16, 6)[:, 1]
+                bottom_v = processed_to_strip(np.column_stack((x_grid, bottom_gt)), mesh, 16, 6)[
+                    :, 1
+                ]
+                v_grid = np.arange(strip.shape[0])[:, None]
+                target_mask = (
+                    (v_grid >= top_v)
+                    & (v_grid <= bottom_v)
+                    & (x_grid >= gt[0, 0, 0])
+                    & (x_grid <= gt[0, -1, 0])
+                )
+                quality = removal_quality(
+                    strip[:, :, 0], strip[:, :, 1], symbol_strip[:, :, 0], target_mask
+                )
                 top_errors = [
                     float(
                         (
@@ -196,6 +243,8 @@ def run(root: Path, rasters: Path, output: Path) -> dict:
                         "interline_relative_error": abs(vector["interline_relative"]),
                         "dewarp_rms_spaces": float(np.sqrt(np.mean(residual**2))),
                         "strip_ms": strip_ms,
+                        "strip_ms_repeated": times,
+                        **quality,
                     }
                 )
                 if i == 0:
@@ -247,6 +296,12 @@ def run(root: Path, rasters: Path, output: Path) -> dict:
                 "strip_ms_p95": float(np.percentile([r["strip_ms"] for r in rows], 95))
                 if rows
                 else None,
+                "strip_repeated_ms_p95": float(
+                    np.percentile([t for r in rows for t in r["strip_ms_repeated"]], 95)
+                )
+                if rows
+                else None,
+                "removal": aggregate_removal(rows),
                 "dewarp_rms_spaces_p95": float(
                     np.percentile([r["dewarp_rms_spaces"] for r in rows], 95)
                 )
@@ -276,6 +331,14 @@ def run(root: Path, rasters: Path, output: Path) -> dict:
         "config_sha256": hashlib.sha256(
             Path("configs/geometry/constants.yaml").read_bytes()
         ).hexdigest(),
+        "removal_definition": (
+            "Grayscale ink mass, unit [0,255]. Staff mass=max(symbols-original,0) "
+            "inside independent GT top/bottom +/-0.5 space and horizontal endpoints; "
+            "residue=min(max(symbols-removed,0),staff_mass). "
+            "Symbol mass=255-symbols; damage=min(max(removed-symbols,0),symbol_mass). "
+            "Ratios pool all matched strips; unmatched staves remain recall failures. "
+            "This W5 diagnostic is not a W4 G2 metric or independent-symbol classifier."
+        ),
     }
     (output / "metrics.json").write_text(json.dumps(result, indent=2) + "\n")
     jitter = {
@@ -293,6 +356,46 @@ def run(root: Path, rasters: Path, output: Path) -> dict:
     }
     (output / "jitter.yaml").write_text(json.dumps(jitter, indent=2) + "\n")
     return result
+
+
+def removal_quality(
+    original: np.ndarray,
+    removed: np.ndarray,
+    symbols: np.ndarray,
+    target_mask: np.ndarray | None = None,
+) -> dict:
+    """Measure ink residue/damage against a separately rendered symbol-only image."""
+    if original.shape != removed.shape or original.shape != symbols.shape:
+        raise ValueError("Removal oracles must use the identical mesh")
+    original, removed, symbols = [a.astype(np.float64) for a in (original, removed, symbols)]
+    staff = np.maximum(symbols - original, 0)
+    if target_mask is not None:
+        if target_mask.shape != staff.shape:
+            raise ValueError("Target-staff mask must share the strip mesh")
+        staff *= target_mask
+    symbol = 255 - symbols
+    return {
+        "staff_ink": float(staff.sum()),
+        "staff_residue": float(np.minimum(np.maximum(symbols - removed, 0), staff).sum()),
+        "symbol_ink": float(symbol.sum()),
+        "symbol_damage": float(np.minimum(np.maximum(removed - symbols, 0), symbol).sum()),
+    }
+
+
+def aggregate_removal(rows: list[dict]) -> dict:
+    totals = {
+        key: sum(row[key] for row in rows)
+        for key in ("staff_ink", "staff_residue", "symbol_ink", "symbol_damage")
+    }
+    return {
+        **totals,
+        "staff_residue_ratio": totals["staff_residue"] / totals["staff_ink"]
+        if totals["staff_ink"]
+        else None,
+        "symbol_damage_ratio": totals["symbol_damage"] / totals["symbol_ink"]
+        if totals["symbol_ink"]
+        else None,
+    }
 
 
 if __name__ == "__main__":

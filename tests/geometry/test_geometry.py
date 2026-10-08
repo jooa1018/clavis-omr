@@ -147,6 +147,9 @@ def test_mapping_outside():
             fn(np.array([[-1.0, 0.0]]), mesh, 16, 6)
         with pytest.raises(ValueError):
             fn(np.array([[float("nan"), 0.0]]), mesh, 16, 6)
+        for s_star, margin in ((float("nan"), 6), (16, float("inf")), (16, -1)):
+            with pytest.raises(ValueError):
+                fn(np.array([[0.0, 0.0]]), mesh, s_star, margin)
     with pytest.raises(ValueError):
         remove_staff_lines(image, 0, 6, 0.1)
 

@@ -1,0 +1,66 @@
+{
+  "scope": "W5 component validation, Windows, RAM upgraded; not complete repository validation",
+  "base_main": "a62d6f9",
+  "component_tests": {
+    "command": ".venv/Scripts/pytest.exe tests/geometry -q --cov=clavis.geometry --cov-report=json:work/geometry-coverage-resume.json --junitxml=work/geometry-tests-resume.xml",
+    "passed": 34,
+    "wall_seconds": 4.58,
+    "coverage": {
+      "covered_lines": 256,
+      "num_statements": 259,
+      "percent_covered": 98.84169884169884,
+      "percent_covered_display": "99",
+      "missing_lines": 3,
+      "excluded_lines": 0,
+      "percent_statements_covered": 98.84169884169884,
+      "percent_statements_covered_display": "99"
+    }
+  },
+  "ruff_check": "PASS",
+  "ruff_format_check": "PASS",
+  "mypy": {
+    "status": "PASS",
+    "source_files": 67
+  },
+  "import_linter": {
+    "kept": 2,
+    "broken": 0
+  },
+  "hardcode_scan": {
+    "schema": "clavis-hardcode-scan-1",
+    "status": "PASS",
+    "pythonFiles": 118,
+    "manifestIdentifiers": 0,
+    "findings": [],
+    "suppressed": [
+      {
+        "file": "training/jobs/runner.py",
+        "line": 161,
+        "rule": "H9",
+        "owner": "W1",
+        "evidence_digest": "f55bb63062ca7fa6483196ef2dc20d9cad1d0ef028c76a8a6030e30a59111f85"
+      },
+      {
+        "file": "training/jobs/runner.py",
+        "line": 223,
+        "rule": "H9",
+        "owner": "W1",
+        "evidence_digest": "62cb15b5b7c52f6c1e2f78736d6d34381fd3e3274c27556e936ec20069317c08"
+      }
+    ],
+    "byOwner": {}
+  },
+  "windows_full_tests": {
+    "status": "NOT_RUN",
+    "reason": "Await W1 short-slot wrapper per Orchestrator"
+  },
+  "final_runtime_licenses": {
+    "status": "NOT_RUN",
+    "reason": "Await W1 PR29 runtime dependency merge"
+  },
+  "linux_ci": "NOT_RUN (draft)",
+  "determinism": "PASS: 1/4 OpenCV threads x3, and actual smoke strips x5",
+  "sealed": "NOT_ACCESSED",
+  "synthetic": "smoke, NOT SYN-Val",
+  "removal_metrics": "synthetic-v0.json"
+}

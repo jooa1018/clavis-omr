@@ -15,7 +15,16 @@
       "precision": 1.0,
       "interline_relative_error_median": 0.0,
       "interline_relative_error_p95": 0.0,
-      "strip_ms_p95": 392.78455001476686,
+      "strip_ms_p95": 16.576525000118636,
+      "strip_repeated_ms_p95": 16.627399999890706,
+      "removal": {
+        "staff_ink": 60335693.0,
+        "staff_residue": 13170428.0,
+        "symbol_ink": 55839684.0,
+        "symbol_damage": 64895.0,
+        "staff_residue_ratio": 0.2182858494722187,
+        "symbol_damage_ratio": 0.0011621663188495122
+      },
       "dewarp_rms_spaces_p95": 0.010416666666666633
     },
     {
@@ -28,7 +37,16 @@
       "precision": 1.0,
       "interline_relative_error_median": 0.0,
       "interline_relative_error_p95": 0.0,
-      "strip_ms_p95": 300.3189750161255,
+      "strip_ms_p95": 18.376450000005207,
+      "strip_repeated_ms_p95": 18.05756999992809,
+      "removal": {
+        "staff_ink": 64208680.0,
+        "staff_residue": 30216444.0,
+        "symbol_ink": 54792057.0,
+        "symbol_damage": 90233.0,
+        "staff_residue_ratio": 0.4705974955411013,
+        "symbol_damage_ratio": 0.0016468262908983322
+      },
       "dewarp_rms_spaces_p95": 0.04166666666666856
     },
     {
@@ -41,7 +59,16 @@
       "precision": 1.0,
       "interline_relative_error_median": 0.0,
       "interline_relative_error_p95": 0.0,
-      "strip_ms_p95": 184.06888000317846,
+      "strip_ms_p95": 16.1912500000426,
+      "strip_repeated_ms_p95": 16.340930000046683,
+      "removal": {
+        "staff_ink": 58720233.0,
+        "staff_residue": 53018868.0,
+        "symbol_ink": 50411712.0,
+        "symbol_damage": 35621.0,
+        "staff_residue_ratio": 0.9029062946667804,
+        "symbol_damage_ratio": 0.0007066016722463225
+      },
       "dewarp_rms_spaces_p95": 0.0208333333333357
     }
   ],
