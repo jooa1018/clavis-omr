@@ -1,0 +1,14 @@
+- id: PLATFORM-PRIVACY-001
+  owner: W1
+  statement: Reject user profile absolute paths and host identity fields in tracked files; permit explicit documentation placeholders. Emit locations, never matched values. Unreadable files fail closed.
+  units: repository_text
+  params: []
+  source: convention
+  evidence: docs/tasks/00_COMMON.md#11-보안과-개인정보
+  flag: CI required check (no bypass)
+  ablation:
+    status: NOT_RUN
+    reason: Repository privacy policy, no recognition behavior or metric.
+    report: docs/reports/W1/PRIVACY-GUARD-2026-10-09.md
+  introduced_by: w1/privacy-guard
+  motivated_by_failure: true
