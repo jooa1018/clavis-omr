@@ -12,3 +12,17 @@
     report: docs/reports/W1/PRIVACY-GUARD-2026-10-09.md
   introduced_by: w1/privacy-guard
   motivated_by_failure: true
+- id: PLATFORM-CI-001
+  owner: W1
+  statement: Public repository non-draft code PRs run Linux and Windows; docs-only PRs use lightweight checks. Main pushes run Linux; changed-main schedules and manual dispatch run Windows.
+  units: workflow_event
+  params: []
+  source: convention
+  evidence: docs/tasks/00_COMMON.md#10-자원-사용-규칙
+  flag: scripts/ci_plan.py
+  ablation:
+    status: NOT_RUN
+    reason: Approved CI operating policy, no recognition behavior.
+    report: docs/reports/W1/PUBLIC-PR-CI-2026-10-09.md
+  introduced_by: w1/public-pr-ci
+  motivated_by_failure: false

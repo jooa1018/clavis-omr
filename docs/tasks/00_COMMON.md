@@ -126,6 +126,7 @@
 - OR-002(스캐너 이전 병합): W4 무결성 도구가 main에 들어오기 전에도 B등급 PR은 병합할 수 있다. 보고서에 NOT_RUN으로 기록하고, 도구가 들어오면 W1이 main 전체에 소급 실행하며 위반은 해당 소유자가 고친다.
 
 - draft PR에서는 CI가 돌지 않는다. 준비 완료로 바꾸기 전에 로컬 Windows 전체 시험을 돌려 명령과 통과 수를 보고서에 남긴다. push는 작업 단위로 묶는다. main의 Windows 예약 실행이 실패하면 원인 PR 소유자가 바로 고친다.
+- 공개 저장소 CI(Orchestrator 승인 및 사용자 공개 전환 완료, 2026-10-09): draft가 아닌 PR은 변경 모듈에 관계없이 Linux·Windows 두 OS에서 검사한다. docs/**와 *.md만 변경한 PR은 무거운 작업을 건너뛰고 경량 문서·개인정보 검사만 한다. main push는 Linux, main 변경이 있는 날의 일일 예약과 workflow_dispatch는 Windows로 유지한다. 워크플로 권한은 contents: read 및 필요한 API의 읽기 권한만 사용하며 pull_request_target은 쓰지 않는다.
 - OR-003: 학습 편입의 보호 집합과 sealed 역방향 선별. 상세는 헌장 6·7절과 EVALUATION 8·10절(W4 반영).
 - T1.9 스레드 상한 해석(Orchestrator 승인, 2026-09-29): 상한은 동시에 쓰는 연산 자원 ≤ 논리 CPU 8개다. 큐가 OMP/MKL/OPENBLAS/NUMEXPR 환경 변수와 torch intra/inter op, LightGBM num_threads, onnxruntime intra/inter op, cv2 스레드 설정을 주입하고 CPU affinity를 자식·손자까지 상속한다. Windows Job Object로 묶어 상속·일괄 종료를 보장한다. 논리 CPU가 8개 이하이면 전체 − 1개를 사용하며 Below Normal 우선순위로 실행한다. 전체 OS 스레드 수는 진단값으로만 기록한다. 실제 CPU 사용률 평균·최대를 논리 CPU 환산으로 기록하며 평균이 8 CPU를 넘으면 경고한다.
 

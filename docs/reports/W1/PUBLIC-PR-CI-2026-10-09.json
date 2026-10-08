@@ -1,0 +1,25 @@
+{
+  "status": "PARTIAL",
+  "repositoryVisibility": "PUBLIC",
+  "windowsTests": {
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "621",
+    "time": "62.364"
+  },
+  "resources": {
+    "status": "succeeded",
+    "wallSeconds": 64.79700000000048,
+    "cpuSecondsSampled": 54.75,
+    "peakRssBytesSampled": 226537472,
+    "cpuLimit": 2
+  },
+  "memoryConfiguration": "24 GB (16+8), DDR4-3200 dual channel",
+  "lint": "PASS",
+  "mypy": "PASS",
+  "hardcodeScan": "PASS",
+  "remoteCi": "NOT_RUN",
+  "recognitionEvaluation": "NOT_RUN",
+  "approval": "Orchestrator 2026-10-09; user public-conversion completion"
+}
