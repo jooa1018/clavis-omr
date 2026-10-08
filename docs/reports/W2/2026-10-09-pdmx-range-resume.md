@@ -19,7 +19,7 @@ pdmx_stream.py: 검증된 로컬 파일을 스트리밍으로 집계하고 성�
 W1 CI 재가동과 로컬 전체 시험 슬롯을 확인하기 전 PR을 병합하지 않는다.
 
 ## 4. 검증 (테스트 수, CI 결과, 결정성, 스캐너, 라이선스 스캔)
-합성 로컬 Windows CPU: 18 passed, 1.90초. 관련 4개 모듈 라인 커버리지 92.22%.
+합성 로컬 Windows CPU: 18 passed, JUnit 1.172초. 관련 4개 모듈 라인 커버리지 92.22%.
 명령: `.venv\Scripts\python.exe -m pytest tests/data/test_pdmx_download.py tests/data/test_pdmx_aggregate.py -q --cov=training.data.pdmx_download --cov=training.data.pdmx_stream --cov=training.data.pdmx_aggregate --cov=training.data.pdmx_windows --cov-report=json:work/pdmx-range-coverage.json --junitxml=work/pdmx-range-tests.xml`.
 중단/연속 집계 바이트 동일, 완료 구간 무재요청, 손상 구간 재요청, 잘못된 HTTP 응답·해시 차단,
 성공 시에만 지정 원본 삭제 및 무관 파일 보존 시험. ruff/strict mypy PASS. 새 의존성 없음.
@@ -50,6 +50,8 @@ no_license_conflict + PDM/CC0 필터 유지. 산출물은 집계 표와 manifest
 2026-09-29 이전 스트림의 미완결 계측은 별도 보존하며 이번 실행 계측에 섞지 않는다.
 실제 전체 집계는 아직 미완료. 구간 재개는 합성으로 검증했고 실제 중단 시험을 위해 실행을 죽이지 않았다.
 스캐너 문맥 판정과 W1 슬롯·CI가 병합 의존성이다. 예외를 자체 승인하지 않는다.
+W1 배치 큐 PR #27은 2026-10-09 01:00 KST 병합 확인(a62d6f9). 짧은 슬롯은 아직 대기다.
+COMMON의 H9 사전 승인은 training/jobs에 한정되므로 W2 다운로드에 확대 적용하지 않는다.
 W7이 요청한 PP-OCR/한·영 폰트 등록 검토는 접수만 기록: detector ONNX 후보와
 Latin/Korean 원본 revision을 전달받았으며 독립 라이선스·artifact 해시 확인은 아직 하지 않았다.
 
