@@ -8,10 +8,10 @@ version = "0.0.1"
 description = "Independent offline CPU optical music recognition engine"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
-dependencies = ["pydantic>=2.11,<3", "numpy==2.2.6", "opencv-python-headless==4.11.0.86", "pillow==11.2.1"]
+dependencies = ["pydantic>=2.11,<3", "numpy==2.2.6", "opencv-python-headless==4.11.0.86", "pillow==11.2.1", "lxml==6.1.3", "onnxruntime==1.30.0"]
 
 [dependency-groups]
-runtime = ["pydantic>=2.11,<3", "numpy==2.2.6", "opencv-python-headless==4.11.0.86", "pillow==11.2.1"]
+runtime = ["pydantic>=2.11,<3", "numpy==2.2.6", "opencv-python-headless==4.11.0.86", "pillow==11.2.1", "lxml==6.1.3", "onnxruntime==1.30.0"]
 # Reserved for the responsible worker; no unused heavy dependencies installed.
 service = []
 training = [
@@ -39,6 +39,9 @@ default-groups = ["runtime", "dev"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/clavis"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"THIRD_PARTY_NOTICES.md" = "clavis/THIRD_PARTY_NOTICES.md"
 
 [tool.ruff]
 target-version = "py312"

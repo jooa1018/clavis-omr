@@ -43,12 +43,6 @@ def test_audit_exit_status(license_name: str, code: int) -> None:
         assert main() == code
 
 
-@pytest.mark.parametrize(
-    "name,version,failed",
-    [("pillow", "11.2.1", False), ("pillow", "11.2.2", True), ("unrelated", "11.2.1", True)],
-)
-def test_pillow_metadata_review_is_package_and_version_scoped(
-    name: str, version: str, failed: bool
-) -> None:
-    result = violations([{"Name": name, "Version": version, "License": "MIT-CMU"}], [name])
-    assert bool(result) == failed
+@pytest.mark.parametrize("name", ["pillow", "other-package"])
+def test_mit_cmu_is_generally_allowed(name: str) -> None:
+    assert violations([{"Name": name, "License": "MIT-CMU"}], [name]) == []

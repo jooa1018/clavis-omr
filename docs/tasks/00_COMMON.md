@@ -141,7 +141,8 @@
 
 | 용도 | 허용 | 조건부 | 금지 |
 |---|---|---|---|
-| 엔진 런타임 코드·의존성 | MIT, BSD, Apache-2.0, ISC, PSF, Zlib, HPND, MPL-2.0(수정 없이 사용) | — | GPL, LGPL(정적 포함), AGPL, 상업 전용 |
+| 엔진 런타임 코드·의존성 | MIT, MIT-CMU, BSD, Apache-2.0, ISC, PSF, Zlib, HPND, MPL-2.0(수정 없이 사용) | — | GPL, LGPL(정적 포함), AGPL, 상업 전용 |
+| 엔진에 동봉하는 명세 스키마 | W3C Community Final Specification Agreement, W3C Software and Document License | 원본 그대로 동봉, 원본 고지·출처·SHA-256 기록, 명세 이름·버전 표기(FSA 2.2). 항목별 Orchestrator 승인. 현재 승인: MusicXML 4.0 XSD 3종 | 다른 명세·라이브러리로 확대 해석 |
 | 배포 가중치 | 자체 학습(허용 데이터로), Apache/MIT/BSD 공개 가중치(예: PP-OCRv5) | CC-BY 계열 가중치(표기) | NC, ND, AGPL·GPL 코드와 결합된 가중치 |
 | 학습 데이터 | PD, CC0, 자체 생성, CC-BY(표기) | CC-BY-SA(Orchestrator 승인) | NC, ND, 출처 불명, 권리 미확인 |
 | 학습·평가 도구(비배포, 외부 프로세스) | 위 전부 + LGPL(Verovio), GPL(MuseScore, LilyPond) | AGPL(Audiveris, homr — `eval/baselines`에서 격리 실행만) | 엔진 코드로의 import나 코드 복사 |

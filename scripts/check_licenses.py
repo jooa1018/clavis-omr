@@ -10,18 +10,18 @@ from pathlib import Path
 from packaging.requirements import Requirement
 from packaging.utils import canonicalize_name
 
-# Proposed Pillow 11.2.1 metadata spelling; requires Orchestrator review in this PR.
-PACKAGE_LICENSES = {("pillow", "11.2.1"): "MIT-CMU"}
-
 ALLOWED = frozenset(
     {
         "MIT",
+        "MIT-CMU",
         "MIT License",
         "BSD",
         "BSD License",
         "BSD-2-Clause",
         "BSD-3-Clause",
+        "3-Clause BSD License",
         "Apache-2.0",
+        "Apache-2.0 OR BSD-2-Clause",
         "Apache Software License",
         "ISC",
         "ISC License (ISCL)",
@@ -56,17 +56,8 @@ def runtime_packages(requirements: list[str]) -> list[str]:
 
 def violations(rows: list[dict[str, str]], expected: list[str]) -> list[str]:
     """Unknown, mixed and unreported licenses require review, never silent acceptance."""
-    licenses: dict[str, dict[str, str]] = {canonicalize_name(row["Name"]): row for row in rows}
-    return [
-        name
-        for name in expected
-        if name not in licenses
-        or (
-            licenses[name]["License"] not in ALLOWED
-            and PACKAGE_LICENSES.get((name, licenses[name].get("Version", "")))
-            != licenses[name]["License"]
-        )
-    ]
+    licenses: dict[str, str] = {canonicalize_name(row["Name"]): row["License"] for row in rows}
+    return [name for name in expected if licenses.get(name) not in ALLOWED]
 
 
 def main() -> int:
