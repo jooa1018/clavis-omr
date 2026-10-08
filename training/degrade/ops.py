@@ -193,10 +193,23 @@ def apply(
     elif name == "resize":
         target = float(params["target_interline"])
         source = float(np.median(labels.interlines))
-        if not np.isfinite(target) or not 0 < target <= source:
+        if (
+            not np.isfinite(target)
+            or target <= 0
+            or ("output_size" not in params and target > source)
+        ):
             raise ValueError("Target interline must be finite, positive and no larger than source")
         scale = target / source
         size = (max(1, round(w * scale)), max(1, round(h * scale)))
+        if "output_size" in params:
+            width, height = params["output_size"]
+            if not (
+                width == int(width) and height == int(height) and 0 < width <= w and 0 < height <= h
+            ):
+                raise ValueError(
+                    "Output size must be positive integer dimensions without enlargement"
+                )
+            size = (int(width), int(height))
         sx, sy = size[0] / w, size[1] / h
         # OpenCV resize maps pixel centers by (x + 0.5) * scale - 0.5.
         matrix = np.array([[sx, 0, (sx - 1) / 2], [0, sy, (sy - 1) / 2], [0, 0, 1]])
@@ -257,6 +270,7 @@ def run(
     render_interline = float(np.median(labels.interlines))
     records = []
     total: Array | None = np.eye(3)
+    final_resize: Params | None = None
     for spec in config["operations"]:
         params = {**config.get("limits", {}), "max_pixels": config["max_pixels"]}
         for key, value in spec.items():
@@ -278,6 +292,32 @@ def run(
                 else:
                     raise ValueError("Unknown parameter distribution")
             params[key] = value
+        if params.get("finish_capture"):
+            if final_resize is None:
+                raise ValueError("Capture final resize has no planned target")
+            params = final_resize
+            final_resize = None
+        if "capture_factor" in params:
+            factor = float(params.pop("capture_factor"))
+            if not np.isfinite(factor) or factor < 1:
+                raise ValueError("Capture intermediate factor must be finite and at least one")
+            h, w = image.shape[:2]
+            scale = float(params["target_interline"]) / float(np.median(labels.interlines))
+            final_size = [max(1, round(w * scale)), max(1, round(h * scale))]
+            intermediate = [
+                min(w, round(factor * final_size[0])),
+                min(h, round(factor * final_size[1])),
+            ]
+            final_resize = {
+                **params,
+                "output_size": final_size,
+                "capture_final": True,
+                "capture_intermediate_size": intermediate,
+            }
+            params = {**params, "output_size": intermediate, "capture_intermediate": True}
+            params.pop("sampling", None)
+            if intermediate == [w, h]:
+                continue
         image, labels, record = apply(image, labels, rng, params)
         total = (
             np.asarray(record["matrix"]) @ total
