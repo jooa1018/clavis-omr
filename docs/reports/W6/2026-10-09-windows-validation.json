@@ -170,7 +170,14 @@
     },
     "status": "PARTIAL"
   },
-  "ci_linux": "PENDING",
+  "ci_linux": {
+    "status": "PASS",
+    "head_sha": "b9a5a8c12159774791de8395658b41f195b708cf",
+    "run_url": "https://github.com/jooa1018/clavis-omr/actions/runs/37804055935",
+    "tests_passed": 561,
+    "warnings": 4,
+    "pytest_seconds": 26.99
+  },
   "cross_os_byte_comparison": "NOT_RUN",
   "execution_slot": "NOT_AVAILABLE: absent from origin/main and published W1 branch; existing 2-thread short validation used"
 }
