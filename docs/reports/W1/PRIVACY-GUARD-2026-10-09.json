@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "windowsTests": {
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "618",
+    "time": "93.897"
+  },
+  "coverageGates": {
+    "overall": true,
+    "platform": true,
+    "eval": true,
+    "jobs": true
+  },
+  "privacyCoverage": {
+    "covered_lines": 49,
+    "num_statements": 50,
+    "percent_covered": 98.0,
+    "percent_covered_display": "98",
+    "missing_lines": 1,
+    "excluded_lines": 0,
+    "percent_statements_covered": 98.0,
+    "percent_statements_covered_display": "98"
+  },
+  "resources": {
+    "status": "succeeded",
+    "wallSeconds": 97.26600000000008,
+    "cpuSecondsSampled": 83.109375,
+    "peakRssBytesSampled": 236027904,
+    "cpuLimit": 2
+  },
+  "memoryConfiguration": "24 GB (16+8), DDR4-3200 dual channel",
+  "remoteCi": {
+    "run": "https://github.com/jooa1018/clavis-omr/actions/runs/37811209736",
+    "head": "79e712c82e929715b90e4397b969139ced483219",
+    "linux": {
+      "status": "PASS",
+      "tests": 618,
+      "seconds": 26.45
+    },
+    "windows": {
+      "status": "PASS",
+      "tests": 618,
+      "seconds": 40.11
+    },
+    "route": "PASS"
+  },
+  "privateData": "NOT_RUN",
+  "historyRewritten": false,
+  "approval": "Orchestrator 2026-10-09",
+  "privacyScan": {
+    "status": "PASS",
+    "trackedFiles": 456,
+    "findings": []
+  }
+}
