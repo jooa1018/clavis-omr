@@ -1,0 +1,183 @@
+{
+  "status": "PASS",
+  "date": "2026-10-09",
+  "platform": "Windows / Python 3.12.14",
+  "git_sha": "712e88b0d2648fa9b36d783e8870672e8ace492d",
+  "commands": [
+    {
+      "command": "uv sync --locked --all-groups",
+      "exit_code": 0,
+      "wall_seconds": 1.2337486
+    },
+    {
+      "command": "uv run --locked --all-groups ruff check .",
+      "exit_code": 0,
+      "wall_seconds": 0.4474862
+    },
+    {
+      "command": "uv run --locked --all-groups ruff format --check .",
+      "exit_code": 0,
+      "wall_seconds": 0.1236448
+    },
+    {
+      "command": "uv run --locked --all-groups mypy",
+      "exit_code": 0,
+      "wall_seconds": 1.4816193
+    },
+    {
+      "command": "uv run --locked --all-groups pytest tests/ --cov=clavis --cov=scripts --cov=eval --cov-report=term-missing --cov-report=xml --cov-report=json:work/coverage.json --junitxml=work/tests.xml",
+      "exit_code": 0,
+      "wall_seconds": 44.9770035
+    },
+    {
+      "command": "uv run --locked --all-groups python scripts/ci_results.py coverage work/coverage.json",
+      "exit_code": 0,
+      "wall_seconds": 0.2452842
+    },
+    {
+      "command": "uv run --locked --all-groups python scripts/ci_results.py required work/tests.xml",
+      "exit_code": 0,
+      "wall_seconds": 0.2447043
+    },
+    {
+      "command": "uv run --locked --all-groups lint-imports",
+      "exit_code": 0,
+      "wall_seconds": 0.9343204
+    },
+    {
+      "command": "uv run --locked --all-groups python scripts/check_licenses.py",
+      "exit_code": 0,
+      "wall_seconds": 1.0269604
+    },
+    {
+      "command": "uv run --locked --all-groups python -m eval.integrity.hardcode_scan --root . --out work/hardcode.json",
+      "exit_code": 0,
+      "wall_seconds": 2.0574486
+    },
+    {
+      "command": "uv run --locked --all-groups python scripts/integrity_status.py --ast-report work/hardcode.json --out work/integrity-status.json",
+      "exit_code": 0,
+      "wall_seconds": 0.1901381
+    }
+  ],
+  "tests": {
+    "tests": "561",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "43.699"
+  },
+  "symbols_files": [
+    {
+      "path": "src\\clavis\\contracts\\symbols.py",
+      "summary": {
+        "covered_lines": 103,
+        "num_statements": 104,
+        "percent_covered": 99.03846153846153,
+        "percent_covered_display": "99",
+        "missing_lines": 1,
+        "excluded_lines": 0,
+        "percent_statements_covered": 99.03846153846153,
+        "percent_statements_covered_display": "99"
+      }
+    },
+    {
+      "path": "src\\clavis\\symbols\\__init__.py",
+      "summary": {
+        "covered_lines": 0,
+        "num_statements": 0,
+        "percent_covered": 100.0,
+        "percent_covered_display": "100",
+        "missing_lines": 0,
+        "excluded_lines": 0,
+        "percent_statements_covered": 100.0,
+        "percent_statements_covered_display": "100"
+      }
+    },
+    {
+      "path": "src\\clavis\\symbols\\detection.py",
+      "summary": {
+        "covered_lines": 118,
+        "num_statements": 120,
+        "percent_covered": 98.33333333333333,
+        "percent_covered_display": "98",
+        "missing_lines": 2,
+        "excluded_lines": 0,
+        "percent_statements_covered": 98.33333333333333,
+        "percent_statements_covered_display": "98"
+      }
+    },
+    {
+      "path": "src\\clavis\\symbols\\reading.py",
+      "summary": {
+        "covered_lines": 88,
+        "num_statements": 92,
+        "percent_covered": 95.65217391304348,
+        "percent_covered_display": "96",
+        "missing_lines": 4,
+        "excluded_lines": 0,
+        "percent_statements_covered": 95.65217391304348,
+        "percent_statements_covered_display": "96"
+      }
+    },
+    {
+      "path": "src\\clavis\\symbols\\templates.py",
+      "summary": {
+        "covered_lines": 26,
+        "num_statements": 26,
+        "percent_covered": 100.0,
+        "percent_covered_display": "100",
+        "missing_lines": 0,
+        "excluded_lines": 0,
+        "percent_statements_covered": 100.0,
+        "percent_statements_covered_display": "100"
+      }
+    }
+  ],
+  "overall_coverage": {
+    "covered_lines": 3035,
+    "num_statements": 3233,
+    "percent_covered": 93.8756572842561,
+    "percent_covered_display": "94",
+    "missing_lines": 198,
+    "excluded_lines": 4,
+    "percent_statements_covered": 93.8756572842561,
+    "percent_statements_covered_display": "94"
+  },
+  "hardcoding": {
+    "schema": "clavis-hardcode-scan-1",
+    "status": "PASS",
+    "pythonFiles": 99,
+    "manifestIdentifiers": 0,
+    "findings": [],
+    "suppressed": [],
+    "byOwner": {}
+  },
+  "integrity": {
+    "dataLeakage": {
+      "reason": "No real train/reserved inventories are supplied to CI; unit fixtures are separate.",
+      "status": "NOT_RUN",
+      "trainingAdmissionAllowed": false
+    },
+    "hardcoding": {
+      "byOwner": {},
+      "findings": [],
+      "manifestIdentifiers": 0,
+      "pythonFiles": 99,
+      "schema": "clavis-hardcode-scan-1",
+      "status": "PASS",
+      "suppressed": []
+    },
+    "status": "PARTIAL"
+  },
+  "ci_linux": {
+    "status": "PASS",
+    "head_sha": "b9a5a8c12159774791de8395658b41f195b708cf",
+    "run_url": "https://github.com/jooa1018/clavis-omr/actions/runs/37804055935",
+    "tests_passed": 561,
+    "warnings": 4,
+    "pytest_seconds": 26.99
+  },
+  "cross_os_byte_comparison": "NOT_RUN",
+  "execution_slot": "NOT_AVAILABLE: absent from origin/main and published W1 branch; existing 2-thread short validation used"
+}

@@ -1,0 +1,19 @@
+{
+  "status": "PARTIAL",
+  "scope": "W2 synthetic development render; NOT SYN-Val",
+  "source_report_sha256": "41580d17408b17de26056c370ca1b7f421a0ca02ef1712daf48e56dcc1517638",
+  "jobs": 30,
+  "pages": 30,
+  "font_jobs": {
+    "Leipzig": 10,
+    "Bravura": 10,
+    "Leland": 10
+  },
+  "statuses": {
+    "RENDERED_PENDING_VISUAL_AUDIT": 30
+  },
+  "wall_seconds": 21.78200000000652,
+  "max_renderer_peak_rss_bytes": 27250688,
+  "visual_audit": "NOT_RUN by W6",
+  "training_admission": "BLOCKED_PENDING_W4_FINGERPRINT_FILTER"
+}
