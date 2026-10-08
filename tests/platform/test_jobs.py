@@ -25,6 +25,15 @@ ROOT = Path(__file__).resolve().parents[2]
 @pytest.fixture(autouse=True)
 def isolated_machine_lock(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr("training.jobs.store.home", lambda: tmp_path / "default-queue")
+    monkeypatch.setattr(
+        "training.jobs.runner.snapshot",
+        lambda: {
+            "physicalTotalBytes": 24_000_000_000,
+            "physicalAvailableBytes": 8_000_000_000,
+            "commitAvailableBytes": 8_000_000_000,
+            "pagefileTotalBytes": 4_000_000_000,
+        },
+    )
 
 
 def spec(**values: object) -> JobSpec:
@@ -214,6 +223,8 @@ def test_affinity_and_environment_inherit_to_child(tmp_path: Path) -> None:
     assert probe["cpus"] == probe["child"]["cpus"] == report["cpuAffinity"]
     assert int(probe["omp"]) == int(probe["child"]["omp"]) == report["cpuLimit"]
     assert probe["priority"] == probe["child"]["priority"]
+    assert len(report["hostMemorySamples"]) > 1
+    assert report["hostMemorySamples"][-1]["pagefileTotalBytes"] == 4_000_000_000
     assert report["meanLogicalCpusSampled"] >= 0
     assert report["peakLogicalCpusSampled"] >= 0
 
@@ -285,3 +296,24 @@ def test_library_injection(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("CLAVIS_CPU_LIMIT", "9")
     with pytest.raises(ValueError):
         configure()
+
+
+def test_memory_admission_and_telemetry(tmp_path: Path) -> None:
+    from training.jobs.memory import can_start, snapshot
+
+    actual = snapshot()
+    assert actual["physicalTotalBytes"] > 0
+    assert all(value >= 0 for value in actual.values())
+    assert can_start({"commitAvailableBytes": 4_000_000_000}, 3_000_000_000)
+    assert not can_start({"commitAvailableBytes": 3_999_999_999}, 3_000_000_000)
+    queue = Queue(tmp_path)
+    queue.submit(spec())
+    with (
+        patch("training.jobs.runner.snapshot", return_value={"commitAvailableBytes": 0}),
+        patch("training.jobs.runner.subprocess.Popen") as spawn,
+    ):
+        result = execute(queue, queue.claim(), manual=True)
+    spawn.assert_not_called()
+    assert result["reason"] == "memory-low"
+    assert result["status"] == "paused"
+    assert result["hostMemorySamples"][0]["commitAvailableBytes"] == 0

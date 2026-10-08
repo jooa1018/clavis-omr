@@ -1,5 +1,5 @@
 # ADR-002 — 노트북 로컬 실험 레지스트리
-상태: 초안 — T1.9 구현 검토와 함께 Orchestrator 채택 확인 필요
+상태: 채택 — Orchestrator 승인 2026-10-06 (W1 수신 2026-10-09)
 날짜: 2026-09-29
 작성: W1
 
@@ -7,7 +7,7 @@
 RAM 8 GB 노트북의 단일 큐에서 실행 설정·시드·데이터 digest·git SHA·CPU 사용을 남겨야 한다.
 MLflow 로컬 파일 저장소와 JSONL을 비교했다. v0에는 서버/UI/추가 대형 의존성 없이 읽을 수 있는 JSONL을 제안한다.
 
-## 제안
+## 결정
 큐 상태는 Python 표준 SQLite 트랜잭션에 저장하고 실험 기록은 단일 worker가 JSONL에 append+fsync한다.
 머신 전체 OS 파일 잠금으로 worktree 간 실행도 직렬화한다. 저장 위치 기본값은 ~/.clavis/jobs이며 git 밖이다.
 시작 시 요청 메타데이터를 기록하고 종료 시 결과·중단 이유·누적 벽시계·표본 CPU/RSS/OS 스레드 수를 기록한다.

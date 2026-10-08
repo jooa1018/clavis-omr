@@ -13,6 +13,7 @@ import psutil
 
 from training.jobs.guard import Guard
 from training.jobs.launcher import alive, kill_tree
+from training.jobs.memory import can_start, snapshot
 from training.jobs.model import JobSpec, atomic_json
 from training.jobs.resources import THREAD_ENV, allowed_cpus, constrain
 from training.jobs.store import Queue, worker_lock
@@ -99,11 +100,16 @@ def execute(queue: Queue, row: dict[str, Any], manual: bool) -> dict[str, Any]:
     peak = peak_threads = 0
     peak_cpu = last_cpu = 0.0
     last_sample = start
+    host_memory: list[dict[str, int | float]] = []
     reason = "completed"
     process: psutil.Process | None = None
     guard: Guard | None = None
     try:
-        if not disk_ok(paths):
+        initial_memory = snapshot()
+        host_memory.append({"elapsedSeconds": 0.0, **initial_memory})
+        if not can_start(initial_memory, spec.ram_bytes):
+            reason = "memory-low"
+        elif not disk_ok(paths):
             reason = "disk-low"
         elif row["wall"] >= spec.wall_seconds:
             reason = "wall-limit"
@@ -129,6 +135,7 @@ def execute(queue: Queue, row: dict[str, Any], manual: bool) -> dict[str, Any]:
                     break
                 peak, peak_threads = max(peak, rss), max(peak_threads, threads)
                 sampled_at = time.monotonic()
+                host_memory.append({"elapsedSeconds": sampled_at - start, **snapshot()})
                 total_cpu = sum(cpu.values())
                 peak_cpu = max(
                     peak_cpu, (total_cpu - last_cpu) / max(sampled_at - last_sample, 1e-9)
@@ -184,7 +191,7 @@ def execute(queue: Queue, row: dict[str, Any], manual: bool) -> dict[str, Any]:
         "succeeded"
         if reason == "completed"
         else "paused"
-        if reason in {"user-pause", "window-closed", "disk-low"}
+        if reason in {"user-pause", "window-closed", "disk-low", "memory-low"}
         else "failed"
     )
     report = {
@@ -208,6 +215,7 @@ def execute(queue: Queue, row: dict[str, Any], manual: bool) -> dict[str, Any]:
         "peakLogicalCpusSampled": peak_cpu,
         "meanCpuPercentSampled": 100 * sum(cpu.values()) / max(elapsed - row["wall"], 1e-9),
         "peakCpuPercentSampled": 100 * peak_cpu,
+        "hostMemorySamples": host_memory,
         "warnings": (
             ["MEAN_CPU_ABOVE_8"] if sum(cpu.values()) > 8 * (elapsed - row["wall"]) else []
         ),

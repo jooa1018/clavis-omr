@@ -129,6 +129,8 @@
 - OR-003: 학습 편입의 보호 집합과 sealed 역방향 선별. 상세는 헌장 6·7절과 EVALUATION 8·10절(W4 반영).
 - T1.9 스레드 상한 해석(Orchestrator 승인, 2026-09-29): 상한은 동시에 쓰는 연산 자원 ≤ 논리 CPU 8개다. 큐가 OMP/MKL/OPENBLAS/NUMEXPR 환경 변수와 torch intra/inter op, LightGBM num_threads, onnxruntime intra/inter op, cv2 스레드 설정을 주입하고 CPU affinity를 자식·손자까지 상속한다. Windows Job Object로 묶어 상속·일괄 종료를 보장한다. 논리 CPU가 8개 이하이면 전체 − 1개를 사용하며 Below Normal 우선순위로 실행한다. 전체 OS 스레드 수는 진단값으로만 기록한다. 실제 CPU 사용률 평균·최대를 논리 CPU 환산으로 기록하며 평균이 8 CPU를 넘으면 경고한다.
 
+- H9 운영 예외(Orchestrator 사전 승인, 2026-10-06): training/jobs 안의 벽시계·실행 창·자원 상한 판단만 W4 확인 후 정확한 file/line/digest와 approvedBy ["W4", "orchestrator"]로 추가할 수 있다. 인식·데이터 생성·평가 판정 코드에는 적용하지 않는다.
+
 ## 11. 보안과 개인정보
 
 - 비밀값(API 키 등)은 환경 변수로만 받는다. 코드, 로그, 보고서에 넣지 않는다.

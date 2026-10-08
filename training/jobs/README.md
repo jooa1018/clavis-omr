@@ -57,4 +57,7 @@ RAM/시간 초과는 failed, 사용자/시간 창/디스크 중단은 paused다.
 Windows memory limit은 job 전체 commit 상한이며 RSS도 표본 검사한다. Linux는 프로세스 그룹+RSS 감시이므로 표본 사이 일시 초과 가능성이 있다.
 분리된 Linux session으로 탈출하는 daemon은 지원하지 않는다. 정상 subprocess/DataLoader가 대상이다.
 기록 정본은 SQLite 상태와 experiments.jsonl 시작/종료 행이다. 원문 데이터/출력은 기록하지 않는다.
-레지스트리 선택은 ADR-002 초안이며 채택 확인 전에는 무거운 실제 큐 작업을 개방하지 않는다.
+ADR-002는 Orchestrator가 2026-10-06 채택했다.
+시작 시 시스템 commit 여유가 작업 RAM 상한 + 1 GB 미만이면 memory-low로 기록하고 paused 상태로 남긴다.
+실행 중 hostMemorySamples에 물리 RAM 총량/여유와 페이지파일 크기, commit 여유를 기록한다. Windows는 GetPerformanceInfo와 EnumPageFiles, Linux는 /proc/meminfo를 사용한다.
+메모리 구성(증설 전 8 GB / 증설 후 24 GB)을 실행 예산 보고에 명시하며 서로 섞어 비교하지 않는다.
