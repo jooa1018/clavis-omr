@@ -1,0 +1,177 @@
+{
+  "scope": "2-thread 64-patch preliminary load-observer probes; NOT SYN-Val; NOT formal timing",
+  "fcn": {
+    "checkpoints": "progress JSON only; no model weights saved or selected",
+    "config_sha256": "8aa26011bc8cd34afeeaadae2bfba9ed617e20dd4972250bf9e4d5b1b281719d",
+    "data_manifest_sha256": "85f45c3b373aafaa4f4ec6eaa599aaa4723052b1b12fe492b12f480d04f1a8d8",
+    "memory_configuration": "24 GB (16+8 GB), DDR4-3200 dual channel",
+    "model": "fcn",
+    "probe": true,
+    "purpose": "measurement-only",
+    "scope": "synthetic compute timing; NOT SYN-Val; NOT recognition accuracy",
+    "status": "PASS",
+    "threads": 2,
+    "trials": [
+      {
+        "cpu_only": true,
+        "effective_threads": 2,
+        "epoch_seconds": [
+          0.5659349999987171
+        ],
+        "fit_seconds": 0.5659349999987171,
+        "load_screen": {
+          "comparisonEligible": false,
+          "invalidReasons": [
+            "external-mean-load"
+          ],
+          "maxFiveSecondExternalLogicalCpus": null,
+          "meanExternalLogicalCpus": 1.7351777794186725,
+          "minimumAvailablePhysicalBytes": 11375767552,
+          "monitorDiagnostics": [],
+          "policy": {
+            "mean_external_cpus": 0.5,
+            "preflight_seconds": 10,
+            "retries": 10,
+            "retry_seconds": 60,
+            "run_available_bytes": 2000000000,
+            "sample_seconds": 0.1,
+            "start_available_bytes": 4000000000,
+            "threads": 4,
+            "window_external_cpus": 1.0,
+            "window_seconds": 5
+          },
+          "powerStates": [
+            "True"
+          ],
+          "samplingErrors": [],
+          "scope": "batch training load screen; not engine latency benchmark validity",
+          "validity": "invalid",
+          "windowsPowerModes": [
+            "00000000-0000-0000-0000-000000000000"
+          ],
+          "sampleCount": 26
+        },
+        "logical_cpu_affinity_count": 2,
+        "parameter_count": 102209,
+        "patch_presentations": 64,
+        "patch_presentations_per_second": 113.08719199226957,
+        "process_peak_rss_bytes": 319909888,
+        "repeat": 0,
+        "sample_records": 64,
+        "trial_wall_seconds": 3.7761190999954124
+      }
+    ],
+    "versions": {
+      "lightgbm": "4.6.0",
+      "numpy": "2.2.6",
+      "scipy": "1.18.1",
+      "torch": "2.5.1+cpu"
+    },
+    "queue": {
+      "runId": "fd8191d067f54356bcd1c28621b72701",
+      "jobId": "5dfbd6303a0f4a31a66168a46736b52c",
+      "status": "succeeded",
+      "reason": "completed",
+      "wallSeconds": 12.219000000004598,
+      "cpuSecondsSampled": 10.34375,
+      "peakRssBytesSampled": 331071488,
+      "cpuLimit": 2
+    }
+  },
+  "lightgbm": {
+    "checkpoints": "progress JSON only; no model weights saved or selected",
+    "config_sha256": "8aa26011bc8cd34afeeaadae2bfba9ed617e20dd4972250bf9e4d5b1b281719d",
+    "data_manifest_sha256": "85f45c3b373aafaa4f4ec6eaa599aaa4723052b1b12fe492b12f480d04f1a8d8",
+    "memory_configuration": "24 GB (16+8 GB), DDR4-3200 dual channel",
+    "model": "lightgbm",
+    "probe": true,
+    "purpose": "measurement-only",
+    "scope": "synthetic compute timing; NOT SYN-Val; NOT recognition accuracy",
+    "status": "PASS",
+    "threads": 2,
+    "trials": [
+      {
+        "boosting_rounds": 2,
+        "cpu_only": true,
+        "effective_threads": 2,
+        "fit_seconds": 1.0691698000009637,
+        "load_screen": {
+          "comparisonEligible": false,
+          "invalidReasons": [
+            "external-mean-load"
+          ],
+          "maxFiveSecondExternalLogicalCpus": null,
+          "meanExternalLogicalCpus": 3.165835232084904,
+          "minimumAvailablePhysicalBytes": 11380703232,
+          "monitorDiagnostics": [],
+          "policy": {
+            "mean_external_cpus": 0.5,
+            "preflight_seconds": 10,
+            "retries": 10,
+            "retry_seconds": 60,
+            "run_available_bytes": 2000000000,
+            "sample_seconds": 0.1,
+            "start_available_bytes": 4000000000,
+            "threads": 4,
+            "window_external_cpus": 1.0,
+            "window_seconds": 5
+          },
+          "powerStates": [
+            "True"
+          ],
+          "samplingErrors": [],
+          "scope": "batch training load screen; not engine latency benchmark validity",
+          "validity": "invalid",
+          "windowsPowerModes": [
+            "00000000-0000-0000-0000-000000000000"
+          ],
+          "sampleCount": 8
+        },
+        "logical_cpu_affinity_count": 2,
+        "patch_records_per_fit_second": 59.85952839291038,
+        "patch_rounds_per_second": 119.71905678582075,
+        "process_peak_rss_bytes": 260702208,
+        "repeat": 0,
+        "sample_records": 64,
+        "tree_count": 2,
+        "trial_wall_seconds": 2.4761168000040925
+      }
+    ],
+    "versions": {
+      "lightgbm": "4.6.0",
+      "numpy": "2.2.6",
+      "scipy": "1.18.1",
+      "torch": "2.5.1+cpu"
+    },
+    "queue": {
+      "runId": "b39a24659039418587664cc91eb8746b",
+      "jobId": "1cc0414b77f94a23ba2f6e1a2a0b6e91",
+      "status": "succeeded",
+      "reason": "completed",
+      "wallSeconds": 16.81199999999808,
+      "cpuSecondsSampled": 8.328125,
+      "peakRssBytesSampled": 271749120,
+      "cpuLimit": 2
+    }
+  },
+  "prior_attempts": [
+    {
+      "stage": "optional environment runner import",
+      "error": "ModuleNotFoundError: yaml",
+      "resolution": "installed existing locked PyYAML 6.0.2"
+    },
+    {
+      "stage": "LightGBM probe",
+      "status": "command-failed",
+      "wallSeconds": 16.23399999999674,
+      "rootCause": "not established; bounded retry passed"
+    }
+  ],
+  "full_samples": "local W1 job directories; reported run IDs retain all samples",
+  "seed_note": {
+    "preliminary_wrapper_request_seed": 0,
+    "actual_probe_model_seed_from_config": 6,
+    "formal_v2_request_and_model_seed": 6,
+    "scope": "Preliminary wrappers used their default seed field; the archived config specifies the actual model seed. Formal requests agree with config."
+  }
+}

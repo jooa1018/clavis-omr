@@ -1,0 +1,134 @@
+{
+  "scope": "Windows full tests via OR-005; CPU, RAM 24 GB (16+8 GB) DDR4-3200 dual channel",
+  "command": "uv run --locked --all-groups python -m training.jobs.short run pytest tests/ --cov=clavis --cov=scripts --cov=eval --cov=training.jobs --cov-report=json:work/load-retry-coverage.json --junitxml=work/load-retry-tests.xml",
+  "runs": [
+    {
+      "name": "before_observer",
+      "tests": {
+        "tests": "1471",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "time": "232.513"
+      },
+      "queue": {
+        "jobId": "6b80f699731147e8bf4e6d892d9dafb6",
+        "status": "succeeded",
+        "reason": "completed",
+        "wallSeconds": 239.10900000000402,
+        "cpuSecondsSampled": 151.421875,
+        "peakRssBytesSampled": 316338176,
+        "cpuLimit": 2,
+        "monitorDiagnostics": [
+          {
+            "count": 18,
+            "exceptionType": "NoSuchProcess",
+            "site": "sample.memory_info",
+            "skippedChild": true
+          },
+          {
+            "count": 5,
+            "exceptionType": "NoSuchProcess",
+            "site": "sample.num_threads",
+            "skippedChild": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "renderer_failure",
+      "tests": {
+        "tests": "1475",
+        "errors": "0",
+        "failures": "1",
+        "skipped": "0",
+        "time": "266.049"
+      },
+      "queue": {
+        "jobId": "57fcd472519b48259bf0d39f79734f03",
+        "status": "failed",
+        "reason": "command-failed",
+        "wallSeconds": 271.60899999999674,
+        "cpuSecondsSampled": 174.859375,
+        "peakRssBytesSampled": 322711552,
+        "cpuLimit": 2,
+        "monitorDiagnostics": [
+          {
+            "count": 18,
+            "exceptionType": "NoSuchProcess",
+            "site": "sample.memory_info",
+            "skippedChild": true
+          },
+          {
+            "count": 7,
+            "exceptionType": "NoSuchProcess",
+            "site": "sample.num_threads",
+            "skippedChild": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "final",
+      "tests": {
+        "tests": "1475",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "time": "194.653"
+      },
+      "queue": {
+        "jobId": "1eb1bac591fd496a8b590db1f4a3e66c",
+        "status": "succeeded",
+        "reason": "completed",
+        "wallSeconds": 200.60899999999674,
+        "cpuSecondsSampled": 142.078125,
+        "peakRssBytesSampled": 323993600,
+        "cpuLimit": 2,
+        "monitorDiagnostics": [
+          {
+            "count": 22,
+            "exceptionType": "NoSuchProcess",
+            "site": "sample.memory_info",
+            "skippedChild": true
+          },
+          {
+            "count": 4,
+            "exceptionType": "NoSuchProcess",
+            "site": "sample.num_threads",
+            "skippedChild": true
+          }
+        ]
+      }
+    }
+  ],
+  "failure_detail": {
+    "test": "test_actual_renderer_preserves_staff_provenance[Leipzig]",
+    "child": "training.data.verovio_worker",
+    "exit_code_hex": "0xC000070A",
+    "root_cause": "not established; unchanged full-suite retry passed"
+  },
+  "coverage": {
+    "covered_lines": 5314,
+    "num_statements": 5664,
+    "percent_covered": 93.82062146892656,
+    "percent_covered_display": "94",
+    "missing_lines": 350,
+    "excluded_lines": 10,
+    "percent_statements_covered": 93.82062146892656,
+    "percent_statements_covered_display": "94"
+  },
+  "checks": {
+    "ruff": "PASS",
+    "format": "PASS",
+    "mypy": "PASS (90 source files)",
+    "H1-H9": "PASS",
+    "privacy": "PASS",
+    "runtime_license": "PASS",
+    "import_boundary": "PASS",
+    "coverage_gates": "PASS",
+    "required_contracts": 298,
+    "required_integrity": 24,
+    "unit_load_and_resume": "11 passed"
+  }
+}

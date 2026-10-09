@@ -55,7 +55,8 @@ an interrupted fit restarts at its own fixed seed. No model weights are saved,
 selected, evaluated or admitted to the engine.
 
 Use a separate optional environment with the CPU torch wheel above and pinned
-probe requirements, plus locked runtime packages and psutil. The queue launcher
+probe requirements, plus locked runtime packages, psutil and PyYAML 6.0.2 for
+the W1 queue. The queue launcher
 uses its invoking Python, so launch it with that environment, not a uv command
 that synchronizes away optional trainers. Source/config descriptor hashes are
 checked before preparing data; the trainer checks descriptor, cache, config and
@@ -63,8 +64,8 @@ code hashes. Requests and paths stay in ignored `work/`; only sanitized evidence
 is committed. The W6 queue root shares W1's machine-wide exclusive worker lock.
 
 ```text
-work/measurement-venv/Scripts/python.exe -m training.jobs --root work/w6-measurement-queue submit work/request.json
-work/measurement-venv/Scripts/python.exe -m training.jobs --root work/w6-measurement-queue run
+work/measurement-venv/Scripts/python.exe -m training.jobs --root work/w6-training-compare-queue submit work/request.json
+work/measurement-venv/Scripts/python.exe -m training.jobs --root work/w6-training-compare-queue run
 ```
 
 Submit the preparation job before the four fitting jobs. Never use `--manual`
@@ -72,6 +73,17 @@ for the scheduled comparison. For daytime path checks use OR-005, a separate
 64-record config/cache and `measurement --probe`; the resulting 2-thread values
 are preliminary and cannot substitute for the formal 4/8-thread comparison.
 Report fit-only throughput separately from queue wall time and process-tree RSS.
+Orchestrator ruling (2026-10-09): T6.0 throughput uses the ordinary training queue,
+with comparison jobs ordered FCN-4, FCN-8, LightGBM-4, LightGBM-8 in one night.
+The four-thread exclusive benchmark is only for engine latency budgets.
+`trial_load.observe_load` consumes W1's public load sampler and provisional
+policy for each independent fit, without changing batch priority or affinity.
+It records external CPU/RAM/AC samples and marks contaminated or unobserved
+trials `comparisonEligible=false`. Preserve those rows in reports but exclude
+them from throughput comparisons; compare matching size/seed pairs only when
+both thread settings are eligible. The screen is not engine benchmark validity.
+Use the v2 queue registration report after the ruling; the original pending
+queue is paused and retained solely as registration history.
 The timing fixture cannot confirm convergence, oracle@k or PLAN 7.5's aggregate
 20–40-hour retraining budget without admitted data and actual training schedules.
 
