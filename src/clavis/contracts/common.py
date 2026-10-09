@@ -97,7 +97,7 @@ class WireModel(BaseModel):
 
 
 class IR(WireModel):
-    schema_version: Literal["clavis-ir-0.1"] = Field(alias="schema")
+    schema_version: Literal["clavis-ir-0.1", "clavis-ir-0.1.1"] = Field(alias="schema")
     id: Id
 
 

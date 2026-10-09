@@ -1,0 +1,317 @@
+{
+  "heads": {
+    "acc": [
+      "none",
+      "sharp",
+      "flat",
+      "natural",
+      "doubleSharp",
+      "doubleFlat"
+    ],
+    "accParen": [
+      false,
+      true
+    ],
+    "beam": [
+      "none",
+      "begin",
+      "continue",
+      "end"
+    ],
+    "beatType": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32
+    ],
+    "beats": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "cancel": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "chord": [
+      0,
+      1
+    ],
+    "count": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64
+    ],
+    "courtesy": [
+      false,
+      true
+    ],
+    "dots": [
+      0,
+      1,
+      2
+    ],
+    "dur": [
+      "breve",
+      "whole",
+      "half",
+      "quarter",
+      "eighth",
+      "16th",
+      "32nd",
+      "64th"
+    ],
+    "fermata": [
+      false,
+      true
+    ],
+    "fifths": [
+      -7,
+      -6,
+      -5,
+      -4,
+      -3,
+      -2,
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "grace": [
+      "none",
+      "acciaccatura",
+      "appoggiatura"
+    ],
+    "head": [
+      "normal",
+      "slash",
+      "x",
+      "diamond"
+    ],
+    "join": [
+      0,
+      1
+    ],
+    "mark": [
+      "start",
+      "stop",
+      "discontinue"
+    ],
+    "measureRest": [
+      false,
+      true
+    ],
+    "numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "pos": [
+      -14,
+      -13,
+      -12,
+      -11,
+      -10,
+      -9,
+      -8,
+      -7,
+      -6,
+      -5,
+      -4,
+      -3,
+      -2,
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "sign": [
+      "G2",
+      "G2_8vb",
+      "G2_8va",
+      "F4",
+      "F4_8vb",
+      "F3",
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "C5"
+    ],
+    "slur": [
+      "none",
+      "start",
+      "stop",
+      "both"
+    ],
+    "stem": [
+      "none",
+      "up",
+      "down"
+    ],
+    "style": [
+      "regular",
+      "double",
+      "final",
+      "repeatStart",
+      "repeatEnd",
+      "repeatBoth",
+      "dashed",
+      "heavy"
+    ],
+    "symbol": [
+      "common",
+      "cut"
+    ],
+    "tie": [
+      "none",
+      "start",
+      "stop",
+      "both"
+    ],
+    "tup3": [
+      "none",
+      "start",
+      "continue",
+      "stop"
+    ],
+    "type": [
+      "bar",
+      "clef",
+      "coda",
+      "ending",
+      "key",
+      "mrest",
+      "note",
+      "rest",
+      "segno",
+      "time"
+    ],
+    "v": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sha256": "31544ac93ef880255123c9a2ddc8f2b319efdd2cd67e052d0bd6d0462613d3e0",
+  "version": "lstl-0.1.1"
+}

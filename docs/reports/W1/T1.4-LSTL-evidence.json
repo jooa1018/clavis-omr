@@ -1,0 +1,75 @@
+{
+  "checks": {
+    "ast": "PASS",
+    "imports": "PASS",
+    "mypy": "PASS",
+    "privacy": "PASS",
+    "ruff": "PASS",
+    "runtimeLicenses": "PASS (14 packages)",
+    "schemaVocab": "PASS",
+    "wheel": "PASS (MusicXML schemas and LSTL vocab)"
+  },
+  "ci": {
+    "codeHead": "7bcdb4f221ff63e7c01b9e180c498e0b6ad42e44",
+    "finalHeadChecks": "https://github.com/jooa1018/clavis-omr/pull/41/checks",
+    "jobs": {
+      "ubuntu-latest": "PASS",
+      "windows-latest": "PASS"
+    },
+    "run": "https://github.com/jooa1018/clavis-omr/actions/runs/37890153642",
+    "status": "PASS"
+  },
+  "coverageGates": {
+    "eval": true,
+    "jobs": true,
+    "overall": true,
+    "platform": true
+  },
+  "determinism": "PASS: 3 runs each at 1 and 4 threads",
+  "fixtures": {
+    "golden": 24,
+    "invalidSequences": 42,
+    "invalidTexts": 30
+  },
+  "memoryConfiguration": "24 GB = 16 + 8 GB DDR4-3200 dual channel",
+  "newCoverage": {
+    "scripts/generate_lstl_vocab.py": 85.36585365853658,
+    "src/clavis/contracts/lstl/__init__.py": 100.0,
+    "src/clavis/contracts/lstl/automaton.py": 100.0,
+    "src/clavis/contracts/lstl/normalize.py": 100.0,
+    "src/clavis/contracts/lstl/text.py": 100.0
+  },
+  "recognitionEvaluation": "NOT_RUN: no recognition implementation or performance claim",
+  "required": {
+    "contracts": {
+      "count": 298,
+      "status": "PASS"
+    },
+    "integrity-positive-negative": {
+      "count": 24,
+      "status": "PASS"
+    }
+  },
+  "resources": {
+    "cpuLimit": 2,
+    "cpuSecondsSampled": 62.40625,
+    "peakRssBytesSampled": 290213888,
+    "reason": "completed",
+    "slot": 0,
+    "status": "succeeded",
+    "wallSeconds": 73.68799999999464
+  },
+  "scope": "synthetic contract tests only; no real/dev/sealed input",
+  "status": "PASS",
+  "versions": {
+    "ir": "clavis-ir-0.1.1",
+    "legacyRead": "clavis-ir-0.1",
+    "lstl": "lstl-0.1.1"
+  },
+  "windows": {
+    "errors": 0,
+    "failures": 0,
+    "seconds": 71.976,
+    "tests": 750
+  }
+}
