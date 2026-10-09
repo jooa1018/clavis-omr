@@ -75,6 +75,14 @@ Report fit-only throughput separately from queue wall time and process-tree RSS.
 The timing fixture cannot confirm convergence, oracle@k or PLAN 7.5's aggregate
 20–40-hour retraining budget without admitted data and actual training schedules.
 
+`lowres_smoke` checks the existing detector at an input interline of 8 px, then
+uses the same W5 `extract_strip` path as inference to normalize to s*=16. It
+compares both channels with original-only input (a white removed channel), on
+clean geometry and complete 8 px `synthetic-v0` rows. Run it through OR-005 with
+32 declared images and the W2 report digest. It reads the same two development
+smoke pages; it does not train, tune thresholds or evaluate recognition accuracy.
+Known synthetic staff geometry does not test W5's missed-staff cases.
+
 `component_smoke` records authored mock counts, on/off rule behavior, and 1/4
 thread byte equality. It imports test fixtures deliberately and is not a W4
 accuracy evaluator. The runtime has no test/training/eval imports. IER and

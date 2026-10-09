@@ -1,0 +1,277 @@
+{
+  "code_sha256": "e20ceb1c3ab252e520b38b49f8dad1fe8131ae3f68158e0e2f1cec8812a03d05",
+  "input_target_interline_px": 8,
+  "jitter_sha256": "be25ab2675c34e40a0447a54a4de5e02ae40536ebe55fd6f298bacc658d3be36",
+  "limitations": [
+    "Known synthetic staff geometry; missed staves are not tested or repaired",
+    "W5 jitter excludes misses; synthetic-v0 is not a real-image error distribution",
+    "Counts are candidates without W2 symbol labels, not recall/precision/oracle@k",
+    "Empty lattice remains unresolved; missing attributes are never generated",
+    "No training, parameter tuning, checkpoint selection or real/sealed data"
+  ],
+  "observations": [
+    {
+      "font": "Leipzig",
+      "geometry": "clean",
+      "input_interline_px": 8.0,
+      "lattice_items": 0,
+      "mode": "both",
+      "relations": 2,
+      "staff": 0,
+      "symbols": 15,
+      "template_candidates": 10,
+      "unresolved": 41,
+      "vertical_candidates": 5
+    },
+    {
+      "font": "Leipzig",
+      "geometry": "clean",
+      "input_interline_px": 8.0,
+      "lattice_items": 0,
+      "mode": "original-only",
+      "relations": 2,
+      "staff": 0,
+      "symbols": 15,
+      "template_candidates": 10,
+      "unresolved": 41,
+      "vertical_candidates": 5
+    },
+    {
+      "font": "Leipzig",
+      "geometry": "jitter",
+      "input_interline_px": 8.0,
+      "lattice_items": 0,
+      "mode": "both",
+      "relations": 2,
+      "staff": 0,
+      "symbols": 13,
+      "template_candidates": 9,
+      "unresolved": 37,
+      "vertical_candidates": 4
+    },
+    {
+      "font": "Leipzig",
+      "geometry": "jitter",
+      "input_interline_px": 8.0,
+      "lattice_items": 0,
+      "mode": "original-only",
+      "relations": 2,
+      "staff": 0,
+      "symbols": 13,
+      "template_candidates": 9,
+      "unresolved": 37,
+      "vertical_candidates": 4
+    },
+    {
+      "font": "Leipzig",
+      "geometry": "clean",
+      "input_interline_px": 8.0,
+      "lattice_items": 0,
+      "mode": "both",
+      "relations": 2,
+      "staff": 1,
+      "symbols": 12,
+      "template_candidates": 8,
+      "unresolved": 40,
+      "vertical_candidates": 4
+    },
+    {
+      "font": "Leipzig",
+      "geometry": "clean",
+      "input_interline_px": 8.0,
+      "lattice_items": 0,
+      "mode": "original-only",
+      "relations": 2,
+      "staff": 1,
+      "symbols": 12,
+      "template_candidates": 8,
+      "unresolved": 40,
+      "vertical_candidates": 4
+    },
+    {
+      "font": "Leipzig",
+      "geometry": "jitter",
+      "input_interline_px": 8.0,
+      "lattice_items": 0,
+      "mode": "both",
+      "relations": 1,
+      "staff": 1,
+      "symbols": 10,
+      "template_candidates": 7,
+      "unresolved": 36,
+      "vertical_candidates": 3
+    },
+    {
+      "font": "Leipzig",
+      "geometry": "jitter",
+      "input_interline_px": 8.0,
+      "lattice_items": 0,
+      "mode": "original-only",
+      "relations": 1,
+      "staff": 1,
+      "symbols": 10,
+      "template_candidates": 7,
+      "unresolved": 35,
+      "vertical_candidates": 3
+    },
+    {
+      "font": "Bravura",
+      "geometry": "clean",
+      "input_interline_px": 8.0,
+      "lattice_items": 0,
+      "mode": "both",
+      "relations": 3,
+      "staff": 0,
+      "symbols": 16,
+      "template_candidates": 9,
+      "unresolved": 36,
+      "vertical_candidates": 7
+    },
+    {
+      "font": "Bravura",
+      "geometry": "clean",
+      "input_interline_px": 8.0,
+      "lattice_items": 0,
+      "mode": "original-only",
+      "relations": 3,
+      "staff": 0,
+      "symbols": 16,
+      "template_candidates": 9,
+      "unresolved": 36,
+      "vertical_candidates": 7
+    },
+    {
+      "font": "Bravura",
+      "geometry": "jitter",
+      "input_interline_px": 8.0,
+      "lattice_items": 0,
+      "mode": "both",
+      "relations": 3,
+      "staff": 0,
+      "symbols": 15,
+      "template_candidates": 8,
+      "unresolved": 33,
+      "vertical_candidates": 7
+    },
+    {
+      "font": "Bravura",
+      "geometry": "jitter",
+      "input_interline_px": 8.0,
+      "lattice_items": 0,
+      "mode": "original-only",
+      "relations": 3,
+      "staff": 0,
+      "symbols": 15,
+      "template_candidates": 8,
+      "unresolved": 33,
+      "vertical_candidates": 7
+    },
+    {
+      "font": "Bravura",
+      "geometry": "clean",
+      "input_interline_px": 8.0,
+      "lattice_items": 0,
+      "mode": "both",
+      "relations": 5,
+      "staff": 1,
+      "symbols": 15,
+      "template_candidates": 8,
+      "unresolved": 35,
+      "vertical_candidates": 7
+    },
+    {
+      "font": "Bravura",
+      "geometry": "clean",
+      "input_interline_px": 8.0,
+      "lattice_items": 0,
+      "mode": "original-only",
+      "relations": 5,
+      "staff": 1,
+      "symbols": 15,
+      "template_candidates": 8,
+      "unresolved": 35,
+      "vertical_candidates": 7
+    },
+    {
+      "font": "Bravura",
+      "geometry": "jitter",
+      "input_interline_px": 8.0,
+      "lattice_items": 0,
+      "mode": "both",
+      "relations": 2,
+      "staff": 1,
+      "symbols": 10,
+      "template_candidates": 7,
+      "unresolved": 30,
+      "vertical_candidates": 3
+    },
+    {
+      "font": "Bravura",
+      "geometry": "jitter",
+      "input_interline_px": 8.0,
+      "lattice_items": 0,
+      "mode": "original-only",
+      "relations": 2,
+      "staff": 1,
+      "symbols": 10,
+      "template_candidates": 7,
+      "unresolved": 30,
+      "vertical_candidates": 3
+    }
+  ],
+  "peak_rss_bytes": 286797824,
+  "scope": "synthetic path smoke, NOT SYN-Val, NOT detection accuracy",
+  "source_report_sha256": "41580d17408b17de26056c370ca1b7f421a0ca02ef1712daf48e56dcc1517638",
+  "sources": [
+    {
+      "artifacts": {
+        "page-1.labels.json": "defd2fcae8c3ba879986c70ece59347d23e8616e2d7236cb9d1a80e1b0dd2550",
+        "page-1.overlay.svg.gz": "6c11a80e48130422e1c076bcc6aacc3da9652dafe1b397bad48a78592bd5b1d1",
+        "page-1.svg.gz": "869d98cd744a4705121ea4139cb81c23e388c71b4081b81403d257b43b896e2f"
+      },
+      "font": "Leipzig",
+      "seed": "train-smoke-0"
+    },
+    {
+      "artifacts": {
+        "page-1.labels.json": "e51d8f521a4ac90d362902743f49b14cbae30a0e2963bda1f427130a0c88ac29",
+        "page-1.overlay.svg.gz": "6a91f9df35470c7111a7d959b8af98b1050d762b0a28a5ddcabc6bf1c7111e63",
+        "page-1.svg.gz": "de883fcb24ca471d444121820c85e0de9e9dcfc486abafeb6a18908513c25fb5"
+      },
+      "font": "Bravura",
+      "seed": "train-smoke-0"
+    }
+  ],
+  "summary": {
+    "both": {
+      "lattice_items": 0,
+      "relations": 20,
+      "symbols": 106,
+      "template_candidates": 66,
+      "unresolved": 288,
+      "vertical_candidates": 40
+    },
+    "original-only": {
+      "lattice_items": 0,
+      "relations": 20,
+      "symbols": 106,
+      "template_candidates": 66,
+      "unresolved": 287,
+      "vertical_candidates": 40
+    }
+  },
+  "template_sha256": "685011716af5d4706925e7c3e6ba2bcc056f42ab739eb927e1982bb73746f58e",
+  "wall_seconds": 3.890553599994746,
+  "queue": {
+    "status": "succeeded",
+    "reason": "completed",
+    "jobId": "2280493f30bf4c4a9f825bd8d20b89be",
+    "wallSeconds": 12.156000000002678,
+    "cpuSecondsSampled": 10.328125,
+    "peakRssBytesSampled": 297295872,
+    "cpuLimit": 2,
+    "warnings": [],
+    "monitorDiagnostics": []
+  },
+  "memory_configuration": "24 GB (16+8 GB), DDR4-3200 dual channel"
+}

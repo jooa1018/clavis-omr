@@ -8,6 +8,9 @@ digest. `staff.read_staff` calls the shared W5 `extract_strip` and passes its
 original/removal channels, registry spacing and top-row margin into the detector.
 It returns the channels, coordinate mesh, graph and validated reading draft.
 No geometry implementation is duplicated and no pitch is calculated.
+For an installed environment, pass
+`geometry_config=load_config(Path("<bundle>/configs/geometry"))` explicitly;
+the default registry lookup is for repository development.
 
 Load settings with `Settings.load(Path("configs/symbols/constants.yaml"))`.
 The registry is JSON-compatible YAML. Decision rules are catalogued in
