@@ -1,0 +1,10 @@
+{
+  "average_cpu_machine_percent": 0.07943071626924265,
+  "average_cpu_one_core_percent": 0.9531685952309119,
+  "cpu_seconds": 8.90625,
+  "job_handle_active": true,
+  "peak_rss_bytes": 47484928,
+  "status": "RUNNING",
+  "transfer_bytes": 184549376,
+  "wall_seconds": 934.3834914999898
+}
