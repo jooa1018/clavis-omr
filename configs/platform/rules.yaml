@@ -40,3 +40,17 @@
     report: docs/reports/W1/OR-005-SHORT-SLOTS-2026-10-09.md
   introduced_by: w1/short-run-slots
   motivated_by_failure: true
+- id: PLATFORM-MONITOR-001
+  owner: W1
+  statement: Skip an individually unavailable child CPU/RSS/thread or affinity sample for NoSuchProcess, AccessDenied and ZombieProcess; retain fatal root/enumeration errors. Aggregate only complete child samples and record exception type, static site and count without identity or messages.
+  units: process_samples
+  params: []
+  source: convention
+  evidence: Orchestrator execution-runner ruling 2026-10-09
+  flag: training.jobs.monitor
+  ablation:
+    status: NOT_RUN
+    reason: Resource monitoring policy, no recognition behavior.
+    report: docs/reports/W1/MONITOR-DIAGNOSTICS-2026-10-09.md
+  introduced_by: w1/runner-monitor-diagnostics
+  motivated_by_failure: true
