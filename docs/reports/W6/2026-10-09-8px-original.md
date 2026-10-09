@@ -7,7 +7,8 @@ PR #49의 W5 strip→SymbolGraph→StaffLattice 초안 연결에 8 px 원본 단
 beam/flag·dots·voice가 미해결이므로 완성 항목은 0개이며, 인식 성공이나 개선으로 주장하지 않는다.
 
 ## 2. 변경 (PR 링크, 주요 파일·모듈)
-브랜치 `w6/original-channel-8px`. `tests/symbols/test_staff.py` 회귀 시험 1개와
+[PR #53](https://github.com/jooa1018/clavis-omr/pull/53), 브랜치 `w6/original-channel-8px`.
+`tests/symbols/test_staff.py` 회귀 시험 1개와
 `training/models/symbols/lowres_smoke.py`의 재현 가능한 합성 채널 비교를 추가했다.
 모듈 README에 설치 환경의 명시적 geometry 설정 경로 및 smoke 범위를 설명했다.
 엔진·설정·임계값·기존 학습 측정 코드는 변경하지 않는다.
@@ -30,6 +31,8 @@ ruff check/format, mypy(87 sources), H1–H9, privacy, runtime license와 import
 큐 벽시계 97.95300000000134초, peak RSS 표본 300601344 bytes.
 전체 커버리지 93.88502380080557%, 전체/platform/eval/jobs 게이트 및 계약·무결성 필수 시험 PASS.
 정제 근거: `2026-10-09-8px-validation.json`. 종료된 자식의 NoSuchProcess 진단은 W1 실행기 정책대로 기록됐다.
+Linux·Windows CI 최종 정본은 [PR checks](https://github.com/jooa1018/clavis-omr/pull/53/checks)이며,
+양쪽 성공 후 B등급 squash 병합한다.
 
 ## 5. 지표 (평가기 JSON 경로 + 핵심 수치 표: 이전 대비 변화와 95% CI, 슬라이스별)
 정본: `2026-10-09-8px-smoke.json`. **자동 합성 smoke, SYN-Val 아님**. W4 정확도 평가 아님.
