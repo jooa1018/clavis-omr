@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "windowsTests": {
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "636",
+    "time": "56.140"
+  },
+  "resources": {
+    "status": "succeeded",
+    "reason": "completed",
+    "slot": 0,
+    "runId": "425f4ac2344045c6aad8860880fa0164",
+    "jobId": "d203e33bd26342919671a8382c9d108c",
+    "wallSeconds": 58.11000000000058,
+    "cpuSecondsSampled": 47.140625,
+    "peakRssBytesSampled": 305373184,
+    "cpuLimit": 2
+  },
+  "coverage": {
+    "training/jobs/short.py": {
+      "covered_lines": 54,
+      "num_statements": 55,
+      "percent_covered": 98.18181818181819,
+      "percent_covered_display": "98",
+      "missing_lines": 1,
+      "excluded_lines": 0,
+      "percent_statements_covered": 98.18181818181819,
+      "percent_statements_covered_display": "98"
+    },
+    "training/jobs/slots.py": {
+      "covered_lines": 56,
+      "num_statements": 60,
+      "percent_covered": 93.33333333333333,
+      "percent_covered_display": "93",
+      "missing_lines": 4,
+      "excluded_lines": 0,
+      "percent_statements_covered": 93.33333333333333,
+      "percent_statements_covered_display": "93"
+    }
+  },
+  "coverageGates": "PASS",
+  "hardcodeScan": "PASS",
+  "newH9Exceptions": 0,
+  "memoryConfiguration": "24 GB (16+8), DDR4-3200 dual channel",
+  "remoteCi": {
+    "status": "PASS",
+    "run": "https://github.com/jooa1018/clavis-omr/actions/runs/37819415870"
+  },
+  "recognitionEvaluation": "NOT_RUN",
+  "approval": "Orchestrator 2026-10-06 OR-005; 2026-10-09 priority confirmation",
+  "mergeCommit": "85c831c198c990f6eaeb4dba3cc569bd35d0979c"
+}

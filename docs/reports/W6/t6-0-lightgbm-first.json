@@ -1,0 +1,84 @@
+{
+  "status": "PARTIAL",
+  "label": "예비 / preliminary / measurement-only",
+  "scope": "local Windows CPU; W2 synthetic development smoke; NOT SYN-Val",
+  "objective": "ink-density proxy; NOT symbol labels; no W5 strip normalization",
+  "checkpoint": "none; never eligible for evaluation, selection, or engine use",
+  "seed": 6,
+  "git_sha": "6d529726ca176e5bd60b7b9b531412602048d09f",
+  "code_sha256": "277621c51ecde779b9b06a38ad0426b5e8074a733f532c23f2ff57dc7eb459c9",
+  "measurements": [
+    {
+      "model": "LightGBM",
+      "threads": 4,
+      "unique_patches": 64,
+      "patch_shape": [
+        48,
+        48,
+        1
+      ],
+      "boosting_rounds": 20,
+      "fit_seconds": 0.1467945000040345,
+      "unique_patches_per_fit_second": 435.9836369771417,
+      "patch_rounds_per_second": 8719.672739542833,
+      "peak_rss_bytes": 80375808,
+      "source_artifacts": [
+        {
+          "seed": "train-smoke-0",
+          "font": "Leipzig",
+          "sha256": "869d98cd744a4705121ea4139cb81c23e388c71b4081b81403d257b43b896e2f"
+        },
+        {
+          "seed": "train-smoke-0",
+          "font": "Bravura",
+          "sha256": "de883fcb24ca471d444121820c85e0de9e9dcfc486abafeb6a18908513c25fb5"
+        }
+      ],
+      "data_manifest_digest": "41580d17408b17de26056c370ca1b7f421a0ca02ef1712daf48e56dcc1517638",
+      "versions": {
+        "lightgbm": "4.6.0",
+        "numpy": "2.2.6",
+        "resvg-py": "0.2.6"
+      }
+    },
+    {
+      "model": "LightGBM",
+      "threads": 8,
+      "unique_patches": 64,
+      "patch_shape": [
+        48,
+        48,
+        1
+      ],
+      "boosting_rounds": 20,
+      "fit_seconds": 0.1334637000109069,
+      "unique_patches_per_fit_second": 479.53113839021245,
+      "patch_rounds_per_second": 9590.622767804249,
+      "peak_rss_bytes": 78532608,
+      "source_artifacts": [
+        {
+          "seed": "train-smoke-0",
+          "font": "Leipzig",
+          "sha256": "869d98cd744a4705121ea4139cb81c23e388c71b4081b81403d257b43b896e2f"
+        },
+        {
+          "seed": "train-smoke-0",
+          "font": "Bravura",
+          "sha256": "de883fcb24ca471d444121820c85e0de9e9dcfc486abafeb6a18908513c25fb5"
+        }
+      ],
+      "data_manifest_digest": "41580d17408b17de26056c370ca1b7f421a0ca02ef1712daf48e56dcc1517638",
+      "versions": {
+        "lightgbm": "4.6.0",
+        "numpy": "2.2.6",
+        "resvg-py": "0.2.6"
+      }
+    }
+  ],
+  "wall_seconds": 5.985741200041957,
+  "FCN": {
+    "status": "NOT_RUN",
+    "reason": "CPU torch installation exceeded disk headroom; removed before training"
+  },
+  "formal_measurement": "T1.9 single queue, 01:00–07:00; not scheduled here"
+}

@@ -1,0 +1,295 @@
+{
+  "refs": {
+    "refs/audit/merge/11": "a9a958d74b8f43d13662413cdd085ef545b66ad7",
+    "refs/audit/merge/24": "570f4ce285351b62bf601beb25f6fc8f5c2798fe",
+    "refs/audit/merge/25": "d593a5539563e2d7ae0866c65fcf356005cbac79",
+    "refs/audit/merge/28": "a41e314be5bdcb78ea369049c3353cdedbf0d5af",
+    "refs/audit/merge/29": "691998e06720c32fb089f41429c48c17f6f0e28d",
+    "refs/audit/merge/30": "4f25de984d999d2c8bc49a9d5bc7038ab3df5d87",
+    "refs/audit/merge/31": "b6c75facfac64fb3db21251b9de51f63aa65d601",
+    "refs/audit/merge/32": "50fdffb2bc7758e8eb6375bde3df4383a9c51f5a",
+    "refs/audit/merge/34": "7faacfcb88e659699f0d758b4b299f702a15f351",
+    "refs/audit/pull/1": "6625a277defdbd3803e4781acde205dd9dc940a3",
+    "refs/audit/pull/10": "cab3b0e9c2985fa737b74c8afeb3df8398324b66",
+    "refs/audit/pull/11": "5b651c6f8192778b046b33d10dbad9cc7ec6247f",
+    "refs/audit/pull/12": "466257916a62c079d7a03b3abeeb2ba50df3db77",
+    "refs/audit/pull/13": "d1d26ac003f7c0db23f446ebf5aaba205ac59270",
+    "refs/audit/pull/14": "98023ff967601e528bfa1f0176d0221f3f4c9573",
+    "refs/audit/pull/15": "243ff4a5a22e61fb6b6051566ab6ae6ce004b398",
+    "refs/audit/pull/16": "d1bf30a8d81145aa363889f15f6baa05c5293d30",
+    "refs/audit/pull/17": "8146ca20ae54bcb44438a715d49f3aa79e4abab4",
+    "refs/audit/pull/18": "2f6f203ded8cd85279daf5b80f3a43fe5dbc58d1",
+    "refs/audit/pull/19": "f57c9251d519dea6feb37d54526069d1eccdbff4",
+    "refs/audit/pull/2": "b5e4b9046d70cfd5cc72653edb08644dbbc9073a",
+    "refs/audit/pull/20": "a76b35eb637d208588ff1785a0bb0ef1549ac3bd",
+    "refs/audit/pull/21": "2dd17206abd5c5f27c4fdb32525f9ae23213529c",
+    "refs/audit/pull/22": "f1f8191f369e278eeafe8fd6cf86d95f069bd94f",
+    "refs/audit/pull/23": "6b96c6f585f6e8576b5d5c9c6963d682e6ae806c",
+    "refs/audit/pull/24": "28d5a33425cbfc151e695256a06baf45df981b1f",
+    "refs/audit/pull/25": "47128533c80798ce105b0bb3430242817043ebc7",
+    "refs/audit/pull/26": "9b57f27f863417d7c63e2fe9199ffa1c8ee68db6",
+    "refs/audit/pull/27": "c635b720418c0b129b7dde8d580a94bff8c0815a",
+    "refs/audit/pull/28": "373a8a27d0367233416a62d8fba12c11d2524d76",
+    "refs/audit/pull/29": "672d64008cebde2b614954c1fb366a4c11d0766d",
+    "refs/audit/pull/3": "d3b35b6a8ca5d0c5531920156a5515a0fcfeccf8",
+    "refs/audit/pull/30": "df11b96337cdd58342584bd7bd562771b65f3248",
+    "refs/audit/pull/31": "23c23be82c3558aa91e69af3c7368951b7a5a612",
+    "refs/audit/pull/32": "be911e637539208e8c7ae5b987b46ce2ab58cb39",
+    "refs/audit/pull/33": "699ccedd8e10f40a3de73d7480a8cf6e0ecea9a8",
+    "refs/audit/pull/34": "9d325c974b18a6c58066ee10f2e571d9ae141fa9",
+    "refs/audit/pull/4": "0baaafb51ec7f0746ea44cce70eeb402b6f01ac8",
+    "refs/audit/pull/5": "a8e7c2d09d00f742bd4afdba4512a9bd4bb4e66f",
+    "refs/audit/pull/6": "ec465bc6a1da5a69685bcd5412d739df1edc22e6",
+    "refs/audit/pull/7": "eb5283448d839c3a6a6f4eed10d0393f67d3d694",
+    "refs/audit/pull/8": "fd67a838b7dc3948ebf8984b38315f88cbc4df66",
+    "refs/audit/pull/9": "7071657b28ed8ac7437e2bd7bbd5d9940d5ef25d",
+    "refs/remotes/origin/main": "a62d6f9c4417212ca7a9a745cf0eb9e73002433f",
+    "refs/remotes/origin/w1/batch-runner": "c635b720418c0b129b7dde8d580a94bff8c0815a",
+    "refs/remotes/origin/w1/ci-budget": "f1f8191f369e278eeafe8fd6cf86d95f069bd94f",
+    "refs/remotes/origin/w1/contract-clarifications": "0baaafb51ec7f0746ea44cce70eeb402b6f01ac8",
+    "refs/remotes/origin/w1/eval-numpy": "8146ca20ae54bcb44438a715d49f3aa79e4abab4",
+    "refs/remotes/origin/w1/eval-pillow": "a76b35eb637d208588ff1785a0bb0ef1549ac3bd",
+    "refs/remotes/origin/w1/integrity-ci": "243ff4a5a22e61fb6b6051566ab6ae6ce004b398",
+    "refs/remotes/origin/w1/platform-bootstrap": "6625a277defdbd3803e4781acde205dd9dc940a3",
+    "refs/remotes/origin/w1/review-procedure": "b5e4b9046d70cfd5cc72653edb08644dbbc9073a",
+    "refs/remotes/origin/w1/runtime-image-deps": "672d64008cebde2b614954c1fb366a4c11d0766d",
+    "refs/remotes/origin/w1/training-ci": "eb5283448d839c3a6a6f4eed10d0393f67d3d694",
+    "refs/remotes/origin/w2/leadgen-v0": "7071657b28ed8ac7437e2bd7bbd5d9940d5ef25d",
+    "refs/remotes/origin/w2/pdmx-aggregate": "373a8a27d0367233416a62d8fba12c11d2524d76",
+    "refs/remotes/origin/w2/production-profile": "5b651c6f8192778b046b33d10dbad9cc7ec6247f",
+    "refs/remotes/origin/w2/smoke-fixtures": "466257916a62c079d7a03b3abeeb2ba50df3db77",
+    "refs/remotes/origin/w2/start": "a8e7c2d09d00f742bd4afdba4512a9bd4bb4e66f",
+    "refs/remotes/origin/w3/families-presets": "cab3b0e9c2985fa737b74c8afeb3df8398324b66",
+    "refs/remotes/origin/w3/pause-20260929": "9d325c974b18a6c58066ee10f2e571d9ae141fa9",
+    "refs/remotes/origin/w3/phone-stage-order": "d1d26ac003f7c0db23f446ebf5aaba205ac59270",
+    "refs/remotes/origin/w3/start": "ec465bc6a1da5a69685bcd5412d739df1edc22e6",
+    "refs/remotes/origin/w4/baseline-tools": "f57c9251d519dea6feb37d54526069d1eccdbff4",
+    "refs/remotes/origin/w4/dev11-path": "6b96c6f585f6e8576b5d5c9c6963d682e6ae806c",
+    "refs/remotes/origin/w4/evaluator-complete": "2f6f203ded8cd85279daf5b80f3a43fe5dbc58d1",
+    "refs/remotes/origin/w4/evaluator-v0": "fd67a838b7dc3948ebf8984b38315f88cbc4df66",
+    "refs/remotes/origin/w4/gt-intake": "d1bf30a8d81145aa363889f15f6baa05c5293d30",
+    "refs/remotes/origin/w4/h3-format": "df11b96337cdd58342584bd7bd562771b65f3248",
+    "refs/remotes/origin/w4/integrity": "98023ff967601e528bfa1f0176d0221f3f4c9573",
+    "refs/remotes/origin/w4/or003-protection": "9b57f27f863417d7c63e2fe9199ffa1c8ee68db6",
+    "refs/remotes/origin/w4/sealed-checklist": "2dd17206abd5c5f27c4fdb32525f9ae23213529c",
+    "refs/remotes/origin/w4/start": "d3b35b6a8ca5d0c5531920156a5515a0fcfeccf8",
+    "refs/remotes/origin/w5/start": "be911e637539208e8c7ae5b987b46ce2ab58cb39",
+    "refs/remotes/origin/w6/start": "699ccedd8e10f40a3de73d7480a8cf6e0ecea9a8",
+    "refs/remotes/origin/w7/onnx-ctc-boundary": "23c23be82c3558aa91e69af3c7368951b7a5a612",
+    "refs/remotes/origin/w7/start": "28d5a33425cbfc151e695256a06baf45df981b1f",
+    "refs/remotes/origin/w8/start": "47128533c80798ce105b0bb3430242817043ebc7"
+  },
+  "commitCount": 151,
+  "blobCount": 818,
+  "historicalPathCount": 548,
+  "totalBlobBytes": 5771229,
+  "largestBlobBytes": 379505,
+  "binary": [],
+  "lfsPointers": [],
+  "symlinkOrGitlinkEntries": {},
+  "suspiciousPaths": [],
+  "elapsedSeconds": 10.438000000000102,
+  "schema": "clavis-publication-audit-1",
+  "dateKst": "2026-10-09",
+  "status": "PARTIAL",
+  "publicationReady": true,
+  "scope": "All fetched origin branches, PR head/merge refs and their reachable commits; no private filesystem roots opened",
+  "remoteBranchCount": 35,
+  "pullHeadCount": 34,
+  "pullMergeCount": 9,
+  "gitTags": 0,
+  "findings": [
+    {
+      "kind": "user_path",
+      "blob": "97b4153b4230f2b483c83110389c20c630e6fc02",
+      "paths": [
+        "docs/reports/W4/GUIDE-DEV11.ko.md"
+      ],
+      "line": 10
+    },
+    {
+      "kind": "user_path",
+      "blob": "97b4153b4230f2b483c83110389c20c630e6fc02",
+      "paths": [
+        "docs/reports/W4/GUIDE-DEV11.ko.md"
+      ],
+      "line": 17
+    },
+    {
+      "kind": "user_path",
+      "blob": "376101336fa941fc94ad0a0b3e95729f9cd463eb",
+      "paths": [
+        "docs/reports/W4/GUIDE-R-LEGACY.ko.md"
+      ],
+      "line": 24
+    },
+    {
+      "kind": "user_path",
+      "blob": "e85c388781124549216c7f703b48966f278524b3",
+      "paths": [
+        "docs/tasks/HANDOFF_PROMPTS.md"
+      ],
+      "line": 3
+    },
+    {
+      "kind": "user_path",
+      "blob": "4430025fb6a4810f04fe1ea9c51fa413511ff9e2",
+      "paths": [
+        "docs/tasks/KICKOFF_WAVE_A.md"
+      ],
+      "line": 13
+    },
+    {
+      "kind": "user_path",
+      "blob": "4430025fb6a4810f04fe1ea9c51fa413511ff9e2",
+      "paths": [
+        "docs/tasks/KICKOFF_WAVE_A.md"
+      ],
+      "line": 38
+    },
+    {
+      "kind": "user_path",
+      "blob": "4430025fb6a4810f04fe1ea9c51fa413511ff9e2",
+      "paths": [
+        "docs/tasks/KICKOFF_WAVE_A.md"
+      ],
+      "line": 58
+    },
+    {
+      "kind": "user_path",
+      "blob": "4430025fb6a4810f04fe1ea9c51fa413511ff9e2",
+      "paths": [
+        "docs/tasks/KICKOFF_WAVE_A.md"
+      ],
+      "line": 76
+    },
+    {
+      "kind": "user_path",
+      "blob": "41d57b08e09fa8579d117ef4b72b68ca6abdf8d4",
+      "paths": [
+        "docs/reports/W4/GUIDE-DEV11.ko.md"
+      ],
+      "line": 10
+    },
+    {
+      "kind": "user_path",
+      "blob": "41d57b08e09fa8579d117ef4b72b68ca6abdf8d4",
+      "paths": [
+        "docs/reports/W4/GUIDE-DEV11.ko.md"
+      ],
+      "line": 17
+    },
+    {
+      "kind": "user_path",
+      "blob": "22cdd813415f71ecdd259b7f946cd0f00ffdab25",
+      "paths": [
+        "training/data/README.md"
+      ],
+      "line": 117
+    },
+    {
+      "kind": "host_identifier",
+      "blob": "191c8f601187cb60ae5d66b8c52c018418fc5ebf",
+      "paths": [
+        "docs/reports/W8/T8.1-validation.json"
+      ],
+      "line": 12
+    }
+  ],
+  "findingsInterpretation": {
+    "personalProfilePathOccurrencesAcrossDistinctBlobs": 10,
+    "personalProfilePathFiles": 4,
+    "genericProfileExampleOccurrences": 1,
+    "hostIdentifierOccurrences": 1,
+    "hostIdentifierJsonPointer": "/tests/hostname",
+    "hostIdentifierCurrentRefs": [
+      "origin/w8/start",
+      "refs/pull/25/head",
+      "refs/pull/25/merge"
+    ],
+    "hostIdentifierIntroducedCommit": "0437ab18e8ec63daa8e518d7996ad2ebff8a0fdc"
+  },
+  "commitIdentityReview": "Only GitHub noreply addresses; no personal email found",
+  "credentialsReview": {
+    "providerPatterns": 0,
+    "privateKeys": 0,
+    "credentialUrls": 0,
+    "credentialLiteralAssignments": 0,
+    "jwt": 0,
+    "embeddedImageOrPdfBase64": 0
+  },
+  "musicxmlReview": {
+    "historicalPaths": 27,
+    "classification": "synthetic evaluator golden pairs (26) plus W8 synthetic oracle (1)"
+  },
+  "dataReview": {
+    "privateGtOrManifestFound": false,
+    "reservedOrSealedHashInventoryFound": false,
+    "ledger": "empty preparation table; no actual sealed run",
+    "manifests": "synthetic demo/config digests, contract fixture checksums, public W3C schema provenance only"
+  },
+  "gitleaks": {
+    "version": "8.30.1",
+    "releaseArchiveSha256": "d29144deff3a68aa93ced33dddf84b7fdc26070add4aa0f4513094c8332afc4e",
+    "checksumVerified": true,
+    "defaultRules": true,
+    "ignoreGitleaksAllowComments": true,
+    "emptyIgnoreFile": true,
+    "redactionPercent": 100,
+    "diffCommitsScanned": 129,
+    "bytesScanned": 6188331,
+    "elapsedMs": 816,
+    "findings": 0,
+    "exitCode": 0
+  },
+  "workingTreePathChanges": [
+    {
+      "path": "docs/reports/W4/GUIDE-DEV11.ko.md",
+      "replacements": 2
+    },
+    {
+      "path": "docs/reports/W4/GUIDE-R-LEGACY.ko.md",
+      "replacements": 1
+    },
+    {
+      "path": "docs/tasks/HANDOFF_PROMPTS.md",
+      "replacements": 1
+    },
+    {
+      "path": "docs/tasks/KICKOFF_WAVE_A.md",
+      "replacements": 4
+    }
+  ],
+  "historyRewritten": false,
+  "repositoryVisibilityChanged": false,
+  "postPublicCiChangeApplied": false,
+  "auditScriptSha256": "55b02e3de23f63c4882d0273ae7f99044f63ced77b56f13ab7e56dc1d665be48",
+  "windowsTests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "588",
+    "time": "44.211",
+    "timestamp": "2026-10-09T01:20:51.213791+09:00"
+  },
+  "validationResources": {
+    "wallSeconds": 45.5,
+    "cpuSecondsSampled": 38.046875,
+    "peakRssBytesSampled": 227201024,
+    "cpuLimit": 2,
+    "status": "succeeded",
+    "memoryConfiguration": "24 GB (16+8), DDR4-3200 dual channel"
+  },
+  "publicationDecision": {
+    "status": "APPROVED",
+    "date": "2026-10-09",
+    "by": "Orchestrator",
+    "acceptedResiduals": [
+      "historical user profile paths",
+      "one historical host identifier"
+    ],
+    "historyRewrite": false,
+    "reason": "Identifiers alone do not provide access; rewriting would disrupt branches and PR history."
+  }
+}

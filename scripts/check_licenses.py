@@ -13,12 +13,15 @@ from packaging.utils import canonicalize_name
 ALLOWED = frozenset(
     {
         "MIT",
+        "MIT-CMU",
         "MIT License",
         "BSD",
         "BSD License",
         "BSD-2-Clause",
         "BSD-3-Clause",
+        "3-Clause BSD License",
         "Apache-2.0",
+        "Apache-2.0 OR BSD-2-Clause",
         "Apache Software License",
         "ISC",
         "ISC License (ISCL)",

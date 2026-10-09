@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "repositoryVisibility": "PUBLIC",
+  "windowsTests": {
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "621",
+    "time": "62.364"
+  },
+  "resources": {
+    "status": "succeeded",
+    "wallSeconds": 64.79700000000048,
+    "cpuSecondsSampled": 54.75,
+    "peakRssBytesSampled": 226537472,
+    "cpuLimit": 2
+  },
+  "memoryConfiguration": "24 GB (16+8), DDR4-3200 dual channel",
+  "lint": "PASS",
+  "mypy": "PASS",
+  "hardcodeScan": "PASS",
+  "remoteCi": {
+    "run": "https://github.com/jooa1018/clavis-omr/actions/runs/37812646912",
+    "head": "90dc0ac3f598975f687536826dc216691b42cb65",
+    "linux": {
+      "status": "PASS",
+      "tests": 621,
+      "seconds": 24.33
+    },
+    "windows": {
+      "status": "PASS",
+      "tests": 621,
+      "seconds": 63.2
+    },
+    "coverageGates": "PASS",
+    "runtimeLicenses": "PASS",
+    "importBoundaries": "PASS",
+    "hardcodeScan": "PASS",
+    "privacyScan": "PASS"
+  },
+  "recognitionEvaluation": "NOT_RUN",
+  "approval": "Orchestrator 2026-10-09; user public-conversion completion",
+  "privacyScan": {
+    "status": "PASS",
+    "trackedFiles": 458,
+    "findings": []
+  }
+}
