@@ -125,6 +125,9 @@
 
 - OR-001(짧은 개발 실행): 벽시계 10분 이하, RAM 3 GB 이하, 렌더·이미지 100개 이하, 사용자가 지켜보는 수동 실행은 배치 큐 밖에서 해도 된다. 이보다 무거운 작업은 큐로만 돌린다.
 - OR-005(짧은 실행 슬롯): 전체 시험, 렌더·학습·OCR smoke 등 OR-001 실행은 W1 슬롯 래퍼로 실행한다(단위 시험 몇 개는 제외). 동시 슬롯은 머신 공통 설정이며 기본 3개다. 래퍼는 연산 스레드 2, RAM 최대 3 GB, 벽시계 최대 600초를 적용하고 기존 큐의 머신 잠금을 공유해 무거운 큐 작업과 동시에 실행하지 않는다. 사용법: `uv run --locked --all-groups python -m training.jobs.short run pytest tests/`. 렌더·이미지 수는 `run --items N <module> ...`로 선언하며 100개를 넘으면 큐로 보낸다. 슬롯 설정·종료·증거 확인은 training/jobs/README.md를 따른다.
+- 벤치마크 작업(Orchestrator 승인, 2026-10-09): **지연 예산 판정은 벤치마크 작업 결과로만 한다. 슬롯 측정은 참고값**. 큐·슬롯과 같은 머신 잠금을 독점하고 연산 라이브러리 스레드 4, 보통 우선순위, 전체 CPU affinity로 실행한다. 일반 큐의 Below Normal·affinity 제한에 대한 측정 전용 예외다.
+- 벤치마크 시작 전 10초 동안 외부 CPU(전체 CPU 사용 − 작업 프로세스 트리 사용) 평균 ≤0.5 CPU, 가용 물리 RAM ≥4 GB, AC 연결을 확인한다. 불충족 시 1분 간격으로 최대 10번 재확인하고 busy로 끝낸다. 실행 중 어떤 5초 이동 창의 외부 평균 >1.0 CPU, 전체 외부 평균 >0.5 CPU, 가용 RAM <2 GB 또는 AC 전원 이탈이면 invalid다. 표본 주기는 실행기와 같은 0.1초다.
+- 외부 부하 평균·5초 창 최대·최소 가용 RAM·전원 상태·Windows 전원 모드와 표본을 결과에 남긴다. invalid도 보존하며 예산 판정에서 제외한다. provisional 기준은 configs/jobs/benchmark.yaml에 등록한다. 정상 상태에서 invalid가 반복되면 측정 수치와 함께 Orchestrator에게 보고하며 임의로 기준을 바꾸지 않는다. 사용법: `uv run --locked --all-groups python -m training.jobs.benchmark <module> ...` 또는 큐 JSON에 `kind: "benchmark", threads: 4`를 지정한다.
 - OR-002(스캐너 이전 병합): W4 무결성 도구가 main에 들어오기 전에도 B등급 PR은 병합할 수 있다. 보고서에 NOT_RUN으로 기록하고, 도구가 들어오면 W1이 main 전체에 소급 실행하며 위반은 해당 소유자가 고친다.
 
 - draft PR에서는 CI가 돌지 않는다. 준비 완료로 바꾸기 전에 로컬 Windows 전체 시험을 돌려 명령과 통과 수를 보고서에 남긴다. push는 작업 단위로 묶는다. main의 Windows 예약 실행이 실패하면 원인 PR 소유자가 바로 고친다.

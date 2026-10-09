@@ -33,7 +33,7 @@ class Extended(ctypes.Structure):
 
 
 class Guard:
-    def __init__(self, pid: int, memory: int, cpus: list[int]):
+    def __init__(self, pid: int, memory: int, cpus: list[int], *, normal_priority: bool = False):
         self.pid = pid
         self.handle = None
         if sys.platform != "win32":
@@ -58,7 +58,7 @@ class Guard:
         # KILL_ON_CLOSE, JOB_MEMORY, AFFINITY, PRIORITY_CLASS: inherited by descendants.
         limits.basic.flags = 0x2000 | 0x200 | 0x10 | 0x20
         limits.basic.affinity = sum(1 << cpu for cpu in cpus)
-        limits.basic.priority = 0x4000
+        limits.basic.priority = 0x20 if normal_priority else 0x4000
         limits.jobMemory = memory
         process = self.api.OpenProcess(0x0100 | 0x0001, False, pid)
         try:

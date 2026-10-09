@@ -11,6 +11,7 @@ from typing import Any
 
 import psutil
 
+from training.jobs.benchmark_monitor import LoadMonitor, host_sample, policy, preflight
 from training.jobs.guard import Guard
 from training.jobs.launcher import alive, kill_tree
 from training.jobs.memory import can_start, snapshot
@@ -41,6 +42,40 @@ def recover(queue: Queue) -> None:
 
 def execute(queue: Queue, row: dict[str, Any], manual: bool) -> dict[str, Any]:
     spec = JobSpec.model_validate_json(row["spec"])
+    benchmark = spec.kind == "benchmark"
+    limits = policy() if benchmark else {}
+    admission: dict[str, Any] = {}
+    if benchmark:
+        try:
+            admission = preflight(
+                limits, lambda: queue.paused() or (not manual and not in_window())
+            )
+        except (OSError, psutil.Error) as error:
+            diagnosis = Diagnostics()
+            diagnosis.record(error, "benchmark.preflight")
+            report = {
+                "jobId": row["id"],
+                "status": "failed",
+                "reason": "monitor-error",
+                "monitorDiagnostics": diagnosis.report(),
+                "benchmark": {"validity": "not-run"},
+            }
+            queue.record(report)
+            queue.update(row["id"], status="failed", reason="monitor-error")
+            return report
+        if admission["status"] != "ready":
+            stopped = admission["status"] == "cancelled"
+            reason = "user-pause" if queue.paused() else "window-closed" if stopped else "busy"
+            report = {
+                "jobId": row["id"],
+                "status": "paused" if stopped else "busy",
+                "reason": reason,
+                "benchmark": {"validity": "not-run", "admission": admission},
+            }
+            queue.record(report)
+            queue.update(row["id"], status=report["status"], reason=reason)
+            return report
+    load_monitor = LoadMonitor(limits) if benchmark else None
     directory = queue.root / row["id"]
     directory.mkdir(exist_ok=True)
     for name in ("go", "stop"):
@@ -70,10 +105,12 @@ def execute(queue: Queue, row: dict[str, Any], manual: bool) -> dict[str, Any]:
             "CUDA_DEVICE_ORDER": "PCI_BUS_ID",
         }
     )
-    cpus = allowed_cpus(spec.threads, psutil.Process().cpu_affinity())
-    env["CLAVIS_CPU_LIMIT"] = str(len(cpus))
+    available = psutil.Process().cpu_affinity()
+    cpus = available if benchmark else allowed_cpus(spec.threads, available)
+    cpu_limit = spec.threads if benchmark else len(cpus)
+    env["CLAVIS_CPU_LIMIT"] = str(cpu_limit)
     for name in THREAD_ENV:
-        env[name] = str(len(cpus))
+        env[name] = str(cpu_limit)
     repository = Path(__file__).resolve().parents[2]
     env["PYTHONPATH"] = os.pathsep.join(
         [str(repository / "training/jobs/bootstrap"), str(repository), str(repository / "src")]
@@ -106,6 +143,9 @@ def execute(queue: Queue, row: dict[str, Any], manual: bool) -> dict[str, Any]:
             flags = 0
             if sys.platform == "win32":
                 flags = subprocess.CREATE_NO_WINDOW
+            if load_monitor is not None:
+                host_sample()
+                last_sample = time.monotonic()
             site = "launch.Popen"
             child = subprocess.Popen(
                 [sys.executable, "-m", "training.jobs.launcher"],
@@ -118,8 +158,8 @@ def execute(queue: Queue, row: dict[str, Any], manual: bool) -> dict[str, Any]:
             )
             site = "launch.containment"
             process = psutil.Process(child.pid)
-            guard = Guard(child.pid, spec.ram_bytes, cpus)
-            constrain(process, cpus)
+            guard = Guard(child.pid, spec.ram_bytes, cpus, normal_priority=benchmark)
+            constrain(process, cpus, normal_priority=benchmark)
             queue.update(row["id"], pid=child.pid, born=process.create_time())
             (directory / "go").touch()
             while child.poll() is None:
@@ -136,6 +176,9 @@ def execute(queue: Queue, row: dict[str, Any], manual: bool) -> dict[str, Any]:
                 peak_cpu = max(
                     peak_cpu, (total_cpu - last_cpu) / max(sampled_at - last_sample, 1e-9)
                 )
+                if load_monitor is not None:
+                    site = "benchmark.host_sample"
+                    load_monitor.observe(sampled_at - last_sample, total_cpu, host_sample())
                 last_cpu, last_sample = total_cpu, sampled_at
                 site = "affinity.process_tree"
                 if guard.handle is None:
@@ -165,9 +208,13 @@ def execute(queue: Queue, row: dict[str, Any], manual: bool) -> dict[str, Any]:
                             pass
                     kill_tree(process)
                     break
-                time.sleep(0.1)
+                time.sleep(limits["sample_seconds"] if benchmark else 0.1)
             if child.wait() != 0 and reason == "completed":
                 reason = "command-failed"
+            if load_monitor is not None:
+                site = "benchmark.final_sample"
+                sampled_at = time.monotonic()
+                load_monitor.observe(sampled_at - last_sample, sum(cpu.values()), host_sample())
             site = "cleanup.process_tree"
             kill_tree(process)
     except (OSError, psutil.Error) as error:
@@ -209,7 +256,9 @@ def execute(queue: Queue, row: dict[str, Any], manual: bool) -> dict[str, Any]:
         "resultDirectory": row["id"],
         "manual": manual,
         "cpuAffinity": cpus,
-        "cpuLimit": len(cpus),
+        "cpuLimit": cpu_limit,
+        "priority": "normal" if benchmark else "below-normal",
+        "kind": spec.kind,
         "meanLogicalCpusSampled": sum(cpu.values()) / max(elapsed - row["wall"], 1e-9),
         "peakLogicalCpusSampled": peak_cpu,
         "meanCpuPercentSampled": 100 * sum(cpu.values()) / max(elapsed - row["wall"], 1e-9),
@@ -220,6 +269,17 @@ def execute(queue: Queue, row: dict[str, Any], manual: bool) -> dict[str, Any]:
             ["MEAN_CPU_ABOVE_8"] if sum(cpu.values()) > 8 * (elapsed - row["wall"]) else []
         ),
     }
+    if load_monitor is not None:
+        measurement = load_monitor.report()
+        measurement["admission"] = admission
+        measurement["policy"] = limits
+        if reason != "completed":
+            measurement["validity"] = "invalid"
+            measurement["invalidReasons"].append("job-not-completed")
+        report["benchmark"] = measurement
+        if reason == "completed" and measurement["validity"] == "invalid":
+            status = report["status"] = "invalid"
+            reason = report["reason"] = "benchmark-contaminated"
     queue.record(report)
     queue.update(row["id"], status=status, wall=elapsed, reason=reason, pid=None, born=None)
     return report

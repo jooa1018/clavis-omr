@@ -97,9 +97,11 @@ def configure() -> dict[str, str | int]:
     return result
 
 
-def constrain(process: psutil.Process, cpus: list[int]) -> None:
+def constrain(process: psutil.Process, cpus: list[int], *, normal_priority: bool = False) -> None:
     process.cpu_affinity(cpus)
     if sys.platform == "win32":
-        process.nice(psutil.BELOW_NORMAL_PRIORITY_CLASS)
+        process.nice(
+            psutil.NORMAL_PRIORITY_CLASS if normal_priority else psutil.BELOW_NORMAL_PRIORITY_CLASS
+        )
     else:
-        process.nice(10)
+        process.nice(0 if normal_priority else 10)
