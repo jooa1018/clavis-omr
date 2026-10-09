@@ -240,6 +240,25 @@ def test_cpu_budget_selection() -> None:
             allowed_cpus(request, available)
 
 
+def test_job_object_does_not_need_descendant_affinity_queries(tmp_path: Path) -> None:
+    """Windows enforces affinity in-kernel; unguarded failures still stop jobs."""
+    original = psutil.Process.cpu_affinity
+
+    def affinity(process: psutil.Process, cpus: list[int] | None = None) -> list[int] | None:
+        if cpus is None and process.pid != os.getpid():
+            raise psutil.AccessDenied(process.pid)
+        return original(process, cpus)
+
+    q = Queue(tmp_path)
+    q.submit(spec(config={"steps": 2}))
+    with patch.object(psutil.Process, "cpu_affinity", affinity):
+        report = run(q, manual=True)[0]
+    if sys.platform == "win32":
+        assert report["status"] == "succeeded"
+    else:
+        assert report["reason"] == "monitor-error"
+
+
 def test_library_injection(monkeypatch: pytest.MonkeyPatch) -> None:
     from types import SimpleNamespace
     from unittest.mock import Mock
