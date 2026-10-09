@@ -52,8 +52,12 @@
     "hardcode": "PASS",
     "privacy": "PASS",
     "required_contracts": 298,
-    "required_integrity": 24
+    "required_integrity": 24,
+    "wheel_specification": "PASS"
   },
   "prior_attempt": "not-started: slot-or-worker-unavailable",
-  "ci": "pending ready"
+  "ci": {
+    "source": "https://github.com/jooa1018/clavis-omr/pull/49/checks",
+    "policy": "Both Linux and Windows must succeed before B-grade squash merge"
+  }
 }

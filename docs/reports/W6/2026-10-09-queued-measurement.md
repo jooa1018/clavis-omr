@@ -7,7 +7,8 @@ W5 #32와 W1 monitor-error 수정 #46을 main에서 반영했다.
 FCN·LightGBM measurement-only 예비 경로를 검증했고, 정식 측정은 10월 10일 01–07시 KST 큐로 실행한다.
 
 ## 2. 변경 (PR 링크, 주요 파일·모듈)
-브랜치 `w6/queued-measurement`. W6 소유 경로만 변경한다.
+[PR #49](https://github.com/jooa1018/clavis-omr/pull/49), 브랜치 `w6/queued-measurement`.
+W6 소유 경로만 변경한다.
 `src/clavis/symbols/staff.py`: W5 공개 API 호출과 W6 읽기 구성 연결.
 `training/models/symbols/jitter.py`, `measurement_data.py`, `measurement.py`:
 W5 synthetic-v0 오차 행 소비, 기존 W2 smoke 조각 준비, 큐 기반 독립 학습 시간 측정.
@@ -31,7 +32,8 @@ resvg-py 0.2.6(MIT, 기존 승인 도구). 런타임 의존성과 uv.lock은 변
 재시도 **1431 passed**, 실패/오류/skip 0, JUnit 288.986초, 큐 벽시계 294.0630000000019초,
 표본 peak RSS 320507904 bytes. 전체 커버리지 93.98634938203284%, 새 runtime 모듈 100%.
 전체/platform/eval/jobs ≥80%, 필수 계약 298개·무결성 24개, wheel 명세 자산 검사 PASS.
-정제 근거: `2026-10-09-queued-validation.json`. CI는 ready 전환 후 Linux·Windows 둘 다 확인한다.
+정제 근거: `2026-10-09-queued-validation.json`. CI의 최종 정본은
+[PR checks](https://github.com/jooa1018/clavis-omr/pull/49/checks)이며, Linux·Windows 모두 성공한 뒤 B등급 squash 병합한다.
 
 ## 5. 지표 (평가기 JSON 경로 + 핵심 수치 표: 이전 대비 변화와 95% CI, 슬라이스별)
 `2026-10-09-queued-probes.json`: 자동 합성 smoke, **SYN-Val 아님**, 실사/Dev/sealed 평가 아님.
