@@ -167,5 +167,11 @@
       "rootCause": "not established; bounded retry passed"
     }
   ],
-  "full_samples": "local W1 job directories; reported run IDs retain all samples"
+  "full_samples": "local W1 job directories; reported run IDs retain all samples",
+  "seed_note": {
+    "preliminary_wrapper_request_seed": 0,
+    "actual_probe_model_seed_from_config": 6,
+    "formal_v2_request_and_model_seed": 6,
+    "scope": "Preliminary wrappers used their default seed field; the archived config specifies the actual model seed. Formal requests agree with config."
+  }
 }
