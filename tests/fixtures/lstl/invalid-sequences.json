@@ -1,0 +1,671 @@
+{
+  "ending-without-bar": [
+    {
+      "type": "ending",
+      "numbers": [
+        1
+      ],
+      "mark": "start"
+    }
+  ],
+  "ending-after-note": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1
+    },
+    {
+      "type": "ending",
+      "numbers": [
+        1
+      ],
+      "mark": "stop"
+    }
+  ],
+  "chord-after-start": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1,
+      "chord": 1
+    }
+  ],
+  "chord-after-rest": [
+    {
+      "type": "rest",
+      "dur": "half",
+      "dots": 0,
+      "v": 1
+    },
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1,
+      "chord": 1
+    }
+  ],
+  "chord-after-bar": [
+    {
+      "type": "bar",
+      "style": "regular"
+    },
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1,
+      "chord": 1
+    }
+  ],
+  "chord-after-clef": [
+    {
+      "type": "clef",
+      "sign": "G2"
+    },
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1,
+      "chord": 1
+    }
+  ],
+  "chord-after-mrest": [
+    {
+      "type": "mrest",
+      "count": 2
+    },
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1,
+      "chord": 1
+    }
+  ],
+  "chord-after-segno": [
+    {
+      "type": "segno"
+    },
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1,
+      "chord": 1
+    }
+  ],
+  "chord-after-coda": [
+    {
+      "type": "coda"
+    },
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1,
+      "chord": 1
+    }
+  ],
+  "chord-mismatch-v": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1
+    },
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 2,
+      "chord": 1
+    }
+  ],
+  "chord-mismatch-dur": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1
+    },
+    {
+      "type": "note",
+      "dur": "half",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1,
+      "chord": 1
+    }
+  ],
+  "chord-mismatch-dots": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1
+    },
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 1,
+      "pos": 0,
+      "head": "normal",
+      "v": 1,
+      "chord": 1
+    }
+  ],
+  "chord-mismatch-grace": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1
+    },
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1,
+      "chord": 1,
+      "grace": "acciaccatura"
+    }
+  ],
+  "chord-mismatch-pos": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1
+    },
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": -1,
+      "head": "normal",
+      "v": 1,
+      "chord": 1
+    }
+  ],
+  "chord-grace-to-normal": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1,
+      "grace": "appoggiatura"
+    },
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1,
+      "chord": 1
+    }
+  ],
+  "join-note-after-start": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 2,
+      "join": 1
+    }
+  ],
+  "join-rest-after-start": [
+    {
+      "type": "rest",
+      "dur": "half",
+      "dots": 0,
+      "v": 2,
+      "join": 1
+    }
+  ],
+  "join-note-after-bar": [
+    {
+      "type": "bar",
+      "style": "regular"
+    },
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 2,
+      "join": 1
+    }
+  ],
+  "join-rest-after-bar": [
+    {
+      "type": "bar",
+      "style": "regular"
+    },
+    {
+      "type": "rest",
+      "dur": "half",
+      "dots": 0,
+      "v": 2,
+      "join": 1
+    }
+  ],
+  "join-note-after-time": [
+    {
+      "type": "time",
+      "beats": 4,
+      "beatType": 4
+    },
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 2,
+      "join": 1
+    }
+  ],
+  "join-rest-after-time": [
+    {
+      "type": "time",
+      "beats": 4,
+      "beatType": 4
+    },
+    {
+      "type": "rest",
+      "dur": "half",
+      "dots": 0,
+      "v": 2,
+      "join": 1
+    }
+  ],
+  "join-note-after-mrest": [
+    {
+      "type": "mrest",
+      "count": 2
+    },
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 2,
+      "join": 1
+    }
+  ],
+  "join-rest-after-mrest": [
+    {
+      "type": "mrest",
+      "count": 2
+    },
+    {
+      "type": "rest",
+      "dur": "half",
+      "dots": 0,
+      "v": 2,
+      "join": 1
+    }
+  ],
+  "join-note-after-grace": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1,
+      "grace": "acciaccatura"
+    },
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 2,
+      "join": 1
+    }
+  ],
+  "join-rest-after-grace": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1,
+      "grace": "acciaccatura"
+    },
+    {
+      "type": "rest",
+      "dur": "half",
+      "dots": 0,
+      "v": 2,
+      "join": 1
+    }
+  ],
+  "join-voice-order-1": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 3
+    },
+    {
+      "type": "rest",
+      "dur": "half",
+      "dots": 0,
+      "v": 1,
+      "join": 1
+    }
+  ],
+  "join-voice-order-2": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 3
+    },
+    {
+      "type": "rest",
+      "dur": "half",
+      "dots": 0,
+      "v": 2,
+      "join": 1
+    }
+  ],
+  "join-voice-order-3": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 3
+    },
+    {
+      "type": "rest",
+      "dur": "half",
+      "dots": 0,
+      "v": 3,
+      "join": 1
+    }
+  ],
+  "join-chord": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1
+    },
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 2,
+      "chord": 1,
+      "join": 1
+    }
+  ],
+  "join-grace": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1
+    },
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 2,
+      "grace": "appoggiatura",
+      "join": 1
+    }
+  ],
+  "join-forbidden-mrest": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1
+    },
+    {
+      "type": "mrest",
+      "count": 2,
+      "join": 1
+    }
+  ],
+  "join-forbidden-key": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1
+    },
+    {
+      "type": "key",
+      "fifths": 0,
+      "join": 1
+    }
+  ],
+  "join-forbidden-coda": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1
+    },
+    {
+      "type": "coda",
+      "join": 1
+    }
+  ],
+  "join-invalid-default": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1
+    },
+    {
+      "type": "rest",
+      "dur": "half",
+      "dots": 0,
+      "v": 2,
+      "join": 0
+    }
+  ],
+  "join-invalid-two": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1
+    },
+    {
+      "type": "rest",
+      "dur": "half",
+      "dots": 0,
+      "v": 2,
+      "join": 2
+    }
+  ],
+  "join-invalid-negative": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1
+    },
+    {
+      "type": "rest",
+      "dur": "half",
+      "dots": 0,
+      "v": 2,
+      "join": -1
+    }
+  ],
+  "join-invalid-boolean": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1
+    },
+    {
+      "type": "rest",
+      "dur": "half",
+      "dots": 0,
+      "v": 2,
+      "join": true
+    }
+  ],
+  "join-invalid-float": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1
+    },
+    {
+      "type": "rest",
+      "dur": "half",
+      "dots": 0,
+      "v": 2,
+      "join": 1.0
+    }
+  ],
+  "join-invalid-null": [
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1
+    },
+    {
+      "type": "rest",
+      "dur": "half",
+      "dots": 0,
+      "v": 2,
+      "join": null
+    }
+  ],
+  "courtesy-start": [
+    {
+      "type": "clef",
+      "sign": "G2",
+      "courtesy": true
+    }
+  ],
+  "courtesy-after-note": [
+    {
+      "type": "bar",
+      "style": "regular"
+    },
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1
+    },
+    {
+      "type": "key",
+      "fifths": 0,
+      "courtesy": true
+    }
+  ],
+  "courtesy-not-tail": [
+    {
+      "type": "bar",
+      "style": "regular"
+    },
+    {
+      "type": "clef",
+      "sign": "G2",
+      "courtesy": true
+    },
+    {
+      "type": "note",
+      "dur": "quarter",
+      "dots": 0,
+      "pos": 0,
+      "head": "normal",
+      "v": 1
+    }
+  ]
+}
