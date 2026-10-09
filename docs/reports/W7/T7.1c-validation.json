@@ -1,0 +1,138 @@
+{
+  "scope": "Windows REF-LAPTOP; 24 GB = 16+8 GB DDR4-3200; OR-005; no GPU",
+  "tests": {
+    "total": 1161,
+    "passed": 1161,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "newIntegration": 17
+  },
+  "execution": {
+    "status": "succeeded",
+    "reason": "completed",
+    "wallSeconds": 162.06199999999808,
+    "cpuSecondsSampled": 113.65625,
+    "peakRssBytesSampled": 314138624,
+    "cpuLimit": 2
+  },
+  "coverage": {
+    "src/clavis/text/beam.py": {
+      "covered_lines": 83,
+      "num_statements": 85,
+      "percent_covered": 97.6470588235294,
+      "percent_covered_display": "98",
+      "missing_lines": 2,
+      "excluded_lines": 0,
+      "percent_statements_covered": 97.6470588235294,
+      "percent_statements_covered_display": "98"
+    },
+    "src/clavis/text/bridge.py": {
+      "covered_lines": 58,
+      "num_statements": 64,
+      "percent_covered": 90.625,
+      "percent_covered_display": "91",
+      "missing_lines": 6,
+      "excluded_lines": 0,
+      "percent_statements_covered": 90.625,
+      "percent_statements_covered_display": "91"
+    },
+    "src/clavis/text/detection.py": {
+      "covered_lines": 63,
+      "num_statements": 63,
+      "percent_covered": 100.0,
+      "percent_covered_display": "100",
+      "missing_lines": 0,
+      "excluded_lines": 0,
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100"
+    },
+    "src/clavis/text/lyrics.py": {
+      "covered_lines": 26,
+      "num_statements": 27,
+      "percent_covered": 96.29629629629629,
+      "percent_covered_display": "96",
+      "missing_lines": 1,
+      "excluded_lines": 0,
+      "percent_statements_covered": 96.29629629629629,
+      "percent_statements_covered_display": "96"
+    }
+  },
+  "checks": {
+    "ruff": "PASS",
+    "format": "PASS",
+    "mypy": "PASS",
+    "imports": "PASS",
+    "runtimeLicenses": "PASS",
+    "hardcode": "PASS: no findings; duration logging separated from metric decisions after H9 taint on dict constructor",
+    "privacy": "PASS: staged 610 files, no findings",
+    "contractRequired298": "PASS",
+    "integrityRequired24": "PASS",
+    "TextIRJSONSchema": "PASS",
+    "postMetricExtensionUnit": "PASS: 1 targeted test",
+    "actualModelTextIRJSONSchema": "PASS: 28"
+  },
+  "determinism": {
+    "purePostprocessing": "3 repeats each with OpenCV configuration 1 and 4; CPU affinity remains OR-005 capped at 2",
+    "onnx": "same pinned models as PR50; actual ORT 1-vs-4 NOT_RUN; OR-005 caps ORT to 2"
+  },
+  "remoteCI": "NOT_RUN: draft, do not merge before W2 confirmation",
+  "W2": "RECEIVED_PENDING_INDEPENDENT_VERIFICATION",
+  "sealed": "NOT_ACCESSED",
+  "Dev": "NOT_RUN",
+  "SYNVal": "NOT_RUN",
+  "attempts": [
+    {
+      "scope": "initial unit development",
+      "status": "FAIL",
+      "reason": "fixture shape/schema path and transition-budget expectation corrected; no model/data fitting"
+    },
+    {
+      "scope": "unit after correction",
+      "status": "PASS",
+      "tests": 15,
+      "wallSeconds": 3.703
+    },
+    {
+      "scope": "full after metric/repeat tests",
+      "status": "PASS",
+      "tests": 1161
+    },
+    {
+      "scope": "final full after quantized representative tie and completed smoke",
+      "status": "PASS",
+      "tests": 1161
+    }
+  ],
+  "slotUnavailableAttempts": 5,
+  "smokeAttempts": [
+    {
+      "status": "PASS_WITH_UNMEASURED_CROP",
+      "items": 96,
+      "skippedDerivedCrops": 1,
+      "wallSeconds": 56.39100000000326,
+      "cpuSecondsSampled": 65.5,
+      "peakRssBytesSampled": 405508096,
+      "cpuLimit": 2,
+      "changeForFollowup": "Only rendered-image resource declaration expanded from 96 to at most 100; same 64 reference blocks, same runtime rules and constants."
+    },
+    {
+      "status": "PASS",
+      "items": 97,
+      "skippedDerivedCrops": 0,
+      "wallSeconds": 42.48399999999674,
+      "cpuSecondsSampled": 57.640625,
+      "peakRssBytesSampled": 407388160,
+      "cpuLimit": 2
+    }
+  ],
+  "priorFullExecution": {
+    "status": "succeeded",
+    "reason": "completed",
+    "wallSeconds": 125.71899999999732,
+    "cpuSecondsSampled": 94.453125,
+    "peakRssBytesSampled": 311934976,
+    "cpuLimit": 2
+  },
+  "command": "uv run --locked --all-groups python -m training.jobs.short run pytest tests/ --junitxml=work/t71c-final.xml --cov=clavis.text --cov-report=json:work/t71c-final-coverage.json"
+}

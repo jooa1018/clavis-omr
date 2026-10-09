@@ -88,5 +88,105 @@
     "status": "provisional",
     "rationale": "Reject long crops instead of distorting or silently cutting text; initial resource cap.",
     "evidence": "docs/reports/W7/T7.1b-ppocr.md"
+  },
+  {
+    "name": "text.beam.width",
+    "value": 16,
+    "unit": "count",
+    "owner": "W7",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Bound retained class prefixes; no measured-data tuning.",
+    "evidence": "docs/reports/W7/T7.1c-integration.md"
+  },
+  {
+    "name": "text.beam.top_k",
+    "value": 3,
+    "unit": "count",
+    "owner": "W7",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Bound reported alternatives; preserve unnormalized retained mass.",
+    "evidence": "docs/reports/W7/T7.1c-integration.md"
+  },
+  {
+    "name": "text.beam.max_transitions",
+    "value": 2000000,
+    "unit": "count",
+    "owner": "W7",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Fail closed on excess decoder work.",
+    "evidence": "docs/reports/W7/T7.1c-integration.md"
+  },
+  {
+    "name": "text.db.threshold_bp",
+    "value": 3000,
+    "unit": "basis_points",
+    "owner": "W7",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Pinned PP-OCR detector metadata thresh=0.3.",
+    "evidence": "docs/reports/W7/T7.1c-integration.md"
+  },
+  {
+    "name": "text.db.box_threshold_bp",
+    "value": 6000,
+    "unit": "basis_points",
+    "owner": "W7",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Pinned detector metadata box_thresh=0.6.",
+    "evidence": "docs/reports/W7/T7.1c-integration.md"
+  },
+  {
+    "name": "text.db.unclip_ratio",
+    "value": 1.5,
+    "unit": "dimensionless",
+    "owner": "W7",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Pinned detector metadata unclip_ratio; rectangular approximation.",
+    "evidence": "docs/reports/W7/T7.1c-integration.md"
+  },
+  {
+    "name": "text.db.max_components",
+    "value": 1000,
+    "unit": "count",
+    "owner": "W7",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Pinned detector max_candidates, fail instead of truncating.",
+    "evidence": "docs/reports/W7/T7.1c-integration.md"
+  },
+  {
+    "name": "text.db.max_pixels",
+    "value": 1000000,
+    "unit": "count",
+    "owner": "W7",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Bound postprocessing allocations.",
+    "evidence": "docs/reports/W7/T7.1c-integration.md"
+  },
+  {
+    "name": "text.lyrics.gap_spaces",
+    "value": 0.25,
+    "unit": "staff_space",
+    "owner": "W7",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Provisional small internal ink-gap merge; not fitted to samples.",
+    "evidence": "docs/reports/W7/T7.1c-integration.md"
+  },
+  {
+    "name": "text.lyrics.max_segments",
+    "value": 128,
+    "unit": "count",
+    "owner": "W7",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Fail closed on excess candidate segments.",
+    "evidence": "docs/reports/W7/T7.1c-integration.md"
   }
 ]

@@ -633,5 +633,87 @@
     },
     "introduced_by": "w7/ppocr-runtime",
     "motivated_by_failure": false
+  },
+  {
+    "id": "TEXT-BEAM-001",
+    "owner": "W7",
+    "statement": "CTC prefix recurrence on export class IDs; quantize frame probabilities then normalize each row; prune deterministic prefix beams using CCR-0002 only; merge accepted canonical forms. Scores are retained mass, not calibrated confidence. No LM or visual confusion substitutions.",
+    "units": "dimensionless",
+    "params": [
+      "text.beam.width",
+      "text.beam.top_k",
+      "text.beam.max_transitions"
+    ],
+    "source": "convention",
+    "reference": "https://arxiv.org/abs/1408.2873",
+    "flag": "text.rules.TEXT-BEAM-001.enabled",
+    "enabled": true,
+    "ablation": {
+      "status": "synthetic-smoke-only",
+      "report": "docs/reports/W7/T7.1c-validation.json"
+    },
+    "introduced_by": "w7/textir-integration",
+    "motivated_by_failure": false
+  },
+  {
+    "id": "TEXT-DB-001",
+    "owner": "W7",
+    "statement": "Strict map threshold, external connected contours, filled-contour mean score; minimum-area rectangle expands each side by area*ratio/perimeter. This is a conservative rectangle approximation, not arbitrary polygon offset. Clip to image and retain separate components, with no NMS.",
+    "units": "dimensionless",
+    "params": [
+      "text.db.threshold_bp",
+      "text.db.box_threshold_bp",
+      "text.db.unclip_ratio",
+      "text.db.max_components",
+      "text.db.max_pixels"
+    ],
+    "source": "convention",
+    "reference": "https://arxiv.org/abs/1911.08947; pinned PP-OCR inference.yml",
+    "flag": "text.rules.TEXT-DB-001.enabled",
+    "enabled": true,
+    "ablation": {
+      "status": "synthetic-smoke-only",
+      "report": "docs/reports/W7/T7.1c-validation.json"
+    },
+    "introduced_by": "w7/textir-integration",
+    "motivated_by_failure": false
+  },
+  {
+    "id": "TEXT-LYRICS-001",
+    "owner": "W7",
+    "statement": "Otsu dark-ink horizontal projection merges internal gaps in staff-space units. Candidate segments are not asserted syllables; independently recognize each box. Constant images abstain. No lexicon, equal-width text split, or CTC-frame-to-image box inference.",
+    "units": "dimensionless",
+    "params": [
+      "text.lyrics.gap_spaces",
+      "text.lyrics.max_segments",
+      "text.ppocr.max_pixels"
+    ],
+    "source": "convention",
+    "reference": "Otsu 1979 doi:10.1109/TSMC.1979.4310076; general connected ink segmentation",
+    "flag": "text.rules.TEXT-LYRICS-001.enabled",
+    "enabled": true,
+    "ablation": {
+      "status": "synthetic-smoke-only",
+      "report": "docs/reports/W7/T7.1c-validation.json"
+    },
+    "introduced_by": "w7/textir-integration",
+    "motivated_by_failure": false
+  },
+  {
+    "id": "TEXT-IR-001",
+    "owner": "W7",
+    "statement": "TextIR preserves NFC observation and caller-provided role/staff link; chord strings and canonical alternatives must pass grammar. Missing harmonic interpretation remains null with diagnostic. Supplied syllable boxes must be inside region. Scores remain explicitly uncalibrated. Sort observations by geometry/text. No role or staff guesses.",
+    "units": "dimensionless",
+    "params": [],
+    "source": "convention",
+    "reference": "docs/CONTRACTS.md 3.6, 6, 7; CCR-0002",
+    "flag": "text.rules.TEXT-IR-001.enabled",
+    "enabled": true,
+    "ablation": {
+      "status": "synthetic-smoke-only",
+      "report": "docs/reports/W7/T7.1c-validation.json"
+    },
+    "introduced_by": "w7/textir-integration",
+    "motivated_by_failure": false
   }
 ]
