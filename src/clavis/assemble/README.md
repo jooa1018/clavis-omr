@@ -15,7 +15,12 @@ clef preceding a bar takes effect on the following measure; mid-measure changes,
 text, endings and navigation are explicitly unsupported in this first path.
 
 Initial repeatStart creates a left barline; eventless bars do not create empty
-measures. Voices start at zero, and chord members share their preceding onset.
+measures. CCR-0003's shared `State`/`advance` automaton validates every input item,
+including mutated model instances, and determines columns. Each column starts at
+the maximum of its member voice cursors and the preceding column onset: the earliest
+time satisfying availability and printed order. All join/chord members share that
+onset. A late voice retains a gap, expressed by export as forward rather than rest.
+Bar boundaries reset the timeline. The output producer uses `clavis-ir-0.1.1`.
 An observed multi-rest expands only its declared count; all derived rest events
 retain the same source symbols. Duration mismatches receive a blocking hint with
 no fabricated alternatives. There is no search, insertion/deletion API or padding
@@ -36,5 +41,6 @@ unit on/off checks are not corpus contribution measurements. Mathematical note
 units and clef anchors are contract definitions, not tuned thresholds; no fitted
 constants exist. Recognition-dependent constants must be registered before use.
 
-Tests: `uv run --locked --all-groups pytest tests/assemble tests/export`.
-W1 T1.4's future sequence automaton will replace the local supported-input guards.
+Tests: `uv run --locked --all-groups python -m training.jobs.short run pytest tests/assemble tests/export`.
+The authored oracle text uses the common strict LSTL parser. Musical context and
+unsupported feature checks remain assembly's responsibility, outside grammar.

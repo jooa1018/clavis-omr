@@ -78,11 +78,11 @@
   {
     "id": "ASM-TIMELINE",
     "owner": "W8",
-    "statement": "Advance each voice independently; chord members share onset; flag mismatched lengths without inserting or deleting events; first short measure is a pickup.",
+    "statement": "Use the shared LSTL automaton; schedule each column at the earliest onset allowed by member voice cursors and prior column onset; join/chord members share that onset; flag mismatched lengths without inserting or deleting events; first short measure is a pickup.",
     "units": "musical_units",
     "params": [],
     "source": "convention",
-    "reference": "CONTRACTS 5.4, 5.5",
+    "reference": "CCR-0003; CONTRACTS 4.2, 5.4, 5.5",
     "status": "provisional",
     "flag": "assemble.rules.ASM-TIMELINE.enabled",
     "enabled": true,

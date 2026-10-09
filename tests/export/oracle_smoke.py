@@ -6,24 +6,14 @@ import subprocess
 import sys
 from pathlib import Path
 
+from clavis.contracts.lstl import parse
 from clavis.export.musicxml import write_musicxml
-from tests.assemble.helpers import assemble, bar, note, prefix
+from tests.assemble.helpers import assemble
 
 
 def oracle_items():
-    items = prefix(3)
-    items[1] = dict(type="key", fifths=-1)
-    return items + [
-        bar("repeatStart"),
-        note(dur="eighth", pos=5),
-        note(dur="eighth", pos=6),
-        note(dots=1, pos=7),
-        note(dur="eighth", pos=6, tie="start"),
-        bar(),
-        note(dur="half", pos=6, tie="stop"),
-        dict(type="rest", dur="quarter", dots=0, v=1),
-        bar("repeatEnd"),
-    ]
+    data = (Path(__file__).parent / "fixtures" / "oracle.lstl").read_bytes()
+    return [item.model_dump(by_alias=True, exclude_none=True) for item in parse(data)]
 
 
 def run_smoke(output: Path):

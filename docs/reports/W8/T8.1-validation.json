@@ -8,8 +8,7 @@
     "skipped": "0",
     "tests": "251",
     "time": "5.099",
-    "timestamp": "2026-09-29T16:13:43.583085+09:00",
-    "hostname": "redacted"
+    "timestamp": "2026-09-29T16:13:43.583085+09:00"
   },
   "coverage": {
     "covered_lines": 236,

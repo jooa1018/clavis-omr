@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import get_args
 
 import pytest
-from lxml import etree
+import xmlschema
 
 from clavis.assemble.staff import wire
 from clavis.contracts.common import ClefSign
@@ -58,8 +58,8 @@ def test_accidentals_chords_and_voices(acc):
         prefix()
         + [
             note(dur="whole", acc=acc),
-            note(dur="half", pos=2, chord=1),
-            note(dur="half", v=2),
+            note(dur="whole", pos=2, chord=1),
+            note(dur="half", v=2, join=1),
             bar("final"),
         ]
     )
@@ -122,10 +122,10 @@ def test_pinned_manifest_and_offline_resolution():
     manifest = json.loads((schema_directory() / "manifest.json").read_text(encoding="utf-8"))
     assert manifest["tag"] == "v4.0"
 
-    doc = etree.fromstring(b"<root/>", parser())
+    doc = ET.fromstring(b"<root/>", parser())
     assert doc.tag == "root"
     with pytest.raises(ValueError, match="unresolved"):
-        LocalResolver().resolve("https://invalid.example/not-local.xsd", None, None)
+        LocalResolver()("https://invalid.example/not-local.xsd")
 
 
 @pytest.mark.parametrize(
@@ -138,7 +138,7 @@ def test_pinned_manifest_and_offline_resolution():
     ],
 )
 def test_invalid_xml_is_rejected(xml):
-    with pytest.raises((ValueError, etree.DocumentInvalid, etree.XMLSyntaxError)):
+    with pytest.raises((ValueError, xmlschema.XMLSchemaValidationError, ET.ParseError)):
         validate_musicxml(xml)
 
 
@@ -195,3 +195,52 @@ def test_multi_rest_and_reinterpreted_slur_export():
     root = ET.fromstring(data)
     assert not root.findall(".//tie")
     assert len(root.findall(".//notations/slur")) == 2
+
+
+def test_join_delayed_voice_round_trip_without_extra_events():
+    a = assemble(prefix() + [note(dur="half"), note(), note(v=2, join=1)])
+    data, _ = write_musicxml(a.score)
+    root = ET.fromstring(data)
+    assert len(root.findall(".//note")) == 3
+    assert not root.findall(".//rest")
+    assert root.find(".//forward/duration").text == "2"
+    assert read_projection(data) == score_projection(a.score)
+
+
+def test_cold_schema_load_without_network_and_instance_hints():
+    import subprocess
+    import sys
+
+    script = """
+import socket
+from concurrent.futures import ThreadPoolExecutor
+from clavis.export.validation import _schema_cache, validate_musicxml
+from tests.export.oracle_smoke import oracle_items
+from tests.assemble.helpers import assemble
+from clavis.export.musicxml import write_musicxml
+def refuse(*args, **kwargs):
+    raise AssertionError("network forbidden")
+socket.socket.connect = refuse
+socket.create_connection = refuse
+score = assemble(oracle_items()).score
+with ThreadPoolExecutor(max_workers=4) as pool:
+    outputs = list(pool.map(lambda _: write_musicxml(score)[0], range(8)))
+assert len(set(outputs)) == 1
+assert _schema_cache.cache_info().misses == 1
+xml = outputs[0].replace(
+    b'<score-partwise ',
+    b'<score-partwise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" '
+    b'xsi:noNamespaceSchemaLocation="https://invalid.example/never.xsd" '
+)
+validate_musicxml(xml)
+"""
+    subprocess.run([sys.executable, "-c", script], check=True, capture_output=True)
+
+
+@pytest.mark.parametrize("encoding", ["utf-8", "utf-16"])
+def test_dtd_is_rejected_before_loading_or_entity_expansion(encoding):
+    payload = (
+        '<!DOCTYPE score-partwise SYSTEM "https://invalid.example/never.dtd"><score-partwise/>'
+    )
+    with pytest.raises(ValueError, match="DOCTYPE"):
+        validate_musicxml(payload.encode(encoding))

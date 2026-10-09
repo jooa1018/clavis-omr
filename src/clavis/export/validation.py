@@ -1,14 +1,16 @@
-"""Pinned MusicXML 4.0 schema, resolved entirely from package resources."""
+"""Pinned MusicXML 4.0 XSD, with local-only xmlschema resource resolution."""
 
 import hashlib
 import json
+import warnings
+import xml.etree.ElementTree as ET
 from functools import lru_cache
 from pathlib import Path
 from threading import Lock
 from time import perf_counter_ns
-from typing import Any
+from typing import NoReturn
 
-from lxml import etree  # type: ignore[import-untyped]
+import xmlschema
 
 
 def schema_directory() -> Path:
@@ -26,35 +28,47 @@ def verify_manifest() -> None:
             raise ValueError("MusicXML schema digest mismatch")
 
 
-class LocalResolver(etree.Resolver):  # type: ignore[misc]
-    def resolve(self, url: str, public_id: str | None, context: Any) -> Any:
-        allowed = {
-            f"http://www.musicxml.org/xsd/{name}": name
-            for name in ("musicxml.xsd", "xlink.xsd", "xml.xsd")
-        }
+class LocalResolver:
+    def __call__(self, url: str) -> str:
+        directory = schema_directory().resolve()
+        allowed = {}
+        for name in ("musicxml.xsd", "xlink.xsd", "xml.xsd"):
+            local = (directory / name).as_uri()
+            allowed[f"http://www.musicxml.org/xsd/{name}"] = local
+            allowed[local] = local
         if url not in allowed:
             raise ValueError("unresolved external schema resource")
-        return self.resolve_string((schema_directory() / allowed[url]).read_bytes(), context)
+        return allowed[url]
 
 
-def parser() -> Any:
-    result = etree.XMLParser(
-        no_network=True,
-        resolve_entities=False,
-        load_dtd=False,
-        dtd_validation=False,
-        huge_tree=False,
-    )
-    result.resolvers.add(LocalResolver())
-    return result
+class _DocumentBuilder(ET.TreeBuilder):
+    def doctype(self, name: str, pubid: str | None, system: str | None) -> NoReturn:
+        raise ValueError("DOCTYPE is forbidden")
+
+    def pi(self, target: str, text: str | None = None) -> NoReturn:
+        raise ValueError("processing instructions are forbidden")
+
+
+def parser() -> ET.XMLParser:
+    # Reject declarations before entity expansion; ElementTree never loads external DTDs.
+    return ET.XMLParser(target=_DocumentBuilder())
 
 
 @lru_cache(maxsize=1)
-def _schema_cache() -> tuple[Any, int]:
+def _schema_cache() -> tuple[xmlschema.XMLSchema10, int]:
     start = perf_counter_ns()
     verify_manifest()
-    document = etree.fromstring((schema_directory() / "musicxml.xsd").read_bytes(), parser())
-    return etree.XMLSchema(document), perf_counter_ns() - start
+    with warnings.catch_warnings():
+        # An unresolved import must fail, not leave a partially loaded schema.
+        warnings.simplefilter("error", xmlschema.XMLSchemaImportWarning)
+        schema = xmlschema.XMLSchema(
+            (schema_directory().resolve() / "musicxml.xsd").as_uri(),
+            uri_mapper=LocalResolver(),
+            allow="local",
+            defuse="always",
+            use_fallback=False,
+        )
+    return schema, perf_counter_ns() - start
 
 
 # A lock also prevents concurrent first calls from compiling the cached schema twice.
@@ -63,12 +77,11 @@ _schema_lock = Lock()
 
 def validate_musicxml(data: bytes) -> dict[str, int]:
     """Raise on invalid/unsafe XML. Return timing only, never a decision threshold."""
-    document = etree.fromstring(data, parser())
-    if document.getroottree().docinfo.doctype or document.xpath("//processing-instruction()"):
-        raise ValueError("DOCTYPE and processing instructions are forbidden")
+    document = ET.fromstring(data, parser())
+    resource = xmlschema.XMLResource(document, allow="none", defuse="always")
     with _schema_lock:
         schema, load_ns = _schema_cache()
         start = perf_counter_ns()
-        schema.assertValid(document)
+        schema.validate(resource, use_location_hints=False)
         validation_ns = perf_counter_ns() - start
     return {"schemaLoadNs": load_ns, "validationNs": validation_ns}

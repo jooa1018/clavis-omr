@@ -15,6 +15,7 @@ from clavis.contracts.common import (
 from clavis.contracts.common import (
     Fraction as WireFraction,
 )
+from clavis.contracts.lstl import State, advance
 from clavis.contracts.outputs import ReviewHint
 from clavis.contracts.score import (
     Event,
@@ -51,6 +52,18 @@ class Assembly:
     sources: dict[str, tuple[str, ...]]
 
 
+def _columns(items: list[LatticeItem]) -> list[list[LatticeItem]]:
+    state = State()
+    columns: list[list[LatticeItem]] = []
+    for entry in items:
+        next_state = advance(state, entry.item)
+        if next_state.column != state.column:
+            columns.append([])
+        columns[-1].append(entry)
+        state = next_state
+    return columns
+
+
 def assemble_staff(
     lattice: StaffLattice,
     *,
@@ -69,6 +82,7 @@ def assemble_staff(
     rules.require("ASM-TIMELINE")
     if not lattice.hypotheses:
         raise ValueError("no lattice hypothesis")
+    columns = _columns(lattice.hypotheses[0].items)
     measures: list[Measure] = []
     sources: dict[str, tuple[str, ...]] = {}
     hints: list[ReviewHint] = []
@@ -79,7 +93,7 @@ def assemble_staff(
     pending_clef: Clef | None = None
     left: Barline | None = None
     current: StaffMeasure | None = None
-    last_consumed: NoteItem | RestItem | None = None
+    column_onset = Fraction(0)
     capacity = Fraction(0)
     absolute = Fraction(0)
     # Previous timed/chord group per voice; ties may cross a measure boundary.
@@ -92,7 +106,7 @@ def assemble_staff(
 
     def finish(right: Barline | None) -> None:
         nonlocal voices, cursors, accidental, current, absolute, left, active_clef, pending_clef
-        nonlocal last_consumed
+        nonlocal column_onset
         if current is None:
             return
         current.barline_right = right
@@ -133,19 +147,14 @@ def assemble_staff(
         )
         absolute += length if pickup else capacity
         voices, cursors, accidental, current, left = {}, {}, Accidentals(), None, None
-        last_consumed = None
+        column_onset = Fraction(0)
         if pending_clef is not None:
             active_clef, pending_clef = pending_clef, None
 
-    def consume(entry: LatticeItem) -> None:
-        nonlocal current, capacity, last_consumed
+    def consume(entry: LatticeItem, onset: Fraction) -> None:
+        nonlocal current, capacity
         item = entry.item
         assert isinstance(item, NoteItem | RestItem)
-        if isinstance(item, NoteItem) and item.chord:
-            if not isinstance(last_consumed, NoteItem) or last_consumed.v != item.v:
-                raise ValueError("chord requires immediately preceding note in its voice")
-            if item.pos < last_consumed.pos:
-                raise ValueError("chord positions must follow canonical order")
         if pending_clef is not None:
             raise ValueError("mid-measure clef unsupported in first oracle path")
         if active_clef is None or active_time is None:
@@ -175,7 +184,7 @@ def assemble_staff(
             accidental,
             active_clef,
             active_key,
-            cursors,
+            onset,
             voices,
             tie_candidates,
             absolute,
@@ -188,10 +197,26 @@ def assemble_staff(
         if not event.chord_with_prev:
             previous[item.v] = []
         previous.setdefault(item.v, []).append((event, absolute + onset + length))
-        last_consumed = item
 
-    for entry in lattice.hypotheses[0].items:
+    for column in columns:
+        entry = column[0]
         item = entry.item
+        if isinstance(item, NoteItem | RestItem):
+            # Earliest onset satisfying voice availability and printed column order.
+            # Delayed voices retain gaps; export represents them with forward, never rests.
+            column_onset = max(
+                column_onset,
+                *(
+                    cursors.get(e.item.v, Fraction(0))
+                    for e in column
+                    if isinstance(e.item, NoteItem | RestItem)
+                ),
+            )
+            for member in column:
+                if not member.symbol_ids:
+                    raise ValueError("oracle item requires visual symbol references")
+                consume(member, column_onset)
+            continue
         if getattr(item, "courtesy", False):
             continue
         if not entry.symbol_ids:
@@ -236,13 +261,11 @@ def assemble_staff(
                 }
             )
             for rest_index in range(item.count):
-                consume(rest)
+                consume(rest, Fraction(0))
                 if rest_index + 1 < item.count:
                     finish(None)
             continue
-        if item.type not in ("note", "rest"):
-            raise ValueError(f"first oracle path does not support {item.type}")
-        consume(entry)
+        raise ValueError(f"first oracle path does not support {item.type}")
     finish(None)
     for measure in measures:
         for voice in measure.staff_measures[0].voices:
@@ -272,7 +295,7 @@ def assemble_staff(
     hints.sort(key=lambda h: (locations[h.target.id], h.target.id, h.reason_code))
     return Assembly(
         score=ScoreIR(
-            schema="clavis-ir-0.1",
+            schema="clavis-ir-0.1.1",
             id="score0",
             meta=ScoreMeta(),
             engine=engine,
@@ -301,7 +324,7 @@ def _event(
     accidental: Accidentals,
     clef: Clef,
     key: Key | None,
-    cursors: dict[int, Fraction],
+    onset: Fraction,
     voices: dict[int, list[Event]],
     previous: dict[int, list[tuple[Event, Fraction]]],
     absolute: Fraction,
@@ -312,13 +335,13 @@ def _event(
     note = item if isinstance(item, NoteItem) else None
     chord = bool(note and note.chord)
     voice = voices.get(item.v, [])
-    onset = cursors.get(item.v, Fraction(0))
     if chord:
         if not voice or voice[-1].kind == "rest":
             raise ValueError("chord requires a preceding note in the same voice/measure")
         if bool(voice[-1].grace) != bool(note and note.grace):
             raise ValueError("grace and timed notes cannot share a chord")
-        onset = rational(voice[-1].onset)
+        if onset != rational(voice[-1].onset):
+            raise ValueError("chord onset differs from its column")
     measure_rest = bool(isinstance(item, RestItem) and item.measure_rest)
     length = duration(
         item.dur,

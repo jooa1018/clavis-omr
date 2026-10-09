@@ -66,7 +66,7 @@ def test_chord_and_voices_have_independent_time_axes():
         + [
             note(dur="half"),
             note(dur="half", pos=2, chord=1),
-            note(dur="whole", v=2),
+            note(dur="whole", v=2, join=1),
             note(dur="half", pos=4),
             bar("final"),
         ]
@@ -127,11 +127,11 @@ def test_unfilled_and_overfull_measures_preserve_every_event():
 @pytest.mark.parametrize(
     "items,match",
     [
-        ([note(chord=1)], "preceding note"),
+        ([note(chord=1)], "CHORD_REQUIRES_NOTE"),
         ([note(), dict(type="time", beats=3, beatType=4)], "mid-measure"),
         ([note(), dict(type="clef", sign="F4"), note()], "mid-measure"),
         ([dict(type="segno")], "does not support"),
-        ([note(grace="acciaccatura"), note(chord=1)], "cannot share"),
+        ([note(grace="acciaccatura"), note(chord=1)], "CHORD_ATTRIBUTES_MISMATCH"),
         ([note(head="slash", tie="start")], "rhythm slash"),
     ],
 )
@@ -242,3 +242,51 @@ def test_no_hypothesis_or_visual_evidence_is_rejected():
     missing.hypotheses[0].items[-1].symbol_ids = []
     with pytest.raises(ValueError, match="visual"):
         assemble_staff(missing, engine=engine)
+
+
+@pytest.mark.parametrize("leading_voice", [1, 2, 3, 4])
+def test_join_column_uses_all_voice_cursors_without_padding(leading_voice):
+    a = assemble(
+        prefix()
+        + [note(v=leading_voice, dur="half")]
+        + [note(v=1), note(v=1, pos=2, chord=1)]
+        + [dict(type="rest", dur="quarter", dots=0, v=v, join=1) for v in (2, 3, 4)]
+    )
+    grouped = a.score.measures[0].staff_measures[0].voices
+    column = [e for v in grouped for e in v.events if rational(e.duration) == 1]
+    assert len(column) == 5
+    assert {rational(e.onset) for e in column} == {2}
+    assert len(events(a)) == 6 and len(a.sources) == 6
+    assert a.score.schema_version == "clavis-ir-0.1.1"
+
+
+def test_assembly_revalidates_mutated_sequence_with_shared_automaton():
+    from clavis.contracts.lstl import LSTLError
+
+    from .helpers import lattice
+
+    value = lattice(prefix() + [note(), note(v=2, join=1)])
+    value.hypotheses[0].items[-1].item.v = 1
+    with pytest.raises(LSTLError, match="JOIN_VOICE_ORDER"):
+        assemble_staff(value, engine=assemble(prefix()).score.engine)
+
+
+def test_shared_text_parser_join_chord_and_measure_reset():
+    from clavis.contracts.lstl import parse, serialize
+
+    text = (
+        "clef sign=G2\ntime beats=4 beatType=4\n"
+        "note dur=half pos=0 head=normal v=1\n"
+        "note dur=whole pos=2 head=normal v=2 join=1\n"
+        "note dur=whole pos=4 head=normal v=2 chord=1\n"
+        "note dur=half pos=0 head=normal v=1\nbar style=regular\n"
+        "rest dur=whole v=1 measureRest=1\n"
+        "note dur=whole pos=0 head=normal v=2 join=1\n"
+    )
+    parsed = parse(text)
+    assert serialize(parsed) == text.encode()
+    a = assemble([i.model_dump(by_alias=True, exclude_none=True) for i in parsed])
+    one, two = a.score.measures
+    assert [rational(e.onset) for e in one.staff_measures[0].voices[0].events] == [0, 2]
+    assert {rational(e.onset) for e in one.staff_measures[0].voices[1].events} == {0}
+    assert {rational(e.onset) for v in two.staff_measures[0].voices for e in v.events} == {0}

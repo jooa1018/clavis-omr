@@ -21,15 +21,18 @@ their original line endings. NOTICE and manifest retain attribution, source tag,
 commit and SHA-256. Orchestrator approved only these files on 2026-09-29.
 The manifest is checked before first schema compilation. A locked process cache
 reuses that schema; only the three original schemaLocation URLs resolve locally.
-Unknown URLs fail. XML parsers disable network, external entity resolution and
-DTD loading; DOCTYPE and processing instructions are rejected.
+Unknown URLs fail. The 2026-10-09 ruling replaces lxml with W1's pinned `xmlschema`.
+Schema compilation uses `allow="local"`, `defuse="always"`, `use_fallback=False`
+and the strict URI mapper; unresolved import warnings are errors. Instance XML
+rejects DOCTYPE before entity expansion and rejects processing instructions.
+Its XMLResource uses `allow="none"`; instance schema hints are ignored.
 
 Timing fields `schemaLoadNs` (one-time cached load) and `validationNs` (this call)
 are measured with a monotonic clock and kept separate from deterministic XML.
 The minimum reparser reads validated writer output and is independent of W4.
 The oracle smoke invokes W4's public CLI against separately hand-authored XML.
 
-Run: `uv run --locked --all-groups python -m tests.export.oracle_smoke --out work/w8-smoke`.
+Run: `uv run --locked --all-groups python -m training.jobs.short run tests.export.oracle_smoke --out work/w8-smoke`.
 This is authored symbolic smoke, **not SYN-Val**. W2 T2.5 clean labels will replace
-the authored oracle input when available. Runtime `lxml` declaration belongs to W1;
-XSD tests must not be skipped to report a passing suite.
+the authored oracle input when available. The authored `.lstl` fixture is read by
+the shared strict parser. XSD tests must not be skipped to report a passing suite.

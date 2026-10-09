@@ -18,7 +18,7 @@ def bar(style="regular"):
 def lattice(items):
     return StaffLattice.model_validate(
         dict(
-            schema="clavis-ir-0.1",
+            schema="clavis-ir-0.1.1",
             id="pg0-sy0-st0",
             stripId="pg0-sy0-st0",
             producer=dict(
