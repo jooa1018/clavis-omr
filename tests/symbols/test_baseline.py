@@ -239,7 +239,7 @@ def test_reading_preserves_attribute_and_relation_alternatives():
     jsonschema.validate(
         json.loads(canonical_json(result.lattice)), StaffLattice.model_json_schema()
     )
-    assert result.finalize(lambda hypothesis: hypothesis) == result.lattice  # W1 mock only.
+    assert result.finalize() == result.lattice
 
 
 @pytest.mark.parametrize(
@@ -258,7 +258,7 @@ def test_missing_attributes_are_unknown(missing):
     assert result.lattice.hypotheses[0].items == []
     assert result.unresolved_symbol_ids
     with pytest.raises(ValueError, match="Unresolved"):
-        result.finalize(lambda h: h)
+        result.finalize()
 
 
 @pytest.mark.parametrize("fixture", [0, 1, 2])
