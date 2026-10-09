@@ -1,0 +1,291 @@
+{
+  "status": "PREVIEW",
+  "training_admission": "BLOCKED_OR_003",
+  "source_manifest_digest": "fc2187e7e09185f4b28be57b6478a96a1243a037f8fd13624f17de2d8bfd44bd",
+  "target_sha256": "e4fb07ca2569c2588b5ad0e9a5ff2066654d87dfa8f66867f06bb50c8184bab8",
+  "meters": {
+    "12/8": {
+      "kl_generated_target": 0.057058276654404626,
+      "noteheads": 338,
+      "ratio_32nd": 0.0029585798816568047,
+      "ratio_double_dot": 0.0029585798816568047
+    },
+    "2/2": {
+      "kl_generated_target": 0.41336704512457245,
+      "noteheads": 114,
+      "ratio_32nd": 0.03508771929824561,
+      "ratio_double_dot": 0.02631578947368421
+    },
+    "2/4": {
+      "kl_generated_target": 0.07808240514597392,
+      "noteheads": 151,
+      "ratio_32nd": 0.006622516556291391,
+      "ratio_double_dot": 0.006622516556291391
+    },
+    "3/4": {
+      "kl_generated_target": 0.07875546085729788,
+      "noteheads": 373,
+      "ratio_32nd": 0.03753351206434316,
+      "ratio_double_dot": 0.013404825737265416
+    },
+    "4/4": {
+      "kl_generated_target": 0.06554711700077225,
+      "noteheads": 922,
+      "ratio_32nd": 0.016268980477223426,
+      "ratio_double_dot": 0.009761388286334056
+    },
+    "6/8": {
+      "kl_generated_target": 0.11318362783013114,
+      "noteheads": 673,
+      "ratio_32nd": 0.041604754829123326,
+      "ratio_double_dot": 0.01337295690936107
+    }
+  },
+  "song_rates": {
+    "grace": {
+      "denominator": 100,
+      "ratio": 0.1,
+      "songs": 10,
+      "target": 0.1
+    },
+    "key_meter_change": {
+      "denominator": 100,
+      "ratio": 0.02,
+      "songs": 2,
+      "target": 0.05
+    },
+    "pickup": {
+      "denominator": 100,
+      "ratio": 0.27,
+      "songs": 27,
+      "target": 0.3
+    },
+    "repeat_volta_navigation": {
+      "denominator": 100,
+      "ratio": 0.11,
+      "songs": 11,
+      "target": 0.2
+    },
+    "slash": {
+      "denominator": 100,
+      "ratio": 0.09,
+      "songs": 9,
+      "target": 0.1
+    },
+    "triplet": {
+      "denominator": 100,
+      "ratio": 0.21,
+      "songs": 21,
+      "target": 0.15
+    },
+    "two_voice": {
+      "denominator": 100,
+      "ratio": 0.09,
+      "songs": 9,
+      "target": 0.1
+    }
+  },
+  "conditional": {
+    "grace": {
+      "denominator": 299,
+      "max": 0.047619047619047616,
+      "min": 0.022222222222222223,
+      "numerator": 10,
+      "outside": 0,
+      "songs": 10
+    },
+    "slash": {
+      "denominator": 52,
+      "max": 0.375,
+      "min": 0.125,
+      "numerator": 11,
+      "outside": 0,
+      "songs": 9
+    },
+    "triplet": {
+      "denominator": 132,
+      "max": 0.25,
+      "min": 0.125,
+      "numerator": 26,
+      "outside": 0,
+      "songs": 21
+    },
+    "two_voice": {
+      "denominator": 56,
+      "max": 0.5,
+      "min": 0.25,
+      "numerator": 24,
+      "outside": 0,
+      "songs": 9
+    }
+  },
+  "failures": [
+    "clef:G2",
+    "clef:F4",
+    "clef:G2_8vb",
+    "key_signature",
+    "meter_signature",
+    "key_meter_change",
+    "pickup",
+    "duration:whole",
+    "duration:half",
+    "duration:16th",
+    "duration:32nd",
+    "dots:1",
+    "dots:2",
+    "rest",
+    "measure_rest",
+    "accidental",
+    "tie",
+    "triplet",
+    "two_voice",
+    "chord",
+    "slash",
+    "repeat",
+    "volta",
+    "dc",
+    "ds",
+    "coda",
+    "segno",
+    "fine",
+    "fermata",
+    "slash_harmony",
+    "title",
+    "tempo",
+    "rare_floor:12/8",
+    "song_rate:pickup",
+    "song_rate:key_meter_change",
+    "song_rate:repeat_volta_navigation",
+    "song_rate:slash",
+    "song_rate:two_voice",
+    "song_rate:triplet"
+  ],
+  "songs": 100,
+  "invalid": {},
+  "xml_chain_digest": "33ac0921e137bedaa99295262d64b1a554adc4ce435becd4ab972013d151f5eb",
+  "initial_distribution": {
+    "key_mode": {
+      "-1:major": 9,
+      "-1:minor": 3,
+      "-2:major": 8,
+      "-2:minor": 4,
+      "-3:major": 7,
+      "-3:minor": 3,
+      "-4:major": 5,
+      "-5:major": 6,
+      "-5:minor": 1,
+      "-6:major": 1,
+      "-6:minor": 2,
+      "-7:major": 3,
+      "0:major": 6,
+      "0:minor": 5,
+      "1:major": 7,
+      "1:minor": 4,
+      "2:major": 5,
+      "2:minor": 1,
+      "3:major": 5,
+      "3:minor": 2,
+      "4:major": 3,
+      "4:minor": 1,
+      "5:major": 3,
+      "6:minor": 1,
+      "7:major": 4,
+      "7:minor": 1
+    },
+    "meter": {
+      "12/8": 8,
+      "2/2": 6,
+      "2/4": 8,
+      "3/4": 20,
+      "4/4": 33,
+      "6/8": 25
+    }
+  },
+  "resources": {
+    "gitSha": "7651a81632de89ecee1e2daa1f130e009c91f956",
+    "wallSeconds": 28.672000000005937,
+    "cpuSecondsSampled": 15.03125,
+    "peakRssBytesSampled": 115580928,
+    "cpuLimit": 2,
+    "dataDigest": "e4fb07ca2569c2588b5ad0e9a5ff2066654d87dfa8f66867f06bb50c8184bab8"
+  },
+  "estimated_full_wall_seconds": 2867.2000000005937,
+  "estimate_kind": "linear budgeting only, not isolated benchmark; includes fixed fitting startup",
+  "fitted_rare": {
+    "12/8": {
+      "ratio_32nd": 0.013950258460087388,
+      "ratio_double_dot": 0.008661321217110812
+    },
+    "2/2": {
+      "ratio_32nd": 0.009324402511400936,
+      "ratio_double_dot": 0.010803401148823579
+    },
+    "2/4": {
+      "ratio_32nd": 0.023099983707439854,
+      "ratio_double_dot": 0.010218482527063609
+    },
+    "3/4": {
+      "ratio_32nd": 0.02574143141728991,
+      "ratio_double_dot": 0.010368185135803844
+    },
+    "4/4": {
+      "ratio_32nd": 0.012327128142534866,
+      "ratio_double_dot": 0.011232345219727513
+    },
+    "6/8": {
+      "ratio_32nd": 0.011918303215778674,
+      "ratio_double_dot": 0.00792158041717535
+    }
+  },
+  "full_test": {
+    "status": "ERROR",
+    "error": "psutil.AccessDenied",
+    "location": "training/jobs/launcher.py:28 kill_tree",
+    "runId": "b63fd105a78a4479a03111598283adc6",
+    "ownedProcessAliveAfterExit": false
+  },
+  "scanner": {
+    "schema": "clavis-hardcode-scan-1",
+    "status": "PASS",
+    "pythonFiles": 157,
+    "manifestIdentifiers": 0,
+    "findings": [],
+    "suppressed": [
+      {
+        "file": "training/jobs/runner.py",
+        "line": 161,
+        "rule": "H9",
+        "owner": "W1",
+        "evidence_digest": "f55bb63062ca7fa6483196ef2dc20d9cad1d0ef028c76a8a6030e30a59111f85"
+      },
+      {
+        "file": "training/jobs/runner.py",
+        "line": 223,
+        "rule": "H9",
+        "owner": "W1",
+        "evidence_digest": "62cb15b5b7c52f6c1e2f78736d6d34381fd3e3274c27556e936ec20069317c08"
+      },
+      {
+        "file": "training/data/pdmx_download.py",
+        "line": 128,
+        "rule": "H9",
+        "owner": "W2",
+        "evidence_digest": "3ee285c8d06b4a8f725d0470af2d62bb5734d1454b714b68f8c8c253050ed90c"
+      },
+      {
+        "file": "training/data/pdmx_stream.py",
+        "line": 266,
+        "rule": "H9",
+        "owner": "W2",
+        "evidence_digest": "8e4b5b2d7825ddd83711afba5bc5a6e39c98cf28038feb27a6176376f142a6eb"
+      }
+    ],
+    "byOwner": {}
+  },
+  "final_focused": {
+    "tests": 7,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}

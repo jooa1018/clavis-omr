@@ -64,3 +64,34 @@ def test_target_digest_checked_before_fit(tmp_path, monkeypatch):
     monkeypatch.setattr(yaml, "safe_load", changed)
     with pytest.raises(ValueError, match="digest"):
         checker.load()
+
+
+def test_source_digest_normalizes_line_endings_and_detects_changes(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    (tmp_path / "training/data").mkdir(parents=True)
+    (tmp_path / "configs/data").mkdir(parents=True)
+    source = tmp_path / "training/data/example.py"
+    source.write_bytes(b"a = 1\n")
+    (tmp_path / "uv.lock").write_bytes(b"version = 1\n")
+    original = checker.source_digest()
+    source.write_bytes(b"a = 1\r\n")
+    assert checker.source_digest() == original
+    source.write_bytes(b"a = 2\n")
+    assert checker.source_digest() != original
+
+
+def test_cli_rejects_stale_queued_source_before_generation(tmp_path, monkeypatch):
+    import sys
+
+    (tmp_path / "request.json").write_text(
+        json.dumps({"config": {"sourceDigest": "0" * 64}}), encoding="utf-8"
+    )
+    context = MemoryContext()
+    context.directory = tmp_path
+    monkeypatch.setattr(checker, "Context", lambda: context)
+    monkeypatch.setattr(
+        sys, "argv", ["check", "--output", str(tmp_path / "out"), "--seed", "train-stale"]
+    )
+    monkeypatch.setattr(checker, "run", lambda *args: pytest.fail("stale source executed"))
+    with pytest.raises(ValueError, match="source digest"):
+        checker.main()
