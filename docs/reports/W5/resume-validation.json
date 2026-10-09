@@ -1,5 +1,5 @@
 {
-  "scope": "Windows validation on OR-005; full retry PASS; latency decision pending",
+  "scope": "Windows validation PASS; merge authorized; latency provisional pending dedicated benchmark",
   "base_main": "91cbda72ac6f15ce83206c89b309d4abe2ee895a",
   "component_tests": {
     "command": ".venv/Scripts/pytest.exe tests/geometry -q --cov=clavis.geometry --cov-report=json:work/geometry-coverage-resume.json --junitxml=work/geometry-tests-resume.xml",
@@ -72,7 +72,7 @@
     "violations": [],
     "command": "python scripts/check_licenses.py"
   },
-  "linux_ci": "NOT_RUN (draft; OR-005 latency decision pending)",
+  "linux_ci": "PENDING: ready-for-review, both required before merge",
   "determinism": "PASS: 1/4 OpenCV threads x3, and actual smoke strips x5",
   "sealed": "NOT_ACCESSED",
   "synthetic": "smoke, NOT SYN-Val",
@@ -99,9 +99,9 @@
     "status": "PASS",
     "command": "uv build --wheel; python scripts/check_wheel.py dist"
   },
-  "windows_ci": "NOT_RUN (draft; OR-005 latency decision pending)",
+  "windows_ci": "PENDING: ready-for-review, both required before merge",
   "smoke_or005": {
-    "status": "PASS (execution), FAIL (30 ms latency)",
+    "status": "PASS (execution); latency reference only per Orchestrator 2026-10-09",
     "metrics": "synthetic-or005.json",
     "jitter_errors_unchanged": true,
     "errors": 107,
@@ -136,5 +136,16 @@
     "excluded_lines": 4,
     "percent_statements_covered": 93.24801412180052,
     "percent_statements_covered_display": "93"
+  },
+  "latency_decision": {
+    "authority": "Orchestrator 2026-10-09",
+    "status": "provisional, formal benchmark pending",
+    "merge_basis_p95_ms": [
+      16.576525000118636,
+      18.376450000005207,
+      16.19125
+    ],
+    "required_condition": "REF-LAPTOP, exclusive, four compute threads",
+    "follow_up": "W1 benchmark job type; first/repeated p50 and p95 separately; dedicated optimization PR if isolated p95 >30 ms; do not block W6"
   }
 }

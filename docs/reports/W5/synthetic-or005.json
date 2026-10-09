@@ -3812,6 +3812,6 @@
     "wrapper_wall_seconds": 190.04699999999866,
     "wrapper_peak_rss_bytes": 247136256,
     "concurrent_slots_observed": "Other slots unavailable to new W5 calls; no change to shared configuration",
-    "latency_acceptance": "FAIL: all slices exceed 30 ms; previous unwrapped timing is a different execution condition"
+    "latency_acceptance": "REFERENCE ONLY: OR-005 is not the latency-budget environment; Orchestrator 2026-10-09 requires exclusive REF-LAPTOP four-thread benchmark"
   }
 }
