@@ -7,6 +7,11 @@ Evaluation currently consumes MusicXML and public confidence output, not LSTL.
 Any evaluation tooling that consumes LSTL must use `clavis.contracts.lstl.parse`
 and its shared sequence automaton (CCR-0003); do not add a separate permissive parser.
 
+Full test suites use the OR-005 short-run wrapper. Slot timings are validation
+costs only. Formal latency/speed measurements use the exclusive
+`python -m training.jobs.benchmark` during 01:00–07:00 Asia/Seoul; only completed
+results with `benchmark.validity=valid` can support a latency budget decision.
+
 ## Run a public-output pair
 
 From the repository checkout (Python 3.12):
