@@ -31,12 +31,14 @@ PR #28: 전체 Windows 793 passed, Linux/Windows CI PASS, W4 독립 7시험 확�
 생성기 중단/연속 보고서·fitted profile 바이트 동일. 20개 합성 기보 계열과 음성 검증 포함.
 명령: `uv run --locked --all-groups python -m training.jobs.short run pytest tests/ --junitxml=work/production-full.xml`.
 이번 전체 실행은 W1 launcher.kill_tree의 psutil.AccessDenied로 종료되어 PASS가 아니다.
-해당 실행 소유 프로세스는 종료됐음을 확인했다. 실행기 수정 후 최종 전체 시험을 다시 해야 한다.
+해당 실행 소유 프로세스는 종료됐음을 확인했다.
+후속: #48(9623fac)로 monitor-error 해소를 재검증했다. 다만 전체 시험 1,516 pass/3 fail(W1 벤치마크); 2026-10-09-pr48-revalidation.md 참조.
 
 ## 5. 지표 (평가기 JSON 경로 + 핵심 수치 표: 이전 대비 변화와 95% CI, 슬라이스별)
 근거: production-preview-v1.json. 실제 집계 기반 합성 100곡에서 XML/기보 오류 0건.
 v1 PREVIEW 벽시계 23.329초, 최대 RSS 115,560,448 bytes. 선형 예산 추정은 약 39분/1만 곡으로
-OR-001을 초과한다. 고정 적합 시작 비용·동시 부하가 포함되어 독점 성능 벤치마크가 아니다.
+OR-001을 초과한다. 고정 적합 시작 비용·동시 부하가 포함된 계획용 참고치로, 성능·지연 예산 판정에 쓰지 않는다.
+정식 측정은 01:00–07:00 독점 training.jobs.benchmark의 valid 결과만 사용한다.
 v1의 12/8 겹점 기대 질량이 사실상 0인 적합 결함을 발견해 수정했다. v1은 채택하지 않는다.
 v2 근거 production-preview-v2.json: 100곡 XML/기보 오류 0, 조건부 비율 위반 0,
 28.672초 / RSS 115,580,928 bytes / 2 CPU. 선형 예산 추정 2,867.2초(약 48분).
@@ -60,8 +62,8 @@ W7 artifact 등록 요청은 접수 상태이며 이 PR 범위에서 확인 완�
 ## 8. 다음 단계 / 필요한 결정 / 블로커
 production-queue-v2.json: W1 단일 큐에 0f683a7002ba40b9a7b6a973a1ec6321 등록, 아직 미실행.
 2 CPU, RAM 1.5 GB, 최대 5,735초, 야간 01:00–07:00. 자동 스케줄러는 설치하지 않았다.
-큐 worker 시작 및 W1 실행기 수정을 기다린다. 제출한 생성기/config/lock digest가 바뀌면 거부한다.
+W1 #48 수정 반영 완료; 큐 worker의 야간 시작을 기다린다. 제출한 생성기/config/lock digest가 바뀌면 거부한다.
 야간 작업 완료 전 PR #11은 draft 유지.
-W1 실행기 수정 후 전체 시험 및 최종 CI 필요. 사전 승인 확대는 W1에게 직접 요청했으며 반영 대기.
+최종 전체 시험 재검증과 CI 필요. H9 사전 승인 확대는 최신 00_COMMON에 반영됨을 확인했다.
 수용 실패는 수치 그대로 보고한다. 실제 렌더·생산 블록 기준을 모두 채운 뒤 W4에 준비 완료 통지한다.
 OR-003 보호 집합 v1과 --admitted 결과 전 학습 편입은 계속 0건이다.

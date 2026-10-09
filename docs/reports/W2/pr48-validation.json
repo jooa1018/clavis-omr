@@ -1,0 +1,59 @@
+{
+  "schema": "clavis-w2-validation-1",
+  "tests": {
+    "tests": 1519,
+    "errors": 0,
+    "failures": 3,
+    "skipped": 0,
+    "passed": 1516
+  },
+  "dataTests": {
+    "tests": 126,
+    "failed": 0
+  },
+  "failedTests": [
+    {
+      "test": "tests.platform.test_benchmark::test_pause_during_sampling_or_retry[1]",
+      "owner": "W1"
+    },
+    {
+      "test": "tests.platform.test_benchmark::test_four_threads_full_affinity_normal_priority_and_evidence",
+      "owner": "W1"
+    },
+    {
+      "test": "tests.platform.test_benchmark::test_admission_timing_does_not_change_job_bytes",
+      "owner": "W1"
+    }
+  ],
+  "slot": {
+    "status": "failed",
+    "reason": "command-failed",
+    "gitSha": "0287b9b1f54e888d0dc6ba51ea32299022bcc835",
+    "wallSeconds": 253.0,
+    "cpuSecondsSampled": 147.171875,
+    "peakRssBytesSampled": 316952576,
+    "cpuLimit": 2,
+    "monitorDiagnostics": [
+      {
+        "count": 24,
+        "exceptionType": "NoSuchProcess",
+        "site": "sample.memory_info",
+        "skippedChild": true
+      },
+      {
+        "count": 3,
+        "exceptionType": "NoSuchProcess",
+        "site": "sample.num_threads",
+        "skippedChild": true
+      }
+    ]
+  },
+  "monitorErrorRecurrence": false,
+  "benchmarkPerformed": false,
+  "productionQueue": {
+    "jobId": "0f683a7002ba40b9a7b6a973a1ec6321",
+    "status": "queued",
+    "sourceDigestMatches": true
+  },
+  "trainingAdmissionCount": 0
+}
