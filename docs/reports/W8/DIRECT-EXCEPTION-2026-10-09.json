@@ -63,5 +63,6 @@
       "status": "PASS"
     }
   },
-  "ci": "PENDING: ready conversion after recording this local result"
+  "ci": "PENDING: ready conversion after recording this local result",
+  "exceptionStatus": "ENDED: Orchestrator 2026-10-09; W1 PR #48 merged; future full suites use the slot wrapper"
 }

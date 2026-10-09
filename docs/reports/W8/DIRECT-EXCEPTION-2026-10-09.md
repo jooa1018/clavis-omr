@@ -1,4 +1,6 @@
 # [W8] 전체 Windows 시험 임시 예외 — 2026-10-09
+
+**예외 종료:** W1 #48 수정과 Orchestrator 2026-10-09 통보를 반영했다. 아래는 예외 실행 당시 기록이며, 이후 전체 시험은 슬롯 래퍼만 사용한다. [복귀 기록](SLOT-RESTORED-2026-10-09.md).
 판정: PARTIAL — 전체 Windows 및 필수 게이트 PASS, 양 OS CI 대기
 기계 근거: [집계 JSON](DIRECT-EXCEPTION-2026-10-09.json).
 
