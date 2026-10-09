@@ -46,5 +46,17 @@
       "W4",
       "orchestrator"
     ]
+  },
+  {
+    "file": "training/jobs/benchmark_monitor.py",
+    "line": 128,
+    "rule": "H9",
+    "owner": "W1",
+    "evidence_digest": "fb249a3f20e1a36a592a6c2eb21b29d0686d61032d38db41ef5ff654de088837",
+    "reason": "Benchmark preflight retry/pause resource control only; Orchestrator 2026-10-09 approval, byte-identical synthetic checkpoints across admission timing. W4 confirmation https://github.com/jooa1018/clavis-omr/pull/51#issuecomment-6075933816",
+    "approvedBy": [
+      "W4",
+      "orchestrator"
+    ]
   }
 ]
