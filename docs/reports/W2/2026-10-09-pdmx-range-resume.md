@@ -1,5 +1,5 @@
 # [W2] T2.2 PDMX 구간 이어받기·집계 — 2026-10-09
-판정: PARTIAL — 실제 집계 PASS, 스캐너 판정·전체 시험 대기로 PR 병합 보류
+판정: PARTIAL — 실제 집계 PASS, 스캐너 판정·CI 대기로 PR 병합 보류
 
 ## 1. 요약 (3줄 이내)
 Orchestrator 2026-10-06 OR-004 보완을 적용해 실제 PDMX v9 집계를 완료했다.
@@ -23,7 +23,9 @@ pdmx_stream.py: 검증된 로컬 파일 집계·TAR ordinal 재개·성공 후 �
 명령: `.venv\Scripts\python.exe -m pytest tests/data/test_pdmx_download.py tests/data/test_pdmx_aggregate.py -q --cov=training.data.pdmx_download --cov=training.data.pdmx_stream --cov=training.data.pdmx_aggregate --cov=training.data.pdmx_windows --cov-report=json:work/pdmx-range-coverage.json --junitxml=work/pdmx-range-tests.xml`.
 합성 중단/연속 집계 바이트 동일, 손상 구간 재전송, 정상 캐시 무재요청, 비정상 응답/해시 차단,
 20개 컨테이너 변형, XML 오류 제외·재개 일치, 성공 후에만 지정 파일 삭제를 확인했다.
-전체 Windows 시험 NOT_RUN(W1 짧은 슬롯 대기). 실제 연속 실행과의 이중 비교 NOT_RUN.
+후속 CCR-0003 반영 후 Windows 전체 시험 791 passed (W1 짧은 슬롯).
+명령·계측·HEAD는 2026-10-09-ccr0003-sync.md와 ccr0003-validation.json 참조.
+실제 연속 실행과의 이중 비교 NOT_RUN.
 스캐너 FAIL 3건: H3 byte width, H9 backoff 취소 대기·계측 주기. W4 문맥 판정/필요한 A승인 대기.
 스캐너/allowlist 변경 없음. 새 의존성 없음. 실제 데이터는 CI에서 처리하지 않았다.
 W1 PR #37의 Linux·Windows CI 복원을 반영했다. 개인정보 검사 473파일/0건 PASS.
@@ -70,7 +72,7 @@ W7의 PP-OCR/한·영 폰트 등록 요청은 접수만 기록했으며 artifact
 
 ## 8. 다음 단계 / 필요한 결정 / 블로커
 스캐너 3건의 W4 문맥 검토 전달 및 필요한 Orchestrator 판정 대기. 정확한 위치/digest는 근거 JSON 참조.
-W1 짧은 슬롯으로 전체 시험, 현재 CI 통과 후 PR #28 병합. W1 큐 PR #27은 main 반영 완료.
+W1 짧은 슬롯 전체 시험 완료. 스캐너 판정 및 현재 CI 통과 후 PR #28 병합. W1 큐 PR #27은 main 반영 완료.
 그 뒤 PR #11 UTF-8 fixture·기보 검증 → 생산 프로필·KL·1만 곡 검증(OR-001 초과 시 큐).
 준비가 끝난 뒤에만 W4에 eval-* 준비 완료 통지. 지금은 미통지이며 학습 편입은 0건이다.
 다음 T2.5는 CONTRACTS 4.2 및 W1 T1.4 오토마톤을 따른다.
