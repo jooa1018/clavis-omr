@@ -55,7 +55,8 @@ an interrupted fit restarts at its own fixed seed. No model weights are saved,
 selected, evaluated or admitted to the engine.
 
 Use a separate optional environment with the CPU torch wheel above and pinned
-probe requirements, plus locked runtime packages and psutil. The queue launcher
+probe requirements, plus locked runtime packages, psutil and PyYAML 6.0.2 for
+the W1 queue. The queue launcher
 uses its invoking Python, so launch it with that environment, not a uv command
 that synchronizes away optional trainers. Source/config descriptor hashes are
 checked before preparing data; the trainer checks descriptor, cache, config and
