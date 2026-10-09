@@ -7,8 +7,10 @@ from contextlib import ExitStack
 from pathlib import Path
 from unittest.mock import patch
 
+import psutil
 import pytest
 
+from tests.platform.conftest import redacted
 from training.jobs import short, slots, store
 from training.jobs.runner import execute
 
@@ -41,10 +43,10 @@ def test_three_slots_and_queue_exclusion() -> None:
 def test_cross_process_crash_releases_slot(tmp_path: Path) -> None:
     slots.configure_slots(1)
     code = (
-        "import sys; from pathlib import Path; from training.jobs import store,slots; "
+        "import sys,os,json; from pathlib import Path; from training.jobs import store,slots; "
         "store.home=lambda:Path(sys.argv[1])/'jobs'; "
         "lease=slots.short_slot(); lease.__enter__(); "
-        "print('ready',flush=True); input()"
+        "print(json.dumps({'ready':True,'ownerPid':os.getpid()}),flush=True); input()"
     )
     child = subprocess.Popen(
         [sys.executable, "-c", code, str(tmp_path)],
@@ -55,16 +57,36 @@ def test_cross_process_crash_releases_slot(tmp_path: Path) -> None:
     )
     try:
         assert child.stdout is not None
-        assert child.stdout.readline().strip() == "ready"
+        line = child.stdout.readline().strip()
+        if not line:
+            _, stderr = child.communicate(timeout=60)
+            pytest.fail(redacted(f"slot child exited {child.returncode}; stderr: {stderr}"))
+        handshake = json.loads(line)
+        assert handshake["ready"]
+        owner = psutil.Process(handshake["ownerPid"])
         with pytest.raises(OSError), slots.short_slot():
             pass
         with pytest.raises(OSError), store.worker_lock():
             pass
     finally:
-        child.kill()
-        child.communicate(timeout=10)
-    with slots.short_slot() as index:
-        assert index == 0
+        # Windows venv python.exe can be a redirector. Kill/wait for the actual
+        # lock owner named by the handshake, not just its short-lived parent stub.
+        if "owner" in locals():
+            owner.kill()
+            _, alive = psutil.wait_procs([owner], timeout=60)
+            assert not alive, "slot owner did not exit after kill"
+        if child.poll() is None:
+            child.kill()
+        _, stderr = child.communicate(timeout=60)
+    try:
+        with slots.short_slot() as index:
+            assert index == 0
+    except OSError as error:
+        pytest.fail(
+            redacted(
+                f"lock owner exited but reacquire failed: {type(error).__name__}; stderr: {stderr}"
+            )
+        )
     with store.worker_lock():
         pass
 
@@ -93,14 +115,14 @@ def test_request_limits(values: dict[str, int]) -> None:
         short.run_short("training.jobs.example", [], **values)
 
 
-def test_execution_reuses_queue_limits() -> None:
+def test_execution_reuses_queue_limits(child_diagnostics) -> None:
     with patch.object(short, "execute", wraps=execute) as runner:
         result = short.run_short("training.jobs.example", [], wall_seconds=30, items=100)
     spec = json.loads(runner.call_args.args[1]["spec"])
     assert spec["threads"] == 2
     assert spec["ram_bytes"] == 3_000_000_000
     assert spec["wall_seconds"] == 30
-    assert result["status"] == "succeeded"
+    assert result["status"] == "succeeded", child_diagnostics(result)
     assert 1 <= result["cpuLimit"] <= 2
     assert "cwd" not in result
     with store.worker_lock():

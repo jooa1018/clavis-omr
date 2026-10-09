@@ -1,5 +1,5 @@
 # [W1] 야간 대기 실행과 사용자 예약 스크립트 — 2026-10-09
-판정: PARTIAL — 로컬 PASS, 두 OS CI 대기
+판정: PASS — PR #59 병합, 로컬 및 두 OS CI 통과
 
 ## 1. 요약
 run --wait가 다음 01:00–07:00 창을 기다리고 빈 큐도 닫힐 때까지 감시한다.
@@ -20,7 +20,7 @@ PLATFORM-NIGHTLY-001 운영 규칙 등록.
 야간 경계·잠금·빈 큐·pause·날짜를 넘는 suspend/deadline 논리 시각 시험 9 passed.
 ruff, mypy 92파일, AST PASS. 등록 스크립트를 -WhatIf로 실행해 예약 객체만 생성하고 실제 등록하지 않았다.
 전체 Windows 명령: python -m training.jobs.short run pytest tests/ --cov=clavis --cov=scripts --cov=eval --cov=training.jobs --cov-report=json:work/nightly-coverage.json --junitxml=work/nightly-tests.xml
-Windows 전체 1484 passed, 실패/skip 0. 슬롯 99.813초, peak RSS 324517888 bytes. 두 OS CI 대기.
+Windows 전체 1484 passed, 실패/skip 0. 슬롯 99.813초, peak RSS 324517888 bytes. 두 OS CI [37901196294](https://github.com/jooa1018/clavis-omr/actions/runs/37901196294) PASS. PR #59 merge: 146f1f2a73a1e551ec145793eba57c71c1e6ccbc.
 
 ## 5. 지표
 Windows REF-LAPTOP RAM 24 GB(16+8 GB DDR4-3200 듀얼 채널). 슬롯 시험 2스레드, RAM 3 GB.

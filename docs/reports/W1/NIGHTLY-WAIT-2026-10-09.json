@@ -50,5 +50,14 @@
     "multipleInstances": "IgnoreNew"
   },
   "memoryConfiguration": "24 GB (16+8 GB DDR4-3200 dual channel)",
-  "twoOsCi": "PENDING"
+  "twoOsCi": {
+    "status": "PASS",
+    "runId": 37901196294,
+    "systems": [
+      "ubuntu-latest",
+      "windows-latest"
+    ]
+  },
+  "pullRequest": 59,
+  "mergeCommit": "146f1f2a73a1e551ec145793eba57c71c1e6ccbc"
 }

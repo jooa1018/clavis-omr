@@ -1,6 +1,5 @@
 """Approved benchmark admission and time-weighted external-load evidence."""
 
-import time
 from collections import deque
 from collections.abc import Callable
 from pathlib import Path
@@ -9,6 +8,7 @@ from typing import Any
 import psutil
 import yaml
 
+from training.jobs.clock import Clock
 from training.jobs.memory import snapshot
 from training.jobs.power import power_state
 
@@ -99,20 +99,28 @@ class LoadMonitor:
         }
 
 
-def preflight(limits: dict[str, float], cancelled: Callable[[], bool]) -> dict[str, Any]:
+def preflight(
+    limits: dict[str, float],
+    cancelled: Callable[[], bool],
+    *,
+    clock: Clock | None = None,
+    sample_host: Callable[[], dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    clock = clock or Clock()
+    sample_host = sample_host or host_sample
     attempts: list[dict[str, Any]] = []
     for attempt in range(int(limits["retries"]) + 1):
         if cancelled():
             return {"status": "cancelled", "attempts": attempts}
         monitor = LoadMonitor(limits)
-        host_sample()  # Prime nonblocking system CPU counter; first value is not an interval.
-        start = prior_sample_time = time.monotonic()
+        sample_host()  # Prime nonblocking system CPU counter; first value is not an interval.
+        start = prior_sample_time = clock.monotonic()
         while monitor.duration < limits["preflight_seconds"]:
             if cancelled():
                 return {"status": "cancelled", "attempts": attempts}
-            time.sleep(limits["sample_seconds"])
-            host = host_sample()
-            now = time.monotonic()
+            clock.sleep(limits["sample_seconds"])
+            host = sample_host()
+            now = clock.monotonic()
             monitor.observe(now - prior_sample_time, 0.0, host)
             prior_sample_time = now
         result = monitor.report()
@@ -125,8 +133,8 @@ def preflight(limits: dict[str, float], cancelled: Callable[[], bool]) -> dict[s
             return {"status": "ready", "attempts": attempts}
         if attempt < int(limits["retries"]):
             # Retry start times are at least 60 seconds apart, and pause remains responsive.
-            while time.monotonic() - start < limits["retry_seconds"]:
+            while clock.monotonic() - start < limits["retry_seconds"]:
                 if cancelled():
                     return {"status": "cancelled", "attempts": attempts}
-                time.sleep(limits["sample_seconds"])
+                clock.sleep(limits["sample_seconds"])
     return {"status": "busy", "attempts": attempts}

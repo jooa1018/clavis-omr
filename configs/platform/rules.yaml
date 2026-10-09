@@ -82,3 +82,17 @@
     report: docs/reports/W1/NIGHTLY-WAIT-2026-10-09.md
   introduced_by: w1/nightly-wait
   motivated_by_failure: true
+- id: PLATFORM-TEST-001
+  owner: W1
+  statement: Unit tests inject private clocks without replacing shared time functions; subprocess tests synchronize readiness and actual lock-owner exit. Wall-clock durations are evidence only, never unit-test performance assertions.
+  units: test_events
+  params: []
+  source: convention
+  evidence: Orchestrator 2026-10-09 platform stability instruction
+  flag: tests/platform
+  ablation:
+    status: NOT_RUN
+    reason: Test isolation policy only; no recognition behavior.
+    report: docs/reports/W1/PLATFORM-ISOLATION-2026-10-09.md
+  introduced_by: w1/platform-test-isolation
+  motivated_by_failure: true
