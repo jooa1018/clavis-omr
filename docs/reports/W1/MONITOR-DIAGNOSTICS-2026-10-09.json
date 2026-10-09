@@ -45,5 +45,9 @@
   "ast": "PASS",
   "privacy": "PASS",
   "licenses": "PASS",
-  "twoOsCi": "PENDING"
+  "twoOsCi": {
+    "status": "PASS",
+    "runUrl": "https://github.com/jooa1018/clavis-omr/actions/runs/37894532479"
+  },
+  "mergeCommit": "9623facbb4e50982fb87658b375902998bb9be94"
 }

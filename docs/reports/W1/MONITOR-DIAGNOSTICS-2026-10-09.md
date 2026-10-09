@@ -3,7 +3,7 @@
 ## 1. 요약
 자식 표본 실패 때문에 전체 작업을 중단하지 않는다. 예외 종류·정적 발생 지점·횟수를 기록한다.
 일시 중지 시험은 첫 체크포인트에서 stop 이벤트를 기다려 시작 지연과 독립적이다.
-판정: 로컬 PASS, 두 OS CI 대기. 벤치마크 모드는 별도 후속 PR이다.
+판정: PASS, 두 OS CI 통과 후 병합 완료. 벤치마크 모드는 별도 후속 PR이다.
 
 ## 2. 변경
 [PR #48](https://github.com/jooa1018/clavis-omr/pull/48): `training/jobs/monitor.py`, `runner.py`, `short.py`, `tests/platform/`.
@@ -18,7 +18,7 @@ PLATFORM-MONITOR-001에 운영 규칙 등록. 벤치마크 판정은 별도 작�
 
 ## 4. 검증
 관련 단위 시험 43 passed (24.69초). ruff/format, mypy 86파일, import 경계, runtime 라이선스 14개 PASS.
-H1–H9 PASS, 새 발견 0. Windows 전체 1428 passed, 실패/오류/skip 0. 전체/platform/eval/jobs 커버리지 및 필수 시험 PASS. 두 OS CI 대기.
+H1–H9 PASS, 새 발견 0. Windows 전체 1428 passed, 실패/오류/skip 0. 전체/platform/eval/jobs 커버리지 및 필수 시험 PASS. 두 OS CI [PASS](https://github.com/jooa1018/clavis-omr/actions/runs/37894532479).
 W8 재현 명령(동일 pytest 인수, 설치된 잠금 환경 사용):
 ```text
 python -m training.jobs.short run pytest tests/ --cov=clavis --cov=scripts --cov=eval --cov=training.jobs --cov-report=json:work/w8-full-coverage.json --junitxml=work/w8-full-tests.xml
@@ -41,5 +41,5 @@ Windows REF-LAPTOP RAM 24 GB(16+8 GB DDR4-3200 듀얼 채널), 슬롯 2 연산 �
 체크포인트 시험의 벽시계 상한은 실패 종료 안전망이며 정상 동기화 조건은 파일 이벤트다.
 
 ## 8. 다음 단계
-두 OS CI 통과 후 squash 병합, 사용자에게 W5·W8의 슬롯 복귀 전달을 요청한다.
+두 OS CI 통과 후 squash 병합했다. 사용자에게 W5·W8의 슬롯 복귀 전달을 요청했다.
 다음은 승인된 벤치마크 전용 독점 작업·외부 부하 검사 구현이다.
