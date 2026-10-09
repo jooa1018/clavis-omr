@@ -1,5 +1,5 @@
 # [W1] Windows 슬롯 affinity 감시 수정 — 2026-10-09
-판정: PARTIAL — Windows 전체 933개 PASS, 두 OS CI 대기
+판정: PASS — Windows 전체 933개 및 Linux·Windows CI 통과
 
 ## 1. 요약 (3줄 이내)
 승인된 H9 운영 정책의 문서 반영 전 전체 시험이 monitor-error로 반복 중단됐다.
@@ -48,5 +48,6 @@ AccessDenied를 일괄 무시하지 않는다. kernel guard가 없는 환경과 
 회귀 시험의 오류 주입과 실제 OS 자식 상속 검증을 구분한다.
 
 ## 8. 다음 단계 / 필요한 결정 / 블로커
-두 OS CI 통과 후 B등급 squash 병합한다.
+두 OS CI PASS: https://github.com/jooa1018/clavis-omr/actions/runs/37893247989
+PR #46 squash 병합 완료: 22b546ab48f98c01f871dc5bc1a4ab73ca4c7c26.
 이후 보존한 H9 운영 정책 문서 반영을 완료하고 W2 PR #28에 [W1 확인]을 남긴다.

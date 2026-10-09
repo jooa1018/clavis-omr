@@ -134,6 +134,8 @@
 
 - H9 운영 예외(Orchestrator 사전 승인, 2026-10-06): training/jobs 안의 벽시계·실행 창·자원 상한 판단만 W4 확인 후 정확한 file/line/digest와 approvedBy ["W4", "orchestrator"]로 추가할 수 있다. 인식·데이터 생성·평가 판정 코드에는 적용하지 않는다.
 
+- H9 운영 예외 확대(Orchestrator 사전 승인, 2026-10-09): training/ 아래에서 네트워크 재시도·대기, 진행 보고 주기, 실행 시간 상한처럼 산출 데이터 내용에 영향을 주지 않는 시각 사용(H9)은 W4 확인만으로 예외를 추가할 수 있다. 조건은 중단·재개나 타이밍이 달라도 산출물이 바이트 동일하다는 시험이다. allowlist에는 정확한 file/line/digest와 approvedBy ["W4", "orchestrator"]를 기록한다. src/clavis와 eval에는 적용하지 않는다.
+
 ## 11. 보안과 개인정보
 
 - 보고서·증거 JSON·로그에 사용자명, 호스트명, 절대 경로를 기록하지 않는다. 경로는 저장소 상대 경로나 %USERPROFILE%·CLAVIS_PRIVATE_ROOT 표기로 쓴다.
