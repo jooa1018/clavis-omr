@@ -5,6 +5,7 @@ import shutil
 import subprocess
 import sys
 import time
+from collections.abc import Callable
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -12,6 +13,7 @@ from typing import Any
 import psutil
 
 from training.jobs.benchmark_monitor import LoadMonitor, host_sample, policy, preflight
+from training.jobs.clock import Clock
 from training.jobs.guard import Guard
 from training.jobs.launcher import alive, kill_tree
 from training.jobs.memory import can_start, snapshot
@@ -19,6 +21,7 @@ from training.jobs.model import JobSpec, atomic_json
 from training.jobs.monitor import Diagnostics, enforce_affinity, sample
 from training.jobs.resources import THREAD_ENV, allowed_cpus, constrain
 from training.jobs.store import Queue, worker_lock
+from training.jobs.window import Window
 
 DISK_RESERVE = 3_000_000_000
 
@@ -40,7 +43,13 @@ def recover(queue: Queue) -> None:
         queue.update(row["id"], status="paused", reason="interrupted")
 
 
-def execute(queue: Queue, row: dict[str, Any], manual: bool) -> dict[str, Any]:
+def execute(
+    queue: Queue,
+    row: dict[str, Any],
+    manual: bool,
+    *,
+    deadline_reached: Callable[[], bool] = lambda: False,
+) -> dict[str, Any]:
     spec = JobSpec.model_validate_json(row["spec"])
     benchmark = spec.kind == "benchmark"
     limits = policy() if benchmark else {}
@@ -48,7 +57,8 @@ def execute(queue: Queue, row: dict[str, Any], manual: bool) -> dict[str, Any]:
     if benchmark:
         try:
             admission = preflight(
-                limits, lambda: queue.paused() or (not manual and not in_window())
+                limits,
+                lambda: queue.paused() or deadline_reached() or (not manual and not in_window()),
             )
         except (OSError, psutil.Error) as error:
             diagnosis = Diagnostics()
@@ -199,6 +209,8 @@ def execute(queue: Queue, row: dict[str, Any], manual: bool) -> dict[str, Any]:
                     reason = "window-closed"
                 elif not disk_ok(paths):
                     reason = "disk-low"
+                if deadline_reached():
+                    reason = "window-closed"
                 if reason != "completed":
                     (directory / "stop").touch()
                     if reason in {"user-pause", "window-closed"}:
@@ -285,15 +297,39 @@ def execute(queue: Queue, row: dict[str, Any], manual: bool) -> dict[str, Any]:
     return report
 
 
-def run(queue: Queue, *, manual: bool = False) -> list[dict[str, Any]]:
+def run(
+    queue: Queue, *, manual: bool = False, wait: bool = False, clock: Clock | None = None
+) -> list[dict[str, Any]]:
+    if manual and wait:
+        raise ValueError("manual override and overnight wait are mutually exclusive")
+    clock = clock or Clock()
     reports = []
     with worker_lock():
         recover(queue)
-        while not queue.paused() and (manual or in_window()) and disk_ok([queue.root]):
+        window = Window.next(clock.now()) if wait else None
+        while not queue.paused():
+            now = clock.now()
+            if window is not None:
+                if now >= window.closes:
+                    break
+                if not window.active(now):
+                    clock.sleep(1)
+                    continue
+            elif not manual and not in_window(now):
+                break
+            if not disk_ok([queue.root]):
+                break
             row = queue.claim()
             if row is None:
-                break
-            report = execute(queue, row, manual)
+                if not wait:
+                    break
+                clock.sleep(1)
+                continue
+            report = (
+                execute(queue, row, manual, deadline_reached=lambda: clock.now() >= window.closes)
+                if window is not None
+                else execute(queue, row, manual)
+            )
             reports.append(report)
             if report["status"] == "paused":
                 break

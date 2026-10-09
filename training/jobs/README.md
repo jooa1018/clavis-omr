@@ -24,7 +24,7 @@ uv run --locked --all-groups python -m training.jobs run --manual
 `--manual`은 사용자가 수동으로 시작할 때만 사용한다. `resume`은 상태만 풀며 실행을 자동 시작하지 않는다.
 `pause`는 다른 터미널에서도 가능하다. 중단 파일을 전달해 최대 2초 checkpoint 시간을 준 후 작업 트리를 종료한다.
 Ctrl+C도 큐를 pause하고 종료한다. 다음 실행에서 비정상 종료된 작업은 paused로 회수되므로 `resume`을 다시 실행한다.
-자동 Task Scheduler 등록이나 무거운 실제 작업의 시작은 이 구현에 포함되지 않는다.
+자동 등록은 하지 않는다. 아래 스크립트는 사용자가 실행할 때만 작업 스케줄러를 등록한다.
 
 ## 워커 API
 `Queue().submit(JobSpec(...))`, `run(Queue(), manual=False)`를 사용할 수 있다.
@@ -102,3 +102,17 @@ seed 기본 0, data digest 기본 영 해시는 데이터 없는 시험용이다
 4 연산 스레드, 보통 우선순위, 전체 CPU affinity는 이 측정 유형에만 적용한다. 환경 변수 및 라이브러리 스레드 주입·Windows Job Object 상속은 그대로다. 시작 전 10초 검사와 최대 10회 재시도(검사 시작 간격 60초), 실행 중 시간 가중 외부 부하 및 RAM/AC 검사는 COMMON 10절과 configs/jobs/benchmark.yaml을 따른다.
 
 결과는 `~/.clavis/benchmark-runs/<runId>/experiments.jsonl`에 보존한다. 큐 등록은 기존 jobs 기록에 남긴다. status=invalid 결과는 예산 판정에서 제외하며, 외부 부하 표본과 invalidReasons를 조사한다. 예산 판정은 benchmark.validity=valid인 완료 결과에만 허용한다. 5초 미만 측정은 5초 창 최대를 null로 남긴다. 종료된 자식의 미관찰 CPU는 빼지 않아 외부 부하를 보수적으로 잡을 수 있으며 표본 방식의 한계다. AC 상태를 확인할 수 없으면 시작하지 않는다. Windows 전원 모드 API가 없는 OS는 unavailable로 기록한다.
+
+## 야간 자동 시작과 취침 전 대기
+
+저장소 루트에서 사용자가 실행한다. 먼저 `.venv`에 `uv sync --locked --all-groups`로 의존성을 준비한다.
+
+- 등록: `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/register-nightly.ps1`
+- 해제: `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/unregister-nightly.ps1`
+- 오늘 밤 직접 대기: `uv run --locked --all-groups python -m training.jobs run --wait`
+
+등록은 현재 사용자, 관리자 권한 없이 Interactive/Limited로 매일 로컬 00:55에 실행한다. 사용자 로그인 유지·AC 연결·노트북 전원이 필요하다. 중복 스케줄 인스턴스는 IgnoreNew, 배터리 시작 금지 및 배터리 전환 시 중단, WakeToRun을 설정한다. 하드웨어/OS의 절전 깨우기 허용 여부에 따라 자동 깨우기는 보장되지 않는다. `-WhatIf`로 실제 등록 없이 확인할 수 있다. 해제는 예약만 없애며 이미 실행 중인 큐는 `python -m training.jobs pause`로 멈춘다.
+
+`run --wait`는 시작 즉시 머신 잠금을 취득한다. 기존 큐/슬롯이 점유하면 기다리지 않고 코드 75로 종료한다. 잠금을 얻으면 다음 01:00까지 대기하고 07:00까지 FIFO를 처리한다. 빈 큐도 07:00까지 새 등록을 기다린다. 이미 01:00–07:00이면 즉시 시작하며, 07:00 이후에 켜면 다음 날 창을 기다린다. 실행 도중 07:00이면 stop 신호·체크포인트로 중단한다. `pause`는 창 이전 대기에도 적용되며 자동으로 사용자 pause를 해제하지 않는다. 이전 중단 작업을 다시 대기열에 넣을 때만 사용자가 `resume`한다. `--manual`과 `--wait`는 함께 쓸 수 없다.
+
+대기 모드가 잠금을 독점하므로 취침 전에 켠다. Task Scheduler의 대리 사용자 환경에는 터미널에서만 설정한 환경 변수가 전달되지 않는다. 필요한 사적 경로는 사용자 환경 변수 CLAVIS_PRIVATE_ROOT로만 설정한다. 스크립트에 사적 경로·토큰을 넣지 않는다.

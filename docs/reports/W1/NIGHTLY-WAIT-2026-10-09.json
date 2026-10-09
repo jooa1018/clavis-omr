@@ -1,0 +1,54 @@
+{
+  "schema": "clavis-nightly-validation-1",
+  "windows": {
+    "tests": "1484",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "97.659"
+  },
+  "execution": {
+    "status": "succeeded",
+    "reason": "completed",
+    "slot": 0,
+    "runId": "39f3d7e18b624f98937b75b585984636",
+    "jobId": "8490fad86a094b698f6b98560e8445dd",
+    "wallSeconds": 99.81300000000192,
+    "cpuSecondsSampled": 84.953125,
+    "peakRssBytesSampled": 324517888,
+    "cpuLimit": 2,
+    "monitorDiagnostics": [
+      {
+        "exceptionType": "NoSuchProcess",
+        "site": "sample.cpu_times",
+        "skippedChild": true,
+        "count": 1
+      },
+      {
+        "exceptionType": "NoSuchProcess",
+        "site": "sample.memory_info",
+        "skippedChild": true,
+        "count": 21
+      },
+      {
+        "exceptionType": "NoSuchProcess",
+        "site": "sample.num_threads",
+        "skippedChild": true,
+        "count": 4
+      }
+    ]
+  },
+  "scheduler": {
+    "registered": false,
+    "verification": "WhatIf objects only",
+    "currentUser": true,
+    "logon": "Interactive",
+    "runLevel": "Limited",
+    "localStart": "00:55",
+    "acOnly": true,
+    "stopOnBattery": true,
+    "multipleInstances": "IgnoreNew"
+  },
+  "memoryConfiguration": "24 GB (16+8 GB DDR4-3200 dual channel)",
+  "twoOsCi": "PENDING"
+}
