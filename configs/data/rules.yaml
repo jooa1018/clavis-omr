@@ -68,3 +68,17 @@
     report: docs/reports/W2/2026-09-29-production-preparation.md
   introduced_by: w2/production-profile
   motivated_by_failure: false
+- id: DATA-PDMX-001
+  owner: W2
+  statement: "Aggregate written type+dots per active staff meter only after exact no-conflict and PDM/CC0 item filtering; use the container's first rootfile with MusicXML's default media type; reject malformed XML without repair, count exclusions, and publish no song-level values."
+  units: written_noteheads
+  params: [meters, max_mxl_bytes, max_xml_bytes, max_ratio, download]
+  source: convention
+  evidence: https://zenodo.org/records/15571083
+  flag: aggregate-statistics source permission in training/data/licenses/sources.json
+  ablation:
+    status: NOT_RUN
+    reason: "Aggregate-only tool; no recognition or training admission. Filter negative cases tested."
+    report: docs/reports/W2/2026-09-29-pdmx-aggregate.md
+  introduced_by: w2/pdmx-aggregate
+  motivated_by_failure: false

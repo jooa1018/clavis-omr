@@ -7,14 +7,14 @@
 
 ## 1. 비공개 위치 지정 (약 10분)
 
-예시 폴더는 `C:\Users\eccto\ClavisPrivate`입니다. Git 저장소나 자동 클라우드
+예시 폴더는 `%USERPROFILE%\ClavisPrivate`입니다. Git 저장소나 자동 클라우드
 동기화 폴더 안에 만들지 않습니다. 이미 밖에 있는 omr_DEV후보는 원본을 보존하고
 복사본을 아래 `dev` 구조에 정리하면 됩니다. 보류/봉인 자료는 이 폴더에 넣지 않습니다.
 
 PowerShell에서 다음처럼 지정합니다. 경로는 실제로 만든 로컬 폴더로 바꾸세요.
 
 ```powershell
-$env:CLAVIS_PRIVATE_ROOT = 'C:\Users\eccto\ClavisPrivate'
+$env:CLAVIS_PRIVATE_ROOT = Join-Path $env:USERPROFILE 'ClavisPrivate'
 ```
 
 이 설정은 현재 PowerShell 창에만 적용됩니다. 창을 새로 열면 다시 지정합니다.
@@ -47,6 +47,15 @@ W4 worktree의 PowerShell에서 다음을 실행합니다(6은 해당 쪽의 총
 
 ```powershell
 .venv\Scripts\python.exe -m eval.gt select --page-id dev-001 --systems 6 --count 3 --seed dev-intake-session1 --date 2026-09-29 --out dev/dev-001/selection.json
+```
+
+`--out`은 현재 작업 폴더가 아니라 **CLAVIS_PRIVATE_ROOT 기준 상대 경로**입니다.
+위 예시는 `$env:CLAVIS_PRIVATE_ROOT\dev\dev-001\selection.json`을 만듭니다.
+도구는 환경 변수 미설정, Git 저장소 내부 root, 경로 탈출을 거부하며 worktree에 쓰지 않습니다.
+저장 위치는 다음 읽기 전용 명령으로 확인할 수 있습니다.
+
+```powershell
+Get-Item -LiteralPath (Join-Path $env:CLAVIS_PRIVATE_ROOT 'dev/dev-001/selection.json')
 ```
 
 날짜는 실제 선택한 날짜로 바꿉니다. seed는 이 작업 묶음에서 미리 고른 문자열을

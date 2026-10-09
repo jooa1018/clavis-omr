@@ -1,0 +1,116 @@
+{
+  "status": "COMPLETE_AGGREGATE_ONLY",
+  "training_admission": "BLOCKED_OR003",
+  "run_metrics": {
+    "average_cpu_machine_percent": 3.268597978093377,
+    "average_cpu_one_core_percent": 39.22317573712053,
+    "cpu_seconds": 1364.96875,
+    "job_handle_active": true,
+    "peak_rss_bytes": 581062656,
+    "phase": "AGGREGATE",
+    "source_cache_removed": true,
+    "status": "COMPLETE",
+    "transfer_bytes": 2153150894,
+    "wall_seconds": 3480.0056964999994
+  },
+  "source_verification": {
+    "PDMX.csv": {
+      "md5": "30392ccf38bb63ce70e7afae70f9c88c",
+      "sha256": "fc2187e7e09185f4b28be57b6478a96a1243a037f8fd13624f17de2d8bfd44bd",
+      "size": 225399738,
+      "verified": true
+    },
+    "free_before_bytes": 5232443392,
+    "mxl.tar.gz": {
+      "md5": "49ffd75ecf5489c0be6d41182eb11ff7",
+      "sha256": "01949cc0d9215e2f30924eadc8b1dd148aca90c02e2cf1999bb83df5ffe4d7a4",
+      "size": 1894335797,
+      "verified": true
+    },
+    "required_free_bytes": 3000000000
+  },
+  "source_config_digest": "2faca64ff8b0c3b48db03e93f1ee48bdf45d9eb83941c6f89ed11fd727be67c0",
+  "source_files_sha256": {
+    "configs/data/pdmx-aggregate.json": "0a8b86bec3fec0b9a465802f2fafb99cbab1cabde67ebd598497c264b9202418",
+    "training/data/pdmx_stream.py": "8b6f4fc997f1b5e812cf6369731b2537ded1c31e179bc6175c8b8ee3fc8c9734",
+    "training/data/pdmx_aggregate.py": "5bd528af3a6a307f503c6df0b08aa3ea2a2c71d424d3a28804b8e5af43262e2b",
+    "training/data/pdmx_download.py": "49fbc880e4acd51b7e75747620733e56cb548d3cdc97e614e1ce4a18d6f959a0",
+    "training/data/pdmx_windows.py": "7d4429809a8b37ffd4311120906c93536323607d37e282c538f47bb540a77036"
+  },
+  "started_at_utc": "2026-10-08T15:50:04.0957358Z",
+  "completed_at_utc": "2026-10-08T16:57:57.4739978Z",
+  "elapsed_including_repair_and_wait_seconds": 4073.378262,
+  "wall_definition": "run_metrics.wall_seconds is cumulative active process wall time across resumed attempts; elapsed_including_repair_and_wait_seconds includes repair and disk waits",
+  "statistics": {
+    "parsed_songs": 222818,
+    "rejected_invalid_xml": 2
+  },
+  "licensing": {
+    "eligible": 222820,
+    "excluded": 31257,
+    "rows": 254077
+  },
+  "meter_summary": [
+    {
+      "meter": "12/8",
+      "songs": 2287,
+      "pitched_noteheads_including_unknown": 1182203,
+      "unknown_type": 0,
+      "rests": 218904,
+      "grace": 3440
+    },
+    {
+      "meter": "2/2",
+      "songs": 27852,
+      "pitched_noteheads_including_unknown": 6558218,
+      "unknown_type": 0,
+      "rests": 845195,
+      "grace": 45419
+    },
+    {
+      "meter": "2/4",
+      "songs": 29099,
+      "pitched_noteheads_including_unknown": 5600784,
+      "unknown_type": 0,
+      "rests": 805564,
+      "grace": 34335
+    },
+    {
+      "meter": "3/4",
+      "songs": 30981,
+      "pitched_noteheads_including_unknown": 8191327,
+      "unknown_type": 0,
+      "rests": 1425834,
+      "grace": 42535
+    },
+    {
+      "meter": "4/4",
+      "songs": 91912,
+      "pitched_noteheads_including_unknown": 37922755,
+      "unknown_type": 0,
+      "rests": 7466664,
+      "grace": 148742
+    },
+    {
+      "meter": "6/8",
+      "songs": 42452,
+      "pitched_noteheads_including_unknown": 6624830,
+      "unknown_type": 0,
+      "rests": 620716,
+      "grace": 65057
+    }
+  ],
+  "repository_work_data_bytes": 58652366.0,
+  "free_after_bytes": 6629793792,
+  "reconciliation": "parsed + rejected == eligible; complete source SHA256 agrees with checkpoint and aggregate; publisher size/MD5 checks passed",
+  "synthetic_resume_determinism": "PASS",
+  "actual_uninterrupted_comparison": "NOT_RUN",
+  "actual_resume": "PASS: cached sources and aggregate checkpoint reused with unchanged transfer bytes",
+  "display": {
+    "active_wall_minutes": 58.0,
+    "elapsed_wall_minutes": 67.89,
+    "peak_rss_mb": 581.06,
+    "average_cpu_one_core_percent": 39.22,
+    "average_cpu_machine_percent": 3.27
+  }
+}

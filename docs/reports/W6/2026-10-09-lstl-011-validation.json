@@ -1,0 +1,266 @@
+{
+  "status": "PARTIAL",
+  "schema": "W6-component-validation",
+  "scope": "authored mock; NOT SYN-Val",
+  "git_sha": "c48ec6028ce3f1dbcf135d1c1a14f736414f635b",
+  "memory": "24 GB (16+8 GB), DDR4-3200 dual channel",
+  "unit_junit": {
+    "time": "13.470",
+    "failures": "0",
+    "tests": "67",
+    "skipped": "0",
+    "errors": "0"
+  },
+  "determinism_junit": {
+    "time": "4.102",
+    "failures": "0",
+    "tests": "2",
+    "skipped": "0",
+    "errors": "0"
+  },
+  "full_windows": "PASS: retry completed under OR-005",
+  "hardcoding": {
+    "schema": "clavis-hardcode-scan-1",
+    "status": "PASS",
+    "pythonFiles": 127,
+    "manifestIdentifiers": 0,
+    "findings": [],
+    "suppressed": [
+      {
+        "file": "training/jobs/runner.py",
+        "line": 161,
+        "rule": "H9",
+        "owner": "W1",
+        "evidence_digest": "f55bb63062ca7fa6483196ef2dc20d9cad1d0ef028c76a8a6030e30a59111f85"
+      },
+      {
+        "file": "training/jobs/runner.py",
+        "line": 223,
+        "rule": "H9",
+        "owner": "W1",
+        "evidence_digest": "62cb15b5b7c52f6c1e2f78736d6d34381fd3e3274c27556e936ec20069317c08"
+      }
+    ],
+    "byOwner": {}
+  },
+  "privacy": {
+    "status": "PASS",
+    "trackedFiles": 523,
+    "findings": []
+  },
+  "coverage": [
+    {
+      "path": "src\\clavis\\symbols\\__init__.py",
+      "summary": {
+        "covered_lines": 0,
+        "num_statements": 0,
+        "percent_covered": 100.0,
+        "percent_covered_display": "100",
+        "missing_lines": 0,
+        "excluded_lines": 0,
+        "percent_statements_covered": 100.0,
+        "percent_statements_covered_display": "100"
+      }
+    },
+    {
+      "path": "src\\clavis\\symbols\\columns.py",
+      "summary": {
+        "covered_lines": 59,
+        "num_statements": 61,
+        "percent_covered": 96.72131147540983,
+        "percent_covered_display": "97",
+        "missing_lines": 2,
+        "excluded_lines": 0,
+        "percent_statements_covered": 96.72131147540983,
+        "percent_statements_covered_display": "97"
+      }
+    },
+    {
+      "path": "src\\clavis\\symbols\\detection.py",
+      "summary": {
+        "covered_lines": 118,
+        "num_statements": 120,
+        "percent_covered": 98.33333333333333,
+        "percent_covered_display": "98",
+        "missing_lines": 2,
+        "excluded_lines": 0,
+        "percent_statements_covered": 98.33333333333333,
+        "percent_statements_covered_display": "98"
+      }
+    },
+    {
+      "path": "src\\clavis\\symbols\\reading.py",
+      "summary": {
+        "covered_lines": 99,
+        "num_statements": 103,
+        "percent_covered": 96.11650485436893,
+        "percent_covered_display": "96",
+        "missing_lines": 4,
+        "excluded_lines": 0,
+        "percent_statements_covered": 96.11650485436893,
+        "percent_statements_covered_display": "96"
+      }
+    },
+    {
+      "path": "src\\clavis\\symbols\\templates.py",
+      "summary": {
+        "covered_lines": 26,
+        "num_statements": 26,
+        "percent_covered": 100.0,
+        "percent_covered_display": "100",
+        "missing_lines": 0,
+        "excluded_lines": 0,
+        "percent_statements_covered": 100.0,
+        "percent_statements_covered_display": "100"
+      }
+    }
+  ],
+  "determinism_effective_opencv_threads": "[1, 4]",
+  "full_windows_first_failure": {
+    "status": "failed",
+    "reason": "monitor-error",
+    "slot": 1,
+    "runId": "869a36a4aa8447529eeadd80d7ffcfa2",
+    "jobId": "49ebe892cbad4a90a505449b0054ffe9",
+    "wallSeconds": 88.95299999999406,
+    "cpuSecondsSampled": 64.0,
+    "peakRssBytesSampled": 224026624,
+    "cpuLimit": 2
+  },
+  "smoke_slot": {
+    "status": "succeeded",
+    "reason": "completed",
+    "slot": 0,
+    "runId": "03c68be9913a4583adccd1ec87eed438",
+    "jobId": "384a2b6fd1dd4ef284fad53717551326",
+    "wallSeconds": 1.7819999999992433,
+    "cpuSecondsSampled": 1.078125,
+    "peakRssBytesSampled": 99631104,
+    "cpuLimit": 2
+  },
+  "mock_manifest": {
+    "scope": "authored component mock; NOT SYN-Val; no training",
+    "files": [
+      {
+        "path": "tests/symbols/test_baseline.py",
+        "sha256": "f5fff84220a152447835e2e1985959b5b4462cdc8d84996f44f722f56b5f6e1b"
+      },
+      {
+        "path": "tests/symbols/test_columns.py",
+        "sha256": "d1e6d2009f0a67ad75a93153e14dd71221319c4bbc352f7255bd5a1036fb2219"
+      }
+    ]
+  },
+  "mock_manifest_sha256": "52e3dba8c5f9978b5145e164e079ba6cb51245f2f9b12b662fa95bdae33e011b",
+  "tested_head_sha": "68ab758f6843154a15016e3d70dbca6f587a5eab",
+  "full_windows_command": "uv run --locked --all-groups python -m training.jobs.short run pytest tests/ --cov=clavis --cov=scripts --cov=eval --cov=training.jobs --cov-report=json:work/v011-coverage.json --junitxml=work/v011-tests.xml",
+  "full_windows_slot": {
+    "status": "succeeded",
+    "reason": "completed",
+    "slot": 0,
+    "runId": "ba9ad8e6b1c747568a5a988d992d6608",
+    "jobId": "d7f691b315734b8286ce25d116396a50",
+    "wallSeconds": 108.03100000000268,
+    "cpuSecondsSampled": 83.9375,
+    "peakRssBytesSampled": 306937856,
+    "cpuLimit": 2
+  },
+  "full_windows_junit": {
+    "errors": "0",
+    "tests": "783",
+    "skipped": "0",
+    "failures": "0",
+    "time": "105.853"
+  },
+  "full_coverage": {
+    "covered_lines": 4040,
+    "num_statements": 4345,
+    "percent_covered": 92.98043728423475,
+    "percent_covered_display": "93",
+    "missing_lines": 305,
+    "excluded_lines": 4,
+    "percent_statements_covered": 92.98043728423475,
+    "percent_statements_covered_display": "93"
+  },
+  "symbols_full_coverage": [
+    {
+      "path": "src\\clavis\\contracts\\symbols.py",
+      "summary": {
+        "covered_lines": 105,
+        "num_statements": 106,
+        "percent_covered": 99.05660377358491,
+        "percent_covered_display": "99",
+        "missing_lines": 1,
+        "excluded_lines": 0,
+        "percent_statements_covered": 99.05660377358491,
+        "percent_statements_covered_display": "99"
+      }
+    },
+    {
+      "path": "src\\clavis\\symbols\\__init__.py",
+      "summary": {
+        "covered_lines": 0,
+        "num_statements": 0,
+        "percent_covered": 100.0,
+        "percent_covered_display": "100",
+        "missing_lines": 0,
+        "excluded_lines": 0,
+        "percent_statements_covered": 100.0,
+        "percent_statements_covered_display": "100"
+      }
+    },
+    {
+      "path": "src\\clavis\\symbols\\columns.py",
+      "summary": {
+        "covered_lines": 59,
+        "num_statements": 61,
+        "percent_covered": 96.72131147540983,
+        "percent_covered_display": "97",
+        "missing_lines": 2,
+        "excluded_lines": 0,
+        "percent_statements_covered": 96.72131147540983,
+        "percent_statements_covered_display": "97"
+      }
+    },
+    {
+      "path": "src\\clavis\\symbols\\detection.py",
+      "summary": {
+        "covered_lines": 118,
+        "num_statements": 120,
+        "percent_covered": 98.33333333333333,
+        "percent_covered_display": "98",
+        "missing_lines": 2,
+        "excluded_lines": 0,
+        "percent_statements_covered": 98.33333333333333,
+        "percent_statements_covered_display": "98"
+      }
+    },
+    {
+      "path": "src\\clavis\\symbols\\reading.py",
+      "summary": {
+        "covered_lines": 99,
+        "num_statements": 103,
+        "percent_covered": 96.11650485436893,
+        "percent_covered_display": "96",
+        "missing_lines": 4,
+        "excluded_lines": 0,
+        "percent_statements_covered": 96.11650485436893,
+        "percent_statements_covered_display": "96"
+      }
+    },
+    {
+      "path": "src\\clavis\\symbols\\templates.py",
+      "summary": {
+        "covered_lines": 26,
+        "num_statements": 26,
+        "percent_covered": 100.0,
+        "percent_covered_display": "100",
+        "missing_lines": 0,
+        "excluded_lines": 0,
+        "percent_statements_covered": 100.0,
+        "percent_statements_covered_display": "100"
+      }
+    }
+  ],
+  "ci": "PENDING: ready only after full local Windows validation"
+}

@@ -9,7 +9,7 @@ from pathlib import Path
 from clavis.contracts import DOCUMENT_MODELS, canonical_json
 
 ROOT = Path(__file__).resolve().parents[1] / "fixtures/contracts"
-IR = "clavis-ir-0.1"
+IR = "clavis-ir-0.1.1"
 
 
 def digest(label):

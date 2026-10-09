@@ -1,0 +1,91 @@
+{
+  "scope": "Windows local manual tool validation; no recognition evaluation",
+  "status": "BLOCKED_READY_FOR_REVIEW",
+  "tests": {
+    "tests": "538",
+    "failures": "5",
+    "errors": "0",
+    "skipped": "0",
+    "time": "183.068"
+  },
+  "passed": 533,
+  "textTests": 42,
+  "textTestsPassed": 42,
+  "failures": [
+    {
+      "test": "tests.eval.test_baselines::test_lifecycle_cache_and_failures[success]",
+      "message": "ValueError: at least 3 GiB free disk required"
+    },
+    {
+      "test": "tests.eval.test_baselines::test_lifecycle_cache_and_failures[crash]",
+      "message": "ValueError: at least 3 GiB free disk required"
+    },
+    {
+      "test": "tests.eval.test_baselines::test_lifecycle_cache_and_failures[timeout]",
+      "message": "ValueError: at least 3 GiB free disk required"
+    },
+    {
+      "test": "tests.eval.test_baselines::test_lifecycle_cache_and_failures[empty]",
+      "message": "ValueError: at least 3 GiB free disk required"
+    },
+    {
+      "test": "tests.eval.test_baselines::test_real_external_stub_is_separate_process",
+      "message": "ValueError: at least 3 GiB free disk required"
+    }
+  ],
+  "textCoverage": {
+    "src\\clavis\\text\\__init__.py": {
+      "covered_lines": 0,
+      "num_statements": 0,
+      "percent_covered": 100.0,
+      "percent_covered_display": "100",
+      "missing_lines": 0,
+      "excluded_lines": 0,
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100"
+    },
+    "src\\clavis\\text\\ctc.py": {
+      "covered_lines": 52,
+      "num_statements": 52,
+      "percent_covered": 100.0,
+      "percent_covered_display": "100",
+      "missing_lines": 0,
+      "excluded_lines": 0,
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100"
+    },
+    "src\\clavis\\text\\onnx_boundary.py": {
+      "covered_lines": 39,
+      "num_statements": 39,
+      "percent_covered": 100.0,
+      "percent_covered_display": "100",
+      "missing_lines": 0,
+      "excluded_lines": 6,
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100"
+    }
+  },
+  "freeDiskBytesAtCapture": 938516480,
+  "requiredFreeDiskBytes": 3221225472,
+  "ruffLint": "PASS",
+  "ruffFormat": "PASS",
+  "mypy": "PASS",
+  "importContracts": "PASS",
+  "runtimeLicenseScan": "PASS",
+  "hardcoding": {
+    "schema": "clavis-hardcode-scan-1",
+    "status": "PASS",
+    "pythonFiles": 92,
+    "manifestIdentifiers": 0,
+    "findings": [],
+    "suppressed": [],
+    "byOwner": {}
+  },
+  "determinism": {
+    "ctcPythonWorkers1And4ThreeRepeatsBytes": "PASS",
+    "onnxModel": "NOT_RUN"
+  },
+  "ci": "NOT_RUN_draft",
+  "realDataLeakage": "NOT_RUN",
+  "sealed": "NOT_ACCESSED"
+}

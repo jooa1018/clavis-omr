@@ -123,3 +123,66 @@ The smoke command is a repository-only test harness: its fixed four-measure
 fixture author lives in `tests/data/smoke_inputs.py`, excluded from H4 by the
 charter. It requires the repository's tests tree and is not a production data
 generator. The move preserves input XML bytes and existing audit provenance.
+
+## PDMX aggregate-only local streaming (OR-004, amended 2026-10-06)
+
+The approved v9 source is `https://zenodo.org/records/15571083`. The per-row gate
+requires no-license-conflict membership, false license_conflict, and the exact
+PDM or CC0 license URL. Only CSV and the MXL archive are fetched into an external
+temporary cache. They are removed after successful aggregation; extracted source
+XML never persists. No song IDs or per-song values enter output artifacts. The
+complete CSV SHA-256 is the source manifest digest. Both files must match publisher sizes and MD5 before
+`aggregate.json` is written; that file contains aggregate tables and manifest digest.
+
+```text
+python -m training.data.pdmx_stream --config configs/data/pdmx-aggregate.json --output work/pdmx-v9-range-aggregate --cache "$env:LOCALAPPDATA/Temp/clavis-w2-pdmx-v9"
+```
+
+This is a local Windows queue payload; never run real data in GitHub Actions.
+OR-004 authorizes one long execution: one process, <=2 compute threads, 1.5 GB
+process memory cap, Below Normal priority, >=3 GB disk free, <=4 GB repository data.
+The launcher must also set OMP_NUM_THREADS, OPENBLAS_NUM_THREADS and MKL_NUM_THREADS
+to 2 before Python imports. Windows Job Object enforces one process/memory; affinity
+limits execution to two available logical CPUs. Allocation/limit failures stop work.
+
+The downloader requests 4 MiB ranges (download.segment_bytes) with a registered
+16 MiB maximum (download.max_segment_bytes, bytes; Orchestrator 2026-10-09
+resource-bound approval, independent of image dimensions) through at most four I/O connections in the
+same process. Exact HTTP 206 Content-Range and identity encoding are mandatory.
+429/503 honor Retry-After with shared exponential backoff. An OS cache lock prevents
+concurrent writers and is released on process death. Segment data is fsynced before
+an atomic journal records its SHA-256. Resume rehashes completed segments and fetches
+only missing/corrupt ranges. It never falls back to a full network stream. File size
+and MD5 are checked against Zenodo, including when all segments were already cached.
+Disk preflight reserves both sources plus 3 GB free; runtime checks preserve that
+margin. Cache must be outside Git repositories. No source bytes enter Git or CI.
+
+Aggregate checkpoints retain counts and the processed TAR ordinal, not member names.
+Resume rereads local compressed bytes and skips already counted members, without
+retransmitting the network prefix. An interrupted result is not a target. Synthetic
+interrupted/uninterrupted final aggregate bytes must match. After success only the
+two explicitly named source files and their range journals are deleted; no recursive
+cleanup is used. Keep the external cache on interruption to permit resumption.
+
+The denominator is written pitched noteheads with a notated type, across all parts,
+counting each tied segment and each chord member; no repeat unfolding. Grace and rests
+are separate counters. Time changes update the applicable staff; unsupported/missing
+meter is excluded. Unknown note types remain an explicit counter, never inferred.
+Per-meter `songs` counts a source once if it contributes notation to that meter.
+This full-population aggregate does not use a sampled 1,000-song shortcut.
+
+MXL root selection follows the MusicXML compressed-container standard: the first
+rootfile identifies MusicXML and an omitted media-type defaults to MusicXML.
+Additional renditions are not aggregated. A missing path or explicit non-MusicXML
+first root is rejected. This applies to all containers, independent of source or
+song identity; tests cover namespaces, paths and alternate renditions.
+Reference: https://www.w3.org/2021/06/musicxml40/tutorial/compressed-mxl-files/
+XML syntax errors are excluded under T2.2 and counted as `rejected_invalid_xml`.
+No error recovery or inferred repair is applied. Size/ratio, container format,
+source integrity, and resource guard failures still stop the job. The excluded
+count is checkpointed with parsed counts, so resuming does not duplicate exclusions.
+
+`run-metrics.json` records cumulative active wall/CPU time, peak RSS, transfer bytes,
+and mean CPU percent (one-core and whole-machine denominators). Operational checkpoint
+and telemetry files have no song identifiers. Aggregate statistics do not authorize
+training. OR-003 protected-set v1 and the admitted receipt remain mandatory.

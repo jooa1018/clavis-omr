@@ -3,6 +3,9 @@
 Owner: W4. Implements EVALUATION v1.1 / ADR-012 without changing their definitions.
 Offline implementation; the public confidence contract parser and NumPy bootstrap
 are dependencies. No engine internals, training, network, LLM or baseline imports.
+Evaluation currently consumes MusicXML and public confidence output, not LSTL.
+Any evaluation tooling that consumes LSTL must use `clavis.contracts.lstl.parse`
+and its shared sequence automaton (CCR-0003); do not add a separate permissive parser.
 
 ## Run a public-output pair
 
@@ -12,7 +15,7 @@ From the repository checkout (Python 3.12):
 uv run --locked python -m eval reference.musicxml prediction.musicxml --out work/evaluation
 uv run --locked --group eval python -m eval reference.musicxml prediction.musicxml --confidence element-confidence.json --out work/evaluation-flagged
 uv run --locked --group eval python -m eval.aggregate pages-A.json --compare pages-B.json --out work/paired.json
-uv run --locked pytest tests/eval --cov=eval --cov-fail-under=80
+uv run --locked --all-groups python -m training.jobs.short run pytest tests/ --cov=eval --cov-fail-under=80
 uv run --locked mypy --strict eval
 ```
 

@@ -1,0 +1,27 @@
+{
+  "windowsCommand": ".venv\\Scripts\\pytest.exe tests/ --cov=clavis --cov=scripts --cov=eval --cov-report=json:work/or003-coverage.json -q",
+  "passed": 499,
+  "seconds": 64.4,
+  "newModuleCoverage": {
+    "eval\\integrity\\protection.py": {
+      "covered_lines": 58,
+      "num_statements": 59,
+      "percent_covered": 98.30508474576271,
+      "percent_covered_display": "98",
+      "missing_lines": 1,
+      "excluded_lines": 0,
+      "percent_statements_covered": 98.30508474576271,
+      "percent_statements_covered_display": "98"
+    }
+  },
+  "scan": {
+    "schema": "clavis-hardcode-scan-1",
+    "status": "PASS",
+    "pythonFiles": 90,
+    "manifestIdentifiers": 0,
+    "findings": [],
+    "suppressed": [],
+    "byOwner": {}
+  },
+  "actualData": "NOT_RUN"
+}

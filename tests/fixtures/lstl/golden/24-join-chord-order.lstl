@@ -1,0 +1,4 @@
+note dur=quarter pos=0 head=normal v=1
+note dur=quarter pos=-10 head=normal v=3 join=1
+note dur=quarter pos=-9 head=normal v=3 chord=1
+rest dur=eighth v=4 join=1

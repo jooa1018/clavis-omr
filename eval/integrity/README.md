@@ -5,13 +5,43 @@ ignore되지 않은 신규 파일만 읽는다. 저장소 밖 경로와 심볼�
 
 ```powershell
 python -m eval.integrity.hardcode_scan --root . --out work/hardcode.json
-python -m eval.integrity.leakage --train work/train-hashes.json --reserved work/reserved-hashes.json --out work/leakage.json --admitted work/admitted-hashes.json
+python -m eval.integrity.leakage --train work/train-hashes.json --reserved work/protected-set.json --out work/leakage.json --admitted work/admission.json
 ```
 
 종료 코드: PASS=0, 위반·파싱/설정 오류=1. 누출 검사의 자료 없음은 NOT_RUN=2이며
-admitted는 빈 배열이다. 오염 샘플을 제외한 admitted inventory만 학습 admission에
-사용한다. 원래 입력 목록으로 학습을 계속하면 안 된다. 오류 시 기존 admitted도 빈
+admission은 비어 있다. 오염 샘플을 제외한 admission.inventory만 학습에
+사용한다. 원래 입력 목록으로 학습을 계속하면 안 된다. 오류 시 기존 admission도 빈
 출력으로 덮어써 이전 실행의 허용 결과를 재사용하지 못하게 한다.
+
+## OR-003 보호 집합과 재검사
+
+protected-set.json 형식: `schema: clavis-protected-set-1`, 정수 `version`, `sources`.
+sources 키는 eval-pool, lieder, dev-melodies, dev-images만 허용하며 sealed는 거부한다.
+각 값은 `{"complete":true,"inventory":{...role:reserved...}}`다.
+eval-pool 전체와 OpenScore Lieder 전체 성악 선율은 필수이고 비어 있으면 거부한다.
+수집 완료 근거가 있어야 complete=true로 선언한다. 둘이 갖춰지면 v1이며 접수된 Dev
+GT 선율(R-TGT Dev/R-LEGACY)·이미지 SHA256/pHash를 추가할 때 버전을 올린다.
+sealed 자료는 입력하지 않는다. sealed 부재는 편입 차단 이유가 아니다.
+
+출력 clavis-training-admission-1은 `protectedSetDigest`, `protectedSetVersion`,
+제외 후 `inventory`를 담는다. W2 학습 manifest에 그 digest를 그대로 기록하고 학습
+직전에 현 보호 집합 digest와 대조한다. 아래 API로 갱신 검사를 한다.
+
+`eval.integrity.protection.recheck(prior_admission, new_bundle, sample_id_to_song_id)`
+
+이전 실제 학습 목록과 명시적 sample→song 대응표를 넣어 곡 단위 분모를 보존한다.
+새 충돌이 1% 초과면 ESCALATE. 다음 학습부터 제외하되 기존 체크포인트는 고치거나
+재학습하지 않는다. 로컬 결과 contaminatedDevPageIds로 Dev metadata.contaminated를
+표시한다. eval.aggregate는 contaminated/clean/unknown 슬라이스를 별도 출력한다.
+접수 자료가 없는데 clean으로 채우지 않는다. recheck 출력은 Dev 내부 자료다.
+
+편입 전 속도/경로 시험용 학습은 LeadGen 개발 프로필·smoke 렌더만 허용한다.
+eval-*·PDMX·실사 금지, checkpoint=measurement-only. 평가 보고·엔진 모델·체크포인트
+선택에 사용 금지. 실제 학습/체크포인트 계보 강제는 W1/W2 및 학습 소유자의 책임이다.
+
+sealed는 Custodian의 `eval.sealed reverse-screen`으로 동결 학습·Dev inventory에
+대조해 후보를 제외한다. 후보·제외 건수만 공유하며 선율 지문은 누구에게도 넘기지
+않는다. 학습을 sealed 결과로 재필터하지 않는다. eval/sealed/README.md를 따른다.
 
 ## 스캐너
 
@@ -24,8 +54,11 @@ H9는 시각 호출과 단순 변수 전파가 분기·조건식·assert·compre
 탐지한다. 시각을 기록하는 로그·보고서 컨테이너는 판정값으로 간주하지 않는다.
 
 출력은 파일·줄·규칙·소유자·AST digest다. 문자열 원문/사적 ID는 출력하지 않는다.
-후보가 하나라도 있으면 실패한다. raise만 하는 guard에서 0의 크기 경계와 RGB
-채널 축의 3 확인은 헌장 §4의 일반 형식 검증으로 구분한다(W3 검토).
+후보가 하나라도 있으면 실패한다. H3는 공간 크기와 0·1 이외 정수의 비교를 탐지한다.
+0·1의 빈/퇴화 검사, ndim/len(shape)의 2·3 검사, HWC 채널 축(shape[2]/shape[-1])
+또는 channels의 1·3·4 검사는 입력 형식 검증으로 제외한다. raise guard 여부는 무관하다.
+반전·연쇄 비교와 정수 집합/tuple 비교도 검사한다. 일반적인 변수명/속성의 AST 휴리스틱이며
+임의 alias나 채널 우선 배열의 의미를 타입 분석으로 증명하지는 않는다.
 합성 fixture처럼 정당한 코드도 탐지될 수 있다. 소유자가 검토하고 수정하거나 Orchestrator에게 예외를
 요청한다. 자동으로 예외를 추가하지 않는다.
 

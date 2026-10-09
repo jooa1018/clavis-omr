@@ -3,5 +3,7 @@
   "source": "resource-policy",
   "rationale": "Bound local hash image decoding before allocation; no recognition threshold.",
   "maxImageBytes": 33554432,
-  "maxImagePixels": 40000000
+  "maxImagePixels": 40000000,
+  "phashInputShape": [32, 32],
+  "phashShapeSource": "phash-dct32-low8-median63-v1 algorithm input lattice; not source-image size"
 }

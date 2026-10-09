@@ -1,0 +1,7 @@
+note dur=quarter pos=0 head=normal v=1
+clef sign=C3
+bar style=regular
+key fifths=1
+time beats=3 beatType=8
+bar style=repeatStart
+note dur=quarter pos=0 head=normal v=1

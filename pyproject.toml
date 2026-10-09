@@ -8,22 +8,30 @@ version = "0.0.1"
 description = "Independent offline CPU optical music recognition engine"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
-dependencies = ["pydantic>=2.11,<3"]
+dependencies = ["pydantic>=2.11,<3", "numpy==2.2.6", "opencv-python-headless==4.11.0.86", "pillow==11.2.1", "onnxruntime==1.30.0", "xmlschema==4.3.2", "elementpath==5.1.4"]
 
 [dependency-groups]
-runtime = ["pydantic>=2.11,<3"]
+runtime = ["pydantic>=2.11,<3", "numpy==2.2.6", "opencv-python-headless==4.11.0.86", "pillow==11.2.1", "onnxruntime==1.30.0", "xmlschema==4.3.2", "elementpath==5.1.4"]
 # Reserved for the responsible worker; no unused heavy dependencies installed.
 service = []
 training = [
   "numpy==2.2.6", "opencv-python-headless==4.11.0.86",
-  "pillow==11.2.1", "PyYAML==6.0.2", "verovio==6.3.0",
+  "pillow==11.2.1", "PyYAML==6.0.2", "verovio==6.3.0", "psutil==7.2.2",
 ]
 eval = ["numpy==2.2.6", "pillow==11.2.1"]
 dev = [
-  "ruff>=0.11,<1", "mypy>=1.15,<2", "pytest>=8.3,<10",
-  "pytest-cov>=6,<8", "hypothesis>=6,<7", "jsonschema>=4.23,<5",
-  "import-linter>=2.3,<3", "pip-licenses>=5,<6", "pre-commit>=4,<5",
-  "packaging>=24,<27", "types-PyYAML==6.0.12.20250516",
+  "ruff>=0.11,<1",
+  "mypy>=1.15,<2",
+  "pytest>=8.3,<10",
+  "pytest-cov>=6,<8",
+  "hypothesis>=6,<7",
+  "jsonschema>=4.23,<5",
+  "import-linter>=2.3,<3",
+  "pip-licenses>=5,<6",
+  "pre-commit>=4,<5",
+  "packaging>=24,<27",
+  "types-PyYAML==6.0.12.20250516",
+  "types-psutil>=7.2.2.20260906",
 ]
 
 [tool.uv]
@@ -31,6 +39,9 @@ default-groups = ["runtime", "dev"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/clavis"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"THIRD_PARTY_NOTICES.md" = "clavis/THIRD_PARTY_NOTICES.md"
 
 [tool.ruff]
 target-version = "py312"
@@ -45,7 +56,7 @@ exclude = ["*.md"]
 
 [tool.mypy]
 python_version = "3.12"
-files = ["src/clavis", "scripts", "eval"]
+files = ["src/clavis", "scripts", "eval", "training/jobs"]
 strict = true
 
 [tool.pytest.ini_options]

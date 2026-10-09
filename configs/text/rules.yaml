@@ -1,0 +1,3 @@
+[
+  {"id": "TEXT-CTC-001", "owner": "W7", "statement": "Collapse adjacent repeated CTC classes, then remove blank; a blank permits a repeated character", "units": "dimensionless", "params": [], "source": "convention", "reference": "https://doi.org/10.1145/1143844.1143891", "flag": "text.rules.TEXT-CTC-001.enabled", "enabled": true, "ablation": {"status": "synthetic-tensor-smoke-only", "report": "docs/reports/W7/T7.1a-smoke.json"}, "introduced_by": "w7/onnx-ctc-boundary", "motivated_by_failure": false}
+]

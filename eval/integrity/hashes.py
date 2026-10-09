@@ -16,7 +16,10 @@ from eval.projection.model import EvaluationUnsupported
 
 def phash_pixels(pixels: NDArray[np.float64]) -> str:
     """Orthonormal 32-point DCT-II, 8x8 low band, median of 63 AC terms."""
-    if pixels.shape != (32, 32) or not np.isfinite(pixels).all():
+    if (
+        pixels.shape != tuple(config("hash-limits.json")["phashInputShape"])
+        or not np.isfinite(pixels).all()
+    ):
         raise ValueError("pHash requires finite 32x32 grayscale pixels")
     indices = np.arange(32)
     frequencies = np.arange(8)[:, None]

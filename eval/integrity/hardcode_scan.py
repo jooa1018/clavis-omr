@@ -67,16 +67,63 @@ def dotted(node: ast.AST) -> str:
     return ""
 
 
+def literal_integers(node: ast.AST) -> set[int]:
+    if isinstance(node, ast.Constant) and type(node.value) is int:
+        return {node.value}
+    if isinstance(node, ast.UnaryOp) and isinstance(node.op, ast.USub):
+        return {-v for v in literal_integers(node.operand)}
+    if isinstance(node, ast.UnaryOp) and isinstance(node.op, ast.UAdd):
+        return literal_integers(node.operand)
+    if isinstance(node, (ast.Tuple, ast.List, ast.Set)):
+        return {v for item in node.elts for v in literal_integers(item)}
+    return set()
+
+
+def image_quantity(node: ast.AST) -> str | None:
+    name = dotted(node).lower()
+    if (
+        isinstance(node, ast.Subscript)
+        and dotted(node.value).endswith(".shape")
+        and re.match(r"^(?:image|img|page|pixels?)(?:[_.]|$)", name)
+    ):
+        return "channel" if literal_integers(node.slice) in ({2}, {-1}) else "spatial"
+    if isinstance(node, ast.Call) and dotted(node.func) == "len" and len(node.args) == 1:
+        if dotted(node.args[0]).endswith(".shape"):
+            return "dimension"
+    if name == "ndim" or re.match(r"^(?:image|img|page|pixels?).*\.ndim$", name):
+        return "dimension"
+    if name.endswith((".channels", ".nchannels")) or name in {"channels", "nchannels"}:
+        return "channel"
+    if re.search(
+        r"(?:image|img|page|pixels?).*\.(?:width|height|size|shape)$|"
+        r"^(?:(?:image|img|page)_)?(?:width|height|shape|pixel_count|num_pixels)$",
+        name,
+    ):
+        return "spatial"
+    if isinstance(node, ast.BinOp) and any(
+        image_quantity(child) == "spatial" for child in (node.left, node.right)
+    ):
+        return "spatial"
+    return None
+
+
+def spatial_literal_comparison(node: ast.Compare) -> bool:
+    operands = [node.left, *node.comparators]
+    for left, right in zip(operands, operands[1:], strict=False):
+        for quantity, literals in ((left, right), (right, left)):
+            kind, numbers = image_quantity(quantity), literal_integers(literals)
+            permitted = {0, 1}
+            if kind == "channel":
+                permitted |= {3, 4}
+            elif kind == "dimension":
+                permitted |= {2, 3}
+            if kind and numbers - permitted:
+                return True
+    return False
+
+
 def scan_source(source: str, path: str, identifiers: frozenset[str] = frozenset()) -> list[Finding]:
     tree = ast.parse(source, filename=path)
-    guards = {
-        id(part)
-        for statement in ast.walk(tree)
-        if isinstance(statement, ast.If)
-        and not statement.orelse
-        and all(isinstance(action, ast.Raise) for action in statement.body)
-        for part in ast.walk(statement.test)
-    }
     aliases: dict[str, str] = {}
     for node in ast.walk(tree):
         if isinstance(node, ast.Import):
@@ -167,28 +214,12 @@ def scan_source(source: str, path: str, identifiers: frozenset[str] = frozenset(
         if isinstance(node, ast.Compare):
             operands = [node.left, *node.comparators]
             names = " ".join(dotted(n).lower() for n in ast.walk(node))
+            if spatial_literal_comparison(node):
+                add(node, "H3")
             numbers = [
                 n.value for n in operands if isinstance(n, ast.Constant) and type(n.value) is int
             ]
             if numbers:
-                if re.search(
-                    r"(?:image|img|page|pixels?).*\.(?:width|height|size|shape)|(?:^|\s)(?:width|height|shape)(?:\s|$)",
-                    names,
-                ):
-                    # Charter §4 permits obvious zero bounds. RGB channel count is
-                    # a format invariant, not a spatial image identity (W3 review).
-                    channel = any(
-                        isinstance(n, ast.Subscript)
-                        and dotted(n.value).endswith(".shape")
-                        and isinstance(n.slice, ast.Constant)
-                        and n.slice.value == 2
-                        for n in operands
-                    )
-                    format_guard = id(node) in guards and (
-                        numbers == [0] or channel and numbers == [3]
-                    )
-                    if not format_guard:
-                        add(node, "H3")
                 if not path.startswith("tests/") and re.search(
                     r"(?:measure|page|staff|system)(?:_?(?:index|idx|number|no))", names
                 ):

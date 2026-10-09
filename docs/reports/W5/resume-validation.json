@@ -1,0 +1,151 @@
+{
+  "scope": "Windows validation PASS; merge authorized; latency provisional pending dedicated benchmark",
+  "base_main": "91cbda72ac6f15ce83206c89b309d4abe2ee895a",
+  "component_tests": {
+    "command": ".venv/Scripts/pytest.exe tests/geometry -q --cov=clavis.geometry --cov-report=json:work/geometry-coverage-resume.json --junitxml=work/geometry-tests-resume.xml",
+    "passed": 34,
+    "wall_seconds": 4.58,
+    "coverage": {
+      "covered_lines": 256,
+      "num_statements": 259,
+      "percent_covered": 98.84169884169884,
+      "percent_covered_display": "99",
+      "missing_lines": 3,
+      "excluded_lines": 0,
+      "percent_statements_covered": 98.84169884169884,
+      "percent_statements_covered_display": "99"
+    }
+  },
+  "ruff_check": "PASS",
+  "ruff_format_check": "PASS",
+  "mypy": {
+    "status": "PASS",
+    "source_files": 76
+  },
+  "import_linter": {
+    "kept": 2,
+    "broken": 0
+  },
+  "hardcode_scan": {
+    "schema": "clavis-hardcode-scan-1",
+    "status": "PASS",
+    "pythonFiles": 132,
+    "manifestIdentifiers": 0,
+    "findings": [],
+    "suppressed": [
+      {
+        "file": "training/jobs/runner.py",
+        "line": 161,
+        "rule": "H9",
+        "owner": "W1",
+        "evidence_digest": "f55bb63062ca7fa6483196ef2dc20d9cad1d0ef028c76a8a6030e30a59111f85"
+      },
+      {
+        "file": "training/jobs/runner.py",
+        "line": 223,
+        "rule": "H9",
+        "owner": "W1",
+        "evidence_digest": "62cb15b5b7c52f6c1e2f78736d6d34381fd3e3274c27556e936ec20069317c08"
+      }
+    ],
+    "byOwner": {}
+  },
+  "windows_full_tests": {
+    "status": "PASS",
+    "command": "uv run --locked --all-groups python -m training.jobs.short run pytest tests/ --cov=clavis --cov=scripts --cov=eval --cov=training.jobs --cov-report=term-missing --cov-report=json:work/coverage-final.json --junitxml=work/tests-final.xml",
+    "tests": 784,
+    "passed": 784,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "pytest_seconds": 157.579,
+    "runId": "ef866fb3f707454e91e8efbb0d1a7fb9",
+    "wallSeconds": 161.06199999999808,
+    "cpuSecondsSampled": 122.5,
+    "peakRssBytesSampled": 308793344,
+    "cpuLimit": 2,
+    "first_attempt": "windows_full_tests_first_attempt (retained; no owner-code changes)"
+  },
+  "final_runtime_licenses": {
+    "status": "PASS",
+    "packages": 14,
+    "violations": [],
+    "command": "python scripts/check_licenses.py"
+  },
+  "linux_ci": "PENDING: ready-for-review, both required before merge",
+  "determinism": "PASS: 1/4 OpenCV threads x3, and actual smoke strips x5",
+  "sealed": "NOT_ACCESSED",
+  "synthetic": "smoke, NOT SYN-Val",
+  "removal_metrics": "synthetic-v0.json",
+  "contracts": "clavis-ir-0.1.1 / lstl-0.1.1, CCR-0003",
+  "ruff_format_files": 132,
+  "privacy_scan": {
+    "status": "PASS",
+    "trackedFiles": 539,
+    "findings": []
+  },
+  "coverage_gates": {
+    "overall": "PASS",
+    "platform": "PASS",
+    "eval": "PASS",
+    "jobs": "PASS"
+  },
+  "required_checks": {
+    "contracts": 298,
+    "integrity_positive_negative": 24,
+    "status": "PASS"
+  },
+  "wheel_specification": {
+    "status": "PASS",
+    "command": "uv build --wheel; python scripts/check_wheel.py dist"
+  },
+  "windows_ci": "PENDING: ready-for-review, both required before merge",
+  "smoke_or005": {
+    "status": "PASS (execution); latency reference only per Orchestrator 2026-10-09",
+    "metrics": "synthetic-or005.json",
+    "jitter_errors_unchanged": true,
+    "errors": 107,
+    "runId": "2ec726e38c5f42ef8aa68d16038895d7"
+  },
+  "windows_full_tests_first_attempt": {
+    "status": "FAIL",
+    "command": "uv run --locked --all-groups python -m training.jobs.short run pytest tests/ --cov=clavis --cov=scripts --cov=eval --cov=training.jobs --cov-report=term-missing --cov-report=json:work/coverage-final.json --junitxml=work/tests-final.xml",
+    "tests": 784,
+    "passed": 783,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0,
+    "pytest_seconds": 267.912,
+    "failure": "tests.platform.test_jobs.test_checkpoint_pause_resume_and_fifo: expected user-pause, observed completed; watcher polls 100 x 0.02 seconds, startup timing suspected, not proven",
+    "runId": "aabf1a82708a433b8887508d6baa9d82",
+    "wallSeconds": 273.39100000000326,
+    "peakRssBytesSampled": 310231040,
+    "cpuLimit": 2,
+    "single_test_recheck": {
+      "command": "python -m pytest tests/platform/test_jobs.py::test_checkpoint_pause_resume_and_fifo -q --junitxml=work/queue-recheck.xml",
+      "passed": 1,
+      "seconds": 15.4
+    }
+  },
+  "coverage_overall": {
+    "covered_lines": 4226,
+    "num_statements": 4532,
+    "percent_covered": 93.24801412180052,
+    "percent_covered_display": "93",
+    "missing_lines": 306,
+    "excluded_lines": 4,
+    "percent_statements_covered": 93.24801412180052,
+    "percent_statements_covered_display": "93"
+  },
+  "latency_decision": {
+    "authority": "Orchestrator 2026-10-09",
+    "status": "provisional, formal benchmark pending",
+    "merge_basis_p95_ms": [
+      16.576525000118636,
+      18.376450000005207,
+      16.19125
+    ],
+    "required_condition": "REF-LAPTOP, exclusive, four compute threads",
+    "follow_up": "W1 benchmark job type; first/repeated p50 and p95 separately; dedicated optimization PR if isolated p95 >30 ms; do not block W6"
+  }
+}

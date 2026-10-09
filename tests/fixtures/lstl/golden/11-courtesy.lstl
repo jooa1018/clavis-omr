@@ -1,0 +1,5 @@
+note dur=quarter pos=0 head=normal v=1
+bar style=double
+clef sign=F4 courtesy=1
+key fifths=-2 courtesy=1
+time beats=3 beatType=4 courtesy=1

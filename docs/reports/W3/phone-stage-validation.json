@@ -1,0 +1,2215 @@
+{
+  "scope": "Local manual CPU smoke; synthetic, no real/Dev/sealed data; forced both placements for coverage",
+  "threads": 1,
+  "pages_executed": 60,
+  "warmups_per_slice": 1,
+  "timings_per_slice": 2,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "render_interline_px": 40,
+  "wall_seconds": 14.303408300009323,
+  "peak_rss_bytes": 133337088,
+  "mean_pages_per_core_second": 5.768849208927573,
+  "slowest_pages_per_second": 2.431448648621983,
+  "performance_status": "FAIL",
+  "realism_ks_quantiles_auc": "NOT_RUN",
+  "delta_95pct_ci": null,
+  "catalog_sha256": "a9c89fef6e53c2855ad282a50e6489824e0e17763b68c9767b06b57553d70eb4",
+  "slices": [
+    {
+      "preset": "phone-daylight",
+      "placement": "before_resize",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.1488279000041075,
+        0.14632679999340326
+      ],
+      "pages_per_second": 6.776107580251534,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "1": {
+            "attempted": 2,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "records": [
+        {
+          "seed": 0,
+          "operations": [
+            "rotation",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            13.599990855495985,
+            13.599990855495985,
+            13.599990855495987,
+            13.599990855495983,
+            13.599990855495985,
+            13.599990855495987,
+            13.599990855495985,
+            13.599990855495985,
+            13.599990855495987
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 1,
+          "operations": [
+            "rotation",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            7.900000068031866,
+            7.900000068031869,
+            7.900000068031861,
+            7.900000068031869,
+            7.900000068031869,
+            7.9000000680318685,
+            7.900000068031855,
+            7.900000068031883,
+            7.900000068031884
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 2,
+          "operations": [
+            "rotation",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            12.899889051950334,
+            12.899889051950321,
+            12.899889051950316,
+            12.899889051950332,
+            12.899889051950332,
+            12.899889051950336,
+            12.899889051950387,
+            12.89988905195033,
+            12.899889051950394
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        }
+      ]
+    },
+    {
+      "preset": "phone-daylight",
+      "placement": "after_resize",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.07962490001227707,
+        0.08477719998336397
+      ],
+      "pages_per_second": 12.165294725876544,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "1": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "records": [
+        {
+          "seed": 0,
+          "operations": [
+            "rotation",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            23.125000000000025,
+            23.125000000000004,
+            23.125000000000004,
+            23.124999999999993,
+            23.124999999999993,
+            23.124999999999993,
+            23.124999999999936,
+            23.125000000000046,
+            23.12500000000005
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 1,
+          "operations": [
+            "rotation",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            8.275000068035512,
+            8.275000068035514,
+            8.275000068035514,
+            8.275000068035528,
+            8.275000068035498,
+            8.2750000680355,
+            8.275000068035554,
+            8.275000068035556,
+            8.275000068035526
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 2,
+          "operations": [
+            "rotation",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            12.924916849614617,
+            12.924916849614618,
+            12.924916849614608,
+            12.924916849614629,
+            12.924916849614627,
+            12.924916849614606,
+            12.9249168496146,
+            12.924916849614657,
+            12.924916849614664
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        }
+      ]
+    },
+    {
+      "preset": "phone-indoor",
+      "placement": "before_resize",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.14332429997739382,
+        0.15287740001804195
+      ],
+      "pages_per_second": 6.752155710216445,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "1": {
+            "attempted": 2,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "records": [
+        {
+          "seed": 0,
+          "operations": [
+            "rotation",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            13.599990855495985,
+            13.599990855495985,
+            13.599990855495987,
+            13.599990855495983,
+            13.599990855495985,
+            13.599990855495987,
+            13.599990855495985,
+            13.599990855495985,
+            13.599990855495987
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 1,
+          "operations": [
+            "rotation",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            7.900000068031866,
+            7.900000068031869,
+            7.900000068031861,
+            7.900000068031869,
+            7.900000068031869,
+            7.9000000680318685,
+            7.900000068031855,
+            7.900000068031883,
+            7.900000068031884
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 2,
+          "operations": [
+            "rotation",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            12.899889051950334,
+            12.899889051950321,
+            12.899889051950316,
+            12.899889051950332,
+            12.899889051950332,
+            12.899889051950336,
+            12.899889051950387,
+            12.89988905195033,
+            12.899889051950394
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        }
+      ]
+    },
+    {
+      "preset": "phone-indoor",
+      "placement": "after_resize",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.08746460001566447,
+        0.09020379997673444
+      ],
+      "pages_per_second": 11.256925824094576,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "1": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "records": [
+        {
+          "seed": 0,
+          "operations": [
+            "rotation",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            23.125000000000025,
+            23.125000000000004,
+            23.125000000000004,
+            23.124999999999993,
+            23.124999999999993,
+            23.124999999999993,
+            23.124999999999936,
+            23.125000000000046,
+            23.12500000000005
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 1,
+          "operations": [
+            "rotation",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            8.275000068035512,
+            8.275000068035514,
+            8.275000068035514,
+            8.275000068035528,
+            8.275000068035498,
+            8.2750000680355,
+            8.275000068035554,
+            8.275000068035556,
+            8.275000068035526
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 2,
+          "operations": [
+            "rotation",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            12.924916849614617,
+            12.924916849614618,
+            12.924916849614608,
+            12.924916849614629,
+            12.924916849614627,
+            12.924916849614606,
+            12.9249168496146,
+            12.924916849614657,
+            12.924916849614664
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        }
+      ]
+    },
+    {
+      "preset": "phone-angle",
+      "placement": "before_resize",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.16939450000063516,
+        0.17755750002106652
+      ],
+      "pages_per_second": 5.764486153343693,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "1": {
+            "attempted": 3,
+            "rejected": 0
+          }
+        }
+      },
+      "records": [
+        {
+          "seed": 0,
+          "operations": [
+            "perspective",
+            "rotation",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            11.204089830274766,
+            10.563833831184473,
+            9.992796976870379,
+            10.688224068574627,
+            10.091519741703857,
+            9.55791835022253,
+            10.173419913167722,
+            9.618247620319478,
+            9.120532311356634
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 1,
+          "operations": [
+            "perspective",
+            "rotation",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            11.271060238096675,
+            12.452695540285399,
+            13.911108160556815,
+            11.366367429257075,
+            12.555897829598992,
+            14.02350727735345,
+            11.292893852132813,
+            12.472659138903452,
+            13.927679728298557
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 2,
+          "operations": [
+            "perspective",
+            "rotation",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            11.09769922576657,
+            10.582575362757737,
+            10.113151428562508,
+            12.067278401774667,
+            11.484932466064937,
+            10.95620500625453,
+            13.138335150335232,
+            12.478114910421123,
+            11.881073858888096
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        }
+      ]
+    },
+    {
+      "preset": "phone-angle",
+      "placement": "after_resize",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.13342060000286438,
+        0.1281637999927625
+      ],
+      "pages_per_second": 7.645715876151008,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "1": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "records": [
+        {
+          "seed": 0,
+          "operations": [
+            "perspective",
+            "rotation",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            14.333918181980069,
+            13.514808620605095,
+            12.78425436116705,
+            13.673710281773754,
+            12.910331629046853,
+            12.227682127478156,
+            13.014962756977274,
+            12.30472502209585,
+            11.667992609100246
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 1,
+          "operations": [
+            "perspective",
+            "rotation",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            16.345284799504334,
+            18.058891606265973,
+            20.17388071376393,
+            16.483498915975332,
+            18.208555156378505,
+            20.33688145690502,
+            16.376963761818438,
+            18.08786033110155,
+            20.197932361994095
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 2,
+          "operations": [
+            "perspective",
+            "rotation",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            6.921639530611435,
+            6.600356567284695,
+            6.307576668186615,
+            7.52634904004964,
+            7.1631404831341605,
+            6.833373714099774,
+            8.1943252808749,
+            7.782548648526212,
+            7.410176614602826
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        }
+      ]
+    },
+    {
+      "preset": "phone-shadow",
+      "placement": "before_resize",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.19432290000258945,
+        0.2208554999961052
+      ],
+      "pages_per_second": 4.817206290130431,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 2,
+            "rejected": 0
+          }
+        }
+      },
+      "records": [
+        {
+          "seed": 0,
+          "operations": [
+            "rotation",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            21.800018260735694,
+            21.800018260735683,
+            21.800018260735694,
+            21.80001826073568,
+            21.80001826073568,
+            21.80001826073568,
+            21.80001826073568,
+            21.80001826073568,
+            21.800018260735683
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 1,
+          "operations": [
+            "rotation",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            7.949999863452841,
+            7.9499998634528435,
+            7.949999863452838,
+            7.949999863452851,
+            7.949999863452851,
+            7.949999863452851,
+            7.949999863452866,
+            7.949999863452866,
+            7.949999863452865
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 2,
+          "operations": [
+            "rotation",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            8.69994456756195,
+            8.699944567561946,
+            8.699944567561946,
+            8.699944567561944,
+            8.699944567561948,
+            8.699944567561948,
+            8.699944567561975,
+            8.699944567561973,
+            8.699944567561976
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        }
+      ]
+    },
+    {
+      "preset": "phone-shadow",
+      "placement": "after_resize",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.09887690001050942,
+        0.10033859999384731
+      ],
+      "pages_per_second": 10.039379465735655,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "1": {
+            "attempted": 2,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "records": [
+        {
+          "seed": 0,
+          "operations": [
+            "rotation",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            13.750000000000012,
+            13.750000000000007,
+            13.750000000000005,
+            13.750000000000005,
+            13.750000000000005,
+            13.750000000000004,
+            13.750000000000005,
+            13.750000000000002,
+            13.750000000000007
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 1,
+          "operations": [
+            "rotation",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            10.100000271442175,
+            10.100000271442177,
+            10.100000271442175,
+            10.100000271442154,
+            10.100000271442184,
+            10.100000271442182,
+            10.100000271442154,
+            10.100000271442154,
+            10.10000027144221
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 2,
+          "operations": [
+            "rotation",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            8.974972314447436,
+            8.974972314447443,
+            8.974972314447443,
+            8.974972314447443,
+            8.974972314447443,
+            8.974972314447447,
+            8.974972314447472,
+            8.974972314447472,
+            8.974972314447447
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        }
+      ]
+    },
+    {
+      "preset": "phone-curl",
+      "placement": "before_resize",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.155337399977725,
+        0.1465895000146702
+      ],
+      "pages_per_second": 6.6241199444315,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "1": {
+            "attempted": 2,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "records": [
+        {
+          "seed": 0,
+          "operations": [
+            "paper_wave",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            13.602876015234546,
+            13.58080570656136,
+            13.60265891376215,
+            13.60287601523455,
+            13.58080570656136,
+            13.60265891376215,
+            13.602876015234553,
+            13.580805706561357,
+            13.602658913762149
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 1,
+          "operations": [
+            "paper_wave",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            7.899904352399145,
+            7.899808474213725,
+            7.899903411518698,
+            7.899904352399134,
+            7.899808474213729,
+            7.899903411518698,
+            7.899904352399148,
+            7.899808474213729,
+            7.899903411518669
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 2,
+          "operations": [
+            "paper_wave",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            12.88648735806398,
+            12.823748078092748,
+            12.885867209640315,
+            12.886487358063967,
+            12.823748078092773,
+            12.885867209640313,
+            12.886487358063965,
+            12.82374807809275,
+            12.88586720964031
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        }
+      ]
+    },
+    {
+      "preset": "phone-curl",
+      "placement": "after_resize",
+      "source_pixels": 2048000,
+      "timed_seconds": [
+        0.12012810001033358,
+        0.10576639999635518
+      ],
+      "pages_per_second": 8.853690549972574,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "1": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "records": [
+        {
+          "seed": 0,
+          "operations": [
+            "paper_wave",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            23.13730811163791,
+            23.09970796532697,
+            23.13693824463715,
+            23.13730811163791,
+            23.09970796532699,
+            23.136938244637165,
+            23.13730811163785,
+            23.09970796532703,
+            23.136938244637108
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 1,
+          "operations": [
+            "paper_wave",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            8.27489980498644,
+            8.27479936842579,
+            8.274898819373322,
+            8.27489980498644,
+            8.274799368425796,
+            8.274898819373329,
+            8.274899804986413,
+            8.274799368425768,
+            8.274898819373329
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 2,
+          "operations": [
+            "paper_wave",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            12.911425852209803,
+            12.848624931253418,
+            12.910805098786312,
+            12.911425852209796,
+            12.848624931253415,
+            12.91080509878631,
+            12.911425852209819,
+            12.84862493125345,
+            12.910805098786343
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        }
+      ]
+    },
+    {
+      "preset": "phone-daylight",
+      "placement": "before_resize",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.34276780000072904,
+        0.3005375000066124
+      ],
+      "pages_per_second": 3.108943762747137,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "1": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "records": [
+        {
+          "seed": 0,
+          "operations": [
+            "rotation",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            9.055991218604971,
+            9.05599121860497,
+            9.055991218604971,
+            9.055991218604962,
+            9.055991218604959,
+            9.055991218604959,
+            9.055991218604959,
+            9.055991218604959,
+            9.05599121860496
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 1,
+          "operations": [
+            "rotation",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            17.96800007624155,
+            17.968000076241566,
+            17.968000076241566,
+            17.968000076241623,
+            17.968000076241623,
+            17.968000076241623,
+            17.968000076241673,
+            17.968000076241566,
+            17.96800007624151
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 2,
+          "operations": [
+            "rotation",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            13.2,
+            13.200000000000012,
+            13.200000000000005,
+            13.19999999999999,
+            13.199999999999989,
+            13.199999999999992,
+            13.200000000000019,
+            13.200000000000017,
+            13.199999999999969
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        }
+      ]
+    },
+    {
+      "preset": "phone-daylight",
+      "placement": "after_resize",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.26747489999979734,
+        0.25844980002148077
+      ],
+      "pages_per_second": 3.802825765587893,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "1": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "records": [
+        {
+          "seed": 0,
+          "operations": [
+            "rotation",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            23.120007308200694,
+            23.12000730820068,
+            23.12000730820068,
+            23.120007308200694,
+            23.120007308200687,
+            23.120007308200694,
+            23.12000730820069,
+            23.12000730820069,
+            23.12000730820069
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 1,
+          "operations": [
+            "rotation",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            8.272000032676265,
+            8.272000032676281,
+            8.272000032676274,
+            8.272000032676315,
+            8.272000032676289,
+            8.272000032676289,
+            8.272000032676289,
+            8.272000032676289,
+            8.27200003267626
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 2,
+          "operations": [
+            "rotation",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            12.912057439692582,
+            12.912057439692587,
+            12.912057439692587,
+            12.912057439692589,
+            12.912057439692585,
+            12.912057439692594,
+            12.912057439692648,
+            12.912057439692646,
+            12.912057439692594
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        }
+      ]
+    },
+    {
+      "preset": "phone-indoor",
+      "placement": "before_resize",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.43456850000075065,
+        0.38246419999632053
+      ],
+      "pages_per_second": 2.4478824409441255,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "1": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "records": [
+        {
+          "seed": 0,
+          "operations": [
+            "rotation",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            9.055991218604971,
+            9.05599121860497,
+            9.055991218604971,
+            9.055991218604962,
+            9.055991218604959,
+            9.055991218604959,
+            9.055991218604959,
+            9.055991218604959,
+            9.05599121860496
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 1,
+          "operations": [
+            "rotation",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            17.96800007624155,
+            17.968000076241566,
+            17.968000076241566,
+            17.968000076241623,
+            17.968000076241623,
+            17.968000076241623,
+            17.968000076241673,
+            17.968000076241566,
+            17.96800007624151
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 2,
+          "operations": [
+            "rotation",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            13.2,
+            13.200000000000012,
+            13.200000000000005,
+            13.19999999999999,
+            13.199999999999989,
+            13.199999999999992,
+            13.200000000000019,
+            13.200000000000017,
+            13.199999999999969
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        }
+      ]
+    },
+    {
+      "preset": "phone-indoor",
+      "placement": "after_resize",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.16420160001143813,
+        0.1751687999931164
+      ],
+      "pages_per_second": 5.89326588286179,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "1": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "records": [
+        {
+          "seed": 0,
+          "operations": [
+            "rotation",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            23.120007308200694,
+            23.12000730820068,
+            23.12000730820068,
+            23.120007308200694,
+            23.120007308200687,
+            23.120007308200694,
+            23.12000730820069,
+            23.12000730820069,
+            23.12000730820069
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 1,
+          "operations": [
+            "rotation",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            8.272000032676265,
+            8.272000032676281,
+            8.272000032676274,
+            8.272000032676315,
+            8.272000032676289,
+            8.272000032676289,
+            8.272000032676289,
+            8.272000032676289,
+            8.27200003267626
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 2,
+          "operations": [
+            "rotation",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            12.912057439692582,
+            12.912057439692587,
+            12.912057439692587,
+            12.912057439692589,
+            12.912057439692585,
+            12.912057439692594,
+            12.912057439692648,
+            12.912057439692646,
+            12.912057439692594
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        }
+      ]
+    },
+    {
+      "preset": "phone-angle",
+      "placement": "before_resize",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.35199890000512823,
+        0.41121359998942353
+      ],
+      "pages_per_second": 2.620502153743914,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "1": {
+            "attempted": 2,
+            "rejected": 0
+          },
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "records": [
+        {
+          "seed": 0,
+          "operations": [
+            "perspective",
+            "rotation",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            12.769434207535609,
+            12.144520990481178,
+            11.577918419921184,
+            12.397647128628789,
+            11.799981776254958,
+            11.257290688478605,
+            12.024600951814964,
+            11.45344205695306,
+            10.934081939957824
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 1,
+          "operations": [
+            "perspective",
+            "rotation",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            10.16581797019581,
+            11.075475200966048,
+            12.16392713956108,
+            10.249504066940649,
+            11.165616002109479,
+            12.261568463832852,
+            10.271589424451728,
+            11.188641787402291,
+            12.285496748998778
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 2,
+          "operations": [
+            "perspective",
+            "rotation",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            22.38707357447827,
+            21.5053795885641,
+            20.690503433270248,
+            23.608311796476382,
+            22.65538569096072,
+            21.776402777249906,
+            24.910221346873094,
+            23.879088612768175,
+            22.92992806192116
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        }
+      ]
+    },
+    {
+      "preset": "phone-angle",
+      "placement": "after_resize",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.31441549997543916,
+        0.21967710001626983
+      ],
+      "pages_per_second": 3.744668995659268,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "1": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "records": [
+        {
+          "seed": 0,
+          "operations": [
+            "perspective",
+            "rotation",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            13.982808233015325,
+            13.298514666492853,
+            12.67807252632358,
+            13.575493116390518,
+            12.921046204579314,
+            12.32679642072945,
+            13.16685232669685,
+            12.54143740824244,
+            11.972741782312307
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 1,
+          "operations": [
+            "perspective",
+            "rotation",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            16.477705466098165,
+            17.95216270777642,
+            19.716427079886476,
+            16.613287708439124,
+            18.098201617706643,
+            19.874616695203912,
+            16.649150580270014,
+            18.135594620216697,
+            19.913479489413735
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 2,
+          "operations": [
+            "perspective",
+            "rotation",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            7.0757141789330795,
+            6.797043783856294,
+            6.539491998585874,
+            7.461736393169153,
+            7.160550799602592,
+            6.882735983670293,
+            7.873294050052149,
+            7.547387222200494,
+            7.247389080334696
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        }
+      ]
+    },
+    {
+      "preset": "phone-shadow",
+      "placement": "before_resize",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.4286734999914188,
+        0.39388139999937266
+      ],
+      "pages_per_second": 2.431448648621983,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "3": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "1": {
+            "attempted": 2,
+            "rejected": 0
+          }
+        }
+      },
+      "records": [
+        {
+          "seed": 0,
+          "operations": [
+            "rotation",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            32.07999268772496,
+            32.07999268772497,
+            32.07999268772496,
+            32.07999268772493,
+            32.07999268772493,
+            32.079992687724875,
+            32.07999268772493,
+            32.079992687724925,
+            32.07999268772493
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 1,
+          "operations": [
+            "rotation",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            10.751999978197887,
+            10.751999978197885,
+            10.751999978197885,
+            10.751999978197924,
+            10.751999978197922,
+            10.751999978197922,
+            10.751999978197865,
+            10.751999978197864,
+            10.751999978197807
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 2,
+          "operations": [
+            "rotation",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            13.599999999999996,
+            13.600000000000005,
+            13.599999999999996,
+            13.600000000000012,
+            13.59999999999998,
+            13.600000000000014,
+            13.60000000000001,
+            13.60000000000001,
+            13.599999999999957
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        }
+      ]
+    },
+    {
+      "preset": "phone-shadow",
+      "placement": "after_resize",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.25454520000494085,
+        0.25251309998566285
+      ],
+      "pages_per_second": 3.9443196177580804,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "1": {
+            "attempted": 2,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "records": [
+        {
+          "seed": 0,
+          "operations": [
+            "rotation",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            13.74400876694879,
+            13.744008766948767,
+            13.744008766948768,
+            13.744008766948756,
+            13.744008766948758,
+            13.744008766948758,
+            13.74400876694876,
+            13.744008766948758,
+            13.744008766948758
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 1,
+          "operations": [
+            "rotation",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            10.111999868990644,
+            10.111999868990651,
+            10.111999868990651,
+            10.111999868990667,
+            10.111999868990695,
+            10.111999868990665,
+            10.111999868990667,
+            10.111999868990667,
+            10.111999868990608
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 2,
+          "operations": [
+            "rotation",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            8.975995574181365,
+            8.975995574181374,
+            8.975995574181363,
+            8.97599557418137,
+            8.97599557418137,
+            8.975995574181374,
+            8.97599557418137,
+            8.975995574181372,
+            8.975995574181345
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        }
+      ]
+    },
+    {
+      "preset": "phone-curl",
+      "placement": "before_resize",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.39755020002485253,
+        0.3929558000236284
+      ],
+      "pages_per_second": 2.530025072393305,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "1": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "records": [
+        {
+          "seed": 0,
+          "operations": [
+            "paper_wave",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            9.059657884547065,
+            9.053152548153573,
+            9.059587590067254,
+            9.059657884547072,
+            9.053152548153575,
+            9.059587590067261,
+            9.05965788454707,
+            9.053152548153575,
+            9.05958759006726
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 1,
+          "operations": [
+            "paper_wave",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            17.96781753832524,
+            17.967721067402998,
+            17.96781649699508,
+            17.967817538325196,
+            17.967721067402955,
+            17.96781649699511,
+            17.967817538325196,
+            17.967721067402955,
+            17.967816496995166
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 2,
+          "operations": [
+            "paper_wave",
+            "illumination",
+            "blur",
+            "noise",
+            "resize",
+            "jpeg"
+          ],
+          "interlines": [
+            13.193603774107492,
+            13.16511224940761,
+            13.193295243988535,
+            13.193603774107485,
+            13.165112249407603,
+            13.193295243988526,
+            13.193603774107487,
+            13.165112249407606,
+            13.19329524398853
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        }
+      ]
+    },
+    {
+      "preset": "phone-curl",
+      "placement": "after_resize",
+      "source_pixels": 4000000,
+      "timed_seconds": [
+        0.23732590000145137,
+        0.24367230001371354
+      ],
+      "pages_per_second": 4.158019718030014,
+      "sampling": {
+        "attempted": 3,
+        "accepted": 3,
+        "rejected": 0,
+        "rejection_rate": 0.0,
+        "rate_limit": 0.01,
+        "w2_report_required": false,
+        "by_band": {
+          "2": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "0": {
+            "attempted": 1,
+            "rejected": 0
+          },
+          "1": {
+            "attempted": 1,
+            "rejected": 0
+          }
+        }
+      },
+      "records": [
+        {
+          "seed": 0,
+          "operations": [
+            "paper_wave",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            23.12047634550678,
+            23.103860762465825,
+            23.120296802938785,
+            23.120476345506837,
+            23.103860762465867,
+            23.120296802938768,
+            23.12047634550672,
+            23.103860762465864,
+            23.12029680293871
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 1,
+          "operations": [
+            "paper_wave",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            8.271915994869623,
+            8.271871579775876,
+            8.27191551544251,
+            8.271915994869646,
+            8.271871579775869,
+            8.271915515442505,
+            8.271915994869618,
+            8.271871579775869,
+            8.271915515442531
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        },
+        {
+          "seed": 2,
+          "operations": [
+            "paper_wave",
+            "illumination",
+            "resize",
+            "blur",
+            "noise",
+            "jpeg"
+          ],
+          "interlines": [
+            12.906892579671934,
+            12.879075579655748,
+            12.90659135579414,
+            12.906892579671943,
+            12.87907557965572,
+            12.906591355794138,
+            12.90689257967197,
+            12.87907557965572,
+            12.90659135579417
+          ],
+          "truncated": false,
+          "illegible_candidate": false
+        }
+      ]
+    }
+  ],
+  "manifest": [
+    {
+      "path": "phone-daylight-before_resize.png",
+      "sha256": "92384d882938e1785565aeaa140b04d70a2fe95c4139b5c8dc5aa79ee871d005",
+      "bytes": 27319,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "phone-daylight-after_resize.png",
+      "sha256": "7e81f48a9a79ff86ce85a98ec728e208904865ef94ac37f9924793de9eac25cb",
+      "bytes": 34838,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "phone-indoor-before_resize.png",
+      "sha256": "0de50cd9f6feda03a9eb9d06c56067862657c560f8ea95f1f417da3899907f74",
+      "bytes": 70026,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "phone-indoor-after_resize.png",
+      "sha256": "9a4ddfd9e4db98aee41dcae8f0d6d25776660d2146812cab79e6d9520158d1a9",
+      "bytes": 65795,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "phone-angle-before_resize.png",
+      "sha256": "8cce24090615806d2682b564ba68940f7ac559dd1e36487a5e0dcdf788d287bf",
+      "bytes": 24172,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "phone-angle-after_resize.png",
+      "sha256": "e5b7d91a7e6ae77adb0c52587b2c0436823a67120c101fd22fcc254077250f4b",
+      "bytes": 38333,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "phone-shadow-before_resize.png",
+      "sha256": "4be3de6a7a0d845f9ed77c438067b4d524f695c50f231a9f8c2824817581af26",
+      "bytes": 19280,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "phone-shadow-after_resize.png",
+      "sha256": "3160b7cc0a13cc95c13288b93e1340dedda76476d370addb739cad8373fbe882",
+      "bytes": 26301,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "phone-curl-before_resize.png",
+      "sha256": "d70afd0ccca9aa4af673417a7df15b30e2fcfc133fca0a30132dafe10ca70764",
+      "bytes": 28114,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    },
+    {
+      "path": "phone-curl-after_resize.png",
+      "sha256": "2bf5417d6010c49f8789a157b281f7f65943f591a4fa44b4ddfba2f2194b562a",
+      "bytes": 34452,
+      "source": "self-authored synthetic staff schematic",
+      "license": "CC0-1.0",
+      "split": "synthetic-smoke"
+    }
+  ],
+  "tests": {
+    "full_passed": 399,
+    "skipped": 0,
+    "w3_passed": 117,
+    "w3_coverage_percent": 97.26775956284153
+  },
+  "ci": {
+    "run": 36508460118,
+    "head": "c139dd0",
+    "platforms": [
+      "ubuntu-latest",
+      "windows-latest"
+    ],
+    "status": "PASS",
+    "passed": 399,
+    "skipped": 0,
+    "w3_passed": 117
+  }
+}
