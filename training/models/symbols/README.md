@@ -63,8 +63,8 @@ code hashes. Requests and paths stay in ignored `work/`; only sanitized evidence
 is committed. The W6 queue root shares W1's machine-wide exclusive worker lock.
 
 ```text
-work/measurement-venv/Scripts/python.exe -m training.jobs --root work/w6-measurement-queue submit work/request.json
-work/measurement-venv/Scripts/python.exe -m training.jobs --root work/w6-measurement-queue run
+work/measurement-venv/Scripts/python.exe -m training.jobs --root work/w6-training-compare-queue submit work/request.json
+work/measurement-venv/Scripts/python.exe -m training.jobs --root work/w6-training-compare-queue run
 ```
 
 Submit the preparation job before the four fitting jobs. Never use `--manual`

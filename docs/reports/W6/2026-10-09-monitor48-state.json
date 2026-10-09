@@ -1,0 +1,51 @@
+{
+  "main_sha": "947b85fa8a8496b8616612775af05d46560f778d",
+  "monitor_error_resolution": {
+    "pr": 48,
+    "status": "merged; historical failures preserved"
+  },
+  "benchmark_validation_only": {
+    "4": "accepted",
+    "8": [
+      "Value error, benchmark jobs require exactly four compute threads"
+    ]
+  },
+  "queue": {
+    "root": "work/w6-training-compare-queue",
+    "paused": false,
+    "registered_jobs": 5,
+    "states": [
+      "queued",
+      "queued",
+      "queued",
+      "queued",
+      "queued"
+    ],
+    "comparison_thread_order": [
+      4,
+      8,
+      4,
+      8
+    ],
+    "formal_wall_seconds": 0.0
+  },
+  "automation": {
+    "id": "w6-t6-0-cpu",
+    "status": "ACTIVE",
+    "start": "2026-10-10 01:00 Asia/Seoul",
+    "window_end": "2026-10-10 07:00 Asia/Seoul"
+  },
+  "frozen_sources": {
+    "descriptor": "work/w6-source-descriptor-v2.json",
+    "count": 59,
+    "mismatches": []
+  },
+  "formal_measurement": "NOT_RUN",
+  "scope": "CPU; 2-thread preliminary probes only; no formal training/benchmark execution",
+  "decision": "Orchestrator 2026-10-09 option 2 approved: batch training throughput 4/8; benchmark only engine latency",
+  "historical_hold": {
+    "old_queue_paused": true,
+    "automation_was_paused": true,
+    "reason": "execution mode clarification; now resolved"
+  }
+}
