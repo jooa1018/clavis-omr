@@ -1483,7 +1483,15 @@
       ]
     }
   },
-  "twoOsCi": "PENDING",
+  "twoOsCi": {
+    "status": "PASS",
+    "runId": 37903559761,
+    "systems": [
+      "ubuntu-latest",
+      "windows-latest"
+    ],
+    "headCommit": "61e04ea2bc086f5ce7a5efa018f7c76186958ad2"
+  },
   "loadScope": "Two short-slot synthetic hash workers, each with two threads and cooperative waits; not maximum CPU saturation.",
   "checks": {
     "ruff": "PASS",
@@ -1497,5 +1505,7 @@
     "requiredContracts298": "PASS",
     "requiredIntegrity24": "PASS"
   },
-  "w4Confirmation": "https://github.com/jooa1018/clavis-omr/pull/60#issuecomment-6076938635"
+  "w4Confirmation": "https://github.com/jooa1018/clavis-omr/pull/60#issuecomment-6076938635",
+  "mergeCommit": "4f4e76543d1f449e02a810cb68486a35ebdd4fe3",
+  "pullRequest": 60
 }
