@@ -68,3 +68,17 @@
     report: docs/reports/W1/BENCHMARK-JOBS-2026-10-09.md
   introduced_by: w1/benchmark-jobs
   motivated_by_failure: true
+- id: PLATFORM-NIGHTLY-001
+  owner: W1
+  statement: A waiting worker holds the machine lock, waits for one local 01:00-07:00 window, accepts FIFO jobs until close, and exits immediately on lock contention. User-installed current-user limited interactive task runs daily 00:55 on AC with IgnoreNew.
+  units: local_hours
+  params: []
+  source: convention
+  evidence: Orchestrator 2026-10-09 nightly-start instruction
+  flag: training.jobs run --wait
+  ablation:
+    status: NOT_RUN
+    reason: Operating schedule only; no recognition behavior.
+    report: docs/reports/W1/NIGHTLY-WAIT-2026-10-09.md
+  introduced_by: w1/nightly-wait
+  motivated_by_failure: true

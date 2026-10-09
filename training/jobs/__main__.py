@@ -19,8 +19,14 @@ def main() -> int:
     commands.add_parser("status")
     commands.add_parser("pause")
     commands.add_parser("resume")
-    commands.add_parser("run").add_argument(
+    run_options = commands.add_parser("run").add_mutually_exclusive_group()
+    run_options.add_argument(
         "--manual", action="store_true", help="Explicit manual start outside the 01:00-07:00 window"
+    )
+    run_options.add_argument(
+        "--wait",
+        action="store_true",
+        help="Hold the worker lock, wait for the next 01:00-07:00 window, then exit",
     )
     args = parser.parse_args()
     queue = Queue(args.root)
@@ -34,7 +40,15 @@ def main() -> int:
         queue.resume()
         result = {"paused": False, "note": "run must be started separately"}
     elif args.action == "run":
-        result = run(queue, manual=args.manual)
+        try:
+            result = run(queue, manual=args.manual, wait=args.wait)
+        except BlockingIOError:
+            print(json.dumps({"status": "not-started", "reason": "worker-or-slot-busy"}))
+            return 75
+        except PermissionError:
+            # Windows byte-range lock contention is reported as EACCES.
+            print(json.dumps({"status": "not-started", "reason": "worker-lock-unavailable"}))
+            return 75
     else:
         result = [{k: v for k, v in row.items() if k != "spec"} for row in queue.rows()]
     print(json.dumps(result, ensure_ascii=False))
