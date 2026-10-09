@@ -1,0 +1,14 @@
+{
+  "run": "https://github.com/jooa1018/clavis-omr/actions/runs/37901927816",
+  "headCommit": "4a674259f1f84d127a4b68ecf4eee98f6ef9bc46",
+  "conclusion": "failure",
+  "linux": {
+    "conclusion": "failure",
+    "tests": {"passed": 1483, "failed": 1, "skipped": 1},
+    "failedTest": "tests/export/test_musicxml.py::test_cold_schema_child_failure_reports_reason",
+    "reason": "pytest assertion rewriting appended the original CompletedProcess representation, including unsanitized paths",
+    "coldSchemaFunctionalTest": "PASS"
+  },
+  "windows": {"conclusion": "success"},
+  "fix": "Raise AssertionError with the sanitized diagnostic explicitly, without pytest expression introspection; keep the privacy regression test."
+}

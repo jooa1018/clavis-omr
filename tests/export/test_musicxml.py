@@ -257,7 +257,9 @@ print("phase=complete", flush=True)
     ):
         for spelling in (str(path), path.as_posix()):
             diagnostic = diagnostic.replace(spelling, label)
-    assert result.returncode == 0, diagnostic
+    # Avoid pytest appending the unsanitized CompletedProcess repr to this message.
+    if result.returncode != 0:
+        raise AssertionError(diagnostic)
 
 
 def test_cold_schema_child_failure_reports_reason(monkeypatch):
@@ -277,6 +279,7 @@ def test_cold_schema_child_failure_reports_reason(monkeypatch):
     message = str(caught.value)
     assert "0xC000070A" in message and "phase=imports" in message
     assert "synthetic import failure" in message
+    assert "CompletedProcess(" not in message
     assert str(Path.cwd()) not in message and str(Path.home()) not in message
 
 
