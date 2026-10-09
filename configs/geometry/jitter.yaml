@@ -1,0 +1,1789 @@
+{
+  "source": "synthetic-v0",
+  "status": "provisional",
+  "scope": "synthetic smoke, NOT SYN-Val; no real/Dev/sealed data; no improvement claim",
+  "sampling": "Resample a complete empirical row within target_interline; preserve joint errors. Misses excluded from vectors and reported in slices. No Gaussian fit. Not a real-image distribution.",
+  "metrics": "docs/reports/W5/synthetic-v0.json",
+  "slices": [
+    {
+      "interline": 16,
+      "pages": 12,
+      "gt_staves": 36,
+      "detected_staves": 36,
+      "matched_staves": 36,
+      "recall": 1.0,
+      "precision": 1.0,
+      "interline_relative_error_median": 0.0,
+      "interline_relative_error_p95": 0.0,
+      "strip_ms_p95": 16.576525000118636,
+      "strip_repeated_ms_p95": 16.627399999890706,
+      "removal": {
+        "staff_ink": 60335693.0,
+        "staff_residue": 13170428.0,
+        "symbol_ink": 55839684.0,
+        "symbol_damage": 64895.0,
+        "staff_residue_ratio": 0.2182858494722187,
+        "symbol_damage_ratio": 0.0011621663188495122
+      },
+      "dewarp_rms_spaces_p95": 0.010416666666666633
+    },
+    {
+      "interline": 10,
+      "pages": 12,
+      "gt_staves": 36,
+      "detected_staves": 36,
+      "matched_staves": 36,
+      "recall": 1.0,
+      "precision": 1.0,
+      "interline_relative_error_median": 0.0,
+      "interline_relative_error_p95": 0.0,
+      "strip_ms_p95": 18.376450000005207,
+      "strip_repeated_ms_p95": 18.05756999992809,
+      "removal": {
+        "staff_ink": 64208680.0,
+        "staff_residue": 30216444.0,
+        "symbol_ink": 54792057.0,
+        "symbol_damage": 90233.0,
+        "staff_residue_ratio": 0.4705974955411013,
+        "symbol_damage_ratio": 0.0016468262908983322
+      },
+      "dewarp_rms_spaces_p95": 0.04166666666666856
+    },
+    {
+      "interline": 8,
+      "pages": 12,
+      "gt_staves": 36,
+      "detected_staves": 35,
+      "matched_staves": 35,
+      "recall": 0.9722222222222222,
+      "precision": 1.0,
+      "interline_relative_error_median": 0.0,
+      "interline_relative_error_p95": 0.0,
+      "strip_ms_p95": 16.1912500000426,
+      "strip_repeated_ms_p95": 16.340930000046683,
+      "removal": {
+        "staff_ink": 58720233.0,
+        "staff_residue": 53018868.0,
+        "symbol_ink": 50411712.0,
+        "symbol_damage": 35621.0,
+        "staff_residue_ratio": 0.9029062946667804,
+        "symbol_damage_ratio": 0.0007066016722463225
+      },
+      "dewarp_rms_spaces_p95": 0.0208333333333357
+    }
+  ],
+  "errors": [
+    {
+      "sample": "train-smoke-0-Leipzig",
+      "target_interline": 16,
+      "staff": 0,
+      "line_y_spaces": [
+        -0.010416666666666963,
+        -0.010416666666666963,
+        -0.010416666666666963,
+        -0.010416666666666075,
+        -0.010416666666666075
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -0.010915178571428985,
+      "right_spaces": 0.4150758928571179
+    },
+    {
+      "sample": "train-smoke-0-Leipzig",
+      "target_interline": 16,
+      "staff": 1,
+      "line_y_spaces": [
+        -0.010416666666667851,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -0.010915178571428985,
+      "right_spaces": -0.03374553571429573
+    },
+    {
+      "sample": "train-smoke-0-Leipzig",
+      "target_interline": 10,
+      "staff": 0,
+      "line_y_spaces": [
+        -0.04166666666666572,
+        -0.04166666666666714,
+        -0.04166666666666714,
+        -0.04166666666666714,
+        -0.04166666666666714
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 6.4012859077486504e-18,
+      "left_spaces": 0.057535714285714336,
+      "right_spaces": -0.0908785714285841
+    },
+    {
+      "sample": "train-smoke-0-Leipzig",
+      "target_interline": 10,
+      "staff": 1,
+      "line_y_spaces": [
+        -0.04166666666666572,
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.041666666666671404
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": -8.26212483441977e-17,
+      "left_spaces": 0.057535714285714336,
+      "right_spaces": -0.06899285714285952
+    },
+    {
+      "sample": "train-smoke-0-Leipzig",
+      "target_interline": 8,
+      "staff": 0,
+      "line_y_spaces": [
+        0.020833333333333037,
+        0.020833333333333037,
+        0.020833333333333037,
+        0.020833333333333925,
+        0.020833333333333925
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.05515178571430113
+    },
+    {
+      "sample": "train-smoke-0-Bravura",
+      "target_interline": 16,
+      "staff": 0,
+      "line_y_spaces": [
+        -0.010416666666666963,
+        -0.010416666666666963,
+        -0.010416666666666963,
+        -0.010416666666666075,
+        -0.010416666666666075
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": -7.96126314577143e-18,
+      "left_spaces": -0.010915178571428985,
+      "right_spaces": 0.4206324404761972
+    },
+    {
+      "sample": "train-smoke-0-Bravura",
+      "target_interline": 16,
+      "staff": 1,
+      "line_y_spaces": [
+        -0.010416666666667851,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -0.010915178571428985,
+      "right_spaces": -0.042191964285720474
+    },
+    {
+      "sample": "train-smoke-0-Bravura",
+      "target_interline": 10,
+      "staff": 0,
+      "line_y_spaces": [
+        -0.04166666666666572,
+        -0.04166666666666714,
+        -0.04166666666666714,
+        -0.04166666666666714,
+        -0.04166666666666714
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 6.4012859077486504e-18,
+      "left_spaces": 0.057535714285714336,
+      "right_spaces": -0.08532142857143299
+    },
+    {
+      "sample": "train-smoke-0-Bravura",
+      "target_interline": 10,
+      "staff": 1,
+      "line_y_spaces": [
+        -0.04166666666666572,
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.04166666666666856
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 0.057535714285714336,
+      "right_spaces": -0.002507142857143663
+    },
+    {
+      "sample": "train-smoke-0-Bravura",
+      "target_interline": 8,
+      "staff": 0,
+      "line_y_spaces": [
+        0.020833333333333037,
+        0.020833333333333037,
+        0.020833333333333037,
+        0.020833333333333925,
+        0.020833333333333925
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.049598214285722975
+    },
+    {
+      "sample": "train-smoke-0-Bravura",
+      "target_interline": 8,
+      "staff": 1,
+      "line_y_spaces": [
+        0.02083333333333215,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": 0.009383928571423894
+    },
+    {
+      "sample": "train-smoke-0-Leland",
+      "target_interline": 16,
+      "staff": 0,
+      "line_y_spaces": [
+        -0.010416666666666963,
+        -0.010416666666666963,
+        -0.010416666666666963,
+        -0.010416666666666075,
+        -0.010416666666666075
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": -7.96126314577143e-18,
+      "left_spaces": -0.010915178571428985,
+      "right_spaces": 0.4206324404761972
+    },
+    {
+      "sample": "train-smoke-0-Leland",
+      "target_interline": 16,
+      "staff": 1,
+      "line_y_spaces": [
+        -0.010416666666667851,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -0.010915178571428985,
+      "right_spaces": -0.040724702380956046
+    },
+    {
+      "sample": "train-smoke-0-Leland",
+      "target_interline": 10,
+      "staff": 0,
+      "line_y_spaces": [
+        -0.04166666666666572,
+        -0.04166666666666714,
+        -0.04166666666666714,
+        -0.04166666666666714,
+        -0.04166666666666714
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 6.4012859077486504e-18,
+      "left_spaces": 0.057535714285714336,
+      "right_spaces": -0.08532142857143299
+    },
+    {
+      "sample": "train-smoke-0-Leland",
+      "target_interline": 10,
+      "staff": 1,
+      "line_y_spaces": [
+        -0.04166666666666572,
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.04166666666666856
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": -8.214366887400002e-17,
+      "left_spaces": 0.057535714285714336,
+      "right_spaces": -0.06349285714285884
+    },
+    {
+      "sample": "train-smoke-0-Leland",
+      "target_interline": 8,
+      "staff": 0,
+      "line_y_spaces": [
+        0.020833333333333037,
+        0.020833333333333037,
+        0.020833333333333037,
+        0.020833333333333925,
+        0.020833333333333925
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.049598214285722975
+    },
+    {
+      "sample": "train-smoke-0-Leland",
+      "target_interline": 8,
+      "staff": 1,
+      "line_y_spaces": [
+        0.02083333333333215,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.05188392857143498
+    },
+    {
+      "sample": "train-smoke-1-Leipzig",
+      "target_interline": 16,
+      "staff": 0,
+      "line_y_spaces": [
+        -0.010416666666666963,
+        -0.010416666666666963,
+        -0.010416666666666963,
+        -0.010416666666666075,
+        -0.010416666666666075
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": -7.87741392195233e-18,
+      "left_spaces": -1.198415178571429,
+      "right_spaces": 0.4206324404761972
+    },
+    {
+      "sample": "train-smoke-1-Leipzig",
+      "target_interline": 16,
+      "staff": 1,
+      "line_y_spaces": [
+        -0.010416666666666075,
+        -0.010416666666667851,
+        -0.010416666666667851,
+        -0.010416666666664298,
+        -0.010416666666664298
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 3.150965568780932e-17,
+      "left_spaces": -1.198415178571429,
+      "right_spaces": 0.4206324404761972
+    },
+    {
+      "sample": "train-smoke-1-Leipzig",
+      "target_interline": 16,
+      "staff": 2,
+      "line_y_spaces": [
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -1.198415178571429,
+      "right_spaces": -0.03912946428571473
+    },
+    {
+      "sample": "train-smoke-1-Leipzig",
+      "target_interline": 16,
+      "staff": 3,
+      "line_y_spaces": [
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -1.198415178571429,
+      "right_spaces": -0.03912946428571473
+    },
+    {
+      "sample": "train-smoke-1-Leipzig",
+      "target_interline": 10,
+      "staff": 0,
+      "line_y_spaces": [
+        -0.04166666666666643,
+        -0.04166666666666714,
+        -0.04166666666666714,
+        -0.04166666666666714,
+        -0.04166666666666714
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 1.2665645913727275e-17,
+      "left_spaces": -1.1424642857142857,
+      "right_spaces": -0.08532142857143299
+    },
+    {
+      "sample": "train-smoke-1-Leipzig",
+      "target_interline": 10,
+      "staff": 1,
+      "line_y_spaces": [
+        -0.04166666666666572,
+        -0.04166666666666572,
+        -0.04166666666666572,
+        -0.04166666666666856,
+        -0.04166666666666856
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -1.1424642857142857,
+      "right_spaces": -0.08532142857143299
+    },
+    {
+      "sample": "train-smoke-1-Leipzig",
+      "target_interline": 10,
+      "staff": 2,
+      "line_y_spaces": [
+        -0.04166666666666856,
+        -0.029123683283711444,
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.04166666666666856
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -1.1424642857142857,
+      "right_spaces": -0.18760714285714358
+    },
+    {
+      "sample": "train-smoke-1-Leipzig",
+      "target_interline": 10,
+      "staff": 3,
+      "line_y_spaces": [
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.0289666430092268,
+        -0.04166666666666856
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -1.1424642857142857,
+      "right_spaces": -0.18760714285714358
+    },
+    {
+      "sample": "train-smoke-1-Leipzig",
+      "target_interline": 8,
+      "staff": 0,
+      "line_y_spaces": [
+        0.020833333333333037,
+        0.020833333333333037,
+        0.020833333333333037,
+        0.020833333333333925,
+        0.020833333333333925
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -1.103169642857143,
+      "right_spaces": -0.049598214285722975
+    },
+    {
+      "sample": "train-smoke-1-Leipzig",
+      "target_interline": 8,
+      "staff": 1,
+      "line_y_spaces": [
+        0.020833333333335702,
+        0.02083333333333215,
+        0.02083333333333215,
+        0.020833333333335702,
+        0.020833333333335702
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": -3.23341404213925e-17,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.049598214285722975
+    },
+    {
+      "sample": "train-smoke-1-Leipzig",
+      "target_interline": 8,
+      "staff": 2,
+      "line_y_spaces": [
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -1.103169642857143,
+      "right_spaces": -0.17174107142857054
+    },
+    {
+      "sample": "train-smoke-1-Leipzig",
+      "target_interline": 8,
+      "staff": 3,
+      "line_y_spaces": [
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.17174107142857054
+    },
+    {
+      "sample": "train-smoke-1-Bravura",
+      "target_interline": 16,
+      "staff": 0,
+      "line_y_spaces": [
+        -0.010416666666666963,
+        -0.010416666666666963,
+        -0.010416666666666963,
+        -0.010416666666666075,
+        -0.010416666666666075
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": -8.046916599774635e-18,
+      "left_spaces": 1.176584821428571,
+      "right_spaces": 0.4206324404761972
+    },
+    {
+      "sample": "train-smoke-1-Bravura",
+      "target_interline": 16,
+      "staff": 1,
+      "line_y_spaces": [
+        -0.010416666666666075,
+        -0.010416666666667851,
+        -0.010416666666667851,
+        -0.010416666666664298,
+        -0.010416666666664298
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 1.609383319954927e-17,
+      "left_spaces": 1.176584821428571,
+      "right_spaces": 0.4206324404761972
+    },
+    {
+      "sample": "train-smoke-1-Bravura",
+      "target_interline": 16,
+      "staff": 2,
+      "line_y_spaces": [
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.176584821428571,
+      "right_spaces": -0.004501488095243644
+    },
+    {
+      "sample": "train-smoke-1-Bravura",
+      "target_interline": 16,
+      "staff": 3,
+      "line_y_spaces": [
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.176584821428571,
+      "right_spaces": -0.004501488095243644
+    },
+    {
+      "sample": "train-smoke-1-Bravura",
+      "target_interline": 10,
+      "staff": 0,
+      "line_y_spaces": [
+        -0.04166666666666572,
+        -0.04166666666666714,
+        -0.04166666666666714,
+        -0.04166666666666714,
+        -0.04166666666666714
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 1.2930714026571432e-17,
+      "left_spaces": 1.1575357142857143,
+      "right_spaces": -0.08532142857143299
+    },
+    {
+      "sample": "train-smoke-1-Bravura",
+      "target_interline": 10,
+      "staff": 1,
+      "line_y_spaces": [
+        -0.04166666666666572,
+        -0.04166666666666572,
+        -0.04166666666666572,
+        -0.04166666666666856,
+        -0.04166666666666856
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.1575357142857143,
+      "right_spaces": -0.08532142857143299
+    },
+    {
+      "sample": "train-smoke-1-Bravura",
+      "target_interline": 10,
+      "staff": 2,
+      "line_y_spaces": [
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.04166666666666856
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.1575357142857143,
+      "right_spaces": -0.71553571428571
+    },
+    {
+      "sample": "train-smoke-1-Bravura",
+      "target_interline": 10,
+      "staff": 3,
+      "line_y_spaces": [
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.02439406377699811,
+        -0.04166666666666856
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.1575357142857143,
+      "right_spaces": -0.71553571428571
+    },
+    {
+      "sample": "train-smoke-1-Bravura",
+      "target_interline": 8,
+      "staff": 0,
+      "line_y_spaces": [
+        0.020833333333333037,
+        0.020833333333333037,
+        0.020833333333333037,
+        0.020833333333333925,
+        0.020833333333333925
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.049598214285722975
+    },
+    {
+      "sample": "train-smoke-1-Bravura",
+      "target_interline": 8,
+      "staff": 1,
+      "line_y_spaces": [
+        0.020833333333333925,
+        0.02083333333333215,
+        0.02083333333333215,
+        0.020833333333335702,
+        0.020833333333335702
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 3.23341404213925e-17,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.049598214285722975
+    },
+    {
+      "sample": "train-smoke-1-Bravura",
+      "target_interline": 8,
+      "staff": 2,
+      "line_y_spaces": [
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.02083333333333215
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 1.7763568394002506e-16,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.6993303571428626
+    },
+    {
+      "sample": "train-smoke-1-Bravura",
+      "target_interline": 8,
+      "staff": 3,
+      "line_y_spaces": [
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.6993303571428626
+    },
+    {
+      "sample": "train-smoke-1-Leland",
+      "target_interline": 16,
+      "staff": 0,
+      "line_y_spaces": [
+        -0.010416666666666963,
+        -0.010416666666666963,
+        -0.010416666666666963,
+        -0.010416666666666075,
+        -0.010416666666666075
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": -8.046916599774635e-18,
+      "left_spaces": 1.176584821428571,
+      "right_spaces": 0.4206324404761972
+    },
+    {
+      "sample": "train-smoke-1-Leland",
+      "target_interline": 16,
+      "staff": 1,
+      "line_y_spaces": [
+        -0.010416666666666075,
+        -0.010416666666667851,
+        -0.010416666666667851,
+        -0.010416666666664298,
+        -0.010416666666664298
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 1.575482784390466e-17,
+      "left_spaces": -1.198415178571429,
+      "right_spaces": 0.4206324404761972
+    },
+    {
+      "sample": "train-smoke-1-Leland",
+      "target_interline": 16,
+      "staff": 2,
+      "line_y_spaces": [
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.176584821428571,
+      "right_spaces": -0.058599702380959684
+    },
+    {
+      "sample": "train-smoke-1-Leland",
+      "target_interline": 16,
+      "staff": 3,
+      "line_y_spaces": [
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -1.198415178571429,
+      "right_spaces": -0.058599702380959684
+    },
+    {
+      "sample": "train-smoke-1-Leland",
+      "target_interline": 10,
+      "staff": 0,
+      "line_y_spaces": [
+        -0.04166666666666572,
+        -0.04166666666666714,
+        -0.04166666666666714,
+        -0.04166666666666714,
+        -0.04166666666666714
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 1.2930714026571432e-17,
+      "left_spaces": 1.1575357142857143,
+      "right_spaces": -0.08532142857143299
+    },
+    {
+      "sample": "train-smoke-1-Leland",
+      "target_interline": 10,
+      "staff": 1,
+      "line_y_spaces": [
+        -0.04166666666666572,
+        -0.04166666666666572,
+        -0.04166666666666572,
+        -0.04166666666666856,
+        -0.04166666666666856
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -1.1424642857142857,
+      "right_spaces": -0.08532142857143299
+    },
+    {
+      "sample": "train-smoke-1-Leland",
+      "target_interline": 10,
+      "staff": 2,
+      "line_y_spaces": [
+        -0.04166666666666856,
+        -0.023915954876071056,
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.04166666666666856
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.1575357142857143,
+      "right_spaces": -0.3320928571428567
+    },
+    {
+      "sample": "train-smoke-1-Leland",
+      "target_interline": 10,
+      "staff": 3,
+      "line_y_spaces": [
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.02893219220069341,
+        -0.04166666666667425
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -1.1424642857142857,
+      "right_spaces": -0.3320928571428567
+    },
+    {
+      "sample": "train-smoke-1-Leland",
+      "target_interline": 8,
+      "staff": 0,
+      "line_y_spaces": [
+        0.020833333333333037,
+        0.020833333333333037,
+        0.020833333333333037,
+        0.020833333333333925,
+        0.020833333333333925
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.049598214285722975
+    },
+    {
+      "sample": "train-smoke-1-Leland",
+      "target_interline": 8,
+      "staff": 1,
+      "line_y_spaces": [
+        0.020833333333335702,
+        0.02083333333333215,
+        0.02083333333333215,
+        0.020833333333335702,
+        0.020833333333335702
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.049598214285722975
+    },
+    {
+      "sample": "train-smoke-1-Leland",
+      "target_interline": 8,
+      "staff": 2,
+      "line_y_spaces": [
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.31613392857143197
+    },
+    {
+      "sample": "train-smoke-1-Leland",
+      "target_interline": 8,
+      "staff": 3,
+      "line_y_spaces": [
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.31613392857143197
+    },
+    {
+      "sample": "train-smoke-2-Leipzig",
+      "target_interline": 16,
+      "staff": 0,
+      "line_y_spaces": [
+        -0.010416666666666963,
+        -0.010416666666666963,
+        -0.010416666666666963,
+        -0.010416666666667851,
+        -0.010416666666666075
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -0.010915178571428985,
+      "right_spaces": 0.4150758928571179
+    },
+    {
+      "sample": "train-smoke-2-Leipzig",
+      "target_interline": 16,
+      "staff": 1,
+      "line_y_spaces": [
+        -0.010416666666667851,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666660745,
+        -0.010416666666664298
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -0.010915178571428985,
+      "right_spaces": 0.6853616071428519
+    },
+    {
+      "sample": "train-smoke-2-Leipzig",
+      "target_interline": 10,
+      "staff": 0,
+      "line_y_spaces": [
+        -0.04166666666666643,
+        -0.04166666666666714,
+        -0.04166666666666714,
+        -0.04166666666666714,
+        -0.04166666666666714
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 6.4012859077486504e-18,
+      "left_spaces": 0.057535714285714336,
+      "right_spaces": -0.0908785714285841
+    },
+    {
+      "sample": "train-smoke-2-Leipzig",
+      "target_interline": 10,
+      "staff": 1,
+      "line_y_spaces": [
+        -0.04166666666666572,
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.04166666666666572
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 0.057535714285714336,
+      "right_spaces": -0.06842142857142904
+    },
+    {
+      "sample": "train-smoke-2-Leipzig",
+      "target_interline": 8,
+      "staff": 0,
+      "line_y_spaces": [
+        0.020833333333333037,
+        0.020833333333333037,
+        0.020833333333333037,
+        0.020833333333333925,
+        0.020833333333333925
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.05515178571430113
+    },
+    {
+      "sample": "train-smoke-2-Leipzig",
+      "target_interline": 8,
+      "staff": 1,
+      "line_y_spaces": [
+        0.02083333333333215,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.10822321428572224
+    },
+    {
+      "sample": "train-smoke-2-Bravura",
+      "target_interline": 16,
+      "staff": 0,
+      "line_y_spaces": [
+        -0.010416666666666963,
+        -0.010416666666666963,
+        -0.010416666666666963,
+        -0.010416666666666075,
+        -0.010416666666666075
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": -7.96126314577143e-18,
+      "left_spaces": -0.010915178571428985,
+      "right_spaces": 0.4206324404761972
+    },
+    {
+      "sample": "train-smoke-2-Bravura",
+      "target_interline": 16,
+      "staff": 1,
+      "line_y_spaces": [
+        -0.010416666666667851,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -0.010915178571428985,
+      "right_spaces": 0.2630639880952401
+    },
+    {
+      "sample": "train-smoke-2-Bravura",
+      "target_interline": 10,
+      "staff": 0,
+      "line_y_spaces": [
+        -0.04166666666666643,
+        -0.04166666666666714,
+        -0.04166666666666714,
+        -0.04166666666666714,
+        -0.04166666666666714
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 6.4012859077486504e-18,
+      "left_spaces": 0.057535714285714336,
+      "right_spaces": -0.08532142857143299
+    },
+    {
+      "sample": "train-smoke-2-Bravura",
+      "target_interline": 10,
+      "staff": 1,
+      "line_y_spaces": [
+        -0.04166666666666572,
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.041666666666671404
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 0.057535714285714336,
+      "right_spaces": -0.09076428571428323
+    },
+    {
+      "sample": "train-smoke-2-Bravura",
+      "target_interline": 8,
+      "staff": 0,
+      "line_y_spaces": [
+        0.020833333333333037,
+        0.020833333333333037,
+        0.020833333333333037,
+        0.020833333333333925,
+        0.020833333333333925
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.049598214285722975
+    },
+    {
+      "sample": "train-smoke-2-Bravura",
+      "target_interline": 8,
+      "staff": 1,
+      "line_y_spaces": [
+        0.02083333333333215,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.030294642857143117
+    },
+    {
+      "sample": "train-smoke-2-Leland",
+      "target_interline": 16,
+      "staff": 0,
+      "line_y_spaces": [
+        -0.010416666666666963,
+        -0.010416666666666963,
+        -0.010416666666666963,
+        -0.010416666666666075,
+        -0.010416666666666075
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": -7.96126314577143e-18,
+      "left_spaces": -0.010915178571428985,
+      "right_spaces": 0.4206324404761972
+    },
+    {
+      "sample": "train-smoke-2-Leland",
+      "target_interline": 16,
+      "staff": 1,
+      "line_y_spaces": [
+        -0.010416666666667851,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -0.010915178571428985,
+      "right_spaces": 0.5909002976190436
+    },
+    {
+      "sample": "train-smoke-2-Leland",
+      "target_interline": 10,
+      "staff": 0,
+      "line_y_spaces": [
+        -0.04166666666666643,
+        -0.04166666666666714,
+        -0.04166666666666714,
+        -0.04166666666666714,
+        -0.04166666666666714
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 6.4012859077486504e-18,
+      "left_spaces": 0.057535714285714336,
+      "right_spaces": -0.08532142857143299
+    },
+    {
+      "sample": "train-smoke-2-Leland",
+      "target_interline": 10,
+      "staff": 1,
+      "line_y_spaces": [
+        -0.04166666666666572,
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.041666666666671404
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": -8.745141363201233e-17,
+      "left_spaces": 0.057535714285714336,
+      "right_spaces": -0.06289285714285597
+    },
+    {
+      "sample": "train-smoke-2-Leland",
+      "target_interline": 8,
+      "staff": 0,
+      "line_y_spaces": [
+        0.020833333333333037,
+        0.020833333333333037,
+        0.020833333333333037,
+        0.020833333333333925,
+        0.020833333333333925
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.049598214285722975
+    },
+    {
+      "sample": "train-smoke-2-Leland",
+      "target_interline": 8,
+      "staff": 1,
+      "line_y_spaces": [
+        0.02083333333333215,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.07763392857143003
+    },
+    {
+      "sample": "train-smoke-3-Leipzig",
+      "target_interline": 16,
+      "staff": 0,
+      "line_y_spaces": [
+        -0.010416666666666963,
+        -0.010416666666666963,
+        -0.010416666666666963,
+        -0.010416666666666075,
+        -0.010416666666666075
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": -7.87741392195233e-18,
+      "left_spaces": -1.198415178571429,
+      "right_spaces": 0.4206324404761972
+    },
+    {
+      "sample": "train-smoke-3-Leipzig",
+      "target_interline": 16,
+      "staff": 1,
+      "line_y_spaces": [
+        -0.010416666666666075,
+        -0.010416666666667851,
+        -0.010416666666667851,
+        -0.010416666666664298,
+        -0.010416666666664298
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 3.150965568780932e-17,
+      "left_spaces": -1.198415178571429,
+      "right_spaces": 0.4206324404761972
+    },
+    {
+      "sample": "train-smoke-3-Leipzig",
+      "target_interline": 16,
+      "staff": 2,
+      "line_y_spaces": [
+        -0.010416666666664298,
+        -0.010416666666667851,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666667851
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -1.198415178571429,
+      "right_spaces": -0.03877232142857423
+    },
+    {
+      "sample": "train-smoke-3-Leipzig",
+      "target_interline": 16,
+      "staff": 3,
+      "line_y_spaces": [
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.01126000441103514,
+        -0.010416666666664298,
+        -0.010416666666664298
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -1.198415178571429,
+      "right_spaces": -0.03877232142857423
+    },
+    {
+      "sample": "train-smoke-3-Leipzig",
+      "target_interline": 10,
+      "staff": 0,
+      "line_y_spaces": [
+        -0.04166666666666643,
+        -0.04166666666666714,
+        -0.04166666666666714,
+        -0.04166666666666714,
+        -0.04166666666666714
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 6.332822956863638e-18,
+      "left_spaces": -1.1424642857142857,
+      "right_spaces": -0.08532142857143299
+    },
+    {
+      "sample": "train-smoke-3-Leipzig",
+      "target_interline": 10,
+      "staff": 1,
+      "line_y_spaces": [
+        -0.04166666666666572,
+        -0.04166666666666572,
+        -0.04166666666666572,
+        -0.04166666666666856,
+        -0.04166666666666856
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -1.1424642857142857,
+      "right_spaces": -0.08532142857143299
+    },
+    {
+      "sample": "train-smoke-3-Leipzig",
+      "target_interline": 10,
+      "staff": 2,
+      "line_y_spaces": [
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.014345328894273734,
+        -0.04166666666666856
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -1.1424642857142857,
+      "right_spaces": -0.08703571428571308
+    },
+    {
+      "sample": "train-smoke-3-Leipzig",
+      "target_interline": 10,
+      "staff": 3,
+      "line_y_spaces": [
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.0056718950999481875,
+        -0.04166666666666856,
+        -0.04166666666666856
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -1.1424642857142857,
+      "right_spaces": -0.08703571428571308
+    },
+    {
+      "sample": "train-smoke-3-Leipzig",
+      "target_interline": 8,
+      "staff": 0,
+      "line_y_spaces": [
+        0.020833333333333037,
+        0.020833333333333037,
+        0.020833333333333037,
+        0.020833333333333925,
+        0.020833333333333925
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -1.103169642857143,
+      "right_spaces": -0.049598214285722975
+    },
+    {
+      "sample": "train-smoke-3-Leipzig",
+      "target_interline": 8,
+      "staff": 1,
+      "line_y_spaces": [
+        0.020833333333335702,
+        0.02083333333333215,
+        0.02083333333333215,
+        0.020833333333335702,
+        0.020833333333335702
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.049598214285722975
+    },
+    {
+      "sample": "train-smoke-3-Leipzig",
+      "target_interline": 8,
+      "staff": 2,
+      "line_y_spaces": [
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.02083333333333215,
+        0.02083333333333215
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -1.103169642857143,
+      "right_spaces": -0.047455357142858645
+    },
+    {
+      "sample": "train-smoke-3-Leipzig",
+      "target_interline": 8,
+      "staff": 3,
+      "line_y_spaces": [
+        0.020833333333335702,
+        0.020833333333335702,
+        0.004354125590012359,
+        0.020833333333335702,
+        0.020833333333335702
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.047455357142858645
+    },
+    {
+      "sample": "train-smoke-3-Bravura",
+      "target_interline": 16,
+      "staff": 0,
+      "line_y_spaces": [
+        -0.010416666666666963,
+        -0.010416666666666963,
+        -0.010416666666666963,
+        -0.010416666666666075,
+        -0.010416666666666075
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": -8.046916599774635e-18,
+      "left_spaces": 1.176584821428571,
+      "right_spaces": 0.4206324404761972
+    },
+    {
+      "sample": "train-smoke-3-Bravura",
+      "target_interline": 16,
+      "staff": 1,
+      "line_y_spaces": [
+        -0.010416666666666075,
+        -0.010416666666667851,
+        -0.010416666666667851,
+        -0.010416666666664298,
+        -0.010416666666664298
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 1.609383319954927e-17,
+      "left_spaces": 1.176584821428571,
+      "right_spaces": 0.4206324404761972
+    },
+    {
+      "sample": "train-smoke-3-Bravura",
+      "target_interline": 16,
+      "staff": 2,
+      "line_y_spaces": [
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666664298
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.176584821428571,
+      "right_spaces": -0.042995535714290156
+    },
+    {
+      "sample": "train-smoke-3-Bravura",
+      "target_interline": 16,
+      "staff": 3,
+      "line_y_spaces": [
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.01129958886338045,
+        -0.010416666666664298,
+        -0.010416666666664298
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.176584821428571,
+      "right_spaces": -0.042995535714290156
+    },
+    {
+      "sample": "train-smoke-3-Bravura",
+      "target_interline": 10,
+      "staff": 0,
+      "line_y_spaces": [
+        -0.04166666666666572,
+        -0.04166666666666714,
+        -0.04166666666666714,
+        -0.04166666666666714,
+        -0.04166666666666714
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 1.939607103985715e-17,
+      "left_spaces": 1.1575357142857143,
+      "right_spaces": -0.08532142857143299
+    },
+    {
+      "sample": "train-smoke-3-Bravura",
+      "target_interline": 10,
+      "staff": 1,
+      "line_y_spaces": [
+        -0.04166666666666572,
+        -0.04166666666666572,
+        -0.04166666666666572,
+        -0.04166666666666856,
+        -0.04166666666666856
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.1575357142857143,
+      "right_spaces": -0.08532142857143299
+    },
+    {
+      "sample": "train-smoke-3-Bravura",
+      "target_interline": 10,
+      "staff": 2,
+      "line_y_spaces": [
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.04166666666666856
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.1575357142857143,
+      "right_spaces": -0.003792857142855155
+    },
+    {
+      "sample": "train-smoke-3-Bravura",
+      "target_interline": 10,
+      "staff": 3,
+      "line_y_spaces": [
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.0063581408856919095,
+        -0.04166666666666856,
+        -0.04166666666666856
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.1575357142857143,
+      "right_spaces": -0.003792857142855155
+    },
+    {
+      "sample": "train-smoke-3-Bravura",
+      "target_interline": 8,
+      "staff": 0,
+      "line_y_spaces": [
+        0.020833333333333037,
+        0.020833333333333037,
+        0.020833333333333037,
+        0.020833333333333925,
+        0.020833333333333925
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.049598214285722975
+    },
+    {
+      "sample": "train-smoke-3-Bravura",
+      "target_interline": 8,
+      "staff": 1,
+      "line_y_spaces": [
+        0.020833333333335702,
+        0.02083333333333215,
+        0.02083333333333215,
+        0.020833333333335702,
+        0.020833333333335702
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.049598214285722975
+    },
+    {
+      "sample": "train-smoke-3-Bravura",
+      "target_interline": 8,
+      "staff": 2,
+      "line_y_spaces": [
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.02083333333333215
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.11400892857143674
+    },
+    {
+      "sample": "train-smoke-3-Bravura",
+      "target_interline": 8,
+      "staff": 3,
+      "line_y_spaces": [
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.11400892857143674
+    },
+    {
+      "sample": "train-smoke-3-Leland",
+      "target_interline": 16,
+      "staff": 0,
+      "line_y_spaces": [
+        -0.010416666666666963,
+        -0.010416666666666963,
+        -0.010416666666666963,
+        -0.010416666666666075,
+        -0.010416666666666075
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": -8.046916599774635e-18,
+      "left_spaces": 1.176584821428571,
+      "right_spaces": 0.4206324404761972
+    },
+    {
+      "sample": "train-smoke-3-Leland",
+      "target_interline": 16,
+      "staff": 1,
+      "line_y_spaces": [
+        -0.010416666666666075,
+        -0.010416666666667851,
+        -0.010416666666667851,
+        -0.010416666666660745,
+        -0.010416666666664298
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 1.575482784390466e-17,
+      "left_spaces": -1.198415178571429,
+      "right_spaces": 0.4206324404761972
+    },
+    {
+      "sample": "train-smoke-3-Leland",
+      "target_interline": 16,
+      "staff": 2,
+      "line_y_spaces": [
+        -0.010416666666664298,
+        -0.010416666666667851,
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.010416666666667851
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.176584821428571,
+      "right_spaces": -0.020724702380960025
+    },
+    {
+      "sample": "train-smoke-3-Leland",
+      "target_interline": 16,
+      "staff": 3,
+      "line_y_spaces": [
+        -0.010416666666664298,
+        -0.010416666666664298,
+        -0.011191598975571537,
+        -0.010416666666664298,
+        -0.010416666666664298
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -1.198415178571429,
+      "right_spaces": -0.020724702380960025
+    },
+    {
+      "sample": "train-smoke-3-Leland",
+      "target_interline": 10,
+      "staff": 0,
+      "line_y_spaces": [
+        -0.04166666666666572,
+        -0.04166666666666714,
+        -0.04166666666666714,
+        -0.04166666666666714,
+        -0.04166666666666714
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 6.465357013285716e-18,
+      "left_spaces": 1.1575357142857143,
+      "right_spaces": -0.08532142857143299
+    },
+    {
+      "sample": "train-smoke-3-Leland",
+      "target_interline": 10,
+      "staff": 1,
+      "line_y_spaces": [
+        -0.04166666666666572,
+        -0.04166666666666572,
+        -0.04166666666666572,
+        -0.04166666666666856,
+        -0.04166666666666856
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -1.1424642857142857,
+      "right_spaces": -0.08532142857143299
+    },
+    {
+      "sample": "train-smoke-3-Leland",
+      "target_interline": 10,
+      "staff": 2,
+      "line_y_spaces": [
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.01960940264775104,
+        -0.04166666666666856
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.1575357142857143,
+      "right_spaces": -0.03149285714285952
+    },
+    {
+      "sample": "train-smoke-3-Leland",
+      "target_interline": 10,
+      "staff": 3,
+      "line_y_spaces": [
+        -0.04166666666666856,
+        -0.04166666666666856,
+        -0.00528706679083939,
+        -0.04166666666666856,
+        -0.04166666666666856
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": -1.1424642857142857,
+      "right_spaces": -0.03149285714285952
+    },
+    {
+      "sample": "train-smoke-3-Leland",
+      "target_interline": 8,
+      "staff": 0,
+      "line_y_spaces": [
+        0.020833333333333037,
+        0.020833333333333037,
+        0.020833333333333037,
+        0.020833333333333925,
+        0.020833333333333925
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.049598214285722975
+    },
+    {
+      "sample": "train-smoke-3-Leland",
+      "target_interline": 8,
+      "staff": 1,
+      "line_y_spaces": [
+        0.020833333333335702,
+        0.02083333333333215,
+        0.02083333333333215,
+        0.020833333333335702,
+        0.020833333333335702
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 3.23341404213925e-17,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.049598214285722975
+    },
+    {
+      "sample": "train-smoke-3-Leland",
+      "target_interline": 8,
+      "staff": 2,
+      "line_y_spaces": [
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.020833333333335702,
+        0.02083333333333215
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.09188392857143413
+    },
+    {
+      "sample": "train-smoke-3-Leland",
+      "target_interline": 8,
+      "staff": 3,
+      "line_y_spaces": [
+        0.020833333333335702,
+        0.020833333333335702,
+        -0.02287134088080478,
+        0.020833333333335702,
+        0.020833333333335702
+      ],
+      "interline_relative": 0.0,
+      "slope_dy_dx": 0.0,
+      "left_spaces": 1.146830357142857,
+      "right_spaces": -0.09188392857143413
+    }
+  ]
+}

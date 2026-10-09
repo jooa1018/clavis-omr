@@ -1,0 +1,62 @@
+[
+  {
+    "name": "text.onnx.max_model_bytes",
+    "value": 60000000,
+    "unit": "bytes",
+    "owner": "W7",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "PLAN 6.4 total model budget bounds each local artifact; not a model admission decision",
+    "evidence": "docs/reports/W7/T7.1a-boundary.md"
+  },
+  {
+    "name": "text.ctc.max_frames",
+    "value": 2048,
+    "unit": "count",
+    "owner": "W7",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Fail closed on oversized tensor; no resizing or image-specific branch",
+    "evidence": "docs/reports/W7/T7.1a-boundary.md"
+  },
+  {
+    "name": "text.ctc.max_classes",
+    "value": 16384,
+    "unit": "count",
+    "owner": "W7",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Bound caller-supplied OCR alphabet; exact dictionary remains model-specific",
+    "evidence": "docs/reports/W7/T7.1a-boundary.md"
+  },
+  {
+    "name": "text.ctc.max_cells",
+    "value": 2000000,
+    "unit": "count",
+    "owner": "W7",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Bound Python decoding work below the OR-001 resource envelope",
+    "evidence": "docs/reports/W7/T7.1a-boundary.md"
+  },
+  {
+    "name": "text.grammar.max_chars",
+    "value": 256,
+    "unit": "count",
+    "owner": "W7",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Bound per-candidate grammar work; reject over-budget input without truncation.",
+    "evidence": "docs/reports/W7/T7.3-grammar.md"
+  },
+  {
+    "name": "text.grammar.max_states",
+    "value": 4096,
+    "unit": "count",
+    "owner": "W7",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Bound nondeterministic stack configurations per prefix; fail closed on resource exhaustion.",
+    "evidence": "docs/reports/W7/T7.3-grammar.md"
+  }
+]

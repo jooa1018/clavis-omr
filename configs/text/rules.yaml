@@ -1,0 +1,615 @@
+[
+  {
+    "id": "TEXT-CTC-001",
+    "owner": "W7",
+    "statement": "Collapse adjacent repeated CTC classes, then remove blank; a blank permits a repeated character",
+    "units": "dimensionless",
+    "params": [],
+    "source": "convention",
+    "reference": "https://doi.org/10.1145/1143844.1143891",
+    "flag": "text.rules.TEXT-CTC-001.enabled",
+    "enabled": true,
+    "ablation": {
+      "status": "synthetic-tensor-smoke-only",
+      "report": "docs/reports/W7/T7.1a-smoke.json"
+    },
+    "introduced_by": "w7/onnx-ctc-boundary",
+    "motivated_by_failure": false
+  },
+  {
+    "owner": "W7",
+    "units": "dimensionless",
+    "params": [],
+    "source": "convention",
+    "enabled": true,
+    "ablation": {
+      "status": "synthetic-grammar-only",
+      "report": "docs/reports/W7/T7.3-grammar-validation.json"
+    },
+    "introduced_by": "w7/chord-grammar",
+    "motivated_by_failure": false,
+    "id": "TEXT-GRAMMAR-001",
+    "statement": "CCR-0002 / CONTRACTS 6: chord grammar; disable means abstain, never emit unchecked chords.",
+    "flag": "text.rules.TEXT-GRAMMAR-001.enabled",
+    "reference": "docs/CONTRACTS.md#6",
+    "quality": {
+      "m": "m",
+      "min": "m",
+      "-": "m",
+      "dim": "dim",
+      "°": "dim",
+      "aug": "aug",
+      "+": "aug",
+      "maj": "",
+      "M": "",
+      "Δ": ""
+    },
+    "primary": {
+      "2": "2",
+      "5": "5",
+      "6": "6",
+      "6/9": "6/9",
+      "7": "7",
+      "9": "9",
+      "11": "11",
+      "13": "13",
+      "maj7": "maj7",
+      "MAJ7": "maj7",
+      "Maj7": "maj7",
+      "M7": "maj7",
+      "Δ7": "maj7",
+      "maj9": "maj9",
+      "MAJ9": "maj9",
+      "Maj9": "maj9",
+      "M9": "maj9",
+      "Δ9": "maj9"
+    },
+    "composite": {
+      "m7b5": "m7b5",
+      "min7b5": "m7b5",
+      "ø": "m7b5",
+      "ø7": "m7b5",
+      "dim7": "dim7",
+      "°7": "dim7",
+      "mMaj7": "mMaj7",
+      "minMaj7": "mMaj7",
+      "mMaj9": "mMaj9",
+      "minMaj9": "mMaj9"
+    },
+    "sus": {
+      "sus": "sus4",
+      "sus2": "sus2",
+      "sus4": "sus4"
+    },
+    "modifiers": [
+      "add2",
+      "add4",
+      "add6",
+      "add9",
+      "add11",
+      "add13",
+      "b5",
+      "b9",
+      "b11",
+      "b13",
+      "#5",
+      "#9",
+      "#11",
+      "#13",
+      "no3",
+      "no5"
+    ]
+  },
+  {
+    "owner": "W7",
+    "units": "dimensionless",
+    "params": [],
+    "source": "convention",
+    "enabled": true,
+    "ablation": {
+      "status": "synthetic-grammar-only",
+      "report": "docs/reports/W7/T7.3-grammar-validation.json"
+    },
+    "introduced_by": "w7/chord-grammar",
+    "motivated_by_failure": false,
+    "id": "TEXT-NORMALIZE-001",
+    "statement": "CCR-0002: flatten modifier parentheses; canonicalize aliases; order alterations as CONTRACTS 6. Preserve duplicates and relative order of add/no modifiers. Remaining grammar-supported alterations b11/#13 follow the listed alterations in degree order; no musical correction.",
+    "flag": "text.rules.TEXT-NORMALIZE-001.enabled",
+    "reference": "docs/CONTRACTS.md#6",
+    "alteration_order": [
+      "b5",
+      "#5",
+      "b9",
+      "#9",
+      "#11",
+      "b13",
+      "b11",
+      "#13"
+    ]
+  },
+  {
+    "owner": "W7",
+    "units": "dimensionless",
+    "params": [],
+    "source": "convention",
+    "enabled": true,
+    "ablation": {
+      "status": "synthetic-grammar-only",
+      "report": "docs/reports/W7/T7.3-grammar-validation.json"
+    },
+    "introduced_by": "w7/chord-grammar",
+    "motivated_by_failure": false,
+    "id": "TEXT-GLYPH-001",
+    "statement": "Explicit typographic equivalents only; A/triangle and 0/o/degree are probabilistic OCR alternatives, not deterministic substitutions.",
+    "flag": "text.rules.TEXT-GLYPH-001.enabled",
+    "reference": "docs/ccr/CCR-0002-chord-grammar-aliases.md",
+    "mapping": [
+      {
+        "source": "△",
+        "target": "Δ",
+        "rationale": "Major-quality triangle variants in chord typography; CCR-0002."
+      },
+      {
+        "source": "♭",
+        "target": "b",
+        "rationale": "Music flat glyph and plain-text flat spelling; CCR-0002."
+      },
+      {
+        "source": "♯",
+        "target": "#",
+        "rationale": "Music sharp glyph and plain-text sharp spelling; CCR-0002."
+      },
+      {
+        "source": "Ø",
+        "target": "ø",
+        "rationale": "Uppercase/lowercase half-diminished slashed-o typography; CCR-0002."
+      },
+      {
+        "source": "Ａ",
+        "target": "A",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｂ",
+        "target": "B",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｃ",
+        "target": "C",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｄ",
+        "target": "D",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｅ",
+        "target": "E",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｆ",
+        "target": "F",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｇ",
+        "target": "G",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｈ",
+        "target": "H",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｉ",
+        "target": "I",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｊ",
+        "target": "J",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｋ",
+        "target": "K",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｌ",
+        "target": "L",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｍ",
+        "target": "M",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｎ",
+        "target": "N",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｏ",
+        "target": "O",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｐ",
+        "target": "P",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｑ",
+        "target": "Q",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｒ",
+        "target": "R",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｓ",
+        "target": "S",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｔ",
+        "target": "T",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｕ",
+        "target": "U",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｖ",
+        "target": "V",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｗ",
+        "target": "W",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｘ",
+        "target": "X",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｙ",
+        "target": "Y",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "Ｚ",
+        "target": "Z",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ａ",
+        "target": "a",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｂ",
+        "target": "b",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｃ",
+        "target": "c",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｄ",
+        "target": "d",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｅ",
+        "target": "e",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｆ",
+        "target": "f",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｇ",
+        "target": "g",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｈ",
+        "target": "h",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｉ",
+        "target": "i",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｊ",
+        "target": "j",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｋ",
+        "target": "k",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｌ",
+        "target": "l",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｍ",
+        "target": "m",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｎ",
+        "target": "n",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｏ",
+        "target": "o",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｐ",
+        "target": "p",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｑ",
+        "target": "q",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｒ",
+        "target": "r",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｓ",
+        "target": "s",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｔ",
+        "target": "t",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｕ",
+        "target": "u",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｖ",
+        "target": "v",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｗ",
+        "target": "w",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｘ",
+        "target": "x",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｙ",
+        "target": "y",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "ｚ",
+        "target": "z",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "０",
+        "target": "0",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "１",
+        "target": "1",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "２",
+        "target": "2",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "３",
+        "target": "3",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "４",
+        "target": "4",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "５",
+        "target": "5",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "６",
+        "target": "6",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "７",
+        "target": "7",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "８",
+        "target": "8",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "９",
+        "target": "9",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "＃",
+        "target": "#",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "＋",
+        "target": "+",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "－",
+        "target": "-",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "／",
+        "target": "/",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "（",
+        "target": "(",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "）",
+        "target": ")",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "，",
+        "target": ",",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "．",
+        "target": ".",
+        "rationale": "Unicode fullwidth ASCII compatibility form used in East Asian typography; CCR-0002."
+      },
+      {
+        "source": "⁰",
+        "target": "0",
+        "rationale": "Raised digits/signs/parentheses used for chord extensions; Unicode superscript compatibility form; CCR-0002."
+      },
+      {
+        "source": "¹",
+        "target": "1",
+        "rationale": "Raised digits/signs/parentheses used for chord extensions; Unicode superscript compatibility form; CCR-0002."
+      },
+      {
+        "source": "²",
+        "target": "2",
+        "rationale": "Raised digits/signs/parentheses used for chord extensions; Unicode superscript compatibility form; CCR-0002."
+      },
+      {
+        "source": "³",
+        "target": "3",
+        "rationale": "Raised digits/signs/parentheses used for chord extensions; Unicode superscript compatibility form; CCR-0002."
+      },
+      {
+        "source": "⁴",
+        "target": "4",
+        "rationale": "Raised digits/signs/parentheses used for chord extensions; Unicode superscript compatibility form; CCR-0002."
+      },
+      {
+        "source": "⁵",
+        "target": "5",
+        "rationale": "Raised digits/signs/parentheses used for chord extensions; Unicode superscript compatibility form; CCR-0002."
+      },
+      {
+        "source": "⁶",
+        "target": "6",
+        "rationale": "Raised digits/signs/parentheses used for chord extensions; Unicode superscript compatibility form; CCR-0002."
+      },
+      {
+        "source": "⁷",
+        "target": "7",
+        "rationale": "Raised digits/signs/parentheses used for chord extensions; Unicode superscript compatibility form; CCR-0002."
+      },
+      {
+        "source": "⁸",
+        "target": "8",
+        "rationale": "Raised digits/signs/parentheses used for chord extensions; Unicode superscript compatibility form; CCR-0002."
+      },
+      {
+        "source": "⁹",
+        "target": "9",
+        "rationale": "Raised digits/signs/parentheses used for chord extensions; Unicode superscript compatibility form; CCR-0002."
+      },
+      {
+        "source": "⁺",
+        "target": "+",
+        "rationale": "Raised digits/signs/parentheses used for chord extensions; Unicode superscript compatibility form; CCR-0002."
+      },
+      {
+        "source": "⁻",
+        "target": "-",
+        "rationale": "Raised digits/signs/parentheses used for chord extensions; Unicode superscript compatibility form; CCR-0002."
+      },
+      {
+        "source": "⁽",
+        "target": "(",
+        "rationale": "Raised digits/signs/parentheses used for chord extensions; Unicode superscript compatibility form; CCR-0002."
+      },
+      {
+        "source": "⁾",
+        "target": ")",
+        "rationale": "Raised digits/signs/parentheses used for chord extensions; Unicode superscript compatibility form; CCR-0002."
+      }
+    ]
+  },
+  {
+    "owner": "W7",
+    "units": "dimensionless",
+    "params": [],
+    "source": "convention",
+    "enabled": true,
+    "ablation": {
+      "status": "synthetic-grammar-only",
+      "report": "docs/reports/W7/T7.3-grammar-validation.json"
+    },
+    "introduced_by": "w7/chord-grammar",
+    "motivated_by_failure": false,
+    "id": "TEXT-CONSUMER-001",
+    "statement": "CONTRACTS 12.6 conservative vocabulary warning for accepted chords outside listed consumer tokens; no rejection or substitution.",
+    "flag": "text.rules.TEXT-CONSUMER-001.enabled",
+    "reference": "docs/CONTRACTS.md#126",
+    "outside_primary": [
+      "5",
+      "11",
+      "13"
+    ],
+    "outside_modifiers": [
+      "b11",
+      "#13"
+    ]
+  }
+]

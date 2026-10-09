@@ -59,6 +59,7 @@ def run_short(
             "cpuSecondsSampled": result["cpuSecondsSampled"],
             "peakRssBytesSampled": result["peakRssBytesSampled"],
             "cpuLimit": result["cpuLimit"],
+            "monitorDiagnostics": result["monitorDiagnostics"],
         }
 
 

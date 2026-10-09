@@ -12,6 +12,7 @@ from clavis.contracts import canonical_json
 from clavis.contracts.symbols import SymbolGraph
 from clavis.symbols.reading import draft_reading
 from tests.symbols.test_baseline import PRODUCER, graph, run_detection, scene
+from tests.symbols.test_columns import column_graph
 from training.data.resources import peak_rss_bytes
 
 
@@ -42,7 +43,12 @@ def main() -> None:
                 started = time.perf_counter()
                 result = run_detection(image, bank)
                 timings.append(
-                    {"threads": threads, "repeat": repeat, "seconds": time.perf_counter() - started}
+                    {
+                        "threads_requested": threads,
+                        "threads_effective": cv2.getNumThreads(),
+                        "repeat": repeat,
+                        "seconds": time.perf_counter() - started,
+                    }
                 )
                 digests.append(hashlib.sha256(canonical_json(result)).hexdigest())
         cv2.setNumThreads(1)
@@ -64,6 +70,10 @@ def main() -> None:
             )
         reading = draft_reading(graph(), PRODUCER)
         items = [h.items[0] for h in reading.lattice.hypotheses]
+        joined = column_graph([(40, 2, 2, "a"), (44, 1, 6, "b")])
+        chord = column_graph([(40, 1, 6, "a"), (44, 1, 2, "a")])
+        joined_lattice = draft_reading(joined, PRODUCER).finalize()
+        chord_lattice = draft_reading(chord, PRODUCER).finalize()
         report = {
             "status": "PASS",
             "scope": "authored component mocks; NOT SYN-Val; NOT recognition accuracy",
@@ -85,6 +95,18 @@ def main() -> None:
                     .lattice.hypotheses[0]
                     .items
                 ),
+            },
+            "columns": {
+                "schema": joined_lattice.schema_version,
+                "join_alternatives": joined_lattice.hypotheses[0].items[1].attr_top_k["join"],
+                "shared_stem_chord": chord_lattice.hypotheses[0].items[1].item.chord,
+                "join_rule_off_hypotheses": len(
+                    draft_reading(joined, PRODUCER, joins_enabled=False).lattice.hypotheses
+                ),
+                "chord_rule_off_hypotheses": len(
+                    draft_reading(chord, PRODUCER, chords_enabled=False).lattice.hypotheses
+                ),
+                "common_parser_and_automaton": "PASS",
             },
             "oracle_at_k": "NOT_RUN: no labeled evaluation set / W4 symbol metric",
             "reading_IER": "NOT_RUN: no W2 LSTL / W4 reading metric",

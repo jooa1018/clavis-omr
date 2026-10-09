@@ -135,5 +135,45 @@
     },
     "introduced_by": "PR #33",
     "motivated_by_failure": false
+  },
+  {
+    "id": "SYM-READ-003",
+    "owner": "W6",
+    "statement": "선택된 동일 stem의 음표 머리는 같은 성부의 pos 순서로 묶어 chord=1을 표시한다. 관측 속성 충돌과 중복 pos는 미해결로 남긴다.",
+    "units": "staff_space / probability",
+    "params": [],
+    "source": "convention",
+    "status": "provisional",
+    "flag": "draft_reading.chords_enabled",
+    "ablation": {
+      "status": "PARTIAL",
+      "report": "docs/reports/W6/2026-10-09-lstl-011.md",
+      "scope": "authored column mocks, NOT SYN-Val; off leaves ambiguous overlapping chords unresolved",
+      "dev_tune_k1_delta": null,
+      "syn_val_ier_delta": null,
+      "metric_status": "NOT_RUN"
+    },
+    "introduced_by": "W6 CCR-0003 integration, Orchestrator 2026-10-09",
+    "motivated_by_failure": false
+  },
+  {
+    "id": "SYM-READ-004",
+    "owner": "W6",
+    "statement": "서로 다른 성부의 머리 박스 x 구간 겹침은 같은 열의 후보 근거다. join=1 초안과 attrTopK 0/1을 대칭 확률로 보존하며 성부 오름차순으로 공통 문법 검증한다. 직접 근거 없는 겹침 사슬과 같은 성부의 다른 stem은 미해결이다.",
+    "units": "staff_space / probability",
+    "params": [],
+    "source": "convention",
+    "status": "provisional",
+    "flag": "draft_reading.joins_enabled",
+    "ablation": {
+      "status": "PARTIAL",
+      "report": "docs/reports/W6/2026-10-09-lstl-011.md",
+      "scope": "authored column mocks, NOT SYN-Val; off leaves overlapping voice columns unresolved; equal 0/1 mass is an ignorance prior, not a fitted threshold",
+      "dev_tune_k1_delta": null,
+      "syn_val_ier_delta": null,
+      "metric_status": "NOT_RUN"
+    },
+    "introduced_by": "W6 CCR-0003 integration, Orchestrator 2026-10-09",
+    "motivated_by_failure": false
   }
 ]

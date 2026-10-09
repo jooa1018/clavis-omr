@@ -1,11 +1,11 @@
 [
   {
     "file": "training/jobs/runner.py",
-    "line": 161,
+    "line": 194,
     "rule": "H9",
     "owner": "W1",
     "evidence_digest": "f55bb63062ca7fa6483196ef2dc20d9cad1d0ef028c76a8a6030e30a59111f85",
-    "reason": "Batch wall-limit and mean CPU diagnostic only; Orchestrator approval 2026-10-06, W4 reviewed PR27.",
+    "reason": "Batch wall-limit and mean CPU diagnostic only; Orchestrator approval 2026-10-06, W4 reviewed PR27. Coordinate-only relocation for monitor diagnostics; approved AST digest unchanged.",
     "approvedBy": [
       "W4",
       "orchestrator"
@@ -13,11 +13,47 @@
   },
   {
     "file": "training/jobs/runner.py",
-    "line": 223,
+    "line": 269,
     "rule": "H9",
     "owner": "W1",
     "evidence_digest": "62cb15b5b7c52f6c1e2f78736d6d34381fd3e3274c27556e936ec20069317c08",
-    "reason": "Batch wall-limit and mean CPU diagnostic only; Orchestrator approval 2026-10-06, W4 reviewed PR27.",
+    "reason": "Batch wall-limit and mean CPU diagnostic only; Orchestrator approval 2026-10-06, W4 reviewed PR27. Coordinate-only relocation for monitor diagnostics; approved AST digest unchanged.",
+    "approvedBy": [
+      "W4",
+      "orchestrator"
+    ]
+  },
+  {
+    "file": "training/data/pdmx_download.py",
+    "line": 128,
+    "rule": "H9",
+    "owner": "W2",
+    "evidence_digest": "3ee285c8d06b4a8f725d0470af2d62bb5734d1454b714b68f8c8c253050ed90c",
+    "reason": "Operational retry cancellation/progress only; full publisher size/MD5 verified before aggregation; interrupted and continuous aggregate bytes equal in tests/data/test_pdmx_aggregate.py. Orchestrator direct A approval 2026-10-09; W4 confirmation https://github.com/jooa1018/clavis-omr/pull/28#issuecomment-6075443073",
+    "approvedBy": [
+      "W4",
+      "orchestrator"
+    ]
+  },
+  {
+    "file": "training/data/pdmx_stream.py",
+    "line": 266,
+    "rule": "H9",
+    "owner": "W2",
+    "evidence_digest": "8e4b5b2d7825ddd83711afba5bc5a6e39c98cf28038feb27a6176376f142a6eb",
+    "reason": "Operational retry cancellation/progress only; full publisher size/MD5 verified before aggregation; interrupted and continuous aggregate bytes equal in tests/data/test_pdmx_aggregate.py. Orchestrator direct A approval 2026-10-09; W4 confirmation https://github.com/jooa1018/clavis-omr/pull/28#issuecomment-6075443073",
+    "approvedBy": [
+      "W4",
+      "orchestrator"
+    ]
+  },
+  {
+    "file": "training/jobs/benchmark_monitor.py",
+    "line": 128,
+    "rule": "H9",
+    "owner": "W1",
+    "evidence_digest": "fb249a3f20e1a36a592a6c2eb21b29d0686d61032d38db41ef5ff654de088837",
+    "reason": "Benchmark preflight retry/pause resource control only; Orchestrator 2026-10-09 approval, byte-identical synthetic checkpoints across admission timing. W4 confirmation https://github.com/jooa1018/clavis-omr/pull/51#issuecomment-6075933816",
     "approvedBy": [
       "W4",
       "orchestrator"

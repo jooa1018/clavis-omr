@@ -40,3 +40,31 @@
     report: docs/reports/W1/OR-005-SHORT-SLOTS-2026-10-09.md
   introduced_by: w1/short-run-slots
   motivated_by_failure: true
+- id: PLATFORM-MONITOR-001
+  owner: W1
+  statement: Skip an individually unavailable child CPU/RSS/thread or affinity sample for NoSuchProcess, AccessDenied and ZombieProcess; retain fatal root/enumeration errors. Aggregate only complete child samples and record exception type, static site and count without identity or messages.
+  units: process_samples
+  params: []
+  source: convention
+  evidence: Orchestrator execution-runner ruling 2026-10-09
+  flag: training.jobs.monitor
+  ablation:
+    status: NOT_RUN
+    reason: Resource monitoring policy, no recognition behavior.
+    report: docs/reports/W1/MONITOR-DIAGNOSTICS-2026-10-09.md
+  introduced_by: w1/runner-monitor-diagnostics
+  motivated_by_failure: true
+- id: PLATFORM-BENCHMARK-001
+  owner: W1
+  statement: Latency budget evidence requires an exclusive four-thread normal-priority benchmark with all-CPU affinity and approved external-load, physical-memory and AC admission/validity checks. Retain invalid results and full aggregate samples.
+  units: logical_cpus_seconds_bytes
+  params: [configs/jobs/benchmark.yaml]
+  source: convention
+  evidence: Orchestrator benchmark ruling 2026-10-09; REF-LAPTOP 12 logical CPUs, 4 library threads, usual background below 1 CPU.
+  flag: JobSpec.kind=benchmark
+  ablation:
+    status: NOT_RUN
+    reason: Provisional operating policy; no recognition behavior. Threshold changes require Orchestrator review.
+    report: docs/reports/W1/BENCHMARK-JOBS-2026-10-09.md
+  introduced_by: w1/benchmark-jobs
+  motivated_by_failure: true

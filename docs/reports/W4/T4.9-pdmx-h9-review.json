@@ -1,0 +1,41 @@
+{
+  "baseHead": "1ad29e3e7de925f0f77d9622e02c490b2c2e11b9",
+  "snapshotKind": "W2 working files; exact byte digests",
+  "files": {
+    "training/data/pdmx_download.py": "352f0dcae6ed3a9e7341a5a56644886e2c98d8543bda3596fffd043bbd22458a",
+    "training/data/pdmx_stream.py": "8b6f4fc997f1b5e812cf6369731b2537ded1c31e179bc6175c8b8ee3fc8c9734",
+    "tests/data/test_pdmx_download.py": "032d5a779468a1f58b69ffa5c5d66abfccbc9c543d16d796e0db207b61b26206",
+    "tests/data/test_pdmx_aggregate.py": "d1ecf86b077c7c5dcee2782fd76806f058538043b9d7ed33c50364253cfaeb31",
+    "configs/data/pdmx-aggregate.json": "ab7a8e6426290c5fba4d7c849c6d7955fed114eb933359804e17476fd85b6597"
+  },
+  "findings": [
+    {
+      "file": "training/data/pdmx_download.py",
+      "line": 128,
+      "rule": "H9",
+      "owner": "W2",
+      "evidence_digest": "3ee285c8d06b4a8f725d0470af2d62bb5734d1454b714b68f8c8c253050ed90c"
+    },
+    {
+      "file": "training/data/pdmx_stream.py",
+      "line": 266,
+      "rule": "H9",
+      "owner": "W2",
+      "evidence_digest": "8e4b5b2d7825ddd83711afba5bc5a6e39c98cf28038feb27a6176376f142a6eb"
+    }
+  ],
+  "tests": {
+    "tests": 7,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  "pytestSeconds": 1.948,
+  "decision": "W4_CONFIRMED_EXACT_TWO_H9",
+  "authority": "Orchestrator user message 2026-10-09 in W2, verified through read_thread",
+  "approvedBy": [
+    "W4",
+    "orchestrator"
+  ],
+  "actualData": "NOT_RUN; synthetic fixtures only, network mocked"
+}

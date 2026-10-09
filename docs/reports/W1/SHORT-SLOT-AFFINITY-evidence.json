@@ -1,0 +1,68 @@
+{
+  "base": "70ed6fb89d2464f6ebccbd13e19a5af31194d6c3",
+  "checks": {
+    "H1-H9": "PASS",
+    "format": "PASS",
+    "imports": "PASS",
+    "mypy": "PASS",
+    "ruff": "PASS"
+  },
+  "ci": {
+    "head": "bd022a63aa156e015ab2fb7d6f3591b1de672fd6",
+    "jobs": {
+      "ubuntu-latest": "PASS",
+      "windows-latest": "PASS"
+    },
+    "merge": "22b546ab48f98c01f871dc5bc1a4ab73ca4c7c26",
+    "run": "https://github.com/jooa1018/clavis-omr/actions/runs/37893247989",
+    "status": "PASS"
+  },
+  "coverageGates": {
+    "eval": true,
+    "jobs": true,
+    "overall": true,
+    "platform": true
+  },
+  "diagnostic": [
+    {
+      "errno": null,
+      "function": "sample",
+      "line": 38,
+      "type": "NoSuchProcess",
+      "winerror": null
+    },
+    {
+      "errno": null,
+      "function": "execute",
+      "line": 153,
+      "type": "AccessDenied",
+      "winerror": null
+    }
+  ],
+  "required": {
+    "contracts": {
+      "count": 298,
+      "status": "PASS"
+    },
+    "integrity-positive-negative": {
+      "count": 24,
+      "status": "PASS"
+    }
+  },
+  "resources": {
+    "cpuLimit": 2,
+    "cpuSecondsSampled": 72.921875,
+    "peakRssBytesSampled": 292917248,
+    "reason": "completed",
+    "slot": 0,
+    "status": "succeeded",
+    "wallSeconds": 83.60900000000402
+  },
+  "status": "PASS",
+  "windows": {
+    "errors": 0,
+    "failures": 0,
+    "seconds": 81.262,
+    "tests": 933
+  }
+}

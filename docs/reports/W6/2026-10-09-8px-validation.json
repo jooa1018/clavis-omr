@@ -1,0 +1,60 @@
+{
+  "scope": "Windows full suite, CPU, RAM 24 GB (16+8 GB) DDR4-3200 dual channel",
+  "command": "uv run --locked --all-groups python -m training.jobs.short run pytest tests/ --cov=clavis --cov=scripts --cov=eval --cov=training.jobs --cov-report=json:work/8px-coverage.json --junitxml=work/8px-tests.xml",
+  "tests": {
+    "tests": "1447",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "time": "94.340"
+  },
+  "queue": {
+    "status": "succeeded",
+    "reason": "completed",
+    "wallSeconds": 97.95300000000134,
+    "cpuSecondsSampled": 78.765625,
+    "peakRssBytesSampled": 300601344,
+    "cpuLimit": 2,
+    "monitorDiagnostics": [
+      {
+        "count": 25,
+        "exceptionType": "NoSuchProcess",
+        "site": "sample.memory_info",
+        "skippedChild": true
+      },
+      {
+        "count": 9,
+        "exceptionType": "NoSuchProcess",
+        "site": "sample.num_threads",
+        "skippedChild": true
+      }
+    ]
+  },
+  "coverage": {
+    "covered_lines": 5128,
+    "num_statements": 5462,
+    "percent_covered": 93.88502380080557,
+    "percent_covered_display": "94",
+    "missing_lines": 334,
+    "excluded_lines": 10,
+    "percent_statements_covered": 93.88502380080557,
+    "percent_statements_covered_display": "94"
+  },
+  "checks": {
+    "coverage_gates": "PASS",
+    "required_contract_integrity": "PASS",
+    "ruff": "PASS",
+    "format": "PASS",
+    "mypy": "PASS (87 sources)",
+    "privacy": "PASS",
+    "H1-H9": "PASS",
+    "import_boundary": "PASS",
+    "runtime_license": "PASS"
+  },
+  "runtime_changes": false,
+  "night_queue": {
+    "registered_jobs": 5,
+    "formal_wall_seconds": 0,
+    "frozen_files_verified": 55
+  }
+}
