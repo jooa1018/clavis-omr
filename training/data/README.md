@@ -124,7 +124,9 @@ The launcher must also set OMP_NUM_THREADS, OPENBLAS_NUM_THREADS and MKL_NUM_THR
 to 2 before Python imports. Windows Job Object enforces one process/memory; affinity
 limits execution to two available logical CPUs. Allocation/limit failures stop work.
 
-The downloader requests 4 MiB ranges through at most four I/O connections in the
+The downloader requests 4 MiB ranges (download.segment_bytes) with a registered
+16 MiB maximum (download.max_segment_bytes, bytes; Orchestrator 2026-10-09
+resource-bound approval, independent of image dimensions) through at most four I/O connections in the
 same process. Exact HTTP 206 Content-Range and identity encoding are mandatory.
 429/503 honor Retry-After with shared exponential backoff. An OS cache lock prevents
 concurrent writers and is released on process death. Segment data is fsynced before

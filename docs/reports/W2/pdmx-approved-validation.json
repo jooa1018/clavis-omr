@@ -1,0 +1,61 @@
+{
+  "schema": "clavis-w2-validation-1",
+  "tests": {
+    "tests": 793,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 793,
+    "seconds": 122.991
+  },
+  "shortRun": {
+    "gitSha": "9483a1855c610bf8782c69215d05c582ce45ae39",
+    "status": "succeeded",
+    "reason": "completed",
+    "wallSeconds": 125.59399999999732,
+    "cpuSecondsSampled": 86.59375,
+    "peakRssBytesSampled": 301117440,
+    "cpuLimit": 2
+  },
+  "focusedPassed": 43,
+  "trainingAdmissionCount": 0,
+  "scanner": {
+    "schema": "clavis-hardcode-scan-1",
+    "status": "PASS",
+    "pythonFiles": 131,
+    "manifestIdentifiers": 0,
+    "findings": [],
+    "suppressed": [
+      {
+        "file": "training/jobs/runner.py",
+        "line": 161,
+        "rule": "H9",
+        "owner": "W1",
+        "evidence_digest": "f55bb63062ca7fa6483196ef2dc20d9cad1d0ef028c76a8a6030e30a59111f85"
+      },
+      {
+        "file": "training/jobs/runner.py",
+        "line": 223,
+        "rule": "H9",
+        "owner": "W1",
+        "evidence_digest": "62cb15b5b7c52f6c1e2f78736d6d34381fd3e3274c27556e936ec20069317c08"
+      },
+      {
+        "file": "training/data/pdmx_download.py",
+        "line": 128,
+        "rule": "H9",
+        "owner": "W2",
+        "evidence_digest": "3ee285c8d06b4a8f725d0470af2d62bb5734d1454b714b68f8c8c253050ed90c"
+      },
+      {
+        "file": "training/data/pdmx_stream.py",
+        "line": 266,
+        "rule": "H9",
+        "owner": "W2",
+        "evidence_digest": "8e4b5b2d7825ddd83711afba5bc5a6e39c98cf28038feb27a6176376f142a6eb"
+      }
+    ],
+    "byOwner": {}
+  },
+  "w4Confirmation": "https://github.com/jooa1018/clavis-omr/pull/28#issuecomment-6075443073"
+}
