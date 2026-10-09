@@ -14,11 +14,13 @@ Sharp module path. Sharp is a development-only SVG rasterizer (as in W2's audit)
 never imported by the engine. It selects scores 0–3 and every registered smoke
 font before measurement, 12 full-page raster pairs at density 144.
 
-`python -m training.models.staff.smoke --root work/w2-smoke
+`uv run --locked --all-groups python -m training.jobs.short run --items 72
+training.models.staff.smoke --root work/w2-smoke
 --rasters work/geometry-rasters --output work/geometry-smoke` applies W3 area
 downsampling to 16/10/8 px, then measures all 36 pages including failures. It
 produces detection/strip overlays, a contact sheet, metrics and empirical jitter.
-Run under a caller-owned 540-second subprocess timeout and OR-001 resource limits.
+The OR-005 wrapper enforces shared slots and OR-001 resource limits. If slots are
+unavailable, wait; do not bypass the wrapper. The 72 items are 36 raster pairs.
 Do not launch when disk free space is below 3 GB or available RAM is insufficient.
 Peak RSS is measured; no training admission or batch-queue replacement is implied.
 
