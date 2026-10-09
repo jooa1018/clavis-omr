@@ -1,0 +1,113 @@
+{
+  "scope": "local Windows 24 GB; manual OR-005; symbolic/mock only; SYN-Val 아님",
+  "baseCommit": "84179b7",
+  "tests": {
+    "total": 1004,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "grammar": 182
+  },
+  "textCoverage": {
+    "src\\clavis\\text\\__init__.py": {
+      "covered_lines": 0,
+      "num_statements": 0,
+      "percent_covered": 100.0,
+      "percent_covered_display": "100",
+      "missing_lines": 0,
+      "excluded_lines": 0,
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100"
+    },
+    "src\\clavis\\text\\chord.py": {
+      "covered_lines": 145,
+      "num_statements": 148,
+      "percent_covered": 97.97297297297297,
+      "percent_covered_display": "98",
+      "missing_lines": 3,
+      "excluded_lines": 0,
+      "percent_statements_covered": 97.97297297297297,
+      "percent_statements_covered_display": "98"
+    },
+    "src\\clavis\\text\\ctc.py": {
+      "covered_lines": 52,
+      "num_statements": 52,
+      "percent_covered": 100.0,
+      "percent_covered_display": "100",
+      "missing_lines": 0,
+      "excluded_lines": 0,
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100"
+    },
+    "src\\clavis\\text\\onnx_boundary.py": {
+      "covered_lines": 39,
+      "num_statements": 39,
+      "percent_covered": 100.0,
+      "percent_covered_display": "100",
+      "missing_lines": 0,
+      "excluded_lines": 6,
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100"
+    }
+  },
+  "execution": {
+    "status": "succeeded",
+    "wallSeconds": 102.92199999999866,
+    "cpuSecondsSampled": 82.921875,
+    "peakRssBytesSampled": 294002688,
+    "cpuLimit": 2
+  },
+  "previousAttempt": {
+    "status": "failed",
+    "reason": "monitor-error",
+    "wallSeconds": 88.42199999999866,
+    "cause": "not isolated; unchanged prescribed wrapper retry succeeded; no tests bypassed"
+  },
+  "smoke": {
+    "scope": "synthetic-symbolic-smoke; SYN-Val 아님; OCR accuracy 아님",
+    "results": {
+      "all_enabled": {
+        "count": 30,
+        "exact": 30,
+        "abstained": 0,
+        "outside_consumer_hint": true
+      },
+      "TEXT-GRAMMAR-001": {
+        "count": 30,
+        "exact": 0,
+        "abstained": 30,
+        "outside_consumer_hint": null
+      },
+      "TEXT-NORMALIZE-001": {
+        "count": 30,
+        "exact": 0,
+        "abstained": 30,
+        "outside_consumer_hint": null
+      },
+      "TEXT-GLYPH-001": {
+        "count": 30,
+        "exact": 27,
+        "abstained": 3,
+        "outside_consumer_hint": true
+      },
+      "TEXT-CONSUMER-001": {
+        "count": 30,
+        "exact": 30,
+        "abstained": 0,
+        "outside_consumer_hint": false
+      }
+    }
+  },
+  "checks": {
+    "ruff": "PASS",
+    "format": "PASS",
+    "mypy": "PASS",
+    "importContracts": "PASS",
+    "runtimeLicenses": "PASS",
+    "H1-H9": "PASS"
+  },
+  "ci": "pending ready transition at report time",
+  "realOCR": "NOT_RUN",
+  "Dev": "NOT_RUN",
+  "sealed": "NOT_ACCESSED"
+}
