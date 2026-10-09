@@ -1,0 +1,83 @@
+{
+  "scope": "local Windows 24 GB; manual OR-005; latest main plus PP-OCR adapter",
+  "tests": {
+    "total": 1144,
+    "passed": 1143,
+    "failures": 1,
+    "errors": 0,
+    "skips": 0,
+    "ppocr": 30
+  },
+  "coverage": {
+    "src\\clavis\\text\\ctc.py": {
+      "covered_lines": 52,
+      "num_statements": 52,
+      "percent_covered": 100.0,
+      "percent_covered_display": "100",
+      "missing_lines": 0,
+      "excluded_lines": 0,
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100"
+    },
+    "src\\clavis\\text\\ppocr.py": {
+      "covered_lines": 89,
+      "num_statements": 89,
+      "percent_covered": 100.0,
+      "percent_covered_display": "100",
+      "missing_lines": 0,
+      "excluded_lines": 0,
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100"
+    }
+  },
+  "execution": {
+    "status": "failed",
+    "reason": "command-failed",
+    "wallSeconds": 283.40699999999924,
+    "cpuSecondsSampled": 166.453125,
+    "peakRssBytesSampled": 315154432,
+    "cpuLimit": 2
+  },
+  "failure": {
+    "test": "tests.platform.test_jobs.test_checkpoint_pause_resume_and_fifo",
+    "childReason": "monitor-error",
+    "owner": "W1",
+    "bypassed": false
+  },
+  "checks": {
+    "ruff": "PASS",
+    "format": "PASS",
+    "mypy": "PASS",
+    "import": "PASS",
+    "runtimeLicenses": "PASS",
+    "H1-H9": "PASS",
+    "coverageGates": "PASS",
+    "wheel": "PASS",
+    "requiredContractsAndIntegrity": "PASS",
+    "privacy": "PASS"
+  },
+  "remoteCI": "NOT_RUN: draft pending W2 confirmation",
+  "W2": "REQUESTED_PENDING",
+  "sealed": "NOT_ACCESSED",
+  "Dev": "NOT_RUN",
+  "isolatedRetry": {
+    "test": "tests.platform.test_jobs.test_checkpoint_pause_resume_and_fifo",
+    "status": "PASS",
+    "tests": 1,
+    "wallSeconds": 22.35899999999674,
+    "cpuSecondsSampled": 14.578125,
+    "peakRssBytesSampled": 178593792
+  },
+  "fullRetry": {
+    "tests": 1144,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "status": "PASS",
+    "wallSeconds": 154.5,
+    "cpuSecondsSampled": 120.375,
+    "peakRssBytesSampled": 312725504,
+    "cpuLimit": 2
+  },
+  "command": "uv run --locked --all-groups python -m training.jobs.short run pytest tests/ --cov=clavis --cov=scripts --cov=eval --cov=training.jobs --cov-report=json:work/ppocr-coverage-retry.json --junitxml=work/ppocr-tests-retry.xml"
+}

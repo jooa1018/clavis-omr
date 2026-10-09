@@ -10,12 +10,12 @@ to a session factory. The returned session must report only `CPUExecutionProvide
 `run(output_name, inputs)` forwards an explicitly named raw output, for either detection
 or recognition. It does not download, convert, train, preprocess, classify, or attach text.
 
-The host supplies the ONNX Runtime dependency and factory. Set
+The host supplies the ONNX Runtime dependency. `ppocr.cpu_factory` implements the CPU factory. Set
 `SessionOptions.intra_op_num_threads` to the supplied count, `inter_op_num_threads=1`,
 `execution_mode=ORT_SEQUENTIAL`, and construct `InferenceSession(verified_bytes, ...,
 providers=["CPUExecutionProvider"])`. The boundary verifies the provider list; thread
 options remain the host factory's responsibility. ONNX Runtime 1.30.0 is now a locked
-CPU runtime dependency (W1 PR #29). Real-model artifact admission remains pending W2.
+CPU runtime dependency (W1 PR #29). Real-model artifact admission remains pending W2; local smoke acquisition is authorized.
 API reference: https://onnxruntime.ai/docs/api/python/api_summary.html
 
 For a recognizer output shaped [batch, time, class], pass one batch member's `.tolist()`
@@ -44,14 +44,14 @@ Run full validation through the OR-005 wrapper:
 Run smoke with `uv run --locked --all-groups python -m training.jobs.short run
 training.models.text.smoke --out work/text-smoke.json`.
 The smoke uses self-authored CTC tensors: **SYN-Val 아님, image OCR accuracy 아님**.
-The 1/4-thread unit exercise uses mock factories; actual ONNX numerical determinism is
+The 1/4-thread unit exercise uses mock factories; actual ONNX 1-vs-4-thread numerical determinism is
 NOT_RUN. No pretrained weights, dictionary, font or private image is bundled.
 
 ## Pending
 
-Actual PP-OCR model hashes/licenses and W2 register confirmation;
-model-specific preprocessing/dictionaries; DBNet boxes; constrained chord
-decoding; Korean/Latin OCR; TextIR wiring; rendered crop and page metrics; CRNN comparison.
+W2 register confirmation (candidate hashes/licenses recorded in T7.1b-artifacts.json);
+DBNet box decoding; constrained chord
+decoding; Korean/Latin lyric segmentation; TextIR wiring; page metrics; CRNN comparison.
 The official PP-OCR detector candidate is
 https://huggingface.co/PaddlePaddle/PP-OCRv5_mobile_det_onnx (not acquired/admitted here).
 
@@ -90,3 +90,41 @@ Validation: all CONTRACTS 12.6 spellings, rejection cases, alias derivation
 agreement, nested modifiers, idempotence, explicit glyph map and 1/4-worker byte
 repeatability. `training.models.text.grammar_smoke` reports symbolic 30-case smoke
 and each flag ablation; **SYN-Val 아님, image OCR accuracy 아님**.
+## Local PP-OCR image adapter (T7.1b, pending artifact admission)
+
+`ppocr.cpu_factory` constructs CPU-only sequential ONNX Runtime sessions from the
+bytes already verified by `VerifiedCpuModel.load`. `PpOcrProfile` is explicit:
+metadata-derived BGR means/std, model height/width, stride, IO names and exact
+export alphabet. No runtime network or YAML dependency is introduced.
+`infer_image(model, bgr_uint8, profile, limits, enabled=True)` preprocesses one
+bounded image and returns either a full detector probability map or CTC tensor
+with source/tensor dimensions. It returns no text boxes, roles or staff links.
+
+Recognizer resizing preserves aspect ratio and pads normalized zeros on the right.
+Long crops are rejected at the registered width budget instead of silently cut.
+Detector long-side resizing aligns to the model stride. Probabilities are checked
+after CONTRACTS 11 quantization and only endpoint roundoff is clamped to [0,1].
+All larger range errors/nonfinite values and shape/dictionary mismatches fail closed.
+
+Some official Latin dictionary class IDs have identical spellings, and both export
+alphabets can contain non-NFC entries. Do not deduplicate or rewrite the alphabet:
+pass `preserve_export_alphabet=True` to `greedy_observation` for an exact verified
+export. Repeat collapse still operates on class IDs, and final text is NFC. Strict
+validation remains the default for other callers. This is no visual confusion map.
+
+The 72-crop smoke uses local SHA-verified official model exports and OFL font files
+listed in docs/reports/W7/T7.1b-artifacts.json. It renders deterministic grammar
+samples plus self-authored Korean/English text with two fonts and two sizes.
+No private/sealed images, pretrained-model tuning, checkpoint selection or lexicon
+correction is performed. `training.models.text.ppocr_smoke` takes a local manifest
+with `id/url/license/sha256/bytes/local` entries and has no download code. Example:
+
+`uv run --locked --all-groups python -m training.jobs.short run --items 72
+--data-digest <manifest-sha256> training.models.text.ppocr_smoke
+--manifest work/ppocr-artifacts/artifacts.json --out work/ppocr-smoke.json`
+
+This measures greedy crop observations and grammar validation, **not constrained
+CTC beam decoding**, page detection recall, SYN-Val or full engine OCR accuracy.
+OR-005 forces ORT to two threads; same-run repeats do not establish 1-vs-4-thread
+model determinism. Candidate artifact admission/registry remains W2's responsibility;
+this PP-OCR PR cannot merge before [W2 확인].
