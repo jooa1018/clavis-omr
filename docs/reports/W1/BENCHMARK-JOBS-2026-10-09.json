@@ -1,0 +1,48 @@
+{
+  "schema": "clavis-w1-benchmark-validation-1",
+  "memoryConfiguration": "24 GB (16+8 GB DDR4-3200 dual channel)",
+  "windows": {
+    "tests": "1452",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "112.425"
+  },
+  "execution": {
+    "status": "succeeded",
+    "reason": "completed",
+    "slot": 0,
+    "runId": "7f50d04207784e3f8e8856aed3c181aa",
+    "jobId": "a2b917bcf1d54d96951f5030166e3556",
+    "wallSeconds": 115.32800000000134,
+    "cpuSecondsSampled": 96.25,
+    "peakRssBytesSampled": 323399680,
+    "cpuLimit": 2,
+    "monitorDiagnostics": [
+      {
+        "exceptionType": "NoSuchProcess",
+        "site": "sample.memory_info",
+        "skippedChild": true,
+        "count": 15
+      },
+      {
+        "exceptionType": "NoSuchProcess",
+        "site": "sample.num_threads",
+        "skippedChild": true,
+        "count": 3
+      }
+    ]
+  },
+  "coverageGates": "PASS",
+  "requiredChecks": "PASS",
+  "firstBenchmarkAttempt": {
+    "jobId": "439da9cbd42a4d5ca8079bf4a14311ac",
+    "status": "busy",
+    "reason": "machine-occupied",
+    "benchmark": {
+      "validity": "not-run"
+    }
+  },
+  "w4Approval": "https://github.com/jooa1018/clavis-omr/pull/51#issuecomment-6075933816",
+  "twoOsCi": "PENDING"
+}
