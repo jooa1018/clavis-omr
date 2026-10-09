@@ -15,6 +15,7 @@ def settings() -> dict:
     return {
         "connections": 1,
         "segment_bytes": 4,
+        "max_segment_bytes": 16,
         "attempts": 2,
         "timeout_seconds": 1,
         "backoff_seconds": 0,
@@ -166,3 +167,21 @@ def test_prepare_four_connections_and_cached_no_network(tmp_path, monkeypatch):
         downloader.prepare(config, tmp_path / "cache", lambda n: None)["mxl.tar.gz"]
         == evidence["mxl.tar.gz"]
     )
+
+
+@pytest.mark.parametrize("segment_bytes", [0, 17])
+def test_registered_segment_bound_rejects_before_network(tmp_path, monkeypatch, segment_bytes):
+    monkeypatch.setattr(
+        downloader.urllib.request,
+        "urlopen",
+        lambda *a, **kw: pytest.fail("invalid size went online"),
+    )
+    with pytest.raises(ValueError, match="resource limits"):
+        downloader.download(
+            expected(b"abcd"),
+            tmp_path / "source",
+            {**settings(), "segment_bytes": segment_bytes},
+            0,
+            lambda n: None,
+        )
+    assert not (tmp_path / "source").exists()

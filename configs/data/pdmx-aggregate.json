@@ -43,6 +43,7 @@
     "timeout_seconds": 90,
     "backoff_seconds": 5,
     "backoff_max_seconds": 120,
-    "metrics_seconds": 5
+    "metrics_seconds": 5,
+    "max_segment_bytes": 16777216
   }
 }

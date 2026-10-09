@@ -84,14 +84,14 @@ def download(
     transferred: Callable[[int], None],
 ) -> dict[str, Any]:
     """Persist segment digests only after file fsync; missing/corrupt ranges are retried."""
-    width, workers = settings["segment_bytes"], settings["connections"]
-    if not 1 <= workers <= 4 or not 1 <= width <= 16 * 1024 * 1024:
+    segment_bytes, workers = settings["segment_bytes"], settings["connections"]
+    if not 1 <= workers <= 4 or not 1 <= segment_bytes <= settings["max_segment_bytes"]:
         raise ValueError("Invalid range resource limits")
     size = expected["size"]
     if size <= 0:
         raise ValueError("Invalid source size")
     journal = path.with_suffix(path.suffix + ".ranges.json")
-    identity = {"source": expected, "segment_bytes": width}
+    identity = {"source": expected, "segment_bytes": segment_bytes}
     state: dict[str, Any] = {**identity, "completed": {}}
     if journal.exists():
         state = json.loads(journal.read_text(encoding="utf-8"))
@@ -103,14 +103,14 @@ def download(
             target.truncate(size)
     if path.stat().st_size != size:
         raise ValueError("Range cache size changed")
-    starts = list(range(0, size, width))
+    starts = list(range(0, size, segment_bytes))
     with path.open("rb") as source:
         for key in list(state["completed"]):
             start = int(key)
             if start not in starts:
                 raise ValueError("Invalid range checkpoint offset")
             source.seek(start)
-            digest = hashlib.sha256(source.read(min(width, size - start))).hexdigest()
+            digest = hashlib.sha256(source.read(min(segment_bytes, size - start))).hexdigest()
             if digest != state["completed"][key]:
                 del state["completed"][key]
     write_json(journal, state)
@@ -119,7 +119,7 @@ def download(
 
     def fetch(start: int) -> None:
         nonlocal cooldown
-        end = min(start + width, size) - 1
+        end = min(start + segment_bytes, size) - 1
         for attempt in range(settings["attempts"]):
             if stop.is_set():
                 return
