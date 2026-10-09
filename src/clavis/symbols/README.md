@@ -4,7 +4,13 @@
 from original and staff-removed strips. `detection.detect` produces notehead,
 stem/barline and competing stem-link evidence. Callers supply normalized strip
 pixels, staff spacing, top staff row, a template bank, settings and a producer
-digest. This module does not extract strips or calculate pitch.
+digest. `staff.read_staff` calls the shared W5 `extract_strip` and passes its
+original/removal channels, registry spacing and top-row margin into the detector.
+It returns the channels, coordinate mesh, graph and validated reading draft.
+No geometry implementation is duplicated and no pitch is calculated.
+For an installed environment, pass
+`geometry_config=load_config(Path("<bundle>/configs/geometry"))` explicitly;
+the default registry lookup is for repository development.
 
 Load settings with `Settings.load(Path("configs/symbols/constants.yaml"))`.
 The registry is JSON-compatible YAML. Decision rules are catalogued in
@@ -21,7 +27,8 @@ on/off arguments (`enabled`, `durations_enabled`).
 N-best slots represent relationship/head-class combinations; attribute choices
 stay in `attrTopK` so they cannot crowd a weak competing connection out of N-best.
 
-This is **not yet a complete strip-to-lattice recognizer**: the detector does not
+The strip-to-lattice **draft path is connected, but music reading is incomplete**:
+the detector does not
 estimate beam/flag or dots/voice attributes, and the reader does not recognize
 clefs, bar styles or other unsupported notation. It must not invent these values.
 New graphs/lattices use clavis-ir-0.1.1, including when consuming legacy graphs.

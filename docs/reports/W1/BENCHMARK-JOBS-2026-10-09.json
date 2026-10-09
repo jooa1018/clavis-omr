@@ -1,0 +1,199 @@
+{
+  "schema": "clavis-w1-benchmark-validation-1",
+  "memoryConfiguration": "24 GB (16+8 GB DDR4-3200 dual channel)",
+  "windows": {
+    "tests": "1452",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "112.425"
+  },
+  "execution": {
+    "status": "succeeded",
+    "reason": "completed",
+    "slot": 0,
+    "runId": "7f50d04207784e3f8e8856aed3c181aa",
+    "jobId": "a2b917bcf1d54d96951f5030166e3556",
+    "wallSeconds": 115.32800000000134,
+    "cpuSecondsSampled": 96.25,
+    "peakRssBytesSampled": 323399680,
+    "cpuLimit": 2,
+    "monitorDiagnostics": [
+      {
+        "exceptionType": "NoSuchProcess",
+        "site": "sample.memory_info",
+        "skippedChild": true,
+        "count": 15
+      },
+      {
+        "exceptionType": "NoSuchProcess",
+        "site": "sample.num_threads",
+        "skippedChild": true,
+        "count": 3
+      }
+    ]
+  },
+  "coverageGates": "PASS",
+  "requiredChecks": "PASS",
+  "firstBenchmarkAttempt": {
+    "jobId": "439da9cbd42a4d5ca8079bf4a14311ac",
+    "status": "busy",
+    "reason": "machine-occupied",
+    "benchmark": {
+      "validity": "not-run"
+    }
+  },
+  "w4Approval": "https://github.com/jooa1018/clavis-omr/pull/51#issuecomment-6075933816",
+  "twoOsCi": {
+    "status": "PASS",
+    "runUrl": "https://github.com/jooa1018/clavis-omr/actions/runs/37895780962"
+  },
+  "mergeCommit": "e213927a9da01d98c8291e0c7dfa0bfab642caeb",
+  "benchmarkSmoke": {
+    "status": "invalid",
+    "reason": "benchmark-contaminated",
+    "jobId": "084da8d2ed0b4948954e8768048c8c96",
+    "runId": "cc445259e034418d9d3cb32d827228af",
+    "cpuLimit": 4,
+    "cpuAffinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "priority": "normal",
+    "wallSeconds": 1.5,
+    "cpuSecondsSampled": 0.640625,
+    "peakRssBytesSampled": 80945152,
+    "monitorDiagnostics": [],
+    "benchmark": {
+      "validity": "invalid",
+      "invalidReasons": [
+        "external-mean-load"
+      ],
+      "meanExternalLogicalCpus": 1.2835473111001006,
+      "maxFiveSecondExternalLogicalCpus": null,
+      "minimumAvailablePhysicalBytes": 11749179392,
+      "powerStates": [
+        "True"
+      ],
+      "windowsPowerModes": [
+        "00000000-0000-0000-0000-000000000000"
+      ],
+      "sampleCount": 10,
+      "admissionAttempts": [
+        {
+          "meanExternalLogicalCpus": 1.4243220035758348,
+          "maxFiveSecondExternalLogicalCpus": 1.4571263999997872,
+          "minimumAvailablePhysicalBytes": 11848171520,
+          "powerStates": [
+            "True"
+          ],
+          "windowsPowerModes": [
+            "00000000-0000-0000-0000-000000000000"
+          ]
+        },
+        {
+          "meanExternalLogicalCpus": 1.5942333266960118,
+          "maxFiveSecondExternalLogicalCpus": 1.994011199998349,
+          "minimumAvailablePhysicalBytes": 11837894656,
+          "powerStates": [
+            "True"
+          ],
+          "windowsPowerModes": [
+            "00000000-0000-0000-0000-000000000000"
+          ]
+        },
+        {
+          "meanExternalLogicalCpus": 0.7611858212632263,
+          "maxFiveSecondExternalLogicalCpus": 0.9899087999923678,
+          "minimumAvailablePhysicalBytes": 11863093248,
+          "powerStates": [
+            "True"
+          ],
+          "windowsPowerModes": [
+            "00000000-0000-0000-0000-000000000000"
+          ]
+        },
+        {
+          "meanExternalLogicalCpus": 1.7285789577963389,
+          "maxFiveSecondExternalLogicalCpus": 2.231685599999648,
+          "minimumAvailablePhysicalBytes": 11699384320,
+          "powerStates": [
+            "True"
+          ],
+          "windowsPowerModes": [
+            "00000000-0000-0000-0000-000000000000"
+          ]
+        },
+        {
+          "meanExternalLogicalCpus": 1.1696823846029971,
+          "maxFiveSecondExternalLogicalCpus": 1.3605431999875406,
+          "minimumAvailablePhysicalBytes": 11805351936,
+          "powerStates": [
+            "True"
+          ],
+          "windowsPowerModes": [
+            "00000000-0000-0000-0000-000000000000"
+          ]
+        },
+        {
+          "meanExternalLogicalCpus": 0.6022634048907032,
+          "maxFiveSecondExternalLogicalCpus": 0.8324735999968077,
+          "minimumAvailablePhysicalBytes": 11836895232,
+          "powerStates": [
+            "True"
+          ],
+          "windowsPowerModes": [
+            "00000000-0000-0000-0000-000000000000"
+          ]
+        },
+        {
+          "meanExternalLogicalCpus": 1.250390175719157,
+          "maxFiveSecondExternalLogicalCpus": 1.7264231999995303,
+          "minimumAvailablePhysicalBytes": 11881865216,
+          "powerStates": [
+            "True"
+          ],
+          "windowsPowerModes": [
+            "00000000-0000-0000-0000-000000000000"
+          ]
+        },
+        {
+          "meanExternalLogicalCpus": 0.6540118882458077,
+          "maxFiveSecondExternalLogicalCpus": 0.7171991999915801,
+          "minimumAvailablePhysicalBytes": 11758006272,
+          "powerStates": [
+            "True"
+          ],
+          "windowsPowerModes": [
+            "00000000-0000-0000-0000-000000000000"
+          ]
+        },
+        {
+          "meanExternalLogicalCpus": 0.34472792220653675,
+          "maxFiveSecondExternalLogicalCpus": 0.40606320000026025,
+          "minimumAvailablePhysicalBytes": 11803054080,
+          "powerStates": [
+            "True"
+          ],
+          "windowsPowerModes": [
+            "00000000-0000-0000-0000-000000000000"
+          ]
+        }
+      ]
+    }
+  },
+  "benchmarkBudgetVerdict": "NOT_RUN: invalid smoke cannot be used for latency budget",
+  "ast": "PASS",
+  "privacy": "PASS",
+  "runtimeLicenses": "PASS"
+}

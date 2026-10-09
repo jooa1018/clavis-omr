@@ -3,13 +3,14 @@
 import hashlib
 import json
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal, Self
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 
 class JobSpec(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
+    kind: Literal["batch", "benchmark"] = "batch"
     module: str = Field(pattern=r"^[A-Za-z_][A-Za-z0-9_]*(\.[A-Za-z_][A-Za-z0-9_]*)*$")
     arguments: list[str] = Field(default_factory=list)
     cwd: str
@@ -21,8 +22,16 @@ class JobSpec(BaseModel):
     ram_bytes: int = Field(default=3_000_000_000, ge=1, le=3_000_000_000)
     wall_seconds: int = Field(default=14400, ge=1, le=14400)
 
+    @model_validator(mode="after")
+    def benchmark_threads(self) -> Self:
+        if self.kind == "benchmark" and self.threads != 4:
+            raise ValueError("benchmark jobs require exactly four compute threads")
+        return self
+
     def digest(self) -> str:
-        return hashlib.sha256(self.model_dump_json().encode()).hexdigest()
+        # Preserve pre-benchmark batch checkpoint digests.
+        excluded = {"kind"} if self.kind == "batch" else set()
+        return hashlib.sha256(self.model_dump_json(exclude=excluded).encode()).hexdigest()
 
 
 def atomic_json(path: Path, value: Any) -> None:

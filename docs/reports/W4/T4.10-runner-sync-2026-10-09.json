@@ -1,0 +1,241 @@
+{
+  "schema": "clavis-w4-runner-sync-1",
+  "main": "947b85fa8a8496b8616612775af05d46560f778d",
+  "fix": "https://github.com/jooa1018/clavis-omr/pull/48",
+  "environment": {
+    "os": "Windows",
+    "ram": "24 GB (16 + 8 GB), DDR4-3200 dual channel"
+  },
+  "runs": {
+    "initial": {
+      "tests": {
+        "tests": 1471,
+        "failures": 2,
+        "errors": 0,
+        "skipped": 0
+      },
+      "pytestSeconds": 331.658,
+      "execution": {
+        "status": "failed",
+        "reason": "command-failed",
+        "wallSeconds": 336.89100000000326,
+        "cpuSecondsSampled": 178.078125,
+        "peakRssBytesSampled": 324366336,
+        "cpuLimit": 2,
+        "monitorDiagnostics": [
+          {
+            "count": 1,
+            "exceptionType": "NoSuchProcess",
+            "site": "sample.cpu_times",
+            "skippedChild": true
+          },
+          {
+            "count": 30,
+            "exceptionType": "NoSuchProcess",
+            "site": "sample.memory_info",
+            "skippedChild": true
+          },
+          {
+            "count": 8,
+            "exceptionType": "NoSuchProcess",
+            "site": "sample.num_threads",
+            "skippedChild": true
+          }
+        ]
+      },
+      "failures": [
+        "tests.platform.test_benchmark.test_four_threads_full_affinity_normal_priority_and_evidence",
+        "tests.platform.test_short_slots.test_cross_process_crash_releases_slot"
+      ]
+    },
+    "focused": {
+      "tests": {
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "pytestSeconds": 3.079,
+      "execution": {
+        "status": "succeeded",
+        "reason": "completed",
+        "wallSeconds": 4.780999999995402,
+        "cpuSecondsSampled": 3.9375,
+        "peakRssBytesSampled": 229322752,
+        "cpuLimit": 2,
+        "monitorDiagnostics": []
+      },
+      "failures": []
+    },
+    "invalidTempConfiguration": {
+      "tests": {
+        "tests": 1471,
+        "failures": 10,
+        "errors": 0,
+        "skipped": 0
+      },
+      "pytestSeconds": 214.764,
+      "execution": {
+        "status": "failed",
+        "reason": "command-failed",
+        "wallSeconds": 220.20300000000134,
+        "cpuSecondsSampled": 147.875,
+        "peakRssBytesSampled": 324374528,
+        "cpuLimit": 2,
+        "monitorDiagnostics": [
+          {
+            "count": 13,
+            "exceptionType": "NoSuchProcess",
+            "site": "sample.memory_info",
+            "skippedChild": true
+          },
+          {
+            "count": 8,
+            "exceptionType": "NoSuchProcess",
+            "site": "sample.num_threads",
+            "skippedChild": true
+          }
+        ]
+      },
+      "failures": [
+        "tests.data.test_pdmx_download.test_disk_guard_provenance_lock_and_validation",
+        "tests.data.test_pdmx_download.test_prepare_four_connections_and_cached_no_network",
+        "tests.data.test_smoke.test_output_outside_quarantine_rejected",
+        "tests.eval.test_gt.test_root_and_path_restrictions",
+        "tests.eval.test_gt.test_cli_and_sealed_refusal",
+        "tests.eval.test_protection.test_reverse_count_only_and_cli",
+        "tests.eval.test_sealed.test_cli_no_private_output",
+        "tests.platform.test_benchmark.test_pause_during_sampling_or_retry[11]",
+        "tests.platform.test_benchmark.test_invalid_result_retained",
+        "tests.platform.test_privacy.test_enumeration_failure_is_redacted"
+      ],
+      "limitation": "W4 selected an in-repository basetemp; 8 path-guard failures invalidate this run as normal full-suite evidence; 2 separate platform failures also retained"
+    },
+    "finalExternalUniqueTemp": {
+      "tests": {
+        "tests": 1471,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0
+      },
+      "pytestSeconds": 210.076,
+      "execution": {
+        "status": "failed",
+        "reason": "command-failed",
+        "wallSeconds": 216.32800000000134,
+        "cpuSecondsSampled": 136.453125,
+        "peakRssBytesSampled": 326770688,
+        "cpuLimit": 2,
+        "monitorDiagnostics": [
+          {
+            "count": 20,
+            "exceptionType": "NoSuchProcess",
+            "site": "sample.memory_info",
+            "skippedChild": true
+          },
+          {
+            "count": 3,
+            "exceptionType": "NoSuchProcess",
+            "site": "sample.num_threads",
+            "skippedChild": true
+          }
+        ]
+      },
+      "failures": [
+        "tests.export.test_musicxml.test_cold_schema_load_without_network_and_instance_hints"
+      ],
+      "childExitCode": 3221227274,
+      "childExitCodeHex": "0xc000070a",
+      "tempLocation": "unique fixture directory under %TEMP%, outside all Git worktrees"
+    }
+  },
+  "formalBenchmark": "NOT_RUN",
+  "priorW4MonitorErrorFailures": 0,
+  "coverageGatesInitial": {
+    "overall": true,
+    "platform": true,
+    "eval": true,
+    "jobs": true
+  },
+  "requiredTestsInitial": {
+    "contracts": {
+      "count": 298,
+      "status": "PASS"
+    },
+    "integrity-positive-negative": {
+      "count": 24,
+      "status": "PASS"
+    }
+  },
+  "scanner": {
+    "schema": "clavis-hardcode-scan-1",
+    "status": "PASS",
+    "pythonFiles": 174,
+    "manifestIdentifiers": 0,
+    "findings": [],
+    "suppressed": [
+      {
+        "file": "training/jobs/runner.py",
+        "line": 194,
+        "rule": "H9",
+        "owner": "W1",
+        "evidence_digest": "f55bb63062ca7fa6483196ef2dc20d9cad1d0ef028c76a8a6030e30a59111f85"
+      },
+      {
+        "file": "training/jobs/runner.py",
+        "line": 269,
+        "rule": "H9",
+        "owner": "W1",
+        "evidence_digest": "62cb15b5b7c52f6c1e2f78736d6d34381fd3e3274c27556e936ec20069317c08"
+      },
+      {
+        "file": "training/data/pdmx_download.py",
+        "line": 128,
+        "rule": "H9",
+        "owner": "W2",
+        "evidence_digest": "3ee285c8d06b4a8f725d0470af2d62bb5734d1454b714b68f8c8c253050ed90c"
+      },
+      {
+        "file": "training/data/pdmx_stream.py",
+        "line": 266,
+        "rule": "H9",
+        "owner": "W2",
+        "evidence_digest": "8e4b5b2d7825ddd83711afba5bc5a6e39c98cf28038feb27a6176376f142a6eb"
+      },
+      {
+        "file": "training/jobs/benchmark_monitor.py",
+        "line": 128,
+        "rule": "H9",
+        "owner": "W1",
+        "evidence_digest": "fb249a3f20e1a36a592a6c2eb21b29d0686d61032d38db41ef5ff654de088837"
+      }
+    ],
+    "byOwner": {}
+  },
+  "privacy": {
+    "status": "PASS",
+    "trackedFiles": 653,
+    "findings": []
+  },
+  "coverageGatesFinal": {
+    "overall": true,
+    "platform": true,
+    "eval": true,
+    "jobs": true
+  },
+  "requiredTestsFinal": {
+    "contracts": {
+      "count": 298,
+      "status": "PASS"
+    },
+    "integrity-positive-negative": {
+      "count": 24,
+      "status": "PASS"
+    }
+  },
+  "commands": {
+    "initial": "uv run --locked --all-groups python -m training.jobs.short run pytest tests/ --cov=clavis --cov=scripts --cov=eval --cov=training.jobs --cov-report=json:work/runner-sync-coverage.json --junitxml=work/runner-sync-tests.xml",
+    "final": "same wrapper and coverage scopes; --basetemp=<unique directory under %TEMP%> --cov-report=json:work/runner-sync-final-coverage.json --junitxml=work/runner-sync-final-tests.xml"
+  },
+  "disposition": "PARTIAL: main synchronized; monitor-error not observed; native child termination unresolved, full suite not PASS"
+}
