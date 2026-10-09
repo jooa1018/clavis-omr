@@ -98,6 +98,29 @@ The development remaining-duration sampler must not be reused in production. All
 training_admission=BLOCKED_PENDING_W4_AND_APPROVED_PROFILE. Nothing is admitted
 to a training manifest, and unverified lyric/font sources remain forbidden.
 
+## Adopted production profile (implementation in progress)
+
+`configs/data/leadgen-production.yaml` records ADR-010 option B exactly, including
+mode-first key weights, meter weights, two-level feature rates, block acceptance,
+and rare-duration floors. It cannot be passed to the development CLI.
+`rhythm_groups.py` samples complete caller-supplied beat-group patterns with exact
+rational sums. It never fills a remaining duration. Groups may span multiple beats
+for cross-beat rhythms; notation, ties and XML serialization are not implemented
+here. Pattern weights are not automatically fitted to the marginal note target.
+
+The independent KL helper uses natural-log D_KL(generated || target), per meter,
+with no smoothing. Missing target support yields infinity, not a finite score.
+The conditional-count helper rejects impossible integer ranges: for example, one
+grace note among 19 notes exceeds the approved 5% upper bound. It does not silently
+round or alter the denominator. Production reporting must include numerator and
+denominator for every selected song, plus the overall song occurrence rate.
+
+PDMX v9 aggregate-only statistics are now pinned in the production configuration
+by canonical JSON SHA-256 and original manifest digest (PR #28). No PDMX score
+is admitted to training. A fitted profile is a development candidate until the
+actual XML block audit and renderer checks pass; a preview is not acceptance.
+W4 admission remains blocked pending OR-003 protected set v1. PR #4 is merged;
+its corrected LSTL ordering contract is available for T2.5.
 The smoke command is a repository-only test harness: its fixed four-measure
 fixture author lives in `tests/data/smoke_inputs.py`, excluded from H4 by the
 charter. It requires the repository's tests tree and is not a production data
@@ -165,3 +188,29 @@ count is checkpointed with parsed counts, so resuming does not duplicate exclusi
 and mean CPU percent (one-core and whole-machine denominators). Operational checkpoint
 and telemetry files have no song identifiers. Aggregate statistics do not authorize
 training. OR-003 protected-set v1 and the admitted receipt remain mandatory.
+
+
+## Production audit candidate
+
+`production_check` is a W1 queue/short-slot payload. It reads the pinned aggregate,
+fits complete meter-group mixtures and audits generated XML with local original
+MusicXML 4.0 XSD assets. It never reads source scores or admits training data.
+Run a short preview with `python -m training.jobs.short run training.data.production_check
+--output work/production-preview --seed train-production-v1 --limit 100`.
+The 10,000-song run uses the queue when the preview predicts more than 600 seconds.
+A queue checkpoint saves the next index, aggregate counts and chained XML digest
+at every song. Recomputed fitting and per-song seeds yield identical resumed results.
+Only ten preview XMLs and profile/report JSON persist; full scores are regenerated.
+
+Counts come from actual XML, not plan flags. The report distinguishes song rates,
+conditional min/max and pooled numerators/denominators, P0 instances and per-meter
+KL against **all raw pitched notehead categories**, including unsupported target
+categories in its denominator. There is no invented KL cutoff or smoothing; target
+zero with positive generated mass is `Infinity`. Rare floors use pitched nongrace
+noteheads, matching the PDMX histogram. Grace ratios count pitched heads including
+grace; rests and unpitched slash heads are excluded from that denominator.
+
+The candidate validator checks XSD, written duration, voice time sums, chord
+membership, harmony offsets and tie pitch/voice/time continuity. It does not claim
+navigation playback or visual renderer acceptance. The current W4 projection
+rejects direction/segno/coda; this tool does not modify or bypass that evaluator.

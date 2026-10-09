@@ -1,0 +1,26 @@
+{
+  "status": "PARTIAL",
+  "environment": "REF-LAPTOP Windows CPU; synthetic automatic tests",
+  "tests": {
+    "total": 157,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1,
+    "seconds": 13.49
+  },
+  "new_tests": 14,
+  "rhythm_groups_line_coverage_percent": 100,
+  "pdmx_target": "BLOCKED_MISSING_VERIFIED_TRAIN_AGGREGATE",
+  "actual_kl": "NOT_RUN",
+  "ten_thousand_song_block": "NOT_RUN",
+  "training_admission": "BLOCKED_PENDING_W4",
+  "integrity_scanner": "NOT_RUN_OR_002",
+  "pr4": "OPEN; LSTL ordering paused",
+  "core_pr9": {
+    "status": "MERGED",
+    "sha": "6fd2162f01671c3193b72358cb9968e2ad4a62b6",
+    "ci": "https://github.com/jooa1018/clavis-omr/actions/runs/36507058980"
+  },
+  "runtime_license_violations": [],
+  "pull_request": "https://github.com/jooa1018/clavis-omr/pull/11"
+}

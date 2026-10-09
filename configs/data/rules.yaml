@@ -26,6 +26,48 @@
     report: docs/reports/W2/2026-09-29-leadgen-start.md
   introduced_by: w2/leadgen-v0
   motivated_by_failure: false
+- id: DATA-GEN-002
+  owner: W2
+  statement: "Sample complete beat-group patterns only; reject missing or invalid groups. Never fill remaining duration greedily."
+  units: quarter_notes
+  params: [groups, patterns]
+  source: convention
+  evidence: docs/adr/ADR-010-leadgen-distribution.md
+  flag: configs/data/leadgen-production.yaml#enabled
+  ablation:
+    status: NOT_RUN
+    reason: "Primitive off-path rejection tested; production awaits PDMX target."
+    report: docs/reports/W2/2026-09-29-production-profile.md
+  introduced_by: w2/production-profile
+  motivated_by_failure: false
+- id: DATA-GEN-003
+  owner: W2
+  statement: "Allocate mode-first keys, meters and song feature quotas by largest remainder; choose feasible within-song integer counts without exceeding approved bounds."
+  units: songs_and_measures
+  params: [mode_weights, key_weights, meter_weights, features, phrase_bars]
+  source: convention
+  evidence: docs/adr/ADR-010-leadgen-distribution.md
+  flag: configs/data/leadgen-production.yaml#enabled
+  ablation:
+    status: NOT_RUN
+    reason: "Planning only; no full production or recognition acceptance claimed."
+    report: docs/reports/W2/2026-09-29-production-preparation.md
+  introduced_by: w2/production-profile
+  motivated_by_failure: false
+- id: DATA-GEN-004
+  owner: W2
+  statement: "Fit mixtures of complete meter-group patterns to empirical written-note marginals; report actual KL against unchanged raw target, including zero-support infinity."
+  units: written_noteheads
+  params: [groupings, mixed_patterns_per_grouping, fit_iterations, fit_learning_rate, rare_note_floor_for_fit]
+  source: convention
+  evidence: docs/adr/ADR-010-leadgen-distribution.md
+  flag: configs/data/leadgen-production.yaml#enabled
+  ablation:
+    status: NOT_RUN
+    reason: "Synthetic calibration test only until PDMX aggregate is complete."
+    report: docs/reports/W2/2026-09-29-production-preparation.md
+  introduced_by: w2/production-profile
+  motivated_by_failure: false
 - id: DATA-PDMX-001
   owner: W2
   statement: "Aggregate written type+dots per active staff meter only after exact no-conflict and PDM/CC0 item filtering; use the container's first rootfile with MusicXML's default media type; reject malformed XML without repair, count exclusions, and publish no song-level values."
@@ -39,4 +81,32 @@
     reason: "Aggregate-only tool; no recognition or training admission. Filter negative cases tested."
     report: docs/reports/W2/2026-09-29-pdmx-aggregate.md
   introduced_by: w2/pdmx-aggregate
+  motivated_by_failure: false
+- id: DATA-GEN-005
+  owner: W2
+  statement: "Author notation from explicit score plans; preserve grace principal voice, one final barline, and respell final pitches after ties/chords using per-measure staff accidental state."
+  units: musicxml_events
+  params: [divisions, clefs, steps, step_weights, rest_probability, chromatic_probability, chord_head_probability, tie_song_probability, fermata_song_probability, whole_rest_song_probability, slash_chord_probability, max_harmonies_per_measure, max_verses, max_rhythm_attempts, minimum_grace_base_notes, tempo, sections, lyric_syllables, triplet_remainders, harmonies]
+  source: convention
+  evidence: https://www.w3.org/2021/06/musicxml40/musicxml-reference/
+  flag: configs/data/leadgen-production.yaml#enabled
+  ablation:
+    status: NOT_RUN
+    reason: "Original score authoring only, not inference. Disabled production rejects generation."
+    report: docs/reports/W2/2026-10-09-production-notation.md
+  introduced_by: w2/production-profile
+  motivated_by_failure: false
+- id: DATA-GEN-006
+  owner: W2
+  statement: "Audit actual generated XML with the original local XSD, voice duration arithmetic, tie continuity, observed feature counts and unsmoothed per-meter KL; a preview never passes block acceptance."
+  units: songs_measures_noteheads
+  params: [block_acceptance, rhythm, features]
+  source: convention
+  evidence: docs/adr/ADR-010-leadgen-distribution.md
+  flag: configs/data/leadgen-production.yaml#enabled
+  ablation:
+    status: NOT_RUN
+    reason: "Validation is not bypassable; generator disabled means no accepted output."
+    report: docs/reports/W2/2026-10-09-production-notation.md
+  introduced_by: w2/production-profile
   motivated_by_failure: false

@@ -1,0 +1,147 @@
+divisions: 96
+clefs:
+- name: G2
+  low: 28
+  high: 41
+- name: F4
+  low: 14
+  high: 27
+- name: G2_8vb
+  low: 21
+  high: 34
+steps:
+- -3
+- -2
+- -1
+- 0
+- 1
+- 2
+- 3
+step_weights:
+- 1
+- 2
+- 4
+- 2
+- 4
+- 2
+- 1
+rest_probability: 0.15
+chromatic_probability: 0.08
+chord_head_probability: 0.08
+tie_song_probability: 0.3
+fermata_song_probability: 0.2
+whole_rest_song_probability: 0.2
+slash_chord_probability: 0.25
+max_harmonies_per_measure: 4
+max_verses: 4
+max_rhythm_attempts: 64
+minimum_grace_base_notes: 19
+tempo: 76
+sections:
+- Verse
+- Chorus
+- Bridge
+- Intro
+- Outro
+- 1절
+- 2절
+- 후렴
+- 간주
+- 브릿지
+- 전주
+- 후주
+- 엔딩
+lyric_syllables:
+- - - 바
+    - begin
+  - - 람
+    - end
+  - - 따
+    - begin
+  - - 라
+    - end
+  - - 빛
+    - single
+  - - 길
+    - single
+- - - sun
+    - begin
+  - - light
+    - end
+  - - car
+    - begin
+  - - ries
+    - end
+  - - soft
+    - single
+  - - dreams
+    - single
+triplet_remainders:
+  '1': []
+  '2':
+  - - quarter
+    - 0
+  '3':
+  - - half
+    - 0
+  '4':
+  - - half
+    - 1
+  '6':
+  - - half
+    - 0
+  - - half
+    - 1
+harmonies:
+- kind: major
+  text: ''
+- kind: minor
+  text: m
+- kind: dominant
+  text: '7'
+- kind: major-seventh
+  text: maj7
+- kind: minor-seventh
+  text: m7
+- kind: diminished
+  text: dim
+- kind: augmented
+  text: aug
+- kind: suspended-second
+  text: sus2
+- kind: suspended-fourth
+  text: sus4
+- kind: dominant-ninth
+  text: '9'
+- kind: major-ninth
+  text: maj9
+- kind: minor-ninth
+  text: m9
+- kind: half-diminished
+  text: m7b5
+- kind: diminished-seventh
+  text: dim7
+- kind: major-minor
+  text: mMaj7
+- kind: major-sixth
+  text: '6'
+- kind: minor-sixth
+  text: m6
+- kind: dominant-11th
+  text: '11'
+- kind: dominant-13th
+  text: '13'
+- kind: power
+  text: '5'
+- kind: major
+  text: ''
+  degrees:
+  - value: 9
+    alter: 0
+    type: add
+- kind: dominant
+  text: '7'
+  degrees:
+  - value: 9
+    alter: -1
+    type: alter

@@ -1,0 +1,29 @@
+{
+  "schema": "clavis-w2-production-queue-1",
+  "jobId": "0f683a7002ba40b9a7b6a973a1ec6321",
+  "status": "queued",
+  "module": "training.data.production_check",
+  "arguments": [
+    "--output",
+    "work/production-block-v2",
+    "--seed",
+    "train-production-v1",
+    "--limit",
+    "10000"
+  ],
+  "gitSha": "66d4dc45e515040455a242a20a7ea647fbd128cf",
+  "sourceDigest": "ce20698ca99e75b9075dc5fe0a8a32035883261cda2a451b1f9e196f950bd2ba",
+  "dataDigest": "e4fb07ca2569c2588b5ad0e9a5ff2066654d87dfa8f66867f06bb50c8184bab8",
+  "seedNamespace": "train-production-v1",
+  "threads": 2,
+  "ramBytes": 1500000000,
+  "wallSeconds": 5735,
+  "estimatedWallSeconds": 2867.2000000005937,
+  "runWindow": "01:00-07:00",
+  "executionStarted": false,
+  "blockers": [
+    "W1 runner repair",
+    "night queue worker start"
+  ],
+  "automaticSchedulerInstalled": false
+}

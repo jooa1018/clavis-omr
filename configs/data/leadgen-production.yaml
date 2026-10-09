@@ -1,0 +1,140 @@
+version: ADR-010-B-2026-09-29
+enabled: true
+training_admission: BLOCKED_PENDING_OR_003_PROTECTED_SET_V1
+mode_weights:
+  major: 3
+  minor: 1
+key_weights:
+  major:
+    -7: 1
+    -6: 1
+    -5: 2
+    -4: 2
+    -3: 2
+    -2: 2
+    -1: 2
+    0: 2
+    1: 2
+    2: 2
+    3: 2
+    4: 2
+    5: 1
+    6: 1
+    7: 1
+  minor:
+    -7: 1
+    -6: 1
+    -5: 1
+    -4: 1
+    -3: 2
+    -2: 2
+    -1: 2
+    0: 2
+    1: 2
+    2: 2
+    3: 2
+    4: 1
+    5: 1
+    6: 1
+    7: 1
+meter_weights:
+  4/4: 4
+  3/4: 2
+  6/8: 3
+  2/4: 1
+  12/8: 1
+  2/2: 1
+features:
+  pickup:
+    song_probability: 0.3
+  key_meter_change:
+    song_probability: 0.05
+  repeat_volta_navigation:
+    song_probability: 0.2
+  slash:
+    song_probability: 0.1
+    within_denominator: measures
+    within_range:
+    - 0.1
+    - 0.4
+  two_voice:
+    song_probability: 0.1
+    within_denominator: measures
+    within_range:
+    - 0.2
+    - 0.5
+  triplet:
+    song_probability: 0.15
+    within_denominator: measures
+    within_range:
+    - 0.1
+    - 0.3
+  grace:
+    song_probability: 0.1
+    within_denominator: notes
+    within_range:
+    - 0.02
+    - 0.05
+block_acceptance:
+  songs: 10000
+  p0_min_song_ratio: 0.01
+  p0_min_instances: 500
+  saved_preview_scores: 10
+  p0_categories:
+  - clef:G2
+  - clef:F4
+  - clef:G2_8vb
+  - key_signature
+  - meter_signature
+  - key_meter_change
+  - pickup
+  - duration:whole
+  - duration:half
+  - duration:quarter
+  - duration:eighth
+  - duration:16th
+  - duration:32nd
+  - dots:1
+  - dots:2
+  - rest
+  - measure_rest
+  - accidental
+  - tie
+  - triplet
+  - one_voice
+  - two_voice
+  - chord
+  - slash
+  - repeat
+  - volta
+  - dc
+  - ds
+  - coda
+  - segno
+  - fine
+  - fermata
+  - harmony
+  - slash_harmony
+  - lyrics_ko
+  - lyrics_en
+  - multi_verse
+  - hyphen
+  - extend
+  - title
+  - tempo
+  - section
+rhythm:
+  strategy: meter_beat_groups
+  target_source: PDMX rights-filtered aggregate (pre-admission statistics authorized
+    2026-09-29)
+  target_artifact: docs/reports/W2/pdmx-v9-aggregate.json
+  min_32nd_note_ratio: 0.005
+  min_double_dot_note_ratio: 0.005
+  kl_direction: generated || target
+  zero_target_with_positive_generated: infinite
+  missing_target: BLOCKED
+  target_sha256: e4fb07ca2569c2588b5ad0e9a5ff2066654d87dfa8f66867f06bb50c8184bab8
+  target_digest_format: canonical-json-sort-keys-compact-utf8
+phrase_bars:
+- 4
+- 8
