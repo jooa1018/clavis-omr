@@ -1,5 +1,5 @@
 {
-  "base": "84179b75fed1052c530f06a7c9caf98c02da7b27",
+  "base": "70ed6fb89d2464f6ebccbd13e19a5af31194d6c3",
   "checks": {
     "H1-H9": "PASS",
     "format": "PASS",
@@ -7,7 +7,16 @@
     "mypy": "PASS",
     "ruff": "PASS"
   },
-  "ci": "PENDING",
+  "ci": {
+    "head": "bd022a63aa156e015ab2fb7d6f3591b1de672fd6",
+    "jobs": {
+      "ubuntu-latest": "PASS",
+      "windows-latest": "PASS"
+    },
+    "merge": "22b546ab48f98c01f871dc5bc1a4ab73ca4c7c26",
+    "run": "https://github.com/jooa1018/clavis-omr/actions/runs/37893247989",
+    "status": "PASS"
+  },
   "coverageGates": {
     "eval": true,
     "jobs": true,
@@ -49,7 +58,7 @@
     "status": "succeeded",
     "wallSeconds": 83.60900000000402
   },
-  "status": "PARTIAL",
+  "status": "PASS",
   "windows": {
     "errors": 0,
     "failures": 0,
