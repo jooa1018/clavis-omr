@@ -1,0 +1,32 @@
+{
+  "status": "BLOCKED",
+  "windowsCommand": ".venv\\Scripts\\pytest.exe tests/ --cov=clavis --cov=scripts --cov=eval --cov-report=json:work/h3-coverage.json -q",
+  "passed": 544,
+  "failed": 5,
+  "seconds": 178.68,
+  "failureReason": "five baseline stub tests rejected disk free below 3 GiB",
+  "freeDiskBytesObserved": 935464960,
+  "h3TestsPassed": 22,
+  "scan": {
+    "schema": "clavis-hardcode-scan-1",
+    "status": "PASS",
+    "pythonFiles": 91,
+    "manifestIdentifiers": 0,
+    "findings": [],
+    "suppressed": [],
+    "byOwner": {}
+  },
+  "scannerCoverage": {
+    "eval\\integrity\\hardcode_scan.py": {
+      "covered_lines": 192,
+      "num_statements": 208,
+      "percent_covered": 92.3076923076923,
+      "percent_covered_display": "92",
+      "missing_lines": 16,
+      "excluded_lines": 0,
+      "percent_statements_covered": 92.3076923076923,
+      "percent_statements_covered_display": "92"
+    }
+  },
+  "actualData": "NOT_RUN"
+}
