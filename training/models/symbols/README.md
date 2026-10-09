@@ -26,9 +26,54 @@ channel is unavailable. These timings do not measure symbol accuracy or T6.2
 sampling. No checkpoint is saved and nothing is admitted to model selection.
 Every setting uses its own subprocess (60-second timeout); the disk floor is
 checked before rasterization. Peak RSS is measured and checked, not OS-enforced.
-Only this bounded manual OR-001 probe may run outside the W1 queue. Formal
-measurement waits for T1.9 and the 01:00–07:00 window; formal training requires
+This historical probe now requires the OR-005 short-slot wrapper. Formal
+measurement uses T1.9 in the 01:00–07:00 window; formal training requires
 W2's W4-admitted manifest, and selection uses SYN-Val-quick only.
+
+## Queued measurement with W5 strips
+
+`measurement_data` reads existing W2 smoke artifacts, verifies their hashes and
+extracts strips through `clavis.symbols.staff.read_staff`. W5's own label adapter
+supplies synthetic staff geometry. `jitter.sample_row` resamples an entire W5
+`synthetic-v0` row in the configured interline slice; no real error distribution
+is inferred. Center-line offsets already include spacing error, so the adapter
+does not add it twice. Jitter is training-only; inference remains deterministic.
+
+The fixed `configs/symbols/measurement.json` workload draws 8192 two-channel
+48×48 patches with replacement from two **train-smoke** pages. Half are uniform
+crops and half are centered on removed-channel ink. This is a throughput fixture,
+not T6.2's labeled sampler, W2 data production, admission, SYN-Val or a recognition
+benchmark. No Dev, sealed, R-LIED, R-TGT or PDMX source is consumed.
+
+`measurement` performs independent seeded fits at 512/2048/8192 records, three
+repeats per size, for a 102209-parameter FCN (batch 8, three epochs) and a
+15-leaf LightGBM (100 requested rounds). Both use grayscale/ink-density surrogate
+targets. The queue supplies CPU-only library settings, affinity and the 3 GB
+limit. Four jobs compare model × 4/8 threads; each has a 3600-second wall cap,
+including interrupted attempts. Completed trials checkpoint their **timings**;
+an interrupted fit restarts at its own fixed seed. No model weights are saved,
+selected, evaluated or admitted to the engine.
+
+Use a separate optional environment with the CPU torch wheel above and pinned
+probe requirements, plus locked runtime packages and psutil. The queue launcher
+uses its invoking Python, so launch it with that environment, not a uv command
+that synchronizes away optional trainers. Source/config descriptor hashes are
+checked before preparing data; the trainer checks descriptor, cache, config and
+code hashes. Requests and paths stay in ignored `work/`; only sanitized evidence
+is committed. The W6 queue root shares W1's machine-wide exclusive worker lock.
+
+```text
+work/measurement-venv/Scripts/python.exe -m training.jobs --root work/w6-measurement-queue submit work/request.json
+work/measurement-venv/Scripts/python.exe -m training.jobs --root work/w6-measurement-queue run
+```
+
+Submit the preparation job before the four fitting jobs. Never use `--manual`
+for the scheduled comparison. For daytime path checks use OR-005, a separate
+64-record config/cache and `measurement --probe`; the resulting 2-thread values
+are preliminary and cannot substitute for the formal 4/8-thread comparison.
+Report fit-only throughput separately from queue wall time and process-tree RSS.
+The timing fixture cannot confirm convergence, oracle@k or PLAN 7.5's aggregate
+20–40-hour retraining budget without admitted data and actual training schedules.
 
 `component_smoke` records authored mock counts, on/off rule behavior, and 1/4
 thread byte equality. It imports test fixtures deliberately and is not a W4

@@ -1,0 +1,70 @@
+{
+  "data_digest": "6b749c660958c7855a700525f33a509b26f72f6745f057de6db2533b58ec5ba3",
+  "execution": "W1 queue, shared machine-exclusive lock, manual=False",
+  "git_sha": "1ea7b85bea155959fe6dce56ef9d90d6f8e3e819",
+  "jobs": [
+    {
+      "jobDigest": "7f9a5daede52c36c423e12994b6ceb7af9fc774db41b15e2b5fa58dd5d6b9cc1",
+      "jobId": "f0419d9acb61428f80c28b98099a41c4",
+      "name": "prepare",
+      "ram_bytes": 3000000000,
+      "request_sha256": "d6c3209c6bf4751cb9c52126976b6e8c46f5e04e3a40f53feab8dce56509d637",
+      "status": "queued",
+      "threads": 4,
+      "wall_seconds": 1800
+    },
+    {
+      "jobDigest": "07eb11d8859c7e803dc53fee91c9da03af7475d2e2af5be5c26f3017497127e0",
+      "jobId": "5921c920531e4bd98401247d2063966f",
+      "name": "fcn-4",
+      "ram_bytes": 3000000000,
+      "request_sha256": "da1253d439a5fb5aef3f4dc73422e8556df791a2f1b3e54d977e3e5cfabe4c23",
+      "status": "queued",
+      "threads": 4,
+      "wall_seconds": 3600
+    },
+    {
+      "jobDigest": "62f55f96eb8fbde60c15a3e6f7021878de4f87241aab863f1e86143c584767d4",
+      "jobId": "cf5141d2893c421d8180abf3268cadc2",
+      "name": "lightgbm-8",
+      "ram_bytes": 3000000000,
+      "request_sha256": "bbb4d687ab72f687fe51fe1a1cce2bef4f52340d6e9b4399d8276f09135bb6ac",
+      "status": "queued",
+      "threads": 8,
+      "wall_seconds": 3600
+    },
+    {
+      "jobDigest": "6ceb93166306869f3a38fcd5069e29578797b030cee5d3cefad39ef84d3467e9",
+      "jobId": "06e3844afdf4413aa85fe8a053af4fe9",
+      "name": "fcn-8",
+      "ram_bytes": 3000000000,
+      "request_sha256": "e9ed17aad1dcc180b622f4ff9b3ec36a1314d8a36cb028a8564db0031e492a6b",
+      "status": "queued",
+      "threads": 8,
+      "wall_seconds": 3600
+    },
+    {
+      "jobDigest": "1664b2983aa2b1dd1c02ea2c9854e389f0a7dfd95ef2a732329c3753a6c4748f",
+      "jobId": "2cedbe248e974908a38d6474707dc5ec",
+      "name": "lightgbm-4",
+      "ram_bytes": 3000000000,
+      "request_sha256": "42bf66b35884e09ae55c30e1c740acc829f62af11488a049fb8da1d5db3d8baf",
+      "status": "queued",
+      "threads": 4,
+      "wall_seconds": 3600
+    }
+  ],
+  "measurement_config_sha256": "ae8c7a8293cf763bbe7c7d745384581f7a9a61d4e57390aaf6d335a77b2de81b",
+  "purpose": "measurement-only",
+  "queue_root": "work/w6-measurement-queue",
+  "scheduled_window": "2026-10-10 01:00–07:00 Asia/Seoul",
+  "scope": "formal timing requested; not executed",
+  "source_files": 55,
+  "total_wall_cap_seconds": 16200,
+  "automation": {
+    "id": "w6-t6-0-cpu",
+    "status": "ACTIVE",
+    "local_start": "2026-10-10 01:00 Asia/Seoul",
+    "behavior": "one intended run; pause after terminal outcome or missed window"
+  }
+}
