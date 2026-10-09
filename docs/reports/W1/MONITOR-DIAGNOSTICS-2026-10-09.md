@@ -3,10 +3,10 @@
 ## 1. 요약
 자식 표본 실패 때문에 전체 작업을 중단하지 않는다. 예외 종류·정적 발생 지점·횟수를 기록한다.
 일시 중지 시험은 첫 체크포인트에서 stop 이벤트를 기다려 시작 지연과 독립적이다.
-판정: 검증 진행 중. 벤치마크 모드는 별도 후속 PR이다.
+판정: 로컬 PASS, 두 OS CI 대기. 벤치마크 모드는 별도 후속 PR이다.
 
 ## 2. 변경
-`training/jobs/monitor.py`, `runner.py`, `short.py`, `tests/platform/`.
+[PR #48](https://github.com/jooa1018/clavis-omr/pull/48): `training/jobs/monitor.py`, `runner.py`, `short.py`, `tests/platform/`.
 기준 main: 358fdd22b91be2fb9ad12c57057b4ecfdf56d97c.
 표본의 memory_info·num_threads·cpu_times 중 하나라도 실패하면 해당 자식 표본 전체를 버린다.
 이미 관찰한 누적 CPU는 보존한다. 루트/열거 오류는 계속 실패시키며 종료 단계 오류도 기록한다.
@@ -18,7 +18,7 @@ PLATFORM-MONITOR-001에 운영 규칙 등록. 벤치마크 판정은 별도 작�
 
 ## 4. 검증
 관련 단위 시험 43 passed (24.69초). ruff/format, mypy 86파일, import 경계, runtime 라이선스 14개 PASS.
-H1–H9 PASS, 새 발견 0. 로컬 전체 시험·두 OS CI: 실행 중.
+H1–H9 PASS, 새 발견 0. Windows 전체 1428 passed, 실패/오류/skip 0. 전체/platform/eval/jobs 커버리지 및 필수 시험 PASS. 두 OS CI 대기.
 W8 재현 명령(동일 pytest 인수, 설치된 잠금 환경 사용):
 ```text
 python -m training.jobs.short run pytest tests/ --cov=clavis --cov=scripts --cov=eval --cov=training.jobs --cov-report=json:work/w8-full-coverage.json --junitxml=work/w8-full-tests.xml
@@ -28,7 +28,7 @@ W8 과거 215.203초 실패는 예외 정보가 없으므로 그 실행의 정�
 
 ## 5. 지표
 Windows REF-LAPTOP RAM 24 GB(16+8 GB DDR4-3200 듀얼 채널), 슬롯 2 연산 스레드, 작업 RAM 3 GB.
-전체 실행 집계는 완료 후 동명 JSON에 기록한다. 원시 JUnit은 공개하지 않는다.
+전체 실행 집계는 동명 JSON에 기록했다. 슬롯 228.062초, CPU 164.219초, peak RSS 319565824 bytes. 실제 자식 종료 경합 29건을 건너뛰고 전체 시험이 완료됐다. 원시 JUnit은 공개하지 않는다.
 인식/Dev/sealed 지표 NOT_RUN. GPU·학습·렌더·유료 컴퓨트 0.
 
 ## 6. 일반화
