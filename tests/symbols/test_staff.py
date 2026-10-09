@@ -11,6 +11,8 @@ import pytest
 from clavis.contracts import canonical_json
 from clavis.contracts.symbols import StaffLattice, SymbolGraph
 from clavis.geometry import StaffCandidate, extract_strip, load_config
+from clavis.symbols.detection import detect
+from clavis.symbols.reading import draft_reading
 from clavis.symbols.staff import read_staff
 from tests.symbols.test_baseline import PRODUCER, ROOT, scene, settings
 from training.models.symbols.jitter import jitter_staff, sample_row
@@ -80,6 +82,40 @@ def test_unsupported_geometry_is_not_silently_read():
     staff.ood = True
     with pytest.raises(ValueError, match="five-line"):
         read_staff(page, staff, templates=bank, settings=settings(), producer=PRODUCER)
+
+
+def test_eight_pixel_staff_keeps_original_only_evidence():
+    page, bank, staff = staff_scene(0.5)
+    config = load_config(ROOT / "configs/geometry")
+    result = read_staff(
+        page,
+        staff,
+        templates=bank,
+        settings=settings(),
+        producer=PRODUCER,
+        geometry_config=config,
+    )
+    original = result.channels[:, :, 0]
+    graph = detect(
+        original,
+        np.full_like(original, 255),
+        staff_id=staff.staff_id,
+        staff_space=config["strip.s_star"],
+        v_top=config["strip.above"] * config["strip.s_star"],
+        templates=bank,
+        settings=settings(),
+        producer=PRODUCER,
+    )
+    assert staff.interline_px == 8
+    assert original.shape[0] == 240
+    assert any(s.class_top_k[0][0] == "noteheadFilled" for s in graph.symbols)
+    assert any("vline" in s.sources for s in graph.symbols)
+    assert all(s.attrs is None for s in graph.symbols)
+    reading = draft_reading(graph, PRODUCER)
+    assert reading.unresolved_symbol_ids
+    assert reading.lattice.hypotheses[0].items == []
+    with pytest.raises(ValueError, match="Unresolved"):
+        reading.finalize()
 
 
 def test_joint_jitter_preserves_center_offsets_without_double_spacing_error():
