@@ -97,9 +97,10 @@ def test_window_peak_inside_long_sample():
 
 
 class Clock:
-    value = 0.0
+    def __init__(self):
+        self.value = 0.0
 
-    def now(self):
+    def monotonic(self):
         return self.value
 
     def sleep(self, seconds):
@@ -111,40 +112,47 @@ class Clock:
 )
 def test_preflight_busy_retries_and_never_launches(bad):
     clock = Clock()
-    with (
-        patch.object(bm.time, "monotonic", clock.now),
-        patch.object(bm.time, "sleep", clock.sleep),
-        patch.object(bm, "host_sample", return_value=bad),
-    ):
-        result = bm.preflight(bm.policy(), lambda: False)
+    result = bm.preflight(bm.policy(), lambda: False, clock=clock, sample_host=lambda: bad)
     assert result["status"] == "busy"
-    assert len(result["attempts"]) == 11  # initial check plus ten retries
-    assert clock.value >= 610
+    assert len(result["attempts"]) == 11
+    assert clock.value >= 610  # simulated policy time, never wall-clock duration
 
 
 def test_preflight_ready_boundary_and_cancel():
     clock = Clock()
-    with (
-        patch.object(bm.time, "monotonic", clock.now),
-        patch.object(bm.time, "sleep", clock.sleep),
-        patch.object(bm, "host_sample", return_value=host(0.5, 4_000_000_000)),
-    ):
-        assert bm.preflight(bm.policy(), lambda: False)["status"] == "ready"
-        assert clock.value >= 10
-        assert bm.preflight(bm.policy(), lambda: True)["status"] == "cancelled"
+
+    def sample():
+        return host(0.5, 4_000_000_000)
+
+    assert (
+        bm.preflight(bm.policy(), lambda: False, clock=clock, sample_host=sample)["status"]
+        == "ready"
+    )
+    assert clock.value >= 10
+    assert (
+        bm.preflight(bm.policy(), lambda: True, clock=clock, sample_host=sample)["status"]
+        == "cancelled"
+    )
 
 
 @pytest.mark.parametrize("cancel_after", [1, 11])
 def test_pause_during_sampling_or_retry(cancel_after):
     clock = Clock()
-    with (
-        patch.object(bm.time, "monotonic", clock.now),
-        patch.object(bm.time, "sleep", clock.sleep),
-        patch.object(bm, "host_sample", return_value=host(2)),
-    ):
-        result = bm.preflight(bm.policy(), lambda: clock.value >= cancel_after)
+    result = bm.preflight(
+        bm.policy(), lambda: clock.value >= cancel_after, clock=clock, sample_host=lambda: host(2)
+    )
     assert result["status"] == "cancelled"
     assert clock.value < cancel_after + 1
+
+
+def test_clock_injection_does_not_replace_shared_time():
+    import time
+
+    sleep, monotonic = time.sleep, time.monotonic
+    clock = Clock()
+    bm.preflight(bm.policy(), lambda: False, clock=clock, sample_host=host)
+    assert time.sleep is sleep and time.monotonic is monotonic
+    assert Clock().value == 0.0
 
 
 @pytest.fixture
@@ -187,7 +195,9 @@ def test_benchmark_excludes_slots_during_admission(isolated):
     spawn.assert_not_called()
 
 
-def test_four_threads_full_affinity_normal_priority_and_evidence(isolated, tmp_path):
+def test_four_threads_full_affinity_normal_priority_and_evidence(
+    isolated, tmp_path, child_diagnostics
+):
     queue = store.Queue(tmp_path / "queue")
     spec = JobSpec(
         kind="benchmark",
@@ -210,7 +220,7 @@ def test_four_threads_full_affinity_normal_priority_and_evidence(isolated, tmp_p
         ) as constrain,
     ):
         report = execute(queue, queue.claim(), True)
-    assert report["status"] == "succeeded"
+    assert report["status"] == "succeeded", child_diagnostics(report)
     assert report["cpuLimit"] == 4
     assert report["cpuAffinity"] == psutil.Process().cpu_affinity()
     assert constrain.call_args.kwargs["normal_priority"] is True
@@ -225,10 +235,10 @@ def test_four_threads_full_affinity_normal_priority_and_evidence(isolated, tmp_p
     assert report["benchmark"]["validity"] == "valid"
 
 
-def test_invalid_result_retained(isolated):
+def test_invalid_result_retained(isolated, child_diagnostics):
     with patch("training.jobs.runner.host_sample", return_value=host(ac=False)):
         report = benchmark.run_benchmark("training.jobs.example", [])
-    assert report["status"] == "invalid"
+    assert report["status"] == "invalid", child_diagnostics(report)
     assert report["benchmark"]["invalidReasons"] == ["ac-power-lost-or-unknown"]
     root = store.home().parent / "benchmark-runs" / report["runId"]
     assert (
@@ -242,7 +252,7 @@ def test_power_telemetry_shape():
     assert isinstance(result["windowsPowerMode"], str)
 
 
-def test_admission_timing_does_not_change_job_bytes(isolated, tmp_path):
+def test_admission_timing_does_not_change_job_bytes(isolated, tmp_path, child_diagnostics):
     outputs = []
     spec = JobSpec(
         kind="benchmark",
@@ -267,7 +277,8 @@ def test_admission_timing_does_not_change_job_bytes(isolated, tmp_path):
                 },
             ),
         ):
-            assert execute(queue, queue.claim(), True)["status"] == "succeeded"
+            report = execute(queue, queue.claim(), True)
+            assert report["status"] == "succeeded", child_diagnostics(report)
         outputs.append((queue.root / identity / "checkpoint.json").read_bytes())
     assert outputs[0] == outputs[1]
 

@@ -139,6 +139,7 @@ def execute(
     diagnostics = Diagnostics()
     site = "preflight.memory"
     process: psutil.Process | None = None
+    child_exit_code: int | None = None
     guard: Guard | None = None
     try:
         initial_memory = snapshot()
@@ -221,7 +222,8 @@ def execute(
                     kill_tree(process)
                     break
                 time.sleep(limits["sample_seconds"] if benchmark else 0.1)
-            if child.wait() != 0 and reason == "completed":
+            child_exit_code = child.wait()
+            if child_exit_code != 0 and reason == "completed":
                 reason = "command-failed"
             if load_monitor is not None:
                 site = "benchmark.final_sample"
@@ -277,6 +279,7 @@ def execute(
         "peakCpuPercentSampled": 100 * peak_cpu,
         "hostMemorySamples": host_memory,
         "monitorDiagnostics": diagnostics.report(),
+        "childExitCode": child_exit_code,
         "warnings": (
             ["MEAN_CPU_ABOVE_8"] if sum(cpu.values()) > 8 * (elapsed - row["wall"]) else []
         ),
