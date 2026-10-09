@@ -27,8 +27,7 @@ Adjacent repeats collapse before blank removal; `enabled=False` abstains.
 The result contains NFC text, original emitted tokens, CTC frame indices and raw token bp.
 Frames are **not** glyph boxes; token bp are **not** calibrated confidence or sequence
 posteriors. This is a greedy observation utility for future lyric wiring. It must not be
-used to emit accepted chords: grammar-constrained decoding remains to be implemented
-with the chord grammar below (CTC beam search is a separate integration step).
+used alone to emit accepted chords: use the constrained beam described below.
 It does not build TextIR or infer roles, staff links, missing text, or geometry.
 
 ## Configuration and validation
@@ -128,3 +127,58 @@ CTC beam decoding**, page detection recall, SYN-Val or full engine OCR accuracy.
 OR-005 forces ORT to two threads; same-run repeats do not establish 1-vs-4-thread
 model determinism. Candidate artifact admission/registry remains W2's responsibility;
 this PP-OCR PR cannot merge before [W2 확인].
+## Constrained beam, boxes and TextIR (T7.1c)
+
+`beam.chord_beam` consumes the full recognizer probability tensor and exact export
+alphabet. It tracks CTC blank/nonblank masses per class-ID prefix, rejecting prefixes
+outside `ChordGrammar`. Duplicate export spellings keep distinct class IDs until final
+canonical forms are merged. No language model, key context or confusion replacement is
+used. Frame scores are quantized before decisions; bounded beams use deterministic ties.
+Returned `mass_bp` is retained quantized CTC mass, not calibrated correctness. Pruning
+and top-k do not renormalize surviving candidates to 100%. Budget exhaustion raises.
+
+`detection.detection_regions` consumes the 2D probability map from `infer_image`.
+It thresholds connected outer contours, scores their filled areas, expands each
+minimum-area rectangle by the DB area/perimeter distance, clips to image bounds,
+and maps to processed coordinates (optional explicit crop offset). This rectangular
+approximation is not the upstream arbitrary-polygon offset. Separate components can
+have overlapping expanded boxes; no NMS or reading-order model is claimed. Thresholds
+come from the pinned model metadata, with provisional registry entries.
+
+`lyrics.lyric_segments` uses Otsu dark ink and horizontal projection with a provisional
+staff-space gap. Boxes describe observed ink components. Independently OCR those crops;
+do not divide a line into equal boxes or turn CTC time indices into glyph coordinates.
+The function does not assert that every component is a syllable, hyphen or extender.
+
+`bridge.text_ir` accepts `TextObservation` with an observed region, text, raw score,
+and **explicit upstream role probabilities and staff link**. It emits contract-valid
+TextIR and review diagnostics. Printed text stays unchanged apart from required NFC;
+chord alternatives contain checked canonical strings. Optional `ChordParseResult`
+can be supplied only with the matching normalized and printed kind text. Otherwise
+harmonic interpretation stays absent with a diagnostic. It is not inferred by this
+adapter. Syllable observations require image-space boxes contained in the region.
+Call `canonical_json(result.ir)` from the contracts package for canonical output.
+
+All four operations accept an enable flag from their catalog entries. The caller loads
+`TEXT-BEAM-001`, `TEXT-DB-001`, `TEXT-LYRICS-001` and `TEXT-IR-001` and passes registry
+limits explicitly. This is a component integration boundary, not a role classifier or
+complete page-to-TextIR pipeline; role confusion and real-page recall remain NOT_RUN.
+
+`training.models.text.integration_smoke` reuses verified local artifacts, with at most
+100 unique images under OR-005. It reports Korean whitespace-free CER, one-to-one
+syllable box matching at diagnostic IoU 0.5, independent syllable transcription, and
+spacing boundary accuracy separately. Spacing offsets can shift after insertion or
+deletion; read them alongside CER. Arbitrary word boundaries in note-spaced rows are
+not recoverable from ink spacing alone. The 16 rows/64 synthetic blocks are **SYN-Val
+아님**, not natural lyrics or evidence for a model adoption decision. No rules are fit
+on the outcomes. Model/font hashes are unchanged from T7.1b; W2 receipt is not admission.
+
+## Measurement policy (Orchestrator, 2026-10-09)
+
+Continue full tests and component smoke through `training.jobs.short` (OR-005).
+Their elapsed time is a diagnostic, not a latency-budget acceptance result.
+Formal latency/speed measurements use `python -m training.jobs.benchmark` in
+01:00–07:00 Asia/Seoul only; require `benchmark.validity=valid`. No formal
+benchmark is scheduled or claimed by this main-sync update. W1 PR #48 resolves
+the historical child-sampling monitor-error; distinct child exit failures must
+still be reported separately.

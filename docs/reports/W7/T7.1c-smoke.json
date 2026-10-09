@@ -1,0 +1,4052 @@
+{
+  "scope": "SYN-Val 아님; synthetic component smoke, no B0/Dev improvement claim",
+  "artifactStatus": "W2 received request; independent verification pending",
+  "artifactSha256": {
+    "PP-OCRv5_mobile_det_onnx/inference.onnx": "a431985659dc921974177a95adcfbb90fd9e51989a5e04d70d0b75f597b6e61d",
+    "PP-OCRv5_mobile_det_onnx/inference.yml": "98069072e1b6b37d727fd9d9f11725faa46d6ea0de012f2ed26caea011c37699",
+    "PP-OCRv5_mobile_det_onnx/README.md": "951c155673ac6c15feb85857c9024a62266e5956d15319ce578a8f508f399d66",
+    "latin_PP-OCRv5_mobile_rec_onnx/inference.onnx": "7888113072263cb471b93f66dd5e2ad70548dc526fa1ace760d0d973dd121498",
+    "latin_PP-OCRv5_mobile_rec_onnx/inference.yml": "0bbe984570f597af3638e50bdf2e8276f3ab26a61966096538b3b0d1849f5c84",
+    "latin_PP-OCRv5_mobile_rec_onnx/README.md": "98b45ea81164d1e1a1dd82255207053b15cd6c69d922a1c5cf3387ce604d4b74",
+    "korean_PP-OCRv5_mobile_rec_onnx/inference.onnx": "92f0b7785e64fc9090106a241cf4c1eb97472824558272751b88a2a4476d3a08",
+    "korean_PP-OCRv5_mobile_rec_onnx/inference.yml": "f757fa1c40e99edcf27e9cce879b93eb2a51fa46f5ef39095689b8c37dd75998",
+    "korean_PP-OCRv5_mobile_rec_onnx/README.md": "98b45ea81164d1e1a1dd82255207053b15cd6c69d922a1c5cf3387ce604d4b74",
+    "NotoSansCJKkr/NotoSansCJKkr-Regular.otf": "6bcb2a0703aa137e874fc2dffa85f6c21ba9a67fa329e81b8c801663af7e992a",
+    "NotoSansCJKkr/LICENSE": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+    "NotoSerifCJKkr/NotoSerifCJKkr-Regular.otf": "77b4b741f864d27f15e90f275b17106dde90b2ad28f82bab72dc95805db5fb42",
+    "NotoSerifCJKkr/LICENSE": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2"
+  },
+  "generation": {
+    "hangulRows": 16,
+    "blocksPerRow": 4,
+    "sizes": [
+      12,
+      24
+    ],
+    "gapFactors": [
+      0.5,
+      1.0,
+      1.5,
+      2.0
+    ],
+    "seed": "deterministic Unicode arithmetic",
+    "spacing": "one invisible reference boundary after block 2"
+  },
+  "uniqueImages": 97,
+  "recognizerCalls": 93,
+  "derivedCropsBudget": 68,
+  "derivedCropsSkipped": 0,
+  "totalSeconds": 38.519420399999944,
+  "korean": {
+    "cerEdits": 59,
+    "cerCharacters": 64,
+    "segmentMatches": 63,
+    "segmentsPredicted": 65,
+    "segmentsExpected": 64,
+    "exactSegmentedLines": 15,
+    "syllableTextCorrect": 4,
+    "syllableCropsMatchedAttempted": 63,
+    "syllableCerEdits": 59,
+    "syllableCerCharacters": 63,
+    "spaceCorrect": 24,
+    "spaceBoundaries": 48,
+    "spaceTP": 8,
+    "spaceFP": 16,
+    "spaceFN": 8,
+    "spaceExactLines": 0,
+    "cerNoWhitespace": 0.921875,
+    "segmentationAccuracy": 0.984375,
+    "syllableCER": 0.9365079365079365,
+    "spacingAccuracy": 0.5
+  },
+  "chords": {
+    "count": 12,
+    "greedyExact": 11,
+    "beamExact": 12
+  },
+  "detection": {
+    "canvases": 4,
+    "expected": 8,
+    "predicted": 8,
+    "matched": 8
+  },
+  "roleConfusionMatrix": "NOT_RUN: supplied synthetic oracle roles; no classifier claim",
+  "threads": "OR-005 compute threads 2; pure postprocessing tested 1/4 separately",
+  "limitations": [
+    "CER excludes whitespace; spacing offsets are affected by insertions/deletions.",
+    "Spacing reference is not encoded by note spacing; no word inference is attempted.",
+    "Syllable boxes use image projection, IoU>=0.5 one-to-one diagnostic matching.",
+    "Only single Hangul blocks enter syllables; hyphen/extender evaluation NOT_RUN.",
+    "No confidence intervals, adoption decision or real-page recall from this smoke."
+  ],
+  "lyricRows": [
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "gapFactor": 0.5,
+      "printed": "가벣 쵆뉅",
+      "observed": "가 벳해뭘",
+      "cerEdits": 3,
+      "cerCharacters": 4,
+      "expectedBoxes": [
+        [
+          8,
+          8,
+          11,
+          12
+        ],
+        [
+          26,
+          8,
+          10,
+          12
+        ],
+        [
+          42,
+          8,
+          11,
+          12
+        ],
+        [
+          59,
+          8,
+          10,
+          12
+        ]
+      ],
+      "predictedBoxes": [
+        [
+          9.0,
+          9.0,
+          5.0,
+          9.0
+        ],
+        [
+          16.0,
+          8.0,
+          3.0,
+          12.0
+        ],
+        [
+          26.0,
+          8.0,
+          9.0,
+          12.0
+        ],
+        [
+          43.0,
+          8.0,
+          9.0,
+          12.0
+        ],
+        [
+          60.0,
+          8.0,
+          9.0,
+          12.0
+        ]
+      ],
+      "matched": 3,
+      "exactSegmentation": false,
+      "segmentTexts": [
+        "(",
+        "",
+        "벅",
+        "총",
+        "널"
+      ],
+      "syllableTextCorrect": 0,
+      "syllableScores": {
+        "attempted": 3,
+        "correct": 0,
+        "edits": 3,
+        "characters": 3
+      },
+      "spaceCorrect": 1,
+      "spaceBoundaries": 3,
+      "spaceTP": 0,
+      "spaceFP": 1,
+      "spaceFN": 1,
+      "spaceExact": false,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              78.0,
+              29.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                78.0,
+                0.0
+              ],
+              [
+                78.0,
+                29.0
+              ],
+              [
+                0.0,
+                29.0
+              ]
+            ],
+            "role": "lyric",
+            "roleProbs": {
+              "lyric": 10000
+            },
+            "text": "가 벳해뭘",
+            "alternatives": [],
+            "confidenceBp": 962,
+            "syllables": [
+              {
+                "text": "벅",
+                "box": [
+                  26.0,
+                  8.0,
+                  9.0,
+                  12.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "총",
+                "box": [
+                  43.0,
+                  8.0,
+                  9.0,
+                  12.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "널",
+                "box": [
+                  60.0,
+                  8.0,
+                  9.0,
+                  12.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              }
+            ],
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "below",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "gapFactor": 1.0,
+      "printed": "싨턿 똾웡",
+      "observed": "싫넓윙",
+      "cerEdits": 4,
+      "cerCharacters": 4,
+      "expectedBoxes": [
+        [
+          8,
+          8,
+          11,
+          12
+        ],
+        [
+          31,
+          8,
+          10,
+          12
+        ],
+        [
+          54,
+          8,
+          11,
+          12
+        ],
+        [
+          77,
+          8,
+          10,
+          12
+        ]
+      ],
+      "predictedBoxes": [
+        [
+          9.0,
+          8.0,
+          9.0,
+          12.0
+        ],
+        [
+          32.0,
+          8.0,
+          9.0,
+          12.0
+        ],
+        [
+          55.0,
+          8.0,
+          10.0,
+          12.0
+        ],
+        [
+          78.0,
+          8.0,
+          9.0,
+          12.0
+        ]
+      ],
+      "matched": 4,
+      "exactSegmentation": true,
+      "segmentTexts": [
+        "싫",
+        "들",
+        "ㄸ",
+        "원"
+      ],
+      "syllableTextCorrect": 0,
+      "syllableScores": {
+        "attempted": 4,
+        "correct": 0,
+        "edits": 4,
+        "characters": 4
+      },
+      "spaceCorrect": 2,
+      "spaceBoundaries": 3,
+      "spaceTP": 0,
+      "spaceFP": 0,
+      "spaceFN": 1,
+      "spaceExact": false,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              96.0,
+              28.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                96.0,
+                0.0
+              ],
+              [
+                96.0,
+                28.0
+              ],
+              [
+                0.0,
+                28.0
+              ]
+            ],
+            "role": "lyric",
+            "roleProbs": {
+              "lyric": 10000
+            },
+            "text": "싫넓윙",
+            "alternatives": [],
+            "confidenceBp": 7857,
+            "syllables": [
+              {
+                "text": "싫",
+                "box": [
+                  9.0,
+                  8.0,
+                  9.0,
+                  12.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "들",
+                "box": [
+                  32.0,
+                  8.0,
+                  9.0,
+                  12.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "원",
+                "box": [
+                  78.0,
+                  8.0,
+                  9.0,
+                  12.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              }
+            ],
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "below",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "gapFactor": 1.5,
+      "printed": "힄먷 쪾꾽",
+      "observed": "횡명쪽끝",
+      "cerEdits": 4,
+      "cerCharacters": 4,
+      "expectedBoxes": [
+        [
+          8,
+          8,
+          10,
+          12
+        ],
+        [
+          38,
+          8,
+          9,
+          12
+        ],
+        [
+          66,
+          8,
+          11,
+          12
+        ],
+        [
+          95,
+          8,
+          11,
+          12
+        ]
+      ],
+      "predictedBoxes": [
+        [
+          9.0,
+          8.0,
+          9.0,
+          12.0
+        ],
+        [
+          38.0,
+          8.0,
+          9.0,
+          12.0
+        ],
+        [
+          67.0,
+          8.0,
+          9.0,
+          11.0
+        ],
+        [
+          95.0,
+          8.0,
+          10.0,
+          11.0
+        ]
+      ],
+      "matched": 4,
+      "exactSegmentation": true,
+      "segmentTexts": [
+        "힐",
+        "명",
+        "쯤",
+        "ㄸ"
+      ],
+      "syllableTextCorrect": 0,
+      "syllableScores": {
+        "attempted": 4,
+        "correct": 0,
+        "edits": 4,
+        "characters": 4
+      },
+      "spaceCorrect": 2,
+      "spaceBoundaries": 3,
+      "spaceTP": 0,
+      "spaceFP": 0,
+      "spaceFN": 1,
+      "spaceExact": false,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              114.0,
+              28.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                114.0,
+                0.0
+              ],
+              [
+                114.0,
+                28.0
+              ],
+              [
+                0.0,
+                28.0
+              ]
+            ],
+            "role": "lyric",
+            "roleProbs": {
+              "lyric": 10000
+            },
+            "text": "횡명쪽끝",
+            "alternatives": [],
+            "confidenceBp": 2141,
+            "syllables": [
+              {
+                "text": "힐",
+                "box": [
+                  9.0,
+                  8.0,
+                  9.0,
+                  12.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "명",
+                "box": [
+                  38.0,
+                  8.0,
+                  9.0,
+                  12.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "쯤",
+                "box": [
+                  67.0,
+                  8.0,
+                  9.0,
+                  11.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              }
+            ],
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "below",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "gapFactor": 2.0,
+      "printed": "쁠캷 뎶쑙",
+      "observed": "뿔 걀 델 씁",
+      "cerEdits": 4,
+      "cerCharacters": 4,
+      "expectedBoxes": [
+        [
+          8,
+          8,
+          11,
+          12
+        ],
+        [
+          43,
+          8,
+          11,
+          12
+        ],
+        [
+          79,
+          8,
+          10,
+          12
+        ],
+        [
+          113,
+          8,
+          11,
+          12
+        ]
+      ],
+      "predictedBoxes": [
+        [
+          9.0,
+          8.0,
+          9.0,
+          12.0
+        ],
+        [
+          44.0,
+          8.0,
+          10.0,
+          12.0
+        ],
+        [
+          79.0,
+          8.0,
+          9.0,
+          12.0
+        ],
+        [
+          114.0,
+          8.0,
+          9.0,
+          12.0
+        ]
+      ],
+      "matched": 4,
+      "exactSegmentation": true,
+      "segmentTexts": [
+        "뻘",
+        "걀",
+        "둘",
+        "씁"
+      ],
+      "syllableTextCorrect": 0,
+      "syllableScores": {
+        "attempted": 4,
+        "correct": 0,
+        "edits": 4,
+        "characters": 4
+      },
+      "spaceCorrect": 1,
+      "spaceBoundaries": 3,
+      "spaceTP": 1,
+      "spaceFP": 2,
+      "spaceFN": 0,
+      "spaceExact": false,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              132.0,
+              28.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                132.0,
+                0.0
+              ],
+              [
+                132.0,
+                28.0
+              ],
+              [
+                0.0,
+                28.0
+              ]
+            ],
+            "role": "lyric",
+            "roleProbs": {
+              "lyric": 10000
+            },
+            "text": "뿔 걀 델 씁",
+            "alternatives": [],
+            "confidenceBp": 1825,
+            "syllables": [
+              {
+                "text": "뻘",
+                "box": [
+                  9.0,
+                  8.0,
+                  9.0,
+                  12.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "걀",
+                "box": [
+                  44.0,
+                  8.0,
+                  10.0,
+                  12.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "둘",
+                "box": [
+                  79.0,
+                  8.0,
+                  9.0,
+                  12.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "씁",
+                "box": [
+                  114.0,
+                  8.0,
+                  9.0,
+                  12.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              }
+            ],
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "below",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "gapFactor": 0.5,
+      "printed": "퓼랯 졒괵",
+      "observed": "랫짚곽",
+      "cerEdits": 4,
+      "cerCharacters": 4,
+      "expectedBoxes": [
+        [
+          9,
+          8,
+          20,
+          23
+        ],
+        [
+          44,
+          8,
+          19,
+          24
+        ],
+        [
+          77,
+          8,
+          19,
+          23
+        ],
+        [
+          111,
+          8,
+          18,
+          24
+        ]
+      ],
+      "predictedBoxes": [
+        [
+          9.0,
+          8.0,
+          20.0,
+          23.0
+        ],
+        [
+          44.0,
+          9.0,
+          18.0,
+          22.0
+        ],
+        [
+          77.0,
+          9.0,
+          19.0,
+          22.0
+        ],
+        [
+          111.0,
+          9.0,
+          18.0,
+          23.0
+        ]
+      ],
+      "matched": 4,
+      "exactSegmentation": true,
+      "segmentTexts": [
+        "표",
+        "랫",
+        "옆",
+        "곽"
+      ],
+      "syllableTextCorrect": 0,
+      "syllableScores": {
+        "attempted": 4,
+        "correct": 0,
+        "edits": 4,
+        "characters": 4
+      },
+      "spaceCorrect": 2,
+      "spaceBoundaries": 3,
+      "spaceTP": 0,
+      "spaceFP": 0,
+      "spaceFN": 1,
+      "spaceExact": false,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              140.0,
+              40.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                140.0,
+                0.0
+              ],
+              [
+                140.0,
+                40.0
+              ],
+              [
+                0.0,
+                40.0
+              ]
+            ],
+            "role": "lyric",
+            "roleProbs": {
+              "lyric": 10000
+            },
+            "text": "랫짚곽",
+            "alternatives": [],
+            "confidenceBp": 2417,
+            "syllables": [
+              {
+                "text": "표",
+                "box": [
+                  9.0,
+                  8.0,
+                  20.0,
+                  23.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "랫",
+                "box": [
+                  44.0,
+                  9.0,
+                  18.0,
+                  22.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "옆",
+                "box": [
+                  77.0,
+                  9.0,
+                  19.0,
+                  22.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "곽",
+                "box": [
+                  111.0,
+                  9.0,
+                  18.0,
+                  23.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              }
+            ],
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "below",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "gapFactor": 1.0,
+      "printed": "뷘찯 넮쇑",
+      "observed": "분 찰 넓 삶",
+      "cerEdits": 4,
+      "cerCharacters": 4,
+      "expectedBoxes": [
+        [
+          9,
+          8,
+          19,
+          23
+        ],
+        [
+          55,
+          8,
+          21,
+          23
+        ],
+        [
+          102,
+          8,
+          18,
+          24
+        ],
+        [
+          147,
+          8,
+          20,
+          24
+        ]
+      ],
+      "predictedBoxes": [
+        [
+          9.0,
+          9.0,
+          19.0,
+          22.0
+        ],
+        [
+          55.0,
+          9.0,
+          20.0,
+          22.0
+        ],
+        [
+          102.0,
+          9.0,
+          18.0,
+          23.0
+        ],
+        [
+          147.0,
+          9.0,
+          19.0,
+          23.0
+        ]
+      ],
+      "matched": 4,
+      "exactSegmentation": true,
+      "segmentTexts": [
+        "뿐",
+        "참",
+        "넓",
+        "솔"
+      ],
+      "syllableTextCorrect": 0,
+      "syllableScores": {
+        "attempted": 4,
+        "correct": 0,
+        "edits": 4,
+        "characters": 4
+      },
+      "spaceCorrect": 1,
+      "spaceBoundaries": 3,
+      "spaceTP": 1,
+      "spaceFP": 2,
+      "spaceFN": 0,
+      "spaceExact": false,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              176.0,
+              40.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                176.0,
+                0.0
+              ],
+              [
+                176.0,
+                40.0
+              ],
+              [
+                0.0,
+                40.0
+              ]
+            ],
+            "role": "lyric",
+            "roleProbs": {
+              "lyric": 10000
+            },
+            "text": "분 찰 넓 삶",
+            "alternatives": [],
+            "confidenceBp": 1923,
+            "syllables": [
+              {
+                "text": "뿐",
+                "box": [
+                  9.0,
+                  9.0,
+                  19.0,
+                  22.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "참",
+                "box": [
+                  55.0,
+                  9.0,
+                  20.0,
+                  22.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "넓",
+                "box": [
+                  102.0,
+                  9.0,
+                  18.0,
+                  23.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "솔",
+                "box": [
+                  147.0,
+                  9.0,
+                  19.0,
+                  23.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              }
+            ],
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "below",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "gapFactor": 1.5,
+      "printed": "퉴띳 엊홭",
+      "observed": "팀 밎 엇 활",
+      "cerEdits": 4,
+      "cerCharacters": 4,
+      "expectedBoxes": [
+        [
+          9,
+          8,
+          19,
+          23
+        ],
+        [
+          68,
+          8,
+          19,
+          24
+        ],
+        [
+          125,
+          8,
+          20,
+          24
+        ],
+        [
+          183,
+          8,
+          21,
+          24
+        ]
+      ],
+      "predictedBoxes": [
+        [
+          9.0,
+          9.0,
+          19.0,
+          22.0
+        ],
+        [
+          68.0,
+          9.0,
+          18.0,
+          22.0
+        ],
+        [
+          126.0,
+          9.0,
+          18.0,
+          22.0
+        ],
+        [
+          183.0,
+          9.0,
+          20.0,
+          23.0
+        ]
+      ],
+      "matched": 4,
+      "exactSegmentation": true,
+      "segmentTexts": [
+        "팀",
+        "씻",
+        "얹",
+        "활"
+      ],
+      "syllableTextCorrect": 0,
+      "syllableScores": {
+        "attempted": 4,
+        "correct": 0,
+        "edits": 4,
+        "characters": 4
+      },
+      "spaceCorrect": 1,
+      "spaceBoundaries": 3,
+      "spaceTP": 1,
+      "spaceFP": 2,
+      "spaceFN": 0,
+      "spaceExact": false,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              212.0,
+              40.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                212.0,
+                0.0
+              ],
+              [
+                212.0,
+                40.0
+              ],
+              [
+                0.0,
+                40.0
+              ]
+            ],
+            "role": "lyric",
+            "roleProbs": {
+              "lyric": 10000
+            },
+            "text": "팀 밎 엇 활",
+            "alternatives": [],
+            "confidenceBp": 3301,
+            "syllables": [
+              {
+                "text": "팀",
+                "box": [
+                  9.0,
+                  9.0,
+                  19.0,
+                  22.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "씻",
+                "box": [
+                  68.0,
+                  9.0,
+                  18.0,
+                  22.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "얹",
+                "box": [
+                  126.0,
+                  9.0,
+                  18.0,
+                  22.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "활",
+                "box": [
+                  183.0,
+                  9.0,
+                  20.0,
+                  23.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              }
+            ],
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "below",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "gapFactor": 2.0,
+      "printed": "뭐쯳 꺦뽉",
+      "observed": "뭐 찍 껑 뿐",
+      "cerEdits": 3,
+      "cerCharacters": 4,
+      "expectedBoxes": [
+        [
+          9,
+          8,
+          19,
+          24
+        ],
+        [
+          79,
+          8,
+          20,
+          24
+        ],
+        [
+          149,
+          8,
+          20,
+          24
+        ],
+        [
+          219,
+          8,
+          20,
+          23
+        ]
+      ],
+      "predictedBoxes": [
+        [
+          9.0,
+          9.0,
+          18.0,
+          23.0
+        ],
+        [
+          79.0,
+          9.0,
+          20.0,
+          23.0
+        ],
+        [
+          149.0,
+          9.0,
+          20.0,
+          22.0
+        ],
+        [
+          219.0,
+          8.0,
+          20.0,
+          23.0
+        ]
+      ],
+      "matched": 4,
+      "exactSegmentation": true,
+      "segmentTexts": [
+        "뭐",
+        "찡",
+        "껑",
+        "뿐"
+      ],
+      "syllableTextCorrect": 1,
+      "syllableScores": {
+        "attempted": 4,
+        "correct": 1,
+        "edits": 3,
+        "characters": 4
+      },
+      "spaceCorrect": 1,
+      "spaceBoundaries": 3,
+      "spaceTP": 1,
+      "spaceFP": 2,
+      "spaceFN": 0,
+      "spaceExact": false,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              248.0,
+              40.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                248.0,
+                0.0
+              ],
+              [
+                248.0,
+                40.0
+              ],
+              [
+                0.0,
+                40.0
+              ]
+            ],
+            "role": "lyric",
+            "roleProbs": {
+              "lyric": 10000
+            },
+            "text": "뭐 찍 껑 뿐",
+            "alternatives": [],
+            "confidenceBp": 4142,
+            "syllables": [
+              {
+                "text": "뭐",
+                "box": [
+                  9.0,
+                  9.0,
+                  18.0,
+                  23.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "찡",
+                "box": [
+                  79.0,
+                  9.0,
+                  20.0,
+                  23.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "껑",
+                "box": [
+                  149.0,
+                  9.0,
+                  20.0,
+                  22.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "뿐",
+                "box": [
+                  219.0,
+                  8.0,
+                  20.0,
+                  23.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              }
+            ],
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "below",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "gapFactor": 0.5,
+      "printed": "쿬듫 썂폥",
+      "observed": "굶늙짧펭",
+      "cerEdits": 4,
+      "cerCharacters": 4,
+      "expectedBoxes": [
+        [
+          8,
+          8,
+          12,
+          13
+        ],
+        [
+          26,
+          8,
+          12,
+          12
+        ],
+        [
+          44,
+          8,
+          12,
+          14
+        ],
+        [
+          62,
+          8,
+          11,
+          13
+        ]
+      ],
+      "predictedBoxes": [
+        [
+          9.0,
+          9.0,
+          10.0,
+          11.0
+        ],
+        [
+          27.0,
+          9.0,
+          10.0,
+          11.0
+        ],
+        [
+          45.0,
+          9.0,
+          11.0,
+          12.0
+        ],
+        [
+          63.0,
+          9.0,
+          9.0,
+          12.0
+        ]
+      ],
+      "matched": 4,
+      "exactSegmentation": true,
+      "segmentTexts": [
+        "\\",
+        "2",
+        "얇",
+        "평"
+      ],
+      "syllableTextCorrect": 0,
+      "syllableScores": {
+        "attempted": 4,
+        "correct": 0,
+        "edits": 4,
+        "characters": 4
+      },
+      "spaceCorrect": 2,
+      "spaceBoundaries": 3,
+      "spaceTP": 0,
+      "spaceFP": 0,
+      "spaceFN": 1,
+      "spaceExact": false,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              82.0,
+              30.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                82.0,
+                0.0
+              ],
+              [
+                82.0,
+                30.0
+              ],
+              [
+                0.0,
+                30.0
+              ]
+            ],
+            "role": "lyric",
+            "roleProbs": {
+              "lyric": 10000
+            },
+            "text": "굶늙짧펭",
+            "alternatives": [],
+            "confidenceBp": 1216,
+            "syllables": [
+              {
+                "text": "얇",
+                "box": [
+                  45.0,
+                  9.0,
+                  11.0,
+                  12.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "평",
+                "box": [
+                  63.0,
+                  9.0,
+                  9.0,
+                  12.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              }
+            ],
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "below",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "gapFactor": 1.0,
+      "printed": "룤즇 갞볁",
+      "observed": "록층객빛",
+      "cerEdits": 4,
+      "cerCharacters": 4,
+      "expectedBoxes": [
+        [
+          8,
+          8,
+          12,
+          13
+        ],
+        [
+          32,
+          8,
+          12,
+          13
+        ],
+        [
+          56,
+          8,
+          11,
+          14
+        ],
+        [
+          80,
+          8,
+          11,
+          13
+        ]
+      ],
+      "predictedBoxes": [
+        [
+          9.0,
+          8.0,
+          10.0,
+          13.0
+        ],
+        [
+          33.0,
+          9.0,
+          10.0,
+          12.0
+        ],
+        [
+          57.0,
+          9.0,
+          9.0,
+          12.0
+        ],
+        [
+          81.0,
+          9.0,
+          10.0,
+          12.0
+        ]
+      ],
+      "matched": 4,
+      "exactSegmentation": true,
+      "segmentTexts": [
+        "록",
+        "%",
+        "4",
+        ""
+      ],
+      "syllableTextCorrect": 0,
+      "syllableScores": {
+        "attempted": 4,
+        "correct": 0,
+        "edits": 4,
+        "characters": 4
+      },
+      "spaceCorrect": 2,
+      "spaceBoundaries": 3,
+      "spaceTP": 0,
+      "spaceFP": 0,
+      "spaceFN": 1,
+      "spaceExact": false,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              100.0,
+              30.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                100.0,
+                0.0
+              ],
+              [
+                100.0,
+                30.0
+              ],
+              [
+                0.0,
+                30.0
+              ]
+            ],
+            "role": "lyric",
+            "roleProbs": {
+              "lyric": 10000
+            },
+            "text": "록층객빛",
+            "alternatives": [],
+            "confidenceBp": 2404,
+            "syllables": [
+              {
+                "text": "록",
+                "box": [
+                  9.0,
+                  8.0,
+                  10.0,
+                  13.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              }
+            ],
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "below",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "gapFactor": 1.5,
+      "printed": "쵤뉣 삺텝",
+      "observed": "칠 넓 삶탭",
+      "cerEdits": 4,
+      "cerCharacters": 4,
+      "expectedBoxes": [
+        [
+          8,
+          8,
+          11,
+          14
+        ],
+        [
+          38,
+          8,
+          10,
+          14
+        ],
+        [
+          68,
+          8,
+          12,
+          13
+        ],
+        [
+          98,
+          8,
+          11,
+          14
+        ]
+      ],
+      "predictedBoxes": [
+        [
+          9.0,
+          9.0,
+          9.0,
+          12.0
+        ],
+        [
+          39.0,
+          9.0,
+          9.0,
+          12.0
+        ],
+        [
+          68.0,
+          9.0,
+          11.0,
+          12.0
+        ],
+        [
+          99.0,
+          9.0,
+          9.0,
+          12.0
+        ]
+      ],
+      "matched": 4,
+      "exactSegmentation": true,
+      "segmentTexts": [
+        "출",
+        "2",
+        "삶",
+        "텍"
+      ],
+      "syllableTextCorrect": 0,
+      "syllableScores": {
+        "attempted": 4,
+        "correct": 0,
+        "edits": 4,
+        "characters": 4
+      },
+      "spaceCorrect": 2,
+      "spaceBoundaries": 3,
+      "spaceTP": 1,
+      "spaceFP": 1,
+      "spaceFN": 0,
+      "spaceExact": false,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              118.0,
+              30.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                118.0,
+                0.0
+              ],
+              [
+                118.0,
+                30.0
+              ],
+              [
+                0.0,
+                30.0
+              ]
+            ],
+            "role": "lyric",
+            "roleProbs": {
+              "lyric": 10000
+            },
+            "text": "칠 넓 삶탭",
+            "alternatives": [],
+            "confidenceBp": 4131,
+            "syllables": [
+              {
+                "text": "출",
+                "box": [
+                  9.0,
+                  9.0,
+                  9.0,
+                  12.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "삶",
+                "box": [
+                  68.0,
+                  9.0,
+                  11.0,
+                  12.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "텍",
+                "box": [
+                  99.0,
+                  9.0,
+                  9.0,
+                  12.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              }
+            ],
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "below",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "gapFactor": 2.0,
+      "printed": "뙜웿 힢먹",
+      "observed": "됐 및 힘 먹",
+      "cerEdits": 3,
+      "cerCharacters": 4,
+      "expectedBoxes": [
+        [
+          8,
+          8,
+          11,
+          14
+        ],
+        [
+          44,
+          8,
+          11,
+          14
+        ],
+        [
+          80,
+          8,
+          11,
+          13
+        ],
+        [
+          116,
+          8,
+          10,
+          14
+        ]
+      ],
+      "predictedBoxes": [
+        [
+          9.0,
+          9.0,
+          10.0,
+          12.0
+        ],
+        [
+          45.0,
+          9.0,
+          9.0,
+          12.0
+        ],
+        [
+          81.0,
+          9.0,
+          9.0,
+          12.0
+        ],
+        [
+          117.0,
+          9.0,
+          9.0,
+          12.0
+        ]
+      ],
+      "matched": 4,
+      "exactSegmentation": true,
+      "segmentTexts": [
+        "됐",
+        "및",
+        "b",
+        "먹"
+      ],
+      "syllableTextCorrect": 1,
+      "syllableScores": {
+        "attempted": 4,
+        "correct": 1,
+        "edits": 3,
+        "characters": 4
+      },
+      "spaceCorrect": 1,
+      "spaceBoundaries": 3,
+      "spaceTP": 1,
+      "spaceFP": 2,
+      "spaceFN": 0,
+      "spaceExact": false,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              136.0,
+              30.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                136.0,
+                0.0
+              ],
+              [
+                136.0,
+                30.0
+              ],
+              [
+                0.0,
+                30.0
+              ]
+            ],
+            "role": "lyric",
+            "roleProbs": {
+              "lyric": 10000
+            },
+            "text": "됐 및 힘 먹",
+            "alternatives": [],
+            "confidenceBp": 2425,
+            "syllables": [
+              {
+                "text": "됐",
+                "box": [
+                  9.0,
+                  9.0,
+                  10.0,
+                  12.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "및",
+                "box": [
+                  45.0,
+                  9.0,
+                  9.0,
+                  12.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "먹",
+                "box": [
+                  117.0,
+                  9.0,
+                  9.0,
+                  12.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              }
+            ],
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "below",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "gapFactor": 0.5,
+      "printed": "쫜꿛 쁾컕",
+      "observed": "짠훨밟켈",
+      "cerEdits": 4,
+      "cerCharacters": 4,
+      "expectedBoxes": [
+        [
+          8,
+          8,
+          24,
+          24
+        ],
+        [
+          44,
+          8,
+          21,
+          24
+        ],
+        [
+          79,
+          8,
+          20,
+          25
+        ],
+        [
+          115,
+          8,
+          21,
+          24
+        ]
+      ],
+      "predictedBoxes": [
+        [
+          9.0,
+          8.0,
+          22.0,
+          23.0
+        ],
+        [
+          45.0,
+          8.0,
+          19.0,
+          24.0
+        ],
+        [
+          80.0,
+          8.0,
+          19.0,
+          24.0
+        ],
+        [
+          116.0,
+          8.0,
+          19.0,
+          24.0
+        ]
+      ],
+      "matched": 4,
+      "exactSegmentation": true,
+      "segmentTexts": [
+        "짠",
+        "뀐",
+        "삘",
+        "칼"
+      ],
+      "syllableTextCorrect": 0,
+      "syllableScores": {
+        "attempted": 4,
+        "correct": 0,
+        "edits": 4,
+        "characters": 4
+      },
+      "spaceCorrect": 2,
+      "spaceBoundaries": 3,
+      "spaceTP": 0,
+      "spaceFP": 0,
+      "spaceFN": 1,
+      "spaceExact": false,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              145.0,
+              41.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                145.0,
+                0.0
+              ],
+              [
+                145.0,
+                41.0
+              ],
+              [
+                0.0,
+                41.0
+              ]
+            ],
+            "role": "lyric",
+            "roleProbs": {
+              "lyric": 10000
+            },
+            "text": "짠훨밟켈",
+            "alternatives": [],
+            "confidenceBp": 3012,
+            "syllables": [
+              {
+                "text": "짠",
+                "box": [
+                  9.0,
+                  8.0,
+                  22.0,
+                  23.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "뀐",
+                "box": [
+                  45.0,
+                  8.0,
+                  19.0,
+                  24.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "삘",
+                "box": [
+                  80.0,
+                  8.0,
+                  19.0,
+                  24.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "칼",
+                "box": [
+                  116.0,
+                  8.0,
+                  19.0,
+                  24.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              }
+            ],
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "below",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "gapFactor": 1.0,
+      "printed": "돔쑷 픚럍",
+      "observed": "돔쓴풋ξ",
+      "cerEdits": 3,
+      "cerCharacters": 4,
+      "expectedBoxes": [
+        [
+          8,
+          8,
+          23,
+          23
+        ],
+        [
+          55,
+          8,
+          23,
+          25
+        ],
+        [
+          102,
+          8,
+          23,
+          24
+        ],
+        [
+          150,
+          8,
+          23,
+          24
+        ]
+      ],
+      "predictedBoxes": [
+        [
+          9.0,
+          9.0,
+          22.0,
+          22.0
+        ],
+        [
+          56.0,
+          9.0,
+          22.0,
+          23.0
+        ],
+        [
+          103.0,
+          8.0,
+          22.0,
+          23.0
+        ],
+        [
+          150.0,
+          8.0,
+          22.0,
+          23.0
+        ]
+      ],
+      "matched": 4,
+      "exactSegmentation": true,
+      "segmentTexts": [
+        "돔",
+        "쯧",
+        "풍",
+        "Ω"
+      ],
+      "syllableTextCorrect": 1,
+      "syllableScores": {
+        "attempted": 4,
+        "correct": 1,
+        "edits": 3,
+        "characters": 4
+      },
+      "spaceCorrect": 2,
+      "spaceBoundaries": 3,
+      "spaceTP": 0,
+      "spaceFP": 0,
+      "spaceFN": 1,
+      "spaceExact": false,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              181.0,
+              41.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                181.0,
+                0.0
+              ],
+              [
+                181.0,
+                41.0
+              ],
+              [
+                0.0,
+                41.0
+              ]
+            ],
+            "role": "lyric",
+            "roleProbs": {
+              "lyric": 10000
+            },
+            "text": "돔쓴풋ξ",
+            "alternatives": [],
+            "confidenceBp": 1727,
+            "syllables": [
+              {
+                "text": "돔",
+                "box": [
+                  9.0,
+                  9.0,
+                  22.0,
+                  22.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "쯧",
+                "box": [
+                  56.0,
+                  9.0,
+                  22.0,
+                  23.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "풍",
+                "box": [
+                  103.0,
+                  8.0,
+                  22.0,
+                  23.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              }
+            ],
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "below",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "gapFactor": 1.5,
+      "printed": "졔굓 뷶챍",
+      "observed": "제 곳 ㅂ 책",
+      "cerEdits": 4,
+      "cerCharacters": 4,
+      "expectedBoxes": [
+        [
+          9,
+          8,
+          20,
+          25
+        ],
+        [
+          67,
+          8,
+          23,
+          24
+        ],
+        [
+          126,
+          8,
+          23,
+          25
+        ],
+        [
+          186,
+          8,
+          20,
+          25
+        ]
+      ],
+      "predictedBoxes": [
+        [
+          9.0,
+          8.0,
+          19.0,
+          24.0
+        ],
+        [
+          68.0,
+          9.0,
+          22.0,
+          22.0
+        ],
+        [
+          127.0,
+          8.0,
+          22.0,
+          24.0
+        ],
+        [
+          187.0,
+          8.0,
+          19.0,
+          24.0
+        ]
+      ],
+      "matched": 4,
+      "exactSegmentation": true,
+      "segmentTexts": [
+        "제",
+        "공",
+        "붙",
+        "챌"
+      ],
+      "syllableTextCorrect": 0,
+      "syllableScores": {
+        "attempted": 4,
+        "correct": 0,
+        "edits": 4,
+        "characters": 4
+      },
+      "spaceCorrect": 1,
+      "spaceBoundaries": 3,
+      "spaceTP": 1,
+      "spaceFP": 2,
+      "spaceFN": 0,
+      "spaceExact": false,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              216.0,
+              41.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                216.0,
+                0.0
+              ],
+              [
+                216.0,
+                41.0
+              ],
+              [
+                0.0,
+                41.0
+              ]
+            ],
+            "role": "lyric",
+            "roleProbs": {
+              "lyric": 10000
+            },
+            "text": "제 곳 ㅂ 책",
+            "alternatives": [],
+            "confidenceBp": 3716,
+            "syllables": [
+              {
+                "text": "제",
+                "box": [
+                  9.0,
+                  8.0,
+                  19.0,
+                  24.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "공",
+                "box": [
+                  68.0,
+                  9.0,
+                  22.0,
+                  22.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "붙",
+                "box": [
+                  127.0,
+                  8.0,
+                  22.0,
+                  24.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "챌",
+                "box": [
+                  187.0,
+                  8.0,
+                  19.0,
+                  24.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              }
+            ],
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "below",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "gapFactor": 2.0,
+      "printed": "녌쇯 튒땅",
+      "observed": "넋 싫 뭔 땅",
+      "cerEdits": 3,
+      "cerCharacters": 4,
+      "expectedBoxes": [
+        [
+          10,
+          8,
+          19,
+          25
+        ],
+        [
+          80,
+          8,
+          21,
+          25
+        ],
+        [
+          151,
+          8,
+          21,
+          25
+        ],
+        [
+          222,
+          8,
+          22,
+          24
+        ]
+      ],
+      "predictedBoxes": [
+        [
+          10.0,
+          8.0,
+          19.0,
+          24.0
+        ],
+        [
+          80.0,
+          8.0,
+          21.0,
+          24.0
+        ],
+        [
+          151.0,
+          8.0,
+          20.0,
+          24.0
+        ],
+        [
+          222.0,
+          8.0,
+          22.0,
+          24.0
+        ]
+      ],
+      "matched": 4,
+      "exactSegmentation": true,
+      "segmentTexts": [
+        "넋",
+        "싫",
+        "탓",
+        "땅"
+      ],
+      "syllableTextCorrect": 1,
+      "syllableScores": {
+        "attempted": 4,
+        "correct": 1,
+        "edits": 3,
+        "characters": 4
+      },
+      "spaceCorrect": 1,
+      "spaceBoundaries": 3,
+      "spaceTP": 1,
+      "spaceFP": 2,
+      "spaceFN": 0,
+      "spaceExact": false,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              253.0,
+              41.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                253.0,
+                0.0
+              ],
+              [
+                253.0,
+                41.0
+              ],
+              [
+                0.0,
+                41.0
+              ]
+            ],
+            "role": "lyric",
+            "roleProbs": {
+              "lyric": 10000
+            },
+            "text": "넋 싫 뭔 땅",
+            "alternatives": [],
+            "confidenceBp": 2042,
+            "syllables": [
+              {
+                "text": "넋",
+                "box": [
+                  10.0,
+                  8.0,
+                  19.0,
+                  24.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "싫",
+                "box": [
+                  80.0,
+                  8.0,
+                  21.0,
+                  24.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "탓",
+                "box": [
+                  151.0,
+                  8.0,
+                  20.0,
+                  24.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              },
+              {
+                "text": "땅",
+                "box": [
+                  222.0,
+                  8.0,
+                  22.0,
+                  24.0
+                ],
+                "hyphenAfter": false,
+                "extender": false
+              }
+            ],
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "below",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "chordRows": [
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "printed": "Cø",
+      "greedy": "Cø",
+      "greedyExact": true,
+      "beamExact": true,
+      "candidates": [
+        {
+          "text": "Cø",
+          "normalized": "Cm7b5",
+          "mass_bp": 3338
+        },
+        {
+          "text": "C",
+          "normalized": "C",
+          "mass_bp": 83
+        },
+        {
+          "text": "C°",
+          "normalized": "Cdim",
+          "mass_bp": 42
+        }
+      ],
+      "repeat3Equal": true,
+      "threeBeamSeconds": 0.1010385000045062,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              31.0,
+              26.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                31.0,
+                0.0
+              ],
+              [
+                31.0,
+                26.0
+              ],
+              [
+                0.0,
+                26.0
+              ]
+            ],
+            "role": "chord",
+            "roleProbs": {
+              "chord": 10000
+            },
+            "text": "Cø",
+            "alternatives": [
+              {
+                "text": "Cm7b5",
+                "probBp": 3338
+              },
+              {
+                "text": "C",
+                "probBp": 83
+              },
+              {
+                "text": "Cdim",
+                "probBp": 42
+              }
+            ],
+            "confidenceBp": 3338,
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "above",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      },
+      "diagnostics": [
+        "pg0-txt0: harmonic interpretation not provided",
+        "OCR scores are uncalibrated; role and staff link are supplied upstream"
+      ]
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "printed": "F#M7",
+      "greedy": "F#M7",
+      "greedyExact": true,
+      "beamExact": true,
+      "candidates": [
+        {
+          "text": "F#M7",
+          "normalized": "F#maj7",
+          "mass_bp": 9930
+        },
+        {
+          "text": "E#M7",
+          "normalized": "E#maj7",
+          "mass_bp": 16
+        },
+        {
+          "text": "F#7",
+          "normalized": "F#7",
+          "mass_bp": 1
+        }
+      ],
+      "repeat3Equal": true,
+      "threeBeamSeconds": 0.13077930000144988,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              47.0,
+              25.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                47.0,
+                0.0
+              ],
+              [
+                47.0,
+                25.0
+              ],
+              [
+                0.0,
+                25.0
+              ]
+            ],
+            "role": "chord",
+            "roleProbs": {
+              "chord": 10000
+            },
+            "text": "F#M7",
+            "alternatives": [
+              {
+                "text": "F#maj7",
+                "probBp": 9930
+              },
+              {
+                "text": "E#maj7",
+                "probBp": 16
+              },
+              {
+                "text": "F#7",
+                "probBp": 1
+              }
+            ],
+            "confidenceBp": 9930,
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "above",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      },
+      "diagnostics": [
+        "pg0-txt0: harmonic interpretation not provided",
+        "OCR scores are uncalibrated; role and staff link are supplied upstream"
+      ]
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "printed": "C7(b9)",
+      "greedy": "C7(b9)",
+      "greedyExact": true,
+      "beamExact": true,
+      "candidates": [
+        {
+          "text": "C7(b9)",
+          "normalized": "C7b9",
+          "mass_bp": 9793
+        }
+      ],
+      "repeat3Equal": true,
+      "threeBeamSeconds": 0.11592630000086501,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              53.0,
+              29.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                53.0,
+                0.0
+              ],
+              [
+                53.0,
+                29.0
+              ],
+              [
+                0.0,
+                29.0
+              ]
+            ],
+            "role": "chord",
+            "roleProbs": {
+              "chord": 10000
+            },
+            "text": "C7(b9)",
+            "alternatives": [
+              {
+                "text": "C7b9",
+                "probBp": 9793
+              }
+            ],
+            "confidenceBp": 9793,
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "above",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      },
+      "diagnostics": [
+        "pg0-txt0: harmonic interpretation not provided",
+        "OCR scores are uncalibrated; role and staff link are supplied upstream"
+      ]
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "printed": "Cø",
+      "greedy": "Cø",
+      "greedyExact": true,
+      "beamExact": true,
+      "candidates": [
+        {
+          "text": "Cø",
+          "normalized": "Cm7b5",
+          "mass_bp": 9487
+        },
+        {
+          "text": "C",
+          "normalized": "C",
+          "mass_bp": 305
+        },
+        {
+          "text": "C°",
+          "normalized": "Cdim",
+          "mass_bp": 0
+        }
+      ],
+      "repeat3Equal": true,
+      "threeBeamSeconds": 0.07416310000553494,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              46.0,
+              35.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                46.0,
+                0.0
+              ],
+              [
+                46.0,
+                35.0
+              ],
+              [
+                0.0,
+                35.0
+              ]
+            ],
+            "role": "chord",
+            "roleProbs": {
+              "chord": 10000
+            },
+            "text": "Cø",
+            "alternatives": [
+              {
+                "text": "Cm7b5",
+                "probBp": 9487
+              },
+              {
+                "text": "C",
+                "probBp": 305
+              },
+              {
+                "text": "Cdim",
+                "probBp": 0
+              }
+            ],
+            "confidenceBp": 9487,
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "above",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      },
+      "diagnostics": [
+        "pg0-txt0: harmonic interpretation not provided",
+        "OCR scores are uncalibrated; role and staff link are supplied upstream"
+      ]
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "printed": "F#M7",
+      "greedy": "F#M7",
+      "greedyExact": true,
+      "beamExact": true,
+      "candidates": [
+        {
+          "text": "F#M7",
+          "normalized": "F#maj7",
+          "mass_bp": 9982
+        },
+        {
+          "text": "E#M7",
+          "normalized": "E#maj7",
+          "mass_bp": 6
+        },
+        {
+          "text": "E#7",
+          "normalized": "E#7",
+          "mass_bp": 0
+        }
+      ],
+      "repeat3Equal": true,
+      "threeBeamSeconds": 0.10514990000228863,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              74.0,
+              34.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                74.0,
+                0.0
+              ],
+              [
+                74.0,
+                34.0
+              ],
+              [
+                0.0,
+                34.0
+              ]
+            ],
+            "role": "chord",
+            "roleProbs": {
+              "chord": 10000
+            },
+            "text": "F#M7",
+            "alternatives": [
+              {
+                "text": "F#maj7",
+                "probBp": 9982
+              },
+              {
+                "text": "E#maj7",
+                "probBp": 6
+              },
+              {
+                "text": "E#7",
+                "probBp": 0
+              }
+            ],
+            "confidenceBp": 9982,
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "above",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      },
+      "diagnostics": [
+        "pg0-txt0: harmonic interpretation not provided",
+        "OCR scores are uncalibrated; role and staff link are supplied upstream"
+      ]
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "printed": "C7(b9)",
+      "greedy": "C7(b9)",
+      "greedyExact": true,
+      "beamExact": true,
+      "candidates": [
+        {
+          "text": "C7(b9)",
+          "normalized": "C7b9",
+          "mass_bp": 9984
+        }
+      ],
+      "repeat3Equal": true,
+      "threeBeamSeconds": 0.0670274999938556,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              88.0,
+              41.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                88.0,
+                0.0
+              ],
+              [
+                88.0,
+                41.0
+              ],
+              [
+                0.0,
+                41.0
+              ]
+            ],
+            "role": "chord",
+            "roleProbs": {
+              "chord": 10000
+            },
+            "text": "C7(b9)",
+            "alternatives": [
+              {
+                "text": "C7b9",
+                "probBp": 9984
+              }
+            ],
+            "confidenceBp": 9984,
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "above",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      },
+      "diagnostics": [
+        "pg0-txt0: harmonic interpretation not provided",
+        "OCR scores are uncalibrated; role and staff link are supplied upstream"
+      ]
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "printed": "Cø",
+      "greedy": "Ca",
+      "greedyExact": false,
+      "beamExact": true,
+      "candidates": [
+        {
+          "text": "Cø",
+          "normalized": "Cm7b5",
+          "mass_bp": 686
+        },
+        {
+          "text": "C",
+          "normalized": "C",
+          "mass_bp": 80
+        },
+        {
+          "text": "Cb",
+          "normalized": "Cb",
+          "mass_bp": 23
+        }
+      ],
+      "repeat3Equal": true,
+      "threeBeamSeconds": 0.12474400000064634,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              31.0,
+              26.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                31.0,
+                0.0
+              ],
+              [
+                31.0,
+                26.0
+              ],
+              [
+                0.0,
+                26.0
+              ]
+            ],
+            "role": "chord",
+            "roleProbs": {
+              "chord": 10000
+            },
+            "text": "Cø",
+            "alternatives": [
+              {
+                "text": "Cm7b5",
+                "probBp": 686
+              },
+              {
+                "text": "C",
+                "probBp": 80
+              },
+              {
+                "text": "Cb",
+                "probBp": 23
+              }
+            ],
+            "confidenceBp": 686,
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "above",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      },
+      "diagnostics": [
+        "pg0-txt0: harmonic interpretation not provided",
+        "OCR scores are uncalibrated; role and staff link are supplied upstream"
+      ]
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "printed": "F#M7",
+      "greedy": "F#M7",
+      "greedyExact": true,
+      "beamExact": true,
+      "candidates": [
+        {
+          "text": "F#M7",
+          "normalized": "F#maj7",
+          "mass_bp": 9913
+        },
+        {
+          "text": "FM7",
+          "normalized": "Fmaj7",
+          "mass_bp": 7
+        },
+        {
+          "text": "F#7",
+          "normalized": "F#7",
+          "mass_bp": 6
+        }
+      ],
+      "repeat3Equal": true,
+      "threeBeamSeconds": 0.08307950000016717,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              50.0,
+              26.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                50.0,
+                0.0
+              ],
+              [
+                50.0,
+                26.0
+              ],
+              [
+                0.0,
+                26.0
+              ]
+            ],
+            "role": "chord",
+            "roleProbs": {
+              "chord": 10000
+            },
+            "text": "F#M7",
+            "alternatives": [
+              {
+                "text": "F#maj7",
+                "probBp": 9913
+              },
+              {
+                "text": "Fmaj7",
+                "probBp": 7
+              },
+              {
+                "text": "F#7",
+                "probBp": 6
+              }
+            ],
+            "confidenceBp": 9913,
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "above",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      },
+      "diagnostics": [
+        "pg0-txt0: harmonic interpretation not provided",
+        "OCR scores are uncalibrated; role and staff link are supplied upstream"
+      ]
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "printed": "C7(b9)",
+      "greedy": "C7(b9)",
+      "greedyExact": true,
+      "beamExact": true,
+      "candidates": [
+        {
+          "text": "C7(b9)",
+          "normalized": "C7b9",
+          "mass_bp": 9706
+        }
+      ],
+      "repeat3Equal": true,
+      "threeBeamSeconds": 0.07095370000024559,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              54.0,
+              29.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                54.0,
+                0.0
+              ],
+              [
+                54.0,
+                29.0
+              ],
+              [
+                0.0,
+                29.0
+              ]
+            ],
+            "role": "chord",
+            "roleProbs": {
+              "chord": 10000
+            },
+            "text": "C7(b9)",
+            "alternatives": [
+              {
+                "text": "C7b9",
+                "probBp": 9706
+              }
+            ],
+            "confidenceBp": 9706,
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "above",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      },
+      "diagnostics": [
+        "pg0-txt0: harmonic interpretation not provided",
+        "OCR scores are uncalibrated; role and staff link are supplied upstream"
+      ]
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "printed": "Cø",
+      "greedy": "Cø",
+      "greedyExact": true,
+      "beamExact": true,
+      "candidates": [
+        {
+          "text": "Cø",
+          "normalized": "Cm7b5",
+          "mass_bp": 9880
+        },
+        {
+          "text": "C",
+          "normalized": "C",
+          "mass_bp": 41
+        }
+      ],
+      "repeat3Equal": true,
+      "threeBeamSeconds": 0.07167119999940041,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              47.0,
+              35.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                47.0,
+                0.0
+              ],
+              [
+                47.0,
+                35.0
+              ],
+              [
+                0.0,
+                35.0
+              ]
+            ],
+            "role": "chord",
+            "roleProbs": {
+              "chord": 10000
+            },
+            "text": "Cø",
+            "alternatives": [
+              {
+                "text": "Cm7b5",
+                "probBp": 9880
+              },
+              {
+                "text": "C",
+                "probBp": 41
+              }
+            ],
+            "confidenceBp": 9880,
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "above",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      },
+      "diagnostics": [
+        "pg0-txt0: harmonic interpretation not provided",
+        "OCR scores are uncalibrated; role and staff link are supplied upstream"
+      ]
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "printed": "F#M7",
+      "greedy": "F#M7",
+      "greedyExact": true,
+      "beamExact": true,
+      "candidates": [
+        {
+          "text": "F#M7",
+          "normalized": "F#maj7",
+          "mass_bp": 9887
+        },
+        {
+          "text": "FM7",
+          "normalized": "Fmaj7",
+          "mass_bp": 1
+        }
+      ],
+      "repeat3Equal": true,
+      "threeBeamSeconds": 0.0744840999977896,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              81.0,
+              34.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                81.0,
+                0.0
+              ],
+              [
+                81.0,
+                34.0
+              ],
+              [
+                0.0,
+                34.0
+              ]
+            ],
+            "role": "chord",
+            "roleProbs": {
+              "chord": 10000
+            },
+            "text": "F#M7",
+            "alternatives": [
+              {
+                "text": "F#maj7",
+                "probBp": 9887
+              },
+              {
+                "text": "Fmaj7",
+                "probBp": 1
+              }
+            ],
+            "confidenceBp": 9887,
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "above",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      },
+      "diagnostics": [
+        "pg0-txt0: harmonic interpretation not provided",
+        "OCR scores are uncalibrated; role and staff link are supplied upstream"
+      ]
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "printed": "C7(b9)",
+      "greedy": "C7(b9)",
+      "greedyExact": true,
+      "beamExact": true,
+      "candidates": [
+        {
+          "text": "C7(b9)",
+          "normalized": "C7b9",
+          "mass_bp": 9992
+        }
+      ],
+      "repeat3Equal": true,
+      "threeBeamSeconds": 0.07437049999862211,
+      "textIR": {
+        "schema": "clavis-ir-0.1.1",
+        "id": "pg0",
+        "items": [
+          {
+            "textId": "pg0-txt0",
+            "pageIndex": 0,
+            "boxProcessed": [
+              0.0,
+              0.0,
+              92.0,
+              41.0
+            ],
+            "polygon": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                92.0,
+                0.0
+              ],
+              [
+                92.0,
+                41.0
+              ],
+              [
+                0.0,
+                41.0
+              ]
+            ],
+            "role": "chord",
+            "roleProbs": {
+              "chord": 10000
+            },
+            "text": "C7(b9)",
+            "alternatives": [
+              {
+                "text": "C7b9",
+                "probBp": 9992
+              }
+            ],
+            "confidenceBp": 9992,
+            "staffLink": {
+              "staffId": "synthetic-staff",
+              "relation": "above",
+              "distanceSpaces": 2.0
+            }
+          }
+        ]
+      },
+      "diagnostics": [
+        "pg0-txt0: harmonic interpretation not provided",
+        "OCR scores are uncalibrated; role and staff link are supplied upstream"
+      ]
+    }
+  ],
+  "detectorRows": [
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "expectedBoxes": [
+        [
+          30,
+          24,
+          36,
+          13
+        ],
+        [
+          90,
+          94,
+          54,
+          10
+        ]
+      ],
+      "regions": [
+        {
+          "box": [
+            26.275,
+            18.234,
+            42.42,
+            21.976
+          ],
+          "polygon": [
+            [
+              26.275,
+              39.335
+            ],
+            [
+              26.714,
+              18.234
+            ],
+            [
+              68.695,
+              19.109
+            ],
+            [
+              68.256,
+              40.21
+            ]
+          ],
+          "score_bp": 9920
+        },
+        {
+          "box": [
+            88.747,
+            91.082,
+            57.789,
+            15.858
+          ],
+          "polygon": [
+            [
+              88.747,
+              106.161
+            ],
+            [
+              88.951,
+              91.082
+            ],
+            [
+              146.536,
+              91.86
+            ],
+            [
+              146.332,
+              106.94
+            ]
+          ],
+          "score_bp": 9916
+        }
+      ],
+      "matched": 2,
+      "repeat3Equal": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "expectedBoxes": [
+        [
+          30,
+          29,
+          71,
+          25
+        ],
+        [
+          90,
+          98,
+          108,
+          20
+        ]
+      ],
+      "regions": [
+        {
+          "box": [
+            27.446,
+            24.446,
+            77.108,
+            32.441
+          ],
+          "polygon": [
+            [
+              27.446,
+              24.446
+            ],
+            [
+              104.554,
+              24.446
+            ],
+            [
+              104.554,
+              56.887
+            ],
+            [
+              27.446,
+              56.887
+            ]
+          ],
+          "score_bp": 9935
+        },
+        {
+          "box": [
+            88.27,
+            94.111,
+            112.398,
+            29.328
+          ],
+          "polygon": [
+            [
+              88.27,
+              122.008
+            ],
+            [
+              88.626,
+              94.111
+            ],
+            [
+              200.668,
+              95.541
+            ],
+            [
+              200.311,
+              123.439
+            ]
+          ],
+          "score_bp": 9908
+        }
+      ],
+      "matched": 2,
+      "repeat3Equal": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "expectedBoxes": [
+        [
+          30,
+          24,
+          38,
+          14
+        ],
+        [
+          90,
+          94,
+          60,
+          10
+        ]
+      ],
+      "regions": [
+        {
+          "box": [
+            26.81,
+            18.445,
+            43.256,
+            21.551
+          ],
+          "polygon": [
+            [
+              26.81,
+              38.81
+            ],
+            [
+              27.376,
+              18.445
+            ],
+            [
+              70.066,
+              19.631
+            ],
+            [
+              69.5,
+              39.996
+            ]
+          ],
+          "score_bp": 9864
+        },
+        {
+          "box": [
+            88.604,
+            91.461,
+            63.081,
+            15.217
+          ],
+          "polygon": [
+            [
+              88.604,
+              105.882
+            ],
+            [
+              88.787,
+              91.461
+            ],
+            [
+              151.685,
+              92.257
+            ],
+            [
+              151.503,
+              106.678
+            ]
+          ],
+          "score_bp": 9917
+        }
+      ],
+      "matched": 2,
+      "repeat3Equal": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "expectedBoxes": [
+        [
+          30,
+          29,
+          73,
+          26
+        ],
+        [
+          90,
+          98,
+          115,
+          20
+        ]
+      ],
+      "regions": [
+        {
+          "box": [
+            27.426,
+            24.76,
+            77.814,
+            32.48
+          ],
+          "polygon": [
+            [
+              27.426,
+              24.76
+            ],
+            [
+              105.24,
+              24.76
+            ],
+            [
+              105.24,
+              57.24
+            ],
+            [
+              27.426,
+              57.24
+            ]
+          ],
+          "score_bp": 9927
+        },
+        {
+          "box": [
+            87.92,
+            94.755,
+            119.478,
+            29.014
+          ],
+          "polygon": [
+            [
+              87.92,
+              122.787
+            ],
+            [
+              88.151,
+              94.755
+            ],
+            [
+              207.398,
+              95.737
+            ],
+            [
+              207.167,
+              123.769
+            ]
+          ],
+          "score_bp": 9936
+        }
+      ],
+      "matched": 2,
+      "repeat3Equal": true
+    }
+  ]
+}
