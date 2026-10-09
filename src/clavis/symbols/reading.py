@@ -1,6 +1,5 @@
 """Evidence-only draft reader; production requires W1 sequence validation."""
 
-from collections.abc import Callable
 from dataclasses import dataclass
 from itertools import product
 from math import log
@@ -14,6 +13,7 @@ from clavis.contracts.symbols import (
     Symbol,
     SymbolGraph,
 )
+from clavis.symbols.columns import mark_columns, normalize_hypothesis
 
 BP = 10000  # CONTRACTS 1: basis points.
 MICRO = 1000000  # CONTRACTS 3.4: log-probability microunits.
@@ -28,11 +28,11 @@ class ReadingDraft:
     lattice: StaffLattice
     unresolved_symbol_ids: tuple[str, ...]
 
-    def finalize(self, normalize_and_validate: Callable[[Hypothesis], Hypothesis]) -> StaffLattice:
-        """Use the eventual W1 normalizer/automaton; no permissive default exists."""
+    def finalize(self) -> StaffLattice:
+        """Use the W1 normalizer, canonical parser and sequence automaton."""
         if self.unresolved_symbol_ids:
             raise ValueError("Unresolved visual evidence requires review before finalization")
-        hypotheses = [normalize_and_validate(h) for h in self.lattice.hypotheses]
+        hypotheses = [normalize_hypothesis(h) for h in self.lattice.hypotheses]
         return StaffLattice.model_validate({**self.lattice.model_dump(), "hypotheses": hypotheses})
 
 
@@ -132,12 +132,19 @@ def _choices(head: Symbol, graph: SymbolGraph) -> list[tuple[float, LatticeItem]
 
 
 def draft_reading(
-    graph: SymbolGraph, producer: Producer, *, enabled: bool = True, durations_enabled: bool = True
+    graph: SymbolGraph,
+    producer: Producer,
+    *,
+    enabled: bool = True,
+    durations_enabled: bool = True,
+    chords_enabled: bool = True,
+    joins_enabled: bool = True,
 ) -> ReadingDraft:
     """SYM-READ-002: enumerate independent local choices, retaining attribute top-k.
 
     This implements the narrow notehead/stem development path, not clefs, bars,
-    chords, ties or multi-voice column normalization. Unconsumed evidence is
+    or ties. Selected stem chords and uncertain voice columns are normalized
+    through W1's shared API. Unconsumed evidence is
     exposed and prevents production finalization. Probabilities are uncalibrated.
     """
     paths: list[tuple[float, list[LatticeItem]]] = [(0.0, [])]
@@ -159,19 +166,36 @@ def draft_reading(
                 )
             )
             paths = expanded[:MAX_HYPOTHESES]
+    validated = []
+    for score, items in paths:
+        try:
+            marked, uncertain = mark_columns(
+                items, graph, chords_enabled=chords_enabled, joins_enabled=joins_enabled
+            )
+            hypothesis = normalize_hypothesis(
+                Hypothesis(
+                    rank=0,
+                    log_prob_micro=round((score + uncertain * log(1 / 2)) * MICRO),
+                    items=marked,
+                )
+            )
+        except ValueError:
+            # Invalid geometry/grammar never becomes an invented musical item.
+            continue
+        validated.append(hypothesis)
+    validated.sort(key=lambda h: (-h.log_prob_micro, h.model_dump_json(by_alias=True)))
+    for rank, hypothesis in enumerate(validated):
+        hypothesis.rank = rank
     lattice = StaffLattice.model_validate(
         {
-            "schema": graph.schema_version,
+            "schema": "clavis-ir-0.1.1",
             "id": graph.id,
             "stripId": graph.strip_id,
             "producer": producer,
-            "hypotheses": [
-                Hypothesis(rank=i, log_prob_micro=round(p * MICRO), items=items)
-                for i, (p, items) in enumerate(paths)
-            ],
+            "hypotheses": validated,
         }
     )
-    consumed = {symbol_id for _, items in paths for item in items for symbol_id in item.symbol_ids}
+    consumed = {sid for h in validated for item in h.items for sid in item.symbol_ids}
     unresolved = {s.symbol_id for s in graph.symbols} - consumed
     unresolved.update(s.symbol_id for s in graph.rejected_candidates)
     # Relations outside the supported stem path must also remain reviewable.
