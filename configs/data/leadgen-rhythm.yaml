@@ -1,7 +1,7 @@
 catalog_seed: train-group-catalog-v1
 mixed_patterns_per_grouping: 128
 fit_iterations: 2000
-fit_learning_rate: 8
+fit_learning_rate: 1
 rare_note_floor_for_fit: 0.01
 groupings:
   4/4:

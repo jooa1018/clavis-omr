@@ -118,17 +118,20 @@ def fit(meter: str, counts: dict[str, int], config: dict[str, Any]) -> Fitted:
         if mass < floor:
             reference[selected] += (floor - mass) / len(selected)
             reference /= reference.sum()
-    probabilities = np.full(len(patterns), 1 / len(patterns))
+    # Optimize notehead-mixture weights on the simplex. Each row is a
+    # normalized pattern histogram, so density cannot amplify the gradient.
+    # Convert back to pattern-draw probabilities by dividing by pattern size.
     sizes = matrix.sum(axis=1)
+    marginals = matrix / sizes[:, None]
+    mixture = np.full(len(patterns), 1 / len(patterns))
     for _ in range(config["fit_iterations"]):
-        expected = probabilities @ matrix
-        total = float(expected.sum())
-        actual = expected / total
-        error = actual - reference
-        gradient = (matrix @ error - sizes * float(actual @ error)) / total
+        actual = mixture @ marginals
+        gradient = marginals @ (actual - reference)
         exponent = np.clip(-config["fit_learning_rate"] * gradient, -20, 20)
-        probabilities *= np.exp(exponent)
-        probabilities /= probabilities.sum()
+        mixture *= np.exp(exponent)
+        mixture /= mixture.sum()
+    probabilities = mixture / sizes
+    probabilities /= probabilities.sum()
     expected = probabilities @ matrix
     expected /= expected.sum()
     return Fitted(

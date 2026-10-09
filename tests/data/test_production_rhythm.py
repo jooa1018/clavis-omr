@@ -41,3 +41,19 @@ def test_empirical_fit_improves_marginal_and_keeps_raw_reference() -> None:
     with pytest.raises(ValueError):
         seeded("unknown")
     assert np.isfinite(calibrated.probabilities).all()
+
+
+def test_dense_compound_meter_fit_preserves_rare_marginals():
+    config = yaml.safe_load(Path("configs/data/leadgen-rhythm.yaml").read_text(encoding="utf-8"))
+    target = {
+        "note:eighth:dots=0": 5400,
+        "note:quarter:dots=1": 1800,
+        "note:quarter:dots=0": 1200,
+        "note:16th:dots=0": 1200,
+        "note:32nd:dots=0": 200,
+        "note:half:dots=1": 200,
+    }
+    fitted = fit("12/8", target, config)
+    probabilities = fitted.fitted_note_probabilities
+    assert sum(v for k, v in probabilities.items() if k.endswith("dots=2")) >= 0.005
+    assert sum(v for k, v in probabilities.items() if ":32nd:" in k) < 0.05

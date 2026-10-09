@@ -34,6 +34,23 @@ def schema() -> xmlschema.XMLSchema10:
     )
 
 
+def source_digest() -> str:
+    """Reject a queued run if generator/config/dependency bytes changed after submit."""
+    paths = sorted(
+        [
+            *Path("training/data").rglob("*.py"),
+            *Path("configs/data").glob("*.yaml"),
+            *Path("configs/data").glob("*.json"),
+            Path("uv.lock"),
+        ]
+    )
+    digest = hashlib.sha256()
+    for path in paths:
+        digest.update(path.as_posix().encode("utf-8") + b"\0")
+        digest.update(path.read_bytes().replace(b"\r\n", b"\n") + b"\0")
+    return digest.hexdigest()
+
+
 def load() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], dict[str, Any]]:
     profile, notation, rhythm = (
         yaml.safe_load(Path(f"configs/data/leadgen-{name}.yaml").read_text(encoding="utf-8"))
@@ -229,7 +246,12 @@ def main() -> None:
     parser.add_argument("--seed", required=True)
     parser.add_argument("--limit", type=int, default=10000)
     args = parser.parse_args()
-    result = run(args.output, args.seed, args.limit, Context())
+    context = Context()
+    request = json.loads((context.directory / "request.json").read_text(encoding="utf-8"))
+    expected = request["config"].get("sourceDigest")
+    if expected is not None and expected != source_digest():
+        raise ValueError("Queued generator source digest changed")
+    result = run(args.output, args.seed, args.limit, context)
     if result is not None:
         print(
             json.dumps(
