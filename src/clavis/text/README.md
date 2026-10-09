@@ -28,7 +28,7 @@ The result contains NFC text, original emitted tokens, CTC frame indices and raw
 Frames are **not** glyph boxes; token bp are **not** calibrated confidence or sequence
 posteriors. This is a greedy observation utility for future lyric wiring. It must not be
 used to emit accepted chords: grammar-constrained decoding remains to be implemented
-under the approved CCR-0002 erratum (PR #24 merged after W1 confirmation).
+with the chord grammar below (CTC beam search is a separate integration step).
 It does not build TextIR or infer roles, staff links, missing text, or geometry.
 
 ## Configuration and validation
@@ -58,3 +58,35 @@ https://huggingface.co/PaddlePaddle/PP-OCRv5_mobile_det_onnx (not acquired/admit
 The current shared contracts are `clavis-ir-0.1.1` / `lstl-0.1.1` (CCR-0003).
 Same-column continuation in another voice is `join=1`. Future TextIR producers must
 use the shared models; this raw boundary currently emits no IR or LSTL sequence.
+
+## Chord grammar v0 (CCR-0002)
+
+`ChordGrammar(catalog, max_chars=..., max_states=...)` reads the explicit
+`configs/text/rules.yaml` catalog. Pass the provisional `text.grammar.*` resource
+limits from constants.yaml. `start()` / `advance(state, observed_characters)`
+return immutable stack states with `viable` and `accepting` flags for a future
+CTC beam decoder. The stack supports recursive modifier parentheses. Limits
+reject oversized inputs without truncating or changing the musical spelling.
+
+`parse(observed)` returns `None` for invalid strings, otherwise `ChordSpelling`:
+exact printed `text`, exact printed suffix `kind_text`, grammar-checked
+`normalized`, and `outside_consumer_vocab`. Root accidentals use longest match;
+slash inside `6/9` is not a bass separator. Body derivations are enumerated and
+must agree before choosing the longest valid tokenization. `derivation_normal_forms`
+exposes those body derivations for audits. A consistency failure raises ValueError
+instead of silently choosing an interpretation.
+
+This spelling object is not the contract ChordParseResult: it does not invent
+MusicXML kinds/degrees, OCR probabilities, roles or evidence. The caller retains
+the observation for TextItem.text and maps the vocabulary flag to
+CHORD_OUTSIDE_CONSUMER_VOCAB when constructing a contextual hint.
+
+The catalog contains each glyph mapping and its convention rationale. There is
+no generic NFKC or visual A/triangle, 0/o/degree correction. Grammar/normalization
+disabled means abstention; glyph normalization disabled admits only literal grammar
+characters; consumer warning disabled preserves the accepted spelling.
+
+Validation: all CONTRACTS 12.6 spellings, rejection cases, alias derivation
+agreement, nested modifiers, idempotence, explicit glyph map and 1/4-worker byte
+repeatability. `training.models.text.grammar_smoke` reports symbolic 30-case smoke
+and each flag ablation; **SYN-Val 아님, image OCR accuracy 아님**.
