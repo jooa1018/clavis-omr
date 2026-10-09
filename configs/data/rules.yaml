@@ -82,3 +82,31 @@
     report: docs/reports/W2/2026-09-29-pdmx-aggregate.md
   introduced_by: w2/pdmx-aggregate
   motivated_by_failure: false
+- id: DATA-GEN-005
+  owner: W2
+  statement: "Author notation from explicit score plans; preserve grace principal voice, one final barline, and respell final pitches after ties/chords using per-measure staff accidental state."
+  units: musicxml_events
+  params: [divisions, clefs, steps, step_weights, rest_probability, chromatic_probability, chord_head_probability, tie_song_probability, fermata_song_probability, whole_rest_song_probability, slash_chord_probability, max_harmonies_per_measure, max_verses, max_rhythm_attempts, minimum_grace_base_notes, tempo, sections, lyric_syllables, triplet_remainders, harmonies]
+  source: convention
+  evidence: https://www.w3.org/2021/06/musicxml40/musicxml-reference/
+  flag: configs/data/leadgen-production.yaml#enabled
+  ablation:
+    status: NOT_RUN
+    reason: "Original score authoring only, not inference. Disabled production rejects generation."
+    report: docs/reports/W2/2026-10-09-production-notation.md
+  introduced_by: w2/production-profile
+  motivated_by_failure: false
+- id: DATA-GEN-006
+  owner: W2
+  statement: "Audit actual generated XML with the original local XSD, voice duration arithmetic, tie continuity, observed feature counts and unsmoothed per-meter KL; a preview never passes block acceptance."
+  units: songs_measures_noteheads
+  params: [block_acceptance, rhythm, features]
+  source: convention
+  evidence: docs/adr/ADR-010-leadgen-distribution.md
+  flag: configs/data/leadgen-production.yaml#enabled
+  ablation:
+    status: NOT_RUN
+    reason: "Validation is not bypassable; generator disabled means no accepted output."
+    report: docs/reports/W2/2026-10-09-production-notation.md
+  introduced_by: w2/production-profile
+  motivated_by_failure: false

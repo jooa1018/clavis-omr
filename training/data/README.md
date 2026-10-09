@@ -115,8 +115,10 @@ grace note among 19 notes exceeds the approved 5% upper bound. It does not silen
 round or alter the denominator. Production reporting must include numerator and
 denominator for every selected song, plus the overall song occurrence rate.
 
-Actual PDMX training-subset aggregates and provenance are absent. No invented
-reference distribution, production XML, or 10,000-song acceptance is emitted.
+PDMX v9 aggregate-only statistics are now pinned in the production configuration
+by canonical JSON SHA-256 and original manifest digest (PR #28). No PDMX score
+is admitted to training. A fitted profile is a development candidate until the
+actual XML block audit and renderer checks pass; a preview is not acceptance.
 W4 admission remains blocked pending OR-003 protected set v1. PR #4 is merged;
 its corrected LSTL ordering contract is available for T2.5.
 The smoke command is a repository-only test harness: its fixed four-measure
@@ -186,3 +188,29 @@ count is checkpointed with parsed counts, so resuming does not duplicate exclusi
 and mean CPU percent (one-core and whole-machine denominators). Operational checkpoint
 and telemetry files have no song identifiers. Aggregate statistics do not authorize
 training. OR-003 protected-set v1 and the admitted receipt remain mandatory.
+
+
+## Production audit candidate
+
+`production_check` is a W1 queue/short-slot payload. It reads the pinned aggregate,
+fits complete meter-group mixtures and audits generated XML with local original
+MusicXML 4.0 XSD assets. It never reads source scores or admits training data.
+Run a short preview with `python -m training.jobs.short run training.data.production_check
+--output work/production-preview --seed train-production-v1 --limit 100`.
+The 10,000-song run uses the queue when the preview predicts more than 600 seconds.
+A queue checkpoint saves the next index, aggregate counts and chained XML digest
+at every song. Recomputed fitting and per-song seeds yield identical resumed results.
+Only ten preview XMLs and profile/report JSON persist; full scores are regenerated.
+
+Counts come from actual XML, not plan flags. The report distinguishes song rates,
+conditional min/max and pooled numerators/denominators, P0 instances and per-meter
+KL against **all raw pitched notehead categories**, including unsupported target
+categories in its denominator. There is no invented KL cutoff or smoothing; target
+zero with positive generated mass is `Infinity`. Rare floors use pitched nongrace
+noteheads, matching the PDMX histogram. Grace ratios count pitched heads including
+grace; rests and unpitched slash heads are excluded from that denominator.
+
+The candidate validator checks XSD, written duration, voice time sums, chord
+membership, harmony offsets and tie pitch/voice/time continuity. It does not claim
+navigation playback or visual renderer acceptance. The current W4 projection
+rejects direction/segno/coda; this tool does not modify or bypass that evaluator.

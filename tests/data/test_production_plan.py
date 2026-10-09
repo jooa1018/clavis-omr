@@ -9,7 +9,9 @@ from training.data.production_rhythm import seeded
 
 
 def test_block_mode_meter_and_two_level_ratios() -> None:
-    config = yaml.safe_load(Path("configs/data/leadgen-production.yaml").read_text())
+    config = yaml.safe_load(
+        Path("configs/data/leadgen-production.yaml").read_text(encoding="utf-8")
+    )
     plans = plan_block("train-block-plan", config)
     assert Counter(p.mode for p in plans) == {"major": 7500, "minor": 2500}
     assert Counter(p.meter for p in plans) == Counter(
@@ -31,7 +33,9 @@ def test_block_mode_meter_and_two_level_ratios() -> None:
 
 
 def test_eval_namespace_is_explicit_and_is_not_training() -> None:
-    config = yaml.safe_load(Path("configs/data/leadgen-production.yaml").read_text())
+    config = yaml.safe_load(
+        Path("configs/data/leadgen-production.yaml").read_text(encoding="utf-8")
+    )
     config["block_acceptance"]["songs"] = 12
     assert plan_block("eval-w4-fixture", config, purpose="w4-evaluation")
     for seed, purpose in [

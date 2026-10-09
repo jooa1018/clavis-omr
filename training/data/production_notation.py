@@ -215,3 +215,56 @@ def lyrics(events: list[ET.Element], config: dict[str, Any], rng: np.random.Gene
             if syllable_position % len(syllables) == 0 and position + 1 < len(candidates):
                 child(lyric, "extend", type="start")
                 extending = True
+
+
+def spell_accidentals(part: ET.Element) -> None:
+    """Spell final authored pitches after ties/chords/graces have changed the notes.
+
+    MusicXML pitch/alter is sounding truth; accidental is its printed spelling.
+    State is shared by voices at the same staff pitch and resets at a barline.
+    Conflicting simultaneous alterations are explicit and leave state unknown.
+    """
+    fifths = 0
+    names = {-2: "flat-flat", -1: "flat", 0: "natural", 1: "sharp", 2: "double-sharp"}
+    for measure in part.findall("measure"):
+        fifths = int(measure.findtext("attributes/key/fifths", str(fifths)))
+        groups: dict[tuple[int, bool], list[ET.Element]] = {}
+        cursor, onset = 0, 0
+        for event in measure:
+            if event.tag in ("backup", "forward"):
+                cursor += int(event.findtext("duration", "0")) * (
+                    -1 if event.tag == "backup" else 1
+                )
+            elif event.tag == "note":
+                if event.find("chord") is None:
+                    onset = cursor
+                grace = event.find("grace") is not None
+                if event.find("pitch") is not None:
+                    groups.setdefault((onset, not grace), []).append(event)
+                if not grace and event.find("chord") is None:
+                    cursor += int(event.findtext("duration", "0"))
+        state: dict[tuple[str, int], int | None] = {}
+        for moment in sorted(groups):
+            by_pitch: dict[tuple[str, int], list[ET.Element]] = {}
+            for event in groups[moment]:
+                key = (event.findtext("pitch/step", "C"), int(event.findtext("pitch/octave", "4")))
+                by_pitch.setdefault(key, []).append(event)
+            for (step, octave), events in by_pitch.items():
+                alters = {int(event.findtext("pitch/alter", "0")) for event in events}
+                prior = state.get(
+                    (step, octave), pitch("CDEFGAB".index(step) + 7 * octave, fifths)[2]
+                )
+                for event in events:
+                    for old in event.findall("accidental"):
+                        event.remove(old)
+                    alter = int(event.findtext("pitch/alter", "0"))
+                    if alter != prior or len(alters) != 1:
+                        mark = ET.Element("accidental")
+                        mark.text = names[alter]
+                        insert = next(
+                            i + 1
+                            for i in reversed(range(len(event)))
+                            if event[i].tag in ("type", "dot")
+                        )
+                        event.insert(insert, mark)
+                state[(step, octave)] = next(iter(alters)) if len(alters) == 1 else None

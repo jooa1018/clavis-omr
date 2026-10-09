@@ -5,8 +5,10 @@ from fractions import Fraction
 from pathlib import Path
 
 import pytest
+import xmlschema
 import yaml
 
+from training.data.production_audit import audit
 from training.data.production_plan import SongPlan
 from training.data.production_rhythm import fit
 from training.data.production_xml import generate
@@ -14,9 +16,13 @@ from training.data.production_xml import generate
 
 @pytest.fixture(scope="module")
 def inputs():
-    profile = yaml.safe_load(Path("configs/data/leadgen-production.yaml").read_text())
-    notation = yaml.safe_load(Path("configs/data/leadgen-notation.yaml").read_text())
-    rhythm = yaml.safe_load(Path("configs/data/leadgen-rhythm.yaml").read_text())
+    profile = yaml.safe_load(
+        Path("configs/data/leadgen-production.yaml").read_text(encoding="utf-8")
+    )
+    notation = yaml.safe_load(
+        Path("configs/data/leadgen-notation.yaml").read_text(encoding="utf-8")
+    )
+    rhythm = yaml.safe_load(Path("configs/data/leadgen-rhythm.yaml").read_text(encoding="utf-8"))
     rhythm.update(mixed_patterns_per_grouping=4, fit_iterations=100)
     target = {"note:eighth:dots=0": 70, "note:quarter:dots=0": 20, "note:16th:dots=0": 10}
     profiles = {meter: fit(meter, target, rhythm) for meter in profile["meter_weights"]}
@@ -77,7 +83,7 @@ def validate(xml: str) -> ET.Element:
     return root
 
 
-def test_all_meters_and_feature_combinations_are_exact(inputs) -> None:
+def test_all_meters_and_feature_combinations_are_exact(inputs, schema) -> None:
     profile, notation, profiles = inputs
     for meter in profile["meter_weights"]:
         for pickup in (False, True):
@@ -93,6 +99,7 @@ def test_all_meters_and_feature_combinations_are_exact(inputs) -> None:
             )
             xml = generate(plan, profiles, notation, profile)
             assert xml == generate(plan, profiles, notation, profile)
+            schema.validate(xml)
             root = validate(xml)
             assert root.find(".//key/mode").text == "minor"
             assert root.find(".//backup") is not None
@@ -113,3 +120,86 @@ def test_optional_denied_generation(inputs) -> None:
         generate(plan, profiles, notation, dict(profile, enabled=False))
     with pytest.raises(ValueError):
         generate(replace(plan, seed="wrong"), profiles, notation, profile)
+
+
+@pytest.fixture(scope="module")
+def schema():
+    root = Path("src/clavis/export/schemas/musicxml-4.0").resolve()
+    return xmlschema.XMLSchema(
+        root / "musicxml.xsd",
+        locations={
+            "http://www.w3.org/XML/1998/namespace": str(root / "xml.xsd"),
+            "http://www.w3.org/1999/xlink": str(root / "xlink.xsd"),
+        },
+        allow="local",
+        defuse="always",
+        use_fallback=False,
+    )
+
+
+@pytest.mark.parametrize("variant", range(20))
+def test_notation_relationships_across_generated_family(inputs, schema, variant):
+    profile, notation, profiles = inputs
+    settings = {**notation, "tie_song_probability": 1, "chord_head_probability": 0.3}
+    plan = SongPlan(
+        f"train-notation-family-{variant}",
+        "major",
+        variant % 15 - 7,
+        "4/4",
+        8,
+        ("grace", "repeat_volta_navigation", "key_meter_change"),
+        (("two_voice", (1, 2, 3, 4)),),
+    )
+    xml = generate(plan, profiles, settings, profile)
+    schema.validate(xml)
+    root = validate(xml)
+    audit(xml)
+    for measure in root.findall("./part/measure"):
+        assert len(measure.findall("barline[@location='right']")) <= 1
+        notes = measure.findall("note")
+        for index, event in enumerate(notes):
+            if event.find("grace") is not None:
+                principal = next(n for n in notes[index + 1 :] if n.find("grace") is None)
+                assert event.findtext("voice") == principal.findtext("voice")
+            accidental = event.findtext("accidental")
+            if accidental is not None:
+                assert {"flat-flat": -2, "flat": -1, "natural": 0, "sharp": 1, "double-sharp": 2}[
+                    accidental
+                ] == int(event.findtext("pitch/alter", "0"))
+
+
+def test_final_accidental_spelling_accounts_for_tie_replacement():
+    from training.data.production_notation import child, note, spell_accidentals, tie_pair
+    from training.data.production_rhythm import Value
+
+    part = ET.Element("part")
+    a = child(part, "measure")
+    child(child(child(a, "attributes"), "key"), "fifths", 0)
+    first = note(a, Value("quarter"), ("F", 4, 1), 96)
+    b = child(part, "measure")
+    second = note(b, Value("quarter"), ("E", 4, 0), 96)
+    third = note(b, Value("quarter"), ("F", 4, 0), 96)
+    tie_pair(first, second)
+    spell_accidentals(part)
+    assert first.findtext("accidental") == "sharp"
+    assert second.findtext("accidental") == "sharp"
+    assert third.findtext("accidental") == "natural"
+    before = ET.tostring(part)
+    spell_accidentals(part)
+    assert ET.tostring(part) == before
+
+
+def test_simultaneous_conflicting_alters_are_explicit_and_not_carried():
+    from training.data.production_notation import child, note, spell_accidentals
+    from training.data.production_rhythm import Value
+
+    part = ET.Element("part")
+    measure = child(part, "measure")
+    first = note(measure, Value("quarter"), ("C", 4, 1), 96)
+    child(child(measure, "backup"), "duration", 96)
+    second = note(measure, Value("quarter"), ("C", 4, 0), 96, voice=2)
+    third = note(measure, Value("quarter"), ("C", 4, 0), 96, voice=2)
+    spell_accidentals(part)
+    assert first.findtext("accidental") == "sharp"
+    assert second.findtext("accidental") == "natural"
+    assert third.findtext("accidental") == "natural"

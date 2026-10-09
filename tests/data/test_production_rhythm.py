@@ -9,7 +9,7 @@ from training.data.production_rhythm import Value, catalog, fit, seeded
 
 
 def test_pattern_catalog_follows_meter_groups_and_preserves_time() -> None:
-    config = yaml.safe_load(Path("configs/data/leadgen-rhythm.yaml").read_text())
+    config = yaml.safe_load(Path("configs/data/leadgen-rhythm.yaml").read_text(encoding="utf-8"))
     config["mixed_patterns_per_grouping"] = 4
     for meter, groupings in config["groupings"].items():
         patterns = catalog(meter, config)
@@ -22,7 +22,7 @@ def test_pattern_catalog_follows_meter_groups_and_preserves_time() -> None:
 
 
 def test_empirical_fit_improves_marginal_and_keeps_raw_reference() -> None:
-    config = yaml.safe_load(Path("configs/data/leadgen-rhythm.yaml").read_text())
+    config = yaml.safe_load(Path("configs/data/leadgen-rhythm.yaml").read_text(encoding="utf-8"))
     config["mixed_patterns_per_grouping"] = 4
     config["fit_iterations"] = 150
     target = {"note:quarter:dots=0": 900, "note:eighth:dots=0": 100}

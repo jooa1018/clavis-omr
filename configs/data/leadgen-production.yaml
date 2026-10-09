@@ -79,16 +79,62 @@ block_acceptance:
   songs: 10000
   p0_min_song_ratio: 0.01
   p0_min_instances: 500
+  saved_preview_scores: 10
+  p0_categories:
+  - clef:G2
+  - clef:F4
+  - clef:G2_8vb
+  - key_signature
+  - meter_signature
+  - key_meter_change
+  - pickup
+  - duration:whole
+  - duration:half
+  - duration:quarter
+  - duration:eighth
+  - duration:16th
+  - duration:32nd
+  - dots:1
+  - dots:2
+  - rest
+  - measure_rest
+  - accidental
+  - tie
+  - triplet
+  - one_voice
+  - two_voice
+  - chord
+  - slash
+  - repeat
+  - volta
+  - dc
+  - ds
+  - coda
+  - segno
+  - fine
+  - fermata
+  - harmony
+  - slash_harmony
+  - lyrics_ko
+  - lyrics_en
+  - multi_verse
+  - hyphen
+  - extend
+  - title
+  - tempo
+  - section
 rhythm:
   strategy: meter_beat_groups
   target_source: PDMX rights-filtered aggregate (pre-admission statistics authorized
     2026-09-29)
-  target_artifact: null
+  target_artifact: docs/reports/W2/pdmx-v9-aggregate.json
   min_32nd_note_ratio: 0.005
   min_double_dot_note_ratio: 0.005
   kl_direction: generated || target
   zero_target_with_positive_generated: infinite
   missing_target: BLOCKED
+  target_sha256: e4fb07ca2569c2588b5ad0e9a5ff2066654d87dfa8f66867f06bb50c8184bab8
+  target_digest_format: canonical-json-sort-keys-compact-utf8
 phrase_bars:
 - 4
 - 8

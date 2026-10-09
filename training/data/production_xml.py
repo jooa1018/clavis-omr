@@ -18,6 +18,7 @@ from training.data.production_notation import (
     notation,
     note,
     pitch,
+    spell_accidentals,
     tie_pair,
 )
 from training.data.production_plan import SongPlan, grace_count
@@ -278,6 +279,7 @@ def generate(
                 ),
                 divisions,
                 grace=True,
+                voice=int(event.findtext("voice", "1")),
             )
             measure.insert(list(measure).index(event), grace)
     if pitched and rng.random() < settings["fermata_song_probability"]:
@@ -285,5 +287,11 @@ def generate(
     lyrics(main_notes, settings, rng)
     if "repeat_volta_navigation" in plan.features:
         navigation(measures, rng)
-    child(child(measures[-1], "barline", location="right"), "bar-style", "light-heavy")
+    final_bar = measures[-1].find("barline[@location='right']")
+    if final_bar is None:
+        final_bar = child(measures[-1], "barline", location="right")
+    style = ET.Element("bar-style")
+    style.text = "light-heavy"
+    final_bar.insert(0, style)
+    spell_accidentals(part)
     return ET.tostring(root, encoding="unicode")
