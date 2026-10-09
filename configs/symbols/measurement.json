@@ -1,0 +1,21 @@
+{
+  "purpose": "measurement-only",
+  "seed": 6,
+  "source_jobs": 2,
+  "raster_width": 1200,
+  "patch_size": 48,
+  "patch_records": 8192,
+  "sample_sizes": [512, 2048, 8192],
+  "repeats": 3,
+  "fcn_epochs": 3,
+  "fcn_batch": 8,
+  "fcn_warmup_steps": 8,
+  "lgb_rounds": 100,
+  "jitter_target_interline": 16,
+  "threads": [4, 8],
+  "job_wall_seconds": 3600,
+  "job_ram_bytes": 3000000000,
+  "memory_configuration": "24 GB (16+8 GB), DDR4-3200 dual channel",
+  "label_scope": "dense grayscale / ink-density surrogate, not symbol-class labels",
+  "selection": "none; not evaluation, model selection, or engine weights"
+}

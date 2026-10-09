@@ -1,0 +1,229 @@
+{
+  "scope": "preliminary 2-thread path probes, synthetic smoke, NOT SYN-Val",
+  "purpose": "measurement-only",
+  "memory_configuration": "24 GB (16+8 GB), DDR4-3200 dual channel",
+  "formal_comparison": "NOT_RUN; scheduled separately",
+  "runs": [
+    {
+      "name": "prepare",
+      "status": "succeeded",
+      "reason": "completed",
+      "jobId": "8faeed0c334d44378a56b1a19175ecfa",
+      "wallSeconds": 14.43699999999808,
+      "cpuSecondsSampled": 10.25,
+      "peakRssBytesSampled": 311463936,
+      "cpuLimit": 2,
+      "meanLogicalCpusSampled": 0.7099812980537067,
+      "warnings": []
+    },
+    {
+      "name": "fcn",
+      "status": "succeeded",
+      "reason": "completed",
+      "jobId": "a55da2e0743c4b829f73d3321b39e4d2",
+      "wallSeconds": 15.01600000000326,
+      "cpuSecondsSampled": 11.703125,
+      "peakRssBytesSampled": 341643264,
+      "cpuLimit": 2,
+      "meanLogicalCpusSampled": 0.7793769978687706,
+      "warnings": [],
+      "measurement": {
+        "checkpoints": "progress JSON only; no model weights saved or selected",
+        "config_sha256": "8aa26011bc8cd34afeeaadae2bfba9ed617e20dd4972250bf9e4d5b1b281719d",
+        "data_manifest_sha256": "85f45c3b373aafaa4f4ec6eaa599aaa4723052b1b12fe492b12f480d04f1a8d8",
+        "memory_configuration": "24 GB (16+8 GB), DDR4-3200 dual channel",
+        "model": "fcn",
+        "probe": true,
+        "purpose": "measurement-only",
+        "scope": "synthetic compute timing; NOT SYN-Val; NOT recognition accuracy",
+        "status": "PASS",
+        "threads": 2,
+        "trials": [
+          {
+            "cpu_only": true,
+            "effective_threads": 2,
+            "epoch_seconds": [
+              0.2863867000050959
+            ],
+            "fit_seconds": 0.2863867000050959,
+            "logical_cpu_affinity_count": 2,
+            "parameter_count": 102209,
+            "patch_presentations": 64,
+            "patch_presentations_per_second": 223.47406495783915,
+            "process_peak_rss_bytes": 329560064,
+            "repeat": 0,
+            "sample_records": 64,
+            "trial_wall_seconds": 9.606213899998693
+          }
+        ],
+        "versions": {
+          "lightgbm": "4.6.0",
+          "numpy": "2.2.6",
+          "scipy": "1.18.1",
+          "torch": "2.5.1+cpu"
+        }
+      }
+    },
+    {
+      "name": "lightgbm",
+      "status": "succeeded",
+      "reason": "completed",
+      "jobId": "a9714fe59983434bba1a789b14678818",
+      "wallSeconds": 10.625,
+      "cpuSecondsSampled": 7.671875,
+      "peakRssBytesSampled": 270569472,
+      "cpuLimit": 2,
+      "meanLogicalCpusSampled": 0.7220588235294118,
+      "warnings": [],
+      "measurement": {
+        "checkpoints": "progress JSON only; no model weights saved or selected",
+        "config_sha256": "8aa26011bc8cd34afeeaadae2bfba9ed617e20dd4972250bf9e4d5b1b281719d",
+        "data_manifest_sha256": "85f45c3b373aafaa4f4ec6eaa599aaa4723052b1b12fe492b12f480d04f1a8d8",
+        "memory_configuration": "24 GB (16+8 GB), DDR4-3200 dual channel",
+        "model": "lightgbm",
+        "probe": true,
+        "purpose": "measurement-only",
+        "scope": "synthetic compute timing; NOT SYN-Val; NOT recognition accuracy",
+        "status": "PASS",
+        "threads": 2,
+        "trials": [
+          {
+            "boosting_rounds": 2,
+            "cpu_only": true,
+            "effective_threads": 2,
+            "fit_seconds": 1.6057464000041364,
+            "logical_cpu_affinity_count": 2,
+            "patch_records_per_fit_second": 39.85685410836676,
+            "patch_rounds_per_second": 79.71370821673352,
+            "process_peak_rss_bytes": 259555328,
+            "repeat": 0,
+            "sample_records": 64,
+            "tree_count": 2,
+            "trial_wall_seconds": 2.870525699996506
+          }
+        ],
+        "versions": {
+          "lightgbm": "4.6.0",
+          "numpy": "2.2.6",
+          "scipy": "1.18.1",
+          "torch": "2.5.1+cpu"
+        }
+      }
+    }
+  ],
+  "strip_manifest": {
+    "config_sha256": "8aa26011bc8cd34afeeaadae2bfba9ed617e20dd4972250bf9e4d5b1b281719d",
+    "jitter_sha256": "be25ab2675c34e40a0447a54a4de5e02ae40536ebe55fd6f298bacc658d3be36",
+    "limitations": [
+      "sampling with replacement from two development pages, not independent songs",
+      "surrogate labels only; unresolved music attributes remain unknown",
+      "not admitted training; no checkpoint selection or engine use"
+    ],
+    "patch_records": 64,
+    "patch_shape": [
+      2,
+      48,
+      48
+    ],
+    "patches_sha256": "04ec110498eeef5d65539c4a47bf484118d31f821c0fb60accf3b74fbc3ad4b4",
+    "purpose": "measurement-only",
+    "scope": "W2 train-smoke / W5 synthetic-v0; NOT SYN-Val",
+    "source_descriptor_sha256": "32ed895d14a0625a2e0690092ca091016259a2c35cc5c59296ee7da8c8bf6032",
+    "sources": [
+      {
+        "artifacts": {
+          "page-1.labels.json": "defd2fcae8c3ba879986c70ece59347d23e8616e2d7236cb9d1a80e1b0dd2550",
+          "page-1.overlay.svg.gz": "6c11a80e48130422e1c076bcc6aacc3da9652dafe1b397bad48a78592bd5b1d1",
+          "page-1.svg.gz": "869d98cd744a4705121ea4139cb81c23e388c71b4081b81403d257b43b896e2f"
+        },
+        "font": "Leipzig",
+        "seed": "train-smoke-0"
+      },
+      {
+        "artifacts": {
+          "page-1.labels.json": "e51d8f521a4ac90d362902743f49b14cbae30a0e2963bda1f427130a0c88ac29",
+          "page-1.overlay.svg.gz": "6a91f9df35470c7111a7d959b8af98b1050d762b0a28a5ddcabc6bf1c7111e63",
+          "page-1.svg.gz": "de883fcb24ca471d444121820c85e0de9e9dcfc486abafeb6a18908513c25fb5"
+        },
+        "font": "Bravura",
+        "seed": "train-smoke-0"
+      }
+    ],
+    "strip_observations": [
+      {
+        "channel_changed_pixels": 2,
+        "lattice_hypotheses": 1,
+        "lattice_items": 0,
+        "relations": 3,
+        "symbols": 18,
+        "unresolved": 32
+      },
+      {
+        "channel_changed_pixels": 0,
+        "lattice_hypotheses": 1,
+        "lattice_items": 0,
+        "relations": 3,
+        "symbols": 16,
+        "unresolved": 28
+      },
+      {
+        "channel_changed_pixels": 0,
+        "lattice_hypotheses": 1,
+        "lattice_items": 0,
+        "relations": 6,
+        "symbols": 16,
+        "unresolved": 27
+      },
+      {
+        "channel_changed_pixels": 481,
+        "lattice_hypotheses": 1,
+        "lattice_items": 0,
+        "relations": 6,
+        "symbols": 16,
+        "unresolved": 27
+      },
+      {
+        "channel_changed_pixels": 2,
+        "lattice_hypotheses": 1,
+        "lattice_items": 0,
+        "relations": 2,
+        "symbols": 17,
+        "unresolved": 35
+      },
+      {
+        "channel_changed_pixels": 3,
+        "lattice_hypotheses": 1,
+        "lattice_items": 0,
+        "relations": 2,
+        "symbols": 17,
+        "unresolved": 34
+      },
+      {
+        "channel_changed_pixels": 0,
+        "lattice_hypotheses": 1,
+        "lattice_items": 0,
+        "relations": 6,
+        "symbols": 16,
+        "unresolved": 30
+      },
+      {
+        "channel_changed_pixels": 474,
+        "lattice_hypotheses": 1,
+        "lattice_items": 0,
+        "relations": 6,
+        "symbols": 15,
+        "unresolved": 27
+      }
+    ],
+    "w2_report_sha256": "41580d17408b17de26056c370ca1b7f421a0ca02ef1712daf48e56dcc1517638"
+  },
+  "strip_counts": {
+    "strips": 8,
+    "symbols": 131,
+    "relations": 34,
+    "lattice_hypotheses": 8,
+    "lattice_items": 0,
+    "unresolved": 240,
+    "channel_changed_pixels": 962
+  }
+}
