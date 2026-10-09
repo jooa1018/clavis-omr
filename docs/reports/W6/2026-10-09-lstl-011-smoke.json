@@ -1,0 +1,197 @@
+{
+  "status": "PASS",
+  "scope": "authored component mocks; NOT SYN-Val; NOT recognition accuracy",
+  "determinism": {
+    "trials": 6,
+    "unique_digests": 1
+  },
+  "timings": [
+    {
+      "threads_requested": 1,
+      "threads_effective": 1,
+      "repeat": 0,
+      "seconds": 0.0026090000028489158
+    },
+    {
+      "threads_requested": 1,
+      "threads_effective": 1,
+      "repeat": 1,
+      "seconds": 0.002249199998914264
+    },
+    {
+      "threads_requested": 1,
+      "threads_effective": 1,
+      "repeat": 2,
+      "seconds": 0.002293099998496473
+    },
+    {
+      "threads_requested": 4,
+      "threads_effective": 4,
+      "repeat": 0,
+      "seconds": 0.002294100006110966
+    },
+    {
+      "threads_requested": 4,
+      "threads_effective": 4,
+      "repeat": 1,
+      "seconds": 0.0026720000023487955
+    },
+    {
+      "threads_requested": 4,
+      "threads_effective": 4,
+      "repeat": 2,
+      "seconds": 0.0020794000010937452
+    }
+  ],
+  "scaled_mock_counts": [
+    {
+      "scale": 0.8,
+      "symbols": 3,
+      "heads": 1,
+      "stems": 1,
+      "bars": 1,
+      "relations": 1,
+      "rejected": 0,
+      "positions": 1
+    },
+    {
+      "scale": 1.0,
+      "symbols": 3,
+      "heads": 1,
+      "stems": 1,
+      "bars": 1,
+      "relations": 1,
+      "rejected": 0,
+      "positions": 1
+    },
+    {
+      "scale": 1.25,
+      "symbols": 3,
+      "heads": 1,
+      "stems": 1,
+      "bars": 1,
+      "relations": 1,
+      "rejected": 0,
+      "positions": 1
+    }
+  ],
+  "ablation_component_counts": {
+    "all_enabled": {
+      "symbols": 3,
+      "heads": 1,
+      "stems": 1,
+      "bars": 1,
+      "relations": 1,
+      "rejected": 0,
+      "positions": 1
+    },
+    "SYM-TEMPLATE-001": {
+      "symbols": 2,
+      "heads": 0,
+      "stems": 1,
+      "bars": 1,
+      "relations": 0,
+      "rejected": 0,
+      "positions": 0
+    },
+    "SYM-VLINE-001": {
+      "symbols": 1,
+      "heads": 1,
+      "stems": 0,
+      "bars": 0,
+      "relations": 0,
+      "rejected": 0,
+      "positions": 1
+    },
+    "SYM-POS-001": {
+      "symbols": 3,
+      "heads": 1,
+      "stems": 1,
+      "bars": 1,
+      "relations": 1,
+      "rejected": 0,
+      "positions": 0
+    },
+    "SYM-REL-001": {
+      "symbols": 3,
+      "heads": 1,
+      "stems": 1,
+      "bars": 1,
+      "relations": 0,
+      "rejected": 0,
+      "positions": 1
+    }
+  },
+  "reading": {
+    "hypotheses": 2,
+    "stem_evidence_variants": 2,
+    "pos_alternatives": [
+      [
+        4,
+        6000
+      ],
+      [
+        5,
+        4000
+      ]
+    ],
+    "dots_alternatives": [
+      [
+        0,
+        7000
+      ],
+      [
+        1,
+        3000
+      ]
+    ],
+    "duration_distributions": [
+      [
+        [
+          "quarter",
+          6000
+        ],
+        [
+          "eighth",
+          3000
+        ],
+        [
+          "16th",
+          1000
+        ]
+      ],
+      [
+        [
+          "eighth",
+          7000
+        ],
+        [
+          "16th",
+          3000
+        ]
+      ]
+    ],
+    "disabled_reading_items": 0,
+    "disabled_duration_items": 0
+  },
+  "columns": {
+    "schema": "clavis-ir-0.1.1",
+    "join_alternatives": [
+      [
+        0,
+        5000
+      ],
+      [
+        1,
+        5000
+      ]
+    ],
+    "shared_stem_chord": 1,
+    "join_rule_off_hypotheses": 0,
+    "chord_rule_off_hypotheses": 0,
+    "common_parser_and_automaton": "PASS"
+  },
+  "oracle_at_k": "NOT_RUN: no labeled evaluation set / W4 symbol metric",
+  "reading_IER": "NOT_RUN: no W2 LSTL / W4 reading metric",
+  "peak_rss_bytes": 90025984
+}

@@ -162,7 +162,7 @@ def detect(
         target.append({**record, "symbolId": f"{staff_id}-s{index}"})
     graph = SymbolGraph.model_validate(
         {
-            "schema": "clavis-ir-0.1",
+            "schema": "clavis-ir-0.1.1",
             "id": staff_id,
             "stripId": staff_id,
             "producer": producer,

@@ -23,9 +23,16 @@ stay in `attrTopK` so they cannot crowd a weak competing connection out of N-bes
 
 This is **not yet a complete strip-to-lattice recognizer**: the detector does not
 estimate beam/flag or dots/voice attributes, and the reader does not recognize
-clefs, bar styles, chords or other notation. It must not invent these values.
-The typed proposal passes v0.1 wire validation but production finalization needs
-W1's normalizer/grammar callback. There is deliberately no default grammar stub.
+clefs, bar styles or other unsupported notation. It must not invent these values.
+New graphs/lattices use clavis-ir-0.1.1, including when consuming legacy graphs.
+Selected shared stems form `chord=1` groups in voice/pos order. Overlapping head
+boxes in different voices propose `join=1` with both 0/1 alternatives at equal
+provisional mass. This is uncertainty, not calibrated onset confidence. Overlap
+chains without pairwise evidence and incompatible voice/chord attributes remain
+unresolved. Disable these rules with `chords_enabled` / `joins_enabled`.
+Every retained hypothesis passes W1 `normalize`, `serialize`, `parse`, and the
+sequence automaton. `ReadingDraft.finalize()` repeats this boundary and refuses
+unresolved evidence; a caller-supplied identity callback can no longer bypass it.
 Fixtures supply attributes only in tests; the runtime never loads fixtures.
 
 ```text
@@ -34,7 +41,5 @@ uv run --locked --all-groups pytest tests/symbols --cov=clavis.symbols
 uv run --locked --all-groups python -m training.models.symbols.component_smoke work/w6-component.json
 ```
 
-Numpy/OpenCV are already pinned in the repository training group. W1 must include
-them in runtime packaging before deployment; this component PR does not modify
-W1-owned dependency declarations. Template binaries remain in `work/`.
+Numpy/OpenCV are pinned runtime dependencies since W1 PR #29. Template binaries remain in `work/`.
 Production producer hashes must cover code, settings, rules and template bytes.

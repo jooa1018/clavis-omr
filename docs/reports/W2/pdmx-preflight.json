@@ -1,0 +1,29 @@
+{
+  "status": "RUNNING_OR_004",
+  "record": "https://zenodo.org/records/15571083",
+  "version": "v9",
+  "distribution_bytes": 14382330168,
+  "selected_stream_bytes": 2119735535,
+  "probe": {
+    "bytes": 8388608,
+    "seconds": 48.6151710000122
+  },
+  "projected_transfer_seconds": 12284.672916987816,
+  "free_disk_bytes_at_report": 3538198528,
+  "process_memory_limit_bytes": 1500000000,
+  "compute_threads_max": 2,
+  "priority": "BelowNormal",
+  "source_files_retained": false,
+  "restart_fixture": "byte-identical aggregate",
+  "hardcode_scan": "PASS; 92 Python files; 0 findings",
+  "training_admission": "BLOCKED_PENDING_OR_003_V1",
+  "local_windows_tests": {
+    "tests": "501",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "48.596"
+  },
+  "new_code_line_coverage_percent": 82.26,
+  "launcher_correction": "First attempt used Windows venv redirector; interrupted during CSV and restarted using base interpreter plus pinned venv site-packages. Metrics from interrupted attempt are lower bounds through last 16 MiB checkpoint."
+}
