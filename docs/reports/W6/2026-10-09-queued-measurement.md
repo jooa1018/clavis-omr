@@ -27,8 +27,11 @@ ruff check/format, mypy, import 경계, runtime license, H1–H9 스캐너 PASS.
 선택 학습 환경은 torch 2.5.1+cpu(BSD), LightGBM 4.6.0(MIT), SciPy 1.18.1(BSD),
 resvg-py 0.2.6(MIT, 기존 승인 도구). 런타임 의존성과 uv.lock은 변경하지 않았다.
 전체 시험은 `uv run --locked --all-groups python -m training.jobs.short run pytest tests/`
-뒤에 coverage/JUnit 저장 인자만 추가했다. 첫 시도는 슬롯 경합으로 시작되지 않았다. 결과는 검증 JSON에 갱신한다.
-CI는 로컬 전체 시험 후 ready 전환하여 Linux·Windows 둘 다 확인한다.
+뒤에 coverage/JUnit 저장 인자만 추가했다. 첫 시도는 슬롯 경합으로 시작되지 않았다.
+재시도 **1431 passed**, 실패/오류/skip 0, JUnit 288.986초, 큐 벽시계 294.0630000000019초,
+표본 peak RSS 320507904 bytes. 전체 커버리지 93.98634938203284%, 새 runtime 모듈 100%.
+전체/platform/eval/jobs ≥80%, 필수 계약 298개·무결성 24개, wheel 명세 자산 검사 PASS.
+정제 근거: `2026-10-09-queued-validation.json`. CI는 ready 전환 후 Linux·Windows 둘 다 확인한다.
 
 ## 5. 지표 (평가기 JSON 경로 + 핵심 수치 표: 이전 대비 변화와 95% CI, 슬라이스별)
 `2026-10-09-queued-probes.json`: 자동 합성 smoke, **SYN-Val 아님**, 실사/Dev/sealed 평가 아님.
@@ -59,6 +62,10 @@ FCN은 grayscale, LightGBM은 ink-density 대리 표적이다. 수렴·인식 �
 
 ## 8. 다음 단계 / 필요한 결정 / 블로커
 야간에는 전용 상태 루트 `work/w6-measurement-queue`를 사용하되 W1 머신 공통 배타 잠금을 공유한다.
+5건을 실제 등록하고 queued/벽시계 0 상태를 확인했다. ID·요청/code/data digest는
+`2026-10-09-queue-registration.json`에 기록했다. 코드 정본은 `1ea7b85`다.
+Codex heartbeat `w6-t6-0-cpu`를 10월 10일 01:00 KST 시작으로 등록했다.
+성공/실패/창 만료 보고 후 PAUSED, 창을 놓치면 다음 날 임의 재실행하지 않는다.
 조각 준비 1건(1800초), FCN/LightGBM × 4/8스레드 4건(각 3600초), 모두 RAM 최대 3 GB.
 8192조각 cache, 크기 512/2048/8192 × seed 반복 3, FCN batch 8·3 epochs·102209 parameters,
 LightGBM 15 leaves·100 requested rounds를 비교한다. 모델별 두 thread job 상한 합은 2시간이다.
