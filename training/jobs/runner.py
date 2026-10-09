@@ -150,7 +150,7 @@ def execute(queue: Queue, row: dict[str, Any], manual: bool) -> dict[str, Any]:
                     members = []
                 for member in members:
                     try:
-                        if set(member.cpu_affinity()) - set(cpus):
+                        if guard.handle is None and set(member.cpu_affinity()) - set(cpus):
                             constrain(member, cpus)
                     except psutil.NoSuchProcess:
                         pass

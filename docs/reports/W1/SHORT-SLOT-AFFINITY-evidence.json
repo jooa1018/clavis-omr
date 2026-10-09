@@ -1,0 +1,59 @@
+{
+  "base": "84179b75fed1052c530f06a7c9caf98c02da7b27",
+  "checks": {
+    "H1-H9": "PASS",
+    "format": "PASS",
+    "imports": "PASS",
+    "mypy": "PASS",
+    "ruff": "PASS"
+  },
+  "ci": "PENDING",
+  "coverageGates": {
+    "eval": true,
+    "jobs": true,
+    "overall": true,
+    "platform": true
+  },
+  "diagnostic": [
+    {
+      "errno": null,
+      "function": "sample",
+      "line": 38,
+      "type": "NoSuchProcess",
+      "winerror": null
+    },
+    {
+      "errno": null,
+      "function": "execute",
+      "line": 153,
+      "type": "AccessDenied",
+      "winerror": null
+    }
+  ],
+  "required": {
+    "contracts": {
+      "count": 298,
+      "status": "PASS"
+    },
+    "integrity-positive-negative": {
+      "count": 24,
+      "status": "PASS"
+    }
+  },
+  "resources": {
+    "cpuLimit": 2,
+    "cpuSecondsSampled": 72.921875,
+    "peakRssBytesSampled": 292917248,
+    "reason": "completed",
+    "slot": 0,
+    "status": "succeeded",
+    "wallSeconds": 83.60900000000402
+  },
+  "status": "PARTIAL",
+  "windows": {
+    "errors": 0,
+    "failures": 0,
+    "seconds": 81.262,
+    "tests": 933
+  }
+}
