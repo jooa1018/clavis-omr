@@ -109,5 +109,12 @@
     "Dev": "NOT_RUN",
     "B0": "NOT_RUN",
     "sealed": "NOT_RUN"
+  },
+  "ci": {
+    "status": "PASS",
+    "head": "286ae90f3cb7fe8ca1dd8864613adb4ab7b0aae8",
+    "url": "https://github.com/jooa1018/clavis-omr/actions/runs/37891415849",
+    "linux": "PASS",
+    "windows": "PASS"
   }
 }
