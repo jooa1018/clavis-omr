@@ -1,0 +1,3 @@
+note dur=eighth pos=1 head=normal v=1 grace=appoggiatura
+note dur=eighth pos=3 head=normal v=1 chord=1 grace=appoggiatura
+note dur=quarter pos=0 head=normal v=1

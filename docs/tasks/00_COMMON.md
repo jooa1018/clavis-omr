@@ -44,7 +44,7 @@
 ## 4. 코딩 표준
 
 - Python 3.12, 환경 관리는 uv, 린트·포맷은 ruff, 타입 검사는 mypy(`contracts`, `core`는 strict), 테스트는 pytest. 속성 기반 테스트에는 hypothesis를 권장한다.
-- **엔진 런타임 의존성**(`src/clavis`)은 numpy, opencv-python-headless, pillow, pypdfium2, onnxruntime, lxml, pydantic, (서비스) fastapi/uvicorn으로 제한한다. 새 런타임 의존성은 W1 승인과 라이선스 확인을 거친다.
+- **엔진 런타임 의존성**(`src/clavis`)은 numpy, opencv-python-headless, pillow, pypdfium2, onnxruntime, xmlschema, elementpath, pydantic, (서비스) fastapi/uvicorn으로 제한한다. 새 런타임 의존성은 W1 승인과 라이선스 확인을 거친다.
 - **학습 도구**(PyTorch CPU 휠, LightGBM, scikit-learn)는 `training/`에서만 쓴다. **GPU와 CUDA는 쓰지 않는다**(PLAN v1.1). 학습한 모델은 ONNX로 내보내 런타임에서 쓴다. LightGBM 모델도 ONNX로 변환하거나, 불가능하면 런타임 의존성 추가를 ADR로 제안한다.
 - 로깅은 표준 `logging` 구조화 로그를 쓴다. `print`는 CLI 출력에만 쓴다. 로그에 이미지 내용이나 사적 경로를 쓰지 않는다.
 - 경로는 `pathlib`로 다룬다. Windows와 Linux에서 모두 돌아야 한다. 심볼릭 링크에 의존하지 않는다. 줄바꿈은 LF다.
@@ -115,14 +115,16 @@
 
 ## 10. 자원 사용 규칙
 
-- **GPU는 쓰지 않는다.** 학습, 렌더링, 평가가 모두 REF-LAPTOP(RAM 8 GB, 여유 디스크 약 10 GB) 한 대에서 돈다. 이 노트북은 사용자도 쓰는 기기다.
+- **GPU는 쓰지 않는다.** 학습, 렌더링, 평가가 모두 REF-LAPTOP(RAM 24 GB(16 + 8 GB, DDR4-3200 듀얼 채널), 여유 디스크 약 10 GB) 한 대에서 돈다. 이 노트북은 사용자도 쓰는 기기다.
 - **무거운 작업은 W1 배치 실행기의 단일 큐로만** 돌린다(동시 1개, 동시에 쓰는 연산 자원 ≤ 논리 CPU 8개, RAM ≤ 3 GB). 개발 중 짧은 실행(단위 테스트, 소규모 추론)은 큐 밖에서 해도 된다.
+- 실행 예산 보고에 메모리 구성(24 GB = 16 + 8 GB, DDR4-3200 듀얼 채널)을 기록한다. 증설 전 8 GB 측정값과 섞어 비교하지 않는다. 엔진 RSS ≤ 1.5 GiB와 작업당 RAM ≤ 3 GB는 유지한다.
 - **학습 시간 상한**: 모델당 벽시계 4시간(REF-LAPTOP). 넘으면 데이터나 모델을 줄이거나 ADR로 정당화한다. 모든 긴 작업은 체크포인트와 재개를 지원해야 한다.
 - 저장소 데이터 총량 ≤ 4 GB, 디스크 여유 ≥ 3 GB를 유지한다.
 - 무료 클라우드 CPU 노트북은 보조로만 쓴다. 한도가 바뀔 수 있으므로 필수 경로에 넣지 않고, 사적 데이터는 올리지 않는다.
 - 유료 컴퓨트와 GPU는 사용자 승인 없이 쓰지 않는다(PLAN.md 7.4절 확장 규칙).
 
 - OR-001(짧은 개발 실행): 벽시계 10분 이하, RAM 3 GB 이하, 렌더·이미지 100개 이하, 사용자가 지켜보는 수동 실행은 배치 큐 밖에서 해도 된다. 이보다 무거운 작업은 큐로만 돌린다.
+- OR-005(짧은 실행 슬롯): 전체 시험, 렌더·학습·OCR smoke 등 OR-001 실행은 W1 슬롯 래퍼로 실행한다(단위 시험 몇 개는 제외). 동시 슬롯은 머신 공통 설정이며 기본 3개다. 래퍼는 연산 스레드 2, RAM 최대 3 GB, 벽시계 최대 600초를 적용하고 기존 큐의 머신 잠금을 공유해 무거운 큐 작업과 동시에 실행하지 않는다. 사용법: `uv run --locked --all-groups python -m training.jobs.short run pytest tests/`. 렌더·이미지 수는 `run --items N <module> ...`로 선언하며 100개를 넘으면 큐로 보낸다. 슬롯 설정·종료·증거 확인은 training/jobs/README.md를 따른다.
 - OR-002(스캐너 이전 병합): W4 무결성 도구가 main에 들어오기 전에도 B등급 PR은 병합할 수 있다. 보고서에 NOT_RUN으로 기록하고, 도구가 들어오면 W1이 main 전체에 소급 실행하며 위반은 해당 소유자가 고친다.
 
 - draft PR에서는 CI가 돌지 않는다. 준비 완료로 바꾸기 전에 로컬 Windows 전체 시험을 돌려 명령과 통과 수를 보고서에 남긴다. push는 작업 단위로 묶는다. main의 Windows 예약 실행이 실패하면 원인 PR 소유자가 바로 고친다.
@@ -144,7 +146,8 @@
 
 | 용도 | 허용 | 조건부 | 금지 |
 |---|---|---|---|
-| 엔진 런타임 코드·의존성 | MIT, BSD, Apache-2.0, ISC, PSF, Zlib, HPND, MPL-2.0(수정 없이 사용) | — | GPL, LGPL(정적 포함), AGPL, 상업 전용 |
+| 엔진 런타임 코드·의존성 | MIT, MIT-CMU, BSD, Apache-2.0, ISC, PSF, Zlib, HPND, MPL-2.0(수정 없이 사용) | — | GPL, LGPL(정적 포함), AGPL, 상업 전용 |
+| 엔진에 동봉하는 명세 스키마 | W3C Community Final Specification Agreement, W3C Software and Document License | 원본 그대로 동봉, 원본 고지·출처·SHA-256 기록, 명세 이름·버전 표기(FSA 2.2). 항목별 Orchestrator 승인. 현재 승인: MusicXML 4.0 XSD 3종 | 다른 명세·라이브러리로 확대 해석 |
 | 배포 가중치 | 자체 학습(허용 데이터로), Apache/MIT/BSD 공개 가중치(예: PP-OCRv5) | CC-BY 계열 가중치(표기) | NC, ND, AGPL·GPL 코드와 결합된 가중치 |
 | 학습 데이터 | PD, CC0, 자체 생성, CC-BY(표기) | CC-BY-SA(Orchestrator 승인) | NC, ND, 출처 불명, 권리 미확인 |
 | 학습·평가 도구(비배포, 외부 프로세스) | 위 전부 + LGPL(Verovio), GPL(MuseScore, LilyPond) | AGPL(Audiveris, homr — `eval/baselines`에서 격리 실행만) | 엔진 코드로의 import나 코드 복사 |
