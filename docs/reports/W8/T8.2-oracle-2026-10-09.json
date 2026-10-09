@@ -1,0 +1,94 @@
+{
+  "evaluatorDigest": "e70fc1e07d636ea6c1c4f6874b4a30903a2c6c4db121b0a729850b2dfa56955e",
+  "evaluatorVersion": "0.2.0",
+  "inputDigests": {
+    "prediction": "869222668456118b10b66f8fc9b88ccdf12985bf5a16fec6946c8dcc0e767824",
+    "reference": "29c54cda6c5d2f947b29f80950a28f16348aaed50e5248d5019b9991396da335"
+  },
+  "k1Operations": 0,
+  "metrics": {
+    "K1": {
+      "denominator": 6,
+      "numerator": 0,
+      "value": 0.0
+    },
+    "K1-L": {
+      "denominator": 0,
+      "numerator": 0,
+      "value": null
+    },
+    "accidentalExactRate": {
+      "denominator": 0,
+      "numerator": 0,
+      "value": null
+    },
+    "chordSymbolExactRate": {
+      "denominator": 0,
+      "numerator": 0,
+      "value": null
+    },
+    "durationExactRate": {
+      "denominator": 6,
+      "numerator": 6,
+      "value": 1.0
+    },
+    "graceExact": {
+      "denominator": 0,
+      "numerator": 0,
+      "value": null
+    },
+    "keySignatureExactRate": {
+      "denominator": 1,
+      "numerator": 1,
+      "value": 1.0
+    },
+    "lyricExactRate": {
+      "denominator": 0,
+      "numerator": 0,
+      "value": null
+    },
+    "measureExactMatchRate": {
+      "denominator": 2,
+      "numerator": 2,
+      "value": 1.0
+    },
+    "measureExactWithLyrics": {
+      "denominator": 2,
+      "numerator": 2,
+      "value": 1.0
+    },
+    "pitchExactRate": {
+      "denominator": 5,
+      "numerator": 5,
+      "value": 1.0
+    },
+    "restExactRate": {
+      "denominator": 1,
+      "numerator": 1,
+      "value": 1.0
+    },
+    "tieExactRate": {
+      "denominator": 2,
+      "numerator": 2,
+      "value": 1.0
+    },
+    "timeSignatureExactRate": {
+      "denominator": 1,
+      "numerator": 1,
+      "value": 1.0
+    }
+  },
+  "notImplemented": [
+    "K2",
+    "K3",
+    "expanded-play-order",
+    "regions",
+    "geometry",
+    "calibration"
+  ],
+  "onsetOnlyMismatch": 0,
+  "protocol": "clavis-evaluation-1.1",
+  "schema": "clavis-eval-report-0.1",
+  "scope": "single-part-staff-multivoice",
+  "status": "evaluated"
+}

@@ -1,0 +1,16 @@
+schema: clavis-benchmark-policy-1
+status: provisional
+owner: W1
+approval: Orchestrator 2026-10-09
+rationale: REF-LAPTOP has 12 logical CPUs, benchmark libraries use 4, and usual background load is below 1 logical CPU. Report repeated invalid measurements before changing thresholds.
+values:
+  sample_seconds: 0.1
+  preflight_seconds: 10
+  retry_seconds: 60
+  retries: 10
+  mean_external_cpus: 0.5
+  window_external_cpus: 1.0
+  window_seconds: 5
+  start_available_bytes: 4000000000
+  run_available_bytes: 2000000000
+  threads: 4

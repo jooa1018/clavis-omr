@@ -3,8 +3,6 @@
 import json
 import os
 import sys
-import threading
-import time
 from datetime import datetime
 from pathlib import Path
 from unittest.mock import patch
@@ -125,21 +123,19 @@ def test_checkpoint(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
 
 def test_checkpoint_pause_resume_and_fifo(tmp_path: Path) -> None:
     q = Queue(tmp_path)
-    first = q.submit(spec(config={"steps": 20}))
+    first = q.submit(spec(module="tests.platform.checkpoint_job", config={"steps": 20}))
     second = q.submit(spec())
 
-    def pause_after_checkpoint() -> None:
-        for _ in range(100):
-            if (tmp_path / first / "checkpoint.json").exists():
-                q.pause()
-                return
-            time.sleep(0.02)
+    def pause_after_checkpoint(process, cpu, diagnostics):
+        if (tmp_path / first / "checkpoint.json").exists():
+            q.pause()
+        return sample(process, cpu, diagnostics)
 
-    watcher = threading.Thread(target=pause_after_checkpoint)
-    watcher.start()
-    with patch("training.jobs.runner.disk_ok", return_value=True):
+    with (
+        patch("training.jobs.runner.disk_ok", return_value=True),
+        patch("training.jobs.runner.sample", side_effect=pause_after_checkpoint),
+    ):
         reports = run(q, manual=True)
-    watcher.join(timeout=3)
     assert reports[0]["reason"] == "user-pause"
     step = json.loads((tmp_path / first / "checkpoint.json").read_text())["state"]["step"]
     assert 0 < step < 20
@@ -183,7 +179,7 @@ def test_limits(tmp_path: Path, reason: str) -> None:
         patch("training.jobs.runner.disk_ok", return_value=reason != "disk-low"),
     ):
         if reason == "ram-limit":
-            sampler.side_effect = lambda p, c: (3000000001, 1)
+            sampler.side_effect = lambda p, c, d: (3000000001, 1)
         if reason == "monitor-error":
             sampler.side_effect = psutil.AccessDenied()
         result = execute(q, row, manual=False)
@@ -238,6 +234,25 @@ def test_cpu_budget_selection() -> None:
     for request, available in [(9, [0, 1]), (0, [0, 1]), (1, [0])]:
         with pytest.raises(ValueError):
             allowed_cpus(request, available)
+
+
+def test_job_object_does_not_need_descendant_affinity_queries(tmp_path: Path) -> None:
+    """Windows enforces affinity in-kernel; unguarded failures still stop jobs."""
+    original = psutil.Process.cpu_affinity
+
+    def affinity(process: psutil.Process, cpus: list[int] | None = None) -> list[int] | None:
+        if cpus is None and process.pid != os.getpid():
+            raise psutil.AccessDenied(process.pid)
+        return original(process, cpus)
+
+    q = Queue(tmp_path)
+    q.submit(spec(config={"steps": 2}))
+    with patch.object(psutil.Process, "cpu_affinity", affinity):
+        report = run(q, manual=True)[0]
+    if sys.platform == "win32":
+        assert report["status"] == "succeeded"
+    else:
+        assert report["reason"] == "monitor-error"
 
 
 def test_library_injection(monkeypatch: pytest.MonkeyPatch) -> None:

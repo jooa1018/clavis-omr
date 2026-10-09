@@ -1,0 +1,50 @@
+{
+  "head": "52ab83f4ba05aac6b6ee02538b63b09a732e119e",
+  "files": {
+    "training/jobs/benchmark_monitor.py": "97a2f304bbf8144ab1fa36e74da340cd14f5369e26a052d82835a4f2fe6dd477",
+    "training/jobs/runner.py": "1a9a127b314258b4483b6944c25b7442fddbb398a164c840dfdbf0e07086f6ba",
+    "tests/platform/test_benchmark.py": "32acb439e25e9ed5e2fe4dfa18853f3f2140c4bba9a27c00d1c01b6dc8f42315",
+    "configs/jobs/benchmark.yaml": "3e71eb9c9ab822548f33715989cca95dcf835ed353e4cf1b097d58126740a0ed"
+  },
+  "findings": [
+    {
+      "file": "training/jobs/benchmark_monitor.py",
+      "line": 128,
+      "rule": "H9",
+      "owner": "W1",
+      "evidence_digest": "fb249a3f20e1a36a592a6c2eb21b29d0686d61032d38db41ef5ff654de088837"
+    },
+    {
+      "file": "training/jobs/runner.py",
+      "line": 194,
+      "rule": "H9",
+      "owner": "W1",
+      "evidence_digest": "f55bb63062ca7fa6483196ef2dc20d9cad1d0ef028c76a8a6030e30a59111f85"
+    },
+    {
+      "file": "training/jobs/runner.py",
+      "line": 269,
+      "rule": "H9",
+      "owner": "W1",
+      "evidence_digest": "62cb15b5b7c52f6c1e2f78736d6d34381fd3e3274c27556e936ec20069317c08"
+    }
+  ],
+  "tests": {
+    "tests": 8,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  "pytestSeconds": 2.996,
+  "decision": "W4_CONFIRMED_ONE_H9_AND_TWO_UNCHANGED_DIGEST_RELOCATIONS",
+  "authority": "Orchestrator user message 2026-10-09 in W1, verified through read_thread",
+  "approvedBy": [
+    "W4",
+    "orchestrator"
+  ],
+  "scope": "operational benchmark admission; synthetic selected unit tests only",
+  "fullSuite": "NOT_RUN by W4 for this review",
+  "actualBenchmark": "NOT_RUN",
+  "equivalentHead": "3d6c6641e4c76d89f87d0d2341bf996af2e6f314",
+  "identicalTree": "296799dd26086eeea4f450c8d7511dfb45bfceaf"
+}

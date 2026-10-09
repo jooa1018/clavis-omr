@@ -1,0 +1,300 @@
+{
+  "date": "2026-10-09",
+  "status": "PARTIAL",
+  "integratedMain": "91cbda7",
+  "testedHead": "fcf6f882a0b30b5bb2db075efd7c7add3d6c4c6d",
+  "sourceState": "uncommitted W8 implementation identified by sourceFiles hashes",
+  "sourceFiles": [
+    {
+      "file": "configs/assemble/constants.yaml",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "file": "configs/assemble/README.md",
+      "sha256": "360c73fbf365adebc9d9817109ee087f1e170a4307dc59297bcd5d5b87accdcc"
+    },
+    {
+      "file": "configs/assemble/rules.yaml",
+      "sha256": "3ff433289b6e3594b9af50ffd10ea1674585f6977a1d71cd7d1e1b19c46a307b"
+    },
+    {
+      "file": "src/clavis/assemble/__init__.py",
+      "sha256": "ed037777be64ca795c9b0f56ced7ca6eca5f4fe98d00eae6f070c29bee650d06"
+    },
+    {
+      "file": "src/clavis/assemble/README.md",
+      "sha256": "a6c64be8627c7c7c72213429b1997a2b778d86a2d09313a0b4cd5a6b7f9541d6"
+    },
+    {
+      "file": "src/clavis/assemble/staff.py",
+      "sha256": "96f8a737d2f2290eb8ce22dc52194a85b1ddffb84b1d227f65e5433f8f0b3bfa"
+    },
+    {
+      "file": "src/clavis/assemble/theory.py",
+      "sha256": "3f238f94198901b2793c95ddc99e41e7a256c41be053c4abf5375caac98044ad"
+    },
+    {
+      "file": "src/clavis/export/__init__.py",
+      "sha256": "ccc83454a95fae665294cfe7a54442ffab900729f43658ff34e044eda474eab8"
+    },
+    {
+      "file": "src/clavis/export/musicxml.py",
+      "sha256": "6ab4610d7d2dc54a88711dcb2c93467cd5f763ddd0ca38d79aba8b2ffe6c1e93"
+    },
+    {
+      "file": "src/clavis/export/README.md",
+      "sha256": "b86b5054d4f346439db939fe827b5c26cc31762243513f799538db30e5656b37"
+    },
+    {
+      "file": "src/clavis/export/reparse.py",
+      "sha256": "ad359a80e8f2b23d2811ff451b1d8045ef8a405efb1a7c505705ea36ed0b84e2"
+    },
+    {
+      "file": "src/clavis/export/schemas/musicxml-4.0/.gitattributes",
+      "sha256": "2da94de731a13183c5477d74c3daa8b6240524e7113fca5e92467d31750fdcd9"
+    },
+    {
+      "file": "src/clavis/export/schemas/musicxml-4.0/manifest.json",
+      "sha256": "b4f9aaa0b3eb16e6a4689e39585ea140cfdc2d5875923b8d68d34d6125123031"
+    },
+    {
+      "file": "src/clavis/export/schemas/musicxml-4.0/musicxml.xsd",
+      "sha256": "bfe37ed25a9ec00e6f2591d53df260b84efe12aed209ba3ac0a76f9287665a99"
+    },
+    {
+      "file": "src/clavis/export/schemas/musicxml-4.0/NOTICE",
+      "sha256": "4ecaa6be4f93f2b06dc84db3fba1487626ada65aabeed7455d5cb74fdf28d0b7"
+    },
+    {
+      "file": "src/clavis/export/schemas/musicxml-4.0/xlink.xsd",
+      "sha256": "6e601f8eeb41618b50e4c7f944dff754e57ea43b602755470dda24c9c2f6df92"
+    },
+    {
+      "file": "src/clavis/export/schemas/musicxml-4.0/xml.xsd",
+      "sha256": "616a3077df5cfc954ac74a75abe9697b95eef7a85dbe09367d995a483e840eb5"
+    },
+    {
+      "file": "src/clavis/export/validation.py",
+      "sha256": "070e9134fd221c7e6d9aca2cb7550c7cd94074a1d4e4143b7a65e0624019f359"
+    },
+    {
+      "file": "tests/assemble/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "tests/assemble/helpers.py",
+      "sha256": "004ee5f87f4df4818ffb53ed8ef088cc2f7d802d53d80a5fc04b3af311e98986"
+    },
+    {
+      "file": "tests/assemble/README.md",
+      "sha256": "bf2e58d6d0aa3bea850460f7692374ae120f0086292fc44299347ac6900bfbaa"
+    },
+    {
+      "file": "tests/assemble/test_staff.py",
+      "sha256": "1eef695391b3ba360965abda9ecb47d8ebdf88bbc2880aecd9b463480a46fa02"
+    },
+    {
+      "file": "tests/assemble/test_theory.py",
+      "sha256": "842bf01537215cfa4a176a0288d3cbd601a5e0d5118680389a3037899d10fd66"
+    },
+    {
+      "file": "tests/export/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "tests/export/fixtures/oracle.lstl",
+      "sha256": "f8c1e43a0e2fe73287eeb4cc721292f05580635c6dcf2eee8da1c1ba7dd1e407"
+    },
+    {
+      "file": "tests/export/fixtures/oracle.musicxml",
+      "sha256": "29c54cda6c5d2f947b29f80950a28f16348aaed50e5248d5019b9991396da335"
+    },
+    {
+      "file": "tests/export/oracle_smoke.py",
+      "sha256": "1c5c30656a9d9e4cbb254fbf7289699923f231bf600a793880ce28866c0d9c2d"
+    },
+    {
+      "file": "tests/export/README.md",
+      "sha256": "c1b23af8db2deb6f0bc078ea5bf6632d299763f0cff2dead216e3a45d335dc3c"
+    },
+    {
+      "file": "tests/export/test_musicxml.py",
+      "sha256": "527af99336b0dd51d9c2fe2e38f1fcf3838eaec2b568fcde334dc720da7c9963"
+    }
+  ],
+  "scope": "authored symbolic fixtures; NOT SYN-Val; no Dev/sealed/real evaluation",
+  "memoryConfiguration": "24 GB (16+8 GB, DDR4-3200 dual channel)",
+  "versions": {
+    "xmlschema": "4.3.2",
+    "elementpath": "5.1.4"
+  },
+  "componentTests": [
+    {
+      "tests": "298",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "28.005"
+    }
+  ],
+  "componentSlot": {
+    "status": "succeeded",
+    "reason": "completed",
+    "slot": 1,
+    "runId": "21be3987acc2422888dd07dcd4ffa432",
+    "jobId": "d9e591031f5c467f832f71854dab9d15",
+    "wallSeconds": 32.36000000000058,
+    "cpuSecondsSampled": 24.15625,
+    "peakRssBytesSampled": 252882944,
+    "cpuLimit": 2
+  },
+  "coverage": {
+    "covered_lines": 507,
+    "num_statements": 523,
+    "percent_covered": 96.94072657743786,
+    "percent_covered_display": "97",
+    "missing_lines": 16,
+    "excluded_lines": 0,
+    "percent_statements_covered": 96.94072657743786,
+    "percent_statements_covered_display": "97"
+  },
+  "coverageFiles": {
+    "src/clavis/assemble/__init__.py": {
+      "covered_lines": 0,
+      "num_statements": 0,
+      "percent_covered": 100.0,
+      "percent_covered_display": "100",
+      "missing_lines": 0,
+      "excluded_lines": 0,
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100"
+    },
+    "src/clavis/assemble/staff.py": {
+      "covered_lines": 190,
+      "num_statements": 194,
+      "percent_covered": 97.9381443298969,
+      "percent_covered_display": "98",
+      "missing_lines": 4,
+      "excluded_lines": 0,
+      "percent_statements_covered": 97.9381443298969,
+      "percent_statements_covered_display": "98"
+    },
+    "src/clavis/assemble/theory.py": {
+      "covered_lines": 57,
+      "num_statements": 57,
+      "percent_covered": 100.0,
+      "percent_covered_display": "100",
+      "missing_lines": 0,
+      "excluded_lines": 0,
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100"
+    },
+    "src/clavis/export/__init__.py": {
+      "covered_lines": 0,
+      "num_statements": 0,
+      "percent_covered": 100.0,
+      "percent_covered_display": "100",
+      "missing_lines": 0,
+      "excluded_lines": 0,
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100"
+    },
+    "src/clavis/export/musicxml.py": {
+      "covered_lines": 137,
+      "num_statements": 149,
+      "percent_covered": 91.94630872483222,
+      "percent_covered_display": "92",
+      "missing_lines": 12,
+      "excluded_lines": 0,
+      "percent_statements_covered": 91.94630872483222,
+      "percent_statements_covered_display": "92"
+    },
+    "src/clavis/export/reparse.py": {
+      "covered_lines": 66,
+      "num_statements": 66,
+      "percent_covered": 100.0,
+      "percent_covered_display": "100",
+      "missing_lines": 0,
+      "excluded_lines": 0,
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100"
+    },
+    "src/clavis/export/validation.py": {
+      "covered_lines": 57,
+      "num_statements": 57,
+      "percent_covered": 100.0,
+      "percent_covered_display": "100",
+      "missing_lines": 0,
+      "excluded_lines": 0,
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100"
+    }
+  },
+  "fullWindowsSlot": {
+    "status": "failed",
+    "reason": "monitor-error",
+    "slot": 1,
+    "runId": "b5120710cd3a494fa025b2d4182c802a",
+    "jobId": "962c9e8f546343b0b4c1dae2724d1b39",
+    "wallSeconds": 215.20300000000134,
+    "cpuSecondsSampled": 100.09375,
+    "peakRssBytesSampled": 226058240,
+    "cpuLimit": 2
+  },
+  "fullWindowsJUnit": "NOT_PRODUCED; monitor-error; pass count unconfirmed",
+  "fullCoverageGates": "NOT_RUN; no full coverage output",
+  "smokeSlot": {
+    "status": "succeeded",
+    "reason": "completed",
+    "slot": 2,
+    "runId": "a373b1b62c864a4fb3bed1d53746e487",
+    "jobId": "ace9614ca06e433180583bfc4edf8be8",
+    "wallSeconds": 19.51600000000326,
+    "cpuSecondsSampled": 9.953125,
+    "peakRssBytesSampled": 194797568,
+    "cpuLimit": 2
+  },
+  "schemaTimings": {
+    "schemaLoadNs": 5412775700,
+    "validationNs": 25173200
+  },
+  "oracleReport": "docs/reports/W8/T8.2-oracle-2026-10-09.json",
+  "staticChecks": {
+    "ruff": "PASS (137 Python files)",
+    "format": "PASS",
+    "mypy": "PASS (78 source files)",
+    "importBoundaries": "PASS (2)",
+    "runtimeLicenses": "PASS (0 violations)",
+    "wheelSchemaHashes": "PASS (3 official XSD files)"
+  },
+  "hardcodeScan": {
+    "schema": "clavis-hardcode-scan-1",
+    "status": "PASS",
+    "pythonFiles": 137,
+    "manifestIdentifiers": 0,
+    "findings": [],
+    "suppressed": [
+      {
+        "file": "training/jobs/runner.py",
+        "line": 161,
+        "rule": "H9",
+        "owner": "W1",
+        "evidence_digest": "f55bb63062ca7fa6483196ef2dc20d9cad1d0ef028c76a8a6030e30a59111f85"
+      },
+      {
+        "file": "training/jobs/runner.py",
+        "line": 223,
+        "rule": "H9",
+        "owner": "W1",
+        "evidence_digest": "62cb15b5b7c52f6c1e2f78736d6d34381fd3e3274c27556e936ec20069317c08"
+      }
+    ],
+    "byOwner": {}
+  },
+  "privacyScan": {
+    "status": "PASS",
+    "trackedFiles": 547,
+    "findings": []
+  },
+  "linuxWindowsCI": "NOT_RUN; keep draft until full Windows run completes"
+}
