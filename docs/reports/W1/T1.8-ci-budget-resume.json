@@ -1,0 +1,255 @@
+{
+  "asOfKstDate": "2026-10-09",
+  "source": "GitHub PR API, complete file pagination; no source data inspected",
+  "actualPRs": [
+    {
+      "number": 1,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": true
+    },
+    {
+      "number": 2,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": true
+    },
+    {
+      "number": 3,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": true,
+      "windowsSensitive": false
+    },
+    {
+      "number": 4,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": true
+    },
+    {
+      "number": 5,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": false
+    },
+    {
+      "number": 6,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": false
+    },
+    {
+      "number": 7,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": true
+    },
+    {
+      "number": 8,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": false
+    },
+    {
+      "number": 9,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": false
+    },
+    {
+      "number": 10,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": false
+    },
+    {
+      "number": 11,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": false
+    },
+    {
+      "number": 12,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": false
+    },
+    {
+      "number": 13,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": false
+    },
+    {
+      "number": 14,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": false
+    },
+    {
+      "number": 15,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": true
+    },
+    {
+      "number": 16,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": false
+    },
+    {
+      "number": 17,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": true
+    },
+    {
+      "number": 18,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": false
+    },
+    {
+      "number": 19,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": false
+    },
+    {
+      "number": 20,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": true
+    },
+    {
+      "number": 21,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": false
+    },
+    {
+      "number": 22,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": true
+    },
+    {
+      "number": 23,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": false
+    },
+    {
+      "number": 24,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": true,
+      "windowsSensitive": false
+    },
+    {
+      "number": 25,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": false
+    },
+    {
+      "number": 26,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": false
+    },
+    {
+      "number": 27,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": true
+    },
+    {
+      "number": 28,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": false
+    },
+    {
+      "number": 29,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": true
+    },
+    {
+      "number": 30,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": false
+    },
+    {
+      "number": 31,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": false
+    },
+    {
+      "number": 32,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": false
+    },
+    {
+      "number": 33,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": false,
+      "windowsSensitive": false
+    },
+    {
+      "number": 34,
+      "createdKstDate": "2026-09-29",
+      "docsOnly": true,
+      "windowsSensitive": false
+    }
+  ],
+  "measuredRun": 37805130781,
+  "jobs": [
+    {
+      "completed_at": "2026-10-08T15:58:51Z",
+      "conclusion": "success",
+      "name": "Route jobs and lightweight document checks",
+      "started_at": "2026-10-08T15:58:46Z",
+      "seconds": 5.0,
+      "quotaMinutes": 1
+    },
+    {
+      "completed_at": "2026-10-08T16:00:23Z",
+      "conclusion": "success",
+      "name": "quality (windows-latest, Python 3.12)",
+      "started_at": "2026-10-08T15:58:54Z",
+      "seconds": 89.0,
+      "quotaMinutes": 4
+    },
+    {
+      "completed_at": "2026-10-08T15:59:42Z",
+      "conclusion": "success",
+      "name": "quality (ubuntu-latest, Python 3.12)",
+      "started_at": "2026-10-08T15:58:54Z",
+      "seconds": 48.0,
+      "quotaMinutes": 1
+    }
+  ],
+  "assumptions": [
+    "One ready PR run and one main merge run per PR; no retries or additional pushes",
+    "Every active day repeats the observed 2026-09-29 PR mix",
+    "Daily changed-main Windows schedule runs once",
+    "Linux 1x, Windows 2x; each job rounded up to a minute",
+    "30 active days per month; paused days are excluded, not evidence of slower development"
+  ],
+  "costPerPRAndMerge": {
+    "docsOnly": 2,
+    "linuxOnly": 3,
+    "windowsSensitive": 7
+  },
+  "oldPerPRAndMerge": 10,
+  "monthlyOld": 10200,
+  "monthlyNew": 4320,
+  "dailyNew": 144,
+  "dailyScheduledWindows": 5,
+  "actualNewPRsOnResumeDayAtSnapshot": 0
+}
