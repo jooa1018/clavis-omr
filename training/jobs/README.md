@@ -92,3 +92,13 @@ seed 기본 0, data digest 기본 영 해시는 데이터 없는 시험용이다
 큐와 동일하게 원문 stdout/stderr는 저장하지 않는다. pytest 결과가 필요하면 위처럼 저장소의 무시된 work/에 JUnit을 지정한다.
 실험 기록과 체크포인트는 `~/.clavis/short-runs/<runId>/<jobId>` 및 실행별 experiments.jsonl에 남는다.
 원본 로그/JUnit을 커밋하지 않고 개인정보를 제거한 집계만 보고한다.
+
+## 독점 벤치마크
+
+`uv run --locked --all-groups python -m training.jobs.benchmark <module> ...`
+
+일반 큐 요청 JSON의 `kind: "benchmark", threads: 4`로도 등록할 수 있다. 야간/수동 시작·pause·벽시계/RAM/디스크 상한은 유지한다. 수동 명령은 같은 머신 worker.lock을 독점하며 점유 중이면 busy로 종료한다. 대기 중에도 큐 pause와 야간 창 종료를 확인한다.
+
+4 연산 스레드, 보통 우선순위, 전체 CPU affinity는 이 측정 유형에만 적용한다. 환경 변수 및 라이브러리 스레드 주입·Windows Job Object 상속은 그대로다. 시작 전 10초 검사와 최대 10회 재시도(검사 시작 간격 60초), 실행 중 시간 가중 외부 부하 및 RAM/AC 검사는 COMMON 10절과 configs/jobs/benchmark.yaml을 따른다.
+
+결과는 `~/.clavis/benchmark-runs/<runId>/experiments.jsonl`에 보존한다. 큐 등록은 기존 jobs 기록에 남긴다. status=invalid 결과는 예산 판정에서 제외하며, 외부 부하 표본과 invalidReasons를 조사한다. 예산 판정은 benchmark.validity=valid인 완료 결과에만 허용한다. 5초 미만 측정은 5초 창 최대를 null로 남긴다. 종료된 자식의 미관찰 CPU는 빼지 않아 외부 부하를 보수적으로 잡을 수 있으며 표본 방식의 한계다. AC 상태를 확인할 수 없으면 시작하지 않는다. Windows 전원 모드 API가 없는 OS는 unavailable로 기록한다.

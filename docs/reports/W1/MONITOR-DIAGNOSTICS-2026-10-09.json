@@ -1,0 +1,53 @@
+{
+  "schema": "clavis-w1-monitor-validation-1",
+  "base": "358fdd22b91be2fb9ad12c57057b4ecfdf56d97c",
+  "memoryConfiguration": "24 GB (16+8 GB DDR4-3200 dual channel)",
+  "windows": {
+    "tests": "1428",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "223.045"
+  },
+  "execution": {
+    "status": "succeeded",
+    "reason": "completed",
+    "slot": 0,
+    "runId": "298e4f3aca25406cb6f145ae8da295a5",
+    "jobId": "68cd198d525a4773a080f33ed1624b55",
+    "wallSeconds": 228.06199999999808,
+    "cpuSecondsSampled": 164.21875,
+    "peakRssBytesSampled": 319565824,
+    "cpuLimit": 2,
+    "monitorDiagnostics": [
+      {
+        "exceptionType": "NoSuchProcess",
+        "site": "sample.memory_info",
+        "skippedChild": true,
+        "count": 22
+      },
+      {
+        "exceptionType": "NoSuchProcess",
+        "site": "sample.num_threads",
+        "skippedChild": false,
+        "count": 1
+      },
+      {
+        "exceptionType": "NoSuchProcess",
+        "site": "sample.num_threads",
+        "skippedChild": true,
+        "count": 7
+      }
+    ]
+  },
+  "coverageGates": "PASS",
+  "requiredChecks": "PASS",
+  "ast": "PASS",
+  "privacy": "PASS",
+  "licenses": "PASS",
+  "twoOsCi": {
+    "status": "PASS",
+    "runUrl": "https://github.com/jooa1018/clavis-omr/actions/runs/37894532479"
+  },
+  "mergeCommit": "9623facbb4e50982fb87658b375902998bb9be94"
+}
