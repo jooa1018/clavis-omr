@@ -3,6 +3,7 @@
 
 ## 1. 요약 (3줄 이내)
 W5 #32와 W1 monitor-error 수정 #46을 main에서 반영했다.
+후속 해소(2026-10-09): W1 [PR #48](https://github.com/jooa1018/clavis-omr/pull/48)의 자식 프로세스 표본 오류 처리·진단 추가까지 반영하여 monitor-error가 해소됐다.
 공유 extract_strip → 원본/제거 채널 → SymbolGraph → 검증된 StaffLattice 초안을 연결했다.
 FCN·LightGBM measurement-only 예비 경로를 검증했고, 정식 측정은 10월 10일 01–07시 KST 큐로 실행한다.
 
@@ -74,3 +75,6 @@ LightGBM 15 leaves·100 requested rounds를 비교한다. 모델별 두 thread j
 정식 완료 후 처리량·RSS·CPU·수준별 반복 분산을 보고하고, 보수적 4시간 데이터 규모와 모델 크기를 제안한다.
 PLAN 7.5의 20–40시간은 재학습 일정·실제 데이터가 없는 한 조건부 추정으로만 검증한다.
 OR-003 편입 전 measurement-only이며 평가 보고·엔진 모델·체크포인트 선택에는 사용하지 않는다.
+
+후속 운영 상태: `2026-10-09-monitor48.md` 참조. Orchestrator 판정으로 T6.0은 일반 배치에서 4→8→4→8로 비교한다.
+구 큐는 보관하고 v2 큐·source descriptor 및 회차별 부하 기록으로 재등록한다. 최초 등록 기록은 변경하지 않는다.
