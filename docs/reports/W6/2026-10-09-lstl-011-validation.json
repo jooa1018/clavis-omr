@@ -1,0 +1,119 @@
+{
+  "status": "PARTIAL",
+  "schema": "W6-component-validation",
+  "scope": "authored mock; NOT SYN-Val",
+  "git_sha": "c48ec6028ce3f1dbcf135d1c1a14f736414f635b",
+  "memory": "24 GB (16+8 GB), DDR4-3200 dual channel",
+  "unit_junit": {
+    "time": "13.470",
+    "failures": "0",
+    "tests": "67",
+    "skipped": "0",
+    "errors": "0"
+  },
+  "determinism_junit": {
+    "time": "4.102",
+    "failures": "0",
+    "tests": "2",
+    "skipped": "0",
+    "errors": "0"
+  },
+  "full_windows": "NOT_RUN: slot-or-worker-unavailable, 3 attempts",
+  "hardcoding": {
+    "schema": "clavis-hardcode-scan-1",
+    "status": "PASS",
+    "pythonFiles": 127,
+    "manifestIdentifiers": 0,
+    "findings": [],
+    "suppressed": [
+      {
+        "file": "training/jobs/runner.py",
+        "line": 161,
+        "rule": "H9",
+        "owner": "W1",
+        "evidence_digest": "f55bb63062ca7fa6483196ef2dc20d9cad1d0ef028c76a8a6030e30a59111f85"
+      },
+      {
+        "file": "training/jobs/runner.py",
+        "line": 223,
+        "rule": "H9",
+        "owner": "W1",
+        "evidence_digest": "62cb15b5b7c52f6c1e2f78736d6d34381fd3e3274c27556e936ec20069317c08"
+      }
+    ],
+    "byOwner": {}
+  },
+  "privacy": {
+    "status": "PASS",
+    "trackedFiles": 523,
+    "findings": []
+  },
+  "coverage": [
+    {
+      "path": "src\\clavis\\symbols\\__init__.py",
+      "summary": {
+        "covered_lines": 0,
+        "num_statements": 0,
+        "percent_covered": 100.0,
+        "percent_covered_display": "100",
+        "missing_lines": 0,
+        "excluded_lines": 0,
+        "percent_statements_covered": 100.0,
+        "percent_statements_covered_display": "100"
+      }
+    },
+    {
+      "path": "src\\clavis\\symbols\\columns.py",
+      "summary": {
+        "covered_lines": 59,
+        "num_statements": 61,
+        "percent_covered": 96.72131147540983,
+        "percent_covered_display": "97",
+        "missing_lines": 2,
+        "excluded_lines": 0,
+        "percent_statements_covered": 96.72131147540983,
+        "percent_statements_covered_display": "97"
+      }
+    },
+    {
+      "path": "src\\clavis\\symbols\\detection.py",
+      "summary": {
+        "covered_lines": 118,
+        "num_statements": 120,
+        "percent_covered": 98.33333333333333,
+        "percent_covered_display": "98",
+        "missing_lines": 2,
+        "excluded_lines": 0,
+        "percent_statements_covered": 98.33333333333333,
+        "percent_statements_covered_display": "98"
+      }
+    },
+    {
+      "path": "src\\clavis\\symbols\\reading.py",
+      "summary": {
+        "covered_lines": 99,
+        "num_statements": 103,
+        "percent_covered": 96.11650485436893,
+        "percent_covered_display": "96",
+        "missing_lines": 4,
+        "excluded_lines": 0,
+        "percent_statements_covered": 96.11650485436893,
+        "percent_statements_covered_display": "96"
+      }
+    },
+    {
+      "path": "src\\clavis\\symbols\\templates.py",
+      "summary": {
+        "covered_lines": 26,
+        "num_statements": 26,
+        "percent_covered": 100.0,
+        "percent_covered_display": "100",
+        "missing_lines": 0,
+        "excluded_lines": 0,
+        "percent_statements_covered": 100.0,
+        "percent_statements_covered_display": "100"
+      }
+    }
+  ],
+  "determinism_effective_opencv_threads": "[1, 4]"
+}
