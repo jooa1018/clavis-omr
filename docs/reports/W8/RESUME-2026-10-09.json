@@ -1,0 +1,45 @@
+{
+  "checkedDate": "2026-10-09",
+  "sourceCommit": "6aa5ceb92ac9d59184a33c1f1a543fa4d1745910",
+  "scope": "authored symbolic unit tests; not SYN-Val; no real/sealed data",
+  "platform": "Windows",
+  "tests": {
+    "tests": 251,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "time": 6.726,
+    "timestamp": "2026-10-09T00:46:54.576059+09:00"
+  },
+  "coverage": {
+    "covered_lines": 236,
+    "num_statements": 239,
+    "percent_covered": 98.74476987447699,
+    "percent_covered_display": "99",
+    "missing_lines": 3,
+    "excluded_lines": 0,
+    "percent_statements_covered": 98.74476987447699,
+    "percent_statements_covered_display": "99"
+  },
+  "schemaHashes": [
+    {
+      "file": "musicxml.xsd",
+      "sha256": "bfe37ed25a9ec00e6f2591d53df260b84efe12aed209ba3ac0a76f9287665a99",
+      "matchesManifest": true
+    },
+    {
+      "file": "xlink.xsd",
+      "sha256": "6e601f8eeb41618b50e4c7f944dff754e57ea43b602755470dda24c9c2f6df92",
+      "matchesManifest": true
+    },
+    {
+      "file": "xml.xsd",
+      "sha256": "616a3077df5cfc954ac74a75abe9697b95eef7a85dbe09367d995a483e840eb5",
+      "matchesManifest": true
+    }
+  ],
+  "xsd": "NOT_RUN: awaiting W1 PR #29 lxml",
+  "oracleMetrics": "NOT_RUN",
+  "fullWindowsSuite": "NOT_RUN: awaiting W1 short execution slot wrapper and lxml",
+  "linuxCI": "NOT_RUN: draft PR #25"
+}

@@ -1,0 +1,12 @@
+clef sign=G2
+key fifths=-1
+time beats=3 beatType=4
+bar style=repeatStart
+note dur=eighth pos=5 head=normal v=1
+note dur=eighth pos=6 head=normal v=1
+note dur=quarter dots=1 pos=7 head=normal v=1
+note dur=eighth pos=6 head=normal v=1 tie=start
+bar style=regular
+note dur=half pos=6 head=normal v=1 tie=stop
+rest dur=quarter v=1
+bar style=repeatEnd

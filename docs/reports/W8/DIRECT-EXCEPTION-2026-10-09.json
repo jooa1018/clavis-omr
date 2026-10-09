@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-09",
+  "testedCommit": "888660e4bfd5ca7c0e375cfb782f0c4d82b928f5",
+  "scope": "full Windows test suite; authored synthetic fixtures; NOT SYN-Val; no real/sealed evaluation",
+  "authorization": "Orchestrator 2026-10-09: one direct retry after monitor-error, no overlapping heavy work",
+  "memoryConfiguration": "24 GB (16+8 GB, DDR4-3200 dual channel)",
+  "wrapperAttempt": {
+    "status": "failed",
+    "reason": "monitor-error",
+    "slot": 1,
+    "runId": "b5120710cd3a494fa025b2d4182c802a",
+    "jobId": "962c9e8f546343b0b4c1dae2724d1b39",
+    "wallSeconds": 215.20300000000134,
+    "cpuSecondsSampled": 100.09375,
+    "peakRssBytesSampled": 226058240,
+    "cpuLimit": 2
+  },
+  "directAttempt": {
+    "status": "succeeded",
+    "exitCode": 0,
+    "wallSeconds": 131.4421274,
+    "directInvocation": 1,
+    "exclusiveMachineLock": true,
+    "authorization": "Orchestrator 2026-10-09 monitor-error temporary exception"
+  },
+  "directCommand": "uv run --locked --all-groups pytest tests/ --cov=clavis --cov=scripts --cov=eval --cov=training.jobs --cov-report=json:work/w8-full-coverage.json --junitxml=work/w8-full-tests.xml",
+  "tests": [
+    {
+      "tests": "1048",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "129.404"
+    }
+  ],
+  "warnings": {
+    "count": 4,
+    "type": "record_property incompatible with junit_family xunit2; existing degrade tests"
+  },
+  "coverage": {
+    "covered_lines": 4488,
+    "num_statements": 4796,
+    "percent_covered": 93.57798165137615,
+    "percent_covered_display": "94",
+    "missing_lines": 308,
+    "excluded_lines": 4,
+    "percent_statements_covered": 93.57798165137615,
+    "percent_statements_covered_display": "94"
+  },
+  "coverageGates": {
+    "overall": true,
+    "platform": true,
+    "eval": true,
+    "jobs": true
+  },
+  "requiredTests": {
+    "contracts": {
+      "count": 298,
+      "status": "PASS"
+    },
+    "integrity-positive-negative": {
+      "count": 24,
+      "status": "PASS"
+    }
+  },
+  "ci": "PENDING: ready conversion after recording this local result"
+}
