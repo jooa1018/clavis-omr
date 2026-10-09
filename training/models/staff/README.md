@@ -37,3 +37,23 @@ strip repetitions per matched staff record latency and check identical output
 bytes. Measurements are conditional on detection; misses remain in recall.
 These diagnostics are not W4's G2 acceptance metrics.
 No model, weights, training shard, real data or sealed data is used.
+
+## Formal latency queue
+
+Submit `training.models.staff.benchmark` through W1's queue with `kind=benchmark`,
+`threads=4`, and `--manifest work/strip-benchmark-manifest.json --root
+work/w2-smoke --rasters work/geometry-rasters`. The manifest pins relevant code,
+config and synthetic source bytes; its SHA-256 is the request data_digest.
+The module requires the benchmark job and four injected OpenCV threads.
+Use the 01:00–07:00 queue window, without --manual. Never benchmark in a short slot.
+
+The job directory receives `strip-latency.json` and smoke diagnostics. First-call
+p50/p95 are across one call per matched staff; subsequent-call p50/p95 exclude
+those first calls. These are not fresh-process cold-start timings. Legacy
+strip_repeated_ms_p95 retains its original all-five-calls definition for historical
+comparison. A paused smoke restarts fully; measurements from admissions are not
+pooled. The bounded job has no training state to resume.
+
+The module marks validity PENDING_RUNNER_REPORT. Only the matching final W1
+`benchmark.validity=valid` permits a latency-budget decision. Preserve invalid
+results and reasons; do not silently retry into a reported PASS.

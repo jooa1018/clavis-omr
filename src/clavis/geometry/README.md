@@ -37,3 +37,13 @@ Current evidence is **synthetic smoke, not SYN-Val**, no real-image improvement
 claim. 8 px has a missed staff in the fixed smoke family. Curved/perpective staff
 tracking, lyrics/beam distractors and local mixed-scale recall are not validated
 on a production corpus. S0 normalization and S2 layout remain separate work.
+
+## S2 proposal boundary
+
+`clavis.geometry.barlines.propose_barlines(original_strip, s_star, margin_above)`
+returns thin full-height vertical stroke proposals with observed coverage and
+`BARLINE_OR_STEM` ambiguity. It never creates musical barlines, repeat styles,
+systems or measures. A full-height stem can be visually identical at this stage.
+GEO-VERTICAL is switchable and its staff-space/ratio thresholds are provisional.
+Cross-staff alignment, brace/bracket evidence, system grouping, multi-column
+rejection, style classification and masks remain to be implemented and evaluated.

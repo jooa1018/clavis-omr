@@ -1,0 +1,52 @@
+[
+  {
+    "name": "max_bytes",
+    "value": 100000000,
+    "unit": "bytes",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Operational decode allocation limit under job RAM 3 GB; not a recognition threshold",
+    "evidence": "docs/reports/W5/T5.1-decode-2026-10-09.md"
+  },
+  {
+    "name": "max_pixels",
+    "value": 24000000,
+    "unit": "pixels",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Operational decode allocation limit under job RAM 3 GB; not a recognition threshold",
+    "evidence": "docs/reports/W5/T5.1-decode-2026-10-09.md"
+  },
+  {
+    "name": "max_pages",
+    "value": 32,
+    "unit": "count",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Operational decode allocation limit under job RAM 3 GB; not a recognition threshold",
+    "evidence": "docs/reports/W5/T5.1-decode-2026-10-09.md"
+  },
+  {
+    "name": "max_total_pixels",
+    "value": 48000000,
+    "unit": "pixels",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Operational decode allocation limit under job RAM 3 GB; not a recognition threshold",
+    "evidence": "docs/reports/W5/T5.1-decode-2026-10-09.md"
+  },
+  {
+    "name": "max_compression_ratio",
+    "value": 1024,
+    "unit": "decoded_pixels_per_encoded_byte",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Operational decode allocation limit under job RAM 3 GB; not a recognition threshold",
+    "evidence": "docs/reports/W5/T5.1-decode-2026-10-09.md"
+  }
+]
