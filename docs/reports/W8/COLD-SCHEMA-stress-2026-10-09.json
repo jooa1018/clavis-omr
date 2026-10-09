@@ -1,0 +1,212 @@
+{
+  "attempts": [
+    {
+      "bothLoadsOverlap": true,
+      "exitCode": 0,
+      "finishedNs": 58132828000000,
+      "iteration": 1,
+      "startedNs": 58114500000000,
+      "tests": {
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "1"
+      }
+    },
+    {
+      "bothLoadsOverlap": true,
+      "exitCode": 0,
+      "finishedNs": 58153812000000,
+      "iteration": 2,
+      "startedNs": 58132859000000,
+      "tests": {
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "1"
+      }
+    },
+    {
+      "bothLoadsOverlap": true,
+      "exitCode": 0,
+      "finishedNs": 58171687000000,
+      "iteration": 3,
+      "startedNs": 58153843000000,
+      "tests": {
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "1"
+      }
+    },
+    {
+      "bothLoadsOverlap": true,
+      "exitCode": 0,
+      "finishedNs": 58186171000000,
+      "iteration": 4,
+      "startedNs": 58171703000000,
+      "tests": {
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "1"
+      }
+    },
+    {
+      "bothLoadsOverlap": true,
+      "exitCode": 0,
+      "finishedNs": 58205031000000,
+      "iteration": 5,
+      "startedNs": 58186187000000,
+      "tests": {
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "1"
+      }
+    },
+    {
+      "bothLoadsOverlap": true,
+      "exitCode": 0,
+      "finishedNs": 58226921000000,
+      "iteration": 6,
+      "startedNs": 58205046000000,
+      "tests": {
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "1"
+      }
+    },
+    {
+      "bothLoadsOverlap": true,
+      "exitCode": 0,
+      "finishedNs": 58244343000000,
+      "iteration": 7,
+      "startedNs": 58226937000000,
+      "tests": {
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "1"
+      }
+    },
+    {
+      "bothLoadsOverlap": true,
+      "exitCode": 0,
+      "finishedNs": 58259875000000,
+      "iteration": 8,
+      "startedNs": 58244343000000,
+      "tests": {
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "1"
+      }
+    },
+    {
+      "bothLoadsOverlap": true,
+      "exitCode": 0,
+      "finishedNs": 58276375000000,
+      "iteration": 9,
+      "startedNs": 58259890000000,
+      "tests": {
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "1"
+      }
+    },
+    {
+      "bothLoadsOverlap": true,
+      "exitCode": 0,
+      "finishedNs": 58293656000000,
+      "iteration": 10,
+      "startedNs": 58276390000000,
+      "tests": {
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "1"
+      }
+    }
+  ],
+  "loadIntervals": [
+    {
+      "finishedNs": 58294015000000,
+      "iterations": [
+        111165,
+        120836
+      ],
+      "startedNs": 58108859000000
+    },
+    {
+      "finishedNs": 58294015000000,
+      "iterations": [
+        110973,
+        122474
+      ],
+      "startedNs": 58109156000000
+    }
+  ],
+  "loadSlots": [
+    {
+      "cpuLimit": 2,
+      "cpuSecondsSampled": 112.28125,
+      "jobId": "0a3e32679ba543588628686e344e05df",
+      "monitorDiagnostics": [],
+      "peakRssBytesSampled": 86253568,
+      "reason": "completed",
+      "runId": "485d2b817b794702880289509df7c899",
+      "slot": 1,
+      "status": "succeeded",
+      "wallSeconds": 186.70300000000134
+    },
+    {
+      "cpuLimit": 2,
+      "cpuSecondsSampled": 112.484375,
+      "jobId": "5d33119d6c9749fa819636f88acbe87a",
+      "monitorDiagnostics": [],
+      "peakRssBytesSampled": 86011904,
+      "reason": "completed",
+      "runId": "e71cfe0dc7a0479795097b8e8e983036",
+      "slot": 0,
+      "status": "succeeded",
+      "wallSeconds": 186.71800000000076
+    }
+  ],
+  "probeSlot": {
+    "cpuLimit": 2,
+    "cpuSecondsSampled": 74.328125,
+    "jobId": "416a38d010b24bb099243e1c1263c3a4",
+    "monitorDiagnostics": [
+      {
+        "count": 1,
+        "exceptionType": "NoSuchProcess",
+        "site": "sample.cpu_times",
+        "skippedChild": true
+      },
+      {
+        "count": 12,
+        "exceptionType": "NoSuchProcess",
+        "site": "sample.memory_info",
+        "skippedChild": true
+      },
+      {
+        "count": 3,
+        "exceptionType": "NoSuchProcess",
+        "site": "sample.num_threads",
+        "skippedChild": true
+      }
+    ],
+    "peakRssBytesSampled": 297082880,
+    "reason": "completed",
+    "runId": "d8516e6040034d8788ba14601c38b680",
+    "slot": 2,
+    "status": "succeeded",
+    "wallSeconds": 184.63999999999942
+  },
+  "scope": "synthetic CPU slot contention; functional test only; not latency benchmark",
+  "status": "PASS",
+  "target": "tests/export/test_musicxml.py::test_cold_schema_load_without_network_and_instance_hints"
+}

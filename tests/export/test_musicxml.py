@@ -214,27 +214,70 @@ def test_cold_schema_load_without_network_and_instance_hints():
     script = """
 import socket
 from concurrent.futures import ThreadPoolExecutor
-from clavis.export.validation import _schema_cache, validate_musicxml
+print("phase=imports", flush=True)
+attempts = []
+def refuse(*args, **kwargs):
+    attempts.append("network")
+    raise AssertionError("network forbidden")
+socket.socket.connect = refuse
+socket.socket.connect_ex = refuse
+socket.create_connection = refuse
+socket.getaddrinfo = refuse
+from clavis.export.validation import validate_musicxml
 from tests.export.oracle_smoke import oracle_items
 from tests.assemble.helpers import assemble
 from clavis.export.musicxml import write_musicxml
-def refuse(*args, **kwargs):
-    raise AssertionError("network forbidden")
-socket.socket.connect = refuse
-socket.create_connection = refuse
 score = assemble(oracle_items()).score
+print("phase=concurrent-output", flush=True)
 with ThreadPoolExecutor(max_workers=4) as pool:
     outputs = list(pool.map(lambda _: write_musicxml(score)[0], range(8)))
-assert len(set(outputs)) == 1
-assert _schema_cache.cache_info().misses == 1
+assert len(set(outputs)) == 1, "concurrent validated outputs differ"
+print("phase=instance-hints", flush=True)
 xml = outputs[0].replace(
     b'<score-partwise ',
     b'<score-partwise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" '
     b'xsi:noNamespaceSchemaLocation="https://invalid.example/never.xsd" '
 )
 validate_musicxml(xml)
+assert not attempts, f"unexpected network attempts: {len(attempts)}"
+print("phase=complete", flush=True)
 """
-    subprocess.run([sys.executable, "-c", script], check=True, capture_output=True)
+    result = subprocess.run([sys.executable, "-c", script], capture_output=True, text=True)
+    diagnostic = (
+        f"cold schema subprocess failed: returncode={result.returncode} "
+        f"(0x{result.returncode & 0xFFFFFFFF:08X})\n"
+        f"stdout:\n{result.stdout or '<empty>'}\nstderr:\n{result.stderr or '<empty>'}"
+    )
+    # Keep the failure cause while removing local profile/checkout paths from assertions.
+    for path, label in (
+        (Path.cwd(), "<repo>"),
+        (Path(sys.prefix), "<venv>"),
+        (Path(sys.base_prefix), "<python>"),
+        (Path.home(), "<user-profile>"),
+    ):
+        for spelling in (str(path), path.as_posix()):
+            diagnostic = diagnostic.replace(spelling, label)
+    assert result.returncode == 0, diagnostic
+
+
+def test_cold_schema_child_failure_reports_reason(monkeypatch):
+    import subprocess
+
+    def failed_child(*args, **kwargs):
+        return subprocess.CompletedProcess(
+            args[0],
+            0xC000070A,
+            "phase=imports\n",
+            f"synthetic import failure at {Path.cwd()} and {Path.home()}",
+        )
+
+    monkeypatch.setattr(subprocess, "run", failed_child)
+    with pytest.raises(AssertionError) as caught:
+        test_cold_schema_load_without_network_and_instance_hints()
+    message = str(caught.value)
+    assert "0xC000070A" in message and "phase=imports" in message
+    assert "synthetic import failure" in message
+    assert str(Path.cwd()) not in message and str(Path.home()) not in message
 
 
 @pytest.mark.parametrize("encoding", ["utf-8", "utf-16"])

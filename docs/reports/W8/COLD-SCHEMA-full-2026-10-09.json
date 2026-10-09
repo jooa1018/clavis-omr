@@ -1,0 +1,47 @@
+{
+  "scope": "full Windows synthetic automatic tests; NOT SYN-Val; no real or sealed evaluation",
+  "baseCommit": "276cb00",
+  "command": "uv run --locked --all-groups python -m training.jobs.short run pytest tests/ --cov=clavis --cov=scripts --cov=eval --cov=training.jobs --cov-report=json:work/w8-cold-full-coverage.json --junitxml=work/w8-cold-full-tests.xml",
+  "tests": {
+    "tests": "1476",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "101.904"
+  },
+  "slot": {
+    "status": "succeeded",
+    "reason": "completed",
+    "slot": 0,
+    "runId": "cd9c37f2bb584d9988ed163dd99e1274",
+    "jobId": "1fe1c0cb3cf54058bec1fbfccdccf0ee",
+    "wallSeconds": 103.70300000000134,
+    "cpuSecondsSampled": 85.59375,
+    "peakRssBytesSampled": 315985920,
+    "cpuLimit": 2,
+    "monitorDiagnostics": [
+      {
+        "exceptionType": "NoSuchProcess",
+        "site": "sample.memory_info",
+        "skippedChild": true,
+        "count": 21
+      },
+      {
+        "exceptionType": "NoSuchProcess",
+        "site": "sample.num_threads",
+        "skippedChild": true,
+        "count": 6
+      }
+    ]
+  },
+  "coverage": {
+    "covered_lines": 5314,
+    "num_statements": 5664,
+    "percent_covered": 93.82062146892656,
+    "percent_covered_display": "94",
+    "missing_lines": 350,
+    "excluded_lines": 10,
+    "percent_statements_covered": 93.82062146892656,
+    "percent_statements_covered_display": "94"
+  }
+}
