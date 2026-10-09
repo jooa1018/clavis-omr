@@ -101,7 +101,10 @@
       "type": "array"
     },
     "schema": {
-      "const": "clavis-ir-0.1",
+      "enum": [
+        "clavis-ir-0.1",
+        "clavis-ir-0.1.1"
+      ],
       "title": "Schema",
       "type": "string"
     },

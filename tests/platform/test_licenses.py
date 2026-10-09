@@ -41,3 +41,8 @@ def test_audit_exit_status(license_name: str, code: int) -> None:
         patch("scripts.check_licenses.subprocess.run", return_value=result),
     ):
         assert main() == code
+
+
+@pytest.mark.parametrize("name", ["pillow", "other-package"])
+def test_mit_cmu_is_generally_allowed(name: str) -> None:
+    assert violations([{"Name": name, "License": "MIT-CMU"}], [name]) == []

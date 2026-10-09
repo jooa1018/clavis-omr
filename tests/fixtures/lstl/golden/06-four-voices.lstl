@@ -1,0 +1,4 @@
+note dur=quarter pos=0 head=normal v=1
+rest dur=half v=2 join=1
+rest dur=quarter v=3 join=1
+rest dur=eighth v=4 join=1

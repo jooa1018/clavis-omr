@@ -1,0 +1,282 @@
+{
+  "packages": [
+    {
+      "License": "MIT",
+      "Name": "annotated-types",
+      "Version": "0.8.0"
+    },
+    {
+      "License": "Apache Software License",
+      "Name": "flatbuffers",
+      "Version": "25.12.19"
+    },
+    {
+      "License": "BSD License",
+      "Name": "numpy",
+      "Version": "2.2.6"
+    },
+    {
+      "License": "MIT License",
+      "Name": "onnxruntime",
+      "Version": "1.30.0"
+    },
+    {
+      "License": "Apache Software License",
+      "Name": "opencv-python-headless",
+      "Version": "4.11.0.86"
+    },
+    {
+      "License": "Apache-2.0 OR BSD-2-Clause",
+      "Name": "packaging",
+      "Version": "26.3"
+    },
+    {
+      "License": "MIT-CMU",
+      "Name": "pillow",
+      "Version": "11.2.1"
+    },
+    {
+      "License": "3-Clause BSD License",
+      "Name": "protobuf",
+      "Version": "7.36.2"
+    },
+    {
+      "License": "MIT",
+      "Name": "pydantic",
+      "Version": "2.13.5"
+    },
+    {
+      "License": "MIT",
+      "Name": "pydantic_core",
+      "Version": "2.46.5"
+    },
+    {
+      "License": "MIT",
+      "Name": "typing-inspection",
+      "Version": "0.4.4"
+    },
+    {
+      "License": "PSF-2.0",
+      "Name": "typing_extensions",
+      "Version": "4.16.0"
+    }
+  ],
+  "scope": "runtime",
+  "violations": [],
+  "pythonClosureStatus": "PASS",
+  "nativeWheelReviewStatus": "BLOCKER_REMOVED",
+  "inspectedLicenseFiles": [
+    {
+      "package": "onnxruntime",
+      "path": "onnxruntime/LICENSE",
+      "sha256": "c250d6278f0b47a6439fb7592b08b58a55eb9f535aa49a1db63211c3f982b674",
+      "bytes": 1094
+    },
+    {
+      "package": "onnxruntime",
+      "path": "onnxruntime/ThirdPartyNotices.txt",
+      "sha256": "c53a76501ef60db6f865f20599f220761201ac4057683acefdab37d861b86622",
+      "bytes": 344457
+    },
+    {
+      "package": "packaging",
+      "path": "packaging-26.3.dist-info/licenses/LICENSE",
+      "sha256": "cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48",
+      "bytes": 197
+    },
+    {
+      "package": "packaging",
+      "path": "packaging-26.3.dist-info/licenses/LICENSE.APACHE",
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "bytes": 10174
+    },
+    {
+      "package": "packaging",
+      "path": "packaging-26.3.dist-info/licenses/LICENSE.BSD",
+      "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5",
+      "bytes": 1344
+    },
+    {
+      "package": "protobuf",
+      "path": "protobuf-7.36.2.dist-info/LICENSE",
+      "sha256": "6e5e117324afd944dcf67f36cf329843bc1a92229a8cd9bb573d7a83130fea7d",
+      "bytes": 1732
+    }
+  ],
+  "wheelVerification": {
+    "specification": {
+      "commit": "799e2defb2ece0ae7bafe08dcbcac25b2c631d53",
+      "files": [
+        {
+          "bytes": 379505,
+          "file": "musicxml.xsd",
+          "sha256": "bfe37ed25a9ec00e6f2591d53df260b84efe12aed209ba3ac0a76f9287665a99",
+          "url": "https://raw.githubusercontent.com/w3c/musicxml/v4.0/schema/musicxml.xsd"
+        },
+        {
+          "bytes": 2280,
+          "file": "xlink.xsd",
+          "sha256": "6e601f8eeb41618b50e4c7f944dff754e57ea43b602755470dda24c9c2f6df92",
+          "url": "https://raw.githubusercontent.com/w3c/musicxml/v4.0/schema/xlink.xsd"
+        },
+        {
+          "bytes": 5695,
+          "file": "xml.xsd",
+          "sha256": "616a3077df5cfc954ac74a75abe9697b95eef7a85dbe09367d995a483e840eb5",
+          "url": "https://raw.githubusercontent.com/w3c/musicxml/v4.0/schema/xml.xsd"
+        }
+      ],
+      "specification": "MusicXML 4.0",
+      "tag": "v4.0"
+    },
+    "status": "PASS",
+    "wheel": "clavis_omr-0.0.1-py3-none-any.whl"
+  },
+  "excludedDependency": {
+    "decision": "Orchestrator 2026-10-09: remove lxml; use xmlschema and elementpath in follow-up PR",
+    "finding": {
+      "package": "lxml",
+      "version": "6.1.3",
+      "policy": "00_COMMON 8.3 and 12: no static LGPL inclusion",
+      "finding": "Official wheel notice identifies bundled iconv under LGPL 2.1; upstream Windows build uses static deps",
+      "sources": [
+        "https://github.com/lxml/lxml/blob/lxml-6.1.3/LICENSES.txt",
+        "https://github.com/lxml/lxml/blob/lxml-6.1.3/setupinfo.py",
+        "https://github.com/lxml/lxml/blob/lxml-6.1.3/pyproject.toml"
+      ]
+    },
+    "wheel": {
+      "url": "https://files.pythonhosted.org/packages/3a/5b/6ed903e4e6278a020c8a6f0dbbe78030d041840a6b4a64ea441a1e414077/lxml-6.1.3-cp312-cp312-win_amd64.whl",
+      "hash": "sha256:3e9a00d1c2c30936f7add097c41afc5da6556c580909104aafd382cac92a855c",
+      "size": 4005999,
+      "upload-time": "2026-09-02T14:48:12.51Z"
+    },
+    "bundledLibraries": {
+      "libxml2": "2.11.9 (MIT)",
+      "libxslt": "1.1.45 (MIT)"
+    },
+    "licenses": [
+      {
+        "package": "lxml",
+        "path": "lxml-6.1.3.dist-info/licenses/LICENSE.txt",
+        "sha256": "e7c3ce8d76331b0101cc46790ab43958ea90a364bcf962ed8763d5a818340e69",
+        "bytes": 1538
+      },
+      {
+        "package": "lxml",
+        "path": "lxml-6.1.3.dist-info/licenses/LICENSES.txt",
+        "sha256": "df682c668de65321677b5e4861dca4128a8bad8067f230956e9da3f985b3d398",
+        "bytes": 6348
+      }
+    ]
+  },
+  "lxmlInstalled": false,
+  "lxmlInLock": false,
+  "runtimePackageCount": 12,
+  "remoteCi": {
+    "status": "PASS",
+    "run": "https://github.com/jooa1018/clavis-omr/actions/runs/37817339323",
+    "head": "42813abfb556b3ed809c866a1be658eade1de8f0"
+  },
+  "previousValidation": {
+    "syntheticWindowsValidation": {
+      "config": {
+        "memoryConfiguration": "24 GB (16+8), DDR4-3200 dual channel",
+        "purpose": "PR29 Windows full validation"
+      },
+      "cpuAffinity": [
+        0,
+        1
+      ],
+      "cpuLimit": 2,
+      "cpuSecondsSampled": 53.21875,
+      "dataDigest": "0000000000000000000000000000000000000000000000000000000000000000",
+      "gitSha": "1594f043c897983cea83fdf677ca457f62b4b412",
+      "jobDigest": "2144e15859ca013b6184fe5ee49ceb21243e618370ad61c566c0e5e4a90eeb29",
+      "jobId": "92875d2f1e414d57b73107512af705fa",
+      "manual": true,
+      "meanCpuPercentSampled": 76.47031353277576,
+      "meanLogicalCpusSampled": 0.7647031353277576,
+      "peakCpuPercentSampled": 137.5,
+      "peakLogicalCpusSampled": 1.375,
+      "peakRssBytesSampled": 276983808,
+      "peakThreadsSampled": 35,
+      "reason": "completed",
+      "resultDirectory": "92875d2f1e414d57b73107512af705fa",
+      "seed": 0,
+      "status": "succeeded",
+      "wallSeconds": 69.59400000000005,
+      "warnings": []
+    },
+    "tests": [
+      {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "590",
+        "time": "65.443",
+        "timestamp": "2026-10-09T01:05:24.350163+09:00"
+      }
+    ],
+    "coverage": {
+      "covered_lines": 3508,
+      "num_statements": 3802,
+      "percent_covered": 92.26722777485534,
+      "percent_covered_display": "92",
+      "missing_lines": 294,
+      "excluded_lines": 4,
+      "percent_statements_covered": 92.26722777485534,
+      "percent_statements_covered_display": "92"
+    },
+    "scanner": {
+      "schema": "clavis-hardcode-scan-1",
+      "status": "PASS",
+      "pythonFiles": 112,
+      "manifestIdentifiers": 0,
+      "findings": [],
+      "suppressed": [
+        {
+          "file": "training/jobs/runner.py",
+          "line": 161,
+          "rule": "H9",
+          "owner": "W1",
+          "evidence_digest": "f55bb63062ca7fa6483196ef2dc20d9cad1d0ef028c76a8a6030e30a59111f85"
+        },
+        {
+          "file": "training/jobs/runner.py",
+          "line": 223,
+          "rule": "H9",
+          "owner": "W1",
+          "evidence_digest": "62cb15b5b7c52f6c1e2f78736d6d34381fd3e3274c27556e936ec20069317c08"
+        }
+      ],
+      "byOwner": {}
+    }
+  },
+  "syntheticWindowsValidation": {
+    "status": "succeeded",
+    "wallSeconds": 54.51599999999962,
+    "cpuSecondsSampled": 46.546875,
+    "peakRssBytesSampled": 293249024,
+    "cpuLimit": 2
+  },
+  "tests": {
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "623",
+    "time": "52.931"
+  },
+  "coverage": {
+    "covered_lines": 3553,
+    "num_statements": 3851,
+    "percent_covered": 92.26175019475461,
+    "percent_covered_display": "92",
+    "missing_lines": 298,
+    "excluded_lines": 4,
+    "percent_statements_covered": 92.26175019475461,
+    "percent_statements_covered_display": "92"
+  },
+  "mergeCommit": "a25e8f91d370eb56fd652630d42b231c52f78862"
+}

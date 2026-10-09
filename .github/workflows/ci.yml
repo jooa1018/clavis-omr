@@ -31,6 +31,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python scripts/ci_plan.py
+      - name: Tracked-file privacy (including docs-only PRs)
+        run: python scripts/check_privacy.py
   quality:
     needs: plan
     if: ${{ !cancelled() && vars.CLAVIS_FREE_CI_CONFIRMED == 'true' && (github.event_name == 'push' || needs.plan.outputs.quality == 'true') }}
@@ -69,8 +71,14 @@ jobs:
       - run: uv run --locked --all-groups lint-imports
       - name: Runtime dependency license allowlist
         run: uv run --locked --all-groups python scripts/check_licenses.py
+      - name: Wheel includes original approved specification assets
+        run: |
+          uv build --wheel
+          uv run --locked --all-groups python scripts/check_wheel.py dist
       - name: Required H1-H9 AST scan
         run: uv run --locked --all-groups python -m eval.integrity.hardcode_scan --root . --out work/hardcode.json
+      - name: Required tracked-file privacy scan
+        run: uv run --locked --all-groups python scripts/check_privacy.py --out work/privacy.json
       - name: Integrity evidence and real-data NOT_RUN status
         run: uv run --locked --all-groups python scripts/integrity_status.py --ast-report work/hardcode.json --out work/integrity-status.json
       - uses: actions/upload-artifact@v4
@@ -82,5 +90,6 @@ jobs:
             work/coverage.json
             work/tests.xml
             work/hardcode.json
+            work/privacy.json
             work/integrity-status.json
           retention-days: 7

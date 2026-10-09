@@ -1,4 +1,4 @@
-# Clavis 인터페이스 계약 v0.1
+# Clavis 인터페이스 계약 v0.1.1
 
 > 소유: W1(구현), Orchestrator(승인). 이 문서와 `src/clavis/contracts/`의 스키마가 모듈 사이의 **유일한 약속**이다.
 > 변경은 CCR(0절)로만 한다. 워커는 상류 산출물이 없어도 이 계약의 예시와 fixture로 먼저 개발한다.
@@ -6,7 +6,8 @@
 
 ## 0. 버전과 변경 규칙
 
-- 버전 식별자: IR `clavis-ir-0.1` · 토큰 언어 `lstl-0.1` · 출력 `clavis-evidence-0.1`, `clavis-hints-0.1`, `clavis-confidence-0.1`, `clavis-report-0.1`, `clavis-runtime-0.1`.
+- 버전 식별자: IR `clavis-ir-0.1.1` · 토큰 언어 `lstl-0.1.1` · 출력 `clavis-evidence-0.1`, `clavis-hints-0.1`, `clavis-confidence-0.1`, `clavis-report-0.1`, `clavis-runtime-0.1`.
+- CCR-0003 승인(2026-10-09): note/rest의 join 추가, 정규 텍스트 및 모호한 열 순서 거부를 0.1.1에 반영했다. 0.1 IR 문서는 계속 읽으며 입력 버전 표기는 보존한다. 새 생산자는 0.1.1을 쓴다. 기존 텍스트도 정규 표기와 시퀀스 규칙을 만족하면 그대로 읽는다. 기존 같은 열의 다른 성부 항목에는 생산자가 join=1을 넣는다. 박스에서 join을 추정하지 않는다.
 - CCR-0001 승인(2026-09-29): 승인된 최초 완성본을 v0.1로 동결한다. 그 이후부터 다음 버전 규칙을 적용한다.
 - 하위 호환이 깨지는 변경은 minor를 올린다(0.1 → 0.2). 필드 추가처럼 호환되는 변경은 patch를 올린다(0.1.1).
 - 변경 절차: `docs/ccr/CCR-NNNN.md`(동기, 변경안, 영향 모듈, 마이그레이션, 평가 영향) → 영향 모듈 소유자 의견 → Orchestrator 승인 → W1이 구현하고 fixture와 JSON Schema를 갱신 → 영향 모듈이 따라온다.
@@ -68,7 +69,7 @@
 | strip 최대 폭 | 제한 없음 | — | FCN은 폭과 무관하게 적용된다. 메모리가 넘칠 때만 겹침 타일(W6) |
 | strip 채널 | 2 | — | 원본 그레이스케일 + 오선 제거 채널(W5 T5.7) |
 
-## 3. 파이프라인 IR (`clavis-ir-0.1`)
+## 3. 파이프라인 IR (`clavis-ir-0.1.1`)
 
 필드는 요약이다. 정본은 `src/clavis/contracts/`의 pydantic 모델과 자동 생성된 JSON Schema다. 독립 PageInput, QualityReport, PageLayout, SymbolGraph, StaffLattice, TextIR, ScoreIR에만 `schema`와 `id`가 있다. 페이지 IR id는 `pg{p}`, 보표 IR id는 staffId, ScoreIR id는 `score0`이다. 고유성은 해당 타입·문서 범위다. ReviewHint 등 중첩 객체에는 별도 schema/id를 추가하지 않는다.
 
@@ -91,7 +92,7 @@ HarmonyMaker `ImageQualityReport` 필드 `blurBp`, `perspectiveBp`, `glareBp`, `
 
 ```json
 {
-  "schema": "clavis-ir-0.1", "id": "pg0-sy3-st0", "stripId": "pg0-sy3-st0",
+  "schema": "clavis-ir-0.1.1", "id": "pg0-sy3-st0", "stripId": "pg0-sy3-st0",
   "producer": {"name": "symbols", "version": "0.3.0", "sha256": "<분류기 모델 묶음 + 규칙 카탈로그 + 설정 digest>"},
   "hypotheses": [
     {"rank": 0, "logProbMicro": -1834567,
@@ -113,7 +114,7 @@ HarmonyMaker `ImageQualityReport` 필드 `blurBp`, `perspectiveBp`, `glareBp`, `
 
 ```json
 {
-  "schema": "clavis-ir-0.1", "id": "pg0-sy3-st0", "stripId": "pg0-sy3-st0",
+  "schema": "clavis-ir-0.1.1", "id": "pg0-sy3-st0", "stripId": "pg0-sy3-st0",
   "producer": {"name": "symbols", "version": "0.3.0", "sha256": "…"},
   "symbols": [
     {"symbolId": "pg0-sy3-st0-s41", "sources": ["fcn", "template"],
@@ -188,7 +189,7 @@ HarmonyMaker `ImageQualityReport` 필드 `blurBp`, `perspectiveBp`, `glareBp`, `
 - `reasonCode`(v0.1): `DURATION_MISMATCH`, `LOW_CONFIDENCE_PITCH`, `LOW_CONFIDENCE_DURATION`, `ACCIDENTAL_AMBIGUOUS`, `TIE_SLUR_AMBIGUOUS`, `KEY_SIGNATURE_UNCERTAIN`, `TIME_SIGNATURE_UNCERTAIN`, `CLEF_UNCERTAIN`, `BARLINE_UNCERTAIN`, `VOICE_ASSIGNMENT_UNCERTAIN`, `CHORD_TEXT_UNCERTAIN`, `CHORD_POSITION_UNCERTAIN`, `CHORD_OUTSIDE_CONSUMER_VOCAB`, `LYRIC_TEXT_UNCERTAIN`, `LYRIC_ALIGNMENT_UNCERTAIN`, `FLOW_UNRESOLVED`, `EVIDENCE_MISSING`, `MODEL_DISAGREEMENT`, `OOD_REGION`, `ILLEGIBLE_REGION`
 - 정렬: (pageIndex, systemIndex, measure index, target.id, reasonCode)
 
-## 4. 토큰 언어 LSTL v0.1 (Lead-Sheet Staff Token Language)
+## 4. 토큰 언어 LSTL v0.1.1 (Lead-Sheet Staff Token Language)
 
 LSTL은 **한 시스템 안의 한 보표에 인쇄된 것**을 왼쪽에서 오른쪽으로 적은 시퀀스다. 논리적 악보가 아니라 **시각 표현**이다. 시스템 첫머리에 다시 찍힌 음자리표와 조표도 그 시스템의 LSTL에 나온다.
 
@@ -200,8 +201,8 @@ LSTL은 **한 시스템 안의 한 보표에 인쇄된 것**을 왼쪽에서 오
 | `key` | `fifths` ∈ [−7, 7] | `cancel` ∈ [0, 7](앞에 찍힌 제자리표 수), `courtesy` |
 | `time` | `beats` ∈ [1, 16], `beatType` ∈ {1, 2, 4, 8, 16, 32} | `symbol` ∈ {common, cut}, `courtesy` |
 | `bar` | `style` ∈ {regular, double, final, repeatStart, repeatEnd, repeatBoth, dashed, heavy} | — |
-| `note` | `dur`, `dots`, `pos`, `head`, `v` | `acc`, `accParen`, `tie`, `slur`, `chord`, `grace`, `tup3`, `fermata`, `stem`, `beam` |
-| `rest` | `dur`, `dots`, `v` | `pos`, `measureRest`, `fermata`, `tup3` |
+| `note` | `dur`, `dots`, `pos`, `head`, `v` | `acc`, `accParen`, `tie`, `slur`, `chord`, `join`, `grace`, `tup3`, `fermata`, `stem`, `beam` |
+| `rest` | `dur`, `dots`, `v` | `join`, `pos`, `measureRest`, `fermata`, `tup3` |
 | `mrest` | `count` ∈ [2, 64] | — |
 | `ending` | `numbers`(정수 목록, 예: [1], [1, 2]), `mark` ∈ {start, stop, discontinue} | — |
 | `segno` | — | — |
@@ -215,7 +216,8 @@ LSTL은 **한 시스템 안의 한 보표에 인쇄된 것**을 왼쪽에서 오
 | `head` | normal, slash, x, diamond (`slash`는 음높이 없는 리듬 이벤트) |
 | `acc` | none, sharp, flat, natural, doubleSharp, doubleFlat |
 | `tie`, `slur` | none, start, stop, both |
-| `chord` | 0, 1 (1 = 앞 음과 같은 stem과 같은 시점) |
+| `chord` | 0, 1 (1 = 앞 note와 같은 stem·같은 열, 기본 0 생략) |
+| `join` | 0, 1 (1 = 앞 항목과 같은 열, 다른 성부, 기본 0 생략). note에서 chord 바로 뒤, chord가 없는 rest에서는 선택 속성의 첫 자리 |
 | `v` | 1–4 (1 = 위·주 성부) |
 | `grace` | none, acciaccatura, appoggiatura |
 | `tup3` | none, start, continue, stop (v0.1은 3:2 셋잇단만) |
@@ -229,13 +231,16 @@ v0.1 범위 밖(OOD로 표시하거나 무시): 퍼커션·타브 보표, 트레
 1. 보표 내용을 **열(column)**로 나눈다. 같은 마디에서 같은 음악 시점을 공유하는 음표와 쉼표가 한 열이다. 꾸밈음은 본음 앞에 자기 열을 가진다. 비시간 항목(`clef`, `key`, `time`, `bar`, `ending`, `segno`, `coda`)은 인쇄 위치마다 각자 열이다.
 2) 열은 인쇄된 x 순서(기호 박스 왼쪽 모서리)를 따른다. 라벨 생성(W2)은 렌더 좌표에서, 읽기 구성(W6)은 기호 박스에서 순서를 얻는다.
 3) 아래 관례 순서는 x가 같거나 겹칠 때만 쓴다. 시스템 첫머리는 clef → key → time → bar(repeatStart). 마디 경계에서 clef 변경은 barline 앞, key·time 변경은 barline 뒤에 인쇄된다. repeatStart가 key·time 변경과 같은 경계에 있으면 key·time 뒤에 별도 bar 항목으로 온다. ending 표시는 해당 barline 바로 뒤, segno·coda는 해당 barline 위치다.
-4. 한 열 안에서는 성부 오름차순이다. 같은 성부의 화음은 `pos` 오름차순이고, 첫 음이 `chord=0`, 나머지가 `chord=1`이다.
+4. 열은 join=0인 시간 항목(단 chord=1은 앞 열을 잇는다) 또는 비시간 항목에서 시작하고, 뒤따르는 chord=1·join=1 항목까지다. 한 열 안에서는 성부 오름차순이다. join=1 항목의 v는 앞 항목의 v보다 커야 한다. chord=1은 앞 note와 v·dur·dots·grace가 같고 pos 오름차순이어야 하며 join을 쓰면 비정규로 거부한다. 같은 성부 화음의 첫 음은 chord=0(생략), 나머지는 chord=1이다. 비시간 항목, grace, mrest에는 join을 쓸 수 없으며 grace·mrest·비시간 항목 뒤로 join하여 그 열을 잇지도 않는다. 같은 열의 기하 검증은 W2(렌더 정답)·W6(기호 박스)의 책임이다. 오토마톤은 텍스트/lattice만 받고 외부 열 문맥이나 COLUMN_CONTEXT_REQUIRED API를 요구하지 않는다.
 5. 시스템 끝의 예고(courtesy) 기호는 마지막 `bar` 뒤에 `courtesy=1`로 온다. 의미 해석에서는 무시한다.
-6. 속성 직렬화 순서는 4.1절 표의 순서를 따른다. 기본값(0, none)은 텍스트 표기에서 생략한다.
+6. 속성 직렬화 순서는 4.1절 표의 순서를 따른다. 선택 기본값(none, false, 0)과 dots=0은 텍스트에서 생략한다. 그 밖의 필수 값은 0이어도 쓴다(pos=0, fifths=0 등). rest.pos는 값이 있으면 0도 쓴다.
+7. 인쇄 범위가 겹치는 열에는 3번 관례만 적용한다. 관례와 인쇄 순서로 유일한 순서를 정할 수 없거나 선행 관계가 순환하면 AMBIGUOUS_COLUMN_ORDER로 거부한다. 임계값·임의 순서는 만들지 않는다. 정규화기는 이미 chord/join으로 표시한 열과 항목의 인쇄 범위를 받으며 열 소속을 추정하지 않는다.
 
 ### 4.3 텍스트 표기 (golden 파일, 디버깅용)
 
 한 줄에 항목 하나를 쓴다. 예시는 3/4박, 조표 ♭1, 첫 마디가 8분음표 두 개 + 점4분음표 + 8분음표인 보표다.
+
+UTF-8·NFC·LF이며 끝은 LF 하나다. 항목 내부는 ASCII 공백 하나로 구분하고 ending numbers는 공백 없는 JSON 정수 목록(예: `ending numbers=[1,2] mark=start`)이다. strict parser는 알 수 없는 속성·중복·순서 오류·명시된 기본값을 거부한다. dots 생략은 0으로 복원한다. 빈 시퀀스는 LF 하나로 쓴다.
 
 ```text
 clef sign=G2
@@ -253,7 +258,7 @@ bar style=final
 
 ### 4.4 속성 대안과 문법 검증 (W6 읽기 구성기, W8 참고)
 
-- lattice의 속성(`dur`, `dots`, `pos`, `acc`, `head`, `tie`, `slur`, `chord`, `v`, `grace`, `tup3`, `fermata`, `measureRest`, `sign`, `fifths`, `cancel`, `beats`, `beatType`, `symbol`, `style`, `numbers`(1–4 비트마스크), `mark`, `count`)마다 대안 분포를 둔다. 해당 type에 없는 속성은 쓰지 않는다.
+- lattice의 속성(`dur`, `dots`, `pos`, `acc`, `head`, `tie`, `slur`, `chord`, `join`, `v`, `grace`, `tup3`, `fermata`, `measureRest`, `sign`, `fifths`, `cancel`, `beats`, `beatType`, `symbol`, `style`, `numbers`(1–4 비트마스크), `mark`, `count`)마다 대안 분포를 둔다. 해당 type에 없는 속성은 쓰지 않는다. join 대안에는 0도 허용하고 현재 값(생략 시 0)을 포함한다.
 - `dur` 대안은 기호 속성에서 계산한다: 머리 종류 × beam/flag 개수 × 셋잇단 숫자. 예를 들어 "채운 머리 + beam 1개(0.7) 또는 2개(0.29)"는 `dur`의 eighth(0.7), 16th(0.29) 대안이 된다.
 - 문법 오토마톤(W1 구현)은 type별 허용 속성과 값, 순서 제약(예: `chord=1`은 같은 열의 앞 `note` 뒤에만 올 수 있다)을 강제한다. W6 읽기 구성기와 W8 제약 해석은 오토마톤을 통과하는 조합만 만든다.
 
@@ -557,7 +562,7 @@ clavis version            # 엔진·모델·계약 버전 출력(JSON)
 ### 13.5 승인 조건 보완 — C7 동결 전 v0.1 (2026-09-29)
 
 - 선택 기본값은 JSON에서 생략하며 명시하면 검증 오류다. LSTL의 acc/accParen/tie/slur/
-  chord/grace/tup3/fermata/stem/beam/measureRest/courtesy/cancel, Event.grace/accidentalVisible,
+  chord/join/grace/tup3/fermata/stem/beam/measureRest/courtesy/cancel, Event.grace/accidentalVisible,
   SymbolGraph의 빈 attrs에 적용한다. 기본값은 none/0/false/빈 객체이며 해당 선택 필드의
   명시적 null도 생략한다. 필수 값·필수 목록·Event.tie/slur의 start/stop은 유지한다.
   정규 작성기도 이 생략을 강제한다. attrTopK 안의 기본값 후보는 허용한다.
