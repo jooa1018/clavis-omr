@@ -109,5 +109,12 @@
   "ci": "pending ready transition at report time",
   "realOCR": "NOT_RUN",
   "Dev": "NOT_RUN",
-  "sealed": "NOT_ACCESSED"
+  "sealed": "NOT_ACCESSED",
+  "monitorErrorResolution": {
+    "date": "2026-10-09",
+    "status": "RESOLVED_BY_W1_PR48",
+    "source": "Orchestrator notice",
+    "pullRequest": "https://github.com/jooa1018/clavis-omr/pull/48",
+    "historicalFailureRetained": true
+  }
 }

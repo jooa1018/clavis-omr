@@ -79,5 +79,12 @@
     "peakRssBytesSampled": 312725504,
     "cpuLimit": 2
   },
-  "command": "uv run --locked --all-groups python -m training.jobs.short run pytest tests/ --cov=clavis --cov=scripts --cov=eval --cov=training.jobs --cov-report=json:work/ppocr-coverage-retry.json --junitxml=work/ppocr-tests-retry.xml"
+  "command": "uv run --locked --all-groups python -m training.jobs.short run pytest tests/ --cov=clavis --cov=scripts --cov=eval --cov=training.jobs --cov-report=json:work/ppocr-coverage-retry.json --junitxml=work/ppocr-tests-retry.xml",
+  "monitorErrorResolution": {
+    "date": "2026-10-09",
+    "status": "RESOLVED_BY_W1_PR48",
+    "source": "Orchestrator notice",
+    "pullRequest": "https://github.com/jooa1018/clavis-omr/pull/48",
+    "historicalFailureRetained": true
+  }
 }
