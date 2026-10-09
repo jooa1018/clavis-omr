@@ -1,0 +1,4 @@
+clef sign=G2
+key fifths=0
+time beats=4 beatType=4
+bar style=repeatStart

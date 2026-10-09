@@ -1,0 +1,42 @@
+- id: LSTL-COLUMN-001
+  owner: W1
+  statement: CCR-0003 chord/join encode columns; join strictly increases voice, chord preserves voice/duration/dots/grace and nondecreasing pos; join cannot attach to non-time, grace, or mrest. Courtesy follows the final bar and ends the system.
+  units: contract_tokens
+  params: []
+  source: convention
+  evidence: docs/CONTRACTS.md#42-정규-순서-같은-시각-표현--하나의-토큰열
+  flag: Mandatory contract validation
+  ablation:
+    status: NOT_RUN
+    reason: Approved grammar, no recognition heuristic or fitted threshold.
+    report: docs/reports/W1/T1.4-LSTL-2026-10-09.md
+  introduced_by: CCR-0003
+  motivated_by_failure: false
+- id: LSTL-TEXT-001
+  owner: W1
+  statement: Strict UTF-8 NFC LF canonical text follows table attribute order, omits optional defaults and dots zero, preserves required zero and present rest pos zero, and uses compact ending integer lists.
+  units: contract_bytes
+  params: []
+  source: convention
+  evidence: docs/CONTRACTS.md#43-텍스트-표기-golden-파일-디버깅용
+  flag: Mandatory contract validation
+  ablation:
+    status: NOT_RUN
+    reason: Approved canonical representation, no recognition behavior.
+    report: docs/reports/W1/T1.4-LSTL-2026-10-09.md
+  introduced_by: CCR-0003
+  motivated_by_failure: false
+- id: LSTL-ORDER-001
+  owner: W1
+  statement: Sort encoded columns using disjoint printed ranges and only approved overlapping notation precedence; reject cycles or multiple topological choices with AMBIGUOUS_COLUMN_ORDER. Never infer column membership.
+  units: printed_span
+  params: []
+  source: convention
+  evidence: docs/CONTRACTS.md#42-정규-순서-같은-시각-표현--하나의-토큰열
+  flag: Mandatory contract normalization
+  ablation:
+    status: NOT_RUN
+    reason: Approved notation convention, no fitted geometry threshold.
+    report: docs/reports/W1/T1.4-LSTL-2026-10-09.md
+  introduced_by: CCR-0003
+  motivated_by_failure: false

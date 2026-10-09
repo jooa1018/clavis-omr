@@ -1,6 +1,6 @@
-# 계약 패키지 v0.1 — W1
+# 계약 패키지 v0.1.1 — W1
 
-정본: `docs/CONTRACTS.md`, 승인 CCR-0001. 이 패키지는 관측값의 구조·범위·참조를
+정본: `docs/CONTRACTS.md`, 승인 CCR-0001·CCR-0003. 이 패키지는 관측값의 구조·범위·참조를
 검사한다. 인식, 음악 복원, 보정, 코드 문자열 파싱, 좌표 역변환은 구현하지 않는다.
 
 ## 사용
@@ -42,8 +42,8 @@ uv run --all-groups pytest tests/contracts
 ```
 
 첫 승인 완성본은 v0.1로 동결한다. 이후 변경은 CCR과 계약 0절의 버전 규칙을 따른다.
-LSTL의 항목 타입은 lattice payload 때문에 제공하지만 정규화기·텍스트 파서·문법
-오토마톤·정수 어휘는 T1.4다. MusicXML 생성/XSD/재파싱은 W8 범위다.
+LSTL 정규화기·텍스트 파서·문법 오토마톤·정수 어휘는 `lstl/README.md`를 따른다.
+IR 0.1 읽기도 지원하며 새 생산자는 0.1.1을 쓴다. MusicXML 생성/XSD/재파싱은 W8 범위다.
 구조 검증은 음악을 선택하는 조립·판정 규칙이 아니며 카탈로그 ablation 대상이 아니다.
 
 
@@ -54,4 +54,4 @@ LSTL의 항목 타입은 lattice payload 때문에 제공하지만 정규화기�
 attrTopK 후보의 기본값은 허용한다. top-k는 중복/정렬/합/길이를 검사하며 현재 값 포함,
 rank/logProb 순서, 파트별 index, duration, 양수 외부 box 크기도 검사한다.
 관계 방향은 CONTRACTS 3.5, 인쇄 순서와 bar 경계 해석은 4.2·5.4를 따른다.
-겹치는 음악 열의 voice/pos 정규화와 bar 해석 실행은 후속 T1.4/W8 범위다.
+chord/join 열의 voice/pos 문법은 T1.4 공통 검증기, bar 해석 실행은 W8 범위다.

@@ -13,7 +13,13 @@ from scripts import ci_plan, ci_results
 @pytest.mark.parametrize(
     ("event", "files", "draft", "changed", "runners"),
     [
-        ("pull_request", ["src/clavis/core/a.py"], False, True, ["ubuntu-latest"]),
+        (
+            "pull_request",
+            ["src/clavis/core/a.py"],
+            False,
+            True,
+            ["ubuntu-latest", "windows-latest"],
+        ),
         ("pull_request", ["uv.lock"], False, True, ["ubuntu-latest", "windows-latest"]),
         (
             "pull_request",
@@ -24,6 +30,14 @@ from scripts import ci_plan, ci_results
         ),
         ("pull_request", ["scripts/a.py"], False, True, ["ubuntu-latest", "windows-latest"]),
         ("pull_request", ["docs/a.md", "README.md"], False, True, []),
+        (
+            "pull_request",
+            ["README.md", "tests/platform/test_example.py"],
+            False,
+            True,
+            ["ubuntu-latest", "windows-latest"],
+        ),
+        ("pull_request", [], False, True, ["ubuntu-latest", "windows-latest"]),
         ("pull_request", ["scripts/a.py"], True, True, []),
         ("push", ["docs/a.md"], False, True, ["ubuntu-latest"]),
         ("schedule", [], False, False, []),
@@ -51,8 +65,26 @@ def test_independent_coverage() -> None:
             "eval/a.py": item(7, 10),
         }
     }
-    assert ci_results.coverage_gates(data) == {"overall": True, "platform": True, "eval": False}
+    assert ci_results.coverage_gates(data) == {
+        "overall": True,
+        "platform": True,
+        "eval": False,
+        "jobs": False,
+    }
     assert not any(ci_results.coverage_gates({"files": {}}).values())
+
+
+def test_public_workflow_permissions_and_draft_gate() -> None:
+    import yaml
+
+    workflow = yaml.load(
+        Path(".github/workflows/ci.yml").read_text(encoding="utf-8"), Loader=yaml.BaseLoader
+    )
+    assert workflow["permissions"]["contents"] == "read"
+    assert set(workflow["permissions"].values()) == {"read"}
+    assert "pull_request_target" not in workflow["on"]
+    assert "ready_for_review" in workflow["on"]["pull_request"]["types"]
+    assert "!github.event.pull_request.draft" in workflow["jobs"]["plan"]["if"]
 
 
 @pytest.mark.parametrize("outcome", ["", "<skipped/>", "<failure/>", "<error/>"])

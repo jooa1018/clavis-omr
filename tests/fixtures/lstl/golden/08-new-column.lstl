@@ -1,0 +1,3 @@
+note dur=quarter pos=0 head=normal v=1
+rest dur=half v=2 join=1
+note dur=quarter pos=0 head=normal v=1

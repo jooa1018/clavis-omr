@@ -1,0 +1,100 @@
+{
+  "localFullTests": {
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "522",
+    "time": "69.279"
+  },
+  "coverage": {
+    "src/clavis/": {
+      "statements": 1086,
+      "covered": 1066,
+      "percent": 98.15837937384899
+    },
+    "scripts/": {
+      "statements": 189,
+      "covered": 177,
+      "percent": 93.65079365079364
+    },
+    "eval/": {
+      "statements": 1644,
+      "covered": 1486,
+      "percent": 90.38929440389295
+    },
+    "training/jobs/": {
+      "statements": 488,
+      "covered": 437,
+      "percent": 89.54918032786885
+    }
+  },
+  "hardcode": {
+    "schema": "clavis-hardcode-scan-1",
+    "status": "FAIL",
+    "pythonFiles": 99,
+    "manifestIdentifiers": 0,
+    "findings": [
+      {
+        "file": "training/jobs/runner.py",
+        "line": 151,
+        "rule": "H9",
+        "owner": "W1",
+        "evidence_digest": "f55bb63062ca7fa6483196ef2dc20d9cad1d0ef028c76a8a6030e30a59111f85"
+      },
+      {
+        "file": "training/jobs/runner.py",
+        "line": 212,
+        "rule": "H9",
+        "owner": "W1",
+        "evidence_digest": "62cb15b5b7c52f6c1e2f78736d6d34381fd3e3274c27556e936ec20069317c08"
+      }
+    ],
+    "suppressed": [],
+    "byOwner": {
+      "W1": 2
+    }
+  },
+  "realSyntheticQueueSmoke": {
+    "config": {
+      "probe": true,
+      "steps": 3
+    },
+    "cpuAffinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "cpuLimit": 8,
+    "cpuSecondsSampled": 2.9375,
+    "dataDigest": "0000000000000000000000000000000000000000000000000000000000000000",
+    "gitSha": "6d529726ca176e5bd60b7b9b531412602048d09f",
+    "jobDigest": "b4d8facd66602d72a77dd6c87a95be922425bbb15dbae87bb8124026619b7df7",
+    "jobId": "b6f422c25e914749967dcd913d72953f",
+    "manual": true,
+    "meanCpuPercentSampled": 71.7513434286907,
+    "meanLogicalCpusSampled": 0.7175134342869071,
+    "peakCpuPercentSampled": 123.15270933672345,
+    "peakLogicalCpusSampled": 1.2315270933672344,
+    "peakRssBytesSampled": 102031360,
+    "peakThreadsSampled": 34,
+    "reason": "completed",
+    "resultDirectory": "b6f422c25e914749967dcd913d72953f",
+    "seed": 1,
+    "status": "succeeded",
+    "wallSeconds": 4.094000000040978,
+    "warnings": []
+  },
+  "privateOrSealedDataUsed": false,
+  "actualTrainingOrB0": "NOT_RUN",
+  "optionalLibraries": {
+    "torch": "NOT_INSTALLED; API mock tests only",
+    "lightgbm": "NOT_INSTALLED; API mock tests only",
+    "onnxruntime": "NOT_INSTALLED; API mock tests only",
+    "cv2": "installed; injected in real Python child startup"
+  }
+}
