@@ -1,0 +1,31 @@
+{
+  "jobId": "7bef4978748c438eb9c296bff54433b9",
+  "queue_root": "work/w5-benchmark-queue",
+  "kind": "benchmark",
+  "threads": 4,
+  "wall_seconds": 600,
+  "ram_bytes": 3000000000,
+  "data_digest": "cc3f401deae43a735252e27f173877b513c8f9387772d5a5e604c9aac65ce864",
+  "git_sha": "3f6d6353bc0b1c57a694d6fbb15525ed85fa121a",
+  "job_digest": "8c42a4c81d9e653d37fc49ec691d671b07144ad81558d16ca27d1fd0ee8ce0e8",
+  "files": 93,
+  "status": "queued",
+  "validity": "NOT_RUN",
+  "first_call": {
+    "p50_ms": null,
+    "p95_ms": null
+  },
+  "subsequent_calls": {
+    "p50_ms": null,
+    "p95_ms": null
+  },
+  "scheduled_window": "2026-10-10 01:00\u201307:00 Asia/Seoul",
+  "execution": "python -m training.jobs --root work/w5-benchmark-queue run (no --manual; shared global exclusive lock)",
+  "automation": {
+    "id": "w5-strip",
+    "status": "ACTIVE",
+    "first_attempt": "2026-10-10 01:10 Asia/Seoul",
+    "retry_if_lock_occupied": "hourly at :10 through 06:10, only before job starts",
+    "terminal_behavior": "pause after one terminal outcome; retain invalid; do not run after intended date"
+  }
+}
