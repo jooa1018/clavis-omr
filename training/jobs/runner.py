@@ -15,6 +15,7 @@ from training.jobs.guard import Guard
 from training.jobs.launcher import alive, kill_tree
 from training.jobs.memory import can_start, snapshot
 from training.jobs.model import JobSpec, atomic_json
+from training.jobs.monitor import Diagnostics, enforce_affinity, sample
 from training.jobs.resources import THREAD_ENV, allowed_cpus, constrain
 from training.jobs.store import Queue, worker_lock
 
@@ -27,20 +28,6 @@ def in_window(now: datetime | None = None) -> bool:
 
 def disk_ok(paths: list[Path]) -> bool:
     return all(shutil.disk_usage(path).free >= DISK_RESERVE for path in paths)
-
-
-def sample(process: psutil.Process, cpu: dict[int, float]) -> tuple[int, int]:
-    rss = threads = 0
-    for item in [process, *process.children(recursive=True)]:
-        try:
-            with item.oneshot():
-                rss += item.memory_info().rss
-                threads += item.num_threads()
-                timing = item.cpu_times()
-                cpu[item.pid] = max(cpu.get(item.pid, 0), timing.user + timing.system)
-        except psutil.NoSuchProcess:
-            continue
-    return rss, threads
 
 
 def recover(queue: Queue) -> None:
@@ -102,6 +89,8 @@ def execute(queue: Queue, row: dict[str, Any], manual: bool) -> dict[str, Any]:
     last_sample = start
     host_memory: list[dict[str, int | float]] = []
     reason = "completed"
+    diagnostics = Diagnostics()
+    site = "preflight.memory"
     process: psutil.Process | None = None
     guard: Guard | None = None
     try:
@@ -117,6 +106,7 @@ def execute(queue: Queue, row: dict[str, Any], manual: bool) -> dict[str, Any]:
             flags = 0
             if sys.platform == "win32":
                 flags = subprocess.CREATE_NO_WINDOW
+            site = "launch.Popen"
             child = subprocess.Popen(
                 [sys.executable, "-m", "training.jobs.launcher"],
                 env=env,
@@ -126,6 +116,7 @@ def execute(queue: Queue, row: dict[str, Any], manual: bool) -> dict[str, Any]:
                 creationflags=flags,
                 start_new_session=os.name != "nt",
             )
+            site = "launch.containment"
             process = psutil.Process(child.pid)
             guard = Guard(child.pid, spec.ram_bytes, cpus)
             constrain(process, cpus)
@@ -133,28 +124,27 @@ def execute(queue: Queue, row: dict[str, Any], manual: bool) -> dict[str, Any]:
             (directory / "go").touch()
             while child.poll() is None:
                 try:
-                    rss, threads = sample(process, cpu)
+                    site = "sample.process_tree"
+                    rss, threads = sample(process, cpu, diagnostics)
                 except psutil.NoSuchProcess:
                     break
                 peak, peak_threads = max(peak, rss), max(peak_threads, threads)
                 sampled_at = time.monotonic()
+                site = "sample.host_memory"
                 host_memory.append({"elapsedSeconds": sampled_at - start, **snapshot()})
                 total_cpu = sum(cpu.values())
                 peak_cpu = max(
                     peak_cpu, (total_cpu - last_cpu) / max(sampled_at - last_sample, 1e-9)
                 )
                 last_cpu, last_sample = total_cpu, sampled_at
-                try:
-                    members = [process, *process.children(recursive=True)]
-                except psutil.NoSuchProcess:
-                    members = []
-                for member in members:
+                site = "affinity.process_tree"
+                if guard.handle is None:
                     try:
-                        if guard.handle is None and set(member.cpu_affinity()) - set(cpus):
-                            constrain(member, cpus)
+                        enforce_affinity(process, cpus, diagnostics)
                     except psutil.NoSuchProcess:
                         pass
                 elapsed = row["wall"] + time.monotonic() - start
+                site = "monitor.queue_and_limits"
                 queue.update(row["id"], wall=elapsed)
                 if rss > spec.ram_bytes:
                     reason = "ram-limit"
@@ -178,17 +168,23 @@ def execute(queue: Queue, row: dict[str, Any], manual: bool) -> dict[str, Any]:
                 time.sleep(0.1)
             if child.wait() != 0 and reason == "completed":
                 reason = "command-failed"
+            site = "cleanup.process_tree"
             kill_tree(process)
-    except (OSError, psutil.Error):
+    except (OSError, psutil.Error) as error:
+        diagnostics.record(error, site)
         reason = "monitor-error"
     except KeyboardInterrupt:
         queue.pause()
         reason = "user-pause"
     finally:
-        if guard is not None:
-            guard.close()
-        if process is not None:
-            kill_tree(process)
+        try:
+            if guard is not None:
+                guard.close()
+            if process is not None:
+                kill_tree(process)
+        except (OSError, psutil.Error) as error:
+            diagnostics.record(error, "cleanup.finally")
+            reason = "monitor-error"
     elapsed = row["wall"] + time.monotonic() - start
     status = (
         "succeeded"
@@ -219,6 +215,7 @@ def execute(queue: Queue, row: dict[str, Any], manual: bool) -> dict[str, Any]:
         "meanCpuPercentSampled": 100 * sum(cpu.values()) / max(elapsed - row["wall"], 1e-9),
         "peakCpuPercentSampled": 100 * peak_cpu,
         "hostMemorySamples": host_memory,
+        "monitorDiagnostics": diagnostics.report(),
         "warnings": (
             ["MEAN_CPU_ABOVE_8"] if sum(cpu.values()) > 8 * (elapsed - row["wall"]) else []
         ),
