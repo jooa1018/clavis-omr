@@ -172,3 +172,13 @@ deletion; read them alongside CER. Arbitrary word boundaries in note-spaced rows
 not recoverable from ink spacing alone. The 16 rows/64 synthetic blocks are **SYN-Val
 아님**, not natural lyrics or evidence for a model adoption decision. No rules are fit
 on the outcomes. Model/font hashes are unchanged from T7.1b; W2 receipt is not admission.
+
+## Measurement policy (Orchestrator, 2026-10-09)
+
+Continue full tests and component smoke through `training.jobs.short` (OR-005).
+Their elapsed time is a diagnostic, not a latency-budget acceptance result.
+Formal latency/speed measurements use `python -m training.jobs.benchmark` in
+01:00–07:00 Asia/Seoul only; require `benchmark.validity=valid`. No formal
+benchmark is scheduled or claimed by this main-sync update. W1 PR #48 resolves
+the historical child-sampling monitor-error; distinct child exit failures must
+still be reported separately.

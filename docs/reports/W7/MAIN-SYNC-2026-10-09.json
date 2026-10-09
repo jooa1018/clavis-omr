@@ -1,0 +1,49 @@
+{
+  "scope": "W7 stacked PR56 over PR50, local Windows REF-LAPTOP RAM 24 GB (16+8 DDR4-3200), synthetic/unit tests; no recognition measurement",
+  "main": "e556b083a452f8a4cd93b62f3e19a8b2fe0b4fbd",
+  "command": "uv run --locked --all-groups python -m training.jobs.short run pytest tests/ --junitxml=work/w7-main-sync-tests.xml",
+  "tests": {
+    "total": 1518,
+    "passed": 1518,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "text": 271,
+    "pytestSeconds": 79.34
+  },
+  "execution": {
+    "status": "succeeded",
+    "reason": "completed",
+    "wallSeconds": 81.09399999999732,
+    "cpuSecondsSampled": 64.484375,
+    "peakRssBytesSampled": 316215296,
+    "cpuLimit": 2,
+    "monitorDiagnostics": [
+      {
+        "exceptionType": "NoSuchProcess",
+        "site": "sample.memory_info",
+        "skippedChild": true,
+        "count": 15
+      },
+      {
+        "exceptionType": "NoSuchProcess",
+        "site": "sample.num_threads",
+        "skippedChild": true,
+        "count": 6
+      }
+    ]
+  },
+  "checks": {
+    "ruff": "PASS",
+    "mypy": "PASS",
+    "privacy": "PASS",
+    "hardcode": "PASS",
+    "requiredContracts": 298,
+    "requiredIntegrity": 24
+  },
+  "monitorError": "NOT_OBSERVED; historical monitor-error resolved by PR48 per Orchestrator; distinct child-exit errors are not declared globally resolved",
+  "formalBenchmark": "NOT_RUN; only 01:00-07:00 Asia/Seoul exclusive training.jobs.benchmark, validity=valid required; slot durations are diagnostic only",
+  "remoteCI": "NOT_RUN: PR50 and PR56 remain draft",
+  "W2": "PENDING_INDEPENDENT_ARTIFACT_CONFIRMATION",
+  "sealed": "NOT_ACCESSED"
+}
