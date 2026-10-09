@@ -1,5 +1,5 @@
 # [W1] 실행기 시험 격리와 동시 슬롯 반복 — 2026-10-09
-판정: PARTIAL — 동시 슬롯 20회·전체 Windows PASS, 두 OS CI 대기
+판정: PASS — 동시 슬롯 20회·전체 Windows·두 OS CI 통과, PR #60 병합
 
 ## 1. 요약
 공유 time 모듈 패치를 제거하고 preflight에 시험별 Clock과 host sampler를 주입한다.
@@ -7,6 +7,7 @@ Windows redirector 대신 handshake가 알려 준 실제 잠금 소유 프로세
 자식 실패 이유·종료 코드·비식별 stderr를 assertion에 기록하고 실제 3슬롯 부하 시험을 제공한다.
 
 ## 2. 변경
+[PR #60](https://github.com/jooa1018/clavis-omr/pull/60), merge 4f4e76543d1f449e02a810cb68486a35ebdd4fe3.
 training/jobs/benchmark_monitor.py, bootstrap/sitecustomize.py, runner.py; tests/platform/{conftest,test_benchmark,test_short_slots,load_companion}.py; scripts/stress_platform.py.
 모든 시험 임시 폴더는 pytest tmp_path 또는 실행별 UUID 하위다. 스트레스 실행마다 20라운드, 각 라운드 두 CPU 부하 작업이 ready를 알린 뒤 세 번째 슬롯에서 tests/platform을 실행한다. 끝날 때까지 두 작업이 살아 있었는지 확인한다.
 
@@ -20,7 +21,7 @@ Orchestrator 2026-10-09 불안정 시험 수정·20회 부하 검증 지시. COM
 재현 명령: python -m scripts.stress_platform. 실제 머신 3슬롯을 취득하며 각 작업은 기존 execute의 2스레드/RAM 3 GB/600초 한도를 적용한다.
 실행 소스 11200553278ef4784d073292588f81d3911e3230에서 20/20회 PASS: 168개 × 20 = 3360 tests, failures/errors/skipped 모두 0. 모든 라운드에서 두 companion이 시험 끝까지 실행되고 성공 종료했다. 최소 companion CPU 표본 합계는 1.609375초였다. JSON에 20개 라운드의 상태·CPU·RSS·예외 표본을 기록한다.
 ruff/format, mypy 93파일, H1–H9 AST, 런타임 라이선스 14개, import 경계 2개 PASS. 전체 Windows 1485 passed, failures/errors/skipped 0; JUnit 217.336초, 슬롯 221.203초, CPU 182.078125초, peak RSS 323035136 bytes. overall/platform/eval/jobs ≥80% 모두 PASS; 계약 298개, 무결성 양성·음성 24개 PASS.
-전체 명령: `python -m training.jobs.short run pytest tests/ --cov=clavis --cov=scripts --cov=eval --cov=training.jobs --cov-report=json:work/isolation-coverage.json --junitxml=work/isolation-tests.xml`. 두 OS CI 대기.
+전체 명령: `python -m training.jobs.short run pytest tests/ --cov=clavis --cov=scripts --cov=eval --cov=training.jobs --cov-report=json:work/isolation-coverage.json --junitxml=work/isolation-tests.xml`. 두 OS CI [37903559761](https://github.com/jooa1018/clavis-omr/actions/runs/37903559761) Linux·Windows PASS(head 61e04ea2bc086f5ce7a5efa018f7c76186958ad2).
 
 ## 5. 지표
 Windows REF-LAPTOP RAM 24 GB(16+8 GB DDR4-3200 듀얼 채널). 합성 CPU 활동과 플랫폼 단위 시험만 실행한다.
@@ -36,5 +37,5 @@ stderr 원문은 로컬 임시 파일에만 두며 assertion은 저장소/사용
 스케줄러 실제 등록은 하지 않는다. 야간 기능은 선행 PR #59에서 별도 병합했다.
 
 ## 8. 다음 단계
-W4 H9 확인·실제 동시 부하 20회 실패 0을 완료했다. 전체 Windows 검증도 완료했다. 두 OS CI 통과 후 병합한다.
-보고서 JSON에 각 라운드와 두 companion 상태를 남긴다.
+W4 H9 확인·실제 동시 부하 20회 실패 0·전체 Windows·두 OS CI 통과 후 squash 병합했다.
+보고서 JSON에 각 라운드와 두 companion 상태를 남겼다. W2·W4·W5·W8에는 최신 main에서 전체 시험을 실행하도록 사용자 경유로 알린다. 기다리는 판정은 없다. 야간 예약 실제 등록은 사용자 실행 사항이다.
