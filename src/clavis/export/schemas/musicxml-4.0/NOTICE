@@ -1,0 +1,22 @@
+MusicXML 4.0
+
+musicxml.xsd and xlink.xsd:
+Copyright © 2004-2021 the Contributors to the MusicXML Specification,
+published by the W3C Music Notation Community Group under the W3C Community
+Final Specification Agreement (FSA):
+https://www.w3.org/community/about/agreements/final/
+
+This notice identifies the specification name and version and retains the
+original copyright notice for FSA section 2.2. These schemas are unmodified.
+Official release: https://www.w3.org/2021/06/musicxml40/
+
+xml.xsd (XML namespace schema):
+W3C XML Schema document for the XML namespace, maintained by the W3C XML
+Schema Working Group. This file is the unmodified copy shipped with the
+official MusicXML 4.0 release. Its original annotations are retained.
+Original version identified within the file: http://www.w3.org/2007/08/xml.xsd
+W3C notices: https://www.w3.org/copyright/document-license-2023/
+https://www.w3.org/Consortium/Legal/2002/copyright-documents-20021231
+
+Clavis authorization: Orchestrator, 2026-09-29, limited to these three files.
+See manifest.json for source URLs, release tag, commit and file SHA-256 values.

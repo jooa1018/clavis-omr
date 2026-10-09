@@ -26,6 +26,7 @@ from .common import (
     unique,
     validate_top_k,
 )
+from .lstl.automaton import validate_sequence
 from .tokens import LSTLItem
 
 SymbolClass = Literal[
@@ -187,6 +188,7 @@ class Hypothesis(WireModel):
 
     @model_validator(mode="after")
     def printed_order(self) -> Self:
+        validate_sequence(entry.item for entry in self.items)
         # Non-time items are separate printed columns (4.2.1); notes/rests can
         # share a musical column whose voice/pos order belongs to T1.4.
         for previous, current in zip(self.items, self.items[1:], strict=False):

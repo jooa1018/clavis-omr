@@ -1,8 +1,8 @@
-"""Typed LSTL items for lattice payloads. Sequence automaton belongs to T1.4."""
+"""Typed LSTL 0.1.1 items (CCR-0003); no recognition logic."""
 
-from typing import Annotated, Literal
+from typing import Annotated, Literal, Self
 
-from pydantic import Field, StrictBool, StrictInt
+from pydantic import Field, StrictBool, StrictInt, model_validator
 
 from .common import (
     Acc,
@@ -30,6 +30,7 @@ LSTL_DEFAULTS = (
     ("tie", "none"),
     ("slur", "none"),
     ("chord", 0),
+    ("join", 0),
     ("grace", "none"),
     ("tup3", "none"),
     ("fermata", False),
@@ -76,12 +77,19 @@ class NoteItem(TokenDefaults):
     acc_paren: StrictBool | None = None
     tie: Join | None = None
     slur: Join | None = None
-    chord: Literal[0, 1] | None = None
+    chord: Annotated[StrictInt, Field(ge=0, le=1)] | None = None
+    join: Annotated[StrictInt, Field(ge=0, le=1)] | None = None
     grace: Grace | None = None
     tup3: Tup3 | None = None
     fermata: StrictBool | None = None
     stem: Stem | None = None
     beam: Beam | None = None
+
+    @model_validator(mode="after")
+    def column_marker(self) -> Self:
+        if self.join is not None and (self.chord == 1 or self.grace is not None):
+            raise ValueError("join is forbidden on chord continuations and grace notes")
+        return self
 
 
 class RestItem(TokenDefaults):
@@ -89,6 +97,7 @@ class RestItem(TokenDefaults):
     dur: Dur
     dots: Dots
     v: VoiceNumber
+    join: Annotated[StrictInt, Field(ge=0, le=1)] | None = None
     pos: Pos | None = None
     measure_rest: StrictBool | None = None
     fermata: StrictBool | None = None

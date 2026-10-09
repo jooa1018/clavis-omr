@@ -378,10 +378,8 @@
         "chord": {
           "anyOf": [
             {
-              "enum": [
-                0,
-                1
-              ],
+              "maximum": 1,
+              "minimum": 0,
               "type": "integer"
             },
             {
@@ -449,6 +447,20 @@
           ],
           "title": "Head",
           "type": "string"
+        },
+        "join": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Join"
         },
         "pos": {
           "maximum": 22,
@@ -608,6 +620,20 @@
           ],
           "default": null,
           "title": "Fermata"
+        },
+        "join": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Join"
         },
         "measureRest": {
           "anyOf": [
@@ -809,7 +835,10 @@
       "$ref": "#/$defs/Producer"
     },
     "schema": {
-      "const": "clavis-ir-0.1",
+      "enum": [
+        "clavis-ir-0.1",
+        "clavis-ir-0.1.1"
+      ],
       "title": "Schema",
       "type": "string"
     },

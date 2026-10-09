@@ -1,0 +1,219 @@
+{
+  "status": "PARTIAL",
+  "label": "예비 / preliminary / measurement-only",
+  "scope": "local Windows CPU; W2 synthetic development smoke; NOT SYN-Val",
+  "objective": "ink-density / dense grayscale proxy; NOT symbol labels; no W5 normalization; FCN channels duplicated",
+  "checkpoint": "none; never eligible for evaluation, selection, or engine use",
+  "seed": 6,
+  "git_sha": "6d529726ca176e5bd60b7b9b531412602048d09f",
+  "code_sha256": "e46cc0ce85f2e8391160f2bb25b6f708919b35d1c799c1aa252d987f92dc335e",
+  "measurements": [
+    {
+      "model": "LightGBM",
+      "threads": 4,
+      "unique_patches": 64,
+      "patch_shape": [
+        48,
+        48,
+        1
+      ],
+      "boosting_rounds": 20,
+      "fit_seconds": 0.21048159996280447,
+      "unique_patches_per_fit_second": 304.0645833712298,
+      "patch_rounds_per_second": 6081.291667424596,
+      "peak_rss_bytes": 77955072,
+      "source_artifacts": [
+        {
+          "seed": "train-smoke-0",
+          "font": "Leipzig",
+          "sha256": "869d98cd744a4705121ea4139cb81c23e388c71b4081b81403d257b43b896e2f"
+        },
+        {
+          "seed": "train-smoke-0",
+          "font": "Bravura",
+          "sha256": "de883fcb24ca471d444121820c85e0de9e9dcfc486abafeb6a18908513c25fb5"
+        }
+      ],
+      "data_manifest_digest": "41580d17408b17de26056c370ca1b7f421a0ca02ef1712daf48e56dcc1517638",
+      "versions": {
+        "lightgbm": "4.6.0",
+        "numpy": "2.2.6",
+        "resvg-py": "0.2.6"
+      },
+      "configuration": {
+        "lightgbm": {
+          "objective": "binary",
+          "verbosity": -1,
+          "num_threads": 4,
+          "deterministic": true,
+          "force_col_wise": true,
+          "seed": 6,
+          "num_leaves": 15,
+          "min_data_in_leaf": 4,
+          "max_bin": 31
+        },
+        "warmup_rounds": 1,
+        "timed_rounds": 20,
+        "raster_width": 1200,
+        "patches_per_page": 32,
+        "patch_size": 48
+      }
+    },
+    {
+      "model": "LightGBM",
+      "threads": 8,
+      "unique_patches": 64,
+      "patch_shape": [
+        48,
+        48,
+        1
+      ],
+      "boosting_rounds": 20,
+      "fit_seconds": 0.165366199973505,
+      "unique_patches_per_fit_second": 387.0198384570371,
+      "patch_rounds_per_second": 7740.396769140742,
+      "peak_rss_bytes": 78430208,
+      "source_artifacts": [
+        {
+          "seed": "train-smoke-0",
+          "font": "Leipzig",
+          "sha256": "869d98cd744a4705121ea4139cb81c23e388c71b4081b81403d257b43b896e2f"
+        },
+        {
+          "seed": "train-smoke-0",
+          "font": "Bravura",
+          "sha256": "de883fcb24ca471d444121820c85e0de9e9dcfc486abafeb6a18908513c25fb5"
+        }
+      ],
+      "data_manifest_digest": "41580d17408b17de26056c370ca1b7f421a0ca02ef1712daf48e56dcc1517638",
+      "versions": {
+        "lightgbm": "4.6.0",
+        "numpy": "2.2.6",
+        "resvg-py": "0.2.6"
+      },
+      "configuration": {
+        "lightgbm": {
+          "objective": "binary",
+          "verbosity": -1,
+          "num_threads": 8,
+          "deterministic": true,
+          "force_col_wise": true,
+          "seed": 6,
+          "num_leaves": 15,
+          "min_data_in_leaf": 4,
+          "max_bin": 31
+        },
+        "warmup_rounds": 1,
+        "timed_rounds": 20,
+        "raster_width": 1200,
+        "patches_per_page": 32,
+        "patch_size": 48
+      }
+    },
+    {
+      "threads": 4,
+      "unique_patches": 64,
+      "source_artifacts": [
+        {
+          "seed": "train-smoke-0",
+          "font": "Leipzig",
+          "sha256": "869d98cd744a4705121ea4139cb81c23e388c71b4081b81403d257b43b896e2f"
+        },
+        {
+          "seed": "train-smoke-0",
+          "font": "Bravura",
+          "sha256": "de883fcb24ca471d444121820c85e0de9e9dcfc486abafeb6a18908513c25fb5"
+        }
+      ],
+      "data_manifest_digest": "41580d17408b17de26056c370ca1b7f421a0ca02ef1712daf48e56dcc1517638",
+      "model": "FCN",
+      "parameter_count": 102209,
+      "patch_shape": [
+        48,
+        48,
+        2
+      ],
+      "fit_seconds": 0.16312420001486316,
+      "unique_patches_per_fit_second": 392.33908883028147,
+      "configuration": {
+        "channels": [
+          2,
+          32,
+          64,
+          96,
+          32,
+          1
+        ],
+        "batch_size": 8,
+        "warmup_steps": 2,
+        "timed_steps": 8,
+        "optimizer": "SGD",
+        "learning_rate": 0.01,
+        "deterministic_algorithms": true,
+        "seed": 6
+      },
+      "versions": {
+        "torch": "2.5.1+cpu",
+        "numpy": "2.2.6",
+        "resvg-py": "0.2.6"
+      },
+      "peak_rss_bytes": 307568640
+    },
+    {
+      "threads": 8,
+      "unique_patches": 64,
+      "source_artifacts": [
+        {
+          "seed": "train-smoke-0",
+          "font": "Leipzig",
+          "sha256": "869d98cd744a4705121ea4139cb81c23e388c71b4081b81403d257b43b896e2f"
+        },
+        {
+          "seed": "train-smoke-0",
+          "font": "Bravura",
+          "sha256": "de883fcb24ca471d444121820c85e0de9e9dcfc486abafeb6a18908513c25fb5"
+        }
+      ],
+      "data_manifest_digest": "41580d17408b17de26056c370ca1b7f421a0ca02ef1712daf48e56dcc1517638",
+      "model": "FCN",
+      "parameter_count": 102209,
+      "patch_shape": [
+        48,
+        48,
+        2
+      ],
+      "fit_seconds": 0.20828360004816204,
+      "unique_patches_per_fit_second": 307.273352223608,
+      "configuration": {
+        "channels": [
+          2,
+          32,
+          64,
+          96,
+          32,
+          1
+        ],
+        "batch_size": 8,
+        "warmup_steps": 2,
+        "timed_steps": 8,
+        "optimizer": "SGD",
+        "learning_rate": 0.01,
+        "deterministic_algorithms": true,
+        "seed": 6
+      },
+      "versions": {
+        "torch": "2.5.1+cpu",
+        "numpy": "2.2.6",
+        "resvg-py": "0.2.6"
+      },
+      "peak_rss_bytes": 292696064
+    }
+  ],
+  "wall_seconds": 31.8835226999945,
+  "limitations": [
+    "single brief trial per setting; shared laptop; no sustained thermal test",
+    "not a four-hour extrapolation; feature/label semantics are provisional"
+  ],
+  "formal_measurement": "T1.9 single queue, 01:00–07:00; not scheduled here",
+  "configuration_digest": "7cf62b10ea44fcbe4fe4477c5d05b8f8ed5f00a90846477738a2060f98f4b6fe"
+}
