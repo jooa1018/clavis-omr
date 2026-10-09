@@ -72,6 +72,17 @@ for the scheduled comparison. For daytime path checks use OR-005, a separate
 64-record config/cache and `measurement --probe`; the resulting 2-thread values
 are preliminary and cannot substitute for the formal 4/8-thread comparison.
 Report fit-only throughput separately from queue wall time and process-tree RSS.
+Orchestrator ruling (2026-10-09): T6.0 throughput uses the ordinary training queue,
+with comparison jobs ordered FCN-4, FCN-8, LightGBM-4, LightGBM-8 in one night.
+The four-thread exclusive benchmark is only for engine latency budgets.
+`trial_load.observe_load` consumes W1's public load sampler and provisional
+policy for each independent fit, without changing batch priority or affinity.
+It records external CPU/RAM/AC samples and marks contaminated or unobserved
+trials `comparisonEligible=false`. Preserve those rows in reports but exclude
+them from throughput comparisons; compare matching size/seed pairs only when
+both thread settings are eligible. The screen is not engine benchmark validity.
+Use the v2 queue registration report after the ruling; the original pending
+queue is paused and retained solely as registration history.
 The timing fixture cannot confirm convergence, oracle@k or PLAN 7.5's aggregate
 20–40-hour retraining budget without admitted data and actual training schedules.
 

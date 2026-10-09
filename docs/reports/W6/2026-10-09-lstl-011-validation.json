@@ -125,7 +125,8 @@
     "wallSeconds": 88.95299999999406,
     "cpuSecondsSampled": 64.0,
     "peakRssBytesSampled": 224026624,
-    "cpuLimit": 2
+    "cpuLimit": 2,
+    "resolution_note": "Resolved by W1 PR #48 (2026-10-09): transient child sampling errors handled and diagnostics added; historical failure preserved."
   },
   "smoke_slot": {
     "status": "succeeded",

@@ -14,6 +14,7 @@ import psutil
 from training.data.resources import peak_rss_bytes
 from training.jobs.context import Context
 from training.jobs.model import atomic_json
+from training.models.symbols.trial_load import observe_load
 
 
 def fcn_trial(patches: np.ndarray, config: dict, seed: int) -> dict:
@@ -139,9 +140,10 @@ def run(data: Path, config_path: Path, model: str, *, probe: bool = False) -> di
         if context.stopping():
             return state
         started = time.perf_counter()
-        result = (fcn_trial if model == "fcn" else lgb_trial)(
-            patches[:n], config, config["seed"] + repeat
-        )
+        with observe_load() as load:
+            result = (fcn_trial if model == "fcn" else lgb_trial)(
+                patches[:n], config, config["seed"] + repeat
+            )
         state["trials"].append(
             {
                 "sample_records": n,
@@ -150,6 +152,7 @@ def run(data: Path, config_path: Path, model: str, *, probe: bool = False) -> di
                 "trial_wall_seconds": time.perf_counter() - started,
                 "process_peak_rss_bytes": peak_rss_bytes(),
                 "logical_cpu_affinity_count": len(psutil.Process().cpu_affinity()),
+                "load_screen": load,
             }
         )
         # Each trial starts from a fixed seed. Interrupted trials are rerun in
