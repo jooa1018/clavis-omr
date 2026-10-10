@@ -7,7 +7,7 @@
 v2 큐와 자동화를 PAUSED로 전환했고, 다음 날 실행이나 자동 재등록은 하지 않는다.
 
 ## 2. 변경 (PR 링크, 주요 파일·모듈)
-브랜치 `w6/missed-window`; 이 보고서와 `2026-10-10-window-expired.json`만 추가한다.
+[PR #64](https://github.com/jooa1018/clavis-omr/pull/64), 브랜치 `w6/missed-window`; 이 보고서와 `2026-10-10-window-expired.json`만 추가한다.
 코드·설정·동결 source descriptor·요청·데이터·가중치는 변경하지 않는다.
 이전 구현 및 검증은 [PR #58](https://github.com/jooa1018/clavis-omr/pull/58)에 병합됐다.
 
