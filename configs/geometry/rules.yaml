@@ -81,5 +81,24 @@
     },
     "introduced_by": "W5 initial component PR",
     "motivated_by_failure": false
+  },
+  {
+    "id": "GEO-VERTICAL",
+    "owner": "W5",
+    "statement": "Thin vertical strokes covering most of the staff height are ambiguous barline-or-stem proposals, not musical barlines",
+    "units": "staff_space or ratio",
+    "params": [
+      "barline.min_coverage",
+      "barline.max_width"
+    ],
+    "source": "convention",
+    "enabled": true,
+    "flag": "GEO-VERTICAL",
+    "ablation": {
+      "status": "DEFERRED_G2",
+      "authorization": "Orchestrator 2026-09-29 and 2026-10-09; initial synthetic components"
+    },
+    "introduced_by": "W5 S2 visual proposals",
+    "motivated_by_failure": false
   }
 ]

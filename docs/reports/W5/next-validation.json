@@ -1,0 +1,163 @@
+{
+  "base_main": "947b85f",
+  "scope": "Windows local, synthetic tests only, no Dev or sealed",
+  "post_runner_sync": {
+    "tests": 1471,
+    "passed": 1471,
+    "seconds": 149.963,
+    "slot_wall_seconds": 152.0,
+    "peak_rss_bytes": 313094144,
+    "command": "uv run --locked --all-groups python -m training.jobs.short run pytest tests/ --junitxml=work/post-runner-tests.xml"
+  },
+  "changes_full_suite": {
+    "status": "FAIL",
+    "tests": 1511,
+    "passed": 1508,
+    "failures": 3,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 299.42,
+    "slot_wall_seconds": 305.89100000000326,
+    "peak_rss_bytes": 326074368,
+    "command": "uv run --locked --all-groups python -m training.jobs.short run pytest tests/ --cov=clavis --cov=scripts --cov=eval --cov=training.jobs --cov-report=json:work/ingest-coverage.json --junitxml=work/ingest-full-tests.xml",
+    "failed_tests": [
+      "tests.data.test_leadgen.test_clefs_render_in_external_process[2]",
+      "tests.data.test_verovio_integration.test_actual_renderer_preserves_staff_provenance[Leipzig]",
+      "tests.platform.test_benchmark.test_admission_timing_does_not_change_job_bytes"
+    ]
+  },
+  "new_W5_tests": {
+    "passed": 40,
+    "failed": 0
+  },
+  "new_runtime_coverage": {
+    "src/clavis/geometry/barlines.py": {
+      "covered_lines": 31,
+      "num_statements": 31,
+      "percent_covered": 100.0,
+      "percent_covered_display": "100",
+      "missing_lines": 0,
+      "excluded_lines": 0,
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100"
+    },
+    "src/clavis/ingest/__init__.py": {
+      "covered_lines": 2,
+      "num_statements": 2,
+      "percent_covered": 100.0,
+      "percent_covered_display": "100",
+      "missing_lines": 0,
+      "excluded_lines": 0,
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100"
+    },
+    "src/clavis/ingest/decode.py": {
+      "covered_lines": 109,
+      "num_statements": 114,
+      "percent_covered": 95.6140350877193,
+      "percent_covered_display": "96",
+      "missing_lines": 5,
+      "excluded_lines": 0,
+      "percent_statements_covered": 95.6140350877193,
+      "percent_statements_covered_display": "96"
+    }
+  },
+  "coverage_gates": {
+    "overall": "PASS",
+    "platform": "PASS",
+    "eval": "PASS",
+    "jobs": "PASS"
+  },
+  "required": {
+    "contracts": 298,
+    "integrity_positive_negative": 24,
+    "status": "PASS"
+  },
+  "lint": "PASS",
+  "format_files": 180,
+  "mypy_source_files": 92,
+  "import_contracts_kept": 2,
+  "runtime_license_violations": 0,
+  "hardcode_scan": {
+    "schema": "clavis-hardcode-scan-1",
+    "status": "PASS",
+    "pythonFiles": 180,
+    "manifestIdentifiers": 0,
+    "findings": [],
+    "suppressed": [
+      {
+        "file": "training/jobs/runner.py",
+        "line": 194,
+        "rule": "H9",
+        "owner": "W1",
+        "evidence_digest": "f55bb63062ca7fa6483196ef2dc20d9cad1d0ef028c76a8a6030e30a59111f85"
+      },
+      {
+        "file": "training/jobs/runner.py",
+        "line": 269,
+        "rule": "H9",
+        "owner": "W1",
+        "evidence_digest": "62cb15b5b7c52f6c1e2f78736d6d34381fd3e3274c27556e936ec20069317c08"
+      },
+      {
+        "file": "training/data/pdmx_download.py",
+        "line": 128,
+        "rule": "H9",
+        "owner": "W2",
+        "evidence_digest": "3ee285c8d06b4a8f725d0470af2d62bb5734d1454b714b68f8c8c253050ed90c"
+      },
+      {
+        "file": "training/data/pdmx_stream.py",
+        "line": 266,
+        "rule": "H9",
+        "owner": "W2",
+        "evidence_digest": "8e4b5b2d7825ddd83711afba5bc5a6e39c98cf28038feb27a6176376f142a6eb"
+      },
+      {
+        "file": "training/jobs/benchmark_monitor.py",
+        "line": 128,
+        "rule": "H9",
+        "owner": "W1",
+        "evidence_digest": "fb249a3f20e1a36a592a6c2eb21b29d0686d61032d38db41ef5ff654de088837"
+      }
+    ],
+    "byOwner": {}
+  },
+  "privacy": {
+    "status": "PASS",
+    "trackedFiles": 661,
+    "findings": []
+  },
+  "collection_issue": "RESOLVED: renamed W5 test_benchmark.py to test_strip_benchmark.py to avoid pytest basename collision with W1",
+  "benchmark": "NOT_RUN, scheduled night queue, see benchmark-queue.json",
+  "ci": "NOT_RUN until ready conditions satisfied",
+  "targeted_recheck": {
+    "tests": 3,
+    "failures": 0,
+    "seconds": 17.235,
+    "status": "PASS",
+    "slot_wall_seconds": 20.531000000002678,
+    "peak_rss_bytes": 183382016
+  },
+  "full_recheck": {
+    "status": "FAIL",
+    "tests": 1511,
+    "passed": 1509,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 200.638,
+    "slot_wall_seconds": 204.46899999999732,
+    "peak_rss_bytes": 315715584,
+    "command": "uv run --locked --all-groups python -m training.jobs.short run pytest tests/ --junitxml=work/ingest-full-recheck.xml",
+    "failed_tests": [
+      "tests.data.test_verovio_integration.test_actual_renderer_preserves_staff_provenance[Leland]",
+      "tests.platform.test_benchmark.test_pause_during_sampling_or_retry[1]"
+    ],
+    "summaries": [
+      "W2 Verovio Leland subprocess exit 3221227274",
+      "W1 fake clock pause test: observed 30.9, expected <2"
+    ]
+  },
+  "escalation": "00_COMMON 8: W1/W2 owned full-suite failures recur; no owner-code changes or further retries. Draft until resolved."
+}

@@ -88,7 +88,7 @@ def ground_truth(job: Path, width: int, height: int) -> list[np.ndarray]:
 
 def run(root: Path, rasters: Path, output: Path) -> dict:
     output.mkdir(parents=True, exist_ok=True)
-    cv2.setNumThreads(1)
+    # Keep W1's injected thread budget, including four-thread benchmark jobs.
     started = time.perf_counter()
     records = []
     errors = []
@@ -296,6 +296,7 @@ def run(root: Path, rasters: Path, output: Path) -> dict:
                 "strip_ms_p95": float(np.percentile([r["strip_ms"] for r in rows], 95))
                 if rows
                 else None,
+                **latency_summary(rows),
                 "strip_repeated_ms_p95": float(
                     np.percentile([t for r in rows for t in r["strip_ms_repeated"]], 95)
                 )
@@ -318,6 +319,7 @@ def run(root: Path, rasters: Path, output: Path) -> dict:
     sheet.save(output / "contact.png")
     result = {
         "scope": "synthetic smoke, NOT SYN-Val; no real/Dev/sealed data; no improvement claim",
+        "opencv_threads": cv2.getNumThreads(),
         "match_definition": (
             "one-to-one nearest top-line centre <=0.5 staff-space "
             "and horizontal IoU>=0.5; diagnostic only"
@@ -356,6 +358,24 @@ def run(root: Path, rasters: Path, output: Path) -> dict:
     }
     (output / "jitter.yaml").write_text(json.dumps(jitter, indent=2) + "\n")
     return result
+
+
+def latency_summary(rows: list[dict]) -> dict:
+    """Separate per-strip first calls from subsequent calls; legacy times include first."""
+    first = [r["strip_ms"] for r in rows]
+    repeated = [t for r in rows for t in r["strip_ms_repeated"][1:]]
+    return {
+        "first_call": {
+            "count": len(first),
+            "p50_ms": float(np.percentile(first, 50)) if first else None,
+            "p95_ms": float(np.percentile(first, 95)) if first else None,
+        },
+        "subsequent_calls": {
+            "count": len(repeated),
+            "p50_ms": float(np.percentile(repeated, 50)) if repeated else None,
+            "p95_ms": float(np.percentile(repeated, 95)) if repeated else None,
+        },
+    }
 
 
 def removal_quality(

@@ -207,5 +207,27 @@
     "rationale": "Endpoint needs visible majority of five staff lines",
     "evidence": "docs/reports/W5/T5.3-7-synthetic-v0.md",
     "updated": "2026-09-29"
+  },
+  {
+    "name": "barline.min_coverage",
+    "value": 0.85,
+    "unit": "ratio",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "A barline crosses almost the entire four-space staff; provisional visual proposal, full-height stems ambiguous",
+    "evidence": "docs/reports/W5/T5.1-decode-2026-10-09.md",
+    "updated": "2026-10-09"
+  },
+  {
+    "name": "barline.max_width",
+    "value": 0.25,
+    "unit": "staff_space",
+    "owner": "W5",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Thin vertical-stroke proposal; broad heavy/final bars deferred rather than guessed",
+    "evidence": "docs/reports/W5/T5.1-decode-2026-10-09.md",
+    "updated": "2026-10-09"
   }
 ]
