@@ -1,0 +1,1727 @@
+{
+  "scope": "synthetic rendered crop smoke; SYN-Val 아님; not a page OCR evaluation",
+  "manifestSha256": "92c1f2d28019c1e97dbefa58aab51af72a84e49ca6bd86e9f1023811b38f9fc0",
+  "items": 72,
+  "loadSeconds": 2.515879999999015,
+  "totalSeconds": 128.91732469999988,
+  "profiles": {
+    "det": {
+      "mode": "det",
+      "height": 960,
+      "width": 960,
+      "stride": 32,
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "input_name": "x",
+      "output_name": "fetch_name_0"
+    },
+    "latin": {
+      "mode": "rec",
+      "height": 48,
+      "width": 320,
+      "stride": 1,
+      "mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "input_name": "x",
+      "output_name": "fetch_name_0"
+    },
+    "korean": {
+      "mode": "rec",
+      "height": 48,
+      "width": 320,
+      "stride": 1,
+      "mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "input_name": "x",
+      "output_name": "fetch_name_0"
+    }
+  },
+  "slices": {
+    "chord": {
+      "count": 64,
+      "rawExact": 61,
+      "characterEdits": 3,
+      "characters": 264,
+      "normalizedExact": 61
+    },
+    "latin": {
+      "count": 4,
+      "rawExact": 4,
+      "characterEdits": 0,
+      "characters": 40,
+      "normalizedExact": null
+    },
+    "korean": {
+      "count": 4,
+      "rawExact": 0,
+      "characterEdits": 4,
+      "characters": 24,
+      "normalizedExact": null
+    }
+  },
+  "allRepeat3Equal": true,
+  "allDisabledAbstained": true,
+  "threads": "OR-005 overrides ORT to 2; no actual 1-vs-4 claim",
+  "detectorBoxesRecall": "NOT_RUN: map only",
+  "grammarConstrainedCtc": "NOT_RUN: greedy observation plus grammar validation only",
+  "rows": [
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "CM7",
+      "observed": "CM7",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 3,
+      "normalized": "Cmaj7",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.4495236000002478,
+      "detectorMapShape": [
+        608,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "Cmin7",
+      "observed": "Cmin7",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 5,
+      "normalized": "Cm7",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.5033027000026777,
+      "detectorMapShape": [
+        480,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "Cø",
+      "observed": "Cø",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 2,
+      "normalized": "Cm7b5",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.5858614999960992,
+      "detectorMapShape": [
+        832,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "C7(b9)",
+      "observed": "C7(b9)",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 6,
+      "normalized": "C7b9",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.4362856000007014,
+      "detectorMapShape": [
+        544,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "Csus",
+      "observed": "Csus",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 4,
+      "normalized": "Csus4",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.36518839999916963,
+      "detectorMapShape": [
+        576,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "C6/9",
+      "observed": "C6/9",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 4,
+      "normalized": "C6/9",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.4828750000015134,
+      "detectorMapShape": [
+        640,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "C5",
+      "observed": "C5",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 2,
+      "normalized": "C5",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.5694332999992184,
+      "detectorMapShape": [
+        800,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "C13",
+      "observed": "C13",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 3,
+      "normalized": "C13",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.35619800000131363,
+      "detectorMapShape": [
+        640,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "F#M7",
+      "observed": "F#M7",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 4,
+      "normalized": "F#maj7",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.5826280000037514,
+      "detectorMapShape": [
+        512,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "F#min7",
+      "observed": "F#min7",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 6,
+      "normalized": "F#m7",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.24332049999793526,
+      "detectorMapShape": [
+        448,
+        992
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "F#ø",
+      "observed": "F#0",
+      "rawExact": false,
+      "characterEdits": 1,
+      "characters": 3,
+      "normalized": null,
+      "normalizedExact": false,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.2623232000041753,
+      "detectorMapShape": [
+        704,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "F#7(b9)",
+      "observed": "F#7(b9)",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 7,
+      "normalized": "F#7b9",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.17803560000174912,
+      "detectorMapShape": [
+        480,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "F#sus",
+      "observed": "F#sus",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 5,
+      "normalized": "F#sus4",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.2844429000033415,
+      "detectorMapShape": [
+        512,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "F#6/9",
+      "observed": "F#6/9",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 5,
+      "normalized": "F#6/9",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.2635987999965437,
+      "detectorMapShape": [
+        576,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "F#5",
+      "observed": "F#5",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 3,
+      "normalized": "F#5",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.33196760000282666,
+      "detectorMapShape": [
+        672,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "F#13",
+      "observed": "F#13",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 4,
+      "normalized": "F#13",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.24000879999948665,
+      "detectorMapShape": [
+        576,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "kind": "latin",
+      "printed": "Blue river",
+      "observed": "Blue river",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 10,
+      "normalized": null,
+      "normalizedExact": null,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.2682057000056375,
+      "detectorMapShape": [
+        384,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 12,
+      "kind": "korean",
+      "printed": "새로운 아침",
+      "observed": "새로운아침",
+      "rawExact": false,
+      "characterEdits": 1,
+      "characters": 6,
+      "normalized": null,
+      "normalizedExact": null,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 3.08658120000473,
+      "detectorMapShape": [
+        384,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "CM7",
+      "observed": "CM7",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 3,
+      "normalized": "Cmaj7",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.43389490000117803,
+      "detectorMapShape": [
+        544,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "Cmin7",
+      "observed": "Cmin7",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 5,
+      "normalized": "Cm7",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 1.0156124999994063,
+      "detectorMapShape": [
+        384,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "Cø",
+      "observed": "Cø",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 2,
+      "normalized": "Cm7b5",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.6399643999975524,
+      "detectorMapShape": [
+        736,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "C7(b9)",
+      "observed": "C7(b9)",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 6,
+      "normalized": "C7b9",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.24437529999704566,
+      "detectorMapShape": [
+        448,
+        960
+      ],
+      "detectorMaxBp": 493,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "Csus",
+      "observed": "Csus",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 4,
+      "normalized": "Csus4",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.5078572000056738,
+      "detectorMapShape": [
+        480,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "C6/9",
+      "observed": "C6/9",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 4,
+      "normalized": "C6/9",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.5489191000015126,
+      "detectorMapShape": [
+        608,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "C5",
+      "observed": "C5",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 2,
+      "normalized": "C5",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.28477769999881275,
+      "detectorMapShape": [
+        768,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "C13",
+      "observed": "C13",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 3,
+      "normalized": "C13",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.28779210000357125,
+      "detectorMapShape": [
+        576,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "F#M7",
+      "observed": "F#M7",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 4,
+      "normalized": "F#maj7",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.22413940000114962,
+      "detectorMapShape": [
+        448,
+        960
+      ],
+      "detectorMaxBp": 9747,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "F#min7",
+      "observed": "F#min7",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 6,
+      "normalized": "F#m7",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.2759102999989409,
+      "detectorMapShape": [
+        352,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "F#ø",
+      "observed": "F#ø",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 3,
+      "normalized": "F#m7b5",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.3831408000041847,
+      "detectorMapShape": [
+        608,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "F#7(b9)",
+      "observed": "F#7(b9)",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 7,
+      "normalized": "F#7b9",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.2822766000026604,
+      "detectorMapShape": [
+        416,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "F#sus",
+      "observed": "F#sus",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 5,
+      "normalized": "F#sus4",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.2415019999971264,
+      "detectorMapShape": [
+        416,
+        992
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "F#6/9",
+      "observed": "F#6/9",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 5,
+      "normalized": "F#6/9",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.659379100005026,
+      "detectorMapShape": [
+        512,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "F#5",
+      "observed": "F#5",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 3,
+      "normalized": "F#5",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.2980643999981112,
+      "detectorMapShape": [
+        608,
+        960
+      ],
+      "detectorMaxBp": 9058,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "F#13",
+      "observed": "F#13",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 4,
+      "normalized": "F#13",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.3850230999960331,
+      "detectorMapShape": [
+        480,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "kind": "latin",
+      "printed": "Blue river",
+      "observed": "Blue river",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 10,
+      "normalized": null,
+      "normalizedExact": null,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.39511660000425763,
+      "detectorMapShape": [
+        288,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSansCJKkr",
+      "fontPx": 24,
+      "kind": "korean",
+      "printed": "새로운 아침",
+      "observed": "새로운아침",
+      "rawExact": false,
+      "characterEdits": 1,
+      "characters": 6,
+      "normalized": null,
+      "normalizedExact": null,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 2.1069356000007247,
+      "detectorMapShape": [
+        320,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "CM7",
+      "observed": "CM7",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 3,
+      "normalized": "Cmaj7",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.8958569000023999,
+      "detectorMapShape": [
+        576,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "Cmin7",
+      "observed": "Cmin7",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 5,
+      "normalized": "Cm7",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.9850393999950029,
+      "detectorMapShape": [
+        480,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "Cø",
+      "observed": "Ca",
+      "rawExact": false,
+      "characterEdits": 1,
+      "characters": 2,
+      "normalized": null,
+      "normalizedExact": false,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.3637640000015381,
+      "detectorMapShape": [
+        832,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "C7(b9)",
+      "observed": "C7(b9)",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 6,
+      "normalized": "C7b9",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.4075293000059901,
+      "detectorMapShape": [
+        544,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "Csus",
+      "observed": "Csus",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 4,
+      "normalized": "Csus4",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.44265410000662087,
+      "detectorMapShape": [
+        576,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "C6/9",
+      "observed": "C6/9",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 4,
+      "normalized": "C6/9",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.30151289999776054,
+      "detectorMapShape": [
+        640,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "C5",
+      "observed": "C5",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 2,
+      "normalized": "C5",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.3833729999969364,
+      "detectorMapShape": [
+        800,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "C13",
+      "observed": "C13",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 3,
+      "normalized": "C13",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.35142910000286065,
+      "detectorMapShape": [
+        672,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "F#M7",
+      "observed": "F#M7",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 4,
+      "normalized": "F#maj7",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.38441299999976764,
+      "detectorMapShape": [
+        512,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "F#min7",
+      "observed": "F#min7",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 6,
+      "normalized": "F#m7",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.4250845999995363,
+      "detectorMapShape": [
+        416,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "F#ø",
+      "observed": "F#0",
+      "rawExact": false,
+      "characterEdits": 1,
+      "characters": 3,
+      "normalized": null,
+      "normalizedExact": false,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.44836380000197096,
+      "detectorMapShape": [
+        704,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "F#7(b9)",
+      "observed": "F#7(b9)",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 7,
+      "normalized": "F#7b9",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.40780200000153854,
+      "detectorMapShape": [
+        480,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "F#sus",
+      "observed": "F#sus",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 5,
+      "normalized": "F#sus4",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.431137999999919,
+      "detectorMapShape": [
+        512,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "F#6/9",
+      "observed": "F#6/9",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 5,
+      "normalized": "F#6/9",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.377989599997818,
+      "detectorMapShape": [
+        576,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "F#5",
+      "observed": "F#5",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 3,
+      "normalized": "F#5",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.4836875999972108,
+      "detectorMapShape": [
+        672,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "kind": "chord",
+      "printed": "F#13",
+      "observed": "F#13",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 4,
+      "normalized": "F#13",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.45951359999889974,
+      "detectorMapShape": [
+        576,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "kind": "latin",
+      "printed": "Blue river",
+      "observed": "Blue river",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 10,
+      "normalized": null,
+      "normalizedExact": null,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.4986979999957839,
+      "detectorMapShape": [
+        352,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 12,
+      "kind": "korean",
+      "printed": "새로운 아침",
+      "observed": "새로운아침",
+      "rawExact": false,
+      "characterEdits": 1,
+      "characters": 6,
+      "normalized": null,
+      "normalizedExact": null,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 2.8504083000007086,
+      "detectorMapShape": [
+        384,
+        992
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "CM7",
+      "observed": "CM7",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 3,
+      "normalized": "Cmaj7",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.718905800000357,
+      "detectorMapShape": [
+        480,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "Cmin7",
+      "observed": "Cmin7",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 5,
+      "normalized": "Cm7",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.4203951999952551,
+      "detectorMapShape": [
+        384,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "Cø",
+      "observed": "Cø",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 2,
+      "normalized": "Cm7b5",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.5126932999992277,
+      "detectorMapShape": [
+        736,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "C7(b9)",
+      "observed": "C7(b9)",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 6,
+      "normalized": "C7b9",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.5482313000029535,
+      "detectorMapShape": [
+        448,
+        960
+      ],
+      "detectorMaxBp": 34,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "Csus",
+      "observed": "Csus",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 4,
+      "normalized": "Csus4",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.7327701000031084,
+      "detectorMapShape": [
+        480,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "C6/9",
+      "observed": "C6/9",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 4,
+      "normalized": "C6/9",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.48622250000335043,
+      "detectorMapShape": [
+        576,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "C5",
+      "observed": "C5",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 2,
+      "normalized": "C5",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.5787178999962634,
+      "detectorMapShape": [
+        736,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "C13",
+      "observed": "C13",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 3,
+      "normalized": "C13",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.4515192000035313,
+      "detectorMapShape": [
+        576,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "F#M7",
+      "observed": "F#M7",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 4,
+      "normalized": "F#maj7",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.5622178999983589,
+      "detectorMapShape": [
+        416,
+        960
+      ],
+      "detectorMaxBp": 2027,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "F#min7",
+      "observed": "F#min7",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 6,
+      "normalized": "F#m7",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.502346100001887,
+      "detectorMapShape": [
+        320,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "F#ø",
+      "observed": "F#ø",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 3,
+      "normalized": "F#m7b5",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.5256046000067727,
+      "detectorMapShape": [
+        576,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "F#7(b9)",
+      "observed": "F#7(b9)",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 7,
+      "normalized": "F#7b9",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.5915247999946587,
+      "detectorMapShape": [
+        384,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "F#sus",
+      "observed": "F#sus",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 5,
+      "normalized": "F#sus4",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 1.2145976000028895,
+      "detectorMapShape": [
+        416,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "F#6/9",
+      "observed": "F#6/9",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 5,
+      "normalized": "F#6/9",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.9755098000023281,
+      "detectorMapShape": [
+        480,
+        992
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "F#5",
+      "observed": "F#5",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 3,
+      "normalized": "F#5",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.522660900001938,
+      "detectorMapShape": [
+        576,
+        992
+      ],
+      "detectorMaxBp": 9999,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "kind": "chord",
+      "printed": "F#13",
+      "observed": "F#13",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 4,
+      "normalized": "F#13",
+      "normalizedExact": true,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.598850800000946,
+      "detectorMapShape": [
+        480,
+        960
+      ],
+      "detectorMaxBp": 9991,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "kind": "latin",
+      "printed": "Blue river",
+      "observed": "Blue river",
+      "rawExact": true,
+      "characterEdits": 0,
+      "characters": 10,
+      "normalized": null,
+      "normalizedExact": null,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 0.6881060999949113,
+      "detectorMapShape": [
+        288,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    },
+    {
+      "family": "NotoSerifCJKkr",
+      "fontPx": 24,
+      "kind": "korean",
+      "printed": "새로운 아침",
+      "observed": "새로운아침",
+      "rawExact": false,
+      "characterEdits": 1,
+      "characters": 6,
+      "normalized": null,
+      "normalizedExact": null,
+      "repeat3QuantizedEqual": true,
+      "repeat3TextEqual": true,
+      "recognizeThreeSeconds": 3.307586299997638,
+      "detectorMapShape": [
+        288,
+        960
+      ],
+      "detectorMaxBp": 10000,
+      "disabledAbstained": true
+    }
+  ],
+  "byFontSize": {
+    "chord/NotoSansCJKkr/12": {
+      "count": 16,
+      "rawExact": 15,
+      "characterEdits": 1,
+      "characters": 66,
+      "normalizedExact": 15
+    },
+    "latin/NotoSansCJKkr/12": {
+      "count": 1,
+      "rawExact": 1,
+      "characterEdits": 0,
+      "characters": 10,
+      "normalizedExact": 0
+    },
+    "korean/NotoSansCJKkr/12": {
+      "count": 1,
+      "rawExact": 0,
+      "characterEdits": 1,
+      "characters": 6,
+      "normalizedExact": 0
+    },
+    "chord/NotoSansCJKkr/24": {
+      "count": 16,
+      "rawExact": 16,
+      "characterEdits": 0,
+      "characters": 66,
+      "normalizedExact": 16
+    },
+    "latin/NotoSansCJKkr/24": {
+      "count": 1,
+      "rawExact": 1,
+      "characterEdits": 0,
+      "characters": 10,
+      "normalizedExact": 0
+    },
+    "korean/NotoSansCJKkr/24": {
+      "count": 1,
+      "rawExact": 0,
+      "characterEdits": 1,
+      "characters": 6,
+      "normalizedExact": 0
+    },
+    "chord/NotoSerifCJKkr/12": {
+      "count": 16,
+      "rawExact": 14,
+      "characterEdits": 2,
+      "characters": 66,
+      "normalizedExact": 14
+    },
+    "latin/NotoSerifCJKkr/12": {
+      "count": 1,
+      "rawExact": 1,
+      "characterEdits": 0,
+      "characters": 10,
+      "normalizedExact": 0
+    },
+    "korean/NotoSerifCJKkr/12": {
+      "count": 1,
+      "rawExact": 0,
+      "characterEdits": 1,
+      "characters": 6,
+      "normalizedExact": 0
+    },
+    "chord/NotoSerifCJKkr/24": {
+      "count": 16,
+      "rawExact": 16,
+      "characterEdits": 0,
+      "characters": 66,
+      "normalizedExact": 16
+    },
+    "latin/NotoSerifCJKkr/24": {
+      "count": 1,
+      "rawExact": 1,
+      "characterEdits": 0,
+      "characters": 10,
+      "normalizedExact": 0
+    },
+    "korean/NotoSerifCJKkr/24": {
+      "count": 1,
+      "rawExact": 0,
+      "characterEdits": 1,
+      "characters": 6,
+      "normalizedExact": 0
+    }
+  },
+  "execution": {
+    "status": "succeeded",
+    "wallSeconds": 130.82800000000134,
+    "cpuSecondsSampled": 159.15625,
+    "peakRssBytesSampled": 513896448,
+    "cpuLimit": 2
+  },
+  "failedAttempts": [
+    {
+      "reason": "strict alphabet rejected duplicate export classes",
+      "wallSeconds": 1.110000000000582
+    },
+    {
+      "reason": "diagnostic replay of duplicate alphabet rejection",
+      "wallSeconds": 0.8589999999967404
+    },
+    {
+      "reason": "strict alphabet rejected non-NFC export class spelling",
+      "wallSeconds": 1.889999999999418
+    },
+    {
+      "reason": "raw endpoint range check rejected float32 sigmoid roundoff",
+      "wallSeconds": 7.75
+    }
+  ],
+  "detectorDiagnostic": {
+    "min": 0.0,
+    "max": 1.0000001192092896,
+    "nonFinite": 0,
+    "shape": [
+      1,
+      1,
+      640,
+      960
+    ]
+  }
+}

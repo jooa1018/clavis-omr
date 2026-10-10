@@ -43,6 +43,7 @@ def greedy_observation(
     blank_index: int,
     limits: CtcLimits,
     enabled: bool,
+    preserve_export_alphabet: bool = False,
 ) -> CtcObservation | None:
     """Decode normalized CTC probabilities; disabling TEXT-CTC-001 abstains.
 
@@ -59,9 +60,11 @@ def greedy_observation(
         or not 0 <= blank_index < len(alphabet)
     ):
         raise ValueError("invalid alphabet size or blank index")
-    if len(set(alphabet)) != len(alphabet):
+    # Some verified export dictionaries repeat a spelling at distinct class IDs.
+    # Do not deduplicate those IDs: CTC repeat collapse is on classes, not text.
+    if not preserve_export_alphabet and len(set(alphabet)) != len(alphabet):
         raise ValueError("alphabet entries must be unique")
-    if any(not is_normalized("NFC", token) for token in alphabet):
+    if not preserve_export_alphabet and any(not is_normalized("NFC", token) for token in alphabet):
         raise ValueError("alphabet entries must be NFC")
     if any(not token for i, token in enumerate(alphabet) if i != blank_index):
         raise ValueError("nonblank alphabet entries must be nonempty")

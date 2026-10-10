@@ -58,5 +58,35 @@
     "status": "provisional",
     "rationale": "Bound nondeterministic stack configurations per prefix; fail closed on resource exhaustion.",
     "evidence": "docs/reports/W7/T7.3-grammar.md"
+  },
+  {
+    "name": "text.ppocr.max_pixels",
+    "value": 4000000,
+    "unit": "count",
+    "owner": "W7",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Reject decoded input beyond a bounded initial page/crop budget.",
+    "evidence": "docs/reports/W7/T7.1b-ppocr.md"
+  },
+  {
+    "name": "text.ppocr.max_tensor_pixels",
+    "value": 1000000,
+    "unit": "count",
+    "owner": "W7",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Bound ONNX image tensor and map allocations.",
+    "evidence": "docs/reports/W7/T7.1b-ppocr.md"
+  },
+  {
+    "name": "text.ppocr.max_rec_width",
+    "value": 640,
+    "unit": "count",
+    "owner": "W7",
+    "source": "convention",
+    "status": "provisional",
+    "rationale": "Reject long crops instead of distorting or silently cutting text; initial resource cap.",
+    "evidence": "docs/reports/W7/T7.1b-ppocr.md"
   }
 ]

@@ -14,7 +14,8 @@
       "report": "docs/reports/W7/T7.1a-smoke.json"
     },
     "introduced_by": "w7/onnx-ctc-boundary",
-    "motivated_by_failure": false
+    "motivated_by_failure": false,
+    "export_dictionary": "Explicit preserve_export_alphabet mode retains duplicate and non-NFC export class spellings without reindexing. CTC collapse uses class IDs, final observation text is NFC. Default strict alphabet validation is unchanged."
   },
   {
     "owner": "W7",
@@ -611,5 +612,26 @@
       "b11",
       "#13"
     ]
+  },
+  {
+    "id": "TEXT-PPOCR-001",
+    "owner": "W7",
+    "statement": "PP-OCRv5 pinned export preprocessing: BGR to CHW, detector long-side resize aligned to stride, recognizer aspect-preserving height resize and normalized-zero right padding; return raw model probabilities only. Probability-domain checks quantize at CONTRACTS 11 basis-point precision, then clamp only endpoint roundoff; larger violations are rejected.",
+    "units": "model_input",
+    "params": [
+      "text.ppocr.max_pixels",
+      "text.ppocr.max_tensor_pixels",
+      "text.ppocr.max_rec_width"
+    ],
+    "source": "convention",
+    "reference": "Pinned inference.yml artifacts and PaddlePaddle/PaddleX text_recognition/processors.py",
+    "flag": "text.rules.TEXT-PPOCR-001.enabled",
+    "enabled": true,
+    "ablation": {
+      "status": "synthetic-render-smoke-only",
+      "report": "docs/reports/W7/T7.1b-ppocr-validation.json"
+    },
+    "introduced_by": "w7/ppocr-runtime",
+    "motivated_by_failure": false
   }
 ]
