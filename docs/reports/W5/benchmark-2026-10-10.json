@@ -1,0 +1,47 @@
+{
+  "status": "NOT_RUN",
+  "job_id": "7bef4978748c438eb9c296bff54433b9",
+  "observed_at": "2026-10-10T13:39:45.134+09:00",
+  "allowed_window": "2026-10-10 01:00–07:00 Asia/Seoul",
+  "reason": "Intended window missed; queue remains queued with wall=0 and no experiment or latency result file. Cause of missed execution is not established.",
+  "queue_status": "queued",
+  "queue_paused": true,
+  "experiments_present": false,
+  "latency_result_present": false,
+  "benchmark_validity": "NOT_RUN",
+  "invalid_reasons": null,
+  "wall_seconds_recorded": 0.0,
+  "cpu_seconds": null,
+  "peak_rss_bytes": null,
+  "slices": [
+    {
+      "interline_px": 16,
+      "first_call_p50_ms": null,
+      "first_call_p95_ms": null,
+      "subsequent_p50_ms": null,
+      "subsequent_p95_ms": null
+    },
+    {
+      "interline_px": 10,
+      "first_call_p50_ms": null,
+      "first_call_p95_ms": null,
+      "subsequent_p50_ms": null,
+      "subsequent_p95_ms": null
+    },
+    {
+      "interline_px": 8,
+      "first_call_p50_ms": null,
+      "first_call_p95_ms": null,
+      "subsequent_p50_ms": null,
+      "subsequent_p95_ms": null
+    }
+  ],
+  "automation": {
+    "id": "w5-strip",
+    "status": "PAUSED",
+    "method": "Local automation.toml update; automation update connector unavailable in heartbeat tool set; configuration reread verified. Queue additionally paused to prevent deferred execution."
+  },
+  "data_scope": "synthetic W2/W3 smoke only; no data read or benchmark run this heartbeat",
+  "latency_budget_decision": "NOT_RUN; no performance pass/fail or optimization conclusion",
+  "next_action": "Orchestrator must specify another allowed night before queue resume or re-registration; W6 remains unblocked"
+}
